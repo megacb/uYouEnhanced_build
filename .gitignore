@@ -2,5 +2,4 @@
 .DS_Store
 packages
 obj
-Resources/Frameworks
-
+Tweaks/uYou/*
