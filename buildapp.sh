@@ -22,11 +22,15 @@ else
 	fi
 
 # Makefile
-	read -e -p "==> Path to the decrypted YouTube IPA: " PATHTOIPA
+	read -e -p "==> Path to the decrypted YouTube iPA: " PATHTOIPA
+	if [[ $PATHTOIPA == *.ipa ]]
+then 
 	sed -i '' "14s#.*#uYouPlus_IPA = $PATHTOIPA#g" ./Makefile
 	make clean package
 	open ./packages
-
+else
+	echo "This is not an iPA"
+	fi
 # Clean up	
 	tput setaf 1 && echo -e "==> \033[1mCleaning up...\033[0m"
 	find Tweaks/uYou -mindepth 1 -name com.miro.uyou_2.1_iphoneos-arm.deb -prune -o -exec rm -rf {} +
