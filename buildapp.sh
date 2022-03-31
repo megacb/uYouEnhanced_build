@@ -16,7 +16,7 @@ else
 	echo -e "==> \033[1mExtracting uYou...\033[0m"
 	if (cd Tweaks/uYou && tar -xf com.miro.uyou_2.1_iphoneos-arm.deb && tar -xf data.tar.*)
 then
-	echo -e "\033[1m> Extracted uYou\033[0m"
+	echo -e "\033[1m> Extracted uYou!\033[0m"
 else
 	echo "> \033[1mCouldn't extract uYou\033[0m"
 	fi
@@ -26,7 +26,7 @@ else
 	if [[ $PATHTOIPA == *.ipa ]]
 then 
 	sed -i '' "14s#.*#uYouPlus_IPA = $PATHTOIPA#g" ./Makefile
-	make clean package
+	make package
 	open ./packages
 else
 	echo "This is not an iPA"
@@ -34,5 +34,4 @@ else
 # Clean up	
 	tput setaf 1 && echo -e "==> \033[1mCleaning up...\033[0m"
 	find Tweaks/uYou -mindepth 1 -name com.miro.uyou_2.1_iphoneos-arm.deb -prune -o -exec rm -rf {} +
-	rm -rf Resources
-	rm -rf .theos/_/Payload
+	rm -rf Resources .theos/_/Payload
