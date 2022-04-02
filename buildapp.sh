@@ -1,8 +1,8 @@
 #!/bin/bash
 # Thanks Al4ise for his support
 
-cd "$(dirname "$0")"
-
+cd "$(dirname "$0")"	
+	
 # Check uYou
 	if [[ ! -f Tweaks/uYou/com.miro.uyou_2.1_iphoneos-arm.deb ]]
 then
@@ -33,5 +33,5 @@ else
 	fi
 # Clean up	
 	tput setaf 1 && echo -e "==> \033[1mCleaning up...\033[0m"
-	find Tweaks/uYou -mindepth 1 -name com.miro.uyou_2.1_iphoneos-arm.deb -prune -o -exec rm -rf {} +
+	find Tweaks/uYou -mindepth 1 ! -name "com.miro.uyou_2.1_iphoneos-arm.deb" ! -name ".gitkeep" -exec rm -rf {} \; 2>/dev/null
 	rm -rf Resources .theos/_/Payload
