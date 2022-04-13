@@ -15,19 +15,19 @@
 
 # Credits
 
-- [MiRO92](https://twitter.com/miro92?s=21) for [uYou](https://github.com/MiRO92/uYou-for-YouTube).
+- [MiRO92](https://twitter.com/miro92) for [uYou](https://github.com/MiRO92/uYou-for-YouTube).
 
 - [Galactic-Dev](https://github.com/Galactic-Dev) and [Luewii](https://github.com/Luewii) for [iSponsorBlock](https://github.com/Galactic-Dev/iSponsorBlock).
 
-- [Lillie](https://github.com/LillieWeeb001), [PoomSmart](https://twitter.com/poomsmart?s=21) and [kirb](https://twitter.com/hbkirb?s=21) for [YouTube Dislike Return](https://github.com/PoomSmart/Return-YouTube-Dislikes)
-
 - [HASHBANG Productions](https://github.com/hbang) for [Alderis Color Picker](https://github.com/hbang/Alderis) - a dependency of iSponsorBlock.
 
-- [PoomSmart](https://twitter.com/poomsmart?s=21) - the developer of many tweaks used by uYouPlus, include: [YouRememberCaption](https://www.ios-repo-updates.com/repository/poomsmart/package/com.ps.youremembercaption/), [YTClassicVideoQuality](https://poomsmart.github.io/repo/depictions/ytclassicvideoquality.html), [YTNoCheckLocalNetwork](https://poomsmart.github.io/repo/depictions/ytnochecklocalnetwork.html), [YTSystemAppearance](https://poomsmart.github.io/repo/depictions/ytsystemappearance.html), [YTUHD](https://poomsmart.github.io/repo/depictions/ytuhd.html) and [YouPiP](https://poomsmart.github.io/repo/depictions/youpip.html).
+- [PoomSmart](https://twitter.com/poomsmart) - the developer of many tweaks used by uYouPlus, include: [YouRememberCaption](https://www.ios-repo-updates.com/repository/poomsmart/package/com.ps.youremembercaption/), [YTClassicVideoQuality](https://poomsmart.github.io/repo/depictions/ytclassicvideoquality.html), [YTNoCheckLocalNetwork](https://poomsmart.github.io/repo/depictions/ytnochecklocalnetwork.html), [YTSystemAppearance](https://poomsmart.github.io/repo/depictions/ytsystemappearance.html), [YTUHD](https://poomsmart.github.io/repo/depictions/ytuhd.html), [YouPiP](https://poomsmart.github.io/repo/depictions/youpip.html), and [Return YouTube Dislike](https://github.com/PoomSmart/Return-YouTube-Dislikes)
 
-- [level3tjg](https://twitter.com/level3tjg?s=21) - for [YTNoHoverCards](https://github.com/level3tjg/YTNoHoverCards).
+- [level3tjg](https://twitter.com/level3tjg) - for [YTNoHoverCards](https://github.com/level3tjg/YTNoHoverCards).
 
 - [Al4ise](https://github.com/Al4ise) for [Azule](https://github.com/Al4ise/Azule), a tool used to inject jailbreak tweaks into jailed iOS apps.
+
+- [Lyvendia](https://github.com/Lyvendia/) for [YTSpeed](https://github.com/Lyvendia/YTSpeed/)
 
 - [theos team](https://github.com/theos/theos) for theos & theos-jailed.
 
@@ -54,6 +54,9 @@
 8. **YTNoCheckLocalNetwork**: block the Local Network permission popup.
 
 9. **YouRememberCaption**: make YouTube remember your video caption setting (if not already).
+
+10. **YTSpeed**: add 2.25, 2.5, 2.75, and 3x playback speed
+
 </details>
 
 # Known issues 
@@ -71,16 +74,16 @@
 
   - My official AtlStore repo: https://qnblackcat.github.io/AltStore/
 
-  - [Open in AltStore (v17.12.5-2.1)](https://tinyurl.com/3jvhjbc8) - It will take a while to install because AltStore needs to download the IPA.
+  - [Open in AltStore (v17.14.2-2.1)](https://tinyurl.com/2a9ybxvu) - It will take a while to install because AltStore needs to download the IPA.
 
-- Version info: _(last update: Apr 01)_
+- Version info: _(last update: Apr 13)_
 
 <details>
   <summary>  Expand</summary>
 
 | **Tweaks/App** | **Version** | **Open source** |
 | :------------: | :----------:| :-------------: |
-| **YouTube** | 17.12.5 | ✖︎  |
+| **YouTube** | 17.14.2 | ✖︎  |
 | **uYou** | 2.1 | ✖︎ |
 | **Return YouTube Dislike** | 1.6.4 | [✔︎](https://github.com/PoomSmart/Return-YouTube-Dislikes) |
 | **iSponsorBlock** | 1.0-14 | [✔︎](https://github.com/Galactic-Dev/iSponsorBlock) |
@@ -92,6 +95,7 @@
 | **YTSystemAppearance** | 1.0.0 | [✔︎](https://poomsmart.github.io/repo/depictions/ytsystemappearance.html) |
 | **YTUHD** | 1.2.6 | [✔︎](https://github.com/PoomSmart/YTUHD) |
 | **YouPiP** | 1.6.9 | [✔︎](https://github.com/PoomSmart/YouPiP) |
+|**YTSpeed**| 1.0.1 | [✔︎](https://github.com/Lyvendia/YTSpeed.git) |
 
 </details>
 
