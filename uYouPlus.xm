@@ -236,8 +236,8 @@ BOOL bigYTMiniPlayer() {
     arg1 = [oledColor colorWithAlphaComponent:0.0];
     } else { 
 	arg1 = oledColor; 
-    %orig;
 	}
+	%orig;
 }
 %end
 
