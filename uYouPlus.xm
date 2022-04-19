@@ -406,6 +406,20 @@ BOOL bigYTMiniPlayer() {
 }
 %end 
 
+%hook ASWAppSwitchingSheetHeaderView
+-(void)setBackgroundColor:(id)arg1 {
+	arg1 = oledColor;
+	%orig;
+}
+%end
+
+%hook ASWAppSwitchingSheetFooterView
+-(void)setBackgroundColor:(id)arg1 {
+	arg1 = oledColor;
+	%orig;
+}
+%end
+
 %hook YTCollectionSeparatorView
 -(void)setBackgroundColor:(id)arg1 {
     arg1 = oledColor;
