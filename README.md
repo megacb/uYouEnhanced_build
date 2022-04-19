@@ -17,17 +17,17 @@
 
 - [MiRO92](https://twitter.com/miro92) for [uYou](https://github.com/MiRO92/uYou-for-YouTube).
 
-- [Galactic-Dev](https://github.com/Galactic-Dev) and [Luewii](https://github.com/Luewii) for [iSponsorBlock](https://github.com/Galactic-Dev/iSponsorBlock).
+- [Galactic-Dev](https://github.com/Galactic-Dev) and [Luewii](https://github.com/Luewii) for [iSponsorBlock](https://github.com/Galactic-Dev/iSponsorBlock) and [BigYTMiniPlayer](https://github.com/Galactic-Dev/BigYTMiniPlayer).
 
 - [HASHBANG Productions](https://github.com/hbang) for [Alderis Color Picker](https://github.com/hbang/Alderis) - a dependency of iSponsorBlock.
 
-- [PoomSmart](https://twitter.com/poomsmart) - the developer of many tweaks used by uYouPlus, include: [YouRememberCaption](https://www.ios-repo-updates.com/repository/poomsmart/package/com.ps.youremembercaption/), [YTClassicVideoQuality](https://poomsmart.github.io/repo/depictions/ytclassicvideoquality.html), [YTNoCheckLocalNetwork](https://poomsmart.github.io/repo/depictions/ytnochecklocalnetwork.html), [YTSystemAppearance](https://poomsmart.github.io/repo/depictions/ytsystemappearance.html), [YTUHD](https://poomsmart.github.io/repo/depictions/ytuhd.html), [YouPiP](https://poomsmart.github.io/repo/depictions/youpip.html), and [Return YouTube Dislike](https://github.com/PoomSmart/Return-YouTube-Dislikes)
+- [PoomSmart](https://twitter.com/poomsmart) - the developer of many tweaks used by uYouPlus, include: [YouRememberCaption](https://www.ios-repo-updates.com/repository/poomsmart/package/com.ps.youremembercaption/), [YTClassicVideoQuality](https://poomsmart.github.io/repo/depictions/ytclassicvideoquality.html), [YTNoCheckLocalNetwork](https://poomsmart.github.io/repo/depictions/ytnochecklocalnetwork.html), [YTSystemAppearance](https://poomsmart.github.io/repo/depictions/ytsystemappearance.html), [YTAutoFullScreen](https://github.com/PoomSmart/YTAutoFullScreen/), [YTReExplore](https://github.com/PoomSmart/YTReExplore/), [YTUHD](https://poomsmart.github.io/repo/depictions/ytuhd.html), [YouPiP](https://poomsmart.github.io/repo/depictions/youpip.html), and [Return YouTube Dislike](https://github.com/PoomSmart/Return-YouTube-Dislikes)
 
 - [level3tjg](https://twitter.com/level3tjg) - for [YTNoHoverCards](https://github.com/level3tjg/YTNoHoverCards).
 
-- [Al4ise](https://github.com/Al4ise) for [Azule](https://github.com/Al4ise/Azule), a tool used to inject jailbreak tweaks into jailed iOS apps.
-
 - [Lyvendia](https://github.com/Lyvendia/) for [YTSpeed](https://github.com/Lyvendia/YTSpeed/)
+
+- [Al4ise](https://github.com/Al4ise) for [Azule](https://github.com/Al4ise/Azule), a tool used to inject jailbreak tweaks into jailed iOS apps.
 
 - [theos team](https://github.com/theos/theos) for theos & theos-jailed.
 
@@ -43,19 +43,21 @@
 4. **YTUHD:** unlock VP9 codec and in effect, enables video quality of 2K and 4K. You can enable/disable YTUHD in YouTube Settings - Video quality preferences.
 
 <details>
-  <summary>And more...!</summary>
+  <summary>And many more...!</summary>
 
-5. **YTClassicVideoQuality:** since YouTube v16.xx, you need one more step to change the video quality. YTClassicVideoQuality brings back the old video quality selector, which is a lot better than the new one.
+5. **YTAutoFullScreen:** autoplay videos at full screen.
 
-6. **YTNoHoverCards:** offer an option to enable/disable the annoying suggested videos show up at the end of the videos.
+6. **YTClassicVideoQuality:** since YouTube v16.xx, you need one more step to change the video quality. YTClassicVideoQuality brings back the old video quality selector, which is a lot better than the new one.
 
-7. **YTSystemAppearance**: sync the YouTube theme (dark/light) with the system theme.
+7. **YTNoHoverCards:** offer an option to enable/disable the annoying suggested videos show up at the end of the videos.
 
-8. **YTNoCheckLocalNetwork**: block the Local Network permission popup.
+8. **YTSystemAppearance**: sync the YouTube theme (dark/light) with the system theme.
 
-9. **YouRememberCaption**: make YouTube remember your video caption setting (if not already).
+9. **YTNoCheckLocalNetwork**: block the Local Network permission popup.
 
-10. **YTSpeed**: add 2.25, 2.5, 2.75, and 3x playback speed
+10. **YouRememberCaption**: make YouTube remember your video caption setting (if not already).
+
+11. **YTSpeed**: add 2.25, 2.5, 2.75, and 3x playback speed
 
 </details>
 
@@ -74,28 +76,31 @@
 
   - My official AtlStore repo: https://qnblackcat.github.io/AltStore/
 
-  - [Open in AltStore (v17.14.2-2.1)](https://tinyurl.com/2a9ybxvu) - It will take a while to install because AltStore needs to download the IPA.
+  - [Open in AltStore (v17.15.1-2.1)](https://tinyurl.com/bdd57rer) - It will take a while to install because AltStore needs to download the IPA.
 
-- Version info: _(last update: Apr 13)_
+- Version info: _(last update: Apr 19)_
 
 <details>
   <summary>  Expand</summary>
 
 | **Tweaks/App** | **Version** | **Open source** |
 | :------------: | :----------:| :-------------: |
-| **YouTube** | 17.14.2 | ✖︎  |
+| **YouTube** | 17.15.1 | ✖︎  |
 | **uYou** | 2.1 | ✖︎ |
 | **Return YouTube Dislike** | 1.6.4 | [✔︎](https://github.com/PoomSmart/Return-YouTube-Dislikes) |
 | **iSponsorBlock** | 1.0-14 | [✔︎](https://github.com/Galactic-Dev/iSponsorBlock) |
 | **Alderis Color Picker** | 1.1.2| [✔︎](https://github.com/hbang/Alderis) |
-| **YouRememberCaption** | 1.0.0 | [✔︎](https://www.ios-repo-updates.com/repository/poomsmart/package/com.ps.youremembercaption/) |
+| **YouRememberCaption** | 1.0.0 | [✔︎](https://poomsmart.github.io/repo/depictions/youremembercaption.html) |
 | **YTClassicVideoQuality** | 1.0.1 | [✔︎](https://github.com/PoomSmart/YTClassicVideoQuality) |
 | **YTNoCheckLocalNetwork** | 1.0.2 | [✔︎](https://poomsmart.github.io/repo/depictions/ytnochecklocalnetwork.html) |
 | **YTNoHoverCards** | 0.0.3 | [✔︎](https://github.com/level3tjg/YTNoHoverCards) |
 | **YTSystemAppearance** | 1.0.0 | [✔︎](https://poomsmart.github.io/repo/depictions/ytsystemappearance.html) |
 | **YTUHD** | 1.2.6 | [✔︎](https://github.com/PoomSmart/YTUHD) |
 | **YouPiP** | 1.6.9 | [✔︎](https://github.com/PoomSmart/YouPiP) |
-|**YTSpeed**| 1.0.1 | [✔︎](https://github.com/Lyvendia/YTSpeed.git) |
+| **YTSpeed** | 1.0.1 | [✔︎](https://github.com/Lyvendia/YTSpeed) |
+| **YTAutoFullScreen** | 1.0.3 | [✔︎](https://github.com/PoomSmart/YTAutoFullScreen/) |
+| **YTReExplore** | 1.0.2 | [✔︎](https://github.com/PoomSmart/YTReExplore) |
+| **BigYTMiniPlayer** | 1.0-1 | [✔︎](https://github.com/Galactic-Dev/BigYTMiniPlayer) |
 
 </details>
 
@@ -127,11 +132,6 @@ See [Installation - Wiki](https://github.com/qnblackcat/uYouPlus/wiki/Installati
 - Venmo: https://venmo.com/u/DavidBrett
 </details>
 
-<details>
-  <summary>Lillie</summary>
-
-- Patreon: https://patreon.com/lillieweeb
-</details>
 
 # FAQ
 
