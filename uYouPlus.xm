@@ -1,10 +1,22 @@
-#import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+#import <objc/runtime.h>
 #import "Tweaks/YouTubeHeader/YTVideoQualitySwitchOriginalController.h"
 #import "Tweaks/YouTubeHeader/YTSettingsSectionItem.h"
 #import "Tweaks/YouTubeHeader/YTPlayerViewController.h"
 #import "Tweaks/YouTubeHeader/YTWatchController.h"
+#import "Tweaks/YouTubeHeader/YTIGuideResponse.h"
+#import "Tweaks/YouTubeHeader/YTIGuideResponseSupportedRenderers.h"
+#import "Tweaks/YouTubeHeader/YTIPivotBarSupportedRenderers.h"
+#import "Tweaks/YouTubeHeader/YTIPivotBarRenderer.h"
+#import "Tweaks/YouTubeHeader/YTIBrowseRequest.h"
+#include <RemoteLog.h>
 
+@interface YTMainAppVideoPlayerOverlayView : UIView
+-(UIViewController *)_viewControllerForAncestor;
+@end
+@interface YTWatchMiniBarView : UIView
+@end
 @interface YTAsyncCollectionView : UIView
 @end
 @interface YTPlayerViewController (YTAFS)
@@ -25,6 +37,12 @@ BOOL autoFullScreen() {
 BOOL noHoverCard() {
     return [[NSUserDefaults standardUserDefaults] boolForKey:@"hover_cards_enabled"];
 }
+BOOL ReExplore() {
+    return [[NSUserDefaults standardUserDefaults] boolForKey:@"reExplore_enabled"];
+}
+BOOL bigYTMiniPlayer() {
+    return [[NSUserDefaults standardUserDefaults] boolForKey:@"bigYTMiniPlayer_enabled"];
+}
 
 //Settings
 %hook YTSettingsViewController
@@ -34,16 +52,16 @@ BOOL noHoverCard() {
             return item.settingItemId == 265;
 		}];
 		if (statsForNerdsIndex != NSNotFound) {
-	     	//	
-			YTSettingsSectionItem *hideHUD = [[%c(YTSettingsSectionItem) alloc] initWithTitle:@"Hide HUD Messages" titleDescription:@"Example: CC is turned on/off, Video loop is on,... App restart is required."];
-			hideHUD.hasSwitch = YES;
-			hideHUD.switchVisible = YES;
-			hideHUD.on = [[NSUserDefaults standardUserDefaults] boolForKey:@"hideHUD_enabled"];
-			hideHUD.switchBlock = ^BOOL (YTSettingsCell *cell, BOOL enabled) {
-				[[NSUserDefaults standardUserDefaults] setBool:enabled forKey:@"hideHUD_enabled"];
+			//
+			YTSettingsSectionItem *hoverCardItem = [[%c(YTSettingsSectionItem) alloc] initWithTitle:@"Show End screens hover cards (YTNoHoverCards)" titleDescription:@"Allows creator End screens (thumbnails) to appear at the end of videos."];
+			hoverCardItem.hasSwitch = YES;
+			hoverCardItem.switchVisible = YES;
+			hoverCardItem.on = [[NSUserDefaults standardUserDefaults] boolForKey:@"hover_cards_enabled"];
+			hoverCardItem.switchBlock = ^BOOL (YTSettingsCell *cell, BOOL enabled) {
+				[[NSUserDefaults standardUserDefaults] setBool:enabled forKey:@"hover_cards_enabled"];
 				return YES;
 			};
-			[sectionItems insertObject:hideHUD atIndex:statsForNerdsIndex];
+			[sectionItems insertObject:hoverCardItem atIndex:statsForNerdsIndex + 2];
 			//
 			YTSettingsSectionItem *Oleditem = [[%c(YTSettingsSectionItem) alloc] initWithTitle:@"OLED Dark mode (Experimental)" titleDescription:@"WARNING: You must set YouTube's appearance to Dark theme before enabling OLED dark mode (not tested on iPad yet). App restart is required."];
 			Oleditem.hasSwitch = YES;
@@ -55,7 +73,7 @@ BOOL noHoverCard() {
 			};
 			[sectionItems insertObject:Oleditem atIndex:statsForNerdsIndex - 11];	
 			//
-			YTSettingsSectionItem *autoFUll = [[%c(YTSettingsSectionItem) alloc] initWithTitle:@"Auto Full Screen" titleDescription:@"Autoplay videos at full screen."];
+			YTSettingsSectionItem *autoFUll = [[%c(YTSettingsSectionItem) alloc] initWithTitle:@"Auto Full Screen (YTAutoFullScreen)" titleDescription:@"Autoplay videos at full screen."];
 			autoFUll.hasSwitch = YES;
 			autoFUll.switchVisible = YES;
 			autoFUll.on = [[NSUserDefaults standardUserDefaults] boolForKey:@"autofull_enabled"];
@@ -63,17 +81,37 @@ BOOL noHoverCard() {
 				[[NSUserDefaults standardUserDefaults] setBool:enabled forKey:@"autofull_enabled"];
 				return YES;
 			};
-			[sectionItems insertObject:autoFUll atIndex:statsForNerdsIndex + 1];
+			[sectionItems insertObject:autoFUll atIndex:statsForNerdsIndex + 2];
 			//
-			YTSettingsSectionItem *hoverCardItem = [[%c(YTSettingsSectionItem) alloc] initWithTitle:@"Show End screens hover cards" titleDescription:@"Allows creator End screens (thumbnails) to appear at the end of videos."];
-			hoverCardItem.hasSwitch = YES;
-			hoverCardItem.switchVisible = YES;
-			hoverCardItem.on = [[NSUserDefaults standardUserDefaults] boolForKey:@"hover_cards_enabled"];
-			hoverCardItem.switchBlock = ^BOOL (YTSettingsCell *cell, BOOL enabled) {
-				[[NSUserDefaults standardUserDefaults] setBool:enabled forKey:@"hover_cards_enabled"];
+			YTSettingsSectionItem *hideHUD = [[%c(YTSettingsSectionItem) alloc] initWithTitle:@"Hide HUD Messages" titleDescription:@"Example: CC is turned on/off, Video loop is on,... App restart is required."];
+			hideHUD.hasSwitch = YES;
+			hideHUD.switchVisible = YES;
+			hideHUD.on = [[NSUserDefaults standardUserDefaults] boolForKey:@"hideHUD_enabled"];
+			hideHUD.switchBlock = ^BOOL (YTSettingsCell *cell, BOOL enabled) {
+				[[NSUserDefaults standardUserDefaults] setBool:enabled forKey:@"hideHUD_enabled"];
 				return YES;
 			};
-			[sectionItems insertObject:hoverCardItem atIndex:statsForNerdsIndex + 4];
+			[sectionItems insertObject:hideHUD atIndex:statsForNerdsIndex + 2];
+			//
+			YTSettingsSectionItem *reExplore = [[%c(YTSettingsSectionItem) alloc] initWithTitle:@"Replace Shorts tab with Explore tab (YTReExplore)" titleDescription:@"App restart is required."];
+			reExplore.hasSwitch = YES;
+			reExplore.switchVisible = YES;
+			reExplore.on = [[NSUserDefaults standardUserDefaults] boolForKey:@"reExplore_enabled"];
+			reExplore.switchBlock = ^BOOL (YTSettingsCell *cell, BOOL enabled) {
+				[[NSUserDefaults standardUserDefaults] setBool:enabled forKey:@"reExplore_enabled"];
+				return YES;
+			};
+			[sectionItems insertObject:reExplore atIndex:statsForNerdsIndex + 4];
+			//
+			YTSettingsSectionItem *bigYTMiniPlayer = [[%c(YTSettingsSectionItem) alloc] initWithTitle:@"Bigger miniplayer bar (BigYTMiniPlayer)" titleDescription:@"App restart is required."];
+			bigYTMiniPlayer.hasSwitch = YES;
+			bigYTMiniPlayer.switchVisible = YES;
+			bigYTMiniPlayer.on = [[NSUserDefaults standardUserDefaults] boolForKey:@"bigYTMiniPlayer_enabled"];
+			bigYTMiniPlayer.switchBlock = ^BOOL (YTSettingsCell *cell, BOOL enabled) {
+				[[NSUserDefaults standardUserDefaults] setBool:enabled forKey:@"bigYTMiniPlayer_enabled"];
+				return YES;
+			};
+			[sectionItems insertObject:bigYTMiniPlayer atIndex:statsForNerdsIndex + 4];
 		}
 	}	
 	%orig;
@@ -83,17 +121,18 @@ BOOL noHoverCard() {
 // Hide HUD Messages
 %hook YTHUDMessageView
 - (id)initWithMessage:(id)arg1 dismissHandler:(id)arg2 {
-if (hideHUD())
+  if (hideHUD()) {
     return NULL;
-else 
-	return %orig;
+  } 
+  	else
+      return %orig; 
 }
 %end
 
 // YTAutoFullScreen: https://github.com/PoomSmart/YTAutoFullScreen/
 %hook YTPlayerViewController
 - (void)loadWithPlayerTransition:(id)arg1 playbackConfig:(id)arg2 {
-if (autoFullScreen()) {
+	if (autoFullScreen()) {
     %orig;
     [NSTimer scheduledTimerWithTimeInterval:0.75 target:self selector:@selector(autoFullscreen) userInfo:nil repeats:NO];
    } else { return %orig; }
@@ -108,8 +147,8 @@ if (autoFullScreen()) {
 // YTNoHoverCards: https://github.com/level3tjg/YTNoHoverCards
 %hook YTCreatorEndscreenView
 - (void)setHidden:(BOOL)hidden {
-if (!noHoverCard())
-	hidden = YES;
+	if (!noHoverCard())
+		hidden = YES;
 	%orig;
 }
 %end
@@ -139,7 +178,7 @@ if (!noHoverCard())
 - (BOOL)respectDeviceCaptionSetting { return NO; }
 %end
 
-// OLED Dark mode
+// OLED 
 // Thanks u/DGh0st for his very well explained comment - https://www.reddit.com/r/jailbreakdevelopers/comments/9uape7/comment/e94sq80/
 // Thanks sinfool for his flex patch which brings OLED Dark mode for YouTube - "Color Customizer (YouTube) OLED"
 %group gOLED 
@@ -365,21 +404,7 @@ if (!noHoverCard())
 	arg1 = oledColor;
 	%orig;
 }
-%end
-
-%hook ASWAppSwitchingSheetFooterView // open link
--(void)setBackgroundColor:(id)arg1 {
-	arg1 = oledColor;
-	%orig;
-}
-%end
-
-%hook ASWAppSwitchingSheetHeaderView // open link
--(void)setBackgroundColor:(id)arg1 {
-	arg1 = oledColor;
-	%orig;
-}
-%end
+%end 
 
 %hook YTCollectionSeparatorView
 -(void)setBackgroundColor:(id)arg1 {
@@ -407,21 +432,18 @@ if (!noHoverCard())
     %orig;
 }
 %end
-
 %hook YTChannelProfileNameEditorView  // edit profile Name
 -(void)setBackgroundColor:(id)arg1 {
     arg1 = oledColor;
     %orig;
 }
 %end
-
 hook GOOTextField 
 -(void)setBackgroundColor:(id)arg1 {  // edit profile Description
 	arg1 = oledColor;
 	%orig;
 }
 %end
-
 %hook GOOMultilineTextField// 
 -(void)setBackgroundColor:(id)arg1 { // edit profile Name
 	arg1 = oledColor;
@@ -432,9 +454,74 @@ hook GOOTextField
 
 %end
 
+// YTReExplore: https://github.com/PoomSmart/YTReExplore/
+%group gReExplore
+static void replaceTab(YTIGuideResponse *response) {
+    NSMutableArray <YTIGuideResponseSupportedRenderers *> *renderers = [response itemsArray];
+    for (YTIGuideResponseSupportedRenderers *guideRenderers in renderers) {
+        YTIPivotBarRenderer *pivotBarRenderer = [guideRenderers pivotBarRenderer];
+        NSMutableArray <YTIPivotBarSupportedRenderers *> *items = [pivotBarRenderer itemsArray];
+        NSUInteger shortIndex = [items indexOfObjectPassingTest:^BOOL(YTIPivotBarSupportedRenderers *renderers, NSUInteger idx, BOOL *stop) {
+            return [[[renderers pivotBarItemRenderer] pivotIdentifier] isEqualToString:@"FEshorts"];
+        }];
+        if (shortIndex != NSNotFound) {
+            [items removeObjectAtIndex:shortIndex];
+            NSUInteger exploreIndex = [items indexOfObjectPassingTest:^BOOL(YTIPivotBarSupportedRenderers *renderers, NSUInteger idx, BOOL *stop) {
+                return [[[renderers pivotBarItemRenderer] pivotIdentifier] isEqualToString:[%c(YTIBrowseRequest) browseIDForExploreTab]];
+            }];
+            if (exploreIndex == NSNotFound) {
+                YTIPivotBarSupportedRenderers *exploreTab = [%c(YTIPivotBarRenderer) pivotSupportedRenderersWithBrowseId:[%c(YTIBrowseRequest) browseIDForExploreTab] title:@"Explore" iconType:292];
+                [items insertObject:exploreTab atIndex:1];
+            }
+        }
+    }
+}
+%hook YTGuideServiceCoordinator
+- (void)handleResponse:(YTIGuideResponse *)response withCompletion:(id)completion {
+    replaceTab(response);
+    %orig(response, completion);
+}
+- (void)handleResponse:(YTIGuideResponse *)response error:(id)error completion:(id)completion {
+    replaceTab(response);
+    %orig(response, error, completion);
+}
+%end
+%end
+
+// BigYTMiniPlayer: https://github.com/Galactic-Dev/BigYTMiniPlayer
+%group Main
+%hook YTWatchMiniBarView
+-(void)setWatchMiniPlayerLayout:(int)arg1 {
+	%orig(1);
+}
+-(int)watchMiniPlayerLayout {
+	return 1;
+}
+-(void)layoutSubviews {
+    %orig;
+    self.frame = CGRectMake(([UIScreen mainScreen].bounds.size.width - self.frame.size.width), self.frame.origin.y, self.frame.size.width, self.frame.size.height);
+}
+%end
+
+%hook YTMainAppVideoPlayerOverlayView
+-(BOOL)isUserInteractionEnabled {
+    if([[self _viewControllerForAncestor].parentViewController.parentViewController isKindOfClass:%c(YTWatchMiniBarViewController)]) {
+        return NO;
+    }
+    return %orig;
+}
+%end
+%end
+
 %ctor {
     %init;
     if (oled()) {
-      %init(gOLED);
+        %init(gOLED);
     }
+	if (ReExplore()) {
+		%init(gReExplore)
+	}
+	if (bigYTMiniPlayer() && (UIDevice.currentDevice.userInterfaceIdiom != UIUserInterfaceIdiomPad)) {
+		%init(Main)
+	}
 }
