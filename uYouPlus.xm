@@ -52,7 +52,7 @@ BOOL bigYTMiniPlayer() {
             return item.settingItemId == 265;
 		}];
 		if (statsForNerdsIndex != NSNotFound) {
-			//
+	     	//
 			YTSettingsSectionItem *hoverCardItem = [[%c(YTSettingsSectionItem) alloc] initWithTitle:@"Show End screens hover cards (YTNoHoverCards)" titleDescription:@"Allows creator End screens (thumbnails) to appear at the end of videos."];
 			hoverCardItem.hasSwitch = YES;
 			hoverCardItem.switchVisible = YES;
@@ -61,17 +61,37 @@ BOOL bigYTMiniPlayer() {
 				[[NSUserDefaults standardUserDefaults] setBool:enabled forKey:@"hover_cards_enabled"];
 				return YES;
 			};
-			[sectionItems insertObject:hoverCardItem atIndex:statsForNerdsIndex + 2];
+			[sectionItems insertObject:hoverCardItem atIndex:statsForNerdsIndex + 1];
 			//
-			YTSettingsSectionItem *Oleditem = [[%c(YTSettingsSectionItem) alloc] initWithTitle:@"OLED Dark mode (Experimental)" titleDescription:@"WARNING: You must set YouTube's appearance to Dark theme before enabling OLED dark mode (not tested on iPad yet). App restart is required."];
-			Oleditem.hasSwitch = YES;
-			Oleditem.switchVisible = YES;
-			Oleditem.on = [[NSUserDefaults standardUserDefaults] boolForKey:@"oled_enabled"];
-			Oleditem.switchBlock = ^BOOL (YTSettingsCell *cell, BOOL enabled) {
-				[[NSUserDefaults standardUserDefaults] setBool:enabled forKey:@"oled_enabled"];
+			YTSettingsSectionItem *reExplore = [[%c(YTSettingsSectionItem) alloc] initWithTitle:@"Replace Shorts tab with Explore tab (YTReExplore)" titleDescription:@"App restart is required."];
+			reExplore.hasSwitch = YES;
+			reExplore.switchVisible = YES;
+			reExplore.on = [[NSUserDefaults standardUserDefaults] boolForKey:@"reExplore_enabled"];
+			reExplore.switchBlock = ^BOOL (YTSettingsCell *cell, BOOL enabled) {
+				[[NSUserDefaults standardUserDefaults] setBool:enabled forKey:@"reExplore_enabled"];
 				return YES;
 			};
-			[sectionItems insertObject:Oleditem atIndex:statsForNerdsIndex - 11];	
+			[sectionItems insertObject:reExplore atIndex:statsForNerdsIndex + 2];
+			//
+			YTSettingsSectionItem *bigYTMiniPlayer = [[%c(YTSettingsSectionItem) alloc] initWithTitle:@"Bigger miniplayer bar (BigYTMiniPlayer)" titleDescription:@"App restart is required."];
+			bigYTMiniPlayer.hasSwitch = YES;
+			bigYTMiniPlayer.switchVisible = YES;
+			bigYTMiniPlayer.on = [[NSUserDefaults standardUserDefaults] boolForKey:@"bigYTMiniPlayer_enabled"];
+			bigYTMiniPlayer.switchBlock = ^BOOL (YTSettingsCell *cell, BOOL enabled) {
+				[[NSUserDefaults standardUserDefaults] setBool:enabled forKey:@"bigYTMiniPlayer_enabled"];
+				return YES;
+			};
+			[sectionItems insertObject:bigYTMiniPlayer atIndex:statsForNerdsIndex + 2];
+			//
+			YTSettingsSectionItem *hideHUD = [[%c(YTSettingsSectionItem) alloc] initWithTitle:@"Hide HUD Messages" titleDescription:@"Example: CC is turned on/off, Video loop is on,... App restart is required."];
+			hideHUD.hasSwitch = YES;
+			hideHUD.switchVisible = YES;
+			hideHUD.on = [[NSUserDefaults standardUserDefaults] boolForKey:@"hideHUD_enabled"];
+			hideHUD.switchBlock = ^BOOL (YTSettingsCell *cell, BOOL enabled) {
+				[[NSUserDefaults standardUserDefaults] setBool:enabled forKey:@"hideHUD_enabled"];
+				return YES;
+			};
+			[sectionItems insertObject:hideHUD atIndex:statsForNerdsIndex + 1];
 			//
 			YTSettingsSectionItem *autoFUll = [[%c(YTSettingsSectionItem) alloc] initWithTitle:@"Auto Full Screen (YTAutoFullScreen)" titleDescription:@"Autoplay videos at full screen."];
 			autoFUll.hasSwitch = YES;
@@ -82,36 +102,16 @@ BOOL bigYTMiniPlayer() {
 				return YES;
 			};
 			[sectionItems insertObject:autoFUll atIndex:statsForNerdsIndex + 2];
-			//
-			YTSettingsSectionItem *hideHUD = [[%c(YTSettingsSectionItem) alloc] initWithTitle:@"Hide HUD Messages" titleDescription:@"Example: CC is turned on/off, Video loop is on,... App restart is required."];
-			hideHUD.hasSwitch = YES;
-			hideHUD.switchVisible = YES;
-			hideHUD.on = [[NSUserDefaults standardUserDefaults] boolForKey:@"hideHUD_enabled"];
-			hideHUD.switchBlock = ^BOOL (YTSettingsCell *cell, BOOL enabled) {
-				[[NSUserDefaults standardUserDefaults] setBool:enabled forKey:@"hideHUD_enabled"];
+	     	//	
+			YTSettingsSectionItem *Oleditem = [[%c(YTSettingsSectionItem) alloc] initWithTitle:@"OLED Dark mode (Experimental)" titleDescription:@"WARNING: You must set YouTube's appearance to Dark theme before enabling OLED dark mode (not tested on iPad yet). App restart is required."];
+			Oleditem.hasSwitch = YES;
+			Oleditem.switchVisible = YES;
+			Oleditem.on = [[NSUserDefaults standardUserDefaults] boolForKey:@"oled_enabled"];
+			Oleditem.switchBlock = ^BOOL (YTSettingsCell *cell, BOOL enabled) {
+				[[NSUserDefaults standardUserDefaults] setBool:enabled forKey:@"oled_enabled"];
 				return YES;
 			};
-			[sectionItems insertObject:hideHUD atIndex:statsForNerdsIndex + 2];
-			//
-			YTSettingsSectionItem *reExplore = [[%c(YTSettingsSectionItem) alloc] initWithTitle:@"Replace Shorts tab with Explore tab (YTReExplore)" titleDescription:@"App restart is required."];
-			reExplore.hasSwitch = YES;
-			reExplore.switchVisible = YES;
-			reExplore.on = [[NSUserDefaults standardUserDefaults] boolForKey:@"reExplore_enabled"];
-			reExplore.switchBlock = ^BOOL (YTSettingsCell *cell, BOOL enabled) {
-				[[NSUserDefaults standardUserDefaults] setBool:enabled forKey:@"reExplore_enabled"];
-				return YES;
-			};
-			[sectionItems insertObject:reExplore atIndex:statsForNerdsIndex + 4];
-			//
-			YTSettingsSectionItem *bigYTMiniPlayer = [[%c(YTSettingsSectionItem) alloc] initWithTitle:@"Bigger miniplayer bar (BigYTMiniPlayer)" titleDescription:@"App restart is required."];
-			bigYTMiniPlayer.hasSwitch = YES;
-			bigYTMiniPlayer.switchVisible = YES;
-			bigYTMiniPlayer.on = [[NSUserDefaults standardUserDefaults] boolForKey:@"bigYTMiniPlayer_enabled"];
-			bigYTMiniPlayer.switchBlock = ^BOOL (YTSettingsCell *cell, BOOL enabled) {
-				[[NSUserDefaults standardUserDefaults] setBool:enabled forKey:@"bigYTMiniPlayer_enabled"];
-				return YES;
-			};
-			[sectionItems insertObject:bigYTMiniPlayer atIndex:statsForNerdsIndex + 4];
+			[sectionItems insertObject:Oleditem atIndex:statsForNerdsIndex + 1];
 		}
 	}	
 	%orig;
@@ -533,9 +533,9 @@ static void replaceTab(YTIGuideResponse *response) {
         %init(gOLED);
     }
 	if (ReExplore()) {
-		%init(gReExplore)
+        %init(gReExplore)
 	}
 	if (bigYTMiniPlayer() && (UIDevice.currentDevice.userInterfaceIdiom != UIUserInterfaceIdiomPad)) {
-		%init(Main)
+        %init(Main)
 	}
 }
