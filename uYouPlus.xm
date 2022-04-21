@@ -26,6 +26,10 @@
 @end
 @interface YTLightweightQTMButton : UIView
 @end
+@interface YTELMView : UIView
+@end
+@interface NIAttributedLabel : UIView
+@end
 
 UIColor* oledColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:1.0];
 
@@ -77,7 +81,7 @@ BOOL bigYTMiniPlayer() {
 			};
 			[sectionItems insertObject:reExplore atIndex:statsForNerdsIndex + 2];
 			//
-			YTSettingsSectionItem *bigYTMiniPlayer = [[%c(YTSettingsSectionItem) alloc] initWithTitle:@"Bigger miniplayer bar (BigYTMiniPlayer)" titleDescription:@"App restart is required."];
+			YTSettingsSectionItem *bigYTMiniPlayer = [[%c(YTSettingsSectionItem) alloc] initWithTitle:@"New miniplayer bar style (BigYTMiniPlayer)" titleDescription:@"App restart is required."];
 			bigYTMiniPlayer.hasSwitch = YES;
 			bigYTMiniPlayer.switchVisible = YES;
 			bigYTMiniPlayer.on = [[NSUserDefaults standardUserDefaults] boolForKey:@"bigYTMiniPlayer_enabled"];
@@ -107,7 +111,7 @@ BOOL bigYTMiniPlayer() {
 			};
 			[sectionItems insertObject:autoFUll atIndex:statsForNerdsIndex + 2];
 	     	//	
-			YTSettingsSectionItem *Oleditem = [[%c(YTSettingsSectionItem) alloc] initWithTitle:@"OLED Dark mode (Experimental)" titleDescription:@"WARNING: You must set YouTube's appearance to Dark theme before enabling OLED dark mode (not tested on iPad yet). App restart is required."];
+			YTSettingsSectionItem *Oleditem = [[%c(YTSettingsSectionItem) alloc] initWithTitle:@"OLED Dark mode (Experimental)" titleDescription:@"WARNING: You must set YouTube's appearance to Dark theme before enabling OLED dark mode (iPad is not supported). App restart is required."];
 			Oleditem.hasSwitch = YES;
 			Oleditem.switchVisible = YES;
 			Oleditem.on = [[NSUserDefaults standardUserDefaults] boolForKey:@"oled_enabled"];
@@ -185,7 +189,7 @@ BOOL bigYTMiniPlayer() {
 // OLED 
 // Thanks u/DGh0st for his very well explained comment - https://www.reddit.com/r/jailbreakdevelopers/comments/9uape7/comment/e94sq80/
 // Thanks sinfool for his flex patch which brings OLED Dark mode for YouTube - "Color Customizer (YouTube) OLED"
-%group gOLED 
+%group gOLED
 %hook UIView
 -(void)setBackgroundColor:(id)arg1 {
 	if ([self.nextResponder isKindOfClass:%c(DownloadedVC)])  //uYou
@@ -232,20 +236,27 @@ BOOL bigYTMiniPlayer() {
 	arg1 = oledColor;	
 	if ([self.nextResponder isKindOfClass:%c(ASWAppSwitcherCollectionViewCell)])
 	arg1 = oledColor;	
+	if ([self.nextResponder isKindOfClass:%c(YTEditSheetControllerHeader)])
+	arg1 = oledColor;
 	%orig;
 }
+//- (void)layoutSubviews {
+//	%orig;	
+//  if ([self.nextResponder isKindOfClass:%c(YTALDialog)])
+//	self.backgroundColor = oledColor;
+//}
 %end
 
 %hook YTAsyncCollectionView
 -(void)setBackgroundColor:(id)arg1 {
     if([self.nextResponder isKindOfClass:%c(YTRelatedVideosCollectionViewController)]) {
-      arg1 = [oledColor colorWithAlphaComponent:0.0];
+        arg1 = [oledColor colorWithAlphaComponent:0.0];
     } else if([self.nextResponder isKindOfClass:%c(YTFullscreenMetadataHighlightsCollectionViewController)]) {
-      arg1 = [oledColor colorWithAlphaComponent:0.0];
+        arg1 = [oledColor colorWithAlphaComponent:0.0];
     } else {
-      arg1 = oledColor;
-  }
-  %orig;
+        arg1 = oledColor;
+    }
+    %orig;
 }
 %end
 
@@ -463,6 +474,13 @@ BOOL bigYTMiniPlayer() {
 }
 %end
 
+%hook YTShareBusyView // sharesheet load
+-(void)setBackgroundColor:(id)arg1 { 
+	arg1 = oledColor;
+	%orig;
+}
+%end
+
 %hook YTSearchSuggestionCollectionViewCell
 -(void)updateColors {}
 %end
@@ -474,7 +492,43 @@ BOOL bigYTMiniPlayer() {
 }
 %end
 
+%hook YTELMView // upload videos
+-(void)layoutSubviews {
+	%orig;
+	self.backgroundColor = oledColor;
+}
+%end
+
+%hook YTMealBarPromoView
+-(void)setBackgroundColor:(id)arg1 { // Offline
+	arg1 = oledColor;
+	%orig;
+}
+%end
+
+%hook NIAttributedLabel
+-(void)setBackgroundColor:(id)arg1 {
+	if ([self.nextResponder isKindOfClass:%c(UIScrollView)])
+	arg1 = oledColor;
+	%orig;
+}
+%end
+
 /*
+%hook YTShortsGalleryHeaderView  // upload videos heaer (gallery)
+-(void)setBackgroundColor:(id)arg1 {
+    arg1 = oledColor;
+    %orig;
+}
+%end
+
+%hook _ASDisplayView // edit your videos
+-(void)layoutSubviews {
+	if ([self.nextResponder isKindOfClass:%c(ELMView)])  //uYou
+	self.backgroundColor = oledColor;
+}
+%end
+
 %hook YTChannelProfileDescriptionEditorView // edit profile Description
 -(void)setBackgroundColor:(id)arg1 {
     arg1 = oledColor;
@@ -498,12 +552,6 @@ hook GOOTextField
 
 %hook GOOMultilineTextField// 
 -(void)setBackgroundColor:(id)arg1 { // edit profile Name
-	arg1 = oledColor;
-	%orig;
-}
-%end
-%hook YTMealBarPromoView
--(void)setBackgroundColor:(id)arg1 { // Offline?
 	arg1 = oledColor;
 	%orig;
 }
@@ -573,12 +621,12 @@ static void replaceTab(YTIGuideResponse *response) {
 %ctor {
     %init;
     if (oled()) {
-        %init(gOLED);
+       %init(gOLED);
     }
     if (ReExplore()) {
        %init(gReExplore)
     }
     if (bigYTMiniPlayer() && (UIDevice.currentDevice.userInterfaceIdiom != UIUserInterfaceIdiomPad)) {
-        %init(Main)
+       %init(Main)
     }
 }
