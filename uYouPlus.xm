@@ -22,6 +22,10 @@
 @interface YTPlayerViewController (YTAFS)
 - (void)autoFullscreen;
 @end
+@interface ASCollectionView : UIView
+@end
+@interface YTLightweightQTMButton : UIView
+@end
 
 UIColor* oledColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:1.0];
 
@@ -188,6 +192,10 @@ BOOL bigYTMiniPlayer() {
 	arg1 = oledColor;
 	if ([self.nextResponder isKindOfClass:%c(DownloadsPagerVC)]) //uYou
 	arg1 = oledColor;
+	if ([self.nextResponder isKindOfClass:%c(DownloadingVC)]) //uYou
+	arg1 = oledColor;
+	if ([self.nextResponder isKindOfClass:%c(PlayerVC)]) //uYou
+	arg1 = oledColor;
 	if ([self.nextResponder isKindOfClass:%c(YTLinkCell)])
 	arg1 = oledColor;
 	if ([self.nextResponder isKindOfClass:%c(YTCommentsHeaderView)]) 
@@ -225,19 +233,19 @@ BOOL bigYTMiniPlayer() {
 	if ([self.nextResponder isKindOfClass:%c(ASWAppSwitcherCollectionViewCell)])
 	arg1 = oledColor;	
 	%orig;
-    }
+}
 %end
 
 %hook YTAsyncCollectionView
 -(void)setBackgroundColor:(id)arg1 {
     if([self.nextResponder isKindOfClass:%c(YTRelatedVideosCollectionViewController)]) {
-    arg1 = [oledColor colorWithAlphaComponent:0.0];
+      arg1 = [oledColor colorWithAlphaComponent:0.0];
     } else if([self.nextResponder isKindOfClass:%c(YTFullscreenMetadataHighlightsCollectionViewController)]) {
-    arg1 = [oledColor colorWithAlphaComponent:0.0];
-    } else { 
-	arg1 = oledColor; 
-	}
-	%orig;
+      arg1 = [oledColor colorWithAlphaComponent:0.0];
+    } else {
+      arg1 = oledColor;
+  }
+  %orig;
 }
 %end
 
@@ -350,6 +358,13 @@ BOOL bigYTMiniPlayer() {
 }
 %end
 
+%hook _LNPopupBarContentView // uYou player
+-(void)setBackgroundColor:(id)arg1 {
+	arg1 = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.9];
+	%orig;
+}
+%end
+
 %hook YTEngagementPanelHeaderView
 -(void)setBackgroundColor:(id)arg1 {
 	arg1 = oledColor;
@@ -404,7 +419,7 @@ BOOL bigYTMiniPlayer() {
 	arg1 = oledColor;
 	%orig;
 }
-%end 
+%end
 
 %hook ASWAppSwitchingSheetHeaderView
 -(void)setBackgroundColor:(id)arg1 {
@@ -428,6 +443,26 @@ BOOL bigYTMiniPlayer() {
 - (void)layoutSubviews {}
 %end
 
+%hook ASCollectionView
+-(void)layoutSubviews {
+	self.backgroundColor = oledColor;
+	%orig;
+}
+%end
+
+%hook YTLightweightQTMButton
+-(void)setBackgroundColor:(id)arg1 {
+    if([self.nextResponder isKindOfClass:%c(YTShareMainView)]) {
+    arg1 = oledColor;
+    %orig;
+	}
+}
+-(void)setCustomTitleColor:(id)arg1 {
+    arg1 = [UIColor whiteColor];
+    %orig;
+}
+%end
+
 %hook YTSearchSuggestionCollectionViewCell
 -(void)updateColors {}
 %end
@@ -446,26 +481,34 @@ BOOL bigYTMiniPlayer() {
     %orig;
 }
 %end
+
 %hook YTChannelProfileNameEditorView  // edit profile Name
 -(void)setBackgroundColor:(id)arg1 {
     arg1 = oledColor;
     %orig;
 }
 %end
+
 hook GOOTextField 
 -(void)setBackgroundColor:(id)arg1 {  // edit profile Description
 	arg1 = oledColor;
 	%orig;
 }
 %end
+
 %hook GOOMultilineTextField// 
 -(void)setBackgroundColor:(id)arg1 { // edit profile Name
 	arg1 = oledColor;
 	%orig;
 }
 %end
+%hook YTMealBarPromoView
+-(void)setBackgroundColor:(id)arg1 { // Offline?
+	arg1 = oledColor;
+	%orig;
+}
+%end
 */
-
 %end
 
 // YTReExplore: https://github.com/PoomSmart/YTReExplore/
@@ -532,10 +575,10 @@ static void replaceTab(YTIGuideResponse *response) {
     if (oled()) {
         %init(gOLED);
     }
-	if (ReExplore()) {
-        %init(gReExplore)
-	}
-	if (bigYTMiniPlayer() && (UIDevice.currentDevice.userInterfaceIdiom != UIUserInterfaceIdiomPad)) {
+    if (ReExplore()) {
+       %init(gReExplore)
+    }
+    if (bigYTMiniPlayer() && (UIDevice.currentDevice.userInterfaceIdiom != UIUserInterfaceIdiomPad)) {
         %init(Main)
-	}
+    }
 }
