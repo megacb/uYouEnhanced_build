@@ -10,8 +10,8 @@ TWEAK_NAME = uYouPlus
 DISPLAY_NAME = YouTube
 BUNDLE_ID = com.google.ios.youtube
  
-uYouPlus_FILES = uYouPlus.xm
-uYouPlus_IPA = /path/to/decrypted/YouTube/IPA
+uYouPlus_FILES = uYouPlus.xm Settings.xm
+uYouPlus_IPA = /path/to/your/decrypted/YouTube/IPA
 ### Important: edit the path to your decrypted YouTube IPA!!! 
 
 include $(THEOS)/makefiles/common.mk
