@@ -76,16 +76,16 @@
 
   - My official AtlStore repo: https://qnblackcat.github.io/AltStore/
 
-  - [Open in AltStore (v17.15.2-2.1)](https://tinyurl.com/2tbntw48) - It will take a while to install because AltStore needs to download the IPA.
+  - [Open in AltStore (v17.16.4-2.1)](https://tinyurl.com/2p8t49r2) - It will take a while to install because AltStore needs to download the IPA.
 
-- Version info: _(last update: Apr 22)_
+- Version info: _(last update: Apr 25)_
 
 <details>
   <summary>  Expand</summary>
 
 | **Tweaks/App** | **Version** | **Open source** |
 | :------------: | :----------:| :-------------: |
-| **YouTube** | 17.15.2 | ✖︎  |
+| **YouTube** | 17.16.4 | ✖︎  |
 | **uYou** | 2.1 | ✖︎ |
 | **Return YouTube Dislike** | 1.6.4 | [✔︎](https://github.com/PoomSmart/Return-YouTube-Dislikes) |
 | **iSponsorBlock** | 1.0-14 | [✔︎](https://github.com/Galactic-Dev/iSponsorBlock) |
@@ -95,12 +95,13 @@
 | **YTNoCheckLocalNetwork** | 1.0.2 | [✔︎](https://poomsmart.github.io/repo/depictions/ytnochecklocalnetwork.html) |
 | **YTNoHoverCards** | 0.0.3 | [✔︎](https://github.com/level3tjg/YTNoHoverCards) |
 | **YTSystemAppearance** | 1.0.0 | [✔︎](https://poomsmart.github.io/repo/depictions/ytsystemappearance.html) |
-| **YTUHD** | 1.2.6 | [✔︎](https://github.com/PoomSmart/YTUHD) |
-| **YouPiP** | 1.6.9 | [✔︎](https://github.com/PoomSmart/YouPiP) |
+| **YTUHD** | 1.2.7 | [✔︎](https://github.com/PoomSmart/YTUHD) |
+| **YouPiP** | 1.6.11 | [✔︎](https://github.com/PoomSmart/YouPiP) |
 | **YTSpeed** | 1.0.1 | [✔︎](https://github.com/Lyvendia/YTSpeed) |
 | **YTAutoFullScreen** | 1.0.3 | [✔︎](https://github.com/PoomSmart/YTAutoFullScreen/) |
 | **YTReExplore** | 1.0.2 | [✔︎](https://github.com/PoomSmart/YTReExplore) |
 | **BigYTMiniPlayer** | 1.0-1 | [✔︎](https://github.com/Galactic-Dev/BigYTMiniPlayer) |
+| **YTCastConfirm** | 1.0.0 | [✔︎](https://github.com/JamieBerghmans/YTCastConfirm) |
 
 </details>
 
