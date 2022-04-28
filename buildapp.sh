@@ -26,7 +26,7 @@ else
 if [[ $PATHTOYT == *.ipa ]]
 then 
 	unzip -q "$PATHTOYT" -d ./tmp
-	(cd tmp/Payload/YouTube.app/PlugIns && rm -rf MessagesExtension.appex BroadcastUIExtension.appex BroadcastUploadExtension.appex)
+	rm -rf ./tmp/Payload/YouTube.app/PlugIns/*.appex
 	cp -R Extensions/*.appex tmp/Payload/YouTube.app/PlugIns 
 	make package
 	open ./packages
@@ -35,7 +35,7 @@ elif [[ $PATHTOYT == *.app ]]
 then
 	mkdir -p ./tmp/Payload/
 	cp -R "$PATHTOYT" ./tmp/Payload 2>/dev/null
-	(cd tmp/Payload/YouTube.app/PlugIns && rm -rf MessagesExtension.appex BroadcastUIExtension.appex BroadcastUploadExtension.appex)
+	rm -rf ./tmp/Payload/YouTube.app/PlugIns/*.appex
 	cp -R Extensions/*.appex tmp/Payload/YouTube.app/PlugIns 
 	make package
 	open ./packages
@@ -45,4 +45,4 @@ fi
 # Clean up	
 	tput setaf 1 && echo -e "==> \033[1mCleaning up...\033[0m"
 	find Tweaks/uYou -mindepth 1 ! -name "com.miro.uyou_2.1_iphoneos-arm.deb" ! -name ".gitkeep" -exec rm -rf {} \; 2>/dev/null
-	rm -rf tmp/ Resources .theos/_/Payload 
+	rm -rf tmp/ Resources .theos/_/Payload
