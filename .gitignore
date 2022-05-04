@@ -2,5 +2,6 @@
 .DS_Store
 packages
 obj
+tmp
 Tweaks/uYou/*
 !Tweaks/uYou/.gitkeep
