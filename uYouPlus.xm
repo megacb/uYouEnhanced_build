@@ -205,9 +205,9 @@ UIColor* oledColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:1.0];
     arg1 = oledColor;	
     %orig;
 }
-//- (void)layoutSubviews {
+//- (void)didMoveToWindow {
 //	%orig;	
-//  if ([self.nextResponder isKindOfClass:%c(YTALDialog)])
+//    if ([self.nextResponder isKindOfClass:%c(YTALDialog)]) // Connected apps
 //	self.backgroundColor = oledColor;
 //}
 %end
@@ -245,7 +245,7 @@ UIColor* oledColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:1.0];
     arg1 = oledColor;
     %orig;
 }
--(void)layoutSubviews {  // Dune - https://github.com/Skittyblock/Dune/blob/9b1df9790230115b7553cc9dbadf36889018d7f9/Tweak.xm#L70
+-(void)didMoveToWindow {  // Dune - https://github.com/Skittyblock/Dune/blob/9b1df9790230115b7553cc9dbadf36889018d7f9/Tweak.xm#L70
     %orig;
     MSHookIvar<UIView *>(self, "_contentView").backgroundColor = oledColor;
 }
@@ -297,6 +297,10 @@ UIColor* oledColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:1.0];
 -(void)setBackgroundColor:(id)arg1 {
     arg1 = oledColor;
     %orig;
+}
+-(void)setTextColor:(id)arg1 {
+	arg1 = [UIColor whiteColor];
+	%orig;
 }
 %end
 
@@ -435,7 +439,7 @@ UIColor* oledColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:1.0];
     arg1 = oledColor;
     %orig;
 }
-- (void)layoutSubviews {}
+- (void)didMoveToWindow {}
 %end
 
 %hook YTLightweightQTMButton
@@ -490,13 +494,6 @@ UIColor* oledColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:1.0];
 }
 %end
 
-%hook YTELMView // upload videos
--(void)layoutSubviews {
-    %orig;
-    self.backgroundColor = oledColor;
-}
-%end
-
 %hook YTMealBarPromoView
 -(void)setBackgroundColor:(id)arg1 { // Offline
     arg1 = oledColor;
@@ -509,6 +506,20 @@ UIColor* oledColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:1.0];
     if ([self.nextResponder isKindOfClass:%c(UIScrollView)])
     arg1 = oledColor;
     %orig;
+}
+%end
+
+%hook ASScrollView  // Explore
+-(void)didMoveToWindow { 
+	self.backgroundColor = oledColor;
+	%orig;
+}
+%end
+
+%hook ASCollectionView  // your videos
+-(void)didMoveToWindow {
+	self.backgroundColor = oledColor;
+	%orig;
 }
 %end
 
@@ -533,13 +544,6 @@ UIColor* oledColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:1.0];
 -(void)layoutSubviews {
     if ([self.nextResponder isKindOfClass:%c(ELMView)])
     self.backgroundColor = oledColor;
-}
-%end
-
-%hook ASCollectionView
--(void)layoutSubviews {
-    self.backgroundColor = oledColor;
-    %orig;
 }
 %end
 
