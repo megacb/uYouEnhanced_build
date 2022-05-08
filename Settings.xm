@@ -44,7 +44,7 @@ extern BOOL castConfirm();
         return YES;
     };
 
-    YTSettingsSectionItem *hoverCardItem = [[%c(YTSettingsSectionItem) alloc] initWithTitle:@"Show End screens hover cards (YTNoHoverCards)" titleDescription:@"Allows creator End screens (thumbnails) to appear at the end of videos."];
+    YTSettingsSectionItem *hoverCardItem = [[%c(YTSettingsSectionItem) alloc] initWithTitle:@"Hide End screens hover cards (YTNoHoverCards)" titleDescription:@"Hide creator End screens (thumbnails) at the end of videos."];
     hoverCardItem.hasSwitch = YES;
     hoverCardItem.switchVisible = YES;
     hoverCardItem.on = [[NSUserDefaults standardUserDefaults] boolForKey:@"hover_cards_enabled"];
@@ -107,7 +107,7 @@ extern BOOL castConfirm();
         return YES;
     };
 
-    YTSettingsSectionItem *Oleditem = [[%c(YTSettingsSectionItem) alloc] initWithTitle:@"OLED Dark mode (Experimental)" titleDescription:@"WARNING: OLED Dark mode only works when YouTube is in Dark theme. App restart is required (In case OLED dark mode doesn't work: just switch between Light/Dark theme, then restart the app)."];
+    YTSettingsSectionItem *Oleditem = [[%c(YTSettingsSectionItem) alloc] initWithTitle:@"OLED Dark mode (Experimental)" titleDescription:@"WARNING: OLED Dark mode only works when YouTube is in Dark theme. App restart is required. (In case OLED dark mode doesn't work: just switch between Light/Dark theme, then restart the app)."];
     Oleditem.hasSwitch = YES;
     Oleditem.switchVisible = YES;
     Oleditem.on = [[NSUserDefaults standardUserDefaults] boolForKey:@"oled_enabled"];
