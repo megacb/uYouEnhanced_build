@@ -18,6 +18,9 @@ BOOL hideHUD() {
 BOOL oled() {
     return [[NSUserDefaults standardUserDefaults] boolForKey:@"oled_enabled"];
 }
+BOOL oledKB() {
+    return [[NSUserDefaults standardUserDefaults] boolForKey:@"oledKeyBoard_enabled"];
+}
 BOOL autoFullScreen() {
     return [[NSUserDefaults standardUserDefaults] boolForKey:@"autofull_enabled"];
 }
@@ -146,20 +149,39 @@ UIColor* oledColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:1.0];
 - (BOOL)isEnhancedSearchBarEnabled { return YES; }
 %end
 
+// NOYTPremium - https://github.com/PoomSmart/NoYTPremium/
+%hook YTCommerceEventGroupHandler
+- (void)addEventHandlers {}
+%end
+
+%hook YTInterstitialPromoEventGroupHandler
+- (void)addEventHandlers {}
+%end
+
+%hook YTPromosheetEventGroupHandler
+- (void)addEventHandlers {}
+%end
+
+%hook YTPromoThrottleController
+- (BOOL)canShowThrottledPromo { return NO; }
+- (BOOL)canShowThrottledPromoWithFrequencyCap:(id)arg1 { return NO; }
+- (BOOL)canShowThrottledPromoWithFrequencyCaps:(id)arg1 { return NO; }
+%end
+
+%hook YTIShowFullscreenInterstitialCommand
+- (BOOL)shouldThrottleInterstitial { return YES; }
+%end
+
+%hook YTSurveyController
+- (void)showSurveyWithRenderer:(id)arg1 surveyParentResponder:(id)arg2 {}
+%end
+
 // OLED 
 // Thanks u/DGh0st for his very well explained comment - https://www.reddit.com/r/jailbreakdevelopers/comments/9uape7/comment/e94sq80/
 // Thanks sinfool for his flex patch which brings OLED Dark mode for YouTube - "Color Customizer (YouTube) OLED"
 %group gOLED
 %hook UIView
 - (void)setBackgroundColor:(id)arg1 {
-    if ([self.nextResponder isKindOfClass:%c(DownloadedVC)])  //uYou
-    arg1 = oledColor;
-    if ([self.nextResponder isKindOfClass:%c(DownloadsPagerVC)]) //uYou
-    arg1 = oledColor;
-    if ([self.nextResponder isKindOfClass:%c(DownloadingVC)]) //uYou
-    arg1 = oledColor;
-    if ([self.nextResponder isKindOfClass:%c(PlayerVC)]) //uYou
-    arg1 = oledColor;
     if ([self.nextResponder isKindOfClass:%c(YTLinkCell)])
     arg1 = oledColor;
     if ([self.nextResponder isKindOfClass:%c(YTCommentsHeaderView)]) 
@@ -273,6 +295,22 @@ UIColor* oledColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:1.0];
 }
 %end
 
+%hook DownloadedVC
+- (id)ytBackgroundColor { return oledColor; }
+%end
+
+%hook DownloadsPagerVC
+- (id)ytBackgroundColor { return oledColor; }
+%end
+
+%hook DownloadingVC
+- (id)ytBackgroundColor { return oledColor; }
+%end
+
+%hook PlayerVC
+- (id)ytBackgroundColor { return oledColor; }
+%end
+
 %hook ASScrollView  // Explore
 - (void)didMoveToWindow { 
     self.backgroundColor = oledColor;
@@ -286,40 +324,6 @@ UIColor* oledColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:1.0];
     %orig;
 }
 %end
-
-// OLED keyboard by @ichitaso <3 - http://gist.github.com/ichitaso/935100fd53a26f18a9060f7195a1be0e
-%hook UIPredictionViewController
-- (void)loadView {
-    %orig;
-    [self.view setBackgroundColor:oledColor];
-}
-%end
-
-%hook UICandidateViewController
-- (void)loadView {
-    %orig;
-    [self.view setBackgroundColor:oledColor];
-}
-%end
-
-%hook UIKeyboardDockView
-- (void)didMoveToWindow {
-    self.backgroundColor = oledColor;
-    %orig;
-}
-%end
-
-%hook UIKeyboardLayoutStar 
-- (void)didMoveToWindow {
-    self.backgroundColor = oledColor;
-    %orig;
-}
-%end
-
-%hook UIKBRenderConfig // Prediction text color
-- (void)setLightKeyboard:(BOOL)arg1 { %orig(NO); }
-%end
-//
 
 %hook YTDialogContainerScrollView
 - (void)setBackgroundColor:(id)arg1 { %orig(oledColor); }
@@ -460,7 +464,6 @@ UIColor* oledColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:1.0];
 - (void)setBackgroundColor:(id)arg1 { %orig(oledColor); }
 %end
 
-
 ////
 /*
 %hook UICollectionView
@@ -500,6 +503,40 @@ hook GOOTextField
 }
 %end
 */
+%end
+
+%group gOLEDKB // OLED keyboard by @ichitaso <3 - http://gist.github.com/ichitaso/935100fd53a26f18a9060f7195a1be0e
+%hook UIPredictionViewController
+- (void)loadView {
+    %orig;
+    [self.view setBackgroundColor:oledColor];
+}
+%end
+
+%hook UICandidateViewController
+- (void)loadView {
+    %orig;
+    [self.view setBackgroundColor:oledColor];
+}
+%end
+
+%hook UIKeyboardDockView
+- (void)didMoveToWindow {
+    self.backgroundColor = oledColor;
+    %orig;
+}
+%end
+
+%hook UIKeyboardLayoutStar 
+- (void)didMoveToWindow {
+    self.backgroundColor = oledColor;
+    %orig;
+}
+%end
+
+%hook UIKBRenderConfig // Prediction text color
+- (void)setLightKeyboard:(BOOL)arg1 { %orig(NO); }
+%end
 %end
 
 // YTReExplore: https://github.com/PoomSmart/YTReExplore/
@@ -566,10 +603,13 @@ static void replaceTab(YTIGuideResponse *response) {
     if (oled() && ([[NSUserDefaults standardUserDefaults] integerForKey:@"page_style"] == 1)) {
        %init(gOLED);
     }
+    if (oledKB()) {
+       %init(gOLEDKB);
+    }
     if (ReExplore()) {
-       %init(gReExplore)
+       %init(gReExplore);
     }
     if (bigYTMiniPlayer() && (UIDevice.currentDevice.userInterfaceIdiom != UIUserInterfaceIdiomPad)) {
-       %init(Main)
+       %init(Main);
     }
 }
