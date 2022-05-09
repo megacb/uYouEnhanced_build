@@ -11,6 +11,7 @@
 #import "Tweaks/YouTubeHeader/YTIPivotBarSupportedRenderers.h"
 #import "Tweaks/YouTubeHeader/YTIPivotBarRenderer.h"
 #import "Tweaks/YouTubeHeader/YTIBrowseRequest.h"
+#import "Tweaks/YouTubeHeader/YTColorPalette.h"
 
 BOOL hideHUD() {
     return [[NSUserDefaults standardUserDefaults] boolForKey:@"hideHUD_enabled"];
@@ -180,329 +181,78 @@ UIColor* oledColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:1.0];
 // Thanks u/DGh0st for his very well explained comment - https://www.reddit.com/r/jailbreakdevelopers/comments/9uape7/comment/e94sq80/
 // Thanks sinfool for his flex patch which brings OLED Dark mode for YouTube - "Color Customizer (YouTube) OLED"
 %group gOLED
-%hook UIView
-- (void)setBackgroundColor:(id)arg1 {
-    if ([self.nextResponder isKindOfClass:%c(YTLinkCell)])
-    arg1 = oledColor;
-    if ([self.nextResponder isKindOfClass:%c(YTCommentsHeaderView)]) 
-    arg1 = oledColor;
-    if ([self.nextResponder isKindOfClass:%c(YTSearchView)])
-    arg1 = oledColor;
-    if ([self.nextResponder isKindOfClass:%c(YTSearchBoxView)])
-    arg1 = oledColor;
-    if ([self.nextResponder isKindOfClass:%c(YTEngagementPanelHeaderView)])
-    arg1 = oledColor;	
-    if ([self.nextResponder isKindOfClass:%c(YTEngagementPanelView)])
-    arg1 = oledColor;	
-    if ([self.nextResponder isKindOfClass:%c(YTPivotBarView)])
-    arg1 = oledColor;	
-    if ([self.nextResponder isKindOfClass:%c(YTHUDMessageView)])
-    arg1 = oledColor;	
-    if ([self.nextResponder isKindOfClass:%c(YTChipCloudCell)])
-    arg1 = oledColor;
-    if ([self.nextResponder isKindOfClass:%c(YCHLiveChatTextCell)])
-    arg1 = oledColor;
-    if ([self.nextResponder isKindOfClass:%c(YCHLiveChatView)])
-    arg1 = oledColor;
-    if ([self.nextResponder isKindOfClass:%c(YCHLiveChatViewerEngagementCell)])
-    arg1 = oledColor;
-    if ([self.nextResponder isKindOfClass:%c(YTSlideForActionsView)])
-    arg1 = oledColor;
-    if ([self.nextResponder isKindOfClass:%c(YTPlaylistHeaderView)])
-    arg1 = oledColor;
-    if ([self.nextResponder isKindOfClass:%c(YTAsyncCollectionView)])
-    arg1 = oledColor;
-    if ([self.nextResponder isKindOfClass:%c(YTFeedHeaderView)])
-    arg1 = oledColor;
-    if ([self.nextResponder isKindOfClass:%c(YTMessageCell)])
-    arg1 = oledColor;	
-    if ([self.nextResponder isKindOfClass:%c(YTPlaylistPanelProminentThumbnailVideoCell)])
-    arg1 = oledColor;	
-    if ([self.nextResponder isKindOfClass:%c(ASWAppSwitcherCollectionViewCell)])
-    arg1 = oledColor;	
-    if ([self.nextResponder isKindOfClass:%c(YTEditSheetControllerHeader)])
-    arg1 = oledColor;	
-    if ([self.nextResponder isKindOfClass:%c(YTDialogContainerScrollView)])
-    arg1 = oledColor;	
-    %orig;
-}
-%end
-
-%hook YTLightweightQTMButton
-- (void)setBackgroundColor:(id)arg1 {
-    if ([self.nextResponder isKindOfClass:%c(YTShareMainView)])
-    arg1 = oledColor;
-    %orig;
-}
-- (void)setCustomTitleColor:(id)arg1 { %orig([UIColor whiteColor]); }
-%end
-
-%hook NIAttributedLabel
-- (void)setBackgroundColor:(id)arg1 {
-    if ([self.nextResponder isKindOfClass:%c(UIScrollView)])
-    arg1 = oledColor;
-    %orig;
-}
-%end
-
-%hook UIControl // this sucks I know :/
-- (void)setBackgroundColor:(id)arg1 {
-    if ([self.nextResponder isKindOfClass:%c(YTShareMainView)]) 
-    arg1 = oledColor;
-    %orig;
-}
-%end
-
-%hook YTAsyncCollectionView
-- (void)setBackgroundColor:(id)arg1 {
-    if([self.nextResponder isKindOfClass:%c(YTRelatedVideosCollectionViewController)]) {
-        arg1 = [oledColor colorWithAlphaComponent:0.0];
-    } else if([self.nextResponder isKindOfClass:%c(YTFullscreenMetadataHighlightsCollectionViewController)]) {
-        arg1 = [oledColor colorWithAlphaComponent:0.0];
-    } else {
-        arg1 = oledColor;
+%hook YTColorPalette
+- (UIColor *)brandBackgroundSolid {
+    if (self.pageStyle == 1) {
+        return oledColor;
     }
-    %orig;
+    return %orig;
+}
+- (UIColor *)brandBackgroundPrimary {
+    if (self.pageStyle == 1) {
+        return oledColor;
+    }
+    return %orig;
+}
+- (UIColor *)brandBackgroundSecondary {
+    if (self.pageStyle == 1) {
+        return oledColor;
+    }
+    return %orig;
+}
+- (UIColor *)staticBrandBlack {
+    if (self.pageStyle == 1) {
+        return oledColor;
+    }
+    return %orig;
+}
+- (UIColor *)generalBackgroundA {
+    if (self.pageStyle == 1) {
+        return oledColor;
+    }
+    return %orig;
 }
 %end
 
-%hook YTWatchMiniBarView 
-- (void)setBackgroundColor:(id)arg1 {
-    arg1 = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.9];
-    %orig;
+// Account view controller
+%hook YTAccountPanelBodyViewController
+- (UIColor *)backgroundColor:(NSInteger)pageStyle {
+    if (pageStyle == 1) {
+        return oledColor;
+    }
+    return %orig;
 }
 %end
 
-%hook YTPlaylistMiniBarView 
-- (void)setBackgroundColor:(id)arg1 {
-    arg1 = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.9];
-    %orig;
-}
-%end
-
-%hook _LNPopupBarContentView // uYou player
-- (void)setBackgroundColor:(id)arg1 {
-    arg1 = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.9];
-    %orig;
-}
-%end
-
-%hook YTTopAlignedView 
-- (void)setBackgroundColor:(id)arg1 { %orig(oledColor); }
-- (void)didMoveToWindow {  // Dune - https://github.com/Skittyblock/Dune/blob/9b1df9790230115b7553cc9dbadf36889018d7f9/Tweak.xm#L70
-    MSHookIvar<UIView *>(self, "_contentView").backgroundColor = oledColor;
-	%orig;
-}
-%end
-
-%hook DownloadedVC
-- (id)ytBackgroundColor { return oledColor; }
-%end
-
-%hook DownloadsPagerVC
-- (id)ytBackgroundColor { return oledColor; }
-%end
-
-%hook DownloadingVC
-- (id)ytBackgroundColor { return oledColor; }
-%end
-
-%hook PlayerVC
-- (id)ytBackgroundColor { return oledColor; }
-%end
-
-%hook ASScrollView  // Explore
+// Explore
+%hook ASScrollView 
 - (void)didMoveToWindow { 
     self.backgroundColor = oledColor;
     %orig;
 }
 %end
 
-%hook ASCollectionView  // your videos
-- (void)didMoveToWindow {
-    self.backgroundColor = oledColor;
-    %orig;
+// uYou player and downloading view controller
+%hook _LNPopupBarContentView
+- (void)setBackgroundColor:(UIColor *)color {
+    return %orig(oledColor);
 }
 %end
-
-%hook YTDialogContainerScrollView
-- (void)setBackgroundColor:(id)arg1 { %orig(oledColor); }
+%hook DownloadedVC
+- (UIColor *)ytBackgroundColor { return oledColor; }
 %end
 
-%hook MDXQueueView // Cast queue
-- (void)setBackgroundColor:(id)arg1 { %orig(oledColor); }
+%hook DownloadsPagerVC
+- (UIColor *)ytBackgroundColor { return oledColor; }
 %end
 
-%hook YTChannelProfileEditorView 
-- (void)setBackgroundColor:(id)arg1 { %orig(oledColor); }
+%hook DownloadingVC
+- (UIColor *)ytBackgroundColor { return oledColor; }
 %end
 
-%hook YTChannelSubMenuView // 
-- (void)setBackgroundColor:(id)arg1 { %orig(oledColor); }
+%hook PlayerVC
+- (UIColor *)ytBackgroundColor { return oledColor; }
 %end
-
-%hook YTChannelListSubMenuView // sub - 
-- (void)setBackgroundColor:(id)arg1 { %orig(oledColor); }
-%end
-
-%hook YTCommentView 
-- (void)setBackgroundColor:(id)arg1 { %orig(oledColor); }
-%end
-
-%hook YTCreateCommentAccessoryView
-- (void)setBackgroundColor:(id)arg1 { %orig(oledColor); }
-%end
-
-%hook YTCreateCommentTextView
-- (void)setBackgroundColor:(id)arg1 { %orig(oledColor); }
-- (void)setTextColor:(id)arg1       { %orig([UIColor whiteColor]); }
-%end
-
-%hook YCHLiveChatActionPanelView
-- (void)setBackgroundColor:(id)arg1 { %orig(oledColor); }
-%end
-
-%hook YTEmojiTextView
-- (void)setBackgroundColor:(id)arg1 { %orig(oledColor); }
-%end
-
-%hook YTShareTitleView // Share sheet
-- (void)setBackgroundColor:(id)arg1 { %orig(oledColor); }
-%end
-
-%hook YTNavigationBar
-- (void)setBackgroundColor:(id)arg1 { %orig(oledColor); }
-- (void)setBarTintColor:(id)arg1    { %orig(oledColor); }
-%end
-
-%hook YTPrivacyTosFooterView
-- (void)setBackgroundColor:(id)arg1 { %orig(oledColor); }
-%end
-
-%hook YTEngagementPanelHeaderView
-- (void)setBackgroundColor:(id)arg1 { %orig(oledColor); }
-%end
-
-%hook YTChannelMobileHeaderView
-- (void)setBackgroundColor:(id)arg1 { %orig(oledColor); }
-%end
-
-%hook YTInlineSignInView
-- (void)setBackgroundColor:(id)arg1 { %orig(oledColor); }
-%end
-
-%hook YTHeaderView //Stt bar
-- (void)setBackgroundColor:(id)arg1 { %orig(oledColor); }
-%end
-
-%hook YTTabTitlesView // Tab bar - mychannel
-- (void)setBackgroundColor:(id)arg1 { %orig(oledColor); }
-%end
-
-%hook YTSettingsCell // Settings 
-- (void)setBackgroundColor:(id)arg1 { %orig(oledColor); }
-%end
-
-%hook YTHorizontalCardListView
-- (void)setBackgroundColor:(id)arg1 { %orig(oledColor); }
-%end
-
-%hook YTShortsGalleryHeaderView  // upload videos heaer (gallery)
-- (void)setBackgroundColor:(id)arg1 { %orig(oledColor); }
-%end
-
-%hook GOODialogView // 3 dots menu
-- (void)setBackgroundColor:(id)arg1 { %orig(oledColor); }
-%end
-
-%hook YTCollectionView //sharesheet
-- (void)setBackgroundColor:(id)arg1 { %orig(oledColor); }
-%end
-
-%hook ASWAppSwitchingSheetHeaderView
-- (void)setBackgroundColor:(id)arg1 { %orig(oledColor); }
-%end
-
-%hook ASWAppSwitchingSheetFooterView
-- (void)setBackgroundColor:(id)arg1 { %orig(oledColor); }
-%end
-
-%hook YTCollectionSeparatorView
-- (void)setBackgroundColor:(id)arg1 { %orig(oledColor); }
-- (void)didMoveToWindow {}
-%end
-
-%hook YTShareBusyView // sharesheet load
-- (void)setBackgroundColor:(id)arg1 { %orig(oledColor); }
-%end
-
-%hook YTPageView
-- (void)setBackgroundColor:(id)arg1 { %orig(oledColor); }
-%end
-
-%hook YTWatchView
-- (void)setBackgroundColor:(id)arg1 { %orig(oledColor); }
-%end
-
-%hook YTSearchBarView
-- (void)setBackgroundColor:(id)arg1 { %orig(oledColor); }
-%end
-
-%hook YTSearchBoxView
-- (void)setBackgroundColor:(id)arg1 { %orig(oledColor); }
-%end
-
-%hook YTSearchSuggestionCollectionViewCell
-- (void)updateColors {}
-%end
-
-%hook UISearchBarBackground
-- (void)setBarTintColor:(id)arg1    { %orig(oledColor); }
-%end
-
-%hook YTMealBarPromoView // Offline
-- (void)setBackgroundColor:(id)arg1 { %orig(oledColor); }
-%end
-
-////
-/*
-%hook UICollectionView
-- (void)setBackgroundColor:(id)arg1 {
-    if ([self.nextResponder isKindOfClass:%c(UICollectionViewControllerWrapperView)])
-    arg1 = oledColor;
-    %orig;
-}
-%end
-
-%hook _ASDisplayView // edit your videos
-- (void)layoutSubviews {
-    if ([self.nextResponder isKindOfClass:%c(ELMView)])
-    self.backgroundColor = oledColor;
-}
-%end
-
-%hook YTChannelProfileDescriptionEditorView // edit profile Description
-- (void)setBackgroundColor:(id)arg1 { %orig(oledColor); }
-%end
-
-%hook YTChannelProfileNameEditorView  // edit profile Name
-- (void)setBackgroundColor:(id)arg1 { %orig(oledColor); }
-%end
-
-hook GOOTextField 
-- (void)setBackgroundColor:(id)arg1 {  // edit profile Description
-    arg1 = oledColor;
-    %orig;
-}
-%end
-
-%hook GOOMultilineTextField// 
-- (void)setBackgroundColor:(id)arg1 { // edit profile Name
-    arg1 = oledColor;
-    %orig;
-}
-%end
-*/
 %end
 
 %group gOLEDKB // OLED keyboard by @ichitaso <3 - http://gist.github.com/ichitaso/935100fd53a26f18a9060f7195a1be0e
