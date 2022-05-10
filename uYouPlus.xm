@@ -22,6 +22,9 @@ BOOL oled() {
 BOOL oledKB() {
     return [[NSUserDefaults standardUserDefaults] boolForKey:@"oledKeyBoard_enabled"];
 }
+BOOL isDarkMode() {
+    return ([[NSUserDefaults standardUserDefaults] integerForKey:@"page_style"] == 1);
+}
 BOOL autoFullScreen() {
     return [[NSUserDefaults standardUserDefaults] boolForKey:@"autofull_enabled"];
 }
@@ -43,8 +46,6 @@ BOOL hideAutoplaySwitch() {
 BOOL castConfirm() {
     return [[NSUserDefaults standardUserDefaults] boolForKey:@"castConfirm_enabled"];
 }
-
-UIColor* oledColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:1.0];
 
 // Hide CC / Autoplay switch
 %hook YTMainAppControlsOverlayView
@@ -177,81 +178,230 @@ UIColor* oledColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:1.0];
 - (void)showSurveyWithRenderer:(id)arg1 surveyParentResponder:(id)arg2 {}
 %end
 
-// OLED 
-// Thanks u/DGh0st for his very well explained comment - https://www.reddit.com/r/jailbreakdevelopers/comments/9uape7/comment/e94sq80/
-// Thanks sinfool for his flex patch which brings OLED Dark mode for YouTube - "Color Customizer (YouTube) OLED"
+// OLED dark mode by BandarHL
+UIColor* oledColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:1.0];
+
 %group gOLED
 %hook YTColorPalette
 - (UIColor *)brandBackgroundSolid {
     if (self.pageStyle == 1) {
         return oledColor;
     }
-    return %orig;
+        return %orig;
 }
 - (UIColor *)brandBackgroundPrimary {
     if (self.pageStyle == 1) {
         return oledColor;
     }
-    return %orig;
+        return %orig;
 }
 - (UIColor *)brandBackgroundSecondary {
     if (self.pageStyle == 1) {
         return oledColor;
     }
-    return %orig;
+        return %orig;
 }
 - (UIColor *)staticBrandBlack {
     if (self.pageStyle == 1) {
         return oledColor;
     }
-    return %orig;
+        return %orig;
 }
 - (UIColor *)generalBackgroundA {
     if (self.pageStyle == 1) {
         return oledColor;
     }
-    return %orig;
+        return %orig;
 }
 %end
 
 // Account view controller
 %hook YTAccountPanelBodyViewController
 - (UIColor *)backgroundColor:(NSInteger)pageStyle {
-    if (pageStyle == 1) {
-        return oledColor;
+    if (pageStyle == 1) { 
+        return oledColor; 
     }
-    return %orig;
+        return %orig;
 }
 %end
 
 // Explore
 %hook ASScrollView 
-- (void)didMoveToWindow { 
-    self.backgroundColor = oledColor;
-    %orig;
+- (void)didMoveToWindow {
+    if (isDarkMode()) {
+        self.backgroundColor = oledColor;
+        %orig;
+    }
 }
 %end
 
-// uYou player and downloading view controller
-%hook _LNPopupBarContentView
-- (void)setBackgroundColor:(UIColor *)color {
-    return %orig(oledColor);
-}
-%end
+// uYou's page
 %hook DownloadedVC
-- (UIColor *)ytBackgroundColor { return oledColor; }
+- (UIColor *)ytBackgroundColor {
+    if (isDarkMode()) {
+        return oledColor;
+    }
+        return %orig;
+}
 %end
 
 %hook DownloadsPagerVC
-- (UIColor *)ytBackgroundColor { return oledColor; }
+- (UIColor *)ytBackgroundColor {
+    if (isDarkMode()) {
+        return oledColor;
+    }
+        return %orig;
+}
 %end
 
 %hook DownloadingVC
-- (UIColor *)ytBackgroundColor { return oledColor; }
+- (UIColor *)ytBackgroundColor {
+    if (isDarkMode()) {
+        return oledColor;
+    }
+        return %orig;
+}
 %end
 
 %hook PlayerVC
-- (UIColor *)ytBackgroundColor { return oledColor; }
+- (UIColor *)ytBackgroundColor {
+    if (isDarkMode()) {
+        return oledColor;
+    }
+        return %orig;
+}
+%end
+
+// SponsorBlock settings
+%hook SponsorBlockSettingsController
+- (void)viewDidLoad {
+    if (self.traitCollection.userInterfaceStyle == UIUserInterfaceStyleDark) {
+        %orig;
+        self.tableView.backgroundColor = oledColor;
+    } else { 
+        return %orig(); 
+    }
+}
+%end
+
+// uYou & YT player, and downloading view controller
+%hook _LNPopupBarContentView
+- (void)setBackgroundColor:(UIColor *)color { 
+    if (isDarkMode()) {
+        return %orig([UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.9]);
+    }
+    return %orig;
+}
+%end
+
+%hook YTWatchMiniBarView 
+- (void)setBackgroundColor:(UIColor *)color { 
+    if (isDarkMode()) {
+        return %orig([UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.9]);
+    }
+    return %orig;
+}
+%end
+
+// Search View
+%hook YTSearchBarView 
+- (void)setBackgroundColor:(UIColor *)color { 
+    if (isDarkMode()) {
+        return %orig (oledColor);
+    }
+        return %orig;
+}
+%end
+
+%hook YTSearchBoxView 
+- (void)setBackgroundColor:(UIColor *)color { 
+    if (isDarkMode()) {
+        return %orig (oledColor);
+    }
+    return %orig;
+}
+%end
+
+// Comment view
+%hook YTCreateCommentAccessoryView // community reply comment
+- (void)setBackgroundColor:(UIColor *)color { 
+    if (isDarkMode()) {
+        return %orig (oledColor);
+    }
+    return %orig;
+}
+%end
+
+%hook YTCreateCommentTextView
+- (void)setBackgroundColor:(UIColor *)color { 
+    if (isDarkMode()) {
+        return %orig (oledColor);
+    }
+    return %orig;
+}
+- (void)setTextColor:(UIColor *)color { // fix black text in #Shorts video's comment
+    if (isDarkMode()) { 
+        return %orig ([UIColor whiteColor]); 
+    }
+    return %orig;
+}
+%end
+
+%hook YCHLiveChatActionPanelView  // live chat comment
+- (void)setBackgroundColor:(UIColor *)color {
+    if (isDarkMode()) {
+        return %orig (oledColor);
+    }
+    return %orig;
+}
+%end
+
+%hook YTEmojiTextView // live chat comment
+- (void)setBackgroundColor:(UIColor *)color {
+    if (isDarkMode()) {
+        return %orig (oledColor);
+    }
+    return %orig;
+}
+%end
+
+// Separation lines
+%hook YTCollectionSeparatorView
+- (void)didMoveToWindow {
+    if (isDarkMode()) {}
+    else { 
+        return %orig(); 
+    }
+}
+%end
+
+// Open link with...
+%hook ASWAppSwitchingSheetHeaderView
+- (void)setBackgroundColor:(UIColor *)color {
+    if (isDarkMode()) {
+        return %orig (oledColor);
+    }
+}
+%end
+
+%hook ASWAppSwitchingSheetFooterView
+- (void)setBackgroundColor:(UIColor *)color {
+    if (isDarkMode()) {
+        return %orig (oledColor);
+    }
+}
+%end
+
+// this sucks :/
+%hook UIView
+- (void)setBackgroundColor:(UIColor *)color {
+    if (isDarkMode()) {
+        if ([self.nextResponder isKindOfClass:%c(YTHUDMessageView)]) { color = oledColor; }
+        if ([self.nextResponder isKindOfClass:%c(ASWAppSwitcherCollectionViewCell)]) { color = oledColor; } // Open link with...
+        %orig;
+    }
+        return %orig;
+}
 %end
 %end
 
@@ -350,7 +500,7 @@ static void replaceTab(YTIGuideResponse *response) {
 
 %ctor {
     %init;
-    if (oled() && ([[NSUserDefaults standardUserDefaults] integerForKey:@"page_style"] == 1)) {
+    if (oled()) {
        %init(gOLED);
     }
     if (oledKB()) {
