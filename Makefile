@@ -1,5 +1,6 @@
 uYouPlus_INJECT_DYLIBS = Tweaks/uYou/Library/MobileSubstrate/DynamicLibraries/uYou.dylib .theos/obj/libcolorpicker.dylib .theos/obj/iSponsorBlock.dylib .theos/obj/YTUHD.dylib .theos/obj/YouPiP.dylib .theos/obj/YouTubeDislikesReturn.dylib .theos/obj/YoutubeSpeed.dylib
 
+TARGET = iPhone:clang:latest:12.0
 uYouPlus_USE_FLEX = 0
 ARCHS = arm64
 MODULES = jailed
