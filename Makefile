@@ -1,7 +1,8 @@
 uYouPlus_INJECT_DYLIBS = Tweaks/uYou/Library/MobileSubstrate/DynamicLibraries/uYou.dylib .theos/obj/libcolorpicker.dylib .theos/obj/iSponsorBlock.dylib .theos/obj/YTUHD.dylib .theos/obj/YouPiP.dylib .theos/obj/YouTubeDislikesReturn.dylib .theos/obj/YoutubeSpeed.dylib
 
-TARGET = iPhone:clang:latest:12.0
+TARGET = iphone:clang:latest:12.0
 uYouPlus_USE_FLEX = 0
+uYouPlus_USE_FISHHOOK = 1
 ARCHS = arm64
 MODULES = jailed
 FINALPACKAGE = 1
@@ -13,7 +14,6 @@ BUNDLE_ID = com.google.ios.youtube
  
 uYouPlus_FILES = uYouPlus.xm Settings.xm
 uYouPlus_IPA = ./tmp/Payload/YouTube.app
-### Important: edit the path to your decrypted YouTube IPA!!! 
 
 include $(THEOS)/makefiles/common.mk
 include $(THEOS_MAKE_PATH)/tweak.mk
