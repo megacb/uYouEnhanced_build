@@ -1,6 +1,5 @@
 ![cydia-1900000830-iphone-0-1628105716 3](https://user-images.githubusercontent.com/52943116/135612614-3d3138cb-2a3d-4ed1-9244-905bab8f5c9f.PNG)
 
-
 # Table of Contents
 
 * [Credits](#credits)
@@ -10,8 +9,7 @@
 * [Installation](#installation)
 * [Support the developers!](#support-the-developers)
 * [FAQ](#faq)
-* [Building (optional)](#building-optional)
-
+* [Building](#building-optional)
 
 # Credits
 
@@ -23,7 +21,7 @@
 
 - [PoomSmart](https://twitter.com/poomsmart) - the developer of many tweaks used by uYouPlus, include: [NoYTPremium](https://github.com/PoomSmart/NoYTPremium/), [YouRememberCaption](https://www.ios-repo-updates.com/repository/poomsmart/package/com.ps.youremembercaption/), [YTClassicVideoQuality](https://poomsmart.github.io/repo/depictions/ytclassicvideoquality.html), [YTNoCheckLocalNetwork](https://poomsmart.github.io/repo/depictions/ytnochecklocalnetwork.html), [YTSystemAppearance](https://poomsmart.github.io/repo/depictions/ytsystemappearance.html), [YTAutoFullScreen](https://github.com/PoomSmart/YTAutoFullScreen/), [YTReExplore](https://github.com/PoomSmart/YTReExplore/), [YTUHD](https://poomsmart.github.io/repo/depictions/ytuhd.html), [YouPiP](https://poomsmart.github.io/repo/depictions/youpip.html), and [Return YouTube Dislike](https://github.com/PoomSmart/Return-YouTube-Dislikes)
 
-- [level3tjg](https://twitter.com/level3tjg) - for [YTNoHoverCards](https://github.com/level3tjg/YTNoHoverCards).
+- [level3tjg](https://twitter.com/level3tjg) - for [YTNoHoverCards](https://github.com/level3tjg/YTNoHoverCards) and [YTMiniplayerEnabler](https://github.com/level3tjg/YTMiniplayerEnabler).
 
 - [Lyvendia](https://github.com/Lyvendia/) for [YTSpeed](https://github.com/Lyvendia/YTSpeed/)
 
@@ -32,7 +30,6 @@
 - [Al4ise](https://github.com/Al4ise) for [Azule](https://github.com/Al4ise/Azule), a tool used to inject jailbreak tweaks into jailed iOS apps.
 
 - [theos team](https://github.com/theos/theos) for theos & theos-jailed.
-
 
 # Features
 
@@ -63,6 +60,8 @@
 
 12. **YTSpeed**: add 2.25, 2.5, 2.75, and 3x playback speed
 
+13. **YTMiniplayerEnabler**: enable Miniplayer for all YouTube videos.
+
 </details>
 
 # Known issues 
@@ -70,7 +69,6 @@
 - **uYou**: all known-issues of uYou are listed [here](https://github.com/MiRO92/uYou-for-YouTube/issues). Make sure you take a look at it before reporting any bugs! ***Also, keep in mind that uYou+ is a modified version of uYou, DO NOT bother MiRO92 with problems unrelated to uYou!!!***
 
 - Issues that related to **uYouPlus** are [here](https://github.com/qnblackcat/uYouPlus/issues/)
-
 
 # Download
 
@@ -80,16 +78,16 @@
 
   - My official AtlStore repo: https://qnblackcat.github.io/AltStore/
 
-  - [Open in AltStore (v17.18.4-2.1)](https://tinyurl.com/bdzxtdrx) - It will take a while to install because AltStore needs to download the IPA.
+  - [Open in AltStore (v17.19.2-2.1)](https://tinyurl.com/2p9e76h2) - It will take a while to install because AltStore needs to download the IPA.
 
-- Version info: _(last update: May 09)_
+- Version info: _(last update: May 16)_
 
 <details>
   <summary> ▶︎ Expand</summary>
 
 | **Tweaks/App** | **Version** | **Open source** |
 | :------------: | :----------:| :-------------: |
-| **YouTube** | 17.18.4 | ✖︎  |
+| **YouTube** | 17.19.2 | ✖︎  |
 | [uYou](https://github.com/MiRO92/uYou-for-YouTube) | 2.1 | ✖︎ |
 | [Open in YouTube](https://github.com/CokePokes/YoutubeExtensions/) | 1.2 | ✖︎ |
 | **Return YouTube Dislike** | 1.6.4 | [✔︎](https://github.com/PoomSmart/Return-YouTube-Dislikes) |
@@ -108,6 +106,7 @@
 | **YTReExplore** | 1.0.2 | [✔︎](https://github.com/PoomSmart/YTReExplore) |
 | **BigYTMiniPlayer** | 1.0-1 | [✔︎](https://github.com/Galactic-Dev/BigYTMiniPlayer) |
 | **YTCastConfirm** | 1.0.0 | [✔︎](https://github.com/JamieBerghmans/YTCastConfirm) |
+| **YTMiniplayerEnabler** | 0.0.2 | [✔︎](https://github.com/level3tjg/YTMiniplayerEnabler) |
 
 </details>
 
@@ -117,7 +116,7 @@ See [Installation - Wiki](https://github.com/qnblackcat/uYouPlus/wiki/Installati
 # Support the developers
 
 <details>
-  <summary>MiRO92</summary>
+  <summary>▶︎ MiRO92</summary>
   
 - CashApp: https://cash.app/$MiRO92M
  
@@ -125,14 +124,14 @@ See [Installation - Wiki](https://github.com/qnblackcat/uYouPlus/wiki/Installati
 </details>
 
 <details>
-  <summary>Poomsmart</summary>
+  <summary>▶︎ Poomsmart</summary>
 
 - Paypal: https://poomsmart.github.io/
 
 </details>
 
 <details>
-  <summary>Galactic-dev</summary>
+  <summary>▶︎ Galactic-dev</summary>
   
 - Paypal: https://www.paypal.com/paypalme/DBrett684 
 
