@@ -1,5 +1,12 @@
 #import "Tweaks/YouTubeHeader/YTPlayerViewController.h"
 
+@interface YTPlaylistHeaderViewController : UIViewController
+@property (nonatomic, strong, readwrite) UIView *downloadsButton;
+@end
+
+@interface ASWAppSwitcherCollectionViewCell: UIView
+@end
+
 @interface YTMainAppVideoPlayerOverlayView : UIView
 - (UIViewController *)_viewControllerForAncestor;
 @end
