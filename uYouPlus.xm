@@ -1,6 +1,7 @@
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
 #import <objc/runtime.h>
+#import <fishhook.h>
 #import "Header.h"
 #import "Tweaks/YouTubeHeader/YTVideoQualitySwitchOriginalController.h"
 #import "Tweaks/YouTubeHeader/YTSettingsSectionItem.h"
@@ -11,7 +12,7 @@
 #import "Tweaks/YouTubeHeader/YTIPivotBarSupportedRenderers.h"
 #import "Tweaks/YouTubeHeader/YTIPivotBarRenderer.h"
 #import "Tweaks/YouTubeHeader/YTIBrowseRequest.h"
-#import "Tweaks/YouTubeHeader/YTColorPalette.h"
+#import "Tweaks/YouTubeHeader/YTCommonColorPalette.h"
 
 BOOL hideHUD() {
     return [[NSUserDefaults standardUserDefaults] boolForKey:@"hideHUD_enabled"];
@@ -46,15 +47,31 @@ BOOL hideAutoplaySwitch() {
 BOOL castConfirm() {
     return [[NSUserDefaults standardUserDefaults] boolForKey:@"castConfirm_enabled"];
 }
+BOOL ytMiniPlayer() {
+    return [[NSUserDefaults standardUserDefaults] boolForKey:@"ytMiniPlayer_enabled"];
+}
+
+// Tweaks
+// YTMiniPlayerEnabler: https://github.com/level3tjg/YTMiniplayerEnabler/
+static BOOL (*orig_class_addMethod)(Class, SEL, IMP, const char *);
+static BOOL hook_class_addMethod(Class cls, SEL name, IMP imp, const char *types) {
+  if (ytMiniPlayer() && [cls isEqual:%c(YTIMiniplayerRenderer)] && [NSStringFromSelector(name) hasPrefix:@"has"]) {
+    imp = imp_implementationWithBlock(^BOOL(id self, SEL _cmd) {
+      return NO;
+    });
+  }
+  return orig_class_addMethod(cls, name, imp, types);
+}
 
 // Hide CC / Autoplay switch
 %hook YTMainAppControlsOverlayView
-- (void)layoutSubviews {
-    %orig;
-    if (hideAutoplaySwitch())
-        MSHookIvar<UIView *>(self, "_autonavSwitch").hidden = YES;
-    if (hideCC())
-        MSHookIvar<UIView *>(self, "_closedCaptionsOrSubtitlesButton").hidden = YES;
+- (void)setClosedCaptionsOrSubtitlesButtonAvailable:(BOOL)arg1 { // hide CC?!
+    if (hideCC()) { return %orig(NO); }   
+    else { return %orig; }
+}
+- (void)setAutoplaySwitchButtonRenderer:(id)arg1 {
+    if (hideAutoplaySwitch()) {}
+    else { return %orig; }
 }
 %end
 
@@ -178,11 +195,19 @@ BOOL castConfirm() {
 - (void)showSurveyWithRenderer:(id)arg1 surveyParentResponder:(id)arg2 {}
 %end
 
+// Hide the download playlist button of uYou cuz it's broken
+%hook YTPlaylistHeaderViewController
+- (void)viewDidLoad {
+    %orig;
+    self.downloadsButton.hidden = YES;
+}
+%end
+
 // OLED dark mode by BandarHL
 UIColor* oledColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:1.0];
 
 %group gOLED
-%hook YTColorPalette
+%hook YTCommonColorPalette
 - (UIColor *)brandBackgroundSolid {
     if (self.pageStyle == 1) {
         return oledColor;
@@ -217,6 +242,15 @@ UIColor* oledColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:1.0];
 
 // Account view controller
 %hook YTAccountPanelBodyViewController
+- (UIColor *)backgroundColor:(NSInteger)pageStyle {
+    if (pageStyle == 1) { 
+        return oledColor; 
+    }
+        return %orig;
+}
+%end
+
+%hook YTInnerTubeCollectionViewController
 - (UIColor *)backgroundColor:(NSInteger)pageStyle {
     if (pageStyle == 1) { 
         return oledColor; 
@@ -290,7 +324,7 @@ UIColor* oledColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:1.0];
     if (isDarkMode()) {
         return %orig([UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.9]);
     }
-    return %orig;
+        return %orig;
 }
 %end
 
@@ -299,7 +333,7 @@ UIColor* oledColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:1.0];
     if (isDarkMode()) {
         return %orig([UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.9]);
     }
-    return %orig;
+        return %orig;
 }
 %end
 
@@ -318,7 +352,7 @@ UIColor* oledColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:1.0];
     if (isDarkMode()) {
         return %orig (oledColor);
     }
-    return %orig;
+        return %orig;
 }
 %end
 
@@ -328,7 +362,7 @@ UIColor* oledColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:1.0];
     if (isDarkMode()) {
         return %orig (oledColor);
     }
-    return %orig;
+        return %orig;
 }
 %end
 
@@ -337,13 +371,22 @@ UIColor* oledColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:1.0];
     if (isDarkMode()) {
         return %orig (oledColor);
     }
-    return %orig;
+        return %orig;
 }
 - (void)setTextColor:(UIColor *)color { // fix black text in #Shorts video's comment
     if (isDarkMode()) { 
         return %orig ([UIColor whiteColor]); 
     }
-    return %orig;
+        return %orig;
+}
+%end
+
+%hook YTFormattedStringLabel  // YT is werid...
+- (void)setBackgroundColor:(UIColor *)color {
+    if (isDarkMode()) {
+        return %orig ([UIColor clearColor]);
+    }
+        return %orig;
 }
 %end
 
@@ -352,7 +395,7 @@ UIColor* oledColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:1.0];
     if (isDarkMode()) {
         return %orig (oledColor);
     }
-    return %orig;
+        return %orig;
 }
 %end
 
@@ -361,7 +404,7 @@ UIColor* oledColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:1.0];
     if (isDarkMode()) {
         return %orig (oledColor);
     }
-    return %orig;
+        return %orig;
 }
 %end
 
@@ -392,17 +435,25 @@ UIColor* oledColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:1.0];
 }
 %end
 
-// this sucks :/
-%hook UIView
-- (void)setBackgroundColor:(UIColor *)color {
-    if (isDarkMode()) {
-        if ([self.nextResponder isKindOfClass:%c(YTHUDMessageView)]) { color = oledColor; }
-        if ([self.nextResponder isKindOfClass:%c(ASWAppSwitcherCollectionViewCell)]) { color = oledColor; } // Open link with...
+%hook ASWAppSwitcherCollectionViewCell
+- (void)didMoveToWindow {
+    if (isDarkMode()) { 
         %orig;
+        self.subviews[1].backgroundColor = oledColor;
     }
-        return %orig;
 }
 %end
+
+// this sucks :/
+// %hook UIView
+// - (void)setBackgroundColor:(UIColor *)color {
+//     if (isDarkMode()) {
+//         if ([self.nextResponder isKindOfClass:%c(YTHUDMessageView)]) { color = oledColor; }
+//         %orig;
+//     }
+//         return %orig;
+// }
+// %end
 %end
 
 %group gOLEDKB // OLED keyboard by @ichitaso <3 - http://gist.github.com/ichitaso/935100fd53a26f18a9060f7195a1be0e
@@ -499,6 +550,7 @@ static void replaceTab(YTIGuideResponse *response) {
 %end
 
 %ctor {
+    rebind_symbols((struct rebinding[1]){{"class_addMethod", (void *)hook_class_addMethod, (void **)&orig_class_addMethod}}, 1);
     %init;
     if (oled()) {
        %init(gOLED);
