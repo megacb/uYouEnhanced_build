@@ -2,7 +2,7 @@ uYouPlus_INJECT_DYLIBS = Tweaks/uYou/Library/MobileSubstrate/DynamicLibraries/uY
 
 TARGET = iphone:clang:latest:12.0
 uYouPlus_USE_FLEX = 0
-uYouPlus_USE_FISHHOOK = 1
+uYouPlus_USE_FISHHOOK = 0
 ARCHS = arm64
 MODULES = jailed
 FINALPACKAGE = 1
