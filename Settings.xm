@@ -37,7 +37,7 @@ extern BOOL ytMiniPlayer();
 %new - (void)updateuYouPlusSectionWithEntry:(id)entry {
     YTSettingsViewController *delegate = [self valueForKey:@"_dataDelegate"];
 
-    YTSettingsSectionItem *ytMiniPlayer = [[%c(YTSettingsSectionItem) alloc] initWithTitle:@"Enable the Miniplayer for all videos" titleDescription:@"App restart is required."];
+    YTSettingsSectionItem *ytMiniPlayer = [[%c(YTSettingsSectionItem) alloc] initWithTitle:@"Enable the Miniplayer for all YouTube videos" titleDescription:@""];
     ytMiniPlayer.hasSwitch = YES;
     ytMiniPlayer.switchVisible = YES;
     ytMiniPlayer.on = [[NSUserDefaults standardUserDefaults] boolForKey:@"ytMiniPlayer_enabled"];
@@ -127,7 +127,7 @@ extern BOOL ytMiniPlayer();
         return YES;
     };
 
-    YTSettingsSectionItem *oledKeyBoard = [[%c(YTSettingsSectionItem) alloc] initWithTitle:@"OLED Keyboard (Experimental)" titleDescription:@"Might not working properly in some cases . App restart is required."];
+    YTSettingsSectionItem *oledKeyBoard = [[%c(YTSettingsSectionItem) alloc] initWithTitle:@"OLED Keyboard (Experimental)" titleDescription:@"Might not working properly in some cases. App restart is required."];
     oledKeyBoard.hasSwitch = YES;
     oledKeyBoard.switchVisible = YES;
     oledKeyBoard.on = [[NSUserDefaults standardUserDefaults] boolForKey:@"oledKeyBoard_enabled"];
