@@ -78,16 +78,16 @@
 
   - My official AtlStore repo: https://qnblackcat.github.io/AltStore/
 
-  - [Open in AltStore (v17.19.2-2.1)](https://tinyurl.com/2s49jpru) - It will take a while to install because AltStore needs to download the IPA.
+  - [Open in AltStore (v17.19.3-2.1)](https://tinyurl.com/5n8c64zv) - It will take a while to install because AltStore needs to download the IPA.
 
-- Version info: _(last update: May 16)_
+- Version info: _(last update: May 20)_
 
 <details>
   <summary> ▶︎ Expand</summary>
 
 | **Tweaks/App** | **Version** | **Open source** |
 | :------------: | :----------:| :-------------: |
-| **YouTube** | 17.19.2 | ✖︎  |
+| **YouTube** | 17.19.3 | ✖︎  |
 | [uYou](https://github.com/MiRO92/uYou-for-YouTube) | 2.1 | ✖︎ |
 | [Open in YouTube](https://github.com/CokePokes/YoutubeExtensions/) | 1.2 | ✖︎ |
 | **Return YouTube Dislike** | 1.6.4 | [✔︎](https://github.com/PoomSmart/Return-YouTube-Dislikes) |
