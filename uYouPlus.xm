@@ -3,7 +3,6 @@
 #import <objc/runtime.h>
 #import "Header.h"
 #import "Tweaks/YouTubeHeader/YTVideoQualitySwitchOriginalController.h"
-#import "Tweaks/YouTubeHeader/YTSettingsSectionItem.h"
 #import "Tweaks/YouTubeHeader/YTPlayerViewController.h"
 #import "Tweaks/YouTubeHeader/YTWatchController.h"
 #import "Tweaks/YouTubeHeader/YTIGuideResponse.h"
@@ -43,6 +42,9 @@ BOOL hideCC() {
 BOOL hideAutoplaySwitch() {
     return [[NSUserDefaults standardUserDefaults] boolForKey:@"hideAutoplaySwitch_enabled"];
 }
+BOOL hidePreviousAndNextButton() {
+    return [[NSUserDefaults standardUserDefaults] boolForKey:@"hidePreviousAndNextButton_enabled"];
+}
 BOOL castConfirm() {
     return [[NSUserDefaults standardUserDefaults] boolForKey:@"castConfirm_enabled"];
 }
@@ -68,6 +70,14 @@ BOOL ytMiniPlayer() {
 - (void)setAutoplaySwitchButtonRenderer:(id)arg1 {
     if (hideAutoplaySwitch()) {}
     else { return %orig; }
+}
+- (void)layoutSubviews {
+    if (hidePreviousAndNextButton()) {
+	    MSHookIvar<YTMainAppControlsOverlayView *>(self, "_nextButton").hidden = YES;
+    	MSHookIvar<YTMainAppControlsOverlayView *>(self, "_previousButton").hidden = YES;        
+        %orig;
+    }
+        return %orig;
 }
 %end
 
@@ -102,40 +112,39 @@ BOOL ytMiniPlayer() {
 %end
  
 //YTCastConfirm: https://github.com/JamieBerghmans/YTCastConfirm
+%group gYTCastconfirm
 %hook MDXPlaybackRouteButtonController
 - (void)didPressButton:(id)arg1 {
-    if (castConfirm()) {
-        UIAlertController* alertController = [%c(UIAlertController) alertControllerWithTitle:@"Casting"
-                                message:@"Are you sure you want to start casting?"
-                                preferredStyle:UIAlertControllerStyleAlert];
-        UIAlertAction* defaultAction = [%c(UIAlertAction) actionWithTitle:@"Yes" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
-            %orig;
-        }];
+    UIAlertController* alertController = [%c(UIAlertController) alertControllerWithTitle:@"Casting"
+                            message:@"Are you sure you want to start casting?"
+                            preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction* defaultAction = [%c(UIAlertAction) actionWithTitle:@"Yes" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
+        %orig;
+    }];
 
-        UIAlertAction* noButton = [%c(UIAlertAction)
-                                actionWithTitle:@"Cancel"
-                                style:UIAlertActionStyleDefault
-                                handler: ^(UIAlertAction * action) {
-            return;
-        }];
+    UIAlertAction* noButton = [%c(UIAlertAction)
+                            actionWithTitle:@"Cancel"
+                            style:UIAlertActionStyleDefault
+                            handler: ^(UIAlertAction * action) { return; }
+    ];
 
-        [alertController addAction:defaultAction];
-        [alertController addAction:noButton];
+    [alertController addAction:defaultAction];
+    [alertController addAction:noButton];
         
-        id rootViewController = [%c(UIApplication) sharedApplication].delegate.window.rootViewController;
-        if ([rootViewController isKindOfClass:[%c(UINavigationController) class]]) {
-            rootViewController = ((UINavigationController *)rootViewController).viewControllers.firstObject;
-        }
-        if ([rootViewController isKindOfClass:[%c(UITabBarController) class]]) {
-            rootViewController = ((UITabBarController *)rootViewController).selectedViewController;
-        }
-        if ([rootViewController presentedViewController] != nil) {
-            rootViewController = [rootViewController presentedViewController];
-        }
-        [rootViewController presentViewController:alertController animated:YES completion:nil];
+    id rootViewController = [%c(UIApplication) sharedApplication].delegate.window.rootViewController;
+    if ([rootViewController isKindOfClass:[%c(UINavigationController) class]]) {
+        rootViewController = ((UINavigationController *)rootViewController).viewControllers.firstObject;
     }
+    if ([rootViewController isKindOfClass:[%c(UITabBarController) class]]) {
+        rootViewController = ((UITabBarController *)rootViewController).selectedViewController;
+    }
+    if ([rootViewController presentedViewController] != nil) {
+        rootViewController = [rootViewController presentedViewController];
+    }
+    [rootViewController presentViewController:alertController animated:YES completion:nil];
     return %orig;
 }
+%end
 %end
 
 // Workaround for https://github.com/MiRO92/uYou-for-YouTube/issues/12
@@ -559,4 +568,7 @@ static void replaceTab(YTIGuideResponse *response) {
     if (bigYTMiniPlayer() && (UIDevice.currentDevice.userInterfaceIdiom != UIUserInterfaceIdiomPad)) {
        %init(Main);
     }
+    if (castConfirm()) {
+       %init(gYTCastconfirm);
+    }    
 }

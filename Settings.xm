@@ -19,6 +19,7 @@ extern BOOL hideCC();
 extern BOOL hideAutoplaySwitch();
 extern BOOL castConfirm();
 extern BOOL ytMiniPlayer();
+extern BOOL hidePreviousAndNextButton();
 
 // Settings
 %hook YTAppSettingsPresentationData
@@ -37,6 +38,15 @@ extern BOOL ytMiniPlayer();
 %new - (void)updateuYouPlusSectionWithEntry:(id)entry {
     YTSettingsViewController *delegate = [self valueForKey:@"_dataDelegate"];
 
+    YTSettingsSectionItem *hidePreviousAndNextButton = [[%c(YTSettingsSectionItem) alloc] initWithTitle:@"Hide Previous and Next button" titleDescription:@""];
+    hidePreviousAndNextButton.hasSwitch = YES;
+    hidePreviousAndNextButton.switchVisible = YES;
+    hidePreviousAndNextButton.on = [[NSUserDefaults standardUserDefaults] boolForKey:@"hidePreviousAndNextButton_enabled"];
+    hidePreviousAndNextButton.switchBlock = ^BOOL (YTSettingsCell *cell, BOOL enabled) {
+        [[NSUserDefaults standardUserDefaults] setBool:enabled forKey:@"hidePreviousAndNextButton_enabled"];
+        return YES;
+    };
+
     YTSettingsSectionItem *ytMiniPlayer = [[%c(YTSettingsSectionItem) alloc] initWithTitle:@"Enable the Miniplayer for all YouTube videos" titleDescription:@""];
     ytMiniPlayer.hasSwitch = YES;
     ytMiniPlayer.switchVisible = YES;
@@ -46,7 +56,7 @@ extern BOOL ytMiniPlayer();
         return YES;
     };
 
-    YTSettingsSectionItem *castConfirm = [[%c(YTSettingsSectionItem) alloc] initWithTitle:@"Confirm alert before casting (YTCastConfirm)" titleDescription:@"Show a confirm alert before casting to prevent accidentally hijacking TV."];
+    YTSettingsSectionItem *castConfirm = [[%c(YTSettingsSectionItem) alloc] initWithTitle:@"Confirm alert before casting (YTCastConfirm)" titleDescription:@"Show a confirm alert before casting to prevent accidentally hijacking TV. App restart is required."];
     castConfirm.hasSwitch = YES;
     castConfirm.switchVisible = YES;
     castConfirm.on = [[NSUserDefaults standardUserDefaults] boolForKey:@"castConfirm_enabled"];
@@ -136,7 +146,7 @@ extern BOOL ytMiniPlayer();
         return YES;
     };
 
-    NSMutableArray <YTSettingsSectionItem *> *sectionItems = [NSMutableArray arrayWithArray:@[autoFull, castConfirm, ytMiniPlayer, hideAutoplaySwitch, hideCC, hideHUD, hoverCardItem, bigYTMiniPlayer, oledKeyBoard, oledDarkMode,reExplore]];
+    NSMutableArray <YTSettingsSectionItem *> *sectionItems = [NSMutableArray arrayWithArray:@[autoFull, castConfirm, ytMiniPlayer, hideAutoplaySwitch, hideCC, hideHUD, hidePreviousAndNextButton, hoverCardItem, bigYTMiniPlayer, oledKeyBoard, oledDarkMode,reExplore]];
     [delegate setSectionItems:sectionItems forCategory:uYouPlusSection title:@"uYouPlus" titleDescription:nil headerHidden:NO];
 }
 
