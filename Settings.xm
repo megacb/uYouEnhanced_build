@@ -56,7 +56,7 @@ extern BOOL hidePreviousAndNextButton();
         return YES;
     };
 
-    YTSettingsSectionItem *castConfirm = [[%c(YTSettingsSectionItem) alloc] initWithTitle:@"Confirm alert before casting (YTCastConfirm)" titleDescription:@"Show a confirm alert before casting to prevent accidentally hijacking TV. App restart is required."];
+    YTSettingsSectionItem *castConfirm = [[%c(YTSettingsSectionItem) alloc] initWithTitle:@"Confirm alert before casting (YTCastConfirm)" titleDescription:@"Show a confirm alert before casting to prevent accidentally hijacking TV."];
     castConfirm.hasSwitch = YES;
     castConfirm.switchVisible = YES;
     castConfirm.on = [[NSUserDefaults standardUserDefaults] boolForKey:@"castConfirm_enabled"];
