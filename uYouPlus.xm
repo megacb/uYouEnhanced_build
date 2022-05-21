@@ -112,39 +112,40 @@ BOOL ytMiniPlayer() {
 %end
  
 //YTCastConfirm: https://github.com/JamieBerghmans/YTCastConfirm
-%group gYTCastconfirm
 %hook MDXPlaybackRouteButtonController
 - (void)didPressButton:(id)arg1 {
-    UIAlertController* alertController = [%c(UIAlertController) alertControllerWithTitle:@"Casting"
-                            message:@"Are you sure you want to start casting?"
-                            preferredStyle:UIAlertControllerStyleAlert];
-    UIAlertAction* defaultAction = [%c(UIAlertAction) actionWithTitle:@"Yes" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
-        %orig;
-    }];
+    if (castConfirm()) {
+        UIAlertController* alertController = [%c(UIAlertController) alertControllerWithTitle:@"Casting"
+                                message:@"Are you sure you want to start casting?"
+                                preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction* defaultAction = [%c(UIAlertAction) actionWithTitle:@"Yes" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
+            %orig;
+        }];
 
-    UIAlertAction* noButton = [%c(UIAlertAction)
-                            actionWithTitle:@"Cancel"
-                            style:UIAlertActionStyleDefault
-                            handler: ^(UIAlertAction * action) { return; }
-    ];
+        UIAlertAction* noButton = [%c(UIAlertAction)
+                                actionWithTitle:@"Cancel"
+                                style:UIAlertActionStyleDefault
+                                handler: ^(UIAlertAction * action) {
+            return;
+        }];
 
-    [alertController addAction:defaultAction];
-    [alertController addAction:noButton];
+        [alertController addAction:defaultAction];
+        [alertController addAction:noButton];
         
-    id rootViewController = [%c(UIApplication) sharedApplication].delegate.window.rootViewController;
-    if ([rootViewController isKindOfClass:[%c(UINavigationController) class]]) {
-        rootViewController = ((UINavigationController *)rootViewController).viewControllers.firstObject;
-    }
-    if ([rootViewController isKindOfClass:[%c(UITabBarController) class]]) {
-        rootViewController = ((UITabBarController *)rootViewController).selectedViewController;
-    }
-    if ([rootViewController presentedViewController] != nil) {
-        rootViewController = [rootViewController presentedViewController];
-    }
-    [rootViewController presentViewController:alertController animated:YES completion:nil];
-    return %orig;
+        id rootViewController = [%c(UIApplication) sharedApplication].delegate.window.rootViewController;
+        if ([rootViewController isKindOfClass:[%c(UINavigationController) class]]) {
+            rootViewController = ((UINavigationController *)rootViewController).viewControllers.firstObject;
+        }
+        if ([rootViewController isKindOfClass:[%c(UITabBarController) class]]) {
+            rootViewController = ((UITabBarController *)rootViewController).selectedViewController;
+        }
+        if ([rootViewController presentedViewController] != nil) {
+            rootViewController = [rootViewController presentedViewController];
+        }
+        [rootViewController presentViewController:alertController animated:YES completion:nil];
+	} else { return %orig; }
+        
 }
-%end
 %end
 
 // Workaround for https://github.com/MiRO92/uYou-for-YouTube/issues/12
@@ -317,9 +318,7 @@ UIColor* oledColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:1.0];
     if (self.traitCollection.userInterfaceStyle == UIUserInterfaceStyleDark) {
         %orig;
         self.tableView.backgroundColor = oledColor;
-    } else { 
-        return %orig(); 
-    }
+    } else { return %orig; }
 }
 %end
 
@@ -417,9 +416,7 @@ UIColor* oledColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:1.0];
 %hook YTCollectionSeparatorView
 - (void)didMoveToWindow {
     if (isDarkMode()) {}
-    else { 
-        return %orig(); 
-    }
+    else { return %orig; }
 }
 %end
 
@@ -443,8 +440,8 @@ UIColor* oledColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:1.0];
 %hook ASWAppSwitcherCollectionViewCell
 - (void)didMoveToWindow {
     if (isDarkMode()) { 
-        %orig;
         self.subviews[1].backgroundColor = oledColor;
+        %orig;        
     }
 }
 %end
@@ -568,7 +565,4 @@ static void replaceTab(YTIGuideResponse *response) {
     if (bigYTMiniPlayer() && (UIDevice.currentDevice.userInterfaceIdiom != UIUserInterfaceIdiomPad)) {
        %init(Main);
     }
-    if (castConfirm()) {
-       %init(gYTCastconfirm);
-    }    
 }
