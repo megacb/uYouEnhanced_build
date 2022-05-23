@@ -209,6 +209,14 @@ BOOL ytMiniPlayer() {
 }
 %end
 
+// Workaround for issue #54
+%hook YTMainAppVideoPlayerOverlayViewController
+- (void)updateRelatedVideos {
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"relatedVideosAtTheEndOfYTVideos"] == NO) {}
+    else { return %orig; }
+}
+%end
+
 // OLED dark mode by BandarHL
 UIColor* oledColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:1.0];
 
