@@ -78,21 +78,21 @@
 
   - My official AtlStore repo: https://qnblackcat.github.io/AltStore/
 
-  - [Open in AltStore (v17.19.3-2.1)](https://tinyurl.com/5n8c64zv) - It will take a while to install because AltStore needs to download the IPA.
+  - [Open in AltStore (v17.20.3-2.1)](https://tinyurl.com/2p92ebs6) - It will take a while to install because AltStore needs to download the IPA.
 
-- Version info: _(last update: May 20)_
+- Version info: _(last update: May 25)_
 
 <details>
   <summary> ▶︎ Expand</summary>
 
 | **Tweaks/App** | **Version** | **Open source** |
 | :------------: | :----------:| :-------------: |
-| **YouTube** | 17.19.3 | ✖︎  |
+| **YouTube** | 17.20.3 | ✖︎  |
 | [uYou](https://github.com/MiRO92/uYou-for-YouTube) | 2.1 | ✖︎ |
 | [Open in YouTube](https://github.com/CokePokes/YoutubeExtensions/) | 1.2 | ✖︎ |
 | **Return YouTube Dislike** | 1.6.4 | [✔︎](https://github.com/PoomSmart/Return-YouTube-Dislikes) |
 | **iSponsorBlock** | 1.0-14 | [✔︎](https://github.com/Galactic-Dev/iSponsorBlock) |
-| **Alderis Color Picker** | 1.1.2| [✔︎](https://github.com/hbang/Alderis) |
+| **Alderis Color Picker** | 1.2| [✔︎](https://github.com/hbang/Alderis) |
 | **NoYTPremium** | 1.0.4 | [✔︎](https://github.com/PoomSmart/NoYTPremium/) |
 | **YouRememberCaption** | 1.0.0 | [✔︎](https://poomsmart.github.io/repo/depictions/youremembercaption.html) |
 | **YTClassicVideoQuality** | 1.0.1 | [✔︎](https://github.com/PoomSmart/YTClassicVideoQuality) |
