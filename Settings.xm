@@ -31,14 +31,13 @@ extern BOOL hidePreviousAndNextButton();
         [mutableOrder insertObject:@(uYouPlusSection) atIndex:insertIndex + 1];
     return mutableOrder;
 }
-
 %end
 
 %hook YTSettingsSectionItemManager
 %new - (void)updateuYouPlusSectionWithEntry:(id)entry {
     YTSettingsViewController *delegate = [self valueForKey:@"_dataDelegate"];
 
-    YTSettingsSectionItem *hidePreviousAndNextButton = [[%c(YTSettingsSectionItem) alloc] initWithTitle:@"Hide Previous and Next button" titleDescription:@""];
+    YTSettingsSectionItem *hidePreviousAndNextButton = [[%c(YTSettingsSectionItem) alloc] initWithTitle:@"Hide Previous and Next button" titleDescription:@"Hide Previous and Next button in video controls overlay."];
     hidePreviousAndNextButton.hasSwitch = YES;
     hidePreviousAndNextButton.switchVisible = YES;
     hidePreviousAndNextButton.on = [[NSUserDefaults standardUserDefaults] boolForKey:@"hidePreviousAndNextButton_enabled"];
@@ -47,7 +46,7 @@ extern BOOL hidePreviousAndNextButton();
         return YES;
     };
 
-    YTSettingsSectionItem *ytMiniPlayer = [[%c(YTSettingsSectionItem) alloc] initWithTitle:@"Enable the Miniplayer for all YouTube videos" titleDescription:@""];
+    YTSettingsSectionItem *ytMiniPlayer = [[%c(YTSettingsSectionItem) alloc] initWithTitle:@"Enable the Miniplayer for all YouTube videos" titleDescription:@"Kid videos for example."];
     ytMiniPlayer.hasSwitch = YES;
     ytMiniPlayer.switchVisible = YES;
     ytMiniPlayer.on = [[NSUserDefaults standardUserDefaults] boolForKey:@"ytMiniPlayer_enabled"];
