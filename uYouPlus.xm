@@ -1,6 +1,7 @@
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
 #import <objc/runtime.h>
+#import <dlfcn.h>
 #import "Header.h"
 #import "Tweaks/YouTubeHeader/YTVideoQualitySwitchOriginalController.h"
 #import "Tweaks/YouTubeHeader/YTPlayerViewController.h"
@@ -11,6 +12,9 @@
 #import "Tweaks/YouTubeHeader/YTIPivotBarRenderer.h"
 #import "Tweaks/YouTubeHeader/YTIBrowseRequest.h"
 #import "Tweaks/YouTubeHeader/YTCommonColorPalette.h"
+
+#define YT_BUNDLE_ID @"com.google.ios.youtube"
+#define YT_NAME @"YouTube"
 
 BOOL hideHUD() {
     return [[NSUserDefaults standardUserDefaults] boolForKey:@"hideHUD_enabled"];
@@ -209,6 +213,61 @@ BOOL ytMiniPlayer() {
 }
 %end
 
+// IAmYouTube - https://github.com/PoomSmart/IAmYouTube/
+%hook YTVersionUtils
++ (NSString *)appName { return YT_NAME; }
++ (NSString *)appID { return YT_BUNDLE_ID; }
+%end
+
+%hook GCKBUtils
++ (NSString *)appIdentifier { return YT_BUNDLE_ID; }
+%end
+
+%hook GPCDeviceInfo
++ (NSString *)bundleId { return YT_BUNDLE_ID; }
+%end
+
+%hook OGLBundle
++ (NSString *)shortAppName { return YT_NAME; }
+%end
+
+%hook GVROverlayView
++ (NSString *)appName { return YT_NAME; }
+%end
+
+%hook OGLPhenotypeFlagServiceImpl
+- (NSString *)bundleId { return YT_BUNDLE_ID; }
+%end
+
+%hook SSOConfiguration
+- (id)initWithClientID:(id)clientID supportedAccountServices:(id)supportedAccountServices {
+    self = %orig;
+    [self setValue:YT_NAME forKey:@"_shortAppName"];
+    [self setValue:YT_BUNDLE_ID forKey:@"_applicationIdentifier"];
+    return self;
+}
+%end
+
+%hook NSBundle
+- (NSString *)bundleIdentifier {
+    NSArray *address = [NSThread callStackReturnAddresses];
+    Dl_info info = {0};
+    if (dladdr((void *)[address[2] longLongValue], &info) == 0)
+        return %orig;
+    NSString *path = [NSString stringWithUTF8String:info.dli_fname];
+    if ([path hasPrefix:NSBundle.mainBundle.bundlePath])
+        return YT_BUNDLE_ID;
+    return %orig;
+}
+- (id)objectForInfoDictionaryKey:(NSString *)key {
+    if ([key isEqualToString:@"CFBundleIdentifier"])
+        return YT_BUNDLE_ID;
+    if ([key isEqualToString:@"CFBundleDisplayName"] || [key isEqualToString:@"CFBundleName"])
+        return YT_NAME;
+    return %orig;
+}
+%end
+
 // Workaround for issue #54
 // %hook YTMainAppVideoPlayerOverlayViewController
 // - (void)updateRelatedVideos {
@@ -330,16 +389,7 @@ UIColor* oledColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:1.0];
 }
 %end
 
-// uYou & YT player, and downloading view controller
-%hook _LNPopupBarContentView
-- (void)setBackgroundColor:(UIColor *)color { 
-    if (isDarkMode()) {
-        return %orig([UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.9]);
-    }
-        return %orig;
-}
-%end
-
+// YT player
 %hook YTWatchMiniBarView 
 - (void)setBackgroundColor:(UIColor *)color { 
     if (isDarkMode()) {
@@ -453,17 +503,6 @@ UIColor* oledColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:1.0];
     }
 }
 %end
-
-// this sucks :/
-// %hook UIView
-// - (void)setBackgroundColor:(UIColor *)color {
-//     if (isDarkMode()) {
-//         if ([self.nextResponder isKindOfClass:%c(YTHUDMessageView)]) { color = oledColor; }
-//         %orig;
-//     }
-//         return %orig;
-// }
-// %end
 %end
 
 %group gOLEDKB // OLED keyboard by @ichitaso <3 - http://gist.github.com/ichitaso/935100fd53a26f18a9060f7195a1be0e

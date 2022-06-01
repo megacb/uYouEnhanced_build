@@ -1,5 +1,8 @@
 #import "Tweaks/YouTubeHeader/YTPlayerViewController.h"
 
+@interface SSOConfiguration : NSObject
+@end
+
 @interface YTMainAppControlsOverlayView: UIView
 @end
 
