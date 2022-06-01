@@ -19,7 +19,7 @@
 
 - [HASHBANG Productions](https://github.com/hbang) for [Alderis Color Picker](https://github.com/hbang/Alderis) - a dependency of iSponsorBlock.
 
-- [PoomSmart](https://twitter.com/poomsmart) - the developer of many tweaks used by uYouPlus, include: [NoYTPremium](https://github.com/PoomSmart/NoYTPremium/), [YouRememberCaption](https://www.ios-repo-updates.com/repository/poomsmart/package/com.ps.youremembercaption/), [YTClassicVideoQuality](https://poomsmart.github.io/repo/depictions/ytclassicvideoquality.html), [YTNoCheckLocalNetwork](https://poomsmart.github.io/repo/depictions/ytnochecklocalnetwork.html), [YTSystemAppearance](https://poomsmart.github.io/repo/depictions/ytsystemappearance.html), [YTAutoFullScreen](https://github.com/PoomSmart/YTAutoFullScreen/), [YTReExplore](https://github.com/PoomSmart/YTReExplore/), [YTUHD](https://poomsmart.github.io/repo/depictions/ytuhd.html), [YouPiP](https://poomsmart.github.io/repo/depictions/youpip.html), and [Return YouTube Dislike](https://github.com/PoomSmart/Return-YouTube-Dislikes)
+- [PoomSmart](https://twitter.com/poomsmart) - the developer of many tweaks used by uYouPlus, include: [NoYTPremium](https://github.com/PoomSmart/NoYTPremium/), [YouRememberCaption](https://www.ios-repo-updates.com/repository/poomsmart/package/com.ps.youremembercaption/), [YTClassicVideoQuality](https://poomsmart.github.io/repo/depictions/ytclassicvideoquality.html), [YTNoCheckLocalNetwork](https://poomsmart.github.io/repo/depictions/ytnochecklocalnetwork.html), [YTSystemAppearance](https://poomsmart.github.io/repo/depictions/ytsystemappearance.html), [YTAutoFullScreen](https://github.com/PoomSmart/YTAutoFullScreen/), [YTReExplore](https://github.com/PoomSmart/YTReExplore/), [IAmYouTube](https://github.com/PoomSmart/IAmYouTube), [YTUHD](https://poomsmart.github.io/repo/depictions/ytuhd.html), [YouPiP](https://poomsmart.github.io/repo/depictions/youpip.html), and [Return YouTube Dislike](https://github.com/PoomSmart/Return-YouTube-Dislikes)
 
 - [level3tjg](https://twitter.com/level3tjg) - for [YTNoHoverCards](https://github.com/level3tjg/YTNoHoverCards) and [YTMiniplayerEnabler](https://github.com/level3tjg/YTMiniplayerEnabler).
 
@@ -78,16 +78,16 @@
 
   - My official AtlStore repo: https://qnblackcat.github.io/AltStore/
 
-  - [Open in AltStore (v17.20.3-2.1)](https://tinyurl.com/2p92ebs6) - It will take a while to install because AltStore needs to download the IPA.
+  - [Open in AltStore (v17.21.3-2.1)](https://tinyurl.com/52j8xeee) - It will take a while to install because AltStore needs to download the IPA.
 
-- Version info: _(last update: May 25)_
+- Version info: _(last update: June 01)_
 
 <details>
   <summary> ▶︎ Expand</summary>
 
 | **Tweaks/App** | **Version** | **Open source** |
 | :------------: | :----------:| :-------------: |
-| **YouTube** | 17.20.3 | ✖︎  |
+| **YouTube** | 17.21.3 | ✖︎  |
 | [uYou](https://github.com/MiRO92/uYou-for-YouTube) | 2.1 | ✖︎ |
 | [Open in YouTube](https://github.com/CokePokes/YoutubeExtensions/) | 1.2 | ✖︎ |
 | **Return YouTube Dislike** | 1.6.4 | [✔︎](https://github.com/PoomSmart/Return-YouTube-Dislikes) |
@@ -101,6 +101,7 @@
 | **YTSystemAppearance** | 1.0.0 | [✔︎](https://poomsmart.github.io/repo/depictions/ytsystemappearance.html) |
 | **YTUHD** | 1.2.7 | [✔︎](https://github.com/PoomSmart/YTUHD) |
 | **YouPiP** | 1.7.0 | [✔︎](https://github.com/PoomSmart/YouPiP) |
+| **IAmYouTube** | 1.2.0 | [✔︎](https://github.com/PoomSmart/IAmYouTube) |
 | **YTSpeed** | 1.0.1 | [✔︎](https://github.com/Lyvendia/YTSpeed) |
 | **YTAutoFullScreen** | 1.0.3 | [✔︎](https://github.com/PoomSmart/YTAutoFullScreen/) |
 | **YTReExplore** | 1.0.2 | [✔︎](https://github.com/PoomSmart/YTReExplore) |
