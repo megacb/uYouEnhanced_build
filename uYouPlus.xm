@@ -205,6 +205,11 @@ BOOL ytMiniPlayer() {
 - (void)showSurveyWithRenderer:(id)arg1 surveyParentResponder:(id)arg2 {}
 %end
 
+// Enable Shorts scroll bar - level3tg - https://reddit.com/r/jailbreak/comments/v29yvk/_/iasl1l0/
+%hook YTReelPlayerViewControllerSub
+- (BOOL)shouldEnablePlayerBar { return YES; }
+%end
+
 // Hide the download playlist button of uYou cuz it's broken
 %hook YTPlaylistHeaderViewController
 - (void)viewDidLoad {
