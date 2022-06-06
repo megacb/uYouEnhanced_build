@@ -1,8 +1,10 @@
 #import "Tweaks/YouTubeHeader/YTPlayerViewController.h"
 
+// IAmYouTube
 @interface SSOConfiguration : NSObject
 @end
 
+// uYouPlus
 @interface YTMainAppControlsOverlayView: UIView
 @end
 
@@ -10,9 +12,7 @@
 @property (nonatomic, strong, readwrite) UIView *downloadsButton;
 @end
 
-@interface ASWAppSwitcherCollectionViewCell: UIView
-@end
-
+// BigYTMiniPlayer
 @interface YTMainAppVideoPlayerOverlayView : UIView
 - (UIViewController *)_viewControllerForAncestor;
 @end
@@ -20,8 +20,13 @@
 @interface YTWatchMiniBarView : UIView
 @end
 
+// YTAutoFullScreen
 @interface YTPlayerViewController (YTAFS)
 - (void)autoFullscreen;
+@end
+
+// OLED Darkmode
+@interface ASWAppSwitcherCollectionViewCell: UIView
 @end
 
 @interface ASScrollView : UIView
@@ -40,4 +45,7 @@
 @end
 
 @interface SponsorBlockSettingsController : UITableViewController 
+@end
+
+@interface _ASDisplayView : UIView
 @end
