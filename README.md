@@ -83,7 +83,7 @@
 - Version info: _(last update: June 06)_
 
 <details>
-  <summary> ▶︎ Expand</summary>
+  <summary>Expand</summary>
 
 | **Tweaks/App** | **Version** | **Open source** |
 | :------------: | :----------:| :-------------: |
@@ -117,7 +117,7 @@ See [Installation - Wiki](https://github.com/qnblackcat/uYouPlus/wiki/Installati
 # Support the developers
 
 <details>
-  <summary>▶︎ MiRO92</summary>
+  <summary>MiRO92</summary>
   
 - CashApp: https://cash.app/$MiRO92M
  
@@ -125,14 +125,14 @@ See [Installation - Wiki](https://github.com/qnblackcat/uYouPlus/wiki/Installati
 </details>
 
 <details>
-  <summary>▶︎ Poomsmart</summary>
+  <summary>Poomsmart</summary>
 
 - Paypal: https://poomsmart.github.io/
 
 </details>
 
 <details>
-  <summary>▶︎ Galactic-dev</summary>
+  <summary>Galactic-dev</summary>
   
 - Paypal: https://www.paypal.com/paypalme/DBrett684 
 
