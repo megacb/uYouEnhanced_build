@@ -205,7 +205,7 @@ BOOL ytMiniPlayer() {
 - (void)showSurveyWithRenderer:(id)arg1 surveyParentResponder:(id)arg2 {}
 %end
 
-// Enable Shorts scroll bar - level3tg - https://reddit.com/r/jailbreak/comments/v29yvk/_/iasl1l0/
+// Enable Shorts scroll bar - level3tjg - https://reddit.com/r/jailbreak/comments/v29yvk/_/iasl1l0/
 %hook YTReelPlayerViewControllerSub
 - (BOOL)shouldEnablePlayerBar { return YES; }
 %end
@@ -445,6 +445,15 @@ UIColor* oledColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:1.0];
         return %orig ([UIColor whiteColor]); 
     }
         return %orig;
+}
+%end
+
+%hook _ASDisplayView // comment reply under videos
+- (void)didMoveToWindow {
+    if (isDarkMode() && [self.accessibilityIdentifier isEqualToString:@"id.elements.components.comment_composer"]) {
+        %orig;
+        self.backgroundColor = oledColor;
+    }
 }
 %end
 
