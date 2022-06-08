@@ -12,6 +12,7 @@
 #import "Tweaks/YouTubeHeader/YTIPivotBarRenderer.h"
 #import "Tweaks/YouTubeHeader/YTIBrowseRequest.h"
 #import "Tweaks/YouTubeHeader/YTCommonColorPalette.h"
+#import "Tweaks/YouTubeHeader/ASCollectionView.h"
 
 #define YT_BUNDLE_ID @"com.google.ios.youtube"
 #define YT_NAME @"YouTube"
@@ -29,12 +30,12 @@ BOOL isDarkMode() {
     return ([[NSUserDefaults standardUserDefaults] integerForKey:@"page_style"] == 1);
 }
 BOOL autoFullScreen() {
-    return [[NSUserDefaults standardUserDefaults] boolForKey:@"autofull_enabled"];
+    return [[NSUserDefaults standardUserDefaults] boolForKey:@"autoFull_enabled"];
 }
-BOOL noHoverCard() {
-    return [[NSUserDefaults standardUserDefaults] boolForKey:@"hover_cards_enabled"];
+BOOL hideHoverCard() {
+    return [[NSUserDefaults standardUserDefaults] boolForKey:@"hideHoverCards_enabled"];
 }
-BOOL ReExplore() {
+BOOL reExplore() {
     return [[NSUserDefaults standardUserDefaults] boolForKey:@"reExplore_enabled"];
 }
 BOOL bigYTMiniPlayer() {
@@ -109,7 +110,7 @@ BOOL ytMiniPlayer() {
 // YTNoHoverCards: https://github.com/level3tjg/YTNoHoverCards
 %hook YTCreatorEndscreenView
 - (void)setHidden:(BOOL)hidden {
-    if (noHoverCard())
+    if (hideHoverCard())
         hidden = YES;
     %orig;
 }
@@ -210,13 +211,14 @@ BOOL ytMiniPlayer() {
 - (BOOL)shouldEnablePlayerBar { return YES; }
 %end
 
-// Hide the download playlist button of uYou cuz it's broken
-%hook YTPlaylistHeaderViewController
-- (void)viewDidLoad {
-    %orig;
-    self.downloadsButton.hidden = YES;
-}
-%end
+// Hide the download playlist button of uYou cuz it's broken ?!
+// Why aren't you working?? :/
+// %hook YTPlaylistHeaderViewController
+// - (void)viewDidLoad {
+//     %orig;
+//     self.downloadsButton.hidden = YES;
+// }
+// %end
 
 // IAmYouTube - https://github.com/PoomSmart/IAmYouTube/
 %hook YTVersionUtils
@@ -341,8 +343,17 @@ UIColor* oledColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:1.0];
 %hook ASScrollView 
 - (void)didMoveToWindow {
     if (isDarkMode()) {
-        self.backgroundColor = oledColor;
         %orig;
+        self.backgroundColor = oledColor;
+    }
+}
+%end
+
+%hook ASCollectionView
+- (void)didMoveToWindow {
+    if (isDarkMode()) { 
+        %orig;
+        self.superview.backgroundColor = [UIColor clearColor];
     }
 }
 %end
@@ -448,11 +459,16 @@ UIColor* oledColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:1.0];
 }
 %end
 
-%hook _ASDisplayView // comment reply under videos
+%hook _ASDisplayView
 - (void)didMoveToWindow {
-    if (isDarkMode() && [self.accessibilityIdentifier isEqualToString:@"id.elements.components.comment_composer"]) {
-        %orig;
-        self.backgroundColor = oledColor;
+    %orig;
+    if (isDarkMode()) {
+        if ([self.accessibilityIdentifier isEqualToString:@"id.elements.components.comment_composer"] || [self.accessibilityIdentifier isEqualToString:@"id.elements.components.video_list_entry"] || [self.accessibilityIdentifier isEqualToString:@"id.elements.components.filter_chip_bar"]) {
+            self.backgroundColor = oledColor;
+        }
+        if ([self.accessibilityIdentifier isEqualToString:@"id.comment.guidelines_text"]) {
+            self.superview.backgroundColor = oledColor;
+        }
     }
 }
 %end
@@ -512,8 +528,8 @@ UIColor* oledColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:1.0];
 %hook ASWAppSwitcherCollectionViewCell
 - (void)didMoveToWindow {
     if (isDarkMode()) { 
-        self.subviews[1].backgroundColor = oledColor;
         %orig;        
+        self.subviews[1].backgroundColor = oledColor;
     }
 }
 %end
@@ -536,15 +552,15 @@ UIColor* oledColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:1.0];
 
 %hook UIKeyboardDockView
 - (void)didMoveToWindow {
-    self.backgroundColor = oledColor;
     %orig;
+    self.backgroundColor = oledColor;
 }
 %end
 
 %hook UIKeyboardLayoutStar 
 - (void)didMoveToWindow {
-    self.backgroundColor = oledColor;
     %orig;
+    self.backgroundColor = oledColor;
 }
 %end
 
@@ -607,10 +623,20 @@ static void replaceTab(YTIGuideResponse *response) {
     if([[self _viewControllerForAncestor].parentViewController.parentViewController isKindOfClass:%c(YTWatchMiniBarViewController)]) {
         return NO;
     }
-    return %orig;
+        return %orig;
 }
 %end
 %end
+
+NSBundle *uYouPlusBundle() {
+    static NSBundle *bundle = nil;
+    static dispatch_once_t onceToken;
+ 	dispatch_once(&onceToken, ^{
+        NSString *tweakBundlePath = [[NSBundle mainBundle] pathForResource:@"uYouPlus" ofType:@"bundle"];
+        bundle = [NSBundle bundleWithPath:tweakBundlePath];
+    });
+    return bundle;
+}
 
 %ctor {
     %init;
@@ -620,7 +646,7 @@ static void replaceTab(YTIGuideResponse *response) {
     if (oledKB()) {
        %init(gOLEDKB);
     }
-    if (ReExplore()) {
+    if (reExplore()) {
        %init(gReExplore);
     }
     if (bigYTMiniPlayer() && (UIDevice.currentDevice.userInterfaceIdiom != UIUserInterfaceIdiomPad)) {
