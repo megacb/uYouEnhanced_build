@@ -354,7 +354,7 @@ UIColor* oledColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:1.0];
 
 %hook ASCollectionView
 - (void)didMoveToWindow {
-    if (isDarkMode()) { 
+    if (isDarkMode() && [self.nextResponder isKindOfClass:%c(_ASDisplayView)]) { 
         %orig;
         self.superview.backgroundColor = [UIColor clearColor];
     }
@@ -447,12 +447,14 @@ UIColor* oledColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:1.0];
 - (void)didMoveToWindow {
     %orig;
     if (isDarkMode()) {
-        if ([self.accessibilityIdentifier isEqualToString:@"id.elements.components.comment_composer"] || [self.accessibilityIdentifier isEqualToString:@"id.elements.components.video_list_entry"] || [self.accessibilityIdentifier isEqualToString:@"id.elements.components.filter_chip_bar"] || [self.accessibilityIdentifier isEqualToString:@"id.ui.comment_cell"]) {
-            self.backgroundColor = oledColor;
-        }
-        if ([self.accessibilityIdentifier isEqualToString:@"id.comment.guidelines_text"]) {
-            self.superview.backgroundColor = oledColor;
-        }
+        if ([self.accessibilityIdentifier isEqualToString:@"id.elements.components.comment_composer"]) { self.backgroundColor = oledColor; } 
+        if ([self.accessibilityIdentifier isEqualToString:@"id.elements.components.video_list_entry"]) { self.backgroundColor = oledColor; } 
+        if ([self.accessibilityIdentifier isEqualToString:@"id.elements.components.filter_chip_bar"]) { self.backgroundColor = oledColor; } 
+        if ([self.accessibilityIdentifier isEqualToString:@"id.ui.comment_cell"]) { self.backgroundColor = oledColor; } 
+        if ([self.accessibilityIdentifier isEqualToString:@"eml.cvr"]) { self.backgroundColor = oledColor; } 
+        if ([self.accessibilityIdentifier isEqualToString:@"id.comment.channel_guidelines_bottom_sheet_container"]) { self.backgroundColor = oledColor; } 
+        if ([self.accessibilityIdentifier isEqualToString:@"id.comment.channel_guidelines_entry_banner_container"]) { self.backgroundColor = oledColor; } 
+        if ([self.accessibilityIdentifier isEqualToString:@"id.comment.guidelines_text"]) { self.superview.backgroundColor = oledColor; }
     }
 }
 %end
