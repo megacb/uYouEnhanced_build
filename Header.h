@@ -8,9 +8,9 @@
 @interface YTMainAppControlsOverlayView: UIView
 @end
 
-@interface YTPlaylistHeaderViewController : UIViewController
-@property (nonatomic, strong, readwrite) UIView *downloadsButton;
-@end
+// @interface YTPlaylistHeaderViewController : UIViewController
+// @property (nonatomic, strong, readwrite) UIView *downloadsButton;
+// @end
 
 // BigYTMiniPlayer
 @interface YTMainAppVideoPlayerOverlayView : UIView
@@ -45,6 +45,9 @@
 @end
 
 @interface SponsorBlockSettingsController : UITableViewController 
+@end
+
+@interface SponsorBlockViewController : UIViewController
 @end
 
 @interface _ASDisplayView : UIView
