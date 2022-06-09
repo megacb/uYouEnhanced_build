@@ -57,7 +57,7 @@ BOOL ytMiniPlayer() {
     return [[NSUserDefaults standardUserDefaults] boolForKey:@"ytMiniPlayer_enabled"];
 }
 
-// Tweaks
+# pragma mark - Tweaks
 // YTMiniPlayerEnabler: https://github.com/level3tjg/YTMiniplayerEnabler/
 %hook YTWatchMiniBarViewController
 - (void)updateMiniBarPlayerStateFromRenderer {
@@ -211,16 +211,26 @@ BOOL ytMiniPlayer() {
 - (BOOL)shouldEnablePlayerBar { return YES; }
 %end
 
-// Hide the download playlist button of uYou cuz it's broken ?!
-// Why aren't you working?? :/
-// %hook YTPlaylistHeaderViewController
-// - (void)viewDidLoad {
-//     %orig;
-//     self.downloadsButton.hidden = YES;
-// }
-// %end
+/* 
+Hide the download playlist button of uYou cuz it's broken ?!
+Why aren't you working?? :/
+%hook YTPlaylistHeaderViewController
+- (void)viewDidLoad {
+    %orig;
+    self.downloadsButton.hidden = YES;
+}
+%end
 
-// IAmYouTube - https://github.com/PoomSmart/IAmYouTube/
+Workaround for issue #54
+%hook YTMainAppVideoPlayerOverlayViewController
+- (void)updateRelatedVideos {
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"relatedVideosAtTheEndOfYTVideos"] == NO) {}
+    else { return %orig; }
+}
+%end 
+*/
+
+# pragma mark - IAmYouTube - https://github.com/PoomSmart/IAmYouTube/
 %hook YTVersionUtils
 + (NSString *)appName { return YT_NAME; }
 + (NSString *)appID { return YT_BUNDLE_ID; }
@@ -275,15 +285,8 @@ BOOL ytMiniPlayer() {
 }
 %end
 
-// Workaround for issue #54
-// %hook YTMainAppVideoPlayerOverlayViewController
-// - (void)updateRelatedVideos {
-//     if ([[NSUserDefaults standardUserDefaults] boolForKey:@"relatedVideosAtTheEndOfYTVideos"] == NO) {}
-//     else { return %orig; }
-// }
-// %end
+# pragma mark - OLED dark mode by BandarHL
 
-// OLED dark mode by BandarHL
 UIColor* oledColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:1.0];
 
 %group gOLED
@@ -358,44 +361,7 @@ UIColor* oledColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:1.0];
 }
 %end
 
-// uYou's page
-%hook DownloadedVC
-- (UIColor *)ytBackgroundColor {
-    if (isDarkMode()) {
-        return oledColor;
-    }
-        return %orig;
-}
-%end
-
-%hook DownloadsPagerVC
-- (UIColor *)ytBackgroundColor {
-    if (isDarkMode()) {
-        return oledColor;
-    }
-        return %orig;
-}
-%end
-
-%hook DownloadingVC
-- (UIColor *)ytBackgroundColor {
-    if (isDarkMode()) {
-        return oledColor;
-    }
-        return %orig;
-}
-%end
-
-%hook PlayerVC
-- (UIColor *)ytBackgroundColor {
-    if (isDarkMode()) {
-        return oledColor;
-    }
-        return %orig;
-}
-%end
-
-// SponsorBlock settings
+// iSponsorBlock
 %hook SponsorBlockSettingsController
 - (void)viewDidLoad {
     if (self.traitCollection.userInterfaceStyle == UIUserInterfaceStyleDark) {
@@ -405,7 +371,16 @@ UIColor* oledColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:1.0];
 }
 %end
 
-// YT player
+%hook SponsorBlockViewController
+- (void)viewDidLoad {
+    if (self.traitCollection.userInterfaceStyle == UIUserInterfaceStyleDark) {
+        %orig;
+        self.view.backgroundColor = oledColor;
+    } else { return %orig; }
+}
+%end
+
+// YT Miniplayer
 %hook YTWatchMiniBarView 
 - (void)setBackgroundColor:(UIColor *)color { 
     if (isDarkMode()) {
@@ -419,7 +394,7 @@ UIColor* oledColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:1.0];
 %hook YTSearchBarView 
 - (void)setBackgroundColor:(UIColor *)color { 
     if (isDarkMode()) {
-        return %orig (oledColor);
+        return %orig(oledColor);
     }
         return %orig;
 }
@@ -428,17 +403,26 @@ UIColor* oledColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:1.0];
 %hook YTSearchBoxView 
 - (void)setBackgroundColor:(UIColor *)color { 
     if (isDarkMode()) {
-        return %orig (oledColor);
+        return %orig(oledColor);
     }
         return %orig;
 }
 %end
 
 // Comment view
+%hook YTCommentView
+- (void)setBackgroundColor:(UIColor *)color { 
+    if (isDarkMode()) {
+        return %orig(oledColor);
+    }
+        return %orig;
+}
+%end
+
 %hook YTCreateCommentAccessoryView // community reply comment
 - (void)setBackgroundColor:(UIColor *)color { 
     if (isDarkMode()) {
-        return %orig (oledColor);
+        return %orig(oledColor);
     }
         return %orig;
 }
@@ -447,13 +431,13 @@ UIColor* oledColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:1.0];
 %hook YTCreateCommentTextView
 - (void)setBackgroundColor:(UIColor *)color { 
     if (isDarkMode()) {
-        return %orig (oledColor);
+        return %orig(oledColor);
     }
         return %orig;
 }
 - (void)setTextColor:(UIColor *)color { // fix black text in #Shorts video's comment
     if (isDarkMode()) { 
-        return %orig ([UIColor whiteColor]); 
+        return %orig([UIColor whiteColor]); 
     }
         return %orig;
 }
@@ -463,7 +447,7 @@ UIColor* oledColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:1.0];
 - (void)didMoveToWindow {
     %orig;
     if (isDarkMode()) {
-        if ([self.accessibilityIdentifier isEqualToString:@"id.elements.components.comment_composer"] || [self.accessibilityIdentifier isEqualToString:@"id.elements.components.video_list_entry"] || [self.accessibilityIdentifier isEqualToString:@"id.elements.components.filter_chip_bar"]) {
+        if ([self.accessibilityIdentifier isEqualToString:@"id.elements.components.comment_composer"] || [self.accessibilityIdentifier isEqualToString:@"id.elements.components.video_list_entry"] || [self.accessibilityIdentifier isEqualToString:@"id.elements.components.filter_chip_bar"] || [self.accessibilityIdentifier isEqualToString:@"id.ui.comment_cell"]) {
             self.backgroundColor = oledColor;
         }
         if ([self.accessibilityIdentifier isEqualToString:@"id.comment.guidelines_text"]) {
@@ -476,7 +460,7 @@ UIColor* oledColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:1.0];
 %hook YTFormattedStringLabel  // YT is werid...
 - (void)setBackgroundColor:(UIColor *)color {
     if (isDarkMode()) {
-        return %orig ([UIColor clearColor]);
+        return %orig([UIColor clearColor]);
     }
         return %orig;
 }
@@ -485,7 +469,7 @@ UIColor* oledColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:1.0];
 %hook YCHLiveChatActionPanelView  // live chat comment
 - (void)setBackgroundColor:(UIColor *)color {
     if (isDarkMode()) {
-        return %orig (oledColor);
+        return %orig(oledColor);
     }
         return %orig;
 }
@@ -494,17 +478,9 @@ UIColor* oledColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:1.0];
 %hook YTEmojiTextView // live chat comment
 - (void)setBackgroundColor:(UIColor *)color {
     if (isDarkMode()) {
-        return %orig (oledColor);
+        return %orig(oledColor);
     }
         return %orig;
-}
-%end
-
-// Separation lines
-%hook YTCollectionSeparatorView
-- (void)didMoveToWindow {
-    if (isDarkMode()) {}
-    else { return %orig; }
 }
 %end
 
@@ -512,7 +488,7 @@ UIColor* oledColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:1.0];
 %hook ASWAppSwitchingSheetHeaderView
 - (void)setBackgroundColor:(UIColor *)color {
     if (isDarkMode()) {
-        return %orig (oledColor);
+        return %orig(oledColor);
     }
 }
 %end
@@ -520,7 +496,7 @@ UIColor* oledColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:1.0];
 %hook ASWAppSwitchingSheetFooterView
 - (void)setBackgroundColor:(UIColor *)color {
     if (isDarkMode()) {
-        return %orig (oledColor);
+        return %orig(oledColor);
     }
 }
 %end
@@ -535,7 +511,8 @@ UIColor* oledColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:1.0];
 %end
 %end
 
-%group gOLEDKB // OLED keyboard by @ichitaso <3 - http://gist.github.com/ichitaso/935100fd53a26f18a9060f7195a1be0e
+# pragma mark - OLED keyboard by @ichitaso <3 - http://gist.github.com/ichitaso/935100fd53a26f18a9060f7195a1be0e
+%group gOLEDKB 
 %hook UIPredictionViewController
 - (void)loadView {
     %orig;
@@ -628,6 +605,7 @@ static void replaceTab(YTIGuideResponse *response) {
 %end
 %end
 
+// Tweak's bundle for Localizations support - @PoomSmart - https://github.com/PoomSmart/YouPiP/commit/aea2473f64c75d73cab713e1e2d5d0a77675024f
 NSBundle *uYouPlusBundle() {
     static NSBundle *bundle = nil;
     static dispatch_once_t onceToken;
@@ -638,6 +616,7 @@ NSBundle *uYouPlusBundle() {
     return bundle;
 }
 
+# pragma mark - ctor
 %ctor {
     %init;
     if (oled()) {
