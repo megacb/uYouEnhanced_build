@@ -30,7 +30,7 @@
 "HIDE_HUD_MESSAGES" = "Masquer les messages du ATH" ;
 "HIDE_HUD_MESSAGES_DESC" = "Exemple : Les sous-titres sont activés/désactivés, la boucle vidéo est activée,..." ;
 
-"OLED_DARKMODE" = "OLED Dark mode (Experimental)" ;
+"OLED_DARKMODE" = "OLED Dark mode (Expérimental)" ;
 "OLED_DARKMODE_DESC" = "Peut ne pas fonctionner correctement dans certains cas. Un redémarrage de l'application est nécessaire après avoir activé/désactivé cette option." ;
 
 "OLED_KEYBOARD" = "Clavier OLED (Expérimental)" ;
