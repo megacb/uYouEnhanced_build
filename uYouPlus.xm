@@ -14,6 +14,8 @@
 #import "Tweaks/YouTubeHeader/YTCommonColorPalette.h"
 #import "Tweaks/YouTubeHeader/ASCollectionView.h"
 
+#define LOC(x) [tweakBundle localizedStringForKey:x value:nil table:nil]
+
 #define YT_BUNDLE_ID @"com.google.ios.youtube"
 #define YT_NAME @"YouTube"
 
@@ -119,15 +121,16 @@ BOOL ytMiniPlayer() {
 %hook MDXPlaybackRouteButtonController
 - (void)didPressButton:(id)arg1 {
     if (castConfirm()) {
-        UIAlertController* alertController = [%c(UIAlertController) alertControllerWithTitle:@"Casting"
-                                message:@"Are you sure you want to start casting?"
+        NSBundle *tweakBundle = uYouPlusBundle();
+        		UIAlertController* alertController = [%c(UIAlertController) alertControllerWithTitle:LOC(@"CASTING")
+                                message:LOC(@"MSG_ARE_YOU_SURE")
                                 preferredStyle:UIAlertControllerStyleAlert];
-        UIAlertAction* defaultAction = [%c(UIAlertAction) actionWithTitle:@"Yes" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
+        UIAlertAction* defaultAction = [%c(UIAlertAction) actionWithTitle:LOC(@"MSG_YES") style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
             %orig;
         }];
 
         UIAlertAction* noButton = [%c(UIAlertAction)
-                                actionWithTitle:@"Cancel"
+                                actionWithTitle:LOC(@"MSG_CANCEL")
                                 style:UIAlertActionStyleDefault
                                 handler: ^(UIAlertAction * action) {
             return;
