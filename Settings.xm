@@ -1,8 +1,7 @@
 #import "Tweaks/YouTubeHeader/YTSettingsViewController.h"
 #import "Tweaks/YouTubeHeader/YTSettingsSectionItem.h"
 #import "Tweaks/YouTubeHeader/YTSettingsSectionItemManager.h"
-
-#define LOC(x) [tweakBundle localizedStringForKey:x value:nil table:nil]
+#import "Header.h"
 
 @interface YTSettingsSectionItemManager (YouPiP)
 - (void)updateuYouPlusSectionWithEntry:(id)entry;
@@ -24,8 +23,6 @@ extern BOOL castConfirm();
 extern BOOL ytMiniPlayer();
 extern BOOL hidePreviousAndNextButton();
 
-NSBundle *tweakBundle = uYouPlusBundle();
-
 // Settings
 %hook YTAppSettingsPresentationData
 + (NSArray *)settingsCategoryOrder {
@@ -39,8 +36,10 @@ NSBundle *tweakBundle = uYouPlusBundle();
 %end
 
 %hook YTSettingsSectionItemManager
-%new - (void)updateuYouPlusSectionWithEntry:(id)entry {
+%new 
+- (void)updateuYouPlusSectionWithEntry:(id)entry {
     YTSettingsViewController *delegate = [self valueForKey:@"_dataDelegate"];
+    NSBundle *tweakBundle = uYouPlusBundle();
 
     YTSettingsSectionItem *hidePreviousAndNextButton = [[%c(YTSettingsSectionItem) alloc] initWithTitle:LOC(@"HIDE_PREVIOUS_AND_NEXT_BUTTON") titleDescription:LOC(@"HIDE_PREVIOUS_AND_NEXT_BUTTON_DESC")];
     hidePreviousAndNextButton.hasSwitch = YES;

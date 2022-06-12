@@ -14,11 +14,19 @@
 #import "Tweaks/YouTubeHeader/YTCommonColorPalette.h"
 #import "Tweaks/YouTubeHeader/ASCollectionView.h"
 
-#define LOC(x) [tweakBundle localizedStringForKey:x value:nil table:nil]
+// Tweak's bundle for Localizations support - @PoomSmart - https://github.com/PoomSmart/YouPiP/commit/aea2473f64c75d73cab713e1e2d5d0a77675024f
+NSBundle *uYouPlusBundle() {
+    static NSBundle *bundle = nil;
+    static dispatch_once_t onceToken;
+ 	dispatch_once(&onceToken, ^{
+        NSString *tweakBundlePath = [[NSBundle mainBundle] pathForResource:@"uYouPlus" ofType:@"bundle"];
+        bundle = [NSBundle bundleWithPath:tweakBundlePath];
+    });
+    return bundle;
+}
+NSBundle *tweakBundle = uYouPlusBundle();
 
-#define YT_BUNDLE_ID @"com.google.ios.youtube"
-#define YT_NAME @"YouTube"
-
+// 
 BOOL hideHUD() {
     return [[NSUserDefaults standardUserDefaults] boolForKey:@"hideHUD_enabled"];
 }
@@ -70,17 +78,17 @@ BOOL ytMiniPlayer() {
 
 // Hide CC / Autoplay switch / Next & Previous button
 %hook YTMainAppControlsOverlayView
-- (void)setClosedCaptionsOrSubtitlesButtonAvailable:(BOOL)arg1 { // hide CC?!
+- (void)setClosedCaptionsOrSubtitlesButtonAvailable:(BOOL)arg1 { // hide CC button
     if (hideCC()) { return %orig(NO); }   
     else { return %orig; }
 }
-- (void)setAutoplaySwitchButtonRenderer:(id)arg1 {
+- (void)setAutoplaySwitchButtonRenderer:(id)arg1 { // hide Autoplay
     if (hideAutoplaySwitch()) {}
     else { return %orig; }
 }
 - (void)layoutSubviews {
-    if (hidePreviousAndNextButton()) {
-        %orig;
+    %orig;
+    if (hidePreviousAndNextButton()) { // hide Next & Previous button
 	    MSHookIvar<YTMainAppControlsOverlayView *>(self, "_nextButton").hidden = YES;
     	MSHookIvar<YTMainAppControlsOverlayView *>(self, "_previousButton").hidden = YES;        
     }
@@ -121,7 +129,6 @@ BOOL ytMiniPlayer() {
 %hook MDXPlaybackRouteButtonController
 - (void)didPressButton:(id)arg1 {
     if (castConfirm()) {
-        NSBundle *tweakBundle = uYouPlusBundle();
         UIAlertController* alertController = [%c(UIAlertController) alertControllerWithTitle:LOC(@"CASTING")
                                 message:LOC(@"MSG_ARE_YOU_SURE")
                                 preferredStyle:UIAlertControllerStyleAlert];
@@ -151,7 +158,6 @@ BOOL ytMiniPlayer() {
         }
         [rootViewController presentViewController:alertController animated:YES completion:nil];
 	} else { return %orig; }
-        
 }
 %end
 
@@ -614,17 +620,6 @@ static void replaceTab(YTIGuideResponse *response) {
 }
 %end
 %end
-
-// Tweak's bundle for Localizations support - @PoomSmart - https://github.com/PoomSmart/YouPiP/commit/aea2473f64c75d73cab713e1e2d5d0a77675024f
-NSBundle *uYouPlusBundle() {
-    static NSBundle *bundle = nil;
-    static dispatch_once_t onceToken;
- 	dispatch_once(&onceToken, ^{
-        NSString *tweakBundlePath = [[NSBundle mainBundle] pathForResource:@"uYouPlus" ofType:@"bundle"];
-        bundle = [NSBundle bundleWithPath:tweakBundlePath];
-    });
-    return bundle;
-}
 
 # pragma mark - ctor
 %ctor {
