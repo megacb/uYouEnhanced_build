@@ -122,7 +122,7 @@ BOOL ytMiniPlayer() {
 - (void)didPressButton:(id)arg1 {
     if (castConfirm()) {
         NSBundle *tweakBundle = uYouPlusBundle();
-        		UIAlertController* alertController = [%c(UIAlertController) alertControllerWithTitle:LOC(@"CASTING")
+        UIAlertController* alertController = [%c(UIAlertController) alertControllerWithTitle:LOC(@"CASTING")
                                 message:LOC(@"MSG_ARE_YOU_SURE")
                                 preferredStyle:UIAlertControllerStyleAlert];
         UIAlertAction* defaultAction = [%c(UIAlertAction) actionWithTitle:LOC(@"MSG_YES") style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
