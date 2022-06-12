@@ -44,3 +44,9 @@
 
 "OLED_KEYBOARD" = "OLED Keyboard (Experimental)";
 "OLED_KEYBOARD_DESC" = "Might not working correctly in some cases. App restart is required.";
+
+// YTCastConfirm
+"CASTING" = "Castings";
+"MSG_ARE_YOU_SURE" = "Are you sure you want to start casting?";
+"MSG_YES" = "Yes";
+"MSG_CANCEL" = "Cancel";

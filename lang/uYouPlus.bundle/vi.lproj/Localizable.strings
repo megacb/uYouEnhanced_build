@@ -35,3 +35,9 @@
 
 "OLED_KEYBOARD" = "Bàn phím OLED (Thử nghiệm)";
 "OLED_KEYBOARD_DESC" = "Tính năng này có thể không hoạt động tốt trong một vài trường hợp. Cần khởi động lại ứng dụng.";
+
+// YTCastConfirm
+"CASTING" = "Truyền video";
+"MSG_ARE_YOU_SURE" = "Bạn có muốn bắt đầu truyền video không?";
+"MSG_YES" = "Có";
+"MSG_CANCEL" = "Không";
