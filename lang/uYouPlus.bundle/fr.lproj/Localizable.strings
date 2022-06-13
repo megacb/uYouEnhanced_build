@@ -1,37 +1,43 @@
 // Settings
 
-"HIDE_PREVIOUS_AND_NEXT_BUTTON" = "Masquer les boutons Précédent et Suivant" ;
-"HIDE_PREVIOUS_AND_NEXT_BUTTON_DESC" = "Masquer les boutons Précédent et Suivant dans la superposition des contrôles vidéo" ;
+"HIDE_PREVIOUS_AND_NEXT_BUTTON" = "Masquer les boutons Précédent et Suivant";
+"HIDE_PREVIOUS_AND_NEXT_BUTTON_DESC" = "Masquer les boutons Précédent et Suivant dans la superposition des contrôles vidéo";
 
-"YT_MINIPLAYER" = "Activer le mini-lecteur pour toutes les vidéos YouTube" ;
-"YT_MINIPLAYER_DESC" = "Vidéos pour enfants par exemple" ;
+"YT_MINIPLAYER" = "Activer le mini-lecteur pour toutes les vidéos YouTube";
+"YT_MINIPLAYER_DESC" = "Vidéos pour enfants par exemple";
 
-"CAST_CONFIRM" = "Confirmer l'alerte avant le casting (YTCastConfirm)" ;
-"CAST_CONFIRM_DESC" = "Afficher une alerte de confirmation avant le casting pour éviter de déclancher accidentellement la télévision" ;
+"CAST_CONFIRM" = "Confirmer l'alerte avant le casting (YTCastConfirm)";
+"CAST_CONFIRM_DESC" = "Afficher une alerte de confirmation avant le casting pour éviter de déclancher accidentellement la télévision";
 
-"HIDE_HOVER_CARD" = "Masquer les cartes de survol des écrans de fin (YTNoHoverCards)" ;
-"HIDE_HOVER_CARD_DESC" = "Masquer les écrans de fin (vignettes) des créateurs à la fin des vidéos" ;
+"HIDE_HOVER_CARD" = "Masquer les cartes de survol des écrans de fin (YTNoHoverCards)";
+"HIDE_HOVER_CARD_DESC" = "Masquer les écrans de fin (vignettes) des créateurs à la fin des vidéos";
 
-"NEW_MINIPLAYER_STYLE" = "Nouveau style de barre de mini-player (BigYTMiniPlayer)" ;
-"NEW_MINIPLAYER_STYLE_DESC" = "Un redémarrage de l'application est nécessaire" ;
+"NEW_MINIPLAYER_STYLE" = "Nouveau style de barre de mini-lecteur (BigYTMiniPlayer)";
+"NEW_MINIPLAYER_STYLE_DESC" = "Un redémarrage de l'application est nécessaire";
 
-"YT_RE_EXPLORE" = "Remplacer l'onglet Shorts par l'onglet Explorer (YTReExplore)" ;
-"YT_RE_EXPLORE_DESC" = "Un redémarrage de l'application est nécessaire" ;
+"YT_RE_EXPLORE" = "Remplacer l'onglet Shorts par l'onglet Explorer (YTReExplore)";
+"YT_RE_EXPLORE_DESC" = "Un redémarrage de l'application est nécessaire";
 
-"HIDE_SUBTITLES_BUTTON" = "Bouton de masquage des sous-titres" ;
-"HIDE_SUBTITLES_BUTTON_DESC" = "Masquer le bouton des sous-titres dans la superposition des contrôles vidéo" ;
+"HIDE_SUBTITLES_BUTTON" = "Bouton de masquage des sous-titres";
+"HIDE_SUBTITLES_BUTTON_DESC" = "Masquer le bouton des sous-titres dans la superposition des contrôles vidéo";
 
-"HIDE_AUTOPLAY_SWITCH" = "Masquer l'interrupteur de lecture automatique" ;
-"HIDE_AUTOPLAY_SWITCH_DESC" = "Masquer le bouton de lecture automatique dans la superposition des contrôles vidéo" ;
+"HIDE_AUTOPLAY_SWITCH" = "Masquer l'interrupteur de lecture automatique";
+"HIDE_AUTOPLAY_SWITCH_DESC" = "Masquer le bouton de lecture automatique dans la superposition des contrôles vidéo";
 
-"AUTO_FULLSCREEN" = "Plein écran automatique (YTAutoFullScreen)" ;
-"AUTO_FULLSCREEN_DESC" = "Lecture automatique des vidéos en plein écran" ;
+"AUTO_FULLSCREEN" = "Plein écran automatique (YTAutoFullScreen)";
+"AUTO_FULLSCREEN_DESC" = "Lecture automatique des vidéos en plein écran";
 
-"HIDE_HUD_MESSAGES" = "Masquer les messages du ATH" ;
-"HIDE_HUD_MESSAGES_DESC" = "Exemple : Les sous-titres sont activés/désactivés, la boucle vidéo est activée,..." ;
+"HIDE_HUD_MESSAGES" = "Masquer les messages de l'ATH";
+"HIDE_HUD_MESSAGES_DESC" = "Exemple : Les sous-titres sont activés/désactivés, la boucle vidéo est activée,...";
 
-"OLED_DARKMODE" = "OLED Dark mode (Expérimental)" ;
-"OLED_DARKMODE_DESC" = "Peut ne pas fonctionner correctement dans certains cas. Un redémarrage de l'application est nécessaire après avoir activé/désactivé cette option." ;
+"OLED_DARKMODE" = "Mode sombre OLED (Expérimental)";
+"OLED_DARKMODE_DESC" = "Peut ne pas fonctionner correctement dans certains cas. Un redémarrage de l'application est nécessaire après avoir activé/désactivé cette option.";
 
-"OLED_KEYBOARD" = "Clavier OLED (Expérimental)" ;
-"OLED_KEYBOARD_DESC" = "Peut ne pas fonctionner correctement dans certains cas. Un redémarrage de l'application est nécessaire." ;
+"OLED_KEYBOARD" = "Clavier OLED (Expérimental)";
+"OLED_KEYBOARD_DESC" = "Peut ne pas fonctionner correctement dans certains cas. Un redémarrage de l'application est nécessaire.";
+
+// YTCastConfirm
+"CASTING" = "Castings";
+"MSG_ARE_YOU_SURE" = "Êtes-vous sûr de vouloir commencer le casting ?";
+"MSG_YES" = "Oui";
+"MSG_CANCEL" = "Annuler";
