@@ -1,0 +1,43 @@
+// Settings
+
+"HIDE_PREVIOUS_AND_NEXT_BUTTON" = "Κρύψτε το προηγούμενο και το επόμενο κουμπί";
+"HIDE_PREVIOUS_AND_NEXT_BUTTON_DESC" = "Κρύψτε το προηγούμενο και το επόμενο κουμπί κατά την αναπαραγωγή βίντεο.";
+
+"YT_MINIPLAYER" = "Ενεργοποιήστε το miniplayer για όλα τα βίντεο του YouTube";
+"YT_MINIPLAYER_DESC" = "Τα παιδικά βίντεο για παράδειγμα.";
+
+"CAST_CONFIRM" = "Επιβεβαιωτικό μήνυμα πριν γίνει Cast(YTCastConfirm)";
+"CAST_CONFIRM_DESC" = "Να φανεί ένα επιβεβαιωτικό μήνυμα πριν γίνει cast για να αποτρεπτεί η καταλάθως σύνδεση στην τηλεόραση.";
+
+"HIDE_HOVER_CARD" = "Κρύψτε τις τελικές καρτέλες (YTNoHoverCards)";
+"HIDE_HOVER_CARD_DESC" = "Κρύψτε τις τελικές καρτέλες από τους δημιουργούς (thumbnails) στο τέλος των βίντεο.";
+
+"NEW_MINIPLAYER_STYLE" = "Καινούργιο miniplayer θέμα στην μπάρα (BigYTMiniPlayer)";
+"NEW_MINIPLAYER_STYLE_DESC" = "Απαιτείται επανεκκίνηση της εφαρμογής.";
+
+"YT_RE_EXPLORE" = "Αντικατάσταση της καρτέλας Shorts με την καρτέλα Explore (YTReExplore)";
+"YT_RE_EXPLORE_DESC" = "Απαιτείται επανεκκίνηση της εφαρμογής.";
+
+"HIDE_SUBTITLES_BUTTON" = "Κρύψτε το κουμπί των Υπότιτλων";
+"HIDE_SUBTITLES_BUTTON_DESC" = "Κρύψτε το κουμπί των Υπότιτλων κατά την αναπαραγωγή βίντεο.";
+
+"HIDE_AUTOPLAY_SWITCH" = "Κρύψτε τον διακόπτη της αυτόματης αναπαραγωγής";
+"HIDE_AUTOPLAY_SWITCH_DESC" = "Κρύψτε τον διακόπτη της αυτόματης αναπαραγωγής κατά την αναπαραγωγή βίντεο";
+
+"AUTO_FULLSCREEN" = "Αυτόματη αναπαραγωγή σε πλήρη οθόνη (YTAutoFullScreen)";
+"AUTO_FULLSCREEN_DESC" = "Αυτόματη αναπαραγωγή των βίντεο σε πλήρη οθόνη.";
+
+"HIDE_HUD_MESSAGES" = "Κρύψτε τα μηνύματα του HUD";
+"HIDE_HUD_MESSAGES_DESC" = "Παράδειγμα: Οι Υπότιτλοι απενεργοποιήθηκαν/ενεργοποιήθηκαν...";
+
+"OLED_DARKMODE" = "OLED Μαύρο θέμα (Experimental)";
+"OLED_DARKMODE_DESC" = "Μπορεί να μην δουλέψει σε κάποιες περιπτώσεις. Απαιτείται επανεκκίνηση της εφαρμογής αφού το ενεργοποιήσετε/απενεργοποιήσετε.";
+
+"OLED_KEYBOARD" = "OLED πληκτρολόγιο (Experimental)";
+"OLED_KEYBOARD_DESC" = "Μπορεί να μην δουλέψει σε κάποιες περιπτώσεις. Απαιτείται επανεκκίνηση της εφαρμογής.";
+
+// YTCastConfirm
+"CASTING" = "Μετάδοση";
+"MSG_ARE_YOU_SURE" = "Είστε σίγουροι ότι θέλενε να ξεκινήσετε την μετάδοση;";
+"MSG_YES" = "Ναι";
+"MSG_CANCEL" = "Ακύρωση";
