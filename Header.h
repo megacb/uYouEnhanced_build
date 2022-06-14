@@ -12,6 +12,9 @@
 @interface YTMainAppControlsOverlayView: UIView
 @end
 
+@interface YTTransportControlsButtonView : UIView
+@end
+
 // @interface YTPlaylistHeaderViewController : UIViewController
 // @property (nonatomic, strong, readwrite) UIView *downloadsButton;
 // @end
