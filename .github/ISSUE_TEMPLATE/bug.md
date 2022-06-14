@@ -9,6 +9,8 @@ assignees: ''
 
 ## ⚠️ Have you read the [FAQ](https://github.com/qnblackcat/uYouPlus/wiki/FAQ)? Make sure you visit the FAQ page first!!! ⚠️
 
+_Make sure you complete the template. Otherwise, it will be closed without further explanation!_
+
 ### Device info
 - iOS/iPadOS version: 
 - Device model:
@@ -27,3 +29,4 @@ _(The crash log can be found in the  Settings app - Privacy - Analytics & Improv
 
 
 ### Additional context:
+ 
