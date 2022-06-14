@@ -1,0 +1,43 @@
+// Settings
+
+"HIDE_PREVIOUS_AND_NEXT_BUTTON" = "הסתר את הקודם והבא";
+"HIDE_PREVIOUS_AND_NEXT_BUTTON_DESC" = "הסתר את כפתורי הקודם והבא בתצוגת השליטה בסרטון.";
+
+"YT_MINIPLAYER" = "אפשר את הנגן הקטן עבור כל הסרטונים ב-YouTube";
+"YT_MINIPLAYER_DESC" = "סרטוני ילדים לדוגמה.";
+
+"CAST_CONFIRM" = "התראת אישור לפני שידור לטלוויזיה (YTCastConfirm)";
+"CAST_CONFIRM_DESC" = "הצג התראת אישור לפני שידור לטלוויזיה כדי למנוע לחיצה בטעות.";
+
+"HIDE_HOVER_CARD" = "הסתר כרטיסיות סיום סרטון (YTNoHoverCards)";
+"HIDE_HOVER_CARD_DESC" = "הסתר את מסכי הסיום של סרטונים המציגים את הערוץ וסרטונים נוספים.";
+
+"NEW_MINIPLAYER_STYLE" = "עיצוב נגן קטן חדש (BigYTMiniPlayer)";
+"NEW_MINIPLAYER_STYLE_DESC" = "נדרש לפתוח מחדש את היישום.";
+
+"YT_RE_EXPLORE" = "החלף את לשונית ה-Shorts בלשונית Explore (YTReExplore)";
+"YT_RE_EXPLORE_DESC" = "נדרש לפתוח מחדש את היישום.";
+
+"HIDE_SUBTITLES_BUTTON" = "הסתר את כפתור הכתוביות";
+"HIDE_SUBTITLES_BUTTON_DESC" = "הסתר את כפתור הכתוביות בתצוגת השליטה בסרטון.";
+
+"HIDE_AUTOPLAY_SWITCH" = "הסתר את כפתור ההפעלה האוטומטית";
+"HIDE_AUTOPLAY_SWITCH_DESC" = "הסתר את כפתור ההפעלה האוטומטית בתצוגת השליטה בסרטון.";
+
+"AUTO_FULLSCREEN" = "מסך מלא אוטומטי (YTAutoFullScreen)";
+"AUTO_FULLSCREEN_DESC" = "נגן סרטונים במסך מלא אוטומטית.";
+
+"HIDE_HUD_MESSAGES" = "הסתר הודעות קופצות";
+"HIDE_HUD_MESSAGES_DESC" = "לדוגמה: כתוביות מופעלות/מושבתות, הופעל סרטון בלופ,...";
+
+"OLED_DARKMODE" = "תצוגה כהה OLED (נסיוני)";
+"OLED_DARKMODE_DESC" = "עלול לא לעבוד נכון בחלק מהמקרים, נדרש לפתוח מחדש את היישום.";
+
+"OLED_KEYBOARD" = "מקלדת כהה OLED (נסיוני)";
+"OLED_DARKMODE_DESC" = "עלול לא לעבוד נכון בחלק מהמקרים, נדרש לפתוח מחדש את היישום.";
+
+// YTCastConfirm
+"CASTING" = "משדר";
+"MSG_ARE_YOU_SURE" = "האם להתחיל לשדר?";
+"MSG_YES" = "כן";
+"MSG_CANCEL" = "ביטול";
