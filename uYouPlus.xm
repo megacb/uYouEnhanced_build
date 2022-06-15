@@ -622,6 +622,25 @@ static void replaceTab(YTIGuideResponse *response) {
 %end
 %end
 
+// iOS 16 uYou crash fix
+%group iOS16
+%hook OBPrivacyLinkButton
+%new
+- (instancetype)initWithCaption:(NSString *)caption
+                     buttonText:(NSString *)buttonText
+                          image:(UIImage *)image
+                      imageSize:(CGSize)imageSize
+                   useLargeIcon:(BOOL)useLargeIcon {
+  return [self initWithCaption:caption
+                    buttonText:buttonText
+                         image:image
+                     imageSize:imageSize
+                  useLargeIcon:useLargeIcon
+               displayLanguage:[NSLocale currentLocale].languageCode];
+}
+%end
+%end
+
 # pragma mark - ctor
 %ctor {
     %init;
@@ -639,5 +658,8 @@ static void replaceTab(YTIGuideResponse *response) {
     }
     if (bigYTMiniPlayer() && (UIDevice.currentDevice.userInterfaceIdiom != UIUserInterfaceIdiomPad)) {
        %init(Main);
+    }
+    if (@available(iOS 16, *)) {
+       %init(iOS16);
     }
 }
