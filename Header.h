@@ -9,7 +9,7 @@
 @end
 
 // uYouPlus
-@interface YTMainAppControlsOverlayView: UIView
+@interface YTMainAppControlsOverlayView : UIView
 @end
 
 @interface YTTransportControlsButtonView : UIView
@@ -18,6 +18,15 @@
 // @interface YTPlaylistHeaderViewController : UIViewController
 // @property (nonatomic, strong, readwrite) UIView *downloadsButton;
 // @end
+
+@interface OBPrivacyLinkButton : UIButton
+- (instancetype)initWithCaption:(NSString *)caption
+                     buttonText:(NSString *)buttonText
+                          image:(UIImage *)image
+                      imageSize:(CGSize)imageSize
+                   useLargeIcon:(BOOL)useLargeIcon
+                displayLanguage:(NSString *)displayLanguage;
+@end
 
 // BigYTMiniPlayer
 @interface YTMainAppVideoPlayerOverlayView : UIView
@@ -33,7 +42,7 @@
 @end
 
 // OLED Darkmode
-@interface ASWAppSwitcherCollectionViewCell: UIView
+@interface ASWAppSwitcherCollectionViewCell : UIView
 @end
 
 @interface ASScrollView : UIView
@@ -48,7 +57,7 @@
 @interface _ASDisplayView : UIView
 @end
 
-@interface SponsorBlockSettingsController : UITableViewController 
+@interface SponsorBlockSettingsController : UITableViewController
 @end
 
 @interface SponsorBlockViewController : UIViewController
