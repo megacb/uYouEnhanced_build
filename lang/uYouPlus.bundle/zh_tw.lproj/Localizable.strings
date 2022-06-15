@@ -1,52 +1,43 @@
-// How to translate uYouPlus to your languate:
-//
-// 1. Fork uYouPlus repo
-// 2. Rename the temple.lproj folder to your <lang_code>.lproj id. For example: ru.lproj for Russia
-// 3. Translate each line below after each =
-// 4. Open a Pull Request
-//
-// If your language already exists then feel free to check it and/or improve it!
-//
 // Settings
 
-"HIDE_PREVIOUS_AND_NEXT_BUTTON" = "Hide Previous and Next button";
-"HIDE_PREVIOUS_AND_NEXT_BUTTON_DESC" = "Hide Previous and Next button in video controls overlay.";
+"HIDE_PREVIOUS_AND_NEXT_BUTTON" = "隱藏上一個和下一個按鈕";
+"HIDE_PREVIOUS_AND_NEXT_BUTTON_DESC" = "在影片控制層中隱藏上一個和下一個按鈕";
 
-"YT_MINIPLAYER" = "Enable the Miniplayer for all YouTube videos";
-"YT_MINIPLAYER_DESC" = "Kid videos for example.";
+"YT_MINIPLAYER" = "為所有YouTube影片啟用迷你播放器";
+"YT_MINIPLAYER_DESC" = "例如兒童影片";
 
-"CAST_CONFIRM" = "Confirm alert before casting (YTCastConfirm)";
-"CAST_CONFIRM_DESC" = "Show a confirm alert before casting to prevent accidentally hijacking TV.";
+"CAST_CONFIRM" = "投放前確認 (YTCastConfirm)";
+"CAST_CONFIRM_DESC" = "在投放前顯示確認訊息，以防止意外攔劫電視。";
 
-"HIDE_HOVER_CARD" = "Hide End screens hover cards (YTNoHoverCards)";
-"HIDE_HOVER_CARD_DESC" = "Hide creator End screens (thumbnails) at the end of videos.";
+"HIDE_HOVER_CARD" = "隱藏片尾畫面懸浮卡片 (YTNoHoverCards)";
+"HIDE_HOVER_CARD_DESC" = "在影片結尾隱藏創作者結束畫面（縮略圖)。";
 
-"NEW_MINIPLAYER_STYLE" = "New miniplayer bar style (BigYTMiniPlayer)";
-"NEW_MINIPLAYER_STYLE_DESC" = "App restart is required.";
+"NEW_MINIPLAYER_STYLE" = "新的迷你播放器控制列風格 (BigYTMiniPlayer)";
+"NEW_MINIPLAYER_STYLE_DESC" = "需要重新啟動應用程式。";
 
-"YT_RE_EXPLORE" = "Replace Shorts tab with Explore tab (YTReExplore)";
-"YT_RE_EXPLORE_DESC" = "App restart is required.";
+"YT_RE_EXPLORE" = "用探索選項卡替換Shorts選項卡 (YTReExplore)";
+"YT_RE_EXPLORE_DESC" = "需要重新啟動應用程式。";
 
-"HIDE_SUBTITLES_BUTTON" = "Hide Subtitles button";
-"HIDE_SUBTITLES_BUTTON_DESC" = "Hide the Subtitles button in video controls overlay.";
+"HIDE_SUBTITLES_BUTTON" = "隱藏字幕按鈕";
+"HIDE_SUBTITLES_BUTTON_DESC" = "隱藏影片控制層中的字幕按鈕。";
 
-"HIDE_AUTOPLAY_SWITCH" = "Hide Autoplay switch";
-"HIDE_AUTOPLAY_SWITCH_DESC" = "Hide the Autoplay switch in video controls overlay.";
+"HIDE_AUTOPLAY_SWITCH" = "隱藏自動播放開關";
+"HIDE_AUTOPLAY_SWITCH_DESC" = "在影片控制層中隱藏自動播放開關。";
 
-"AUTO_FULLSCREEN" = "Auto Full Screen (YTAutoFullScreen)";
-"AUTO_FULLSCREEN_DESC" = "Autoplay videos at full screen.";
+"AUTO_FULLSCREEN" = "自動全螢幕 (YTAutoFullScreen)";
+"AUTO_FULLSCREEN_DESC" = "自動全螢幕播放影片。";
 
-"HIDE_HUD_MESSAGES" = "Hide HUD Messages";
-"HIDE_HUD_MESSAGES_DESC" = "Example: CC is turned on/off, Video loop is on,...";
+"HIDE_HUD_MESSAGES" = "隱藏 HUD 訊息";
+"HIDE_HUD_MESSAGES_DESC" = "舉例來說：CC字幕 開啟/關閉，影片循環開啟，...";
 
-"OLED_DARKMODE" = "OLED Dark mode (Experimental)";
-"OLED_DARKMODE_DESC" = "Might not working correctly in some cases. App restart is required after you enable/disable this option.";
+"OLED_DARKMODE" = "OLED 深色模式（實驗性）";
+"OLED_DARKMODE_DESC" = "在某些情況下可能無法正常工作。啟用/禁用此選項後，需要重新啟動應用程式。";
 
-"OLED_KEYBOARD" = "OLED Keyboard (Experimental)";
-"OLED_KEYBOARD_DESC" = "Might not working correctly in some cases. App restart is required.";
+"OLED_KEYBOARD" = "OLED 鍵盤（實驗性）";
+"OLED_KEYBOARD_DESC" = "在某些情況下可能無法正常工作。需要重新啟動應用程式。";
 
 // YTCastConfirm
-"CASTING" = "Castings";
-"MSG_ARE_YOU_SURE" = "Are you sure you want to start casting?";
-"MSG_YES" = "Yes";
-"MSG_CANCEL" = "Cancel";
+"CASTING" = "投放中";
+"MSG_ARE_YOU_SURE" = "確定要開始投放嗎？";
+"MSG_YES" = "是";
+"MSG_CANCEL" = "取消";
