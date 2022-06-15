@@ -222,15 +222,14 @@ BOOL ytMiniPlayer() {
 - (BOOL)shouldEnablePlayerBar { return YES; }
 %end
 
-/* 
 // Hide the download playlist button of uYou cuz it's broken ?!
 // Why aren't you working?? :/
-%hook YTPlaylistHeaderViewController
-- (void)viewDidLoad {
-    %orig;
-    self.downloadsButton.hidden = YES;
-}
-%end
+// %hook YTPlaylistHeaderViewController
+// - (void)viewDidLoad {
+//     %orig;
+//     self.downloadsButton.hidden = YES;
+// }
+// %end
 
 // Workaround for issue #54
 %hook YTMainAppVideoPlayerOverlayViewController
@@ -239,7 +238,6 @@ BOOL ytMiniPlayer() {
     else { return %orig; }
 }
 %end 
-*/
 
 # pragma mark - IAmYouTube - https://github.com/PoomSmart/IAmYouTube/
 %hook YTVersionUtils
@@ -627,6 +625,9 @@ static void replaceTab(YTIGuideResponse *response) {
 # pragma mark - ctor
 %ctor {
     %init;
+    if (![[[[NSUserDefaults standardUserDefaults] dictionaryRepresentation] allKeys] containsObject:@"relatedVideosAtTheEndOfYTVideos"]) { 
+       [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"relatedVideosAtTheEndOfYTVideos"]; 
+    }
     if (oled()) {
        %init(gOLED);
     }
