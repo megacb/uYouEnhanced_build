@@ -78,32 +78,32 @@
 
   - My official AtlStore repo: https://qnblackcat.github.io/AltStore/
 
-  - [Open in AltStore (v17.23.6-2.1)](https://tinyurl.com/5upjtvbv) - It will take a while to install because AltStore needs to download the IPA.
+  - [Open in AltStore (v17.24.4-2.1)](https://tinyurl.com/277rhd8n) - It will take a while to install because AltStore needs to download the IPA.
 
-- Version info: _(last update: June 14)_
+- Version info: _(last update: June 22)_
 
 <details>
   <summary>Expand</summary>
 
 | **Tweaks/App** | **Version** | **Open source** |
 | :------------: | :----------:| :-------------: |
-| **YouTube** | 17.23.6 | ✖︎  |
+| **YouTube** | 17.24.4 | ✖︎  |
 | [uYou](https://github.com/MiRO92/uYou-for-YouTube) | 2.1 | ✖︎ |
-| [Open in YouTube](https://github.com/CokePokes/YoutubeExtensions/) | 1.2 | ✖︎ |
+| [Open in YouTube](https://github.com/CokePokes/YoutubeExtensions) | 1.2 | ✖︎ |
 | **Return YouTube Dislike** | 1.6.5 | [✔︎](https://github.com/PoomSmart/Return-YouTube-Dislikes) |
 | **iSponsorBlock** | 1.0-14 | [✔︎](https://github.com/Galactic-Dev/iSponsorBlock) |
 | **Alderis Color Picker** | 1.2| [✔︎](https://github.com/hbang/Alderis) |
-| **NoYTPremium** | 1.0.4 | [✔︎](https://github.com/PoomSmart/NoYTPremium/) |
+| **NoYTPremium** | 1.0.4 | [✔︎](https://github.com/PoomSmart/NoYTPremium) |
 | **YouRememberCaption** | 1.0.0 | [✔︎](https://poomsmart.github.io/repo/depictions/youremembercaption.html) |
 | **YTClassicVideoQuality** | 1.0.1 | [✔︎](https://github.com/PoomSmart/YTClassicVideoQuality) |
 | **YTNoCheckLocalNetwork** | 1.0.2 | [✔︎](https://poomsmart.github.io/repo/depictions/ytnochecklocalnetwork.html) |
 | **YTNoHoverCards** | 0.0.3 | [✔︎](https://github.com/level3tjg/YTNoHoverCards) |
 | **YTSystemAppearance** | 1.0.0 | [✔︎](https://poomsmart.github.io/repo/depictions/ytsystemappearance.html) |
 | **YTUHD** | 1.2.7 | [✔︎](https://github.com/PoomSmart/YTUHD) |
-| **YouPiP** | 1.7.3 | [✔︎](https://github.com/PoomSmart/YouPiP) |
+| **YouPiP** | 1.7.4 | [✔︎](https://github.com/PoomSmart/YouPiP) |
 | **IAmYouTube** | 1.2.0 | [✔︎](https://github.com/PoomSmart/IAmYouTube) |
 | **YTSpeed** | 1.0.1 | [✔︎](https://github.com/Lyvendia/YTSpeed) |
-| **YTAutoFullScreen** | 1.0.3 | [✔︎](https://github.com/PoomSmart/YTAutoFullScreen/) |
+| **YTAutoFullScreen** | 1.0.3 | [✔︎](https://github.com/PoomSmart/YTAutoFullScreen) |
 | **YTReExplore** | 1.0.2 | [✔︎](https://github.com/PoomSmart/YTReExplore) |
 | **BigYTMiniPlayer** | 1.0-1 | [✔︎](https://github.com/Galactic-Dev/BigYTMiniPlayer) |
 | **YTCastConfirm** | 1.0.0 | [✔︎](https://github.com/JamieBerghmans/YTCastConfirm) |
