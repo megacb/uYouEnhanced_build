@@ -15,10 +15,19 @@
 @interface YTTransportControlsButtonView : UIView
 @end
 
+@interface _ASCollectionViewCell : UICollectionViewCell
+- (id)node;
+@end
+
+@interface YTAsyncCollectionView : UICollectionView
+- (void)removeShortsAndFeaturesAdsAtIndexPath:(NSIndexPath *)indexPath;
+@end
+
 // @interface YTPlaylistHeaderViewController : UIViewController
 // @property (nonatomic, strong, readwrite) UIView *downloadsButton;
 // @end
 
+// iOS16 fix
 @interface OBPrivacyLinkButton : UIButton
 - (instancetype)initWithCaption:(NSString *)caption
                      buttonText:(NSString *)buttonText
