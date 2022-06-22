@@ -92,8 +92,8 @@ BOOL ytMiniPlayer() {
 	    MSHookIvar<YTMainAppControlsOverlayView *>(self, "_nextButton").hidden = YES;
     	MSHookIvar<YTMainAppControlsOverlayView *>(self, "_previousButton").hidden = YES;
         // YouTube love beta testing :/
-    	MSHookIvar<YTTransportControlsButtonView *>(self, "_nextButtonView").hidden = YES;
-    	MSHookIvar<YTTransportControlsButtonView *>(self, "_previousButtonView").hidden = YES;
+    	// MSHookIvar<YTTransportControlsButtonView *>(self, "_nextButtonView").hidden = YES;
+    	// MSHookIvar<YTTransportControlsButtonView *>(self, "_previousButtonView").hidden = YES;
     }
 }
 %end
@@ -239,6 +239,25 @@ BOOL ytMiniPlayer() {
 }
 %end 
 
+// Hide YouTube Shorts banner in Home page? - MiRO92 - YTNoShorts: https://github.com/MiRO92/YTNoShorts
+%hook YTAsyncCollectionView
+- (id)cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    UICollectionViewCell *cell = %orig;
+    if ([cell isKindOfClass:NSClassFromString(@"_ASCollectionViewCell")]) {
+        _ASCollectionViewCell *cell = %orig;
+        if ([cell respondsToSelector:@selector(node)]) {
+            if ([[[cell node] accessibilityIdentifier] isEqualToString:@"statement_banner.view"]) { [self removeShortsAndFeaturesAdsAtIndexPath:indexPath]; }
+            if ([[[cell node] accessibilityIdentifier] isEqualToString:@"compact.view"]) { [self removeShortsAndFeaturesAdsAtIndexPath:indexPath]; }
+        }
+    }
+    return %orig;
+}
+%new
+- (void)removeShortsAndFeaturesAdsAtIndexPath:(NSIndexPath *)indexPath {
+        [self deleteItemsAtIndexPaths:[NSArray arrayWithObject:indexPath]];
+}
+%end
+
 # pragma mark - IAmYouTube - https://github.com/PoomSmart/IAmYouTube/
 %hook YTVersionUtils
 + (NSString *)appName { return YT_NAME; }
@@ -356,7 +375,7 @@ UIColor* oledColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:1.0];
 - (void)didMoveToWindow {
     if (isDarkMode()) {
         %orig;
-        self.backgroundColor = oledColor;
+        self.backgroundColor = [UIColor clearColor];
     }
 }
 %end
@@ -487,15 +506,17 @@ UIColor* oledColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:1.0];
 - (void)didMoveToWindow {
     %orig;
     if (isDarkMode()) {
+        if ([self.nextResponder isKindOfClass:%c(ASScrollView)]) { self.backgroundColor = [UIColor clearColor]; }        
+        if ([self.accessibilityIdentifier isEqualToString:@"eml.cvr"]) { self.backgroundColor = oledColor; }
+        if ([self.accessibilityIdentifier isEqualToString:@"rich_header"]) { self.backgroundColor = oledColor; }
+        if ([self.accessibilityIdentifier isEqualToString:@"id.ui.comment_cell"]) { self.backgroundColor = oledColor; } 
+        if ([self.accessibilityIdentifier isEqualToString:@"id.ui.cancel.button"]) { self.superview.backgroundColor = oledColor; } 
         if ([self.accessibilityIdentifier isEqualToString:@"id.elements.components.comment_composer"]) { self.backgroundColor = oledColor; } 
         if ([self.accessibilityIdentifier isEqualToString:@"id.elements.components.video_list_entry"]) { self.backgroundColor = oledColor; } 
         if ([self.accessibilityIdentifier isEqualToString:@"id.elements.components.filter_chip_bar"]) { self.backgroundColor = oledColor; } 
-        if ([self.accessibilityIdentifier isEqualToString:@"id.ui.comment_cell"]) { self.backgroundColor = oledColor; } 
-        if ([self.accessibilityIdentifier isEqualToString:@"eml.cvr"]) { self.backgroundColor = oledColor; } 
-        if ([self.accessibilityIdentifier isEqualToString:@"rich_header"]) { self.backgroundColor = oledColor; } 
-        if ([self.accessibilityIdentifier isEqualToString:@"id.comment.channel_guidelines_bottom_sheet_container"]) { self.backgroundColor = oledColor; } 
-        if ([self.accessibilityIdentifier isEqualToString:@"id.comment.channel_guidelines_entry_banner_container"]) { self.backgroundColor = oledColor; } 
         if ([self.accessibilityIdentifier isEqualToString:@"id.comment.guidelines_text"]) { self.superview.backgroundColor = oledColor; }
+        if ([self.accessibilityIdentifier isEqualToString:@"id.comment.channel_guidelines_bottom_sheet_container"]) { self.backgroundColor = oledColor; } 
+        if ([self.accessibilityIdentifier isEqualToString:@"id.comment.channel_guidelines_entry_banner_container"]) { self.superview.backgroundColor = oledColor; } 
     }
 }
 %end
@@ -622,7 +643,7 @@ static void replaceTab(YTIGuideResponse *response) {
 %end
 %end
 
-// iOS 16 uYou crash fix
+// iOS 16 uYou crash fix - @level3tjg: https://github.com/qnblackcat/uYouPlus/pull/224
 %group iOS16
 %hook OBPrivacyLinkButton
 %new
