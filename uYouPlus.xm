@@ -177,6 +177,14 @@ BOOL ytMiniPlayer() {
 }
 %end
 
+// Workaround for https://github.com/MiRO92/uYou-for-YouTube/issues/140
+%hook YTLocalPlaybackController
+%new
+- (id)activeVideoController {
+  return [self activeVideo];
+}
+%end
+
 // YTClassicVideoQuality: https://github.com/PoomSmart/YTClassicVideoQuality
 %hook YTVideoQualitySwitchControllerFactory
 - (id)videoQualitySwitchControllerWithParentResponder:(id)responder {
