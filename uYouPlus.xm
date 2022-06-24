@@ -169,6 +169,22 @@ BOOL ytMiniPlayer() {
 - (void)decorateContext:(id)arg1 { %orig(nil); }
 %end
 
+// Workaround for https://github.com/MiRO92/uYou-for-YouTube/issues/94
+%hook YTELMView
+%new
+- (id)entry {
+  return nil;
+}
+%end
+
+// Workaround for https://github.com/MiRO92/uYou-for-YouTube/issues/140
+%hook YTLocalPlaybackController
+%new
+- (id)activeVideoController {
+  return [self activeVideo];
+}
+%end
+
 // YTClassicVideoQuality: https://github.com/PoomSmart/YTClassicVideoQuality
 %hook YTVideoQualitySwitchControllerFactory
 - (id)videoQualitySwitchControllerWithParentResponder:(id)responder {

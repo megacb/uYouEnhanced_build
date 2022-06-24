@@ -37,6 +37,11 @@
                 displayLanguage:(NSString *)displayLanguage;
 @end
 
+// uYouLocal fix
+@interface YTLocalPlaybackController : NSObject
+- (id)activeVideo;
+@end
+
 // BigYTMiniPlayer
 @interface YTMainAppVideoPlayerOverlayView : UIView
 - (UIViewController *)_viewControllerForAncestor;
