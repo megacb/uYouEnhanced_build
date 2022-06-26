@@ -80,7 +80,7 @@ jobs:
         env:
           THEOS: ${{ github.workspace }}/theos
 
-      - name: Download Dylibs
+      - name: Download uYou & prepare YouTube iPA
         run: |
           curl "https://raw.githubusercontent.com/Muirey03/RemoteLog/master/RemoteLog.h" --output "$THEOS/include/RemoteLog.h"
           curl "https://miro92.com/repo/debs/com.miro.uyou_${{ env.UYOU_VERSION }}_iphoneos-arm.deb" --output "./main/Tweaks/uYou/com.miro.uyou_${{ env.UYOU_VERSION }}_iphoneos-arm.deb"
@@ -99,7 +99,7 @@ jobs:
         id: build_package
         run: |
           cd ${{ github.workspace }}/main
-          (cd ${{ github.workspace }}/main/Tweaks/YouPiP && sed -i '' "14s#.*#YouPiP_FRAMEWORKS = AVKit AVFoundation UIKit#g" ./Makefile)
+          (cd ${{ github.workspace }}/main/Tweaks/YouPiP && sed -i '' "14s/$/ AVFoundation UIKit/" Makefile)
           make package FINALPACKAGE=1
           (mv "packages/$(ls -t packages | head -n1)" "packages/uYouPlus_${{ env.YOUTUBE_VERSION  }}_${{ env.UYOU_VERSION }}.ipa")
           echo "::set-output name=package::$(ls -t packages | head -n1)"
