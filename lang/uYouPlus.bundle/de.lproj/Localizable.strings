@@ -32,7 +32,7 @@
  "HIDE_SUBTITLES_BUTTON_DESC" = "Schaltfläche Untertitel im Video ausblenden.";
 
  "HIDE_AUTOPLAY_SWITCH" = "Schaltfläche Autoplay ausblenden";
- "HIDE_AUTOPLAY_SWITCH_DESC" = Schaltfläche Autoplay im Video ausblenden.";
+ "HIDE_AUTOPLAY_SWITCH_DESC" = "Schaltfläche Autoplay im Video ausblenden.";
 
  "AUTO_FULLSCREEN" = "Auto-Vollbild (YTAutoFullScreen)";
  "AUTO_FULLSCREEN_DESC" = "Auto. Videos im Vollbild starten.";
