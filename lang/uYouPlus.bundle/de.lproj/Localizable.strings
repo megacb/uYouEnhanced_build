@@ -11,7 +11,7 @@
  // Settings
 
  "HIDE_PREVIOUS_AND_NEXT_BUTTON" = "Spultasten ausblenden";
- "HIDE_PREVIOUS_AND_NEXT_BUTTON_DESC" = "Spultasten im Overlay der Videosteuerung ausblenden";
+ "HIDE_PREVIOUS_AND_NEXT_BUTTON_DESC" = "Spultasten im Video ausblenden";
 
  "YT_MINIPLAYER" = "Miniplayer für alle YouTube-Videos aktivieren";
  "YT_MINIPLAYER_DESC" = "Zum Beispiel bei Videos für Kinder.";
@@ -25,14 +25,14 @@
  "NEW_MINIPLAYER_STYLE" = "Neue Miniplayer-Leiste (BigYTMiniPlayer)";
  "NEW_MINIPLAYER_STYLE_DESC" = "App-Neustart erforderlich.";
 
- "YT_RE_EXPLORE" = "Registerkarte 'Shorts' durch Registerkarte 'Entdecken' ersetzen (YTReExplore)";
+ "YT_RE_EXPLORE" = "Registerkarte Shorts durch Registerkarte Entdecken ersetzen (YTReExplore)";
  "YT_RE_EXPLORE_DESC" = "App-Neustart erforderlich.";
 
- "HIDE_SUBTITLES_BUTTON" = "Schaltfläche 'Untertitel' ausblenden";
- "HIDE_SUBTITLES_BUTTON_DESC" = "Schaltfläche 'Untertitel' im Overlay der Videosteuerung ausblenden.";
+ "HIDE_SUBTITLES_BUTTON" = "Schaltfläche Untertitel ausblenden";
+ "HIDE_SUBTITLES_BUTTON_DESC" = "Schaltfläche Untertitel im Video ausblenden.";
 
- "HIDE_AUTOPLAY_SWITCH" = "Schaltfläche 'Autoplay' ausblenden";
- "HIDE_AUTOPLAY_SWITCH_DESC" = Schaltfläche 'Autoplay' im Overlay der Videosteuerung ausblenden.";
+ "HIDE_AUTOPLAY_SWITCH" = "Schaltfläche Autoplay ausblenden";
+ "HIDE_AUTOPLAY_SWITCH_DESC" = "Schaltfläche Autoplay im Video ausblenden.";
 
  "AUTO_FULLSCREEN" = "Auto-Vollbild (YTAutoFullScreen)";
  "AUTO_FULLSCREEN_DESC" = "Auto. Videos im Vollbild starten.";
