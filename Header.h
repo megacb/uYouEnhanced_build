@@ -71,6 +71,9 @@
 @interface _ASDisplayView : UIView
 @end
 
+@interface YTCommentDetailHeaderCell : UIView
+@end
+
 @interface SponsorBlockSettingsController : UITableViewController
 @end
 
