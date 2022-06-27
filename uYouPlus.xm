@@ -232,8 +232,12 @@ BOOL ytMiniPlayer() {
 - (void)showSurveyWithRenderer:(id)arg1 surveyParentResponder:(id)arg2 {}
 %end
 
-// Enable Shorts scroll bar - level3tjg - https://reddit.com/r/jailbreak/comments/v29yvk/_/iasl1l0/
+// Enable Shorts scroll bar - @level3tjg - https://reddit.com/r/jailbreak/comments/v29yvk/_/iasl1l0/
 %hook YTReelPlayerViewControllerSub
+- (BOOL)shouldEnablePlayerBar { return YES; }
+%end
+
+%hook YTReelPlayerViewController
 - (BOOL)shouldEnablePlayerBar { return YES; }
 %end
 
@@ -253,7 +257,7 @@ BOOL ytMiniPlayer() {
 }
 %end 
 
-// Hide YouTube Shorts banner in Home page? - MiRO92 - YTNoShorts: https://github.com/MiRO92/YTNoShorts
+// Hide YouTube Shorts banner in Home page? - @MiRO92 - YTNoShorts: https://github.com/MiRO92/YTNoShorts
 %hook YTAsyncCollectionView
 - (id)cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     UICollectionViewCell *cell = %orig;
@@ -345,6 +349,12 @@ BOOL ytMiniPlayer() {
 }
 - (UIColor *)brandBackgroundSecondary {
     if (self.pageStyle == 1) {
+        return [[UIColor blackColor] colorWithAlphaComponent:0.88];
+    }
+        return %orig;
+}
+- (UIColor *)raisedBackground {
+    if (self.pageStyle == 1) {
         return [UIColor blackColor];
     }
         return %orig;
@@ -372,15 +382,6 @@ BOOL ytMiniPlayer() {
         return %orig;
 }
 %end
-
-// %hook YTInnerTubeCollectionViewController
-// - (UIColor *)backgroundColor:(NSInteger)pageStyle {
-//     if (pageStyle == 1) { 
-//         return [UIColor blackColor]; 
-//     }
-//         return %orig;
-// }
-// %end
 
 // Explore
 %hook ASScrollView 
@@ -418,16 +419,6 @@ BOOL ytMiniPlayer() {
         %orig;
         self.view.backgroundColor = [UIColor blackColor];
     } else { return %orig; }
-}
-%end
-
-// YT Miniplayer
-%hook YTWatchMiniBarView 
-- (void)setBackgroundColor:(UIColor *)color { 
-    if (isDarkMode()) {
-        return %orig([[UIColor blackColor] colorWithAlphaComponent:0.88]);
-    }
-        return %orig;
 }
 %end
 
@@ -522,7 +513,7 @@ BOOL ytMiniPlayer() {
 }
 %end
 
-// Nasty stuff :/
+// Others
 %hook _ASDisplayView
 - (void)didMoveToWindow {
     %orig;
