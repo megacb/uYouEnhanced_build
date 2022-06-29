@@ -27,8 +27,6 @@
 
 - [YouTube Extensions](https://github.com/CokePokes/YoutubeExtensions) by [CokePokes](https://github.com/CokePokes/).
 
-- [Al4ise](https://github.com/Al4ise) for [Azule](https://github.com/Al4ise/Azule), a tool used to inject jailbreak tweaks into jailed iOS apps.
-
 - [theos team](https://github.com/theos/theos) for theos & theos-jailed.
 
 # Features
@@ -78,16 +76,16 @@
 
   - My official AtlStore repo: https://qnblackcat.github.io/AltStore/
 
-  - [Open in AltStore (v17.24.4-2.1)](https://tinyurl.com/277rhd8n) - It will take a while to install because AltStore needs to download the IPA.
+  - [Open in AltStore (v17.25.1-2.1)](https://tinyurl.com/2kaynk88) - It will take a while to install because AltStore needs to download the IPA.
 
-- Version info: _(last update: June 22)_
+- Version info: _(last update: June 29)_
 
 <details>
   <summary>Expand</summary>
 
 | **Tweaks/App** | **Version** | **Open source** |
 | :------------: | :----------:| :-------------: |
-| **YouTube** | 17.24.4 | ✖︎  |
+| **YouTube** | 17.25.1 | ✖︎  |
 | [uYou](https://github.com/MiRO92/uYou-for-YouTube) | 2.1 | ✖︎ |
 | [Open in YouTube](https://github.com/CokePokes/YoutubeExtensions) | 1.2 | ✖︎ |
 | **Return YouTube Dislike** | 1.6.5 | [✔︎](https://github.com/PoomSmart/Return-YouTube-Dislikes) |
@@ -99,8 +97,8 @@
 | **YTNoCheckLocalNetwork** | 1.0.2 | [✔︎](https://poomsmart.github.io/repo/depictions/ytnochecklocalnetwork.html) |
 | **YTNoHoverCards** | 0.0.3 | [✔︎](https://github.com/level3tjg/YTNoHoverCards) |
 | **YTSystemAppearance** | 1.0.0 | [✔︎](https://poomsmart.github.io/repo/depictions/ytsystemappearance.html) |
-| **YTUHD** | 1.2.7 | [✔︎](https://github.com/PoomSmart/YTUHD) |
-| **YouPiP** | 1.7.4 | [✔︎](https://github.com/PoomSmart/YouPiP) |
+| **YTUHD** | 1.2.8 | [✔︎](https://github.com/PoomSmart/YTUHD) |
+| **YouPiP** | 1.7.7 | [✔︎](https://github.com/PoomSmart/YouPiP) |
 | **IAmYouTube** | 1.2.0 | [✔︎](https://github.com/PoomSmart/IAmYouTube) |
 | **YTSpeed** | 1.0.1 | [✔︎](https://github.com/Lyvendia/YTSpeed) |
 | **YTAutoFullScreen** | 1.0.3 | [✔︎](https://github.com/PoomSmart/YTAutoFullScreen) |
@@ -125,7 +123,7 @@ See [Installation - Wiki](https://github.com/qnblackcat/uYouPlus/wiki/Installati
 </details>
 
 <details>
-  <summary>Poomsmart</summary>
+  <summary>PoomSmart</summary>
 
 - Paypal: https://poomsmart.github.io/
 
