@@ -13,6 +13,8 @@
 #import "Tweaks/YouTubeHeader/YTIBrowseRequest.h"
 #import "Tweaks/YouTubeHeader/YTCommonColorPalette.h"
 #import "Tweaks/YouTubeHeader/ASCollectionView.h"
+#import "Tweaks/YouTubeHeader/YTPlayerOverlay.h"
+#import "Tweaks/YouTubeHeader/YTPlayerOverlayProvider.h"
 
 // Tweak's bundle for Localizations support - @PoomSmart - https://github.com/PoomSmart/YouPiP/commit/aea2473f64c75d73cab713e1e2d5d0a77675024f
 NSBundle *uYouPlusBundle() {
@@ -65,6 +67,9 @@ BOOL castConfirm() {
 }
 BOOL ytMiniPlayer() {
     return [[NSUserDefaults standardUserDefaults] boolForKey:@"ytMiniPlayer_enabled"];
+}
+BOOL hidePaidPromotionCard(){
+    return [[NSUserDefaults standardUserDefaults] boolForKey:@"hidePaidPromotionCard_enabled"];
 }
 
 # pragma mark - Tweaks
@@ -277,6 +282,37 @@ BOOL ytMiniPlayer() {
 }
 %end
 
+// 
+%hook FRPSliderCell
+- (void)didMoveToWindow {
+    %orig;
+    if (self.traitCollection.userInterfaceStyle == UIUserInterfaceStyleDark) {
+        MSHookIvar<UILabel *>(self, "_lLabel").textColor = [UIColor whiteColor];
+        MSHookIvar<UILabel *>(self, "_rLabel").textColor = [UIColor whiteColor];
+        MSHookIvar<UILabel *>(self, "_cLabel").textColor = [UIColor whiteColor];
+    }
+}
+%end
+
+// Hide Paid Promotion Card
+%hook YTMainAppVideoPlayerOverlayViewController
+- (void)setPaidContentWithPlayerData:(id)data {
+    if (hidePaidPromotionCard()) {}
+    else { return %orig; }
+}
+- (void)playerOverlayProvider:(YTPlayerOverlayProvider *)provider didInsertPlayerOverlay:(YTPlayerOverlay *)overlay {
+    if ([[overlay overlayIdentifier] isEqualToString:@"player_overlay_paid_content"] && hidePaidPromotionCard()) return;
+    %orig;
+}
+%end
+
+%hook YTInlineMutedPlaybackPlayerOverlayViewController
+- (void)setPaidContentWithPlayerData:(id)data {
+    if (hidePaidPromotionCard()) {}
+    else { return %orig; }
+}
+%end
+
 # pragma mark - IAmYouTube - https://github.com/PoomSmart/IAmYouTube/
 %hook YTVersionUtils
 + (NSString *)appName { return YT_NAME; }
@@ -333,6 +369,7 @@ BOOL ytMiniPlayer() {
 %end
 
 # pragma mark - OLED dark mode by BandarHL
+UIColor* raisedColor = [UIColor colorWithRed:0.02 green:0.02 blue:0.02 alpha:1.0];
 %group gOLED
 %hook YTCommonColorPalette
 - (UIColor *)brandBackgroundSolid {
@@ -349,13 +386,13 @@ BOOL ytMiniPlayer() {
 }
 - (UIColor *)brandBackgroundSecondary {
     if (self.pageStyle == 1) {
-        return [[UIColor blackColor] colorWithAlphaComponent:0.88];
+        return [[UIColor blackColor] colorWithAlphaComponent:0.9];
     }
         return %orig;
 }
 - (UIColor *)raisedBackground {
     if (self.pageStyle == 1) {
-        return [UIColor blackColor];
+        return raisedColor;
     }
         return %orig;
 }
@@ -518,11 +555,11 @@ BOOL ytMiniPlayer() {
 - (void)didMoveToWindow {
     %orig;
     if (isDarkMode()) {
-        if ([self.nextResponder isKindOfClass:%c(ASScrollView)]) { self.backgroundColor = [UIColor clearColor]; }
+        if ([self.nextResponder isKindOfClass:%c(ASScrollView)]) { self.backgroundColor = raisedColor; }
         if ([self.accessibilityIdentifier isEqualToString:@"eml.cvr"]) { self.backgroundColor = [UIColor blackColor]; }
         if ([self.accessibilityIdentifier isEqualToString:@"rich_header"]) { self.backgroundColor = [UIColor blackColor]; }
         if ([self.accessibilityIdentifier isEqualToString:@"id.ui.comment_cell"]) { self.backgroundColor = [UIColor blackColor]; }
-        if ([self.accessibilityIdentifier isEqualToString:@"id.ui.cancel.button"]) { self.superview.backgroundColor = [UIColor blackColor]; }
+        if ([self.accessibilityIdentifier isEqualToString:@"id.ui.cancel.button"]) { self.superview.backgroundColor = raisedColor; }
         if ([self.accessibilityIdentifier isEqualToString:@"id.elements.components.filter_chip_bar"]) { self.backgroundColor = [UIColor blackColor]; }
         if ([self.accessibilityIdentifier isEqualToString:@"id.elements.components.comment_composer"]) { self.backgroundColor = [UIColor blackColor]; }
         if ([self.accessibilityIdentifier isEqualToString:@"id.elements.components.video_list_entry"]) { self.backgroundColor = [UIColor blackColor]; }
@@ -537,7 +574,7 @@ BOOL ytMiniPlayer() {
 %hook ASWAppSwitchingSheetHeaderView
 - (void)setBackgroundColor:(UIColor *)color {
     if (isDarkMode()) {
-        return %orig([UIColor blackColor]);
+        return %orig(raisedColor);
     }
         return %orig;
 }
@@ -546,7 +583,7 @@ BOOL ytMiniPlayer() {
 %hook ASWAppSwitchingSheetFooterView
 - (void)setBackgroundColor:(UIColor *)color {
     if (isDarkMode()) {
-        return %orig([UIColor blackColor]);
+        return %orig(raisedColor);
     }
         return %orig;
 }
@@ -556,8 +593,8 @@ BOOL ytMiniPlayer() {
 - (void)didMoveToWindow {
     %orig;
     if (isDarkMode()) { 
-        self.subviews[1].backgroundColor = [UIColor blackColor];
-        self.superview.backgroundColor = [UIColor blackColor];
+        self.subviews[1].backgroundColor = raisedColor;
+        self.superview.backgroundColor = raisedColor;
     }
 }
 %end
