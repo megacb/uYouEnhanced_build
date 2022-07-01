@@ -12,8 +12,8 @@
 @interface YTMainAppControlsOverlayView : UIView
 @end
 
-@interface YTTransportControlsButtonView : UIView
-@end
+// @interface YTTransportControlsButtonView : UIView
+// @end
 
 @interface _ASCollectionViewCell : UICollectionViewCell
 - (id)node;
@@ -23,9 +23,8 @@
 - (void)removeShortsAndFeaturesAdsAtIndexPath:(NSIndexPath *)indexPath;
 @end
 
-// @interface YTPlaylistHeaderViewController : UIViewController
-// @property (nonatomic, strong, readwrite) UIView *downloadsButton;
-// @end
+@interface FRPSliderCell : UITableViewCell
+@end
 
 // iOS16 fix
 @interface OBPrivacyLinkButton : UIButton
