@@ -14,6 +14,7 @@ uYouPlus_INJECT_DYLIBS = Tweaks/uYou/Library/MobileSubstrate/DynamicLibraries/uY
 uYouPlus_FILES = uYouPlus.xm Settings.xm
 uYouPlus_IPA = ./tmp/Payload/YouTube.app
 uYouPlus_FRAMEWORKS = UIKit
+uYouPlus_CFLAGS = -fobjc-arc
 
 include $(THEOS)/makefiles/common.mk
 include $(THEOS_MAKE_PATH)/tweak.mk
