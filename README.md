@@ -19,7 +19,7 @@
 
 - [HASHBANG Productions](https://github.com/hbang) for [Alderis Color Picker](https://github.com/hbang/Alderis) - a dependency of iSponsorBlock.
 
-- [PoomSmart](https://twitter.com/poomsmart) - the developer of many tweaks used by uYouPlus, include: [NoYTPremium](https://github.com/PoomSmart/NoYTPremium/), [YouRememberCaption](https://www.ios-repo-updates.com/repository/poomsmart/package/com.ps.youremembercaption/), [YTClassicVideoQuality](https://poomsmart.github.io/repo/depictions/ytclassicvideoquality.html), [YTNoCheckLocalNetwork](https://poomsmart.github.io/repo/depictions/ytnochecklocalnetwork.html), [YTSystemAppearance](https://poomsmart.github.io/repo/depictions/ytsystemappearance.html), [YTAutoFullScreen](https://github.com/PoomSmart/YTAutoFullScreen/), [YTReExplore](https://github.com/PoomSmart/YTReExplore/), [IAmYouTube](https://github.com/PoomSmart/IAmYouTube), [YTUHD](https://poomsmart.github.io/repo/depictions/ytuhd.html), [YouPiP](https://poomsmart.github.io/repo/depictions/youpip.html), and [Return YouTube Dislike](https://github.com/PoomSmart/Return-YouTube-Dislikes)
+- [PoomSmart](https://twitter.com/poomsmart) - the developer of many tweaks used by uYouPlus, see [Version info - Download](#download) for more details.
 
 - [level3tjg](https://twitter.com/level3tjg) - for [YTNoHoverCards](https://github.com/level3tjg/YTNoHoverCards) and [YTMiniplayerEnabler](https://github.com/level3tjg/YTMiniplayerEnabler).
 
@@ -76,36 +76,37 @@
 
   - My official AtlStore repo: https://qnblackcat.github.io/AltStore/
 
-  - [Open in AltStore (v17.25.1-2.1)](https://tinyurl.com/2kaynk88) - It will take a while to install because AltStore needs to download the IPA.
+  - [Open in AltStore (v17.26.2-2.1)](https://tinyurl.com/2y86dh6b) - It will take a while to install because AltStore needs to download the IPA.
 
-- Version info: _(last update: June 29)_
+- Version info: _(last update: Jul 11)_
 
 <details>
   <summary>Expand</summary>
 
-| **Tweaks/App** | **Version** | **Open source** |
-| :------------: | :----------:| :-------------: |
-| **YouTube** | 17.25.1 | ✖︎  |
-| [uYou](https://github.com/MiRO92/uYou-for-YouTube) | 2.1 | ✖︎ |
-| [Open in YouTube](https://github.com/CokePokes/YoutubeExtensions) | 1.2 | ✖︎ |
-| **Return YouTube Dislike** | 1.6.5 | [✔︎](https://github.com/PoomSmart/Return-YouTube-Dislikes) |
-| **iSponsorBlock** | 1.0-14 | [✔︎](https://github.com/Galactic-Dev/iSponsorBlock) |
-| **Alderis Color Picker** | 1.2| [✔︎](https://github.com/hbang/Alderis) |
-| **NoYTPremium** | 1.0.4 | [✔︎](https://github.com/PoomSmart/NoYTPremium) |
-| **YouRememberCaption** | 1.0.0 | [✔︎](https://poomsmart.github.io/repo/depictions/youremembercaption.html) |
-| **YTClassicVideoQuality** | 1.0.1 | [✔︎](https://github.com/PoomSmart/YTClassicVideoQuality) |
-| **YTNoCheckLocalNetwork** | 1.0.2 | [✔︎](https://poomsmart.github.io/repo/depictions/ytnochecklocalnetwork.html) |
-| **YTNoHoverCards** | 0.0.3 | [✔︎](https://github.com/level3tjg/YTNoHoverCards) |
-| **YTSystemAppearance** | 1.0.0 | [✔︎](https://poomsmart.github.io/repo/depictions/ytsystemappearance.html) |
-| **YTUHD** | 1.2.8 | [✔︎](https://github.com/PoomSmart/YTUHD) |
-| **YouPiP** | 1.7.7 | [✔︎](https://github.com/PoomSmart/YouPiP) |
-| **IAmYouTube** | 1.2.0 | [✔︎](https://github.com/PoomSmart/IAmYouTube) |
-| **YTSpeed** | 1.0.1 | [✔︎](https://github.com/Lyvendia/YTSpeed) |
-| **YTAutoFullScreen** | 1.0.3 | [✔︎](https://github.com/PoomSmart/YTAutoFullScreen) |
-| **YTReExplore** | 1.0.2 | [✔︎](https://github.com/PoomSmart/YTReExplore) |
-| **BigYTMiniPlayer** | 1.0-1 | [✔︎](https://github.com/Galactic-Dev/BigYTMiniPlayer) |
-| **YTCastConfirm** | 1.0.0 | [✔︎](https://github.com/JamieBerghmans/YTCastConfirm) |
-| **YTMiniplayerEnabler** | 0.0.2 | [✔︎](https://github.com/level3tjg/YTMiniplayerEnabler) |
+| **Tweaks/App** | **Developer** | **Version** | **Open source** |
+| - | - | :-: | :-:  |
+| **YouTube** | Google Inc | 17.26.2 | ✖︎ |
+| [uYou](https://github.com/MiRO92/uYou-for-YouTube) | [MiRO92](https://twitter.com/miro92) | 2.1 | ✖︎ |
+| [Open in YouTube](https://github.com/CokePokes/YoutubeExtensions) | [CokePokes](https://github.com/CokePokes) | 1.2 | ✖︎ |
+| **iSponsorBlock** | [Galactic-Dev](https://github.com/Galactic-Dev) | 1.0-14 | [✔︎](https://github.com/Galactic-Dev/iSponsorBlock) |
+| **BigYTMiniPlayer** | [Galactic-Dev](https://github.com/Galactic-Dev) | 1.0-1 | [✔︎](https://github.com/Galactic-Dev/BigYTMiniPlayer) |
+| **YTNoHoverCards** | [level3tjg](https://twitter.com/level3tjg) | 0.0.3 | [✔︎](https://github.com/level3tjg/YTNoHoverCards) |
+| **YTMiniplayerEnabler** | [level3tjg](https://twitter.com/level3tjg) | 0.0.2 | [✔︎](https://github.com/level3tjg/YTMiniplayerEnabler) |
+| **YTSpeed** | [Lyvendia](https://github.com/Lyvendia) | 1.0.1 | [✔︎](https://github.com/Lyvendia/YTSpeed) |
+| **YTCastConfirm** | [JamieBerghmans](https://github.com/JamieBerghmans) | 1.0.0 | [✔︎](https://github.com/JamieBerghmans/YTCastConfirm) |
+| **Alderis Color Picker** | [HASHBANG Productions](https://github.com/hbang) | 1.2| [✔︎](https://github.com/hbang/Alderis) |
+| **YTUHD** | [PoomSmart](https://twitter.com/poomsmart) | 1.2.8 | [✔︎](https://github.com/PoomSmart/YTUHD) |
+| **YouPiP** | [PoomSmart](https://twitter.com/poomsmart) | 1.7.7 | [✔︎](https://github.com/PoomSmart/YouPiP) |
+| **IAmYouTube** | [PoomSmart](https://twitter.com/poomsmart) | 1.2.0 | [✔︎](https://github.com/PoomSmart/IAmYouTube) |
+| **YTReExplore** | [PoomSmart](https://twitter.com/poomsmart) | 1.0.2 | [✔︎](https://github.com/PoomSmart/YTReExplore) |
+| **NoYTPremium** | [PoomSmart](https://twitter.com/poomsmart) | 1.0.4 | [✔︎](https://github.com/PoomSmart/NoYTPremium) |
+| **YTNoPaidPromo** | [PoomSmart](https://twitter.com/poomsmart) | 1.0.0 | [✔︎](https://github.com/PoomSmart/YTNoPaidPromo) |
+| **YTAutoFullScreen** | [PoomSmart](https://twitter.com/poomsmart) | 1.0.3 | [✔︎](https://github.com/PoomSmart/YTAutoFullScreen) |
+| **YouRememberCaption** | [PoomSmart](https://twitter.com/poomsmart) | 1.0.0 | [✔︎](https://poomsmart.github.io/repo/depictions/youremembercaption.html) |
+| **YTSystemAppearance** | [PoomSmart](https://twitter.com/poomsmart) | 1.0.0 | [✔︎](https://poomsmart.github.io/repo/depictions/ytsystemappearance.html) |
+| **YTClassicVideoQuality** | [PoomSmart](https://twitter.com/poomsmart) | 1.0.1 | [✔︎](https://github.com/PoomSmart/YTClassicVideoQuality) |
+| **Return YouTube Dislike** | [PoomSmart](https://twitter.com/poomsmart) | 1.6.5 | [✔︎](https://github.com/PoomSmart/Return-YouTube-Dislikes) |
+| **YTNoCheckLocalNetwork** | [PoomSmart](https://twitter.com/poomsmart) | 1.0.2 | [✔︎](https://poomsmart.github.io/repo/depictions/ytnochecklocalnetwork.html) |
 
 </details>
 
