@@ -70,11 +70,11 @@
 
 # Download
 
-- **uYouPlus** (or you can call it uYou+) requires iOS & iPadOS 13.0 or later. The latest version of **uYouPlus** can be found in the [Release tab](https://github.com/qnblackcat/uYouPlus/releases).
+- **uYouPlus** (or you can call it uYou+) requires iOS or iPadOS 13.0 or later. The latest version of **uYouPlus** can be found in the [Release tab](https://github.com/qnblackcat/uYouPlus/releases).
 
 - For AltStore user: 
 
-  - My official AtlStore repo: https://qnblackcat.github.io/AltStore/
+  - My official AltStore repo: https://qnblackcat.github.io/AltStore/
 
   - [Open in AltStore (v17.26.2-2.1)](https://tinyurl.com/2y86dh6b) - It will take a while to install because AltStore needs to download the IPA.
 
