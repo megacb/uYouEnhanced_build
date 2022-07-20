@@ -68,11 +68,18 @@ BOOL castConfirm() {
 BOOL ytMiniPlayer() {
     return [[NSUserDefaults standardUserDefaults] boolForKey:@"ytMiniPlayer_enabled"];
 }
-BOOL hidePaidPromotionCard(){
+BOOL hidePaidPromotionCard() {
     return [[NSUserDefaults standardUserDefaults] boolForKey:@"hidePaidPromotionCard_enabled"];
 }
 
 # pragma mark - Tweaks
+// Enable Reorder videos from playlist while on the Watch page - @PoomSmart
+%hook YTIPlaylistPanelVideoRenderer 
+%new 
+- (BOOL)canReorder { return YES; }
+%end
+//
+
 // YTMiniPlayerEnabler: https://github.com/level3tjg/YTMiniplayerEnabler/
 %hook YTWatchMiniBarViewController
 - (void)updateMiniBarPlayerStateFromRenderer {
