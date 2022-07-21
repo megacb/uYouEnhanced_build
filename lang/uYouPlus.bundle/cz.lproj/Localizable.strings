@@ -31,7 +31,7 @@
 "YT_RE_EXPLORE_DESC" = "Je potřeba restart aplikace.";
 
 "HIDE_SUBTITLES_BUTTON" = "Skrýt tlačítko titulky";
-"HIDE_SUBTITLES_BUTTON_DESC" = "Skryje talčítko titulky v překrytí ovládání videa.";
+"HIDE_SUBTITLES_BUTTON_DESC" = "Skryje tlačítko titulky v překrytí ovládání videa.";
 
 "HIDE_AUTOPLAY_SWITCH" = "Skrýt přepínač automatického přehrávání";
 "HIDE_AUTOPLAY_SWITCH_DESC" = "Skryje přepínač automatického přehrávání v překrytí ovládání videa.";
@@ -49,7 +49,7 @@
 "OLED_KEYBOARD_DESC" = "Mohou se vyskytnout chyby. Je potřeba restart aplikace.";
 
 "HIDE_PAID_PROMOTION_CARDS" = "Skrýt kartu placené propagace";
-"HIDE_PAID_PROMOTION_CARDS_DESC" = "Skryje 'Obsahuje placenou propagaci' v některých videjích.";
+"HIDE_PAID_PROMOTION_CARDS_DESC" = "Skryje 'Obsahuje placenou propagaci' u některých videjí.";
 
 // YTCastConfirm
 "CASTING" = "Sdílení obrazu";
