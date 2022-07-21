@@ -7,7 +7,7 @@ FINALPACKAGE = 1
 CODESIGN_IPA = 0
 
 TWEAK_NAME = uYouPlus
-DISPLAY_NAME = YouTube
+DISPLAY_NAME = YouTubePlus
 BUNDLE_ID = com.google.ios.youtube
  
 uYouPlus_INJECT_DYLIBS = Tweaks/uYou/Library/MobileSubstrate/DynamicLibraries/uYou.dylib .theos/obj/libcolorpicker.dylib .theos/obj/iSponsorBlock.dylib .theos/obj/YTUHD.dylib .theos/obj/YouPiP.dylib .theos/obj/YouTubeDislikesReturn.dylib .theos/obj/YoutubeSpeed.dylib
