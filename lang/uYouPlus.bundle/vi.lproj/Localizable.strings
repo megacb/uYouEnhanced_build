@@ -31,10 +31,10 @@
 "HIDE_HUD_MESSAGES_DESC" = "Ví dụ: Đã bật/tắt phụ đề, Tính năng phát video lặp lại đang bật,...";
 
 "OLED_DARKMODE" = "Chế độ tối cho màn OLED (Thử nghiệm)";
-"OLED_DARKMODE_DESC" = "Tính năng này có thể không hoạt động. Cần khởi động lại ứng dụng.";
+"OLED_DARKMODE_DESC" = "Có thể không hoạt động tốt trong một số trường hợp. Cần khởi động lại ứng dụng nếu bạn bật/tắt tính năng này, nhưng không cần khởi động lại ứng dụng nếu chuyển giữa chế độ Sáng và chế độ Tối.";
 
-"OLED_KEYBOARD" = "Bàn phím cho màn OLED (Thử nghiệm)";
-"OLED_KEYBOARD_DESC" = "Tính năng này có thể không hoạt động. Cần khởi động lại ứng dụng.";
+"OLED_KEYBOARD" = "Bàn phím tối cho màn OLED (Thử nghiệm)";
+"OLED_KEYBOARD_DESC" = "Có thể không hoạt động tốt trong một vài trường hợp. Cần khởi động lại ứng dụng.";
 
 "HIDE_PAID_PROMOTION_CARDS" = "Ẩn banner quảng cáo được trả tiền";
 "HIDE_PAID_PROMOTION_CARDS_DESC" = "Ẩn banner 'Chứa nội dung được trả tiền để quảng cáo' trong một số video.";
