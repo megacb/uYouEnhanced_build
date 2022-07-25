@@ -27,6 +27,7 @@ _(Please attach videos or screenshots if possible)_
 ### Crash log (if possible)
 _(The crash log can be found in the  Settings app - Privacy - Analytics & Improvements - Analytics Data - Youtube...)_
 
+### Does the issue happen with the official YouTube from AppStore?
+_(Well, YouTube itself is buggy sometimes...)_
 
-### Additional context:
- 
+### Additional context: 
