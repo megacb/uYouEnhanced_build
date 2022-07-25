@@ -1,4 +1,4 @@
-// How to translate uYouPlus to your languate:
+// How to translate uYouPlus to your language:
 //
 // 1. Fork uYouPlus repo
 // 2. Duplicate the template.lproj folder, and edit the duplicated folder's name to your <lang_code>.lproj id.  
@@ -7,7 +7,7 @@
 // 4. Open a Pull Request
 //
 // If your language already exists then feel free to check it and/or improve it!
-// You can also add your localiztion to YouPiP here, the process is the same
+// You can also add your localization to YouPiP here, the process is the same
 // https://github.com/PoomSmart/YouPiP/tree/main/layout/Library/Application%20Support/YouPiP.bundle
 //
 // Settings
