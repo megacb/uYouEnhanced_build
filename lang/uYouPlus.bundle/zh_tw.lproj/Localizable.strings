@@ -37,7 +37,7 @@
 "OLED_KEYBOARD_DESC" = "在某些情況下可能無法正常工作。需要重新啟動應用程式。";
 
 "HIDE_PAID_PROMOTION_CARDS" = "隱藏付費促銷橫幅";
-"HIDE_PAID_PROMOTION_CARDS_DESC" = "在某些視頻中隱藏“包括付費促銷”橫幅。";
+"HIDE_PAID_PROMOTION_CARDS_DESC" = "在某些影片中隱藏“包括付費促銷”橫幅。";
 
 // YTCastConfirm
 "CASTING" = "投放中";
