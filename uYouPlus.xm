@@ -78,7 +78,6 @@ BOOL hidePaidPromotionCard() {
 %new 
 - (BOOL)canReorder { return YES; }
 %end
-//
 
 // YTMiniPlayerEnabler: https://github.com/level3tjg/YTMiniplayerEnabler/
 %hook YTWatchMiniBarViewController
@@ -103,8 +102,8 @@ BOOL hidePaidPromotionCard() {
     if (hidePreviousAndNextButton()) { 
 	    MSHookIvar<YTMainAppControlsOverlayView *>(self, "_nextButton").hidden = YES;
     	MSHookIvar<YTMainAppControlsOverlayView *>(self, "_previousButton").hidden = YES;
-    	// MSHookIvar<YTTransportControlsButtonView *>(self, "_nextButtonView").hidden = YES;
-    	// MSHookIvar<YTTransportControlsButtonView *>(self, "_previousButtonView").hidden = YES;
+    	MSHookIvar<YTTransportControlsButtonView *>(self, "_nextButtonView").hidden = YES;
+    	MSHookIvar<YTTransportControlsButtonView *>(self, "_previousButtonView").hidden = YES;
     }
 }
 %end
@@ -209,12 +208,9 @@ BOOL hidePaidPromotionCard() {
 - (BOOL)isPromptForLocalNetworkPermissionsEnabled { return NO; }
 %end
 
-// YTSystemAppearance: https://poomsmart.github.io/repo/depictions/ytsystemappearance.html
 // YouRememberCaption: https://poomsmart.github.io/repo/depictions/youremembercaption.html
 %hook YTColdConfig
-- (BOOL)shouldUseAppThemeSetting { return YES; }
 - (BOOL)respectDeviceCaptionSetting { return NO; }
-- (BOOL)isEnhancedSearchBarEnabled { return YES; }
 %end
 
 // NOYTPremium - https://github.com/PoomSmart/NoYTPremium/
@@ -387,7 +383,7 @@ UIColor* raisedColor = [UIColor colorWithRed:0.035 green:0.035 blue:0.035 alpha:
 }
 - (UIColor *)raisedBackground {
     if (self.pageStyle == 1) {
-        return raisedColor;
+        return [UIColor blackColor];
     }
         return %orig;
 }
@@ -550,11 +546,11 @@ UIColor* raisedColor = [UIColor colorWithRed:0.035 green:0.035 blue:0.035 alpha:
 - (void)didMoveToWindow {
     %orig;
     if (isDarkMode()) {
-        if ([self.nextResponder isKindOfClass:%c(ASScrollView)]) { self.backgroundColor = raisedColor; }
+        if ([self.nextResponder isKindOfClass:%c(ASScrollView)]) { self.backgroundColor = [UIColor clearColor]; }
         if ([self.accessibilityIdentifier isEqualToString:@"eml.cvr"]) { self.backgroundColor = [UIColor blackColor]; }
         if ([self.accessibilityIdentifier isEqualToString:@"rich_header"]) { self.backgroundColor = [UIColor blackColor]; }
         if ([self.accessibilityIdentifier isEqualToString:@"id.ui.comment_cell"]) { self.backgroundColor = [UIColor blackColor]; }
-        if ([self.accessibilityIdentifier isEqualToString:@"id.ui.cancel.button"]) { self.superview.backgroundColor = raisedColor; }
+        if ([self.accessibilityIdentifier isEqualToString:@"id.ui.cancel.button"]) { self.superview.backgroundColor = [UIColor clearColor]; }
         if ([self.accessibilityIdentifier isEqualToString:@"id.elements.components.filter_chip_bar"]) { self.backgroundColor = [UIColor blackColor]; }
         if ([self.accessibilityIdentifier isEqualToString:@"id.elements.components.comment_composer"]) { self.backgroundColor = [UIColor blackColor]; }
         if ([self.accessibilityIdentifier isEqualToString:@"id.elements.components.video_list_entry"]) { self.backgroundColor = [UIColor blackColor]; }
