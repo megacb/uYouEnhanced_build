@@ -1,5 +1,8 @@
 // Settings
 
+"KILL_APP" = "Fermer YouTube";
+"KILL_APP_DESC" = "Appuyez ici pour fermer YouTube !";
+
 "HIDE_PREVIOUS_AND_NEXT_BUTTON" = "Masquer les boutons Précédent et Suivant";
 "HIDE_PREVIOUS_AND_NEXT_BUTTON_DESC" = "Masquer les boutons Précédent et Suivant dans la superposition des contrôles vidéo";
 
