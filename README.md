@@ -21,13 +21,17 @@
 
 - [PoomSmart](https://twitter.com/poomsmart) - the developer of many tweaks used by uYouPlus, see [Version info - Download](#download) for more details.
 
-- [level3tjg](https://twitter.com/level3tjg) - for [YTNoHoverCards](https://github.com/level3tjg/YTNoHoverCards) and [YTMiniplayerEnabler](https://github.com/level3tjg/YTMiniplayerEnabler).
+- [level3tjg](https://twitter.com/level3tjg) for [YTNoHoverCards](https://github.com/level3tjg/YTNoHoverCards), [YTMiniplayerEnabler](https://github.com/level3tjg/YTMiniplayerEnabler) and many hot patches for uYou.
+
+- [BandarHL](https://twitter.com/bandarhl) for a bunch of improvements.
 
 - [Lyvendia](https://github.com/Lyvendia/) for [YTSpeed](https://github.com/Lyvendia/YTSpeed/)
 
 - [YouTube Extensions](https://github.com/CokePokes/YoutubeExtensions) by [CokePokes](https://github.com/CokePokes/).
 
 - [theos team](https://github.com/theos/theos) for theos & theos-jailed.
+
+- Thanks to all the translators who have contributed to uYouPlus. Your contribution is highly appreciated!
 
 # Features
 
@@ -48,17 +52,15 @@
 
 7. **YTNoHoverCards:** offer an option to enable/disable the annoying suggested videos show up at the end of the videos.
 
-8. **YTSystemAppearance**: sync the YouTube theme (dark/light) with the system theme.
+8. **YTNoCheckLocalNetwork**: block the Local Network permission popup.
 
-9. **YTNoCheckLocalNetwork**: block the Local Network permission popup.
+9. **YouRememberCaption**: make YouTube remember your video caption setting (if not already).
 
-10. **YouRememberCaption**: make YouTube remember your video caption setting (if not already).
+10. **NoYTPremium**: remove YouTube Premium upshells.
 
-11. **NoYTPremium**: remove YouTube Premium upshells.
+11. **YTSpeed**: add 2.25, 2.5, 2.75, and 3x playback speed
 
-12. **YTSpeed**: add 2.25, 2.5, 2.75, and 3x playback speed
-
-13. **YTMiniplayerEnabler**: enable Miniplayer for all YouTube videos.
+12. **YTMiniplayerEnabler**: enable Miniplayer for all YouTube videos.
 
 </details>
 
@@ -76,16 +78,16 @@
 
   - My official AltStore repo: https://qnblackcat.github.io/AltStore/
 
-  - [Open in AltStore (v17.26.2-2.1)](https://tinyurl.com/2y86dh6b) - It will take a while to install because AltStore needs to download the IPA.
+  - [Open in AltStore (v17.30.3-2.1)](https://tinyurl.com/4usrjzzk) - It will take a while to install because AltStore needs to download the IPA.
 
-- Version info: _(last update: Jul 11)_
+- Version info: _(last update: Aug 05)_
 
 <details>
   <summary>Expand</summary>
 
 | **Tweaks/App** | **Developer** | **Version** | **Open source** |
 | - | - | :-: | :-:  |
-| **YouTube** | Google Inc | 17.26.2 | ✖︎ |
+| **YouTube** | Google Inc | 17.30.3 | ✖︎ |
 | [uYou](https://github.com/MiRO92/uYou-for-YouTube) | [MiRO92](https://twitter.com/miro92) | 2.1 | ✖︎ |
 | [Open in YouTube](https://github.com/CokePokes/YoutubeExtensions) | [CokePokes](https://github.com/CokePokes) | 1.2 | ✖︎ |
 | **iSponsorBlock** | [Galactic-Dev](https://github.com/Galactic-Dev) | 1.0-14 | [✔︎](https://github.com/Galactic-Dev/iSponsorBlock) |
@@ -103,7 +105,6 @@
 | **YTNoPaidPromo** | [PoomSmart](https://twitter.com/poomsmart) | 1.0.0 | [✔︎](https://github.com/PoomSmart/YTNoPaidPromo) |
 | **YTAutoFullScreen** | [PoomSmart](https://twitter.com/poomsmart) | 1.0.3 | [✔︎](https://github.com/PoomSmart/YTAutoFullScreen) |
 | **YouRememberCaption** | [PoomSmart](https://twitter.com/poomsmart) | 1.0.0 | [✔︎](https://poomsmart.github.io/repo/depictions/youremembercaption.html) |
-| **YTSystemAppearance** | [PoomSmart](https://twitter.com/poomsmart) | 1.0.0 | [✔︎](https://poomsmart.github.io/repo/depictions/ytsystemappearance.html) |
 | **YTClassicVideoQuality** | [PoomSmart](https://twitter.com/poomsmart) | 1.0.1 | [✔︎](https://github.com/PoomSmart/YTClassicVideoQuality) |
 | **Return YouTube Dislike** | [PoomSmart](https://twitter.com/poomsmart) | 1.6.5 | [✔︎](https://github.com/PoomSmart/Return-YouTube-Dislikes) |
 | **YTNoCheckLocalNetwork** | [PoomSmart](https://twitter.com/poomsmart) | 1.0.2 | [✔︎](https://poomsmart.github.io/repo/depictions/ytnochecklocalnetwork.html) |
@@ -128,6 +129,12 @@ See [Installation - Wiki](https://github.com/qnblackcat/uYouPlus/wiki/Installati
 
 - Paypal: https://poomsmart.github.io/
 
+</details>
+
+<details>
+  <summary>Bandar Alruwaili (BandarHL)</summary>
+
+- Paypal: https://www.paypal.com/paypalme/BandarHL
 </details>
 
 <details>
