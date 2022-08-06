@@ -1,5 +1,8 @@
 // Settings
 
+"KILL_APP" = "Fermer YouTube";
+"KILL_APP_DESC" = "Appuyez ici pour fermer YouTube !";
+
 "HIDE_PREVIOUS_AND_NEXT_BUTTON" = "Masquer les boutons Précédent et Suivant";
 "HIDE_PREVIOUS_AND_NEXT_BUTTON_DESC" = "Masquer les boutons Précédent et Suivant dans la superposition des contrôles vidéo";
 
@@ -35,6 +38,9 @@
 
 "OLED_KEYBOARD" = "Clavier OLED (Expérimental)";
 "OLED_KEYBOARD_DESC" = "Peut ne pas fonctionner correctement dans certains cas. Un redémarrage de l'application est nécessaire.";
+
+"HIDE_PAID_PROMOTION_CARDS" = "Masquer la bannière des communications commerciales";
+"HIDE_PAID_PROMOTION_CARDS_DESC" = "Masque la bannière 'Inclut une communication commerciale' dans certaines vidéos.";
 
 // YTCastConfirm
 "CASTING" = "Castings";

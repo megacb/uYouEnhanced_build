@@ -42,6 +42,15 @@ extern BOOL hidePaidPromotionCard();
     YTSettingsViewController *delegate = [self valueForKey:@"_dataDelegate"];
     NSBundle *tweakBundle = uYouPlusBundle();
 
+    YTSettingsSectionItem *killApp = [%c(YTSettingsSectionItem) // https://github.com/PoomSmart/YTABConfig/blob/b74d7f28151c407cffc21cce12908c49e9e65999/Tweak.x#L76
+    itemWithTitle:LOC(@"KILL_APP")
+    titleDescription:LOC(@"KILL_APP_DESC")
+    accessibilityIdentifier:nil
+    detailTextBlock:nil
+    selectBlock:^BOOL (YTSettingsCell *cell, NSUInteger arg1) {
+        exit(0);
+    }];
+
     YTSettingsSectionItem *hidePaidPromotionCard = [[%c(YTSettingsSectionItem) alloc] initWithTitle:LOC(@"HIDE_PAID_PROMOTION_CARDS") titleDescription:LOC(@"HIDE_PAID_PROMOTION_CARDS_DESC")];
     hidePaidPromotionCard.hasSwitch = YES;
     hidePaidPromotionCard.switchVisible = YES;
@@ -159,7 +168,7 @@ extern BOOL hidePaidPromotionCard();
         return YES;
     };
 
-    NSMutableArray <YTSettingsSectionItem *> *sectionItems = [NSMutableArray arrayWithArray:@[autoFull, castConfirm, ytMiniPlayer, hideAutoplaySwitch, hideCC, hideHUD, hidePaidPromotionCard, hidePreviousAndNextButton, hideHoverCard, bigYTMiniPlayer, oledDarkMode, oledKeyBoard, reExplore]];
+    NSMutableArray <YTSettingsSectionItem *> *sectionItems = [NSMutableArray arrayWithArray:@[killApp, autoFull, castConfirm, ytMiniPlayer, hideAutoplaySwitch, hideCC, hideHUD, hidePaidPromotionCard, hidePreviousAndNextButton, hideHoverCard, bigYTMiniPlayer, oledDarkMode, oledKeyBoard, reExplore]];
     [delegate setSectionItems:sectionItems forCategory:uYouPlusSection title:@"uYouPlus" titleDescription:nil headerHidden:NO];
 }
 

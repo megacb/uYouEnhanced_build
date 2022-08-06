@@ -1,53 +1,46 @@
-// How to translate uYouPlus to your languate:
- //
- // 1. Fork uYouPlus repo
- // 2. Duplicate the template.lproj folder, and edit the duplicated folder's name to your <lang_code>.lproj id. For example: ru.lproj 
- // for Russia. For more details, visit: https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes
- // 3. Translate each line below after each =
- // 4. Open a Pull Request
- //
- // If your language already exists then feel free to check it and/or improve it!
- //
- // Settings
+// Settings
 
- "HIDE_PREVIOUS_AND_NEXT_BUTTON" = "Spultasten ausblenden";
- "HIDE_PREVIOUS_AND_NEXT_BUTTON_DESC" = "Spultasten im Video ausblenden";
+"HIDE_PREVIOUS_AND_NEXT_BUTTON" = "Vor- und Zurücktasten ausblenden";
+"HIDE_PREVIOUS_AND_NEXT_BUTTON_DESC" = "Vor- und Zurückspultasten vom Videoplayer ausblenden.";
 
- "YT_MINIPLAYER" = "Miniplayer für alle YouTube-Videos aktivieren";
- "YT_MINIPLAYER_DESC" = "Zum Beispiel bei Videos für Kinder.";
+"YT_MINIPLAYER" = "Miniplayer für alle YT Videos aktivieren";
+"YT_MINIPLAYER_DESC" = "z.B. bei Videos für Kinder";
 
- "CAST_CONFIRM" = "Warnung vor Starten einer Übertragung (YTCastConfirm)";
- "CAST_CONFIRM_DESC" = "Warnung vor Starten einer Übertragung, um ein versehentliches Übernehmen des TVs zu verhindern.";
+"CAST_CONFIRM" = "Warnung vor TV-Übertragungen (YTCastConfirm)";
+"CAST_CONFIRM_DESC" = "Zeigt eine Warnung an, um eine ausversehene TV-Übertragung zu verhindern.";
 
- "HIDE_HOVER_CARD" = "Endkarten ausblenden (YTNoHoverCards)";
- "HIDE_HOVER_CARD_DESC" = "Endkarten (Thumbnails) am Ende von Videos ausblenden.";
+"HIDE_HOVER_CARD" = "Endkarten ausblenden (YTNoHoverCards)";
+"HIDE_HOVER_CARD_DESC" = "Endkarten (Thumbnails) am Ende des Videos ausblenden.";
 
- "NEW_MINIPLAYER_STYLE" = "Neue Miniplayer-Leiste (BigYTMiniPlayer)";
- "NEW_MINIPLAYER_STYLE_DESC" = "App-Neustart erforderlich.";
+"NEW_MINIPLAYER_STYLE" = "Neuer Miniplayer Style (BigYTMiniPlayer)";
+"NEW_MINIPLAYER_STYLE_DESC" = "App-Neustart erforderlich!";
 
- "YT_RE_EXPLORE" = "Registerkarte Shorts durch Registerkarte Entdecken ersetzen (YTReExplore)";
- "YT_RE_EXPLORE_DESC" = "App-Neustart erforderlich.";
+"YT_RE_EXPLORE" = "Shorts-Tab durch Entdecken-Tab ersetzen (YTReExplore)";
+"YT_RE_EXPLORE_DESC" = "App-Neustart erforderlich!";
 
- "HIDE_SUBTITLES_BUTTON" = "Schaltfläche Untertitel ausblenden";
- "HIDE_SUBTITLES_BUTTON_DESC" = "Schaltfläche Untertitel im Video ausblenden.";
+"HIDE_SUBTITLES_BUTTON" = "Untertitel-Button ausblenden";
+"HIDE_SUBTITLES_BUTTON_DESC" = "Untertitel-Button vom Videoplayer ausblenden.";
 
- "HIDE_AUTOPLAY_SWITCH" = "Schaltfläche Autoplay ausblenden";
- "HIDE_AUTOPLAY_SWITCH_DESC" = "Schaltfläche Autoplay im Video ausblenden.";
+"HIDE_AUTOPLAY_SWITCH" = "Autoplay-Schalter ausblenden";
+"HIDE_AUTOPLAY_SWITCH_DESC" = "Autoplay-Schalter vom Videoplayer ausblenden.";
 
- "AUTO_FULLSCREEN" = "Auto-Vollbild (YTAutoFullScreen)";
- "AUTO_FULLSCREEN_DESC" = "Auto. Videos im Vollbild starten.";
+"AUTO_FULLSCREEN" = "Automatisches Vollbild (YTAutoFullScreen)";
+"AUTO_FULLSCREEN_DESC" = "Automatisch Videos im Vollbild starten.";
 
- "HIDE_HUD_MESSAGES" = "HUD-Meldungen ausblenden";
- "HIDE_HUD_MESSAGES_DESC" = "Beispiel: CC ist ein/ausgeschaltet, Videoschleife ist eingeschaltet,...";
+"HIDE_HUD_MESSAGES" = "HUD-Nachrichten ausblenden";
+"HIDE_HUD_MESSAGES_DESC" = "z.B.: Untertitel sind akti-/deaktiviert, Videoschleife ist an, ...";
 
- "OLED_DARKMODE" = "OLED-Dunkelmodus (Experimentell)";
- "OLED_DARKMODE_DESC" = "Funktioniert in einigen Fällen möglicherweise nicht richtig. Ein App-Neustart ist nach Aktiv-/Deaktivierung erforderlich.";
+"OLED_DARKMODE" = "OLED-Dunkelmodus (Experimental)";
+"OLED_DARKMODE_DESC" = "Könnte in manchen Fällen nicht richtig funktionieren. App-Neustart ist erforderlich, wenn diese Option akti-/deaktiviert wird!";
 
- "OLED_KEYBOARD" = "OLED-Tastatur (Experimentell)";
- "OLED_KEYBOARD_DESC" = "Funktioniert in einigen Fällen möglicherweise nicht richtig. App-Neustart erforderlich.";
+"OLED_KEYBOARD" = "OLED-Tastatur (Experimental)";
+"OLED_KEYBOARD_DESC" = "Könnte in manchen Fällen nicht richtig funktionieren. App-Neustart erforderlich1";
 
- // YTCastConfirm
- "CASTING" = "Übertragen";
- "MSG_ARE_YOU_SURE" = "Sind Sie sicher, dass Sie mit der Übertragung beginnen wollen?";
- "MSG_YES" = "Ja";
- "MSG_CANCEL" = "Abbrechen";
+"HIDE_PAID_PROMOTION_CARDS" = "Enthält bezahlte Werbung Info ausblenden";
+"HIDE_PAID_PROMOTION_CARDS_DESC" = "Enthält bezahlte Werbung Infobanner bei manchen Videos ausblenden.";
+
+// YTCastConfirm
+"CASTING" = "TV-Übertragung";
+"MSG_ARE_YOU_SURE" = "Sind Sie sicher, dass Sie mit der Videoübertragung beginnen wollen?";
+"MSG_YES" = "Ja";
+"MSG_CANCEL" = "Abbrechen";
