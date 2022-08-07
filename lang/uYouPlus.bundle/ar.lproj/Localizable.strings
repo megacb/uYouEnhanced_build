@@ -1,34 +1,37 @@
 // Settings
 
-"HIDE_PREVIOUS_AND_NEXT_BUTTON" = "إخفاء زر "السابق" و"التالي"";
-"HIDE_PREVIOUS_AND_NEXT_BUTTON_DESC" = "إخفاء زرّي "السابق" و"التالي" من أزرار التحكم على الفيديو.";
+"KILL_APP" = "إغلاق تطبيق يوتيوب";
+"KILL_APP_DESC" = "المس هنا لإغلاق تطبيق يوتيوب!";
 
-"YT_MINIPLAYER" = "السماح بـ"المشغل المصغّر" لكل فيديوهات يوتيوب";
+"HIDE_PREVIOUS_AND_NEXT_BUTTON" = "إخفاء زر السابق والتالي";
+"HIDE_PREVIOUS_AND_NEXT_BUTTON_DESC" = "إخفاء زرّي السابق والتالي من أزرار التحكم على الفيديو.";
+
+"YT_MINIPLAYER" = "السماح بالمشغل المصغّر لكل فيديوهات يوتيوب";
 "YT_MINIPLAYER_DESC" = "عند تصغير فيديوهات الأطفال مثلاً (قبل إغلاق المقطع).";
 
 "CAST_CONFIRM" = "التأكيد قبل البث (أداة YTCastConfirm)";
 "CAST_CONFIRM_DESC" = "إظهار تنبيه للتأكيد قبل البث، من أجل منع البث للتلفاز عن طريق الخطأ.";
 
-"HIDE_HOVER_CARD" = "إخفاء صور المقاطع الأخرى في نهاية المقاطع (YTNoHoverCards)";
+"HIDE_HOVER_CARD" = "إخفاء صور المقاطع الأخرى في نهاية المقاطع (أداة YTNoHoverCards)";
 "HIDE_HOVER_CARD_DESC" = "إخفاء الصور المصغرة الظاهرة على مشغل الفيديو في نهاية المقطع.";
 
-"NEW_MINIPLAYER_STYLE" = "تغيير شكل المشغّل المصغر (BigYTMiniPlayer)";
+"NEW_MINIPLAYER_STYLE" = "تغيير شكل المشغّل المصغر (أداة BigYTMiniPlayer)";
 "NEW_MINIPLAYER_STYLE_DESC" = "تغيير شكل المشغّل المصغر في الآيفون إلى نفس شكله في الآيباد - تتطلب إغلاق التطبيق وإعادة فتحه.";
 
-"YT_RE_EXPLORE" = "استبدال تبويب Shorts بتبويب Explore (YTReExplore)";
+"YT_RE_EXPLORE" = "استبدال تبويب Shorts بتبويب Explore (أداة YTReExplore)";
 "YT_RE_EXPLORE_DESC" = " تتطلب إغلاق التطبيق وإعادة فتحه.";
 
-"HIDE_SUBTITLES_BUTTON" = "إخفاء زر "الترجمة"";
-"HIDE_SUBTITLES_BUTTON_DESC" = "إخفاء زر "الترجمة" من أزرار التحكم على الفيديو.";
+"HIDE_SUBTITLES_BUTTON" = "إخفاء زر الترجمة";
+"HIDE_SUBTITLES_BUTTON_DESC" = "إخفاء زر الترجمة من أزرار التحكم على الفيديو.";
 
-"HIDE_AUTOPLAY_SWITCH" = "إخفاء زر "التشغيل التلقائي"";
-"HIDE_AUTOPLAY_SWITCH_DESC" = "إخفاء زر "التشغيل التلقائي" من أزرار التحكم على الفيديو.";
+"HIDE_AUTOPLAY_SWITCH" = "إخفاء زر التشغيل التلقائي";
+"HIDE_AUTOPLAY_SWITCH_DESC" = "إخفاء زر التشغيل التلقائي من أزرار التحكم على الفيديو.";
 
-"AUTO_FULLSCREEN" = "كامل الشاشة تلقائياً (YTAutoFullScreen)";
+"AUTO_FULLSCREEN" = "كامل الشاشة تلقائياً (أداة YTAutoFullScreen)";
 "AUTO_FULLSCREEN_DESC" = "تشغيل الفيديوهات تلقائياً بكامل الشاشة.";
 
 "HIDE_HUD_MESSAGES" = "إخفاء رسائل المعلومات";
-"HIDE_HUD_MESSAGES_DESC" = "مثلاً: تم إيقاف الترحمة...";
+"HIDE_HUD_MESSAGES_DESC" = "مثلاً: تم إيقاف الترجمة...";
 
 "OLED_DARKMODE" = "وضغ داكن OLED (ميزة تجريبية)";
 "OLED_DARKMODE_DESC" = "قد لا تعمل في كل الحالات. يجب إعادة تشغيل التطبيق عند تشغيل أو إيقاف هذه الخاصية.";
@@ -36,8 +39,8 @@
 "OLED_KEYBOARD" = "لوحة مفاتيح داكنة OLED (ميزة تجريبية)";
 "OLED_KEYBOARD_DESC" = "قد لا تعمل في كل الحالات. يجب إعادة تشغيل التطبيق عند تشغيل أو إيقاف هذه الخاصية.";
 
-"HIDE_PAID_PROMOTION_CARDS" = "إخفاء شريط "الترويج المدفوع"";
-"HIDE_PAID_PROMOTION_CARDS_DESC" = "إخفاء عبارة "يتضمن ترويجاً مدفوعاً" الظاهرة على بعض الفيديوهات.";
+"HIDE_PAID_PROMOTION_CARDS" = "إخفاء شريط الترويج المدفوع";
+"HIDE_PAID_PROMOTION_CARDS_DESC" = "إخفاء عبارة يتضمن ترويجاً مدفوعاً الظاهرة على بعض الفيديوهات.";
 
 // YTCastConfirm
 "CASTING" = "البث";
