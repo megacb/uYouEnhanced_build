@@ -1,0 +1,49 @@
+// Settings
+
+"KILL_APP" = "关闭YouTube";
+"KILL_APP_DESC" = "点击此处关闭YouTube!";
+
+"HIDE_PREVIOUS_AND_NEXT_BUTTON" = "隐藏上一个/下一个按钮";
+"HIDE_PREVIOUS_AND_NEXT_BUTTON_DESC" = "隐藏视频播放器控制界面上的上一个/下一个按钮。";
+
+"YT_MINIPLAYER" = "为所有YouTube视频启用迷你播放器";
+"YT_MINIPLAYER_DESC" = "例如：面向儿童的视频。";
+
+"CAST_CONFIRM" = "投屏前确认 (YTCastConfirm)";
+"CAST_CONFIRM_DESC" = "在投屏前显示确认对话框以防意外劫屏。";
+
+"HIDE_HOVER_CARD" = "隐藏片尾画面悬浮卡片 (YTNoHoverCards)";
+"HIDE_HOVER_CARD_DESC" = "隐藏视频结尾处的创作者片尾画面元素（缩略图）。";
+
+"NEW_MINIPLAYER_STYLE" = "新迷你播放器风格 (BigYTMiniPlayer)";
+"NEW_MINIPLAYER_STYLE_DESC" = "更改本设置后需要重启App。";
+
+"YT_RE_EXPLORE" = "将Shorts选项卡替换成探索选项卡 (YTReExplore)";
+"YT_RE_EXPLORE_DESC" = "更改本设置后需要重启App。";
+
+"HIDE_SUBTITLES_BUTTON" = "隐藏字幕按钮";
+"HIDE_SUBTITLES_BUTTON_DESC" = "隐藏视频播放器控制界面上的字幕按钮。";
+
+"HIDE_AUTOPLAY_SWITCH" = "隐藏自动播放模式开关";
+"HIDE_AUTOPLAY_SWITCH_DESC" = "隐藏视频播放器控制界面上的自动播放开关。";
+
+"AUTO_FULLSCREEN" = "自动全屏 (YTAutoFullScreen)";
+"AUTO_FULLSCREEN_DESC" = "自动全屏播放视频。";
+
+"HIDE_HUD_MESSAGES" = "隐藏系统提醒";
+"HIDE_HUD_MESSAGES_DESC" = "例如：\"已启用/停用字幕\"、\"已开启/关闭视频循环播放\"等。";
+
+"OLED_DARKMODE" = "OLED 深色模式（实验性功能）";
+"OLED_DARKMODE_DESC" = "在某些情况下可能不会正常工作。更改本设置后需要重启App。";
+
+"OLED_KEYBOARD" = "OLED 键盘（实验性功能）";
+"OLED_KEYBOARD_DESC" = "在某些情况下可能不会正常工作。更改本设置后需要重启App。";
+
+"HIDE_PAID_PROMOTION_CARDS" = "隐藏付费宣传内容提醒横幅";
+"HIDE_PAID_PROMOTION_CARDS_DESC" = "隐藏出现在部分视频中的\"包含付费宣传内容\"横幅。";
+
+// YTCastConfirm
+"CASTING" = "正在投屏";
+"MSG_ARE_YOU_SURE" = "您确定要开始投屏吗？";
+"MSG_YES" = "确定";
+"MSG_CANCEL" = "取消";
