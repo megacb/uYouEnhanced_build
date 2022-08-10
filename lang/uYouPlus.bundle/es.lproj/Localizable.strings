@@ -1,0 +1,61 @@
+// How to translate uYouPlus to your language:
+//
+// 1. Fork uYouPlus repo
+// 2. Duplicate the template.lproj folder, and edit the duplicated folder's name to your <lang_code>.lproj id.  
+// For example: <ru.lproj> for Russia. For more details, visit: https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes
+// 3. Translate each line below after each =
+// 4. Open a Pull Request
+//
+// If your language already exists then feel free to check it and/or improve it!
+// You can also add your localization to YouPiP here, the process is the same
+// https://github.com/PoomSmart/YouPiP/tree/main/layout/Library/Application%20Support/YouPiP.bundle
+//
+// Settings
+
+"KILL_APP" = "Cerrar YouTube";
+"KILL_APP_DESC" = "Toca aquí para cerrar YouTube!";
+
+"HIDE_PREVIOUS_AND_NEXT_BUTTON" = "Ocultar el botón de Anterior y Siguiente";
+"HIDE_PREVIOUS_AND_NEXT_BUTTON_DESC" = "Ocultar el botón de Anterior y Siguiente en los botones superpuestos.";
+
+"YT_MINIPLAYER" = "Activar el minirreproductor para todos los vídeos de YouTube";
+"YT_MINIPLAYER_DESC" = "Vídeos infantiles por ejemplo.";
+
+"CAST_CONFIRM" = "Alerta de confirmación antes de Enviar contenido (YTCastConfirm)";
+"CAST_CONFIRM_DESC" = "Mostrar una alerta de confirmación antes de Enviar contenido para prevenir el secuestro accidental del TV.";
+
+"HIDE_HOVER_CARD" = "Ocultar tarjetas flotantes en las pantallas finales (YTNoHoverCards)";
+"HIDE_HOVER_CARD_DESC" = "Ocultar tarjetas flotantes del creador (miniaturas) al final de los vídeos.";
+
+"NEW_MINIPLAYER_STYLE" = "Nuevo estilo de barra del minirreproductor (BigYTMiniPlayer)";
+"NEW_MINIPLAYER_STYLE_DESC" = "Requiere reiniciar la app.";
+
+"YT_RE_EXPLORE" = "Reemplazar pestaña de Cortos con pestaña de Explorar (YTReExplore)";
+"YT_RE_EXPLORE_DESC" = "Requiere reiniciar la app.";
+
+"HIDE_SUBTITLES_BUTTON" = "Ocultar botón de Subtítulos";
+"HIDE_SUBTITLES_BUTTON_DESC" = "Ocultar el botón de Subtítulos en los botones superpuestos.";
+
+"HIDE_AUTOPLAY_SWITCH" = "Ocultar interruptor de Reproducir automáticamente";
+"HIDE_AUTOPLAY_SWITCH_DESC" = "Ocultar el interruptor de Reproducir automáticamente en los botones superpuestos.";
+
+"AUTO_FULLSCREEN" = "Pantalla completa automática (YTAutoFullScreen)";
+"AUTO_FULLSCREEN_DESC" = "Reproducir vídeos en pantalla completa automáticamente.";
+
+"HIDE_HUD_MESSAGES" = "Ocultar mensajes HUD";
+"HIDE_HUD_MESSAGES_DESC" = "Ejemplo: CC está activado/desactivado, Vídeo en bucle está activado,...";
+
+"OLED_DARKMODE" = "Modo oscuro OLED (Experimental)";
+"OLED_DARKMODE_DESC" = "Puede no funcionar correctamente en algunos casos. Requiere reiniciar la app después de activar/desactivar esta opción.";
+
+"OLED_KEYBOARD" = "Teclado OLED (Experimental)";
+"OLED_KEYBOARD_DESC" = "Puede no funcionar correctamente en algunos casos. Requiere reiniciar la app.";
+
+"HIDE_PAID_PROMOTION_CARDS" = "Ocultar banner de contenido promocional";
+"HIDE_PAID_PROMOTION_CARDS_DESC" = "Ocultar el banner de 'Incluye contenido promocional' en algunos vídeos.";
+
+// YTCastConfirm
+"CASTING" = "Enviar contenido";
+"MSG_ARE_YOU_SURE" = "¿Estás seguro de que deseas Enviar contenido?";
+"MSG_YES" = "Sí";
+"MSG_CANCEL" = "Cancelar";
