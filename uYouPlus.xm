@@ -12,6 +12,7 @@
 #import "Tweaks/YouTubeHeader/YTIPivotBarRenderer.h"
 #import "Tweaks/YouTubeHeader/YTIBrowseRequest.h"
 #import "Tweaks/YouTubeHeader/YTCommonColorPalette.h"
+#import "Tweaks/YouTubeHeader/YTColorPalette.h"
 #import "Tweaks/YouTubeHeader/ASCollectionView.h"
 #import "Tweaks/YouTubeHeader/YTPlayerOverlay.h"
 #import "Tweaks/YouTubeHeader/YTPlayerOverlayProvider.h"
@@ -211,6 +212,7 @@ BOOL hidePaidPromotionCard() {
 // YouRememberCaption: https://poomsmart.github.io/repo/depictions/youremembercaption.html
 %hook YTColdConfig
 - (BOOL)respectDeviceCaptionSetting { return NO; }
+- (BOOL)shouldUseAppThemeSetting { return YES; } // v16.xx
 %end
 
 // NOYTPremium - https://github.com/PoomSmart/NoYTPremium/
@@ -240,13 +242,17 @@ BOOL hidePaidPromotionCard() {
 - (void)showSurveyWithRenderer:(id)arg1 surveyParentResponder:(id)arg2 {}
 %end
 
-// Enable Shorts scroll bar - @PoomSmart & @level3tjg
+// Enable Shorts scroll bar - @PoomSmart
 %hook YTReelPlayerViewController
 - (BOOL)shouldAlwaysEnablePlayerBar { return YES; }
 %end
 
 %hook YTInlinePlayerBarContainerView
 - (void)setUserInteractionEnabled:(BOOL)enabled { %orig(YES); }
+%end
+
+%hook YTReelPlayerViewControllerSub // v16.42.3 - @level3tjg: https://reddit.com/r/jailbreak/comments/v29yvk/_/iasl1l0/
+ - (BOOL)shouldEnablePlayerBar { return YES; }
 %end
 
 // Workaround for issue #54
@@ -388,6 +394,39 @@ UIColor* raisedColor = [UIColor colorWithRed:0.035 green:0.035 blue:0.035 alpha:
 - (UIColor *)raisedBackground {
     if (self.pageStyle == 1) {
         return [UIColor blackColor];
+    }
+        return %orig;
+}
+- (UIColor *)staticBrandBlack {
+    if (self.pageStyle == 1) {
+        return [UIColor blackColor];
+    }
+        return %orig;
+}
+- (UIColor *)generalBackgroundA {
+    if (self.pageStyle == 1) {
+        return [UIColor blackColor];
+    }
+        return %orig;
+}
+%end
+
+%hook YTColorPalette // v16.42.3
+- (UIColor *)brandBackgroundSolid {
+    if (self.pageStyle == 1) {
+        return [UIColor blackColor];
+    }
+        return %orig;
+}
+- (UIColor *)brandBackgroundPrimary {
+    if (self.pageStyle == 1) {
+        return [UIColor blackColor];
+    }
+        return %orig;
+}
+- (UIColor *)brandBackgroundSecondary {
+    if (self.pageStyle == 1) {
+        return [[UIColor blackColor] colorWithAlphaComponent:0.9];
     }
         return %orig;
 }
