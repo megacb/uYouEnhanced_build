@@ -80,6 +80,11 @@ BOOL hidePaidPromotionCard() {
 - (BOOL)canReorder { return YES; }
 %end
 
+// Skips content warning before playing *some videos - @PoomSmart
+%hook YTPlayabilityResolutionUserActionUIController
+- (void)showConfirmAlert { [self confirmAlertDidPressConfirm]; }
+%end
+
 // YTMiniPlayerEnabler: https://github.com/level3tjg/YTMiniplayerEnabler/
 %hook YTWatchMiniBarViewController
 - (void)updateMiniBarPlayerStateFromRenderer {
