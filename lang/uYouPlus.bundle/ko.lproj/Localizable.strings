@@ -1,0 +1,49 @@
+// Settings
+
+"KILL_APP" = "YouTube 닫기";
+"KILL_APP_DESC" = "YouTube 앱을 닫으려면 여기를 탭하세요!";
+
+"HIDE_PREVIOUS_AND_NEXT_BUTTON" = "이전, 다음 재생 버튼 숨기기";
+"HIDE_PREVIOUS_AND_NEXT_BUTTON_DESC" = "비디오 재생 오버레이에서 이전 재생, 다음 재생 버튼을 숨깁니다.";
+
+"YT_MINIPLAYER" = "모든 YouTube 영상에서 미니 플레이어 활성화";
+"YT_MINIPLAYER_DESC" = "아동용 영상일 경우.";
+
+"CAST_CONFIRM" = "TV로 보낼 때 알림 (YTCastConfirm)";
+"CAST_CONFIRM_DESC" = "의도치 않게 TV로 보내는 것을 방지하기 위해 보내기 전에 확인 메시지를 표시합니다.";
+
+"HIDE_HOVER_CARD" = "영상 마지막의 호버카드 숨기기 (YTNoHoverCards)";
+"HIDE_HOVER_CARD_DESC" = "영상의 마지막에 게시자가 표시한 영상 썸네일을 숨깁니다.";
+
+"NEW_MINIPLAYER_STYLE" = "새로운 스타일의 미니 플레이어 재생 막대 (BigYTMiniPlayer)";
+"NEW_MINIPLAYER_STYLE_DESC" = "앱을 다시 시작해야 합니다.";
+
+"YT_RE_EXPLORE" = "Shorts 탭 대신 탐색 탭 보이기 (YTReExplore)";
+"YT_RE_EXPLORE_DESC" = "앱을 다시 시작해야 합니다.";
+
+"HIDE_SUBTITLES_BUTTON" = "자막 버튼 숨기기";
+"HIDE_SUBTITLES_BUTTON_DESC" = "비디오 재생 오버레이에서 자막 버튼을 숨깁니다.";
+
+"HIDE_AUTOPLAY_SWITCH" = "자동재생 스위치 숨기기";
+"HIDE_AUTOPLAY_SWITCH_DESC" = "비디오 재생 오버레이에서 자동재생 스위치를 숨깁니다.";
+
+"AUTO_FULLSCREEN" = "자동 전체화면 재생 (YTAutoFullScreen)";
+"AUTO_FULLSCREEN_DESC" = "자동으로 전체화면에서 재생합니다.";
+
+"HIDE_HUD_MESSAGES" = "화면 메시지 숨기기";
+"HIDE_HUD_MESSAGES_DESC" = "예: CC is turned on/off, Video loop is on,...";
+
+"OLED_DARKMODE" = "OLED 다크모드 (실험실)";
+"OLED_DARKMODE_DESC" = "몇몇 경우 제대로 동작하지 않을 수도 있습니다. 이 기능을 켜거나 끄는 경우 앱을 다시 시작해야 합니다.";
+
+"OLED_KEYBOARD" = "OLED 키보드 (실험실)";
+"OLED_KEYBOARD_DESC" = "몇몇 경우 제대로 동작하지 않을 수도 있습니다. 앱을 다시 시작해야 합니다.";
+
+"HIDE_PAID_PROMOTION_CARDS" = "유료 광고 배너 숨기기";
+"HIDE_PAID_PROMOTION_CARDS_DESC" = "'유료 광고가 포함됨' 배너를 숨깁니다.";
+
+// YTCastConfirm
+"CASTING" = "Casting";
+"MSG_ARE_YOU_SURE" = "TV로 영상 전송을 시작하겠습니까?;
+"MSG_YES" = "예";
+"MSG_CANCEL" = "취소";
