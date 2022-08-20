@@ -374,6 +374,23 @@ BOOL hidePaidPromotionCard() {
 }
 %end
 
+%hook NSJSONSerialization
++ (id)dataWithJSONObject:(id)arg1 options:(unsigned long long)arg2 error:(id*)arg3
+{
+	@try {
+		if(arg1 && ([arg1 isKindOfClass:[NSDictionary class]] || [arg1 isKindOfClass:[NSMutableDictionary class]]) ) {
+			if(arg1[@"device_challenge_request"] != nil) {
+				NSMutableDictionary *MutRet = [arg1 mutableCopy];
+				[MutRet removeObjectForKey:@"device_challenge_request"];
+				arg1 = MutRet;
+			}
+		}
+	}@catch(NSException*e){
+	}
+	return %orig(arg1, arg2, arg3);
+}
+%end
+
 # pragma mark - OLED dark mode by BandarHL
 UIColor* raisedColor = [UIColor colorWithRed:0.035 green:0.035 blue:0.035 alpha:1.0];
 %group gOLED
