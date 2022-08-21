@@ -374,20 +374,20 @@ BOOL hidePaidPromotionCard() {
 }
 %end
 
-%hook NSJSONSerialization
-+ (id)dataWithJSONObject:(id)arg1 options:(unsigned long long)arg2 error:(id*)arg3
-{
-	@try {
-		if(arg1 && ([arg1 isKindOfClass:[NSDictionary class]] || [arg1 isKindOfClass:[NSMutableDictionary class]]) ) {
-			if(arg1[@"device_challenge_request"] != nil) {
-				NSMutableDictionary *MutRet = [arg1 mutableCopy];
-				[MutRet removeObjectForKey:@"device_challenge_request"];
-				arg1 = MutRet;
-			}
-		}
-	}@catch(NSException*e){
-	}
-	return %orig(arg1, arg2, arg3);
+// Fix "You can't sign in to this app because Google can't confirm that it's safe" warning when signing in. by julioverne & PoomSmart
+// https://gist.github.com/PoomSmart/ef5b172fd4c5371764e027bea2613f93
+// https://github.com/qnblackcat/uYouPlus/pull/398
+%hook SSOService
++ (id)fetcherWithRequest:(NSMutableURLRequest *)request configuration:(id)configuration {
+    if ([request isKindOfClass:[NSMutableURLRequest class]] && request.HTTPBody) {
+        NSError *error = nil;
+        NSMutableDictionary *body = [NSJSONSerialization JSONObjectWithData:request.HTTPBody options:NSJSONReadingMutableContainers error:&error];
+        if (!error && [body isKindOfClass:[NSMutableDictionary class]]) {
+            [body removeObjectForKey:@"device_challenge_request"];
+            request.HTTPBody = [NSJSONSerialization dataWithJSONObject:body options:kNilOptions error:&error];
+        }
+    }
+    return %orig;
 }
 %end
 
