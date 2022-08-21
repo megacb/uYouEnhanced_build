@@ -15,7 +15,7 @@ _Make sure you complete the template. Otherwise, it will be closed without furth
 - iOS/iPadOS version: 
 - Device model:
 - Sideload tool (Ex: AltStore, Sideloadly...)
-- Version of uYouPlus: 
+- Version of uYouPlus: _**latest** or **newest** is NOT a version number!!_
 
 ### Describe the bug
 
