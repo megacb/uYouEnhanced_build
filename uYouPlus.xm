@@ -427,7 +427,7 @@ BOOL hidePaidPromotionCard() {
         NSURL *documentsURL = [paths lastObject];
         return [documentsURL URLByAppendingPathComponent:@"AppGroup"];
     }
-    return %orig(arg1);
+    return %orig(groupIdentifier);
 }
 %end
 
