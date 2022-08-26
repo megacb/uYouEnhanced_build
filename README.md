@@ -25,6 +25,8 @@
 
 - [BandarHL](https://twitter.com/bandarhl) for a bunch of improvements.
 
+- [Julioverne](https://twitter.com/ijulioverne) for the solution to skip Google's safety warning when logging in.
+
 - [Lyvendia](https://github.com/Lyvendia/) for [YTSpeed](https://github.com/Lyvendia/YTSpeed/)
 
 - [YouTube Extensions](https://github.com/CokePokes/YoutubeExtensions) by [CokePokes](https://github.com/CokePokes/).
@@ -78,16 +80,16 @@
 
   - My official AltStore repo: https://qnblackcat.github.io/AltStore/
 
-  - [Open in AltStore (v17.31.4-2.1)](https://tinyurl.com/2p99amjz) - It will take a while to install because AltStore needs to download the IPA.
+  - [Open in AltStore (v17.33.2-2.1)](https://tinyurl.com/33mv77u6) - It will take a while to install because AltStore needs to download the IPA.
 
-- Version info: _(last update: Aug 12)_
+- Version info: _(last update: Aug 26)_
 
 <details>
   <summary>Expand</summary>
 
 | **Tweaks/App** | **Developer** | **Version** | **Open source** |
 | - | - | :-: | :-:  |
-| **YouTube** | Google Inc | 17.31.4 | ✖︎ |
+| **YouTube** | Google Inc | 17.33.2 | ✖︎ |
 | [uYou](https://github.com/MiRO92/uYou-for-YouTube) | [MiRO92](https://twitter.com/miro92) | 2.1 | ✖︎ |
 | [Open in YouTube](https://github.com/CokePokes/YoutubeExtensions) | [CokePokes](https://github.com/CokePokes) | 1.2 | ✖︎ |
 | **iSponsorBlock** | [Galactic-Dev](https://github.com/Galactic-Dev) | 1.0-15 | [✔︎](https://github.com/Galactic-Dev/iSponsorBlock) |
@@ -119,9 +121,7 @@ See [Installation - Wiki](https://github.com/qnblackcat/uYouPlus/wiki/Installati
 <details>
   <summary>MiRO92</summary>
   
-- CashApp: https://cash.app/$MiRO92M
- 
-- Other payment methods are available in uYou's settings.
+- https://github.com/MiRO92/uYou-for-YouTube#support
 </details>
 
 <details>
