@@ -13,7 +13,7 @@ BUNDLE_ID = com.google.ios.youtube
 uYouPlus_INJECT_DYLIBS = Tweaks/uYou/Library/MobileSubstrate/DynamicLibraries/uYou.dylib .theos/obj/libcolorpicker.dylib .theos/obj/iSponsorBlock.dylib .theos/obj/YTUHD.dylib .theos/obj/YouPiP.dylib .theos/obj/YouTubeDislikesReturn.dylib .theos/obj/YoutubeSpeed.dylib
 uYouPlus_FILES = uYouPlus.xm Settings.xm
 uYouPlus_IPA = ./tmp/Payload/YouTube.app
-uYouPlus_FRAMEWORKS = UIKit
+uYouPlus_FRAMEWORKS = UIKit Security
 uYouPlus_CFLAGS = -fobjc-arc
 
 include $(THEOS)/makefiles/common.mk
