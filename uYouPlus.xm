@@ -16,6 +16,8 @@
 #import "Tweaks/YouTubeHeader/ASCollectionView.h"
 #import "Tweaks/YouTubeHeader/YTPlayerOverlay.h"
 #import "Tweaks/YouTubeHeader/YTPlayerOverlayProvider.h"
+#import "Tweaks/YouTubeHeader/YTReelWatchPlaybackOverlayView.h"
+#import "Tweaks/YouTubeHeader/YTReelPlayerBottomButton.h"
 
 // Tweak's bundle for Localizations support - @PoomSmart - https://github.com/PoomSmart/YouPiP/commit/aea2473f64c75d73cab713e1e2d5d0a77675024f
 NSBundle *uYouPlusBundle() {
@@ -197,13 +199,15 @@ BOOL hidePaidPromotionCard() {
 }
 %end
 
-// Workaround for https://github.com/MiRO92/uYou-for-YouTube/issues/12
-%hook YTAdsInnerTubeContextDecorator
-- (void)decorateContext:(id)arg1 { %orig(nil); }
+// Workaround for MiRO92/uYou-for-YouTube#12, qnblackcat/uYouPlus#263
+%hook YTDataUtils
++ (NSMutableDictionary *)spamSignalsDictionary {
+  return nil;
+}
 %end
 
 // Workaround for https://github.com/MiRO92/uYou-for-YouTube/issues/94
-%hook YTELMView
+%hook UIResponder
 %new
 - (id)entry {
   return nil;
@@ -283,7 +287,52 @@ BOOL hidePaidPromotionCard() {
     if ([[NSUserDefaults standardUserDefaults] boolForKey:@"relatedVideosAtTheEndOfYTVideos"] == NO) {}
     else { return %orig; }
 }
-%end 
+%end
+
+// Workaround for qnblackcat/uYouPlus#253, qnblackcat/uYouPlus#170
+%hook YTReelWatchPlaybackOverlayView
+- (YTQTMButton *)overflowButton {
+  if ([self respondsToSelector:@selector(orderedRightSideButtons)] &&
+      [self orderedRightSideButtons].count != 0)
+    return [self orderedRightSideButtons][0];
+  return %orig;
+}
+%end
+
+%hook NSLayoutConstraint
++ (instancetype)constraintWithItem:(UIView *)view1
+                         attribute:(NSLayoutAttribute)attr1
+                         relatedBy:(NSLayoutRelation)relation
+                            toItem:(UIView *)view2
+                         attribute:(NSLayoutAttribute)attr2
+                        multiplier:(CGFloat)multiplier
+                          constant:(CGFloat)c {
+  if (![view1.accessibilityIdentifier isEqualToString:@"com.miro.uyou"]) return %orig;
+  if (!view2) {
+    view1.hidden = YES;
+    return [NSLayoutConstraint alloc];
+  }
+  YTReelPlayerBottomButton *uYouButton = (YTReelPlayerBottomButton *)view1;
+  YTReelPlayerBottomButton *topButton = (YTReelPlayerBottomButton *)view2;
+  NSString *uYouButtonTitle =
+      [view2.accessibilityIdentifier isEqualToString:@"com.miro.uyou"]
+          ? @"uYou"
+          : @"uYouLocal";
+  uYouButton.accessibilityLabel = uYouButtonTitle;
+  uYouButton.uppercaseTitle = NO;
+  [uYouButton setTitle:uYouButtonTitle forState:UIControlStateNormal];
+  [uYouButton
+      setTitleTypeKind:MSHookIvar<NSInteger>(topButton, "_typeKind")
+            typeVariant:MSHookIvar<NSInteger>(topButton, "_typeVariant")];
+  uYouButton.applyRightSideLayoutImageSize =
+      topButton.applyRightSideLayoutImageSize;
+  uYouButton.buttonImageTitlePadding = topButton.buttonImageTitlePadding;
+  uYouButton.buttonLayoutStyle = topButton.buttonLayoutStyle;
+  uYouButton.sizeWithPaddingAndInsets = topButton.sizeWithPaddingAndInsets;
+  uYouButton.verticalContentPadding = topButton.verticalContentPadding;
+  return %orig;
+}
+%end
 
 // Hide YouTube Shorts banner in Home page? - @MiRO92 - YTNoShorts: https://github.com/MiRO92/YTNoShorts
 %hook YTAsyncCollectionView
