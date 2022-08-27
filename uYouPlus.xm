@@ -307,7 +307,9 @@ BOOL hidePaidPromotionCard() {
                          attribute:(NSLayoutAttribute)attr2
                         multiplier:(CGFloat)multiplier
                           constant:(CGFloat)c {
-  if (![view1.accessibilityIdentifier isEqualToString:@"com.miro.uyou"]) return %orig;
+  if (![view1 isKindOfClass:%c(YTReelPlayerBottomButton)] &&
+    ![view1.accessibilityIdentifier isEqualToString:@"com.miro.uyou"])
+  return %orig;
   if (!view2) {
     view1.hidden = YES;
     return [NSLayoutConstraint alloc];
