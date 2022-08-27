@@ -30,6 +30,9 @@
 @interface FRPSliderCell : UITableViewCell
 @end
 
+@interface boolSettingsVC : UIViewController
+@end
+
 // iOS16 fix
 @interface OBPrivacyLinkButton : UIButton
 - (instancetype)initWithCaption:(NSString *)caption

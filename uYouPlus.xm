@@ -222,6 +222,16 @@ BOOL hidePaidPromotionCard() {
 }
 %end
 
+// Workaround for qnblackcat/uYouPlus#10
+%hook boolSettingsVC
+- (instancetype)initWithTitle:(NSString *)title sections:(NSArray *)sections footer:(NSString *)footer {
+    if (@available(iOS 15, *))
+        if (![self valueForKey:@"_lastNotifiedTraitCollection"])
+            [self setValue:[UITraitCollection currentTraitCollection] forKey:@"_lastNotifiedTraitCollection"];
+    return %orig;
+}
+%end
+
 // YTClassicVideoQuality: https://github.com/PoomSmart/YTClassicVideoQuality
 %hook YTVideoQualitySwitchControllerFactory
 - (id)videoQualitySwitchControllerWithParentResponder:(id)responder {
