@@ -33,6 +33,10 @@
 @interface boolSettingsVC : UIViewController
 @end
 
+@interface PlayerManager : NSObject
+- (float)progress;
+@end
+
 // iOS16 fix
 @interface OBPrivacyLinkButton : UIButton
 - (instancetype)initWithCaption:(NSString *)caption
