@@ -349,7 +349,7 @@ BOOL hidePaidPromotionCard() {
 // Prevent uYou player bar from showing when not playing downloaded media
 %hook PlayerManager
 - (void)pause {
-  if ([@([self progress]) isEqualToNumber:[NSDecimalNumber notANumber]])
+  if (isnan([self progress]))
     return;
   %orig;
 }
