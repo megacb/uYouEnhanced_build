@@ -12,7 +12,6 @@
 #import "Tweaks/YouTubeHeader/YTIPivotBarRenderer.h"
 #import "Tweaks/YouTubeHeader/YTIBrowseRequest.h"
 #import "Tweaks/YouTubeHeader/YTCommonColorPalette.h"
-#import "Tweaks/YouTubeHeader/YTColorPalette.h"
 #import "Tweaks/YouTubeHeader/ASCollectionView.h"
 #import "Tweaks/YouTubeHeader/YTPlayerOverlay.h"
 #import "Tweaks/YouTubeHeader/YTPlayerOverlayProvider.h"
@@ -202,7 +201,7 @@ BOOL hidePaidPromotionCard() {
 // Workaround for MiRO92/uYou-for-YouTube#12, qnblackcat/uYouPlus#263
 %hook YTDataUtils
 + (NSMutableDictionary *)spamSignalsDictionary {
-  return nil;
+    return nil;
 }
 %end
 
@@ -210,7 +209,7 @@ BOOL hidePaidPromotionCard() {
 %hook UIResponder
 %new
 - (id)entry {
-  return nil;
+    return nil;
 }
 %end
 
@@ -218,7 +217,7 @@ BOOL hidePaidPromotionCard() {
 %hook YTLocalPlaybackController
 %new
 - (id)activeVideoController {
-  return [self activeVideo];
+    return [self activeVideo];
 }
 %end
 
@@ -248,7 +247,6 @@ BOOL hidePaidPromotionCard() {
 // YouRememberCaption: https://poomsmart.github.io/repo/depictions/youremembercaption.html
 %hook YTColdConfig
 - (BOOL)respectDeviceCaptionSetting { return NO; }
-- (BOOL)shouldUseAppThemeSetting { return YES; } // v16.xx
 %end
 
 // NOYTPremium - https://github.com/PoomSmart/NoYTPremium/
@@ -287,10 +285,6 @@ BOOL hidePaidPromotionCard() {
 - (void)setUserInteractionEnabled:(BOOL)enabled { %orig(YES); }
 %end
 
-%hook YTReelPlayerViewControllerSub // v16.42.3 - @level3tjg: https://reddit.com/r/jailbreak/comments/v29yvk/_/iasl1l0/
- - (BOOL)shouldEnablePlayerBar { return YES; }
-%end
-
 // Workaround for issue #54
 %hook YTMainAppVideoPlayerOverlayViewController
 - (void)updateRelatedVideos {
@@ -302,10 +296,10 @@ BOOL hidePaidPromotionCard() {
 // Workaround for qnblackcat/uYouPlus#253, qnblackcat/uYouPlus#170
 %hook YTReelWatchPlaybackOverlayView
 - (YTQTMButton *)overflowButton {
-  if ([self respondsToSelector:@selector(orderedRightSideButtons)] &&
-      [self orderedRightSideButtons].count != 0)
-    return [self orderedRightSideButtons][0];
-  return %orig;
+    if ([self respondsToSelector:@selector(orderedRightSideButtons)] &&
+        [self orderedRightSideButtons].count != 0)
+        return [self orderedRightSideButtons][0];
+    return %orig;
 }
 %end
 
@@ -317,32 +311,31 @@ BOOL hidePaidPromotionCard() {
                          attribute:(NSLayoutAttribute)attr2
                         multiplier:(CGFloat)multiplier
                           constant:(CGFloat)c {
-  if (![view1 isKindOfClass:%c(YTReelPlayerBottomButton)] &&
-    ![view1.accessibilityIdentifier isEqualToString:@"com.miro.uyou"])
-  return %orig;
-  if (!view2) {
-    view1.hidden = YES;
+    if (![view1 isKindOfClass:%c(YTReelPlayerBottomButton)] &&
+        ![view1.accessibilityIdentifier isEqualToString:@"com.miro.uyou"])
+    return %orig;
+    if (!view2) {
+        view1.hidden = YES;
     return [NSLayoutConstraint alloc];
-  }
-  YTReelPlayerBottomButton *uYouButton = (YTReelPlayerBottomButton *)view1;
-  YTReelPlayerBottomButton *topButton = (YTReelPlayerBottomButton *)view2;
-  NSString *uYouButtonTitle =
-      [view2.accessibilityIdentifier isEqualToString:@"com.miro.uyou"]
-          ? @"uYou"
-          : @"uYouLocal";
-  uYouButton.accessibilityLabel = uYouButtonTitle;
-  uYouButton.uppercaseTitle = NO;
-  [uYouButton setTitle:uYouButtonTitle forState:UIControlStateNormal];
-  [uYouButton
-      setTitleTypeKind:MSHookIvar<NSInteger>(topButton, "_typeKind")
+    }
+    YTReelPlayerBottomButton *uYouButton = (YTReelPlayerBottomButton *)view1;
+    YTReelPlayerBottomButton *topButton = (YTReelPlayerBottomButton *)view2;
+    NSString *uYouButtonTitle =
+        [view2.accessibilityIdentifier isEqualToString:@"com.miro.uyou"]
+            ? @"uYou"
+            : @"uYouLocal";
+    uYouButton.accessibilityLabel = uYouButtonTitle;
+    uYouButton.uppercaseTitle = NO;
+    [uYouButton setTitle:uYouButtonTitle forState:UIControlStateNormal];
+    [uYouButton
+        setTitleTypeKind:MSHookIvar<NSInteger>(topButton, "_typeKind")
             typeVariant:MSHookIvar<NSInteger>(topButton, "_typeVariant")];
-  uYouButton.applyRightSideLayoutImageSize =
-      topButton.applyRightSideLayoutImageSize;
-  uYouButton.buttonImageTitlePadding = topButton.buttonImageTitlePadding;
-  uYouButton.buttonLayoutStyle = topButton.buttonLayoutStyle;
-  uYouButton.sizeWithPaddingAndInsets = topButton.sizeWithPaddingAndInsets;
-  uYouButton.verticalContentPadding = topButton.verticalContentPadding;
-  return %orig;
+    uYouButton.applyRightSideLayoutImageSize = topButton.applyRightSideLayoutImageSize;
+    uYouButton.buttonImageTitlePadding = topButton.buttonImageTitlePadding;
+    uYouButton.buttonLayoutStyle = topButton.buttonLayoutStyle;
+    uYouButton.sizeWithPaddingAndInsets = topButton.sizeWithPaddingAndInsets;
+    uYouButton.verticalContentPadding = topButton.verticalContentPadding;
+    return %orig;
 }
 %end
 
@@ -439,6 +432,14 @@ BOOL hidePaidPromotionCard() {
     [self setValue:YT_BUNDLE_ID forKey:@"_applicationIdentifier"];
     return self;
 }
+%end
+
+%hook APMAEU
++ (BOOL)isFAS { return YES; }
+%end
+
+%hook GULAppEnvironmentUtil
++ (BOOL)isFromAppStore { return YES; }
 %end
 
 %hook NSBundle
@@ -543,39 +544,6 @@ UIColor* raisedColor = [UIColor colorWithRed:0.035 green:0.035 blue:0.035 alpha:
 }
 %end
 
-%hook YTColorPalette // v16.42.3
-- (UIColor *)brandBackgroundSolid {
-    if (self.pageStyle == 1) {
-        return [UIColor blackColor];
-    }
-        return %orig;
-}
-- (UIColor *)brandBackgroundPrimary {
-    if (self.pageStyle == 1) {
-        return [UIColor blackColor];
-    }
-        return %orig;
-}
-- (UIColor *)brandBackgroundSecondary {
-    if (self.pageStyle == 1) {
-        return [[UIColor blackColor] colorWithAlphaComponent:0.9];
-    }
-        return %orig;
-}
-- (UIColor *)staticBrandBlack {
-    if (self.pageStyle == 1) {
-        return [UIColor blackColor];
-    }
-        return %orig;
-}
-- (UIColor *)generalBackgroundA {
-    if (self.pageStyle == 1) {
-        return [UIColor blackColor];
-    }
-        return %orig;
-}
-%end
-
 // Account view controller
 %hook YTAccountPanelBodyViewController
 - (UIColor *)backgroundColor:(NSInteger)pageStyle {
@@ -601,7 +569,7 @@ UIColor* raisedColor = [UIColor colorWithRed:0.035 green:0.035 blue:0.035 alpha:
 - (void)didMoveToWindow {
     %orig;
     if (isDarkMode() && [self.nextResponder isKindOfClass:%c(_ASDisplayView)]) { 
-        self.superview.backgroundColor = [UIColor clearColor];
+        self.superview.backgroundColor = [UIColor blackColor];
     }
 }
 %end
@@ -726,7 +694,6 @@ UIColor* raisedColor = [UIColor colorWithRed:0.035 green:0.035 blue:0.035 alpha:
         if ([self.accessibilityIdentifier isEqualToString:@"rich_header"]) { self.backgroundColor = [UIColor blackColor]; }
         if ([self.accessibilityIdentifier isEqualToString:@"id.ui.comment_cell"]) { self.backgroundColor = [UIColor blackColor]; }
         if ([self.accessibilityIdentifier isEqualToString:@"id.ui.cancel.button"]) { self.superview.backgroundColor = [UIColor clearColor]; }
-        if ([self.accessibilityIdentifier isEqualToString:@"id.elements.components.filter_chip_bar"]) { self.backgroundColor = [UIColor blackColor]; }
         if ([self.accessibilityIdentifier isEqualToString:@"id.elements.components.comment_composer"]) { self.backgroundColor = [UIColor blackColor]; }
         if ([self.accessibilityIdentifier isEqualToString:@"id.elements.components.video_list_entry"]) { self.backgroundColor = [UIColor blackColor]; }
         if ([self.accessibilityIdentifier isEqualToString:@"id.comment.guidelines_text"]) { self.superview.backgroundColor = [UIColor blackColor]; }
