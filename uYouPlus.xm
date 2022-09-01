@@ -303,6 +303,11 @@ BOOL hidePaidPromotionCard() {
 }
 %end
 
+%hook YTReelContentView
+- (void)didTapOverflowButton:(id)sender {
+}
+%end
+
 %hook NSLayoutConstraint
 + (instancetype)constraintWithItem:(UIView *)view1
                          attribute:(NSLayoutAttribute)attr1
