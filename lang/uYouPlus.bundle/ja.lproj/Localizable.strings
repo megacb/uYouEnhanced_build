@@ -4,13 +4,13 @@
 "KILL_APP_DESC" = "ここをタップしてYouTubeを終了できます！";
 
 "HIDE_PREVIOUS_AND_NEXT_BUTTON" = "前後の動画のボタンを非表示";
-"HIDE_PREVIOUS_AND_NEXT_BUTTON_DESC" = "コントロールのオーバーレイで前後の動画のボタンを非表示にします。";
+"HIDE_PREVIOUS_AND_NEXT_BUTTON_DESC" = "動画コントロールのオーバーレイで前後の動画のボタンを非表示にします。";
 
 "YT_MINIPLAYER" = "すべての動画でミニプレーヤーを有効にする";
 "YT_MINIPLAYER_DESC" = "例: 子ども向けの動画";
 
-"CAST_CONFIRM" = "キャストする前に確認画面を表示する (YTCastConfirm)";
-"CAST_CONFIRM_DESC" = "誤ってテレビにキャストしないよう、前に確認画面を表示します。";
+"CAST_CONFIRM" = "キャストする前に確認をする (YTCastConfirm)";
+"CAST_CONFIRM_DESC" = "誤ってテレビにキャストしないように、確認の警告を表示します。";
 
 "HIDE_HOVER_CARD" = "動画終わりのホバーカードを非表示 (YTNoHoverCards)";
 "HIDE_HOVER_CARD_DESC" = "動画の最後のホバーカード(サムネイル)を非表示にします。";
@@ -31,16 +31,16 @@
 "AUTO_FULLSCREEN_DESC" = "動画を自動でフルスクリーンにします。";
 
 "HIDE_HUD_MESSAGES" = "HUDのメッセージを非表示";
-"HIDE_HUD_MESSAGES_DESC" = "例: 字幕がオン/オフになりました、ループ再生はオンになっています 等";
+"HIDE_HUD_MESSAGES_DESC" = "例: 字幕がオン/オフになりました、ループ再生はオンになっています、等";
 
 "OLED_DARKMODE" = "有機ELダークモード (実験的機能)";
-"OLED_DARKMODE_DESC" = "一部では正しく動作しない可能性があります。この設定を変更したあとはアプリの再起動が必要です。";
+"OLED_DARKMODE_DESC" = "正しく動作しない可能性があります。この設定を変更した場合、アプリの再起動が必要です。";
 
 "OLED_KEYBOARD" = "有機ELキーボード (実験的機能)";
-"OLED_KEYBOARD_DESC" = "一部では正しく動作しない可能性があります。この設定を変更したあとはアプリの再起動が必要です。";
+"OLED_KEYBOARD_DESC" = "正しく動作しない可能性があります。この設定を変更した場合、アプリの再起動が必要です。";
 
 "HIDE_PAID_PROMOTION_CARDS" = "プロモーションバナーを非表示";
-"HIDE_PAID_PROMOTION_CARDS_DESC" = "一部の動画にある「プロモーションを含みます」のバナーを非表示にします。";
+"HIDE_PAID_PROMOTION_CARDS_DESC" = "一部の動画で表示される「プロモーションを含みます」のバナーを非表示にします。";
 
 // YTCastConfirm
 "CASTING" = "キャスト";
