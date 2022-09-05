@@ -1,5 +1,8 @@
 // Settings
 
+"KILL_APP" = "關閉YouTube";
+"KILL_APP_DESC" = "按這裡關閉YouTube!";
+
 "HIDE_PREVIOUS_AND_NEXT_BUTTON" = "隱藏上一個和下一個按鈕";
 "HIDE_PREVIOUS_AND_NEXT_BUTTON_DESC" = "在影片控制層中隱藏上一個和下一個按鈕";
 
