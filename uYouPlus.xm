@@ -90,6 +90,9 @@ BOOL ytMiniPlayer() {
 BOOL hidePaidPromotionCard() {
     return [[NSUserDefaults standardUserDefaults] boolForKey:@"hidePaidPromotionCard_enabled"];
 }
+BOOL fixGoogleSigin() {
+    return [[NSUserDefaults standardUserDefaults] boolForKey:@"fixGoogleSigin_enabled"];
+}
 
 # pragma mark - Tweaks
 // Enable Reorder videos from playlist while on the Watch page - @PoomSmart
@@ -430,6 +433,14 @@ BOOL hidePaidPromotionCard() {
 - (NSString *)bundleId { return YT_BUNDLE_ID; }
 %end
 
+%hook APMAEU
++ (BOOL)isFAS { return YES; }
+%end
+
+%hook GULAppEnvironmentUtil
++ (BOOL)isFromAppStore { return YES; }
+%end
+
 %hook SSOConfiguration
 - (id)initWithClientID:(id)clientID supportedAccountServices:(id)supportedAccountServices {
     self = %orig;
@@ -437,14 +448,6 @@ BOOL hidePaidPromotionCard() {
     [self setValue:YT_BUNDLE_ID forKey:@"_applicationIdentifier"];
     return self;
 }
-%end
-
-%hook APMAEU
-+ (BOOL)isFAS { return YES; }
-%end
-
-%hook GULAppEnvironmentUtil
-+ (BOOL)isFromAppStore { return YES; }
 %end
 
 %hook NSBundle
@@ -470,6 +473,7 @@ BOOL hidePaidPromotionCard() {
 // Fix "You can't sign in to this app because Google can't confirm that it's safe" warning when signing in. by julioverne & PoomSmart
 // https://gist.github.com/PoomSmart/ef5b172fd4c5371764e027bea2613f93
 // https://github.com/qnblackcat/uYouPlus/pull/398
+%group gDevice_challenge_request_hack
 %hook SSOService
 + (id)fetcherWithRequest:(NSMutableURLRequest *)request configuration:(id)configuration {
     if ([request isKindOfClass:[NSMutableURLRequest class]] && request.HTTPBody) {
@@ -482,6 +486,7 @@ BOOL hidePaidPromotionCard() {
     }
     return %orig;
 }
+%end
 %end
 
 // Fix login for YouTube 17.33.2 and higher
@@ -871,5 +876,8 @@ static void replaceTab(YTIGuideResponse *response) {
     }
     if (@available(iOS 16, *)) {
        %init(iOS16);
+    }
+    if (!fixGoogleSigin()) {
+        %init(gDevice_challenge_request_hack);
     }
 }
