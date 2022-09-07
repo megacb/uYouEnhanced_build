@@ -30,6 +30,7 @@ NSBundle *uYouPlusBundle() {
 }
 NSBundle *tweakBundle = uYouPlusBundle();
 
+// Keychain patching
 static NSString *accessGroupID() {
     NSDictionary *query = [NSDictionary dictionaryWithObjectsAndKeys:
                            (__bridge NSString *)kSecClassGenericPassword, (__bridge NSString *)kSecClass,
@@ -93,6 +94,9 @@ BOOL hidePaidPromotionCard() {
 BOOL fixGoogleSigin() {
     return [[NSUserDefaults standardUserDefaults] boolForKey:@"fixGoogleSigin_enabled"];
 }
+BOOL replacePreviousAndNextButton() {
+    return [[NSUserDefaults standardUserDefaults] boolForKey:@"replacePreviousAndNextButton_enabled"];
+}
 
 # pragma mark - Tweaks
 // Enable Reorder videos from playlist while on the Watch page - @PoomSmart
@@ -114,7 +118,7 @@ BOOL fixGoogleSigin() {
 }
 %end
 
-// Hide CC / Autoplay switch / Next & Previous button
+// Hide CC / Autoplay switch
 %hook YTMainAppControlsOverlayView
 - (void)setClosedCaptionsOrSubtitlesButtonAvailable:(BOOL)arg1 { // hide CC button
     if (hideCC()) { return %orig(NO); }   
@@ -124,15 +128,22 @@ BOOL fixGoogleSigin() {
     if (hideAutoplaySwitch()) {}
     else { return %orig; }
 }
-- (void)layoutSubviews { // hide Next & Previous button
-    %orig;
-    if (hidePreviousAndNextButton()) { 
-	    MSHookIvar<YTMainAppControlsOverlayView *>(self, "_nextButton").hidden = YES;
-    	MSHookIvar<YTMainAppControlsOverlayView *>(self, "_previousButton").hidden = YES;
-    	MSHookIvar<YTTransportControlsButtonView *>(self, "_nextButtonView").hidden = YES;
-    	MSHookIvar<YTTransportControlsButtonView *>(self, "_previousButtonView").hidden = YES;
-    }
-}
+%end
+
+// Hide Next & Previous button
+%group gHidePreviousAndNextButton
+%hook YTColdConfig
+- (BOOL)removeNextPaddleForSingletonVideos { return YES; }
+- (BOOL)removePreviousPaddleForSingletonVideos { return YES; }
+%end
+%end
+
+// Replace Next & Previous button with Fast forward & Rewind button
+%group gReplacePreviousAndNextButton
+%hook YTColdConfig
+- (BOOL)replaceNextPaddleWithFastForwardButtonForSingletonVods { return YES; }
+- (BOOL)replacePreviousPaddleWithRewindButtonForSingletonVods { return YES; }
+%end
 %end
 
 // Hide HUD Messages
@@ -250,6 +261,7 @@ BOOL fixGoogleSigin() {
 // YouRememberCaption: https://poomsmart.github.io/repo/depictions/youremembercaption.html
 %hook YTColdConfig
 - (BOOL)respectDeviceCaptionSetting { return NO; }
+- (BOOL)isLandscapeEngagementPanelSwipeRightToDismissEnabled { return YES; }
 %end
 
 // NOYTPremium - https://github.com/PoomSmart/NoYTPremium/
@@ -350,9 +362,9 @@ BOOL fixGoogleSigin() {
 // Prevent uYou player bar from showing when not playing downloaded media
 %hook PlayerManager
 - (void)pause {
-  if (isnan([self progress]))
-    return;
-  %orig;
+    if (isnan([self progress]))
+        return;
+    %orig;
 }
 %end
 
@@ -873,6 +885,12 @@ static void replaceTab(YTIGuideResponse *response) {
     }
     if (bigYTMiniPlayer() && (UIDevice.currentDevice.userInterfaceIdiom != UIUserInterfaceIdiomPad)) {
        %init(Main);
+    }
+    if (hidePreviousAndNextButton()) {
+        %init(gHidePreviousAndNextButton);
+    }
+    if (replacePreviousAndNextButton()) {
+        %init(gReplacePreviousAndNextButton);
     }
     if (@available(iOS 16, *)) {
        %init(iOS16);
