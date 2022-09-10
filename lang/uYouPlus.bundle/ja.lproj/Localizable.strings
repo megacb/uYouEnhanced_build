@@ -1,5 +1,11 @@
 // Settings
 
+"REPLACE_PREVIOUS_NEXT_BUTTON" = "前後の動画のボタンを置き換える";
+"REPLACE_PREVIOUS_NEXT_BUTTON_DESC" = "前後の動画を再生するボタンを早送り、巻き戻しボタンに置き換えます。アプリの再起動が必要です。";
+
+"FIX_GOOGLE_SIGNIN" = "Googleのサインイン (TrollStoreユーザーのみ)";
+"FIX_GOOGLE_SIGNIN_DESC" = "アプリがTrollStoreでインストールされた場合のみ機能します。このオプションを有効にしてGoogleアカウントでサインインできるようにします。アプリの再起動が必要です。";
+
 "KILL_APP" = "YouTubeを閉じる";
 "KILL_APP_DESC" = "ここをタップしてYouTubeを終了できます！";
 
