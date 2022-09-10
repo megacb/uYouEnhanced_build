@@ -23,6 +23,8 @@ extern BOOL castConfirm();
 extern BOOL ytMiniPlayer();
 extern BOOL hidePreviousAndNextButton();
 extern BOOL hidePaidPromotionCard();
+extern BOOL fixGoogleSigin();
+extern BOOL replacePreviousAndNextButton();
 
 // Settings
 %hook YTAppSettingsPresentationData
