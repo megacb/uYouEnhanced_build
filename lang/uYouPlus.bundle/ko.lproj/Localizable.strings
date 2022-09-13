@@ -1,5 +1,11 @@
 // Settings
 
+"REPLACE_PREVIOUS_NEXT_BUTTON" = "이전, 다음 재생 버튼 교체";
+"REPLACE_PREVIOUS_NEXT_BUTTON_DESC" = "이전 재생, 다음 재생 버튼을 빨리 감기, 되감기 버튼으로 교체합니다. 앱을 다시 시작해야 합니다.";
+
+"FIX_GOOGLE_SIGNIN" = "구글 로그인 문제 수정 (TrollStore 사용자 대상)";
+"FIX_GOOGLE_SIGNIN_DESC" = "TrollStore를 통해 설치된 앱에서만 동작합니다: 구글 계정으로 로그인하려면 이 옵션을 켜 주세요. 앱을 다시 시작해야 합니다.";
+
 "KILL_APP" = "YouTube 닫기";
 "KILL_APP_DESC" = "YouTube 앱을 닫으려면 여기를 탭하세요!";
 
