@@ -74,22 +74,22 @@
 
 # Download
 
-- **uYouPlus** (or you can call it uYou+) requires iOS or iPadOS 14.0 or later. The latest version of **uYouPlus** can be found in the [Release tab](https://github.com/qnblackcat/uYouPlus/releases). Note that [v17.35.2-2.1](https://github.com/qnblackcat/uYouPlus/releases/tag/v17.35.3-2.1) is the latest version that supports iOS 13.
+- **uYouPlus** (or you can call it uYou+) requires iOS or iPadOS 13.0 or later. The latest version of **uYouPlus** can be found in the [Release tab](https://github.com/qnblackcat/uYouPlus/releases). 
 
 - For AltStore user: 
 
   - My official AltStore repo: https://qnblackcat.github.io/AltStore/
 
-  - [Open in AltStore (v17.36.3-2.1)](https://tinyurl.com/mv4dd4yn) - It will take a while to install because AltStore needs to download the IPA.
+  - [Open in AltStore (v17.36.4-2.1)](https://tinyurl.com/bdezph3t) - It will take a while to install because AltStore needs to download the IPA.
 
-- Version info: _(last update: Sep 13)_
+- Version info: _(last update: Sep 17)_
 
 <details>
   <summary>Expand</summary>
 
 | **Tweaks/App** | **Developer** | **Version** | **Open source** |
 | - | - | :-: | :-:  |
-| **YouTube** | Google Inc | 17.36.3 | ✖︎ |
+| **YouTube** | Google Inc | 17.36.4 | ✖︎ |
 | [uYou](https://github.com/MiRO92/uYou-for-YouTube) | [MiRO92](https://twitter.com/miro92) | 2.1 | ✖︎ |
 | [Open in YouTube](https://github.com/CokePokes/YoutubeExtensions) | [CokePokes](https://github.com/CokePokes) | 1.2 | ✖︎ |
 | **iSponsorBlock** | [Galactic-Dev](https://github.com/Galactic-Dev) | 1.0-15 | [✔︎](https://github.com/Galactic-Dev/iSponsorBlock) |
@@ -99,7 +99,7 @@
 | **YTSpeed** | [Lyvendia](https://github.com/Lyvendia) | 1.0.1 | [✔︎](https://github.com/Lyvendia/YTSpeed) |
 | **YTCastConfirm** | [JamieBerghmans](https://github.com/JamieBerghmans) | 1.0.0 | [✔︎](https://github.com/JamieBerghmans/YTCastConfirm) |
 | **Alderis Color Picker** | [HASHBANG Productions](https://github.com/hbang) | 1.2| [✔︎](https://github.com/hbang/Alderis) |
-| **YTUHD** | [PoomSmart](https://twitter.com/poomsmart) | 1.2.9 | [✔︎](https://github.com/PoomSmart/YTUHD) |
+| **YTUHD** | [PoomSmart](https://twitter.com/poomsmart) | 1.2.10 | [✔︎](https://github.com/PoomSmart/YTUHD) |
 | **YouPiP** | [PoomSmart](https://twitter.com/poomsmart) | 1.7.9 | [✔︎](https://github.com/PoomSmart/YouPiP) |
 | **IAmYouTube** | [PoomSmart](https://twitter.com/poomsmart) | 1.2.0 | [✔︎](https://github.com/PoomSmart/IAmYouTube) |
 | **YTReExplore** | [PoomSmart](https://twitter.com/poomsmart) | 1.0.2 | [✔︎](https://github.com/PoomSmart/YTReExplore) |
