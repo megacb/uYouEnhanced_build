@@ -485,6 +485,7 @@ BOOL replacePreviousAndNextButton() {
 // Fix "You can't sign in to this app because Google can't confirm that it's safe" warning when signing in. by julioverne & PoomSmart
 // https://gist.github.com/PoomSmart/ef5b172fd4c5371764e027bea2613f93
 // https://github.com/qnblackcat/uYouPlus/pull/398
+/* 
 %group gDevice_challenge_request_hack
 %hook SSOService
 + (id)fetcherWithRequest:(NSMutableURLRequest *)request configuration:(id)configuration {
@@ -500,6 +501,7 @@ BOOL replacePreviousAndNextButton() {
 }
 %end
 %end
+*/
 
 // Fix login for YouTube 17.33.2 and higher
 %hook SSOKeychainCore
@@ -896,7 +898,7 @@ static void replaceTab(YTIGuideResponse *response) {
     if (@available(iOS 16, *)) {
        %init(iOS16);
     }
-    if (!fixGoogleSigin()) {
-       %init(gDevice_challenge_request_hack);
-    }
+    // if (!fixGoogleSigin()) {
+    //    %init(gDevice_challenge_request_hack);
+    // }
 }
