@@ -92,8 +92,8 @@ BOOL ytMiniPlayer() {
 BOOL hidePaidPromotionCard() {
     return [[NSUserDefaults standardUserDefaults] boolForKey:@"hidePaidPromotionCard_enabled"];
 }
-BOOL fixGoogleSigin() {
-    return [[NSUserDefaults standardUserDefaults] boolForKey:@"fixGoogleSigin_enabled"];
+BOOL fixGoogleSignIn() {
+    return [[NSUserDefaults standardUserDefaults] boolForKey:@"fixGoogleSignIn_enabled"];
 }
 BOOL replacePreviousAndNextButton() {
     return [[NSUserDefaults standardUserDefaults] boolForKey:@"replacePreviousAndNextButton_enabled"];
@@ -922,7 +922,7 @@ static void replaceTab(YTIGuideResponse *response) {
     if (@available(iOS 16, *)) {
        %init(iOS16);
     }
-    if (!fixGoogleSigin()) {
+    if (!fixGoogleSignIn()) {
        %init(gFixGoogleSignIn);
     }
 }
