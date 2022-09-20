@@ -62,7 +62,6 @@ extern BOOL replacePreviousAndNextButton();
         return YES;
     };
 
-    /* 
     YTSettingsSectionItem *fixGoogleSigin = [[%c(YTSettingsSectionItem) alloc] initWithTitle:LOC(@"FIX_GOOGLE_SIGNIN") titleDescription:LOC(@"FIX_GOOGLE_SIGNIN_DESC")];
     fixGoogleSigin.hasSwitch = YES;
     fixGoogleSigin.switchVisible = YES;
@@ -71,7 +70,6 @@ extern BOOL replacePreviousAndNextButton();
         [[NSUserDefaults standardUserDefaults] setBool:enabled forKey:@"fixGoogleSigin_enabled"];
         return YES;
     };
-    */ 
 
     YTSettingsSectionItem *hidePaidPromotionCard = [[%c(YTSettingsSectionItem) alloc] initWithTitle:LOC(@"HIDE_PAID_PROMOTION_CARDS") titleDescription:LOC(@"HIDE_PAID_PROMOTION_CARDS_DESC")];
     hidePaidPromotionCard.hasSwitch = YES;
