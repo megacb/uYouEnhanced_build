@@ -80,16 +80,16 @@
 
   - My official AltStore repo: https://qnblackcat.github.io/AltStore/
 
-  - [Open in AltStore (v17.36.4-2.1)](https://tinyurl.com/bdezph3t) - It will take a while to install because AltStore needs to download the IPA.
+  - [Open in AltStore (v17.37.3-2.1)](https://tinyurl.com/2p8pd9n7) - It will take a while to install because AltStore needs to download the IPA.
 
-- Version info: _(last update: Sep 17)_
+- Version info: _(last update: Sep 24)_
 
 <details>
   <summary>Expand</summary>
 
 | **Tweaks/App** | **Developer** | **Version** | **Open source** |
 | - | - | :-: | :-:  |
-| **YouTube** | Google Inc | 17.36.4 | ✖︎ |
+| **YouTube** | Google Inc | 17.37.3 | ✖︎ |
 | [uYou](https://github.com/MiRO92/uYou-for-YouTube) | [MiRO92](https://twitter.com/miro92) | 2.1 | ✖︎ |
 | [Open in YouTube](https://github.com/CokePokes/YoutubeExtensions) | [CokePokes](https://github.com/CokePokes) | 1.2 | ✖︎ |
 | **iSponsorBlock** | [Galactic-Dev](https://github.com/Galactic-Dev) | 1.0-15 | [✔︎](https://github.com/Galactic-Dev/iSponsorBlock) |
