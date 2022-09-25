@@ -37,6 +37,26 @@
 - (float)progress;
 @end
 
+@interface YTPlayerView : UIView
+- (BOOL)zoomToFill;
+- (id)renderingView;
+- (id)playerView;
+@end
+
+@interface MLHAMSBDLSampleBufferRenderingView : UIView
+@end
+
+@interface YTMainAppVideoPlayerOverlayViewController : UIViewController
+- (BOOL)isFullscreen;
+- (id)videoPlayerOverlayView;
+- (id)activeVideoPlayerOverlay;
+@end
+
+@interface YTMainAppVideoPlayerOverlayView : UIView
+- (UIViewController *)_viewControllerForAncestor;
++ (CGFloat)topButtonAdditionalPadding;
+@end
+
 // iOS16 fix
 @interface OBPrivacyLinkButton : UIButton
 - (instancetype)initWithCaption:(NSString *)caption
@@ -61,8 +81,10 @@
 @end
 
 // YTAutoFullScreen
-@interface YTPlayerViewController (YTAFS)
+@interface YTPlayerViewController (YTPlayerViewControllerCategory)
 - (void)autoFullscreen;
+- (id)activeVideoPlayerOverlay;
+- (id)playerView;
 @end
 
 // OLED Darkmode
@@ -95,3 +117,10 @@
 
 @interface UIPredictionViewController : UIViewController
 @end
+
+//
+NSString* deviceName();
+BOOL isDeviceSupported();
+void activate(); 
+void deactivate();
+void center();
