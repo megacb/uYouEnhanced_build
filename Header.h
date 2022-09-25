@@ -52,11 +52,6 @@
 - (id)activeVideoPlayerOverlay;
 @end
 
-@interface YTMainAppVideoPlayerOverlayView : UIView
-- (UIViewController *)_viewControllerForAncestor;
-+ (CGFloat)topButtonAdditionalPadding;
-@end
-
 // iOS16 fix
 @interface OBPrivacyLinkButton : UIButton
 - (instancetype)initWithCaption:(NSString *)caption
@@ -75,6 +70,7 @@
 // BigYTMiniPlayer
 @interface YTMainAppVideoPlayerOverlayView : UIView
 - (UIViewController *)_viewControllerForAncestor;
++ (CGFloat)topButtonAdditionalPadding;
 @end
 
 @interface YTWatchMiniBarView : UIView
