@@ -1,6 +1,6 @@
 // Settings
 
-"DONT_EAT_MY_CONTENT" = "Prevent Notch/Island on 2:1 Video Content"
+"DONT_EAT_MY_CONTENT" = "Prevent Notch/Island on 2:1 Video Content (DontEatMyContent)";
 "DONT_EAT_MY_CONTENT_DESC" = "Prevent the notch/Dynamic Island from munching on 2:1 video content in YouTube. App restart is required.";
 
 "REPLACE_PREVIOUS_NEXT_BUTTON" = "Replace Previous and Next Button";
