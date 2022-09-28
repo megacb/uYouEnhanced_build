@@ -3,6 +3,8 @@
 #define LOC(x) [tweakBundle localizedStringForKey:x value:nil table:nil]
 #define YT_BUNDLE_ID @"com.google.ios.youtube"
 #define YT_NAME @"YouTube"
+#define UNSUPPORTED_DEVICES @[@"iPhone14,3", @"iPhone14,6", @"iPhone14,8"] // DontEatMycontent
+#define THRESHOLD 1.99 // DontEatMycontent
 
 // IAmYouTube
 @interface SSOConfiguration : NSObject
@@ -37,6 +39,28 @@
 - (float)progress;
 @end
 
+// DontEatMyContent
+NSString* deviceName();
+BOOL isDeviceSupported();
+void activate(); 
+void deactivate();
+void center();
+
+@interface YTPlayerView : UIView
+- (BOOL)zoomToFill;
+- (id)renderingView;
+- (id)playerView;
+@end
+
+@interface MLHAMSBDLSampleBufferRenderingView : UIView
+@end
+
+@interface YTMainAppVideoPlayerOverlayViewController : UIViewController
+- (BOOL)isFullscreen;
+- (id)videoPlayerOverlayView;
+- (id)activeVideoPlayerOverlay;
+@end
+
 // iOS16 fix
 @interface OBPrivacyLinkButton : UIButton
 - (instancetype)initWithCaption:(NSString *)caption
@@ -63,6 +87,8 @@
 // YTAutoFullScreen
 @interface YTPlayerViewController (YTAFS)
 - (void)autoFullscreen;
+- (id)activeVideoPlayerOverlay; // DontEatMycontent
+- (id)playerView; // DontEatMycontent
 @end
 
 // OLED Darkmode
