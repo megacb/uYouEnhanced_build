@@ -18,7 +18,7 @@
 "YT_MINIPLAYER_DESC" = "유튜브 키즈의 영상 같은 경우.";
 
 "CAST_CONFIRM" = "TV 전송 알림 (YTCastConfirm)";
-"CAST_CONFIRM_DESC" = "의도하지 않게 TV로 영상을 전송하지 않도록 보내기 전에 확인 메시지를 표시합니다.";
+"CAST_CONFIRM_DESC" = "의도치 않게 TV로 영상을 전송하지 않도록 보내기 전에 확인 메시지를 표시합니다.";
 
 "HIDE_HOVER_CARD" = "영상 끝 부분의 호버카드 숨기기 (YTNoHoverCards)";
 "HIDE_HOVER_CARD_DESC" = "영상의 끝 부분에서 게시자가 표시한 영상 썸네일을 숨깁니다.";
