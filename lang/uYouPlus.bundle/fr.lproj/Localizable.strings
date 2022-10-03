@@ -5,7 +5,7 @@
 "REPLACE_PREVIOUS_NEXT_BUTTON" = "Remplacer le bouton précédent et suivant";
 "REPLACE_PREVIOUS_NEXT_BUTTON_DESC" = "Remplace les boutons Précédent et Suivant par les boutons Avance rapide et Retour rapide. Le redémarrage de l'application est nécessaire";
 
-"FIX_GOOGLE_SIGNIN" = "Fixe l'identification Google (pour les utilisateurs de TrollStore uniquement)" ;
+"FIX_GOOGLE_SIGNIN" = "Réparer l'identification Google (pour les utilisateurs de TrollStore uniquement)" ;
 "FIX_GOOGLE_SIGNIN_DESC" = "Activez cette option uniquement si vous ne pouvez pas vous connecter avec votre compte Google et que l'application a été installée via TrollStore. Si vous pouvez vous connecter normalement, laissez-la désactivée. Le redémarrage de l'application est nécessaire.";
 
 "KILL_APP" = "Fermer YouTube";
