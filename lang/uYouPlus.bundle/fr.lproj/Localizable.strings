@@ -1,5 +1,5 @@
 // Settings
-"DONT_EAT_MY_CONTENT" = "Empêcher l'encoche/Dynamic Island de grignoter le contenu vidéo 2:1 (DontEatMyContent)" ;
+"DONT_EAT_MY_CONTENT" = "Empêcher l'encoche/Dynamic Island de grignoter le contenu vidéo 2:1 (DontEatMyContent)";
 "DONT_EAT_MY_CONTENT_DESC" = "Empêche l'encoche/Dynamic Island de grignoter du contenu vidéo 2:1 dans YouTube. Le redémarrage de l'application est nécessaire.";
 
 "REPLACE_PREVIOUS_NEXT_BUTTON" = "Remplacer le bouton précédent et suivant";
