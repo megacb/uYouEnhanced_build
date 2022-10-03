@@ -1,4 +1,15 @@
 // Settings
+"DONT_EAT_MY_CONTENT" = "Kerbe/Insel bei 2:1-Videoinhalten verhindern (DontEatMyContent)";
+"DONT_EAT_MY_CONTENT_DESC" = "Verhindert, dass die Notch/Dynamic Island 2:1-Videoinhalte auf YouTube kaut. Neustart der App erforderlich.";
+
+"REPLACE_PREVIOUS_NEXT_BUTTON" = "Zurück- und Weiter-Schaltfläche ersetzen";
+"REPLACE_PREVIOUS_NEXT_BUTTON_DESC" = "Ersetzen Sie die Schaltflächen „Zurück“ und „Weiter“ durch die Schaltflächen „Schnellvorlauf“ und „Rücklauf“. App-Neustart ist erforderlich.“;
+
+"FIX_GOOGLE_SIGNIN" = "Google-Anmeldung reparieren (nur für TrollStore-Benutzer)";
+"FIX_GOOGLE_SIGNIN_DESC" = "Aktivieren Sie diese Option nur, wenn Sie sich nicht mit Ihrem Google-Konto anmelden können und die App über den TrollStore installiert wurde. Wenn Sie sich normal anmelden können, lassen Sie sie deaktiviert. Ein Neustart der App ist erforderlich.";
+
+"KILL_APP" = "YouTube schließen";
+"KILL_APP_DESC" = "Hier tippen, um YouTube zu schließen!";
 
 "REPLACE_PREVIOUS_NEXT_BUTTON" = "Vor- und Zurücktasten ersetzen";
 "REPLACE_PREVIOUS_NEXT_BUTTON_DESC" = "Vor- und Zurücktasten mit  Vor- und Zurückspultasten ersetzen. App restart is required.";
