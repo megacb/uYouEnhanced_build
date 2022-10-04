@@ -1,12 +1,12 @@
 // Settings
-"DONT_EAT_MY_CONTENT" = "Evitar Notch/Island en contenido de video 2:1 (DontEatMyContent)";
-"DONT_EAT_MY_CONTENT_DESC" = "Evite que la muesca/Dynamic Island se trague contenido de video 2:1 en YouTube. Es necesario reiniciar la aplicación.";
+"DONT_EAT_MY_CONTENT" = "Empêcher l'encoche/Dynamic Island de grignoter le contenu vidéo 2:1 (DontEatMyContent)";
+"DONT_EAT_MY_CONTENT_DESC" = "Empêche l'encoche/Dynamic Island de grignoter du contenu vidéo 2:1 dans YouTube. Le redémarrage de l'application est nécessaire.";
 
-"REPLACE_PREVIOUS_NEXT_BUTTON" = "Reemplazar botón anterior y siguiente";
-"REPLACE_PREVIOUS_NEXT_BUTTON_DESC" = "Reemplace el botón Anterior y Siguiente con el botón Avance rápido y Rebobinado. Es necesario reiniciar la aplicación.";
+"REPLACE_PREVIOUS_NEXT_BUTTON" = "Remplacer le bouton précédent et suivant";
+"REPLACE_PREVIOUS_NEXT_BUTTON_DESC" = "Remplace les boutons Précédent et Suivant par les boutons Avance rapide et Retour rapide. Le redémarrage de l'application est nécessaire";
 
-"FIX_GOOGLE_SIGNIN" = "Reparar el inicio de sesión de Google (solo para usuarios de TrollStore)";
-"FIX_GOOGLE_SIGNIN_DESC" = "Active esta opción solo cuando no pueda iniciar sesión con su cuenta de Google y la aplicación se instaló a través de TrollStore. Si puede iniciar sesión normalmente, manténgala desactivada. Es necesario reiniciar la aplicación.";
+"FIX_GOOGLE_SIGNIN" = "Réparer l'identification Google (pour les utilisateurs de TrollStore uniquement)" ;
+"FIX_GOOGLE_SIGNIN_DESC" = "Activez cette option uniquement si vous ne pouvez pas vous connecter avec votre compte Google et que l'application a été installée via TrollStore. Si vous pouvez vous connecter normalement, laissez-la désactivée. Le redémarrage de l'application est nécessaire.";
 
 "KILL_APP" = "Fermer YouTube";
 "KILL_APP_DESC" = "Appuyez ici pour fermer YouTube !";
@@ -51,7 +51,7 @@
 "HIDE_PAID_PROMOTION_CARDS_DESC" = "Masque la bannière 'Inclut une communication commerciale' dans certaines vidéos.";
 
 // YTCastConfirm
-"CASTING" = "Castings";
-"MSG_ARE_YOU_SURE" = "Êtes-vous sûr de vouloir commencer le casting ?";
+"CASTING" = "Cast";
+"MSG_ARE_YOU_SURE" = "Êtes-vous sûr de vouloir commencer un cast sur votre télévision ?";
 "MSG_YES" = "Oui";
 "MSG_CANCEL" = "Annuler";
