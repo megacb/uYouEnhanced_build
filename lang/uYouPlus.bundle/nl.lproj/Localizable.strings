@@ -28,7 +28,7 @@ https://github.com/PoomSmart/Return-YouTube-Dislikes/tree/main/layout/Library/Ap
 "HIDE_PREVIOUS_AND_NEXT_BUTTON" = "Verberg vorige en volgende knoppen";
 "HIDE_PREVIOUS_AND_NEXT_BUTTON_DESC" = "Verberg de vorige en volgende knop in de video speler.";
 
-"YT_MINIPLAYER" = "Schakel de Mini Player in voor alle video's";
+"YT_MINIPLAYER" = "Schakel de Mini Speler in voor alle video's";
 "YT_MINIPLAYER_DESC" = "Video's voor kinderen bijvoorbeeld.";
 
 "CAST_CONFIRM" = "Bevestig casten (YTCastConfirm)";
@@ -40,7 +40,7 @@ https://github.com/PoomSmart/Return-YouTube-Dislikes/tree/main/layout/Library/Ap
 "NEW_MINIPLAYER_STYLE" = "Nieuwe Mini Speler stijl (BigYTMiniPlayer)";
 "NEW_MINIPLAYER_STYLE_DESC" = "Je moet de app opnieuw opstarten om dit te activeren.";
 
-"YT_RE_EXPLORE" = "Vervang Shorts met Explore (YTReExplore)";
+"YT_RE_EXPLORE" = "Vervang Shorts met Ontdekken (YTReExplore)";
 "YT_RE_EXPLORE_DESC" = "Je moet de app opnieuw opstarten om dit te activeren.";
 
 "HIDE_SUBTITLES_BUTTON" = "Verberg ondertitels knop";
