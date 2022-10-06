@@ -927,6 +927,7 @@ NSLayoutConstraint *widthConstraint, *heightConstraint, *centerXConstraint, *cen
 - (void)didSwipeToExitFullscreen { 
     %orig; deactivate();
 }
+// Get video aspect ratio; doesn't work for some users; see -(void)resetForVideoWithAspectRatio:(double)
 - (void)singleVideo:(id)arg1 aspectRatioDidChange:(CGFloat)arg2 {
     aspectRatio = arg2;
     if (aspectRatio == 0.0) { 
@@ -956,6 +957,21 @@ NSLayoutConstraint *widthConstraint, *heightConstraint, *centerXConstraint, *cen
 // https://github.com/lgariv/UniZoom/blob/master/Tweak.xm
 - (void)setSnapIndicatorVisible:(bool)arg1 {
     %orig(NO);
+}
+%end
+
+%hook YTVideoZoomOverlayController
+// Get video aspect ratio; fallback for -(void)singleVideo:(id)aspectRatioDidChange:(CGFloat)
+- (void)resetForVideoWithAspectRatio:(double)arg1 {
+    aspectRatio = arg1;
+    %log;
+    if (aspectRatio == 0.0) {} 
+    else if (aspectRatio < THRESHOLD) {
+        deactivate();
+    } else {
+        activate();
+    }
+    %orig(arg1);
 }
 %end
 %end // gDontEatMyContent
