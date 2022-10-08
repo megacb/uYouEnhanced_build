@@ -1,0 +1,71 @@
+/* Read me:
+- How to translate uYouPlus (if your language already exists then feel free to check it and/or improve it):
+1. Fork uYouPlus repo
+2. Duplicate the template.lproj folder, and edit the duplicated folder's name to your <lang_code>.lproj id.
+For example: <ru.lproj> for Russia. For more details, visit: https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes
+3. Translate each line below after each =
+4. Open a Pull Request
+
+- You can also add your localization to YouPiP, YTUHD and Return YouTube Dislike. The process is the same:
+https://github.com/PoomSmart/YouPiP/tree/main/layout/Library/Application%20Support/YouPiP.bundle
+https://github.com/PoomSmart/YTUHD/tree/master/layout/Library/Application%20Support/YTUHD.bundle
+https://github.com/PoomSmart/Return-YouTube-Dislikes/tree/main/layout/Library/Application%20Support/RYD.bundle
+*/
+
+// Settings
+"DONT_EAT_MY_CONTENT" = "Zapobiega przeszkadzaniu Notcha/Island na filmach o proporcjach 2:1 (DontEatMyContent)";
+"DONT_EAT_MY_CONTENT_DESC" = "Zapobiega notcha/Dynamic Island przed jedzeniem filmów o proporcjach 2:1 na YouTubie. Restart aplikacji jest wymagany.";
+
+"REPLACE_PREVIOUS_NEXT_BUTTON" = "Zamień przyciski Poprzedni i Następny";
+"REPLACE_PREVIOUS_NEXT_BUTTON_DESC" = "Zamienia przyciski Poprzedni i Następny z przyciskami Przewiń w przód i tył. Restart aplikacji jest wymagany.";
+
+"FIX_GOOGLE_SIGNIN" = "Napraw logowanie się z Google (tylko dla użytkowników TrollStore)";
+"FIX_GOOGLE_SIGNIN_DESC" = "Włącz tą opcję tylko wtedy, kiedy nie możesz zalogować się swoim kontem Google, a aplikacja została zainstalowana przez TrollStore. Jeżeli da się zalogować normalnie, zostaw to wyłączone. Restart aplikacji jest wymagany.";
+
+"KILL_APP" = "Zamknij YouTube";
+"KILL_APP_DESC" = "Naciśnuj tutaj aby zamknąć YouTube!";
+
+"HIDE_PREVIOUS_AND_NEXT_BUTTON" = "Ukryj przyciski Poprzedni i Następny";
+"HIDE_PREVIOUS_AND_NEXT_BUTTON_DESC" = "Ukryj przyciski Poprzedni i Następny w okładce sterowania filmu.";
+
+"YT_MINIPLAYER" = "Włącz miniodtwarzach dla wszystkich filmów.";
+"YT_MINIPLAYER_DESC" = "Np. filmów dla dzieci.";
+
+"CAST_CONFIRM" = "Alert przed przesyłaniem (YTCastConfirm)";
+"CAST_CONFIRM_DESC" = "Pokaż alert przed przesyłaniem aby nie łączyć się przez przypadek z telewizorem.";
+
+"HIDE_HOVER_CARD" = "Ukryj ekrany końcowe (YTNoHoverCards)";
+"HIDE_HOVER_CARD_DESC" = "Ukryj ekrany końcowe (miniaturki) na końcu filmów.";
+
+"NEW_MINIPLAYER_STYLE" = "Nowy styl miniodtwarzacza (BigYTMiniPlayer)";
+"NEW_MINIPLAYER_STYLE_DESC" = "Restart aplikacji jest wymagany.";
+
+"YT_RE_EXPLORE" = "Zamień kartę Shorts na kartę Odkrywaj (YTReExplore)";
+"YT_RE_EXPLORE_DESC" = "Restart aplikacji jest wymagany.";
+
+"HIDE_SUBTITLES_BUTTON" = "Ukryj przycisk Napisy";
+"HIDE_SUBTITLES_BUTTON_DESC" = "Ukrywa przycisk Napisy w okładce odtwarzacza filmów.";
+
+"HIDE_AUTOPLAY_SWITCH" = "Ukryj przycisk Autoodtwarzanie";
+"HIDE_AUTOPLAY_SWITCH_DESC" = "Ukrywa przycisk Autoodtwarzanie w okładce odtwarzacza filmów.";
+
+"AUTO_FULLSCREEN" = "Auto pełny ekran (YTAutoFullScreen)";
+"AUTO_FULLSCREEN_DESC" = "Automaczycznie otwórz filmy w pełnym ekranie.";
+
+"HIDE_HUD_MESSAGES" = "Ukryj komunikaty HUD.";
+"HIDE_HUD_MESSAGES_DESC" = "Np. Napisy są wył/wł, Odtwarzanie w pętli jest włączone, ...";
+
+"OLED_DARKMODE" = "Tryb ciemny OLED (Eksperymentalny)";
+"OLED_DARKMODE_DESC" = "Może w niektórych przypadkach nie działać. Restart aplikacji jest wymagany.";
+
+"OLED_KEYBOARD" = "OLED Keyboard (Experimental)";
+"OLED_KEYBOARD_DESC" = "Might not working correctly in some cases. App restart is required.";
+
+"HIDE_PAID_PROMOTION_CARDS" = "Hide Paid Promotion banner";
+"HIDE_PAID_PROMOTION_CARDS_DESC" = "Hide the 'Includes Paid Promotions' banner in some videos.";
+
+// YTCastConfirm
+"CASTING" = "Castings";
+"MSG_ARE_YOU_SURE" = "Are you sure you want to start casting?";
+"MSG_YES" = "Yes";
+"MSG_CANCEL" = "Cancel";
