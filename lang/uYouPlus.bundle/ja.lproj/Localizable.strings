@@ -1,19 +1,21 @@
 // Settings
+"DONT_EAT_MY_CONTENT" = "2:1比率の動画とノッチ/Dynamic Islandの最適化 (DontEatMyContent)";
+"DONT_EAT_MY_CONTENT_DESC" = "2:1比率の動画とノッチ/Dynamic Islandが干渉することを防ぎます。アプリの再起動が必要です。";
 
-"REPLACE_PREVIOUS_NEXT_BUTTON" = "前後の動画のボタンを置き換える";
-"REPLACE_PREVIOUS_NEXT_BUTTON_DESC" = "前後の動画を再生するボタンを早送り、巻き戻しボタンに置き換えます。アプリの再起動が必要です。";
+"REPLACE_PREVIOUS_NEXT_BUTTON" = "次へと前へのボタンを置き換える";
+"REPLACE_PREVIOUS_NEXT_BUTTON_DESC" = "次へと前へのボタンをそれぞれ早送りと巻き戻しボタンに置き換えます。アプリの再起動が必要です。";
 
-"FIX_GOOGLE_SIGNIN" = "Googleのサインイン (TrollStoreユーザーのみ)";
+"FIX_GOOGLE_SIGNIN" = "Googleのサインインを修正 (TrollStoreユーザーのみ)";
 "FIX_GOOGLE_SIGNIN_DESC" = "アプリがTrollStoreでインストールされた場合のみ機能します。このオプションを有効にしてGoogleアカウントでサインインできるようにします。アプリの再起動が必要です。";
 
 "KILL_APP" = "YouTubeを閉じる";
 "KILL_APP_DESC" = "ここをタップしてYouTubeを終了できます！";
 
-"HIDE_PREVIOUS_AND_NEXT_BUTTON" = "前後の動画のボタンを非表示";
-"HIDE_PREVIOUS_AND_NEXT_BUTTON_DESC" = "動画コントロールのオーバーレイで前後の動画のボタンを非表示にします。";
+"HIDE_PREVIOUS_AND_NEXT_BUTTON" = "次へと前へのボタンを非表示";
+"HIDE_PREVIOUS_AND_NEXT_BUTTON_DESC" = "動画コントロールのオーバーレイで次へと前へのボタンを非表示にします。";
 
 "YT_MINIPLAYER" = "すべての動画でミニプレーヤーを有効にする";
-"YT_MINIPLAYER_DESC" = "例: 子ども向けの動画";
+"YT_MINIPLAYER_DESC" = "例：子ども向けの動画";
 
 "CAST_CONFIRM" = "キャストする前に確認をする (YTCastConfirm)";
 "CAST_CONFIRM_DESC" = "誤ってテレビにキャストしないように、確認の警告を表示します。";
@@ -37,13 +39,13 @@
 "AUTO_FULLSCREEN_DESC" = "動画を自動でフルスクリーンにします。";
 
 "HIDE_HUD_MESSAGES" = "HUDのメッセージを非表示";
-"HIDE_HUD_MESSAGES_DESC" = "例: 字幕がオン/オフになりました、ループ再生はオンになっています、等";
+"HIDE_HUD_MESSAGES_DESC" = "例：字幕がオン/オフになりました、ループ再生はオンになっています、等";
 
 "OLED_DARKMODE" = "有機ELダークモード (実験的機能)";
-"OLED_DARKMODE_DESC" = "正しく動作しない可能性があります。この設定を変更した場合、アプリの再起動が必要です。";
+"OLED_DARKMODE_DESC" = "正常に動作しない可能性があります。この設定を変更した場合、アプリの再起動が必要です。";
 
 "OLED_KEYBOARD" = "有機ELキーボード (実験的機能)";
-"OLED_KEYBOARD_DESC" = "正しく動作しない可能性があります。この設定を変更した場合、アプリの再起動が必要です。";
+"OLED_KEYBOARD_DESC" = "正常に動作しない可能性があります。この設定を変更した場合、アプリの再起動が必要です。";
 
 "HIDE_PAID_PROMOTION_CARDS" = "プロモーションバナーを非表示";
 "HIDE_PAID_PROMOTION_CARDS_DESC" = "一部の動画で表示される「プロモーションを含みます」のバナーを非表示にします。";
