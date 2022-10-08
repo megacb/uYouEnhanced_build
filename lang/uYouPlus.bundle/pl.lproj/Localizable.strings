@@ -58,14 +58,14 @@ https://github.com/PoomSmart/Return-YouTube-Dislikes/tree/main/layout/Library/Ap
 "OLED_DARKMODE" = "Tryb ciemny OLED (Eksperymentalny)";
 "OLED_DARKMODE_DESC" = "Może w niektórych przypadkach nie działać. Restart aplikacji jest wymagany.";
 
-"OLED_KEYBOARD" = "OLED Keyboard (Experimental)";
-"OLED_KEYBOARD_DESC" = "Might not working correctly in some cases. App restart is required.";
+"OLED_KEYBOARD" = "Klawiatura OLED (Eksperymentalna)";
+"OLED_KEYBOARD_DESC" = "Może w niektórych przypadkach nie działać. Restart aplikacji jest wymagany.";
 
-"HIDE_PAID_PROMOTION_CARDS" = "Hide Paid Promotion banner";
-"HIDE_PAID_PROMOTION_CARDS_DESC" = "Hide the 'Includes Paid Promotions' banner in some videos.";
+"HIDE_PAID_PROMOTION_CARDS" = "Ukryj baner płatnej promocji";
+"HIDE_PAID_PROMOTION_CARDS_DESC" = "Ukrywa baner 'Zawiera płatną promocję' w niektórych filmach.";
 
 // YTCastConfirm
-"CASTING" = "Castings";
-"MSG_ARE_YOU_SURE" = "Are you sure you want to start casting?";
-"MSG_YES" = "Yes";
-"MSG_CANCEL" = "Cancel";
+"CASTING" = "Przesyłania";
+"MSG_ARE_YOU_SURE" = "Czy na pewno chcesz przesyłać?";
+"MSG_YES" = "Tak";
+"MSG_CANCEL" = "Anuluj";
