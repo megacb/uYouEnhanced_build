@@ -1,5 +1,5 @@
 // Settings
-"DONT_EAT_MY_CONTENT" = "2:1比率の動画とノッチ/Dynamic Islandの最適化 (DontEatMyContent)";
+"DONT_EAT_MY_CONTENT" = "2:1の動画とノッチ/Dynamic Islandの最適化 (DontEatMyContent)";
 "DONT_EAT_MY_CONTENT_DESC" = "2:1比率の動画とノッチ/Dynamic Islandが干渉することを防ぎます。アプリの再起動が必要です。";
 
 "REPLACE_PREVIOUS_NEXT_BUTTON" = "前後の動画を再生するボタンを置き換える";
