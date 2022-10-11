@@ -1,4 +1,6 @@
 // Settings
+"DONT_EAT_MY_CONTENT" = "Evitar o notch/Island em conteúdo de vídeo 2:1 (DontEatMyContent)";
+"DONT_EAT_MY_CONTENT_DESC" = "Evita que o notch/Dynamic Island coma conteúdo de vídeo 2:1 no YouTube. A reinicialização do app é necessária.";
 
 "REPLACE_PREVIOUS_NEXT_BUTTON" = "Substituir o botão Anterior e Próximo";
 "REPLACE_PREVIOUS_NEXT_BUTTON_DESC" = "Substitui o botão Anterior e Próximo pelo botão Avançar e Retroceder. A reinicialização do app é necessária.";
