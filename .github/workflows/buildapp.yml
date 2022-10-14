@@ -117,4 +117,4 @@ jobs:
           tag_name: v${{ env.YOUTUBE_VERSION }}-${{ env.UYOU_VERSION }}-(${{ github.run_number }})
           name: v${{ env.YOUTUBE_VERSION }}-${{ env.UYOU_VERSION }}-(${{ github.run_number }})
           files: ./main/packages/*.ipa
-          draft: ${{ env.create_release }}
+          draft: ${{ env.DRAFT }}
