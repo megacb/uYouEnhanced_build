@@ -99,7 +99,7 @@ jobs:
           (cd ${{ github.workspace }}/main/Tweaks/YouPiP && sed -i '' "14s/$/ AVFoundation UIKit/" Makefile)
           make package FINALPACKAGE=1
           (mv "packages/$(ls -t packages | head -n1)" "packages/uYouPlus_${{ env.YOUTUBE_VERSION  }}_${{ env.UYOU_VERSION }}.ipa")
-          echo "::set-output name=package::$(ls -t packages | head -n1)"
+          echo "package=$(ls -t packages | head -n1)" >>$GITHUB_OUTPUT
         env:
           THEOS: ${{ github.workspace }}/theos
           UYOU_VERSION: ${{ inputs.uyou_version }}
