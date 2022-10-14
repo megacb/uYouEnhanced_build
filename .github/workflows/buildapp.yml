@@ -117,7 +117,6 @@ jobs:
           
       - name: Gh Release
         uses: softprops/action-gh-release@v0.1.14
-        if: startsWith(github.ref, 'refs/tags/')
         with:
           files: ./main/packages/*.ipa
 
