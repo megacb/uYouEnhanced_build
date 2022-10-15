@@ -1,6 +1,6 @@
 ---
 name: Bug
-about: Create a report to help us improve
+about: Make sure you complete the template. Otherwise, it will be closed without further explanation!
 title: "[Bug]"
 labels: bug
 assignees: ''
@@ -14,8 +14,8 @@ _Make sure you complete the template. Otherwise, it will be closed without furth
 ### Device info
 - iOS/iPadOS version: 
 - Device model:
-- Sideload tool (Ex: AltStore, Sideloadly...)
-- Version of uYouPlus: 
+- Sideload tool (Ex: AltStore, Sideloadly, TrollStore,...)
+- The specific version of uYouPlus: _**latest** or **newest** is NOT a version number!!_
 
 ### Describe the bug
 
@@ -23,10 +23,13 @@ _Make sure you complete the template. Otherwise, it will be closed without furth
 ### How to reproduce the bug
 _(Please attach videos or screenshots if possible)_
 
-
 ### Crash log (if possible)
-_(The crash log can be found in the  Settings app - Privacy - Analytics & Improvements - Analytics Data - Youtube...)_
+_(The crash log can be found in the Settings app > Privacy > Analytics & Improvements > Analytics Data > Youtube...)_
 
+### Are you using the newest version of uYouPlus? If not, why?
+_(Developers spend time and effort to fix bugs & add improvements with every release. Why don't you update to the latest version before reporting about an issue???)_
 
-### Additional context:
- 
+### Does the issue happen with the official YouTube from AppStore?
+_(Well, YouTube itself is buggy sometimes...)_
+
+### Additional context: 

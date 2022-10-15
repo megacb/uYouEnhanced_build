@@ -1,4 +1,15 @@
 // Settings
+"DONT_EAT_MY_CONTENT" = "מנע חריץ/אי בתוכן וידאו 2:1 (DontEatMyContent)";
+"DONT_EAT_MY_CONTENT_DESC" = "מנע מהחריץ/האי הדינמי ללעוס תוכן וידאו 2:1 ב-YouTube. נדרשת הפעלה מחדש של האפליקציה.";
+
+"REPLACE_PREVIOUS_NEXT_BUTTON" = "החלף את הלחצן הקודם והבא";
+"REPLACE_PREVIOUS_NEXT_BUTTON_DESC" = "החלף את הלחצן הקודם והבא בלחצן הרצה קדימה והאחורה. נדרשת הפעלה מחדש של האפליקציה.";
+
+"FIX_GOOGLE_SIGNIN" = "תקן כניסה של Google (עבור משתמש TrollStore בלבד)";
+"FIX_GOOGLE_SIGNIN_DESC" = "הפעל אפשרות זו רק כאשר אינך יכול להיכנס עם חשבון Google שלך והאפליקציה הותקנה דרך TrollStore. אם אתה יכול להתחבר כרגיל, השאר אותה מושבתת. נדרשת הפעלה מחדש של האפליקציה.";
+
+"KILL_APP" = "סגור את YouTube";
+"KILL_APP_DESC" = "הקש כאן כדי לסגור את YouTube!";
 
 "HIDE_PREVIOUS_AND_NEXT_BUTTON" = "הסתר את הקודם והבא";
 "HIDE_PREVIOUS_AND_NEXT_BUTTON_DESC" = "הסתר את כפתורי הקודם והבא בתצוגת השליטה בסרטון.";

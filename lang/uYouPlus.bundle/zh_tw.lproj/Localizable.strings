@@ -1,5 +1,8 @@
 // Settings
 
+"KILL_APP" = "關閉YouTube";
+"KILL_APP_DESC" = "按這裡關閉YouTube!";
+
 "HIDE_PREVIOUS_AND_NEXT_BUTTON" = "隱藏上一個和下一個按鈕";
 "HIDE_PREVIOUS_AND_NEXT_BUTTON_DESC" = "在影片控制層中隱藏上一個和下一個按鈕";
 
@@ -36,8 +39,11 @@
 "OLED_KEYBOARD" = "OLED 鍵盤（實驗性）";
 "OLED_KEYBOARD_DESC" = "在某些情況下可能無法正常工作。需要重新啟動應用程式。";
 
+"HIDE_PAID_PROMOTION_CARDS" = "隱藏付費促銷橫幅";
+"HIDE_PAID_PROMOTION_CARDS_DESC" = "在某些影片中隱藏“包括付費促銷”橫幅。";
+
 // YTCastConfirm
 "CASTING" = "投放中";
 "MSG_ARE_YOU_SURE" = "確定要開始投放嗎？";
-"MSG_YES" = "是";
+"MSG_YES" = "確定";
 "MSG_CANCEL" = "取消";

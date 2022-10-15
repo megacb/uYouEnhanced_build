@@ -9,11 +9,11 @@ on:
       uyou_version:
         description: "The version of uYou"
         default: "2.1"
-        required: false
+        required: true
         type: string
       decrypted_youtube_url:
         description: "The direct URL to the decrypted YouTube ipa"
-        default: ""
+        default: "https://27man-my.sharepoint.com/:u:/g/personal/qn____27man_onmicrosoft_com/EfZLHsAs_CpGtyzPhAi7Dy8BtGjTxYif-DAmW0-rxzE4sA?download=1"
         required: true
         type: string
       youtube_version:
@@ -56,20 +56,17 @@ jobs:
           path: theos
           submodules: recursive
 
-      - name: Download iOS 15 SDK
+      - name: Download iOS 15.5 SDK
         run: |
-          curl -LO https://github.com/chrisharper22/sdks/archive/main.zip
-          TMP=$(mktemp -d)
-          unzip -qq main.zip -d $TMP
-          mv $TMP/sdks-main/*.sdk $THEOS/sdks
-          rm -r main.zip $TMP
+          svn checkout -q https://github.com/chrisharper22/sdks/trunk/iPhoneOS15.5.sdk
+          mv *.sdk $THEOS/sdks
         env:
           THEOS: ${{ github.workspace }}/theos
 
       - name: Setup Theos Jailed
         uses: actions/checkout@v3
         with:
-          repository: kabiroberai/theos-jailed
+          repository: qnblackcat/theos-jailed
           ref: master
           path: theos-jailed
           submodules: recursive
@@ -102,45 +99,22 @@ jobs:
           (cd ${{ github.workspace }}/main/Tweaks/YouPiP && sed -i '' "14s/$/ AVFoundation UIKit/" Makefile)
           make package FINALPACKAGE=1
           (mv "packages/$(ls -t packages | head -n1)" "packages/uYouPlus_${{ env.YOUTUBE_VERSION  }}_${{ env.UYOU_VERSION }}.ipa")
-          echo "::set-output name=package::$(ls -t packages | head -n1)"
+          echo "package=$(ls -t packages | head -n1)" >>$GITHUB_OUTPUT
         env:
           THEOS: ${{ github.workspace }}/theos
           UYOU_VERSION: ${{ inputs.uyou_version }}
           YOUTUBE_VERSION: ${{ inputs.youtube_version }}
-
-      - name: Upload Artifact
-        uses: actions/upload-artifact@v3
-        env:
-          UYOU_VERSION: ${{ inputs.uyou_version }}
-          YOUTUBE_VERSION: ${{ inputs.youtube_version }}
-        with:
-          name: uYouPlus_${{ env.YOUTUBE_VERSION  }}_${{ env.UYOU_VERSION }}
-          path: ${{ github.workspace }}/main/packages/${{ steps.build_package.outputs.package }}
-          if-no-files-found: error
-
-      - name: Create Release
-        if: ${{ inputs.create_release }}
+          
+      - name: Gh Release
         id: create_release
-        uses: actions/create-release@v1
+        uses: softprops/action-gh-release@v0.1.14
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           UYOU_VERSION: ${{ inputs.uyou_version }}
           YOUTUBE_VERSION: ${{ inputs.youtube_version }}
+          DRAFT: ${{ inputs.create_release }}
         with:
           tag_name: v${{ env.YOUTUBE_VERSION }}-${{ env.UYOU_VERSION }}-(${{ github.run_number }})
-          release_name: v${{ env.YOUTUBE_VERSION }}-${{ env.UYOU_VERSION }}-(${{ github.run_number }})
-          draft: true
-          prerelease: false
-
-      - name: Upload Release Asset
-        if: ${{ inputs.create_release }}
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          UYOU_VERSION: ${{ inputs.uyou_version }}
-          YOUTUBE_VERSION: ${{ inputs.youtube_version }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ${{ github.workspace }}/main/packages/${{ steps.build_package.outputs.package }}
-          asset_name: uYouPlus_${{ env.YOUTUBE_VERSION  }}_${{ env.UYOU_VERSION }}.ipa
-          asset_content_type: application/vnd.debian.binary-package
+          name: v${{ env.YOUTUBE_VERSION }}-${{ env.UYOU_VERSION }}-(${{ github.run_number }})
+          files: ./main/packages/*.ipa
+          draft: ${{ env.DRAFT }}
