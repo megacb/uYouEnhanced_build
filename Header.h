@@ -5,6 +5,7 @@
 #define YT_NAME @"YouTube"
 #define UNSUPPORTED_DEVICES @[@"iPhone14,3", @"iPhone14,6", @"iPhone14,8"] // DontEatMycontent
 #define THRESHOLD 1.99 // DontEatMycontent
+#define DEFAULT_RATE 2.0f // YTSpeed
 
 // IAmYouTube
 @interface SSOConfiguration : NSObject
@@ -61,6 +62,30 @@ void center();
 - (id)activeVideoPlayerOverlay;
 @end
 
+// YTSpeed
+@interface YTVarispeedSwitchControllerOption : NSObject
+- (id)initWithTitle:(id)title rate:(float)rate;
+@end
+
+@interface MLHAMQueuePlayer : NSObject
+@property id playerEventCenter;
+@property id delegate;
+- (void)setRate:(float)rate;
+- (void)internalSetRate;
+@end
+
+@interface MLPlayerStickySettings : NSObject
+- (void)setRate:(float)rate;
+@end
+
+@interface MLPlayerEventCenter : NSObject
+- (void)broadcastRateChange:(float)rate;
+@end
+
+@interface HAMPlayerInternal : NSObject
+- (void)setRate:(float)rate;
+@end
+
 // iOS16 fix
 @interface OBPrivacyLinkButton : UIButton
 - (instancetype)initWithCaption:(NSString *)caption
@@ -87,8 +112,13 @@ void center();
 // YTAutoFullScreen
 @interface YTPlayerViewController (YTAFS)
 - (void)autoFullscreen;
-- (id)activeVideoPlayerOverlay; // DontEatMycontent
-- (id)playerView; // DontEatMycontent
+// DontEatMycontent
+- (id)activeVideoPlayerOverlay; 
+- (id)playerView;
+// YTSpeed
+@property id activeVideo;
+@property float playbackRate;
+- (void)singleVideo:(id)video playbackRateDidChange:(float)rate;
 @end
 
 // OLED Darkmode
