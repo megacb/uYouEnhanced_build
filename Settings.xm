@@ -1,6 +1,7 @@
 #import "Tweaks/YouTubeHeader/YTSettingsViewController.h"
 #import "Tweaks/YouTubeHeader/YTSettingsSectionItem.h"
 #import "Tweaks/YouTubeHeader/YTSettingsSectionItemManager.h"
+#import "Tweaks/YouTubeHeader/YTUIUtils.h"
 #import "Header.h"
 
 @interface YTSettingsSectionItemManager (YouPiP)
@@ -45,13 +46,13 @@ extern BOOL dontEatMyContent();
     YTSettingsViewController *delegate = [self valueForKey:@"_dataDelegate"];
     NSBundle *tweakBundle = uYouPlusBundle();
 
-    YTSettingsSectionItem *killApp = [%c(YTSettingsSectionItem) // https://github.com/PoomSmart/YTABConfig/blob/b74d7f28151c407cffc21cce12908c49e9e65999/Tweak.x#L76
-    itemWithTitle:LOC(@"KILL_APP")
-    titleDescription:LOC(@"KILL_APP_DESC")
+    YTSettingsSectionItem *version = [%c(YTSettingsSectionItem)
+    itemWithTitle:[NSString stringWithFormat:LOC(@"VERSION"), @(OS_STRINGIFY(TWEAK_VERSION))]
+    titleDescription:LOC(@"VERSION_CHECK")
     accessibilityIdentifier:nil
     detailTextBlock:nil
     selectBlock:^BOOL (YTSettingsCell *cell, NSUInteger arg1) {
-        exit(0);
+        return [%c(YTUIUtils) openURL:[NSURL URLWithString:@"https://github.com/qnblackcat/uYouPlus/releases/latest"]];
     }];
 
     YTSettingsSectionItem *dontEatMyContent = [[%c(YTSettingsSectionItem) alloc] initWithTitle:LOC(@"DONT_EAT_MY_CONTENT") titleDescription:LOC(@"DONT_EAT_MY_CONTENT_DESC")];
@@ -198,7 +199,7 @@ extern BOOL dontEatMyContent();
         return YES;
     };
 
-    NSMutableArray <YTSettingsSectionItem *> *sectionItems = [NSMutableArray arrayWithArray:@[killApp, autoFull, castConfirm, ytMiniPlayer, fixGoogleSignIn, hideAutoplaySwitch, hideCC, hideHUD, hidePaidPromotionCard, hidePreviousAndNextButton, hideHoverCard, bigYTMiniPlayer, oledDarkMode, oledKeyBoard, dontEatMyContent, replacePreviousAndNextButton, reExplore]];
+    NSMutableArray <YTSettingsSectionItem *> *sectionItems = [NSMutableArray arrayWithArray:@[version, autoFull, castConfirm, ytMiniPlayer, fixGoogleSignIn, hideAutoplaySwitch, hideCC, hideHUD, hidePaidPromotionCard, hidePreviousAndNextButton, hideHoverCard, bigYTMiniPlayer, oledDarkMode, oledKeyBoard, dontEatMyContent, replacePreviousAndNextButton, reExplore]];
     [delegate setSectionItems:sectionItems forCategory:uYouPlusSection title:@"uYouPlus" titleDescription:nil headerHidden:NO];
 }
 
