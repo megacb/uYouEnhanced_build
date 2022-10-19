@@ -1,4 +1,7 @@
 // Settings
+"VERSION" = "Versão do uYouPlus: %@";
+"VERSION_CHECK" = "Toque para verificar se há atualização!";
+
 "DONT_EAT_MY_CONTENT" = "Evitar o notch/Island em conteúdo de vídeo 2:1 (DontEatMyContent)";
 "DONT_EAT_MY_CONTENT_DESC" = "Evita que o notch/Dynamic Island coma conteúdo de vídeo 2:1 no YouTube. A reinicialização do app é necessária.";
 
@@ -7,9 +10,6 @@
 
 "FIX_GOOGLE_SIGNIN" = "Corrigir o login do Google (somente para usuários da TrollStore)";
 "FIX_GOOGLE_SIGNIN_DESC" = "Ative esta opção somente quando você não conseguir fazer login com sua conta do Google e o aplicativo foi instalado via TrollStore. Se você conseguir fazer login normalmente, mantenha-o desativado. A reinicialização do app é necessária.";
-
-"KILL_APP" = "Fechar o YouTube";
-"KILL_APP_DESC" = "Toque aqui para fechar o YouTube!";
 
 "HIDE_PREVIOUS_AND_NEXT_BUTTON" = "Ocultar botão Anterior e Próximo";
 "HIDE_PREVIOUS_AND_NEXT_BUTTON_DESC" = "Oculta o botão Anterior e Próximo na sobreposição de controles de vídeo.";
