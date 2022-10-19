@@ -1,4 +1,7 @@
 // Settings
+"VERSION" = "uYouPlus's version: %@";
+"VERSION_CHECK" = "Tap to check for update!";
+
 "DONT_EAT_MY_CONTENT" = "Voorkom Notch/Eiland Bij 2:1 Video's (DontEatMyContent)";#
 "DONT_EAT_MY_CONTENT_DESC" = "Voorkomt dat de video zich achter de Notch/het Dynamische Eiland bevind bij 2:1 video's. Je moet de app opnieuw opstarten om dit te activeren.";
 
@@ -7,9 +10,6 @@
 
 "FIX_GOOGLE_SIGNIN" = "Fix Inloggen met Google (Alleen voor TrollStore gebruikers)";
 "FIX_GOOGLE_SIGNIN_DESC" = "Zet dit aan wanneer je niet kan inloggen met je Google account en je de app hebt geïnstalleerd met Trollstore. Als je in kan loggen laat dit dan met rust. Om dit te activeren moet je de app opnieuw opstarten.";
-
-"KILL_APP" = "Sluit YouTube";
-"KILL_APP_DESC" = "Klik om YouTube te sluiten!";
 
 "HIDE_PREVIOUS_AND_NEXT_BUTTON" = "Verberg vorige en volgende knoppen";
 "HIDE_PREVIOUS_AND_NEXT_BUTTON_DESC" = "Verberg de vorige en volgende knop in de video speler.";

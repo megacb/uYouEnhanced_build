@@ -1,4 +1,7 @@
 // Settings
+"VERSION" = "uYouPlus's version: %@";
+"VERSION_CHECK" = "Tap to check for update!";
+
 "DONT_EAT_MY_CONTENT" = "Previeni la Tacca/Isola sui Contenuti Video 2:1 (DontEatMyContent)";
 "DONT_EAT_MY_CONTENT_DESC" = "Previene alla Tacca/Isola di nascondere parte dei Contenuti Video 2:1 in YouTube. È richiesto un riavvio dell'app.";
 
@@ -8,8 +11,6 @@
 "FIX_GOOGLE_SIGNIN" = "Ripara Google Sign in (solo per utenti TrollStore)";
 "FIX_GOOGLE_SIGNIN_DESC" = "Attiva questa opzione solo quando non puoi accedere al tuo account Google e l'app è stata installata attraverso TrollStore. Se puoi accedere normalmente, tienila disabilitata. È richiesto un riavvio dell'app.";
 
-"KILL_APP" = "Chiudi YouTube";
-"KILL_APP_DESC" = "Premi qui per chiudere YouTube!";
 
 "HIDE_PREVIOUS_AND_NEXT_BUTTON" = "Nascondi i bottoni Precedente e Successivo";
 "HIDE_PREVIOUS_AND_NEXT_BUTTON_DESC" = "Nasconde i bottoni Precedente e Successivo dai controlli in sovrimpressione al video.";

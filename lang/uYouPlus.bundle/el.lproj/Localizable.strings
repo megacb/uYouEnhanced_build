@@ -1,4 +1,7 @@
 // Settings
+"VERSION" = "uYouPlus's version: %@";
+"VERSION_CHECK" = "Tap to check for update!";
+
 "DONT_EAT_MY_CONTENT" = "Αποτροπή Notch/Island σε περιεχόμενο βίντεο 2:1 (DontEatMyContent)";
 "DONT_EAT_MY_CONTENT_DESC" = "Αποτρέψτε το notch/Dynamic Island από το να μασουλάει περιεχόμενο βίντεο 2:1 στο YouTube. Απαιτείται επανεκκίνηση της εφαρμογής.";
 
@@ -7,9 +10,6 @@
 
 "FIX_GOOGLE_SIGNIN" = "Διόρθωση σύνδεσης Google (μόνο για χρήστες του TrollStore)";
 "FIX_GOOGLE_SIGNIN_DESC" = "Ενεργοποιήστε αυτήν την επιλογή μόνο όταν δεν μπορείτε να συνδεθείτε με τον λογαριασμό σας Google και η εφαρμογή έχει εγκατασταθεί μέσω του TrollStore. Εάν μπορείτε να συνδεθείτε κανονικά, διατηρήστε την απενεργοποιημένη. Απαιτείται επανεκκίνηση της εφαρμογής.";
-
-"KILL_APP" = "Κλείσιμο YouTube";
-"KILL_APP_DESC" = "Πατήστε εδώ για να κλείσετε το YouTube!";
 
 "HIDE_PREVIOUS_AND_NEXT_BUTTON" = "Κρύψτε το προηγούμενο και το επόμενο κουμπί";
 "HIDE_PREVIOUS_AND_NEXT_BUTTON_DESC" = "Κρύψτε το προηγούμενο και το επόμενο κουμπί κατά την αναπαραγωγή βίντεο.";

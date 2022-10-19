@@ -1,4 +1,7 @@
 /* uYouPlusSettings */
+"VERSION" = "uYouPlus's version: %@";
+"VERSION_CHECK" = "Tap to check for update!";
+
 "DONT_EAT_MY_CONTENT" = "Предотвратить выемку/остров на видеоконтенте 2:1 (DontEatMyContent)";
 "DONT_EAT_MY_CONTENT_DESC" = "Не позволяйте вырезу/Dynamic Island поглощать видеоконтент 2:1 на YouTube. Требуется перезапуск приложения.";
 
@@ -7,9 +10,6 @@
 
 "FIX_GOOGLE_SIGNIN" = "Исправить вход через Google (только для пользователя TrollStore)";
 "FIX_GOOGLE_SIGNIN_DESC" = "Включайте эту опцию, только если вы не можете войти в свою учетную запись Google и приложение было установлено через TrollStore. Если вы можете нормально войти в систему, оставьте ее отключенной. Требуется перезапуск приложения.";
-
-"KILL_APP" = "Закрыть YouTube";
-"KILL_APP_DESC" = "Нажмите здесь, чтобы закрыть YouTube!";
 
 "HIDE_PREVIOUS_AND_NEXT_BUTTON" = "Скрыть «Пред.» и «След.»";
 "HIDE_PREVIOUS_AND_NEXT_BUTTON_DESC" = "Убирает кнопки переключения видео «Следующий» и «Предыдущий» с плеера.";
