@@ -4,7 +4,7 @@
 "VERSION_CHECK" = "点击此处检查更新！";
 
 "DONT_EAT_MY_CONTENT" = "2:1视频刘海屏/灵动岛优化 （DontEatMyContent）";
-"DONT_EAT_MY_CONTENT_DESC" = "改进部分机型的刘海区域或灵动岛在2:1比例视频中存在的遮挡问题（缺口）。更改本设置后需要重启App。";
+"DONT_EAT_MY_CONTENT_DESC" = "改进部分机型的刘海区域或灵动岛在2:1比例视频中引发的遮挡问题（缺口）。更改本设置后需要重启App。";
 
 "REPLACE_PREVIOUS_NEXT_BUTTON" = "替换上一个/下一个按钮";
 "REPLACE_PREVIOUS_NEXT_BUTTON_DESC" = "将视频播放器控制界面上的上一个/下一个按钮替换成快进/快退按钮。更改本设置后需要重启App。";
