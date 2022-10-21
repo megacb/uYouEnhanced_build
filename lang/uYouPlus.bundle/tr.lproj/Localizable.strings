@@ -1,0 +1,72 @@
+/* Read me:
+- How to translate uYouPlus (if your language already exists then feel free to check it and/or improve it):
+1. Fork uYouPlus repo
+2. Duplicate the template.lproj folder, and edit the duplicated folder's name to your <lang_code>.lproj id.
+For example: <ru.lproj> for Russia. For more details, visit: https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes
+3. Translate each line below after each =
+4. Open a Pull Request
+
+- You can also add your localization to YTABConfig, YouPiP, YTUHD, Return YouTube Dislike. The process is the same:
+https://github.com/PoomSmart/YTABConfig/tree/main/layout/Library/Application%20Support/YTABC.bundle
+https://github.com/PoomSmart/YouPiP/tree/main/layout/Library/Application%20Support/YouPiP.bundle
+https://github.com/PoomSmart/YTUHD/tree/master/layout/Library/Application%20Support/YTUHD.bundle
+https://github.com/PoomSmart/Return-YouTube-Dislikes/tree/main/layout/Library/Application%20Support/RYD.bundle
+*/
+
+// Settings
+"VERSION" = "uYouPlus'ın sürümü: %@";
+"VERSION_CHECK" = "Güncellemeyi kontrol etmek için dokunun!";
+
+"DONT_EAT_MY_CONTENT" = "2:1 Video İçeriğinde Çentik/Ada Önleme (DontEatMyContent)";
+"DONT_EAT_MY_CONTENT_DESC" = "Çentik/Dinamik Ada'nın YouTube'daki 2:1 video içeriğini yemesini önleyin. Uygulamanın yeniden başlatılması gerekir.";
+
+"REPLACE_PREVIOUS_NEXT_BUTTON" = "Önceki ve Sonraki Düğmelerini Değiştir";
+"REPLACE_PREVIOUS_NEXT_BUTTON_DESC" = "Önceki ve Sonraki Düğmelerini Hızlı ileri ve Geri Sar düğmeleriyle değiştirin. Uygulamanın yeniden başlatılması gerekir.";
+
+"FIX_GOOGLE_SIGNIN" = "Google Oturumu Açma'yı düzeltin (yalnızca TrollStore kullanıcıları için)";
+"FIX_GOOGLE_SIGNIN_DESC" = "Bu seçeneği yalnızca Google hesabınızla oturum açamadığınızda ve uygulama TrollStore aracılığıyla yüklendiyse açın. Normal olarak giriş yapabiliyorsanız, devre dışı bırakın. Uygulamanın yeniden başlatılması gerekir.";
+
+"HIDE_PREVIOUS_AND_NEXT_BUTTON" = "Önceki ve Sonraki düğmelerini gizle";
+"HIDE_PREVIOUS_AND_NEXT_BUTTON_DESC" = "Video kontrolleri katmanında Önceki ve Sonraki düğmelerini gizler.";
+
+"YT_MINIPLAYER" = "Tüm YouTube videoları için Mini Oynatıcıyı etkinleştirin";
+"YT_MINIPLAYER_DESC" = "Örneğin çocuk videoları.";
+
+"CAST_CONFIRM" = "Yayınlamadan önce uyarıyı onaylayın (YTCastConfirm)";
+"CAST_CONFIRM_DESC" = "TV'nin yanlışlıkla ele geçirilmesini önlemek için yayınlamadan önce bir onay uyarısı gösterir.";
+
+"HIDE_HOVER_CARD" = "Bitiş ekranlarının üzerine gelen kartları gizle.(YTNoHoverCards)";
+"HIDE_HOVER_CARD_DESC" = "Videoların sonundaki içerik oluşturucu bitiş ekranlarını (küçük resimler) gizler.";
+
+"NEW_MINIPLAYER_STYLE" = "Yeni mini oynatıcı bar stili. (BigYTMiniPlayer)";
+"NEW_MINIPLAYER_STYLE_DESC" = "Uygulamanın yeniden başlatılması gerekir.";
+
+"YT_RE_EXPLORE" = "Shorts sekmesini Keşfet sekmesiyle değiştirin (YTReExplore)";
+"YT_RE_EXPLORE_DESC" = "Uygulamanın yeniden başlatılması gerekir.";
+
+"HIDE_SUBTITLES_BUTTON" = "Altyazıları düğmesini gizle";
+"HIDE_SUBTITLES_BUTTON_DESC" = "Video kontrolleri katmanındaki Altyazılar düğmesini gizler.";
+
+"HIDE_AUTOPLAY_SWITCH" = "Otomatik oynatma anahtarını gizle";
+"HIDE_AUTOPLAY_SWITCH_DESC" = "Otomatik oynat anahtarını video kontrolleri katmanından gizler.";
+
+"AUTO_FULLSCREEN" = "Otomatik Tam Ekran (YTAutoFullScreen)";
+"AUTO_FULLSCREEN_DESC" = "Videoları otomatik olarak tam ekranda oynatır.";
+
+"HIDE_HUD_MESSAGES" = "Gösterge Paneli Mesajlarını gizle";
+"HIDE_HUD_MESSAGES_DESC" = "Örnek: Altyazılar açıldı/kapandı, Video döngüsü açık,...";
+
+"OLED_DARKMODE" = "OLED Karanlık modu (Deneysel)";
+"OLED_DARKMODE_DESC" = "Bazı durumlarda düzgün çalışmayabilir. Bu seçeneği etkinleştirdikten/devre dışı bıraktıktan sonra uygulamanın yeniden başlatılması gerekir.";
+
+"OLED_KEYBOARD" = "OLED Klavye (Deneysel)";
+"OLED_KEYBOARD_DESC" = "Bazı durumlarda düzgün çalışmayabilir. Uygulamanın yeniden başlatılması gerekir.";
+
+"HIDE_PAID_PROMOTION_CARDS" = "Ücretli Promosyon afişini gizle";
+"HIDE_PAID_PROMOTION_CARDS_DESC" = "Bazı videolarda 'Ücretli Promosyonları İçerir' afişini gizler.";
+
+// YTCastConfirm
+"CASTING" = "Yayınlar";
+"MSG_ARE_YOU_SURE" = "Yayınlamaya başlamak istediğinizden emin misiniz?";
+"MSG_YES" = "Evet";
+"MSG_CANCEL" = "İptal";
