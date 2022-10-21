@@ -1,6 +1,6 @@
 // Settings
-"VERSION" = "uYouPlus's version: %@";
-"VERSION_CHECK" = "Tap to check for update!";
+"VERSION" = "uYouPlus 버전: %@";
+"VERSION_CHECK" = "업데이트하려면 탭하세요!";
 
 "DONT_EAT_MY_CONTENT" = "노치/아일랜드 영역이 2:1 비율 비디오를 가리지 않게 함 (DontEatMyContent)";
 "DONT_EAT_MY_CONTENT_DESC" = "노치/다이내믹 아일랜드 영역이 유튜브의 2:1 비율 영상 일부를 가리는 것을 막아줍니다. 앱을 다시 시작해야 합니다.";
