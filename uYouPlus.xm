@@ -319,6 +319,7 @@ BOOL dontEatMyContent() {
 
 %hook YTColdConfig
 - (BOOL)iosEnableVideoPlayerScrubber { return YES; }
+- (BOOL)mobileShortsTabInlined { return YES; }
 %end
 
 %hook YTHotConfig
