@@ -1,8 +1,8 @@
 // Settings
-"VERSION" = "uYouPlus's version: %@";
-"VERSION_CHECK" = "Tap to check for update!";
+"VERSION" = "uYouPlus-Version: %@";
+"VERSION_CHECK" = "Tippen, um nach Updates zu suchen!";
 
-"DONT_EAT_MY_CONTENT" = "Kerbe/Insel bei 2:1-Videoinhalten berücksichtigen (DontEatMyContent)";
+"DONT_EAT_MY_CONTENT" = "Kerbe/dynamische Insel bei 2:1-Videoinhalten berücksichtigen (DontEatMyContent)";
 "DONT_EAT_MY_CONTENT_DESC" = "Verhindert, dass die Notch/Dynamic Island 2:1-Videoinhalte überdeckt. App-Neustart erforderlich!";
 
 "REPLACE_PREVIOUS_NEXT_BUTTON" = "Vor- und Zurücktasten ersetzen";
