@@ -265,12 +265,13 @@ BOOL dontEatMyContent() {
 - (BOOL)isPromptForLocalNetworkPermissionsEnabled { return NO; }
 %end
 
-// YouRememberCaption: https://poomsmart.github.io/repo/depictions/youremembercaption.html
-%hook YTColdConfig
-- (BOOL)respectDeviceCaptionSetting { return NO; }
-- (BOOL)isLandscapeEngagementPanelSwipeRightToDismissEnabled { return YES; }
-// Fix uYou's label glitching - qnblackcat/uYouPlus#552
-- (BOOL)mainAppCoreClientIosTransientVisualGlitchInPivotBarFix { return NO; } 
+// A/B flags
+%hook YTColdConfig 
+- (BOOL)respectDeviceCaptionSetting { return NO; } // YouRememberCaption: https://poomsmart.github.io/repo/depictions/youremembercaption.html
+- (BOOL)isLandscapeEngagementPanelSwipeRightToDismissEnabled { return YES; } // Swipe right to dismiss the right panel in fullscreen mode
+- (BOOL)mainAppCoreClientIosTransientVisualGlitchInPivotBarFix { return NO; } // Fix uYou's label glitching - qnblackcat/uYouPlus#552
+- (BOOL)uiSystemsClientGlobalConfigUseDarkerPaletteBgColorForNative { return NO; } // Fix OLED Darkmode not working sometimes - qnblackcat/uYouPlus#547
+- (BOOL)enableSwipeToRemoveInPlaylistWatchEp { return YES; } // Enable swipe right to remove video in Playlist. 
 %end
 
 // NOYTPremium - https://github.com/PoomSmart/NoYTPremium/
