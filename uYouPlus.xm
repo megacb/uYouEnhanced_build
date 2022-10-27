@@ -1101,6 +1101,24 @@ void center() {
 }
 %end
 
+// Workaround for qnblackcat/uYouPlus#617
+static BOOL didFinishLaunching;
+
+%hook YTAppDelegate
+- (BOOL)application:(UIApplication *)application
+    didFinishLaunchingWithOptions:(NSDictionary<UIApplicationLaunchOptionsKey, id> *)launchOptions {
+  didFinishLaunching = %orig;
+  self.downloadsVC = [self.downloadsVC init];
+  return didFinishLaunching;
+}
+%end
+
+%hook DownloadsPagerVC
+- (instancetype)init {
+  return didFinishLaunching ? %orig : self;
+}
+%end
+
 // iOS 16 uYou crash fix - @level3tjg: https://github.com/qnblackcat/uYouPlus/pull/224
 %group iOS16
 %hook OBPrivacyLinkButton

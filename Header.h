@@ -1,3 +1,4 @@
+#import "Tweaks/YouTubeHeader/YTAppDelegate.h"
 #import "Tweaks/YouTubeHeader/YTPlayerViewController.h"
 
 #define LOC(x) [tweakBundle localizedStringForKey:x value:nil table:nil]
@@ -100,6 +101,12 @@ void center();
 @interface YTLocalPlaybackController : NSObject
 - (id)activeVideo;
 @end
+
+// uYou theme fix
+@interface YTAppDelegate ()
+@property(nonatomic, strong) id downloadsVC;
+@end
+
 
 // BigYTMiniPlayer
 @interface YTMainAppVideoPlayerOverlayView : UIView
