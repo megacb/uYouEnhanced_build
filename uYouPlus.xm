@@ -270,7 +270,6 @@ BOOL dontEatMyContent() {
 - (BOOL)respectDeviceCaptionSetting { return NO; } // YouRememberCaption: https://poomsmart.github.io/repo/depictions/youremembercaption.html
 - (BOOL)isLandscapeEngagementPanelSwipeRightToDismissEnabled { return YES; } // Swipe right to dismiss the right panel in fullscreen mode
 - (BOOL)mainAppCoreClientIosTransientVisualGlitchInPivotBarFix { return NO; } // Fix uYou's label glitching - qnblackcat/uYouPlus#552
-- (BOOL)uiSystemsClientGlobalConfigUseDarkerPaletteBgColorForNative { return NO; } // Fix OLED Darkmode not working sometimes - qnblackcat/uYouPlus#547
 - (BOOL)enableSwipeToRemoveInPlaylistWatchEp { return YES; } // Enable swipe right to remove video in Playlist. 
 %end
 
@@ -312,10 +311,6 @@ BOOL dontEatMyContent() {
 - (BOOL)shouldEnablePlayerBar { return YES; }
 - (BOOL)shouldAlwaysEnablePlayerBar { return YES; }
 - (BOOL)shouldEnablePlayerBarOnlyOnPause { return NO; }
-%end
-
-%hook YTInlinePlayerBarContainerView
-- (void)setUserInteractionEnabled:(BOOL)enabled { %orig(YES); }
 %end
 
 %hook YTColdConfig
@@ -806,6 +801,11 @@ UIColor* raisedColor = [UIColor colorWithRed:0.035 green:0.035 blue:0.035 alpha:
     }
 }
 %end
+
+// Incompatibility with the new YT Dark theme
+%hook YTColdConfig
+- (BOOL)uiSystemsClientGlobalConfigUseDarkerPaletteBgColorForNative { return NO; }
+%end
 %end
 
 # pragma mark - OLED keyboard by @ichitaso <3 - http://gist.github.com/ichitaso/935100fd53a26f18a9060f7195a1be0e
@@ -1107,15 +1107,15 @@ static BOOL didFinishLaunching;
 %hook YTAppDelegate
 - (BOOL)application:(UIApplication *)application
     didFinishLaunchingWithOptions:(NSDictionary<UIApplicationLaunchOptionsKey, id> *)launchOptions {
-  didFinishLaunching = %orig;
-  self.downloadsVC = [self.downloadsVC init];
-  return didFinishLaunching;
+    didFinishLaunching = %orig;
+    self.downloadsVC = [self.downloadsVC init];
+    return didFinishLaunching;
 }
 %end
 
 %hook DownloadsPagerVC
 - (instancetype)init {
-  return didFinishLaunching ? %orig : self;
+    return didFinishLaunching ? %orig : self;
 }
 %end
 
