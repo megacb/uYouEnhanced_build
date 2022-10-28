@@ -23,7 +23,7 @@ on:
         type: string
       create_release:
         description: "Create a draft release"
-        default: false
+        default: true
         required: false
         type: boolean
   
@@ -55,8 +55,18 @@ jobs:
           ref: master
           path: theos
           submodules: recursive
-
+      
+      - name: Caching
+        id: SDK
+        uses: actions/cache@v3.0.11
+        env:
+          cache-name: iOS-15.5-SDK
+        with:
+          path: theos/sdks/
+          key: ${{ env.cache-name }}
+      
       - name: Download iOS 15.5 SDK
+        if: steps.SDK.outputs.cache-hit != 'true'
         run: |
           svn checkout -q https://github.com/chrisharper22/sdks/trunk/iPhoneOS15.5.sdk
           mv *.sdk $THEOS/sdks
@@ -95,6 +105,7 @@ jobs:
       - name: Fix compiling && Build Package
         id: build_package
         run: |
+          (echo 'THEOS_IGNORE_PARALLEL_BUILDING_NOTICE = yes' >> ~/.theosrc)
           cd ${{ github.workspace }}/main
           (cd ${{ github.workspace }}/main/Tweaks/YouPiP && sed -i '' "14s/$/ AVFoundation UIKit/" Makefile)
           (cd ${{ github.workspace }}/main/Tweaks/YTABConfig && sed -i '' "12s#.*#YTABConfig_FRAMEWORKS = UIKit#g" Makefile)
@@ -112,7 +123,7 @@ jobs:
           UYOU_VERSION: ${{ inputs.uyou_version }}
           YOUTUBE_VERSION: ${{ inputs.youtube_version }}
         with:
-          name: uYouPlus_${{ env.YOUTUBE_VERSION  }}_${{ env.UYOU_VERSION }}
+          name: uYouPlus_${{ env.YOUTUBE_VERSION }}_${{ env.UYOU_VERSION }}
           path: ${{ github.workspace }}/main/packages/${{ steps.build_package.outputs.package }}
           if-no-files-found: error
 
