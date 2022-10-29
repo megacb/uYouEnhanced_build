@@ -1,6 +1,6 @@
 // Settings
-"VERSION" = "uYouPlus's version: %@";
-"VERSION_CHECK" = "Tap to check for update!";
+"VERSION" = "您的uYouPlus版本為: %@";
+"VERSION_CHECK" = "點擊查看最新版本!";
 
 "DONT_EAT_MY_CONTENT" = "2:1影片瀏海/動態島優化 （DontEatMyContent）";
 "DONT_EAT_MY_CONTENT_DESC" = "改進部分機型的瀏海區域或動態島在2:1比例影片中引發的遮擋問題。需要重新啟動應用程式。";
