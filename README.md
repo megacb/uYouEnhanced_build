@@ -132,7 +132,7 @@
 
 9. **YouRememberCaption**: make YouTube remember your video caption setting (if not already).
 
-10. **NoYTPremium**: remove YouTube Premium upshells.
+10. **NoYTPremium**: remove YouTube Premium upsells.
 
 11. **YTSpeed**: add 2.25, 2.5, 2.75, and 3x playback speed
 
