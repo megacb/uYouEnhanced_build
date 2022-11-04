@@ -34,7 +34,7 @@ concurrency:
 jobs:
   build:
     name: Build uYouPlus
-    runs-on: macos-latest
+    runs-on: macos-11
     permissions:
       contents: write
 
@@ -87,7 +87,7 @@ jobs:
         env:
           THEOS: ${{ github.workspace }}/theos
 
-      - name: Download uYou & prepare YouTube iPA
+      - name: Download uYou & Prepare YouTube iPA
         run: |
           curl "https://raw.githubusercontent.com/Muirey03/RemoteLog/master/RemoteLog.h" --output "$THEOS/include/RemoteLog.h"
           curl "https://miro92.com/repo/debs/com.miro.uyou_${{ env.UYOU_VERSION }}_iphoneos-arm.deb" --output "./main/Tweaks/uYou/com.miro.uyou_${{ env.UYOU_VERSION }}_iphoneos-arm.deb"
@@ -102,7 +102,7 @@ jobs:
           UYOU_VERSION: ${{ inputs.uyou_version }}
           YOUTUBE_URL: ${{ inputs.decrypted_youtube_url }}
 
-      - name: Fix compiling && Build Package
+      - name: Fix compiling & Build Package
         id: build_package
         run: |
           (echo 'THEOS_IGNORE_PARALLEL_BUILDING_NOTICE = yes' >> ~/.theosrc)
