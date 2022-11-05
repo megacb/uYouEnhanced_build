@@ -7,7 +7,8 @@ assignees: ''
 
 ---
 
-## Have you read the FAQ? Make sure you visit the FAQ page before asking any question!!!
+## Have you read the FAQ? Any questions that have been answered on the FAQ page will be closed without any explanation!
+
 https://github.com/qnblackcat/uYouPlus/wiki/FAQ
 
 ###
