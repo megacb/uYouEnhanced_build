@@ -90,12 +90,12 @@ jobs:
       - name: Download uYou & Prepare YouTube iPA
         run: |
           curl "https://raw.githubusercontent.com/Muirey03/RemoteLog/master/RemoteLog.h" --output "$THEOS/include/RemoteLog.h"
-          curl "https://miro92.com/repo/debs/com.miro.uyou_${{ env.UYOU_VERSION }}_iphoneos-arm.deb" --output "./main/Tweaks/uYou/com.miro.uyou_${{ env.UYOU_VERSION }}_iphoneos-arm.deb"
-          wget "$YOUTUBE_URL" --no-verbose -O ./main/YouTube.ipa
-          dpkg-deb -x "./main/Tweaks/uYou/com.miro.uyou_${{ env.UYOU_VERSION }}_iphoneos-arm.deb" ./main/Tweaks/uYou/
-          unzip -q ./main/YouTube.ipa -d ./main/tmp
-          rm -rf ./main/tmp/Payload/YouTube.app/PlugIns/*
-          cp -R ./main/Extensions/*.appex ./main/tmp/Payload/YouTube.app/PlugIns
+          curl "https://miro92.com/repo/debs/com.miro.uyou_${{ env.UYOU_VERSION }}_iphoneos-arm.deb" --output "main/Tweaks/uYou/com.miro.uyou_${{ env.UYOU_VERSION }}_iphoneos-arm.deb"
+          wget "$YOUTUBE_URL" --no-verbose -O main/YouTube.ipa
+          dpkg-deb -x "main/Tweaks/uYou/com.miro.uyou_${{ env.UYOU_VERSION }}_iphoneos-arm.deb" main/Tweaks/uYou/
+          unzip -q main/YouTube.ipa -d main/tmp
+          rm -rf main/tmp/Payload/YouTube.app/PlugIns/*
+          cp -R main/Extensions/*.appex main/tmp/Payload/YouTube.app/PlugIns
 
         env:
           THEOS: ${{ github.workspace }}/theos
@@ -107,11 +107,13 @@ jobs:
         run: |
           (echo 'THEOS_IGNORE_PARALLEL_BUILDING_NOTICE = yes' >> ~/.theosrc)
           cd ${{ github.workspace }}/main
-          (cd ${{ github.workspace }}/main/Tweaks/YouPiP && sed -i '' "14s/$/ AVFoundation UIKit/" Makefile)
+          (cd ${{ github.workspace }}/main/Tweaks/YouPiP && sed -i '' "13s/$/ AVFoundation UIKit/" Makefile)
           (cd ${{ github.workspace }}/main/Tweaks/YTABConfig && sed -i '' "12s#.*#YTABConfig_FRAMEWORKS = UIKit#g" Makefile)
           make package FINALPACKAGE=1
           (mv "packages/$(ls -t packages | head -n1)" "packages/uYouPlus_${{ env.YOUTUBE_VERSION  }}_${{ env.UYOU_VERSION }}.ipa")
           echo "package=$(ls -t packages | head -n1)" >>$GITHUB_OUTPUT
+          echo -e "==> \033[1mSHASUM256: $(shasum -a 256 packages/*.ipa | cut -f1 -d' ')\033[0m"
+
         env:
           THEOS: ${{ github.workspace }}/theos
           UYOU_VERSION: ${{ inputs.uyou_version }}
@@ -138,5 +140,5 @@ jobs:
         with:
           tag_name: v${{ env.YOUTUBE_VERSION }}-${{ env.UYOU_VERSION }}-(${{ github.run_number }})
           name: v${{ env.YOUTUBE_VERSION }}-${{ env.UYOU_VERSION }}-(${{ github.run_number }})
-          files: ./main/packages/*.ipa
+          files: main/packages/*.ipa
           draft: ${{ env.DRAFT }}
