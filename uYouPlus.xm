@@ -188,7 +188,7 @@ BOOL dontEatMyContent() {
 %hook MDXPlaybackRouteButtonController
 - (void)didPressButton:(id)arg1 {
     if (castConfirm()) {
-        NSBundle *tweakBundle = YouTubePlusBundle();
+        NSBundle *tweakBundle = uYouPlusBundle();
         YTAlertView *alertView = [%c(YTAlertView) confirmationDialogWithAction:^{
             %orig;
         } actionTitle:LOC(@"MSG_YES")];
