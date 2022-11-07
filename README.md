@@ -1,4 +1,5 @@
 ![IMG_2196](https://user-images.githubusercontent.com/52943116/189822859-8a0952db-9264-4b5b-9cbe-d0a87b2db5a0.PNG)
+***
 
 <p align="center">
     <img src="https://img.shields.io/badge/Platform-iOS%20%7C%20iPadOS%2014.0%2B-yellow" alt="Badge"/>
