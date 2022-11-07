@@ -20,6 +20,7 @@
 #import "Tweaks/YouTubeHeader/YTReelWatchPlaybackOverlayView.h"
 #import "Tweaks/YouTubeHeader/YTReelPlayerBottomButton.h"
 #import "Tweaks/YouTubeHeader/YTReelPlayerViewController.h"
+#import "Tweaks/YouTubeHeader/YTAlertView.h"
 
 // Tweak's bundle for Localizations support - @PoomSmart - https://github.com/PoomSmart/YouPiP/commit/aea2473f64c75d73cab713e1e2d5d0a77675024f
 NSBundle *uYouPlusBundle() {
@@ -187,35 +188,16 @@ BOOL dontEatMyContent() {
 %hook MDXPlaybackRouteButtonController
 - (void)didPressButton:(id)arg1 {
     if (castConfirm()) {
-        UIAlertController* alertController = [%c(UIAlertController) alertControllerWithTitle:LOC(@"CASTING")
-                                message:LOC(@"MSG_ARE_YOU_SURE")
-                                preferredStyle:UIAlertControllerStyleAlert];
-        UIAlertAction* defaultAction = [%c(UIAlertAction) actionWithTitle:LOC(@"MSG_YES") style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
+        NSBundle *tweakBundle = YouTubePlusBundle();
+        YTAlertView *alertView = [%c(YTAlertView) confirmationDialogWithAction:^{
             %orig;
-        }];
-
-        UIAlertAction* noButton = [%c(UIAlertAction)
-                                actionWithTitle:LOC(@"MSG_CANCEL")
-                                style:UIAlertActionStyleDefault
-                                handler: ^(UIAlertAction * action) {
-            return;
-        }];
-
-        [alertController addAction:defaultAction];
-        [alertController addAction:noButton];
-        
-        id rootViewController = [%c(UIApplication) sharedApplication].delegate.window.rootViewController;
-        if ([rootViewController isKindOfClass:[%c(UINavigationController) class]]) {
-            rootViewController = ((UINavigationController *)rootViewController).viewControllers.firstObject;
-        }
-        if ([rootViewController isKindOfClass:[%c(UITabBarController) class]]) {
-            rootViewController = ((UITabBarController *)rootViewController).selectedViewController;
-        }
-        if ([rootViewController presentedViewController] != nil) {
-            rootViewController = [rootViewController presentedViewController];
-        }
-        [rootViewController presentViewController:alertController animated:YES completion:nil];
-	} else { return %orig; }
+        } actionTitle:LOC(@"MSG_YES")];
+        alertView.title = LOC(@"CASTING");
+        alertView.subtitle = LOC(@"MSG_ARE_YOU_SURE");
+        [alertView show];
+	} else {
+    return %orig;
+    }
 }
 %end
 
