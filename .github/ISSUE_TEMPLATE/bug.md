@@ -1,13 +1,13 @@
 ---
 name: Bug
 about: Make sure you complete the template. Otherwise, it will be closed without further explanation!
-title: "[Bug]"
+title: "[Bug] (Replace this with your title)"
 labels: bug
 assignees: ''
 
 ---
 
-## ⚠️ Have you read the [FAQ](https://github.com/qnblackcat/uYouPlus/wiki/FAQ)? Make sure you visit the FAQ page first!!! ⚠️
+## ⚠️ Have you read the [FAQ](https://github.com/qnblackcat/uYouPlus/wiki/FAQ)? Make sure you visit the [FAQ](https://github.com/qnblackcat/uYouPlus/wiki/FAQ) page first!!! ⚠️
 
 _Make sure you complete the template. Otherwise, it will be closed without further explanation!_
 
@@ -24,7 +24,7 @@ _Make sure you complete the template. Otherwise, it will be closed without furth
 _(Please attach videos or screenshots if possible)_
 
 ### Crash log (if possible)
-_(The crash log can be found in the Settings app > Privacy > Analytics & Improvements > Analytics Data > Youtube...)_
+_(The crash log can be found in the iPhone Settings App > Privacy > Analytics & Improvements > Analytics Data > Youtube...)_
 
 ### Are you using the newest version of uYouPlus? If not, why?
 _(Developers spend time and effort to fix bugs & add improvements with every release. Why don't you update to the latest version before reporting about an issue???)_
