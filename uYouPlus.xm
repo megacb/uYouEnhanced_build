@@ -21,6 +21,7 @@
 #import "Tweaks/YouTubeHeader/YTReelPlayerBottomButton.h"
 #import "Tweaks/YouTubeHeader/YTReelPlayerViewController.h"
 #import "Tweaks/YouTubeHeader/YTAlertView.h"
+#import "Tweaks/YouTubeHeader/YTIElementRenderer.h"
 
 // Tweak's bundle for Localizations support - @PoomSmart - https://github.com/PoomSmart/YouPiP/commit/aea2473f64c75d73cab713e1e2d5d0a77675024f
 NSBundle *uYouPlusBundle() {
@@ -205,6 +206,29 @@ BOOL dontEatMyContent() {
 %hook YTDataUtils
 + (NSMutableDictionary *)spamSignalsDictionary {
     return nil;
+}
+%end
+
+// Hide search ads by @PoomSmart - https://github.com/PoomSmart/YouTube-X
+BOOL didLateHook = NO;
+
+%group LateHook
+%hook YTIElementRenderer
+- (NSData *)elementData {
+    if (self.hasCompatibilityOptions && self.compatibilityOptions.hasAdLoggingData)
+        return nil;
+    return %orig;
+}
+%end
+%end
+
+%hook YTSectionListViewController
+- (void)loadWithModel:(id)model {
+    if (!didLateHook) {
+        %init(LateHook);
+        didLateHook = YES;
+    }
+    %orig;
 }
 %end
 
