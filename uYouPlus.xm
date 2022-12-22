@@ -60,178 +60,19 @@ static NSString *accessGroupID() {
     return accessGroup;
 }
 
-// 
-BOOL hideHUD() {
-    return [[NSUserDefaults standardUserDefaults] boolForKey:@"hideHUD_enabled"];
-}
-BOOL oled() {
-    return [[NSUserDefaults standardUserDefaults] boolForKey:@"oled_enabled"];
-}
-BOOL oledKB() {
-    return [[NSUserDefaults standardUserDefaults] boolForKey:@"oledKeyBoard_enabled"];
-}
-BOOL isDarkMode() {
+//
+static BOOL isDarkMode() {
     return ([[NSUserDefaults standardUserDefaults] integerForKey:@"page_style"] == 1);
 }
-BOOL autoFullScreen() {
-    return [[NSUserDefaults standardUserDefaults] boolForKey:@"autoFull_enabled"];
+static BOOL oledDarkTheme() {
+    return ([[NSUserDefaults standardUserDefaults] integerForKey:@"appTheme"] == 1);
 }
-BOOL hideHoverCard() {
-    return [[NSUserDefaults standardUserDefaults] boolForKey:@"hideHoverCards_enabled"];
-}
-BOOL reExplore() {
-    return [[NSUserDefaults standardUserDefaults] boolForKey:@"reExplore_enabled"];
-}
-BOOL bigYTMiniPlayer() {
-    return [[NSUserDefaults standardUserDefaults] boolForKey:@"bigYTMiniPlayer_enabled"];
-}
-BOOL hideCC() {
-    return [[NSUserDefaults standardUserDefaults] boolForKey:@"hideCC_enabled"];
-}
-BOOL hideAutoplaySwitch() {
-    return [[NSUserDefaults standardUserDefaults] boolForKey:@"hideAutoplaySwitch_enabled"];
-}
-BOOL hidePreviousAndNextButton() {
-    return [[NSUserDefaults standardUserDefaults] boolForKey:@"hidePreviousAndNextButton_enabled"];
-}
-BOOL castConfirm() {
-    return [[NSUserDefaults standardUserDefaults] boolForKey:@"castConfirm_enabled"];
-}
-BOOL ytMiniPlayer() {
-    return [[NSUserDefaults standardUserDefaults] boolForKey:@"ytMiniPlayer_enabled"];
-}
-BOOL hidePaidPromotionCard() {
-    return [[NSUserDefaults standardUserDefaults] boolForKey:@"hidePaidPromotionCard_enabled"];
-}
-BOOL fixGoogleSignIn() {
-    return [[NSUserDefaults standardUserDefaults] boolForKey:@"fixGoogleSignIn_enabled"];
-}
-BOOL replacePreviousAndNextButton() {
-    return [[NSUserDefaults standardUserDefaults] boolForKey:@"replacePreviousAndNextButton_enabled"];
-}
-BOOL dontEatMyContent() {
-    return [[NSUserDefaults standardUserDefaults] boolForKey:@"dontEatMyContent_enabled"];
+static BOOL oldDarkTheme() {
+    return ([[NSUserDefaults standardUserDefaults] integerForKey:@"appTheme"] == 2);
 }
 
-# pragma mark - Tweaks
-// Skips content warning before playing *some videos - @PoomSmart
-%hook YTPlayabilityResolutionUserActionUIController
-- (void)showConfirmAlert { [self confirmAlertDidPressConfirm]; }
-%end
-
-// YTMiniPlayerEnabler: https://github.com/level3tjg/YTMiniplayerEnabler/
-%hook YTWatchMiniBarViewController
-- (void)updateMiniBarPlayerStateFromRenderer {
-    if (ytMiniPlayer()) {}
-    else { return %orig; }
-}
-%end
-
-// Hide CC / Autoplay switch
-%hook YTMainAppControlsOverlayView
-- (void)setClosedCaptionsOrSubtitlesButtonAvailable:(BOOL)arg1 { // hide CC button
-    if (hideCC()) { return %orig(NO); }   
-    else { return %orig; }
-}
-- (void)setAutoplaySwitchButtonRenderer:(id)arg1 { // hide Autoplay
-    if (hideAutoplaySwitch()) {}
-    else { return %orig; }
-}
-%end
-
-// Hide Next & Previous button
-%group gHidePreviousAndNextButton
-%hook YTColdConfig
-- (BOOL)removeNextPaddleForSingletonVideos { return YES; }
-- (BOOL)removePreviousPaddleForSingletonVideos { return YES; }
-%end
-%end
-
-// Replace Next & Previous button with Fast forward & Rewind button
-%group gReplacePreviousAndNextButton
-%hook YTColdConfig
-- (BOOL)replaceNextPaddleWithFastForwardButtonForSingletonVods { return YES; }
-- (BOOL)replacePreviousPaddleWithRewindButtonForSingletonVods { return YES; }
-%end
-%end
-
-// Hide HUD Messages
-%hook YTHUDMessageView
-- (id)initWithMessage:(id)arg1 dismissHandler:(id)arg2 {
-    return hideHUD() ? nil : %orig;
-}
-%end
-
-// YTAutoFullScreen: https://github.com/PoomSmart/YTAutoFullScreen/
-%hook YTPlayerViewController
-- (void)loadWithPlayerTransition:(id)arg1 playbackConfig:(id)arg2 {
-    %orig;
-    if (autoFullScreen())
-        [NSTimer scheduledTimerWithTimeInterval:0.75 target:self selector:@selector(autoFullscreen) userInfo:nil repeats:NO];
-}
-%new
-- (void)autoFullscreen {
-    YTWatchController *watchController = [self valueForKey:@"_UIDelegate"];
-    [watchController showFullScreen];
-}
-%end
-
-// YTNoHoverCards: https://github.com/level3tjg/YTNoHoverCards
-%hook YTCreatorEndscreenView
-- (void)setHidden:(BOOL)hidden {
-    if (hideHoverCard())
-        hidden = YES;
-    %orig;
-}
-%end
- 
-//YTCastConfirm: https://github.com/JamieBerghmans/YTCastConfirm
-%hook MDXPlaybackRouteButtonController
-- (void)didPressButton:(id)arg1 {
-    if (castConfirm()) {
-        NSBundle *tweakBundle = uYouPlusBundle();
-        YTAlertView *alertView = [%c(YTAlertView) confirmationDialogWithAction:^{
-            %orig;
-        } actionTitle:LOC(@"MSG_YES")];
-        alertView.title = LOC(@"CASTING");
-        alertView.subtitle = LOC(@"MSG_ARE_YOU_SURE");
-        [alertView show];
-	} else {
-    return %orig;
-    }
-}
-%end
-
-// Workaround for MiRO92/uYou-for-YouTube#12, qnblackcat/uYouPlus#263
-%hook YTDataUtils
-+ (NSMutableDictionary *)spamSignalsDictionary {
-    return nil;
-}
-%end
-
-// Hide search ads by @PoomSmart - https://github.com/PoomSmart/YouTube-X
-BOOL didLateHook = NO;
-
-%group LateHook
-%hook YTIElementRenderer
-- (NSData *)elementData {
-    if (self.hasCompatibilityOptions && self.compatibilityOptions.hasAdLoggingData)
-        return nil;
-    return %orig;
-}
-%end
-%end
-
-%hook YTSectionListViewController
-- (void)loadWithModel:(id)model {
-    if (!didLateHook) {
-        %init(LateHook);
-        didLateHook = YES;
-    }
-    %orig;
-}
-%end
-
+//
+# pragma mark - uYou's patches
 // Workaround for https://github.com/MiRO92/uYou-for-YouTube/issues/94
 %hook UIResponder
 %new
@@ -258,74 +99,13 @@ BOOL didLateHook = NO;
 }
 %end
 
-// YTClassicVideoQuality: https://github.com/PoomSmart/YTClassicVideoQuality
-%hook YTVideoQualitySwitchControllerFactory
-- (id)videoQualitySwitchControllerWithParentResponder:(id)responder {
-    Class originalClass = %c(YTVideoQualitySwitchOriginalController);
-    return originalClass ? [[originalClass alloc] initWithParentResponder:responder] : %orig;
+// Prevent uYou player bar from showing when not playing downloaded media
+%hook PlayerManager
+- (void)pause {
+    if (isnan([self progress]))
+        return;
+    %orig;
 }
-%end
-
-// YTNoCheckLocalNetwork: https://poomsmart.github.io/repo/depictions/ytnochecklocalnetwork.html
-// %hook YTHotConfig
-// - (BOOL)isPromptForLocalNetworkPermissionsEnabled { return NO; }
-// %end
-
-// A/B flags
-%hook YTColdConfig 
-- (BOOL)respectDeviceCaptionSetting { return NO; } // YouRememberCaption: https://poomsmart.github.io/repo/depictions/youremembercaption.html
-- (BOOL)isLandscapeEngagementPanelSwipeRightToDismissEnabled { return YES; } // Swipe right to dismiss the right panel in fullscreen mode
-- (BOOL)mainAppCoreClientIosTransientVisualGlitchInPivotBarFix { return NO; } // Fix uYou's label glitching - qnblackcat/uYouPlus#552
-- (BOOL)enableSwipeToRemoveInPlaylistWatchEp { return YES; } // Enable swipe right to remove video in Playlist. 
-%end
-
-// NOYTPremium - https://github.com/PoomSmart/NoYTPremium/
-%hook YTCommerceEventGroupHandler
-- (void)addEventHandlers {}
-%end
-
-%hook YTInterstitialPromoEventGroupHandler
-- (void)addEventHandlers {}
-%end
-
-%hook YTPromosheetEventGroupHandler
-- (void)addEventHandlers {}
-%end
-
-%hook YTPromoThrottleController
-- (BOOL)canShowThrottledPromo { return NO; }
-- (BOOL)canShowThrottledPromoWithFrequencyCap:(id)arg1 { return NO; }
-- (BOOL)canShowThrottledPromoWithFrequencyCaps:(id)arg1 { return NO; }
-%end
-
-%hook YTIShowFullscreenInterstitialCommand
-- (BOOL)shouldThrottleInterstitial { return YES; }
-%end
-
-%hook YTSurveyController
-- (void)showSurveyWithRenderer:(id)arg1 surveyParentResponder:(id)arg2 {}
-%end
-
-// YTShortsProgress - @PoomSmart - https://github.com/PoomSmart/YTShortsProgress
-%hook YTReelPlayerViewController
-- (BOOL)shouldEnablePlayerBar { return YES; }
-- (BOOL)shouldAlwaysEnablePlayerBar { return YES; }
-- (BOOL)shouldEnablePlayerBarOnlyOnPause { return NO; }
-%end
-
-%hook YTReelPlayerViewControllerSub
-- (BOOL)shouldEnablePlayerBar { return YES; }
-- (BOOL)shouldAlwaysEnablePlayerBar { return YES; }
-- (BOOL)shouldEnablePlayerBarOnlyOnPause { return NO; }
-%end
-
-%hook YTColdConfig
-- (BOOL)iosEnableVideoPlayerScrubber { return YES; }
-- (BOOL)mobileShortsTabInlined { return YES; }
-%end
-
-%hook YTHotConfig
-- (BOOL)enablePlayerBarForVerticalVideoWhenControlsHiddenInFullscreen { return YES; }
 %end
 
 // Workaround for issue #54
@@ -387,13 +167,107 @@ BOOL didLateHook = NO;
 }
 %end
 
-// Prevent uYou player bar from showing when not playing downloaded media
-%hook PlayerManager
-- (void)pause {
-    if (isnan([self progress]))
-        return;
-    %orig;
+// iOS 16 uYou crash fix - @level3tjg: https://github.com/qnblackcat/uYouPlus/pull/224
+%group iOS16
+%hook OBPrivacyLinkButton
+%new
+- (instancetype)initWithCaption:(NSString *)caption
+                     buttonText:(NSString *)buttonText
+                          image:(UIImage *)image
+                      imageSize:(CGSize)imageSize
+                   useLargeIcon:(BOOL)useLargeIcon {
+  return [self initWithCaption:caption
+                    buttonText:buttonText
+                         image:image
+                     imageSize:imageSize
+                  useLargeIcon:useLargeIcon
+               displayLanguage:[NSLocale currentLocale].languageCode];
 }
+%end
+%end
+
+// Workaround for qnblackcat/uYouPlus#617
+static BOOL didFinishLaunching;
+
+%hook YTAppDelegate
+- (BOOL)application:(UIApplication *)application
+    didFinishLaunchingWithOptions:(NSDictionary<UIApplicationLaunchOptionsKey, id> *)launchOptions {
+    didFinishLaunching = %orig;
+    self.downloadsVC = [self.downloadsVC init];
+    return didFinishLaunching;
+}
+%end
+
+%hook DownloadsPagerVC
+- (instancetype)init {
+    return didFinishLaunching ? %orig : self;
+}
+%end
+
+// uYou's slide settings?
+%hook FRPSliderCell
+- (void)didMoveToWindow {
+    %orig;
+    if (self.traitCollection.userInterfaceStyle == UIUserInterfaceStyleDark) {
+        MSHookIvar<UILabel *>(self, "_lLabel").textColor = [UIColor whiteColor];
+        MSHookIvar<UILabel *>(self, "_rLabel").textColor = [UIColor whiteColor];
+        MSHookIvar<UILabel *>(self, "_cLabel").textColor = [UIColor whiteColor];
+    }
+}
+%end
+
+# pragma mark - YouTube's patches
+// Workaround for MiRO92/uYou-for-YouTube#12, qnblackcat/uYouPlus#263
+%hook YTDataUtils
++ (NSMutableDictionary *)spamSignalsDictionary {
+    return nil;
+}
+%end
+
+// Fix login for YouTube 17.33.2 and higher
+%hook SSOKeychainCore
++ (NSString *)accessGroup {
+    return accessGroupID();
+}
++ (NSString *)sharedAccessGroup {
+    return accessGroupID();
+}
+%end
+
+// Fix App Group Directory by move it to document directory
+%hook NSFileManager
+- (NSURL *)containerURLForSecurityApplicationGroupIdentifier:(NSString *)groupIdentifier {
+    if (groupIdentifier != nil) {
+        NSArray *paths = [[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask];
+        NSURL *documentsURL = [paths lastObject];
+        return [documentsURL URLByAppendingPathComponent:@"AppGroup"];
+    }
+    return %orig(groupIdentifier);
+}
+%end
+
+// Fix "Google couldn't confirm this attempt to sign in is safe. If you think this is a mistake, you can close and try again to sign in" - qnblackcat/uYouPlus#420
+// Thanks to @AhmedBafkir and @kkirby - https://github.com/qnblackcat/uYouPlus/discussions/447#discussioncomment-3672881
+%group gFixGoogleSignIn
+%hook SSORPCService
++ (id)URLFromURL:(id)arg1 withAdditionalFragmentParameters:(NSDictionary *)arg2 {
+    NSURL *orig = %orig;
+    NSURLComponents *urlComponents = [[NSURLComponents alloc] initWithURL:orig resolvingAgainstBaseURL:NO];
+    NSMutableArray *newQueryItems = [urlComponents.queryItems mutableCopy];
+    for (NSURLQueryItem *queryItem in urlComponents.queryItems) {
+        if ([queryItem.name isEqualToString:@"system_version"]
+         || [queryItem.name isEqualToString:@"app_version"]
+         || [queryItem.name isEqualToString:@"kdlc"]
+         || [queryItem.name isEqualToString:@"kss"]
+         || [queryItem.name isEqualToString:@"lib_ver"]
+         || [queryItem.name isEqualToString:@"device_model"]) {
+            [newQueryItems removeObject:queryItem];
+        }
+    }
+    urlComponents.queryItems = [newQueryItems copy];
+    return urlComponents.URL;
+}
+%end
 %end
 
 // Hide YouTube Shorts banner in Home page? - @MiRO92 - YTNoShorts: https://github.com/MiRO92/YTNoShorts
@@ -416,38 +290,8 @@ BOOL didLateHook = NO;
 }
 %end
 
-// uYou's slide settings?
-%hook FRPSliderCell
-- (void)didMoveToWindow {
-    %orig;
-    if (self.traitCollection.userInterfaceStyle == UIUserInterfaceStyleDark) {
-        MSHookIvar<UILabel *>(self, "_lLabel").textColor = [UIColor whiteColor];
-        MSHookIvar<UILabel *>(self, "_rLabel").textColor = [UIColor whiteColor];
-        MSHookIvar<UILabel *>(self, "_cLabel").textColor = [UIColor whiteColor];
-    }
-}
-%end
-
-// YTNoPaidPromo: https://github.com/PoomSmart/YTNoPaidPromo
-%hook YTMainAppVideoPlayerOverlayViewController
-- (void)setPaidContentWithPlayerData:(id)data {
-    if (hidePaidPromotionCard()) {}
-    else { return %orig; }
-}
-- (void)playerOverlayProvider:(YTPlayerOverlayProvider *)provider didInsertPlayerOverlay:(YTPlayerOverlay *)overlay {
-    if ([[overlay overlayIdentifier] isEqualToString:@"player_overlay_paid_content"] && hidePaidPromotionCard()) return;
-    %orig;
-}
-%end
-
-%hook YTInlineMutedPlaybackPlayerOverlayViewController
-- (void)setPaidContentWithPlayerData:(id)data {
-    if (hidePaidPromotionCard()) {}
-    else { return %orig; }
-}
-%end
-
-# pragma mark - IAmYouTube - https://github.com/PoomSmart/IAmYouTube/
+# pragma mark - Tweaks
+// IAmYouTube - https://github.com/PoomSmart/IAmYouTube/
 %hook YTVersionUtils
 + (NSString *)appName { return YT_NAME; }
 + (NSString *)appID { return YT_BUNDLE_ID; }
@@ -510,363 +354,159 @@ BOOL didLateHook = NO;
 }
 %end
 
-// Fix "Google couldn't confirm this attempt to sign in is safe. If you think this is a mistake, you can close and try again to sign in" - qnblackcat/uYouPlus#420
-// Thanks to @AhmedBafkir and @kkirby - https://github.com/qnblackcat/uYouPlus/discussions/447#discussioncomment-3672881
-%group gFixGoogleSignIn
-%hook SSORPCService
-+ (id)URLFromURL:(id)arg1 withAdditionalFragmentParameters:(NSDictionary *)arg2 {
-    NSURL *orig = %orig;
-    NSURLComponents *urlComponents = [[NSURLComponents alloc] initWithURL:orig resolvingAgainstBaseURL:NO];
-    NSMutableArray *newQueryItems = [urlComponents.queryItems mutableCopy];
-    for (NSURLQueryItem *queryItem in urlComponents.queryItems) {
-        if ([queryItem.name isEqualToString:@"system_version"]
-         || [queryItem.name isEqualToString:@"app_version"]
-         || [queryItem.name isEqualToString:@"kdlc"]
-         || [queryItem.name isEqualToString:@"kss"]
-         || [queryItem.name isEqualToString:@"lib_ver"]
-         || [queryItem.name isEqualToString:@"device_model"]) {
-            [newQueryItems removeObject:queryItem];
-        }
-    }
-    urlComponents.queryItems = [newQueryItems copy];
-    return urlComponents.URL;
+// YTMiniPlayerEnabler: https://github.com/level3tjg/YTMiniplayerEnabler/
+%hook YTWatchMiniBarViewController
+- (void)updateMiniBarPlayerStateFromRenderer {
+    if (IsEnabled(@"ytMiniPlayer_enabled")) {}
+    else { return %orig; }
 }
 %end
+
+// YTAutoFullScreen: https://github.com/PoomSmart/YTAutoFullScreen/
+%hook YTPlayerViewController
+- (void)loadWithPlayerTransition:(id)arg1 playbackConfig:(id)arg2 {
+    %orig;
+    if (IsEnabled(@"autoFull_enabled"))
+        [NSTimer scheduledTimerWithTimeInterval:0.75 target:self selector:@selector(autoFullscreen) userInfo:nil repeats:NO];
+}
+%new
+- (void)autoFullscreen {
+    YTWatchController *watchController = [self valueForKey:@"_UIDelegate"];
+    [watchController showFullScreen];
+}
 %end
 
-// Fix "You can't sign in to this app because Google can't confirm that it's safe" warning when signing in. by julioverne & PoomSmart
-// https://gist.github.com/PoomSmart/ef5b172fd4c5371764e027bea2613f93
-// https://github.com/qnblackcat/uYouPlus/pull/398
-/* 
-%group gDevice_challenge_request_hack
-%hook SSOService
-+ (id)fetcherWithRequest:(NSMutableURLRequest *)request configuration:(id)configuration {
-    if ([request isKindOfClass:[NSMutableURLRequest class]] && request.HTTPBody) {
-        NSError *error = nil;
-        NSMutableDictionary *body = [NSJSONSerialization JSONObjectWithData:request.HTTPBody options:NSJSONReadingMutableContainers error:&error];
-        if (!error && [body isKindOfClass:[NSMutableDictionary class]]) {
-            [body removeObjectForKey:@"device_challenge_request"];
-            request.HTTPBody = [NSJSONSerialization dataWithJSONObject:body options:kNilOptions error:&error];
-        }
+// YTNoHoverCards: https://github.com/level3tjg/YTNoHoverCards
+%hook YTCreatorEndscreenView
+- (void)setHidden:(BOOL)hidden {
+    if (IsEnabled(@"hideHoverCards_enabled"))
+        hidden = YES;
+    %orig;
+}
+%end
+ 
+//YTCastConfirm: https://github.com/JamieBerghmans/YTCastConfirm
+%hook MDXPlaybackRouteButtonController
+- (void)didPressButton:(id)arg1 {
+    if (IsEnabled(@"castConfirm_enabled")) {
+        NSBundle *tweakBundle = uYouPlusBundle();
+        YTAlertView *alertView = [%c(YTAlertView) confirmationDialogWithAction:^{
+            %orig;
+        } actionTitle:LOC(@"MSG_YES")];
+        alertView.title = LOC(@"CASTING");
+        alertView.subtitle = LOC(@"MSG_ARE_YOU_SURE");
+        [alertView show];
+	} else {
+    return %orig;
     }
+}
+%end
+
+// Hide search ads by @PoomSmart - https://github.com/PoomSmart/YouTube-X
+BOOL didLateHook = NO;
+
+%group LateHook
+%hook YTIElementRenderer
+- (NSData *)elementData {
+    if (self.hasCompatibilityOptions && self.compatibilityOptions.hasAdLoggingData)
+        return nil;
     return %orig;
 }
 %end
 %end
-*/
 
-// Fix login for YouTube 17.33.2 and higher
-%hook SSOKeychainCore
-+ (NSString *)accessGroup {
-    return accessGroupID();
-}
-+ (NSString *)sharedAccessGroup {
-    return accessGroupID();
-}
-%end
-
-// Fix App Group Directory by move it to document directory
-%hook NSFileManager
-- (NSURL *)containerURLForSecurityApplicationGroupIdentifier:(NSString *)groupIdentifier {
-    if (groupIdentifier != nil) {
-        NSArray *paths = [[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask];
-        NSURL *documentsURL = [paths lastObject];
-        return [documentsURL URLByAppendingPathComponent:@"AppGroup"];
+%hook YTSectionListViewController
+- (void)loadWithModel:(id)model {
+    if (!didLateHook) {
+        %init(LateHook);
+        didLateHook = YES;
     }
-    return %orig(groupIdentifier);
-}
-%end
-
-# pragma mark - OLED dark mode by BandarHL
-UIColor* raisedColor = [UIColor colorWithRed:0.035 green:0.035 blue:0.035 alpha:1.0];
-%group gOLED
-%hook YTCommonColorPalette
-- (UIColor *)brandBackgroundSolid {
-    if (self.pageStyle == 1) {
-        return [UIColor blackColor];
-    }
-        return %orig;
-}
-- (UIColor *)brandBackgroundPrimary {
-    if (self.pageStyle == 1) {
-        return [UIColor blackColor];
-    }
-        return %orig;
-}
-- (UIColor *)brandBackgroundSecondary {
-    if (self.pageStyle == 1) {
-        return [[UIColor blackColor] colorWithAlphaComponent:0.9];
-    }
-        return %orig;
-}
-- (UIColor *)raisedBackground {
-    if (self.pageStyle == 1) {
-        return [UIColor blackColor];
-    }
-        return %orig;
-}
-- (UIColor *)staticBrandBlack {
-    if (self.pageStyle == 1) {
-        return [UIColor blackColor];
-    }
-        return %orig;
-}
-- (UIColor *)generalBackgroundA {
-    if (self.pageStyle == 1) {
-        return [UIColor blackColor];
-    }
-        return %orig;
-}
-%end
-
-// Account view controller
-%hook YTAccountPanelBodyViewController
-- (UIColor *)backgroundColor:(NSInteger)pageStyle {
-    if (pageStyle == 1) { 
-        return [UIColor blackColor]; 
-    }
-        return %orig;
-}
-%end
-
-// Explore
-%hook ASScrollView 
-- (void)didMoveToWindow {
     %orig;
-    if (isDarkMode()) { 
-        self.backgroundColor = [UIColor clearColor];
-    }
 }
 %end
 
-// Your videos
-%hook ASCollectionView
-- (void)didMoveToWindow {
-    %orig;
-    if (isDarkMode() && [self.nextResponder isKindOfClass:%c(_ASDisplayView)]) { 
-        self.superview.backgroundColor = [UIColor blackColor];
-    }
+// YTClassicVideoQuality: https://github.com/PoomSmart/YTClassicVideoQuality
+%hook YTVideoQualitySwitchControllerFactory
+- (id)videoQualitySwitchControllerWithParentResponder:(id)responder {
+    Class originalClass = %c(YTVideoQualitySwitchOriginalController);
+    return originalClass ? [[originalClass alloc] initWithParentResponder:responder] : %orig;
 }
 %end
 
-// Sub menu?
-%hook ELMView
-- (void)didMoveToWindow {
-    %orig;
-    if (isDarkMode()) {
-        self.subviews[0].backgroundColor = [UIColor clearColor];
-    }
-}
+// A/B flags
+%hook YTColdConfig 
+- (BOOL)respectDeviceCaptionSetting { return NO; } // YouRememberCaption: https://poomsmart.github.io/repo/depictions/youremembercaption.html
+- (BOOL)isLandscapeEngagementPanelSwipeRightToDismissEnabled { return YES; } // Swipe right to dismiss the right panel in fullscreen mode
+- (BOOL)mainAppCoreClientIosTransientVisualGlitchInPivotBarFix { return NO; } // Fix uYou's label glitching - qnblackcat/uYouPlus#552
+- (BOOL)enableSwipeToRemoveInPlaylistWatchEp { return YES; } // Enable swipe right to remove video in Playlist. 
 %end
 
-// iSponsorBlock
-%hook SponsorBlockSettingsController
-- (void)viewDidLoad {
-    if (self.traitCollection.userInterfaceStyle == UIUserInterfaceStyleDark) {
-        %orig;
-        self.tableView.backgroundColor = [UIColor blackColor];
-    } else { return %orig; }
-}
+// NOYTPremium - https://github.com/PoomSmart/NoYTPremium/
+%hook YTCommerceEventGroupHandler
+- (void)addEventHandlers {}
 %end
 
-%hook SponsorBlockViewController
-- (void)viewDidLoad {
-    if (self.traitCollection.userInterfaceStyle == UIUserInterfaceStyleDark) {
-        %orig;
-        self.view.backgroundColor = [UIColor blackColor];
-    } else { return %orig; }
-}
+%hook YTInterstitialPromoEventGroupHandler
+- (void)addEventHandlers {}
 %end
 
-// Search View
-%hook YTSearchBarView 
-- (void)setBackgroundColor:(UIColor *)color { 
-    if (isDarkMode()) {
-        return %orig([UIColor blackColor]);
-    }
-        return %orig;
-}
+%hook YTPromosheetEventGroupHandler
+- (void)addEventHandlers {}
 %end
 
-// History Search view
-%hook YTSearchBoxView 
-- (void)setBackgroundColor:(UIColor *)color { 
-    if (isDarkMode()) {
-        return %orig([UIColor blackColor]);
-    }
-        return %orig;
-}
+%hook YTPromoThrottleController
+- (BOOL)canShowThrottledPromo { return NO; }
+- (BOOL)canShowThrottledPromoWithFrequencyCap:(id)arg1 { return NO; }
+- (BOOL)canShowThrottledPromoWithFrequencyCaps:(id)arg1 { return NO; }
 %end
 
-// Comment view
-%hook YTCommentView
-- (void)setBackgroundColor:(UIColor *)color { 
-    if (isDarkMode()) {
-        return %orig([UIColor blackColor]);
-    }
-        return %orig;
-}
+%hook YTIShowFullscreenInterstitialCommand
+- (BOOL)shouldThrottleInterstitial { return YES; }
 %end
 
-%hook YTCreateCommentAccessoryView
-- (void)setBackgroundColor:(UIColor *)color { 
-    if (isDarkMode()) {
-        return %orig([UIColor blackColor]);
-    }
-        return %orig;
-}
+%hook YTSurveyController
+- (void)showSurveyWithRenderer:(id)arg1 surveyParentResponder:(id)arg2 {}
 %end
 
-%hook YTCreateCommentTextView
-- (void)setBackgroundColor:(UIColor *)color { 
-    if (isDarkMode()) {
-        return %orig([UIColor blackColor]);
-    }
-        return %orig;
-}
-- (void)setTextColor:(UIColor *)color { // fix black text in #Shorts video's comment
-    if (isDarkMode()) { 
-        return %orig([UIColor whiteColor]); 
-    }
-        return %orig;
-}
+// YTShortsProgress - @PoomSmart - https://github.com/PoomSmart/YTShortsProgress
+%hook YTReelPlayerViewController
+- (BOOL)shouldEnablePlayerBar { return YES; }
+- (BOOL)shouldAlwaysEnablePlayerBar { return YES; }
+- (BOOL)shouldEnablePlayerBarOnlyOnPause { return NO; }
 %end
 
-%hook YTCommentDetailHeaderCell
-- (void)didMoveToWindow {
-    %orig;
-    if (isDarkMode()) {
-        self.subviews[2].backgroundColor = [UIColor blackColor];
-    }
-}
+%hook YTReelPlayerViewControllerSub
+- (BOOL)shouldEnablePlayerBar { return YES; }
+- (BOOL)shouldAlwaysEnablePlayerBar { return YES; }
+- (BOOL)shouldEnablePlayerBarOnlyOnPause { return NO; }
 %end
 
-%hook YTFormattedStringLabel  // YT is werid...
-- (void)setBackgroundColor:(UIColor *)color {
-    if (isDarkMode()) {
-        return %orig([UIColor clearColor]);
-    }
-        return %orig;
-}
-%end
-
-// Live chat comment
-%hook YCHLiveChatActionPanelView 
-- (void)setBackgroundColor:(UIColor *)color {
-    if (isDarkMode()) {
-        return %orig([UIColor blackColor]);
-    }
-        return %orig;
-}
-%end
-
-%hook YTEmojiTextView
-- (void)setBackgroundColor:(UIColor *)color {
-    if (isDarkMode()) {
-        return %orig([UIColor blackColor]);
-    }
-        return %orig;
-}
-%end
-
-//
-%hook YTBackstageCreateRepostDetailView
-- (void)setBackgroundColor:(UIColor *)color {
-    if (isDarkMode()) {
-        return %orig([UIColor blackColor]);
-    }
-        return %orig;
-}
-%end
-
-// Others
-%hook _ASDisplayView
-- (void)didMoveToWindow {
-    %orig;
-    if (isDarkMode()) {
-        if ([self.nextResponder isKindOfClass:%c(ASScrollView)]) { self.backgroundColor = [UIColor clearColor]; }
-        if ([self.accessibilityIdentifier isEqualToString:@"eml.cvr"]) { self.backgroundColor = [UIColor blackColor]; }
-        if ([self.accessibilityIdentifier isEqualToString:@"rich_header"]) { self.backgroundColor = [UIColor blackColor]; }
-        if ([self.accessibilityIdentifier isEqualToString:@"id.ui.comment_cell"]) { self.backgroundColor = [UIColor blackColor]; }
-        if ([self.accessibilityIdentifier isEqualToString:@"id.ui.cancel.button"]) { self.superview.backgroundColor = [UIColor clearColor]; }
-        if ([self.accessibilityIdentifier isEqualToString:@"id.elements.components.comment_composer"]) { self.backgroundColor = [UIColor blackColor]; }
-        if ([self.accessibilityIdentifier isEqualToString:@"id.elements.components.video_list_entry"]) { self.backgroundColor = [UIColor blackColor]; }
-        if ([self.accessibilityIdentifier isEqualToString:@"id.comment.guidelines_text"]) { self.superview.backgroundColor = [UIColor blackColor]; }
-        if ([self.accessibilityIdentifier isEqualToString:@"id.comment.channel_guidelines_bottom_sheet_container"]) { self.backgroundColor = [UIColor blackColor]; }
-        if ([self.accessibilityIdentifier isEqualToString:@"id.comment.channel_guidelines_entry_banner_container"]) { self.backgroundColor = [UIColor blackColor]; }
-    }
-}
-%end
-
-// Open link with...
-%hook ASWAppSwitchingSheetHeaderView
-- (void)setBackgroundColor:(UIColor *)color {
-    if (isDarkMode()) {
-        return %orig(raisedColor);
-    }
-        return %orig;
-}
-%end
-
-%hook ASWAppSwitchingSheetFooterView
-- (void)setBackgroundColor:(UIColor *)color {
-    if (isDarkMode()) {
-        return %orig(raisedColor);
-    }
-        return %orig;
-}
-%end
-
-%hook ASWAppSwitcherCollectionViewCell
-- (void)didMoveToWindow {
-    %orig;
-    if (isDarkMode()) { 
-        self.backgroundColor = raisedColor;
-        self.subviews[1].backgroundColor = raisedColor;
-        self.superview.backgroundColor = raisedColor;
-    }
-}
-%end
-
-// Incompatibility with the new YT Dark theme
 %hook YTColdConfig
-- (BOOL)uiSystemsClientGlobalConfigUseDarkerPaletteBgColorForNative { return NO; }
-%end
+- (BOOL)iosEnableVideoPlayerScrubber { return YES; }
+- (BOOL)mobileShortsTabInlined { return YES; }
 %end
 
-# pragma mark - OLED keyboard by @ichitaso <3 - http://gist.github.com/ichitaso/935100fd53a26f18a9060f7195a1be0e
-%group gOLEDKB 
-%hook UIPredictionViewController
-- (void)loadView {
+%hook YTHotConfig
+- (BOOL)enablePlayerBarForVerticalVideoWhenControlsHiddenInFullscreen { return YES; }
+%end
+
+// YTNoPaidPromo: https://github.com/PoomSmart/YTNoPaidPromo
+%hook YTMainAppVideoPlayerOverlayViewController
+- (void)setPaidContentWithPlayerData:(id)data {
+    if (IsEnabled(@"hidePaidPromotionCard_enabled")) {}
+    else { return %orig; }
+}
+- (void)playerOverlayProvider:(YTPlayerOverlayProvider *)provider didInsertPlayerOverlay:(YTPlayerOverlay *)overlay {
+    if ([[overlay overlayIdentifier] isEqualToString:@"player_overlay_paid_content"] && IsEnabled(@"hidePaidPromotionCard_enabled")) return;
     %orig;
-    [self.view setBackgroundColor:[UIColor blackColor]];
 }
 %end
 
-%hook UICandidateViewController
-- (void)loadView {
-    %orig;
-    [self.view setBackgroundColor:[UIColor blackColor]];
+%hook YTInlineMutedPlaybackPlayerOverlayViewController
+- (void)setPaidContentWithPlayerData:(id)data {
+    if (IsEnabled(@"hidePaidPromotionCard_enabled")) {}
+    else { return %orig; }
 }
-%end
-
-%hook UIKeyboardDockView
-- (void)didMoveToWindow {
-    %orig;
-    self.backgroundColor = [UIColor blackColor];
-}
-%end
-
-%hook UIKeyboardLayoutStar 
-- (void)didMoveToWindow {
-    %orig;
-    self.backgroundColor = [UIColor blackColor];
-}
-%end
-
-%hook UIKBRenderConfig // Prediction text color
-- (void)setLightKeyboard:(BOOL)arg1 { %orig(NO); }
-%end
 %end
 
 // YTReExplore: https://github.com/PoomSmart/YTReExplore/
@@ -1176,74 +816,449 @@ void DEMC_centerRenderingView() {
 }
 %end
 
-// Workaround for qnblackcat/uYouPlus#617
-static BOOL didFinishLaunching;
+# pragma mark - uYouPlus
+// Skips content warning before playing *some videos - @PoomSmart
+%hook YTPlayabilityResolutionUserActionUIController
+- (void)showConfirmAlert { [self confirmAlertDidPressConfirm]; }
+%end
 
-%hook YTAppDelegate
-- (BOOL)application:(UIApplication *)application
-    didFinishLaunchingWithOptions:(NSDictionary<UIApplicationLaunchOptionsKey, id> *)launchOptions {
-    didFinishLaunching = %orig;
-    self.downloadsVC = [self.downloadsVC init];
-    return didFinishLaunching;
+// Hide CC / Autoplay switch
+%hook YTMainAppControlsOverlayView
+- (void)setClosedCaptionsOrSubtitlesButtonAvailable:(BOOL)arg1 { // hide CC button
+    if (IsEnabled(@"hideCC_enabled")) { 
+        return %orig(NO); 
+    }   
+    else { return %orig; }
+}
+- (void)setAutoplaySwitchButtonRenderer:(id)arg1 { // hide Autoplay
+    if (IsEnabled(@"hideAutoplaySwitch_enabled")) {}
+    else { return %orig; }
 }
 %end
 
-%hook DownloadsPagerVC
-- (instancetype)init {
-    return didFinishLaunching ? %orig : self;
+// Hide Next & Previous button
+%group gHidePreviousAndNextButton
+%hook YTColdConfig
+- (BOOL)removeNextPaddleForSingletonVideos { return YES; }
+- (BOOL)removePreviousPaddleForSingletonVideos { return YES; }
+%end
+%end
+
+// Replace Next & Previous button with Fast forward & Rewind button
+%group gReplacePreviousAndNextButton
+%hook YTColdConfig
+- (BOOL)replaceNextPaddleWithFastForwardButtonForSingletonVods { return YES; }
+- (BOOL)replacePreviousPaddleWithRewindButtonForSingletonVods { return YES; }
+%end
+%end
+
+// Hide HUD Messages
+%hook YTHUDMessageView
+- (id)initWithMessage:(id)arg1 dismissHandler:(id)arg2 {
+    return IsEnabled(@"hideHUD_enabled") ? nil : %orig;
 }
 %end
 
-// iOS 16 uYou crash fix - @level3tjg: https://github.com/qnblackcat/uYouPlus/pull/224
-%group iOS16
-%hook OBPrivacyLinkButton
-%new
-- (instancetype)initWithCaption:(NSString *)caption
-                     buttonText:(NSString *)buttonText
-                          image:(UIImage *)image
-                      imageSize:(CGSize)imageSize
-                   useLargeIcon:(BOOL)useLargeIcon {
-  return [self initWithCaption:caption
-                    buttonText:buttonText
-                         image:image
-                     imageSize:imageSize
-                  useLargeIcon:useLargeIcon
-               displayLanguage:[NSLocale currentLocale].languageCode];
+// OLED dark mode by BandarHL
+UIColor* raisedColor = [UIColor colorWithRed:0.035 green:0.035 blue:0.035 alpha:1.0];
+%group gOLED
+%hook YTCommonColorPalette
+- (UIColor *)brandBackgroundSolid {
+    if (self.pageStyle == 1) {
+        return [UIColor blackColor];
+    }
+        return %orig;
+}
+- (UIColor *)brandBackgroundPrimary {
+    if (self.pageStyle == 1) {
+        return [UIColor blackColor];
+    }
+        return %orig;
+}
+- (UIColor *)brandBackgroundSecondary {
+    if (self.pageStyle == 1) {
+        return [[UIColor blackColor] colorWithAlphaComponent:0.9];
+    }
+        return %orig;
+}
+- (UIColor *)raisedBackground {
+    if (self.pageStyle == 1) {
+        return [UIColor blackColor];
+    }
+        return %orig;
+}
+- (UIColor *)staticBrandBlack {
+    if (self.pageStyle == 1) {
+        return [UIColor blackColor];
+    }
+        return %orig;
+}
+- (UIColor *)generalBackgroundA {
+    if (self.pageStyle == 1) {
+        return [UIColor blackColor];
+    }
+        return %orig;
 }
 %end
+
+// Account view controller
+%hook YTAccountPanelBodyViewController
+- (UIColor *)backgroundColor:(NSInteger)pageStyle {
+    if (pageStyle == 1) { 
+        return [UIColor blackColor]; 
+    }
+        return %orig;
+}
+%end
+
+// Explore
+%hook ASScrollView 
+- (void)didMoveToWindow {
+    %orig;
+    if (isDarkMode()) { 
+        self.backgroundColor = [UIColor clearColor];
+    }
+}
+%end
+
+// Your videos
+%hook ASCollectionView
+- (void)didMoveToWindow {
+    %orig;
+    if (isDarkMode() && [self.nextResponder isKindOfClass:%c(_ASDisplayView)]) { 
+        self.superview.backgroundColor = [UIColor blackColor];
+    }
+}
+%end
+
+// Sub menu?
+%hook ELMView
+- (void)didMoveToWindow {
+    %orig;
+    if (isDarkMode()) {
+        self.subviews[0].backgroundColor = [UIColor clearColor];
+    }
+}
+%end
+
+// iSponsorBlock
+%hook SponsorBlockSettingsController
+- (void)viewDidLoad {
+    if (self.traitCollection.userInterfaceStyle == UIUserInterfaceStyleDark) {
+        %orig;
+        self.tableView.backgroundColor = [UIColor blackColor];
+    } else { return %orig; }
+}
+%end
+
+%hook SponsorBlockViewController
+- (void)viewDidLoad {
+    if (self.traitCollection.userInterfaceStyle == UIUserInterfaceStyleDark) {
+        %orig;
+        self.view.backgroundColor = [UIColor blackColor];
+    } else { return %orig; }
+}
+%end
+
+// Search View
+%hook YTSearchBarView 
+- (void)setBackgroundColor:(UIColor *)color { 
+    if (isDarkMode()) {
+        return %orig([UIColor blackColor]);
+    }
+        return %orig;
+}
+%end
+
+// History Search view
+%hook YTSearchBoxView 
+- (void)setBackgroundColor:(UIColor *)color { 
+    if (isDarkMode()) {
+        return %orig([UIColor blackColor]);
+    }
+        return %orig;
+}
+%end
+
+// Comment view
+%hook YTCommentView
+- (void)setBackgroundColor:(UIColor *)color { 
+    if (isDarkMode()) {
+        return %orig([UIColor blackColor]);
+    }
+        return %orig;
+}
+%end
+
+%hook YTCreateCommentAccessoryView
+- (void)setBackgroundColor:(UIColor *)color { 
+    if (isDarkMode()) {
+        return %orig([UIColor blackColor]);
+    }
+        return %orig;
+}
+%end
+
+%hook YTCreateCommentTextView
+- (void)setBackgroundColor:(UIColor *)color { 
+    if (isDarkMode()) {
+        return %orig([UIColor blackColor]);
+    }
+        return %orig;
+}
+- (void)setTextColor:(UIColor *)color { // fix black text in #Shorts video's comment
+    if (isDarkMode()) { 
+        return %orig([UIColor whiteColor]); 
+    }
+        return %orig;
+}
+%end
+
+%hook YTCommentDetailHeaderCell
+- (void)didMoveToWindow {
+    %orig;
+    if (isDarkMode()) {
+        self.subviews[2].backgroundColor = [UIColor blackColor];
+    }
+}
+%end
+
+%hook YTFormattedStringLabel  // YT is werid...
+- (void)setBackgroundColor:(UIColor *)color {
+    if (isDarkMode()) {
+        return %orig([UIColor clearColor]);
+    }
+        return %orig;
+}
+%end
+
+// Live chat comment
+%hook YCHLiveChatActionPanelView 
+- (void)setBackgroundColor:(UIColor *)color {
+    if (isDarkMode()) {
+        return %orig([UIColor blackColor]);
+    }
+        return %orig;
+}
+%end
+
+%hook YTEmojiTextView
+- (void)setBackgroundColor:(UIColor *)color {
+    if (isDarkMode()) {
+        return %orig([UIColor blackColor]);
+    }
+        return %orig;
+}
+%end
+
+//
+%hook YTBackstageCreateRepostDetailView
+- (void)setBackgroundColor:(UIColor *)color {
+    if (isDarkMode()) {
+        return %orig([UIColor blackColor]);
+    }
+        return %orig;
+}
+%end
+
+// Others
+%hook _ASDisplayView
+- (void)didMoveToWindow {
+    %orig;
+    if (isDarkMode()) {
+        if ([self.nextResponder isKindOfClass:%c(ASScrollView)]) { self.backgroundColor = [UIColor clearColor]; }
+        if ([self.accessibilityIdentifier isEqualToString:@"eml.cvr"]) { self.backgroundColor = [UIColor blackColor]; }
+        if ([self.accessibilityIdentifier isEqualToString:@"rich_header"]) { self.backgroundColor = [UIColor blackColor]; }
+        if ([self.accessibilityIdentifier isEqualToString:@"id.ui.comment_cell"]) { self.backgroundColor = [UIColor blackColor]; }
+        if ([self.accessibilityIdentifier isEqualToString:@"id.ui.cancel.button"]) { self.superview.backgroundColor = [UIColor clearColor]; }
+        if ([self.accessibilityIdentifier isEqualToString:@"id.elements.components.comment_composer"]) { self.backgroundColor = [UIColor blackColor]; }
+        if ([self.accessibilityIdentifier isEqualToString:@"id.elements.components.video_list_entry"]) { self.backgroundColor = [UIColor blackColor]; }
+        if ([self.accessibilityIdentifier isEqualToString:@"id.comment.guidelines_text"]) { self.superview.backgroundColor = [UIColor blackColor]; }
+        if ([self.accessibilityIdentifier isEqualToString:@"id.comment.channel_guidelines_bottom_sheet_container"]) { self.backgroundColor = [UIColor blackColor]; }
+        if ([self.accessibilityIdentifier isEqualToString:@"id.comment.channel_guidelines_entry_banner_container"]) { self.backgroundColor = [UIColor blackColor]; }
+    }
+}
+%end
+
+// Open link with...
+%hook ASWAppSwitchingSheetHeaderView
+- (void)setBackgroundColor:(UIColor *)color {
+    if (isDarkMode()) {
+        return %orig(raisedColor);
+    }
+        return %orig;
+}
+%end
+
+%hook ASWAppSwitchingSheetFooterView
+- (void)setBackgroundColor:(UIColor *)color {
+    if (isDarkMode()) {
+        return %orig(raisedColor);
+    }
+        return %orig;
+}
+%end
+
+%hook ASWAppSwitcherCollectionViewCell
+- (void)didMoveToWindow {
+    %orig;
+    if (isDarkMode()) { 
+        self.backgroundColor = raisedColor;
+        self.subviews[1].backgroundColor = raisedColor;
+        self.superview.backgroundColor = raisedColor;
+    }
+}
+%end
+
+// Incompatibility with the new YT Dark theme
+%hook YTColdConfig
+- (BOOL)uiSystemsClientGlobalConfigUseDarkerPaletteBgColorForNative { return NO; }
+%end
+%end
+
+// OLED keyboard by @ichitaso <3 - http://gist.github.com/ichitaso/935100fd53a26f18a9060f7195a1be0e
+%group gOLEDKB 
+%hook UIPredictionViewController
+- (void)loadView {
+    %orig;
+    [self.view setBackgroundColor:[UIColor blackColor]];
+}
+%end
+
+%hook UICandidateViewController
+- (void)loadView {
+    %orig;
+    [self.view setBackgroundColor:[UIColor blackColor]];
+}
+%end
+
+%hook UIKeyboardDockView
+- (void)didMoveToWindow {
+    %orig;
+    self.backgroundColor = [UIColor blackColor];
+}
+%end
+
+%hook UIKeyboardLayoutStar 
+- (void)didMoveToWindow {
+    %orig;
+    self.backgroundColor = [UIColor blackColor];
+}
+%end
+
+%hook UIKBRenderConfig // Prediction text color
+- (void)setLightKeyboard:(BOOL)arg1 { %orig(NO); }
+%end
+%end
+
+// Old dark theme (gray)
+%group gOldDarkTheme
+%hook YTColdConfig
+- (BOOL)uiSystemsClientGlobalConfigUseDarkerPaletteBgColorForNative { return NO; }
+- (BOOL)uiSystemsClientGlobalConfigUseDarkerPaletteTextColorForNative { return NO; }
+- (BOOL)enableCinematicContainerOnClient { return NO; }
+%end
+
+%hook _ASDisplayView
+- (void)didMoveToWindow {
+    %orig;
+    if ([self.accessibilityIdentifier isEqualToString:@"id.elements.components.comment_composer"]) { self.backgroundColor = [UIColor clearColor]; }
+    if ([self.accessibilityIdentifier isEqualToString:@"id.elements.components.video_list_entry"]) { self.backgroundColor = [UIColor clearColor]; }
+}
+%end
+
+%hook ASCollectionView
+- (void)didMoveToWindow {
+    %orig;
+    self.superview.backgroundColor = [UIColor colorWithRed:0.129 green:0.129 blue:0.129 alpha:1.0];
+}
+%end
+%end
+
+// Disable Pinch to zoom
+%hook YTColdConfig
+- (BOOL)videoZoomFreeZoomEnabledGlobalConfig { 
+    if (IsEnabled(@"pinchToZoom_enabled")) { return NO; }
+    else { return %orig; }
+}
+%end
+
+// Disable snap to chapter
+%hook YTSegmentableInlinePlayerBarView
+- (void)didMoveToWindow {
+    %orig;
+    if (IsEnabled(@"snapToChapter_enabled")) {
+        self.enableSnapToChapter = NO;
+    }
+}
+%end
+
+// Hide Water mark
+%hook YTAnnotationsViewController
+- (void)loadFeaturedChannelWatermark {
+    if (IsEnabled(@"hideChannelWatermark_enabled")) {}
+    else { return %orig; }
+}
+%end
+
+// Shorts options
+%hook YTReelWatchPlaybackOverlayView
+- (void)setNativePivotButton:(id)arg1 {
+    if (IsEnabled(@"hideShortsChannelAvatar_enabled")) {}
+    else { return %orig; }
+}
+- (void)setReelDislikeButton:(id)arg1 {
+    if (IsEnabled(@"hideShortsDislikeButton_enabled")) {}
+    else { return %orig; }
+}
+- (void)setViewCommentButton:(id)arg1 {
+    if (IsEnabled(@"hideShortsCommentButton_enabled")) {}
+    else { return %orig; }
+}
+- (void)setRemixButton:(id)arg1 {
+    if (IsEnabled(@"hideShortsRemixButton_enabled")) {}
+    else { return %orig; }
+}
+- (void)setShareButton:(id)arg1 {
+    if (IsEnabled(@"hideShortsShareButton_enabled")) {}
+    else { return %orig; }
+}
 %end
 
 # pragma mark - ctor
 %ctor {
     %init;
-    if (oled()) {
-       %init(gOLED);
-    }
-    if (oledKB()) {
-       %init(gOLEDKB);
-    }
-    if (reExplore()) {
-       %init(gReExplore);
-    }
-    if (bigYTMiniPlayer() && (UIDevice.currentDevice.userInterfaceIdiom != UIUserInterfaceIdiomPad)) {
-       %init(Main);
-    }
-    if (hidePreviousAndNextButton()) {
-       %init(gHidePreviousAndNextButton);
-    }
-    if (replacePreviousAndNextButton()) {
-       %init(gReplacePreviousAndNextButton);
-    }
-    if (dontEatMyContent() && DEMC_deviceIsSupported()) {
-       %init(gDontEatMyContent);
-    }
     if (@available(iOS 16, *)) {
        %init(iOS16);
     }
-    if (!fixGoogleSignIn()) {
+    if (!IsEnabled(@"fixGoogleSignIn_enabled")) {
        %init(gFixGoogleSignIn);
     }
-
+    if (IsEnabled(@"reExplore_enabled")) {
+       %init(gReExplore);
+    }
+    if (IsEnabled(@"bigYTMiniPlayer_enabled") && (UIDevice.currentDevice.userInterfaceIdiom != UIUserInterfaceIdiomPad)) {
+       %init(Main);
+    }
+    if (IsEnabled(@"dontEatMyContent_enabled") && DEMC_deviceIsSupported()) {
+       %init(gDontEatMyContent);
+    }
+    if (IsEnabled(@"hidePreviousAndNextButton_enabled")) {
+       %init(gHidePreviousAndNextButton);
+    }
+    if (IsEnabled(@"replacePreviousAndNextButton_enabled")) {
+       %init(gReplacePreviousAndNextButton);
+    }
+    if (oledDarkTheme()) {
+       %init(gOLED);
+    }
+    if (oldDarkTheme()) {
+        %init(gOldDarkTheme)
+    }
+    if (IsEnabled(@"oledKeyBoard_enabled")) {
+       %init(gOLEDKB);
+    }
+ 
     // Disable broken options of uYou
     [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"removeYouTubeAds"]; 
     [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"disableAgeRestriction"]; 
