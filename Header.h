@@ -13,6 +13,14 @@
 @end
 
 // uYouPlus
+static BOOL IsEnabled(NSString *key) {
+    return [[NSUserDefaults standardUserDefaults] boolForKey:key];
+}
+
+static int GetSelection(NSString *key) {
+    return [[NSUserDefaults standardUserDefaults] integerForKey:key];
+}
+
 @interface YTPlayabilityResolutionUserActionUIController : NSObject // Skips content warning before playing *some videos - @PoomSmart
 - (void)confirmAlertDidPressConfirm;
 @end 
@@ -39,6 +47,10 @@
 
 @interface PlayerManager : NSObject
 - (float)progress;
+@end
+
+@interface YTSegmentableInlinePlayerBarView
+@property (nonatomic, assign, readwrite) BOOL enableSnapToChapter;
 @end
 
 // DontEatMyContent
