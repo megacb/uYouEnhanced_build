@@ -1225,6 +1225,22 @@ UIColor* raisedColor = [UIColor colorWithRed:0.035 green:0.035 blue:0.035 alpha:
 }
 %end
 
+%hook _ASDisplayView
+- (void)layoutSubviews {
+    %orig;
+    if (IsEnabled(@"hideBuySuperThanks_enabled")) {
+        if ([self.accessibilityIdentifier isEqualToString:@"id.elements.components.suggested_action"]) { self.hidden = YES; }
+    }
+}
+%end
+
+%hook YTColdConfig
+- (BOOL)enableResumeToShorts {
+    if (IsEnabled(@"disableResumeToShorts")) { return NO; }
+    else { return %orig; }
+}
+%end
+
 # pragma mark - ctor
 %ctor {
     %init;
