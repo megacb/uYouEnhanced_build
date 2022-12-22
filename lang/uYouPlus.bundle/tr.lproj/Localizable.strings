@@ -1,72 +1,101 @@
-/* Read me:
-- How to translate uYouPlus (if your language already exists then feel free to check it and/or improve it):
-1. Fork uYouPlus repo
-2. Duplicate the template.lproj folder, and edit the duplicated folder's name to your <lang_code>.lproj id.
-For example: <ru.lproj> for Russia. For more details, visit: https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes
-3. Translate each line below after each =
-4. Open a Pull Request
-
-- You can also add your localization to YTABConfig, YouPiP, YTUHD, Return YouTube Dislike. The process is the same:
-https://github.com/PoomSmart/YTABConfig/tree/main/layout/Library/Application%20Support/YTABC.bundle
-https://github.com/PoomSmart/YouPiP/tree/main/layout/Library/Application%20Support/YouPiP.bundle
-https://github.com/PoomSmart/YTUHD/tree/master/layout/Library/Application%20Support/YTUHD.bundle
-https://github.com/PoomSmart/Return-YouTube-Dislikes/tree/main/layout/Library/Application%20Support/RYD.bundle
-*/
-
 // Settings
 "VERSION" = "uYouPlus'ın sürümü: %@";
 "VERSION_CHECK" = "Güncellemeyi kontrol etmek için dokunun!";
 
-"DONT_EAT_MY_CONTENT" = "2:1 Video İçeriğinde Çentik/Ada Önleme (DontEatMyContent)";
-"DONT_EAT_MY_CONTENT_DESC" = "Çentik/Dinamik Ada'nın YouTube'daki 2:1 video içeriğini yemesini önleyin. Uygulamanın yeniden başlatılması gerekir.";
+// Video player options
+"VIDEO_PLAYER_OPTIONS" = "Video Player Options";
 
-"REPLACE_PREVIOUS_NEXT_BUTTON" = "Önceki ve Sonraki Düğmelerini Değiştir";
-"REPLACE_PREVIOUS_NEXT_BUTTON_DESC" = "Önceki ve Sonraki Düğmelerini Hızlı ileri ve Geri Sar düğmeleriyle değiştirin. Uygulamanın yeniden başlatılması gerekir.";
+"AUTO_FULLSCREEN" = "Otomatik Tam Ekran (YTAutoFullScreen)";
+"AUTO_FULLSCREEN_DESC" = "Videoları otomatik olarak tam ekranda oynatır.";
 
-"FIX_GOOGLE_SIGNIN" = "Google Oturumu Açma'yı düzeltin (yalnızca TrollStore kullanıcıları için)";
-"FIX_GOOGLE_SIGNIN_DESC" = "Bu seçeneği yalnızca Google hesabınızla oturum açamadığınızda ve uygulama TrollStore aracılığıyla yüklendiyse açın. Normal olarak giriş yapabiliyorsanız, devre dışı bırakın. Uygulamanın yeniden başlatılması gerekir.";
+"SNAP_TO_CHAPTER" = "Disable snap to chapter";
+"SNAP_TO_CHAPTER_DESC" = "Disable auto snap to chapter when seeking videos. App restart is required.";
 
-"HIDE_PREVIOUS_AND_NEXT_BUTTON" = "Önceki ve Sonraki düğmelerini gizle";
-"HIDE_PREVIOUS_AND_NEXT_BUTTON_DESC" = "Video kontrolleri katmanında Önceki ve Sonraki düğmelerini gizler.";
+"PINCH_TO_ZOOM" = "Disable pinch to zoom";
+"PINCH_TO_ZOOM_DESC" = "App restart is required.";
 
 "YT_MINIPLAYER" = "Tüm YouTube videoları için Mini Oynatıcıyı etkinleştirin";
 "YT_MINIPLAYER_DESC" = "Örneğin çocuk videoları.";
 
-"CAST_CONFIRM" = "Yayınlamadan önce uyarıyı onaylayın (YTCastConfirm)";
-"CAST_CONFIRM_DESC" = "TV'nin yanlışlıkla ele geçirilmesini önlemek için yayınlamadan önce bir onay uyarısı gösterir.";
+// Video controls overlay options
+"VIDEO_CONTROLS_OVERLAY_OPTIONS" = "Video Controls Overlay Options";
+
+"HIDE_AUTOPLAY_SWITCH" = "Otomatik oynatma anahtarını gizle";
+"HIDE_AUTOPLAY_SWITCH_DESC" = "Otomatik oynat anahtarını video kontrolleri katmanından gizler.";
+
+"HIDE_SUBTITLES_BUTTON" = "Altyazıları düğmesini gizle";
+"HIDE_SUBTITLES_BUTTON_DESC" = "Video kontrolleri katmanındaki Altyazılar düğmesini gizler.";
+
+"HIDE_HUD_MESSAGES" = "Gösterge Paneli Mesajlarını gizle";
+"HIDE_HUD_MESSAGES_DESC" = "Örnek: Altyazılar açıldı/kapandı, Video döngüsü açık,...";
+
+"HIDE_PAID_PROMOTION_CARDS" = "Ücretli Promosyon afişini gizle";
+"HIDE_PAID_PROMOTION_CARDS_DESC" = "Bazı videolarda 'Ücretli Promosyonları İçerir' afişini gizler.";
+
+"HIDE_CHANNEL_WATERMARK" = "Hide Channel Watermark";
+"HIDE_CHANNEL_WATERMARK_DESC" = "Hide channel's watermark in video controls overlay. App restart is required.";
+
+"HIDE_PREVIOUS_AND_NEXT_BUTTON" = "Önceki ve Sonraki düğmelerini gizle";
+"HIDE_PREVIOUS_AND_NEXT_BUTTON_DESC" = "Video kontrolleri katmanında Önceki ve Sonraki düğmelerini gizler.";
+
+"REPLACE_PREVIOUS_NEXT_BUTTON" = "Önceki ve Sonraki Düğmelerini Değiştir";
+"REPLACE_PREVIOUS_NEXT_BUTTON_DESC" = "Önceki ve Sonraki Düğmelerini Hızlı ileri ve Geri Sar düğmeleriyle değiştirin. Uygulamanın yeniden başlatılması gerekir.";
+
+"DONT_EAT_MY_CONTENT" = "2:1 Video İçeriğinde Çentik/Ada Önleme (DontEatMyContent)";
+"DONT_EAT_MY_CONTENT_DESC" = "Çentik/Dinamik Ada'nın YouTube'daki 2:1 video içeriğini yemesini önleyin. Uygulamanın yeniden başlatılması gerekir.";
 
 "HIDE_HOVER_CARD" = "Bitiş ekranlarının üzerine gelen kartları gizle.(YTNoHoverCards)";
 "HIDE_HOVER_CARD_DESC" = "Videoların sonundaki içerik oluşturucu bitiş ekranlarını (küçük resimler) gizler.";
+
+// Shorts controls overlay options
+"SHORTS_CONTROLS_OVERLAY_OPTIONS" = "Shorts Controls Overlay Options";
+
+"HIDE_SHORTS_CHANNEL_AVATAR" = "Hide Shorts channel's avatar";
+"HIDE_SHORTS_CHANNEL_AVATAR_DESC" = "";
+
+"HIDE_SHORTS_DISLIKE_BUTTON" = "Hide Shorts dislike button";
+"HIDE_SHORTS_DISLIKE_BUTTON_DESC" = "";
+
+"HIDE_SHORTS_COMMENT_BUTTON" = "Hide Shorts comment button";
+"HIDE_SHORTS_COMMENT_BUTTON_DESC" = "";
+
+"HIDE_SHORTS_REMIX_BUTTON" = "Hide Shorts remix button";
+"HIDE_SHORTS_REMIX_BUTTON_DESC" = "";
+
+"HIDE_SHORTS_SHARE_BUTTON" = "Hide Shorts share button";
+"HIDE_SHORTS_SHARE_BUTTON_DESC" = "";
+
+// Theme
+"THEME_OPTIONS" = "Theme Options";
+
+"OLED_DARK_THEME" = "OLED Karanlık modu (Deneysel)";
+"OLED_DARK_THEME_2" = "OLED Karanlık modu";
+"OLED_DARK_THEME_DESC" = "Bazı durumlarda düzgün çalışmayabilir. Bu seçeneği etkinleştirdikten/devre dışı bıraktıktan sonra uygulamanın yeniden başlatılması gerekir.";
+
+"OLD_DARK_THEME" = "Old dark theme";
+"OLD_DARK_THEME_DESC" = "Old YouTube's dark theme (grey theme). App restart is required.";
+
+"DEFAULT_THEME" = "Defaut";
+"DEFAULT_THEME_DESC" = "Default dark(er) theme of YouTube. App restart is required.";
+
+"OLED_KEYBOARD" = "OLED Klavye (Deneysel)";
+"OLED_KEYBOARD_DESC" = "Bazı durumlarda düzgün çalışmayabilir. Uygulamanın yeniden başlatılması gerekir.";
+
+// Miscellaneous
+"MISCELLANEOUS" = "Miscellaneous";
+
+"CAST_CONFIRM" = "Yayınlamadan önce uyarıyı onaylayın (YTCastConfirm)";
+"CAST_CONFIRM_DESC" = "TV'nin yanlışlıkla ele geçirilmesini önlemek için yayınlamadan önce bir onay uyarısı gösterir.";
+"CASTING" = "Yayınlar";
+"MSG_ARE_YOU_SURE" = "Yayınlamaya başlamak istediğinizden emin misiniz?";
+"MSG_YES" = "Evet";
+"MSG_CANCEL" = "İptal";
+
+"FIX_GOOGLE_SIGNIN" = "Google Oturumu Açma'yı düzeltin (yalnızca TrollStore kullanıcıları için)";
+"FIX_GOOGLE_SIGNIN_DESC" = "Bu seçeneği yalnızca Google hesabınızla oturum açamadığınızda ve uygulama TrollStore aracılığıyla yüklendiyse açın. Normal olarak giriş yapabiliyorsanız, devre dışı bırakın. Uygulamanın yeniden başlatılması gerekir.";
 
 "NEW_MINIPLAYER_STYLE" = "Yeni mini oynatıcı bar stili. (BigYTMiniPlayer)";
 "NEW_MINIPLAYER_STYLE_DESC" = "Uygulamanın yeniden başlatılması gerekir.";
 
 "YT_RE_EXPLORE" = "Shorts sekmesini Keşfet sekmesiyle değiştirin (YTReExplore)";
 "YT_RE_EXPLORE_DESC" = "Uygulamanın yeniden başlatılması gerekir.";
-
-"HIDE_SUBTITLES_BUTTON" = "Altyazıları düğmesini gizle";
-"HIDE_SUBTITLES_BUTTON_DESC" = "Video kontrolleri katmanındaki Altyazılar düğmesini gizler.";
-
-"HIDE_AUTOPLAY_SWITCH" = "Otomatik oynatma anahtarını gizle";
-"HIDE_AUTOPLAY_SWITCH_DESC" = "Otomatik oynat anahtarını video kontrolleri katmanından gizler.";
-
-"AUTO_FULLSCREEN" = "Otomatik Tam Ekran (YTAutoFullScreen)";
-"AUTO_FULLSCREEN_DESC" = "Videoları otomatik olarak tam ekranda oynatır.";
-
-"HIDE_HUD_MESSAGES" = "Gösterge Paneli Mesajlarını gizle";
-"HIDE_HUD_MESSAGES_DESC" = "Örnek: Altyazılar açıldı/kapandı, Video döngüsü açık,...";
-
-"OLED_DARKMODE" = "OLED Karanlık modu (Deneysel)";
-"OLED_DARKMODE_DESC" = "Bazı durumlarda düzgün çalışmayabilir. Bu seçeneği etkinleştirdikten/devre dışı bıraktıktan sonra uygulamanın yeniden başlatılması gerekir.";
-
-"OLED_KEYBOARD" = "OLED Klavye (Deneysel)";
-"OLED_KEYBOARD_DESC" = "Bazı durumlarda düzgün çalışmayabilir. Uygulamanın yeniden başlatılması gerekir.";
-
-"HIDE_PAID_PROMOTION_CARDS" = "Ücretli Promosyon afişini gizle";
-"HIDE_PAID_PROMOTION_CARDS_DESC" = "Bazı videolarda 'Ücretli Promosyonları İçerir' afişini gizler.";
-
-// YTCastConfirm
-"CASTING" = "Yayınlar";
-"MSG_ARE_YOU_SURE" = "Yayınlamaya başlamak istediğinizden emin misiniz?";
-"MSG_YES" = "Evet";
-"MSG_CANCEL" = "İptal";
