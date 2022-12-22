@@ -80,6 +80,12 @@ https://github.com/PoomSmart/Return-YouTube-Dislikes/tree/main/layout/Library/Ap
 "HIDE_SHORTS_SHARE_BUTTON" = "Hide Shorts share button";
 "HIDE_SHORTS_SHARE_BUTTON_DESC" = "";
 
+"HIDE_SUPER_THANKS" = "Hide 'Buy Super Thanks' banner";
+"HIDE_SUPER_THANKS_DESC" = "Hide the 'Buy Super Thanks' banner in some certain Shorts."";
+
+"DISABLE_RESUME_TO_SHORTS" = "Disable resume to Shorts";
+"DISABLE_RESUME_TO_SHORTS_DESC" = "If you close YouTube while watching Shorts, Shorts won‘t automatically play next time you launch YouTube.";
+
 // Theme
 "THEME_OPTIONS" = "Theme Options";
 

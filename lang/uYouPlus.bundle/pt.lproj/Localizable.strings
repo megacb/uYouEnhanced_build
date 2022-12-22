@@ -47,6 +47,12 @@
 "DONT_EAT_MY_CONTENT" = "Evitar o notch/Island em conteúdo de vídeo 2:1 (DontEatMyContent)";
 "DONT_EAT_MY_CONTENT_DESC" = "Evita que o notch/Dynamic Island coma conteúdo de vídeo 2:1 no YouTube. A reinicialização do app é necessária.";
 
+"HIDE_SUPER_THANKS" = "Hide 'Buy Super Thanks' banner";
+"HIDE_SUPER_THANKS_DESC" = "Hide the 'Buy Super Thanks' banner in some certain Shorts."";
+
+"DISABLE_RESUME_TO_SHORTS" = "Disable resume to Shorts";
+"DISABLE_RESUME_TO_SHORTS_DESC" = "If you close YouTube while watching Shorts, Shorts won‘t automatically play next time you launch YouTube.";
+
 // Shorts controls overlay options
 "SHORTS_CONTROLS_OVERLAY_OPTIONS" = "Shorts Controls Overlay Options";
 
