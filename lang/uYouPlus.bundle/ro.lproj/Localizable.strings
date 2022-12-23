@@ -44,6 +44,9 @@ HIDE_AUTOPLAY_SWITCH" = "Ascunde comutatorul Redare automată";
 "HIDE_HOVER_CARD" = "Ascunde ecranele de final (YTNoHoverCards)";
 "HIDE_HOVER_CARD_DESC" = "Ascunde ecranele de final de la sfârșitul videoclipurilor.";
 
+"RED_PROGRESS_BAR" = "Red progress bar";
+"RED_PROGRESS_BAR_DESC" = "Bring back the red progress bar. App restart is required.";
+
 "DONT_EAT_MY_CONTENT" = "Previne apariția Notch/Island pe content video 2:1 (DontEatMyContent)";
 "DONT_EAT_MY_CONTENT_DESC" = "Previne tăierea conținutului video 2:1 de către Notch/Dynamic Island . Este necesară repornirea aplicației.";
 
@@ -66,7 +69,7 @@ HIDE_AUTOPLAY_SWITCH" = "Ascunde comutatorul Redare automată";
 "HIDE_SHORTS_SHARE_BUTTON_DESC" = "";
 
 "HIDE_SUPER_THANKS" = "Hide 'Buy Super Thanks' banner";
-"HIDE_SUPER_THANKS_DESC" = "Hide the 'Buy Super Thanks' banner in some certain Shorts."";
+"HIDE_SUPER_THANKS_DESC" = "Hide the 'Buy Super Thanks' banner in Shorts.";
 
 "DISABLE_RESUME_TO_SHORTS" = "Disable resume to Shorts";
 "DISABLE_RESUME_TO_SHORTS_DESC" = "If you close YouTube while watching Shorts, Shorts won‘t automatically play next time you launch YouTube.";
@@ -96,6 +99,9 @@ HIDE_AUTOPLAY_SWITCH" = "Ascunde comutatorul Redare automată";
 "MSG_ARE_YOU_SURE" = "Sunteți sigur că doriți să proiectați?";
 "MSG_YES" = "Da";
 "MSG_CANCEL" = "Anulare";
+
+"DISABLE_HINTS" = "Disable hints";
+"DISABLE_HINTS_DESC" = "Disable feature hints from YouTube that usually display when the app is freshly installed.";
 
 "FIX_GOOGLE_SIGNIN" = "Rezolvare problemă autentificare cont Google (doar pentru utilizatorii TrollStore)";
 "FIX_GOOGLE_SIGNIN_DESC" = "Activează această opțiune doar în cazul în care nu te poți autentifica în contul tău Google și apariția a fost instalată via TrollStore. Dacă te poți autentifica fără probleme, țineți setarea dezactivată. Este necesară repornirea aplicației.";

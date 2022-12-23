@@ -41,11 +41,14 @@
 "REPLACE_PREVIOUS_NEXT_BUTTON" = "Önceki ve Sonraki Düğmelerini Değiştir";
 "REPLACE_PREVIOUS_NEXT_BUTTON_DESC" = "Önceki ve Sonraki Düğmelerini Hızlı ileri ve Geri Sar düğmeleriyle değiştirin. Uygulamanın yeniden başlatılması gerekir.";
 
-"DONT_EAT_MY_CONTENT" = "2:1 Video İçeriğinde Çentik/Ada Önleme (DontEatMyContent)";
-"DONT_EAT_MY_CONTENT_DESC" = "Çentik/Dinamik Ada'nın YouTube'daki 2:1 video içeriğini yemesini önleyin. Uygulamanın yeniden başlatılması gerekir.";
-
 "HIDE_HOVER_CARD" = "Bitiş ekranlarının üzerine gelen kartları gizle.(YTNoHoverCards)";
 "HIDE_HOVER_CARD_DESC" = "Videoların sonundaki içerik oluşturucu bitiş ekranlarını (küçük resimler) gizler.";
+
+"RED_PROGRESS_BAR" = "Red progress bar";
+"RED_PROGRESS_BAR_DESC" = "Bring back the red progress bar. App restart is required.";
+
+"DONT_EAT_MY_CONTENT" = "2:1 Video İçeriğinde Çentik/Ada Önleme (DontEatMyContent)";
+"DONT_EAT_MY_CONTENT_DESC" = "Çentik/Dinamik Ada'nın YouTube'daki 2:1 video içeriğini yemesini önleyin. Uygulamanın yeniden başlatılması gerekir.";
 
 // Shorts controls overlay options
 "SHORTS_CONTROLS_OVERLAY_OPTIONS" = "Shorts Controls Overlay Options";
@@ -66,7 +69,7 @@
 "HIDE_SHORTS_SHARE_BUTTON_DESC" = "";
 
 "HIDE_SUPER_THANKS" = "Hide 'Buy Super Thanks' banner";
-"HIDE_SUPER_THANKS_DESC" = "Hide the 'Buy Super Thanks' banner in some certain Shorts."";
+"HIDE_SUPER_THANKS_DESC" = "Hide the 'Buy Super Thanks' banner in Shorts.";
 
 "DISABLE_RESUME_TO_SHORTS" = "Disable resume to Shorts";
 "DISABLE_RESUME_TO_SHORTS_DESC" = "If you close YouTube while watching Shorts, Shorts won‘t automatically play next time you launch YouTube.";
@@ -96,6 +99,9 @@
 "MSG_ARE_YOU_SURE" = "Yayınlamaya başlamak istediğinizden emin misiniz?";
 "MSG_YES" = "Evet";
 "MSG_CANCEL" = "İptal";
+
+"DISABLE_HINTS" = "Disable hints";
+"DISABLE_HINTS_DESC" = "Disable feature hints from YouTube that usually display when the app is freshly installed.";
 
 "FIX_GOOGLE_SIGNIN" = "Google Oturumu Açma'yı düzeltin (yalnızca TrollStore kullanıcıları için)";
 "FIX_GOOGLE_SIGNIN_DESC" = "Bu seçeneği yalnızca Google hesabınızla oturum açamadığınızda ve uygulama TrollStore aracılığıyla yüklendiyse açın. Normal olarak giriş yapabiliyorsanız, devre dışı bırakın. Uygulamanın yeniden başlatılması gerekir.";

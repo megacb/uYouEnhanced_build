@@ -44,6 +44,9 @@
 "HIDE_HOVER_CARD" = "הסתר כרטיסיות סיום סרטון (YTNoHoverCards)";
 "HIDE_HOVER_CARD_DESC" = "הסתר את מסכי הסיום של סרטונים המציגים את הערוץ וסרטונים נוספים.";
 
+"RED_PROGRESS_BAR" = "Red progress bar";
+"RED_PROGRESS_BAR_DESC" = "Bring back the red progress bar. App restart is required.";
+
 "DONT_EAT_MY_CONTENT" = "מנע חריץ/אי בתוכן וידאו 2:1 (DontEatMyContent)";
 "DONT_EAT_MY_CONTENT_DESC" = "מנע מהחריץ/האי הדינמי ללעוס תוכן וידאו 2:1 ב-YouTube. נדרשת הפעלה מחדש של האפליקציה.";
 
@@ -66,7 +69,7 @@
 "HIDE_SHORTS_SHARE_BUTTON_DESC" = "";
 
 "HIDE_SUPER_THANKS" = "Hide 'Buy Super Thanks' banner";
-"HIDE_SUPER_THANKS_DESC" = "Hide the 'Buy Super Thanks' banner in some certain Shorts."";
+"HIDE_SUPER_THANKS_DESC" = "Hide the 'Buy Super Thanks' banner in Shorts.";
 
 "DISABLE_RESUME_TO_SHORTS" = "Disable resume to Shorts";
 "DISABLE_RESUME_TO_SHORTS_DESC" = "If you close YouTube while watching Shorts, Shorts won‘t automatically play next time you launch YouTube.";
@@ -96,6 +99,9 @@
 "MSG_ARE_YOU_SURE" = "האם להתחיל לשדר?";
 "MSG_YES" = "כן";
 "MSG_CANCEL" = "ביטול";
+
+"DISABLE_HINTS" = "Disable hints";
+"DISABLE_HINTS_DESC" = "Disable feature hints from YouTube that usually display when the app is freshly installed.";
 
 "FIX_GOOGLE_SIGNIN" = "תקן כניסה של Google (עבור משתמש TrollStore בלבד)";
 "FIX_GOOGLE_SIGNIN_DESC" = "הפעל אפשרות זו רק כאשר אינך יכול להיכנס עם חשבון Google שלך והאפליקציה הותקנה דרך TrollStore. אם אתה יכול להתחבר כרגיל, השאר אותה מושבתת. נדרשת הפעלה מחדש של האפליקציה.";

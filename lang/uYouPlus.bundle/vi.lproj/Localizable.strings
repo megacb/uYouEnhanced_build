@@ -44,6 +44,9 @@
 "HIDE_HOVER_CARD" = "Ẩn video dạng thumbnails (YTNoHoverCards)";
 "HIDE_HOVER_CARD_DESC" = "Ẩn thumbnail của các video đề xuất xuất hiện ở cuối video.";
 
+"RED_PROGRESS_BAR" = "Red progress bar";
+"RED_PROGRESS_BAR_DESC" = "Bring back the red progress bar. App restart is required.";
+
 "DONT_EAT_MY_CONTENT" = "Ẩn tai thỏ/Dynamic Island (DontEatMyContent)";
 "DONT_EAT_MY_CONTENT_DESC" = "Ẩn tai thỏ/Dynamic Island chèn vào các video có tỷ lệ 2:1. Cần khởi động lại ứng dụng.";
 
@@ -66,7 +69,7 @@
 "HIDE_SHORTS_SHARE_BUTTON_DESC" = "";
 
 "HIDE_SUPER_THANKS" = "Hide 'Buy Super Thanks' banner";
-"HIDE_SUPER_THANKS_DESC" = "Hide the 'Buy Super Thanks' banner in some certain Shorts."";
+"HIDE_SUPER_THANKS_DESC" = "Hide the 'Buy Super Thanks' banner in Shorts.";
 
 "DISABLE_RESUME_TO_SHORTS" = "Disable resume to Shorts";
 "DISABLE_RESUME_TO_SHORTS_DESC" = "If you close YouTube while watching Shorts, Shorts won‘t automatically play next time you launch YouTube.";
@@ -96,6 +99,9 @@
 "MSG_ARE_YOU_SURE" = "Bạn có muốn bắt đầu truyền video không?";
 "MSG_YES" = "Có";
 "MSG_CANCEL" = "Không";
+
+"DISABLE_HINTS" = "Ẩn gợi ý";
+"DISABLE_HINTS_DESC" = "Ẩn các gợi ý tính năng thường hiện khi mới cài đặt YouTube.";
 
 "FIX_GOOGLE_SIGNIN" = "Sửa lỗi không thể đăng nhập tài khoản Google";
 "FIX_GOOGLE_SIGNIN_DESC" = "Chỉ bật tính năng này khi bạn không thể đăng nhập tài khoản Google và ứng dụng được cài qua TrollStore. Nếu bạn có thể đăng nhập bình thường thì hãy tắt tính năng này. Cần khởi động lại ứng dụng.";

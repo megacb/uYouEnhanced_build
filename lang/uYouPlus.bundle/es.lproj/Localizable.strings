@@ -44,6 +44,9 @@
 "HIDE_HOVER_CARD" = "Ocultar tarjetas flotantes en las pantallas finales (YTNoHoverCards)";
 "HIDE_HOVER_CARD_DESC" = "Ocultar tarjetas flotantes del creador (miniaturas) al final de los vídeos.";
 
+"RED_PROGRESS_BAR" = "Red progress bar";
+"RED_PROGRESS_BAR_DESC" = "Bring back the red progress bar. App restart is required.";
+
 "DONT_EAT_MY_CONTENT" = "Evitar Notch/Island en contenido de video 2:1 (DontEatMyContent)";
 "DONT_EAT_MY_CONTENT_DESC" = "Evite que la muesca/Dynamic Island se trague contenido de video 2:1 en YouTube. Es necesario reiniciar la aplicación.";
 
@@ -66,7 +69,7 @@
 "HIDE_SHORTS_SHARE_BUTTON_DESC" = "";
 
 "HIDE_SUPER_THANKS" = "Hide 'Buy Super Thanks' banner";
-"HIDE_SUPER_THANKS_DESC" = "Hide the 'Buy Super Thanks' banner in some certain Shorts."";
+"HIDE_SUPER_THANKS_DESC" = "Hide the 'Buy Super Thanks' banner in Shorts.";
 
 "DISABLE_RESUME_TO_SHORTS" = "Disable resume to Shorts";
 "DISABLE_RESUME_TO_SHORTS_DESC" = "If you close YouTube while watching Shorts, Shorts won‘t automatically play next time you launch YouTube.";
@@ -97,11 +100,14 @@
 "MSG_YES" = "Sí";
 "MSG_CANCEL" = "Cancelar";
 
+"DISABLE_HINTS" = "Disable hints";
+"DISABLE_HINTS_DESC" = "Disable feature hints from YouTube that usually display when the app is freshly installed.";
+
+"FIX_GOOGLE_SIGNIN" = "Reparar el inicio de sesión de Google (solo para usuarios de TrollStore)";
+"FIX_GOOGLE_SIGNIN_DESC" = "Active esta opción solo cuando no pueda iniciar sesión con su cuenta de Google y la aplicación se instaló a través de TrollStore. Si puede iniciar sesión normalmente, manténgala desactivada. Es necesario reiniciar la aplicación.";
+
 "NEW_MINIPLAYER_STYLE" = "Nuevo estilo de barra del minirreproductor (BigYTMiniPlayer)";
 "NEW_MINIPLAYER_STYLE_DESC" = "Requiere reiniciar la app.";
 
 "YT_RE_EXPLORE" = "Reemplazar pestaña de Cortos con pestaña de Explorar (YTReExplore)";
 "YT_RE_EXPLORE_DESC" = "Requiere reiniciar la app.";
-
-"FIX_GOOGLE_SIGNIN" = "Reparar el inicio de sesión de Google (solo para usuarios de TrollStore)";
-"FIX_GOOGLE_SIGNIN_DESC" = "Active esta opción solo cuando no pueda iniciar sesión con su cuenta de Google y la aplicación se instaló a través de TrollStore. Si puede iniciar sesión normalmente, manténgala desactivada. Es necesario reiniciar la aplicación.";

@@ -44,6 +44,9 @@
 "HIDE_HOVER_CARD" = "隐藏片尾画面悬浮卡片 （YTNoHoverCards）";
 "HIDE_HOVER_CARD_DESC" = "隐藏视频结尾处的创作者片尾画面元素（缩略图）。";
 
+"RED_PROGRESS_BAR" = "Red progress bar";
+"RED_PROGRESS_BAR_DESC" = "Bring back the red progress bar. App restart is required.";
+
 "DONT_EAT_MY_CONTENT" = "2:1视频刘海屏/灵动岛优化 （DontEatMyContent）";
 "DONT_EAT_MY_CONTENT_DESC" = "改进部分机型的刘海区域或灵动岛在2:1比例视频中引发的遮挡问题（缺口）。更改本设置后需要重启App。";
 
@@ -66,7 +69,7 @@
 "HIDE_SHORTS_SHARE_BUTTON_DESC" = "";
 
 "HIDE_SUPER_THANKS" = "Hide 'Buy Super Thanks' banner";
-"HIDE_SUPER_THANKS_DESC" = "Hide the 'Buy Super Thanks' banner in some certain Shorts."";
+"HIDE_SUPER_THANKS_DESC" = "Hide the 'Buy Super Thanks' banner in Shorts.";
 
 "DISABLE_RESUME_TO_SHORTS" = "Disable resume to Shorts";
 "DISABLE_RESUME_TO_SHORTS_DESC" = "If you close YouTube while watching Shorts, Shorts won‘t automatically play next time you launch YouTube.";
@@ -96,6 +99,9 @@
 "MSG_ARE_YOU_SURE" = "您确定要开始投屏吗？";
 "MSG_YES" = "确定";
 "MSG_CANCEL" = "取消";
+
+"DISABLE_HINTS" = "Disable hints";
+"DISABLE_HINTS_DESC" = "Disable feature hints from YouTube that usually display when the app is freshly installed.";
 
 "FIX_GOOGLE_SIGNIN" = "修复Google账号登录问题（仅TrollStore用户有效）";
 "FIX_GOOGLE_SIGNIN_DESC" = "仅在使用TrollStore安装本App的情况下生效：启用本设置后即可正常登录您的Google账号。更改本设置后需要重启App。";

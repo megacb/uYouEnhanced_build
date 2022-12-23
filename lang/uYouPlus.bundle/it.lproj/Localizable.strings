@@ -44,6 +44,9 @@
 "HIDE_HOVER_CARD" = "Nascondi i riquadri in sovrimpressione a fine video (YTNoHoverCards)";
 "HIDE_HOVER_CARD_DESC" = "Nasconde i riquadri (miniature) a fine video proposti dall'autore.";
 
+"RED_PROGRESS_BAR" = "Red progress bar";
+"RED_PROGRESS_BAR_DESC" = "Bring back the red progress bar. App restart is required.";
+
 "DONT_EAT_MY_CONTENT" = "Previeni la Tacca/Isola sui Contenuti Video 2:1 (DontEatMyContent)";
 "DONT_EAT_MY_CONTENT_DESC" = "Previene alla Tacca/Isola di nascondere parte dei Contenuti Video 2:1 in YouTube. È richiesto un riavvio dell'app.";
 
@@ -66,7 +69,7 @@
 "HIDE_SHORTS_SHARE_BUTTON_DESC" = "";
 
 "HIDE_SUPER_THANKS" = "Hide 'Buy Super Thanks' banner";
-"HIDE_SUPER_THANKS_DESC" = "Hide the 'Buy Super Thanks' banner in some certain Shorts."";
+"HIDE_SUPER_THANKS_DESC" = "Hide the 'Buy Super Thanks' banner in Shorts.";
 
 "DISABLE_RESUME_TO_SHORTS" = "Disable resume to Shorts";
 "DISABLE_RESUME_TO_SHORTS_DESC" = "If you close YouTube while watching Shorts, Shorts won‘t automatically play next time you launch YouTube.";
@@ -97,11 +100,14 @@
 "MSG_YES" = "Sì";
 "MSG_CANCEL" = "Annulla";
 
+"DISABLE_HINTS" = "Disable hints";
+"DISABLE_HINTS_DESC" = "Disable feature hints from YouTube that usually display when the app is freshly installed.";
+
+"FIX_GOOGLE_SIGNIN" = "Ripara Google Sign in (solo per utenti TrollStore)";
+"FIX_GOOGLE_SIGNIN_DESC" = "Attiva questa opzione solo quando non puoi accedere al tuo account Google e l'app è stata installata attraverso TrollStore. Se puoi accedere normalmente, tienila disabilitata. È richiesto un riavvio dell'app.";
+
 "NEW_MINIPLAYER_STYLE" = "Nuovo stile per la barra del miniplayer (BigYTMiniPlayer)";
 "NEW_MINIPLAYER_STYLE_DESC" = "È richiesto un riavvio dell'app.";
 
 "YT_RE_EXPLORE" = "Sostituisci il tab Shorts con il tab Esplora (YTReExplore)";
 "YT_RE_EXPLORE_DESC" = "È richiesto un riavvio dell'app.";
-
-"FIX_GOOGLE_SIGNIN" = "Ripara Google Sign in (solo per utenti TrollStore)";
-"FIX_GOOGLE_SIGNIN_DESC" = "Attiva questa opzione solo quando non puoi accedere al tuo account Google e l'app è stata installata attraverso TrollStore. Se puoi accedere normalmente, tienila disabilitata. È richiesto un riavvio dell'app.";

@@ -44,6 +44,9 @@
 "HIDE_HOVER_CARD" = "Verberg eind scherm hover cards (YTNoHoverCards)";
 "HIDE_HOVER_CARD_DESC" = "Verberg eind schermen (thumbnails) aan het einde van video's.";
 
+"RED_PROGRESS_BAR" = "Red progress bar";
+"RED_PROGRESS_BAR_DESC" = "Bring back the red progress bar. App restart is required.";
+
 "DONT_EAT_MY_CONTENT" = "Voorkom Notch/Eiland Bij 2:1 Video's (DontEatMyContent)";#
 "DONT_EAT_MY_CONTENT_DESC" = "Voorkomt dat de video zich achter de Notch/het Dynamische Eiland bevind bij 2:1 video's. Je moet de app opnieuw opstarten om dit te activeren.";
 
@@ -66,7 +69,7 @@
 "HIDE_SHORTS_SHARE_BUTTON_DESC" = "";
 
 "HIDE_SUPER_THANKS" = "Hide 'Buy Super Thanks' banner";
-"HIDE_SUPER_THANKS_DESC" = "Hide the 'Buy Super Thanks' banner in some certain Shorts."";
+"HIDE_SUPER_THANKS_DESC" = "Hide the 'Buy Super Thanks' banner in Shorts.";
 
 "DISABLE_RESUME_TO_SHORTS" = "Disable resume to Shorts";
 "DISABLE_RESUME_TO_SHORTS_DESC" = "If you close YouTube while watching Shorts, Shorts won‘t automatically play next time you launch YouTube.";
@@ -96,6 +99,9 @@
 "MSG_ARE_YOU_SURE" = "Weet je zeker dat je wilt casten?";
 "MSG_YES" = "Ja!";
 "MSG_CANCEL" = "Niet casten!";
+
+"DISABLE_HINTS" = "Disable hints";
+"DISABLE_HINTS_DESC" = "Disable feature hints from YouTube that usually display when the app is freshly installed.";
 
 "FIX_GOOGLE_SIGNIN" = "Fix Inloggen met Google (Alleen voor TrollStore gebruikers)";
 "FIX_GOOGLE_SIGNIN_DESC" = "Zet dit aan wanneer je niet kan inloggen met je Google account en je de app hebt geïnstalleerd met Trollstore. Als je in kan loggen laat dit dan met rust. Om dit te activeren moet je de app opnieuw opstarten.";

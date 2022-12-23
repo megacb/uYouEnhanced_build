@@ -44,6 +44,9 @@
 "HIDE_HOVER_CARD" = "A záróképernyők lebegő kártyáinak elrejtése (YTNoHoverCards)";
 "HIDE_HOVER_CARD_DESC" = "Az alkotói záróképernyők (bélyegképek) elrejtése a videók végén.";
 
+"RED_PROGRESS_BAR" = "Red progress bar";
+"RED_PROGRESS_BAR_DESC" = "Bring back the red progress bar. App restart is required.";
+
 "DONT_EAT_MY_CONTENT" = "Notch/Island megelőzése 2:1 arányú videótartalomnál (DontEatMyContent)";
 "DONT_EAT_MY_CONTENT_DESC" = "Akadályozza meg, hogy a Notch/Dynamic Island 2:1 arányú videótartalmat csámcsogjon a YouTube-on. Az alkalmazás újraindítása szükséges.";
 
@@ -66,7 +69,7 @@
 "HIDE_SHORTS_SHARE_BUTTON_DESC" = "";
 
 "HIDE_SUPER_THANKS" = "Hide 'Buy Super Thanks' banner";
-"HIDE_SUPER_THANKS_DESC" = "Hide the 'Buy Super Thanks' banner in some certain Shorts."";
+"HIDE_SUPER_THANKS_DESC" = "Hide the 'Buy Super Thanks' banner in Shorts.";
 
 "DISABLE_RESUME_TO_SHORTS" = "Disable resume to Shorts";
 "DISABLE_RESUME_TO_SHORTS_DESC" = "If you close YouTube while watching Shorts, Shorts won‘t automatically play next time you launch YouTube.";
@@ -96,6 +99,9 @@
 "MSG_ARE_YOU_SURE" = "Biztos, hogy elkezdi az átküldést?";
 "MSG_YES" = "Igen";
 "MSG_CANCEL" = "Visszavon";
+
+"DISABLE_HINTS" = "Disable hints";
+"DISABLE_HINTS_DESC" = "Disable feature hints from YouTube that usually display when the app is freshly installed.";
 
 "FIX_GOOGLE_SIGNIN" = "A Google bejelentkezés javítása (csak a TrollStore-felhasználók számára)";
 "FIX_GOOGLE_SIGNIN_DESC" = "Csak akkor kapcsolja be ezt az opciót, ha nem tud bejelentkezni Google-fiókjával, és az alkalmazást a TrollStore-on keresztül telepítették. Ha normálisan be tud jelentkezni, tartsa letiltva. Az alkalmazás újraindítása szükséges.";

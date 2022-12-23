@@ -44,6 +44,9 @@
 "HIDE_HOVER_CARD" = "Skrýt karty na konci videa (YTNoHoverCards)";
 "HIDE_HOVER_CARD_DESC" = "Skryje náhledy jiných videjí na konci videa.";
 
+"RED_PROGRESS_BAR" = "Red progress bar";
+"RED_PROGRESS_BAR_DESC" = "Bring back the red progress bar. App restart is required.";
+
 "DONT_EAT_MY_CONTENT" = "Zabránit zářezu/ostrovu na videoobsahu 2:1 (DontEatMyContent)";
 "DONT_EAT_MY_CONTENT_DESC" = "Zabraňte tomu, aby zářez/Dynamic Island žvýkal video obsah 2:1 na YouTube. Je vyžadován restart aplikace.";
 
@@ -66,7 +69,7 @@
 "HIDE_SHORTS_SHARE_BUTTON_DESC" = "";
 
 "HIDE_SUPER_THANKS" = "Hide 'Buy Super Thanks' banner";
-"HIDE_SUPER_THANKS_DESC" = "Hide the 'Buy Super Thanks' banner in some certain Shorts."";
+"HIDE_SUPER_THANKS_DESC" = "Hide the 'Buy Super Thanks' banner in Shorts.";
 
 "DISABLE_RESUME_TO_SHORTS" = "Disable resume to Shorts";
 "DISABLE_RESUME_TO_SHORTS_DESC" = "If you close YouTube while watching Shorts, Shorts won‘t automatically play next time you launch YouTube.";
@@ -96,6 +99,9 @@
 "MSG_ARE_YOU_SURE" = "Opravdu chcete začít sdílet obraz?";
 "MSG_YES" = "Ano";
 "MSG_CANCEL" = "Zrušit";
+
+"DISABLE_HINTS" = "Disable hints";
+"DISABLE_HINTS_DESC" = "Disable feature hints from YouTube that usually display when the app is freshly installed.";
 
 "FIX_GOOGLE_SIGNIN" = "Opravit přihlášení přes Google (pouze pro uživatele TrollStore)";
 "FIX_GOOGLE_SIGNIN_DESC" = "Tuto možnost zapněte pouze v případě, že se nemůžete přihlásit pomocí svého účtu Google a aplikace byla nainstalována prostřednictvím TrollStore. Pokud se můžete normálně přihlásit, ponechte ji deaktivovanou. Je vyžadován restart aplikace.";
