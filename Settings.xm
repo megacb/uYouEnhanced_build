@@ -6,6 +6,12 @@
 #import "Tweaks/YouTubeHeader/YTSettingsPickerViewController.h"
 #import "Header.h"
 
+static BOOL IsEnabled(NSString *key) {
+    return [[NSUserDefaults standardUserDefaults] boolForKey:key];
+}
+static int GetSelection(NSString *key) {
+    return [[NSUserDefaults standardUserDefaults] integerForKey:key];
+}
 static const NSInteger uYouPlusSection = 500;
 
 @interface YTSettingsSectionItemManager (uYouPlus)
@@ -162,6 +168,16 @@ extern NSBundle *uYouPlusBundle();
                 switchOn:IsEnabled(@"replacePreviousAndNextButton_enabled")
                 switchBlock:^BOOL (YTSettingsCell *cell, BOOL enabled) {
                     [[NSUserDefaults standardUserDefaults] setBool:enabled forKey:@"replacePreviousAndNextButton_enabled"];
+                    return YES;
+                }
+                settingItemId:0],    
+
+            [YTSettingsSectionItemClass switchItemWithTitle:LOC(@"RED_PROGRESS_BAR")
+                titleDescription:LOC(@"RED_PROGRESS_BAR_DESC")
+                accessibilityIdentifier:nil
+                switchOn:IsEnabled(@"redProgressBar_enabled")
+                switchBlock:^BOOL (YTSettingsCell *cell, BOOL enabled) {
+                    [[NSUserDefaults standardUserDefaults] setBool:enabled forKey:@"redProgressBar_enabled"];
                     return YES;
                 }
                 settingItemId:0],    
@@ -329,6 +345,16 @@ extern NSBundle *uYouPlusBundle();
                 switchOn:IsEnabled(@"castConfirm_enabled")
                 switchBlock:^BOOL (YTSettingsCell *cell, BOOL enabled) {
                     [[NSUserDefaults standardUserDefaults] setBool:enabled forKey:@"castConfirm_enabled"];
+                    return YES;
+                }
+                settingItemId:0],
+
+            [YTSettingsSectionItemClass switchItemWithTitle:LOC(@"DISABLE_HINTS")
+                titleDescription:LOC(@"DISABLE_HINTS_DESC")
+                accessibilityIdentifier:nil
+                switchOn:IsEnabled(@"disableHints_enabled")
+                switchBlock:^BOOL (YTSettingsCell *cell, BOOL enabled) {
+                    [[NSUserDefaults standardUserDefaults] setBool:enabled forKey:@"disableHints_enabled"];
                     return YES;
                 }
                 settingItemId:0],

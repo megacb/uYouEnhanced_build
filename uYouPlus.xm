@@ -61,6 +61,9 @@ static NSString *accessGroupID() {
 }
 
 //
+static BOOL IsEnabled(NSString *key) {
+    return [[NSUserDefaults standardUserDefaults] boolForKey:key];
+}
 static BOOL isDarkMode() {
     return ([[NSUserDefaults standardUserDefaults] integerForKey:@"page_style"] == 1);
 }
@@ -439,6 +442,7 @@ BOOL didLateHook = NO;
 - (BOOL)isLandscapeEngagementPanelSwipeRightToDismissEnabled { return YES; } // Swipe right to dismiss the right panel in fullscreen mode
 - (BOOL)mainAppCoreClientIosTransientVisualGlitchInPivotBarFix { return NO; } // Fix uYou's label glitching - qnblackcat/uYouPlus#552
 - (BOOL)enableSwipeToRemoveInPlaylistWatchEp { return YES; } // Enable swipe right to remove video in Playlist. 
+- (BOOL)iosEnableShortsPlayerSplitViewController { return NO; } // Fix uYou's button missing in Shorts
 %end
 
 // NOYTPremium - https://github.com/PoomSmart/NoYTPremium/
@@ -1193,10 +1197,38 @@ UIColor* raisedColor = [UIColor colorWithRed:0.035 green:0.035 blue:0.035 alpha:
 }
 %end
 
-// Hide Water mark
+// Hide Watermark
 %hook YTAnnotationsViewController
 - (void)loadFeaturedChannelWatermark {
     if (IsEnabled(@"hideChannelWatermark_enabled")) {}
+    else { return %orig; }
+}
+%end
+
+// Disable hints - https://github.com/LillieH001/YouTube-Reborn/blob/v4/
+%group gDisableHints
+%hook YTSettings
+- (BOOL)areHintsDisabled {
+	return YES;
+}
+- (void)setHintsDisabled:(BOOL)arg1 {
+    %orig(YES);
+}
+%end
+%hook YTUserDefaults
+- (BOOL)areHintsDisabled {
+	return YES;
+}
+- (void)setHintsDisabled:(BOOL)arg1 {
+    %orig(YES);
+}
+%end
+%end
+
+// Bring back the red progress bar
+%hook YTColdConfig
+- (BOOL)segmentablePlayerBarUpdateColors { 
+    if (IsEnabled(@"redProgressBar_enabled")) { return NO; }
     else { return %orig; }
 }
 %end
@@ -1226,11 +1258,9 @@ UIColor* raisedColor = [UIColor colorWithRed:0.035 green:0.035 blue:0.035 alpha:
 %end
 
 %hook _ASDisplayView
-- (void)layoutSubviews {
+- (void)didMoveToWindow {
     %orig;
-    if (IsEnabled(@"hideBuySuperThanks_enabled")) {
-        if ([self.accessibilityIdentifier isEqualToString:@"id.elements.components.suggested_action"]) { self.hidden = YES; }
-    }
+    if ((IsEnabled(@"hideBuySuperThanks_enabled")) && ([self.accessibilityIdentifier isEqualToString:@"id.elements.components.suggested_action"])) { self.hidden = YES; }
 }
 %end
 
@@ -1274,10 +1304,14 @@ UIColor* raisedColor = [UIColor colorWithRed:0.035 green:0.035 blue:0.035 alpha:
     if (IsEnabled(@"oledKeyBoard_enabled")) {
        %init(gOLEDKB);
     }
+    if (IsEnabled(@"disableHints_enabled")) {
+        %init(gDisableHints);
+    }
  
     // Disable broken options of uYou
-    [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"removeYouTubeAds"]; 
-    [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"disableAgeRestriction"]; 
+    [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"removeYouTubeAds"];
+    [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"disableAgeRestriction"];
+    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"showedWelcomeVC"];
     
     // Change the default value of some uYou's options
     if (![[[[NSUserDefaults standardUserDefaults] dictionaryRepresentation] allKeys] containsObject:@"relatedVideosAtTheEndOfYTVideos"]) { 
@@ -1289,10 +1323,4 @@ UIColor* raisedColor = [UIColor colorWithRed:0.035 green:0.035 blue:0.035 alpha:
     if (![[[[NSUserDefaults standardUserDefaults] dictionaryRepresentation] allKeys] containsObject:@"uYouPiPButtonVideoControlsOverlay"]) { 
        [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"uYouPiPButtonVideoControlsOverlay"]; 
     }
-    // if (![[[[NSUserDefaults standardUserDefaults] dictionaryRepresentation] allKeys] containsObject:@"uYouRepeatButtonVideoControlsOverlay"]) { 
-    //    [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"uYouRepeatButtonVideoControlsOverlay"]; 
-    // }
-    // if (![[[[NSUserDefaults standardUserDefaults] dictionaryRepresentation] allKeys] containsObject:@"uYouRightRotateButtonVideoControlsOverlay"]) { 
-    //    [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"uYouRightRotateButtonVideoControlsOverlay"]; 
-    // }
 }
