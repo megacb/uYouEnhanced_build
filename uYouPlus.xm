@@ -31,11 +31,8 @@ NSBundle *uYouPlusBundle() {
         NSString *tweakBundlePath = [[NSBundle mainBundle] pathForResource:@"uYouPlus" ofType:@"bundle"];
         if (tweakBundlePath)
             bundle = [NSBundle bundleWithPath:tweakBundlePath];
-        else {
+        else
             bundle = [NSBundle bundleWithPath:@"/Library/Application Support/uYouPlus.bundle"];
-            if (!bundle)
-                bundle = [NSBundle bundleWithPath:@"/var/jb/Library/Application Support/uYouPlus.bundle"];
-        }
     });
     return bundle;
 }
