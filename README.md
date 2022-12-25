@@ -152,27 +152,25 @@
 
 7. **YTNoHoverCards:** offer an option to enable/disable the annoying suggested videos show up at the end of the videos.
 
-8. **YTNoCheckLocalNetwork**: block the Local Network permission popup.
+8. **YouRememberCaption**: make YouTube remember your video caption setting (if not already).
 
-9. **YouRememberCaption**: make YouTube remember your video caption setting (if not already).
+9. **NoYTPremium**: remove YouTube Premium upsells.
 
-10. **NoYTPremium**: remove YouTube Premium upsells.
+10. **YTSpeed**: add 2.25, 2.5, 2.75, and 3x playback speed
 
-11. **YTSpeed**: add 2.25, 2.5, 2.75, and 3x playback speed
+11. **YTMiniplayerEnabler**: enable Miniplayer for all YouTube videos.
 
-12. **YTMiniplayerEnabler**: enable Miniplayer for all YouTube videos.
+12. **DontEatMyContent**: prevent the notch/Dynamic Island from munching on 2:1 video content in YouTube.
 
-13. **DontEatMyContent**: prevent the notch/Dynamic Island from munching on 2:1 video content in YouTube.
+13. **YTShortsProgress**: always enable progress bar and scrubbing in YouTube Shorts (iPhone only).
 
-14. **YTShortsProgress**: always enable progress bar and scrubbing in YouTube Shorts (iPhone only).
-
-15. **YTABConfig**: allow user to control over YouTube A/B testing flags.
+14. **YTABConfig**: allow user to control over YouTube A/B testing flags.
 
 </details>
 
 # Known issues 
 
-- **uYou**: all known-issues of uYou are listed [here](https://github.com/MiRO92/uYou-for-YouTube/issues). Make sure you take a look at it before reporting any bugs! ***Also, keep in mind that uYou+ is a modified version of uYou, DO NOT bother MiRO92 with problems unrelated to uYou!!!***
+- **uYou**: all the known-issues of uYou are listed [here](https://github.com/MiRO92/uYou-for-YouTube/issues). Make sure you take a look at it before reporting any bugs! ***Also, keep in mind that uYou+ is a modified version of uYou, DO NOT bother MiRO92 with problems unrelated to uYou!!!***
 
 - Issues that related to **uYouPlus** are [here](https://github.com/qnblackcat/uYouPlus/issues/)
 
@@ -184,16 +182,16 @@
 
   - My official AltStore repo: https://qnblackcat.github.io/AltStore/
 
-  - [Open in AltStore (v17.48.2-2.1)](https://tinyurl.com/59kjzeth) - It will take a while to install because AltStore needs to download the IPA first.
+  - [Open in AltStore (v17.49.6-2.1)](https://tinyurl.com/35zs753j) - It will take a while to install because AltStore needs to download the IPA first.
 
-- Version info: _(last update: Dec 12)_
+- Version info: _(last update: Dec 25)_
 
 <details>
   <summary>Expand ℹ️</summary>
 
 | **Tweaks/App** | **Developer** | **Version** | **Open source** |
 | - | - | :-: | :-:  |
-| **YouTube** | Google Inc | 17.48.2 | ✖︎ |
+| **YouTube** | Google Inc | 17.49.6 | ✖︎ |
 | [uYou](https://github.com/MiRO92/uYou-for-YouTube) | [MiRO92](https://twitter.com/miro92) | 2.1 | ✖︎ |
 | [Open in YouTube](https://github.com/CokePokes/YoutubeExtensions) | [CokePokes](https://github.com/CokePokes) | 1.2 | ✖︎ |
 | **iSponsorBlock** | [Galactic-Dev](https://github.com/Galactic-Dev) | 1.0-15 | [✔︎](https://github.com/Galactic-Dev/iSponsorBlock) |
@@ -205,7 +203,7 @@
 | **YTCastConfirm** | [JamieBerghmans](https://github.com/JamieBerghmans) | 1.0.0 | [✔︎](https://github.com/JamieBerghmans/YTCastConfirm) |
 | **Alderis Color Picker** | [HASHBANG Productions](https://github.com/hbang) | 1.2| [✔︎](https://github.com/hbang/Alderis) |
 | **YTUHD** | [PoomSmart](https://twitter.com/poomsmart) | 1.3.4-2 | [✔︎](https://github.com/PoomSmart/YTUHD) |
-| **YouPiP** | [PoomSmart](https://twitter.com/poomsmart) | 1.7.15-2 | [✔︎](https://github.com/PoomSmart/YouPiP) |
+| **YouPiP** | [PoomSmart](https://twitter.com/poomsmart) | 1.7.16 | [✔︎](https://github.com/PoomSmart/YouPiP) |
 | **IAmYouTube** | [PoomSmart](https://twitter.com/poomsmart) | 1.2.0 | [✔︎](https://github.com/PoomSmart/IAmYouTube) |
 | **YTABConfig** | [PoomSmart](https://twitter.com/poomsmart) | 1.4.6 | [✔︎](https://github.com/PoomSmart/YTABConfig) |
 | **YTReExplore** | [PoomSmart](https://twitter.com/poomsmart) | 1.0.2 | [✔︎](https://github.com/PoomSmart/YTReExplore) |
@@ -214,8 +212,7 @@
 | **YTAutoFullScreen** | [PoomSmart](https://twitter.com/poomsmart) | 1.0.3 | [✔︎](https://github.com/PoomSmart/YTAutoFullScreen) |
 | **YTShortsProgress** | [PoomSmart](https://twitter.com/poomsmart) | 1.0.2 | [✔︎](https://github.com/PoomSmart/YTShortsProgress) |
 | **YouRememberCaption** | [PoomSmart](https://twitter.com/poomsmart) | 1.0.0 | [✔︎](https://poomsmart.github.io/repo/depictions/youremembercaption.html) |
-| **Return YouTube Dislike** | [PoomSmart](https://twitter.com/poomsmart) | 1.9.0 | [✔︎](https://github.com/PoomSmart/Return-YouTube-Dislikes) |
-| **YTNoCheckLocalNetwork** | [PoomSmart](https://twitter.com/poomsmart) | 1.0.2 | [✔︎](https://poomsmart.github.io/repo/depictions/ytnochecklocalnetwork.html) |
+| **Return YouTube Dislike** | [PoomSmart](https://twitter.com/poomsmart) | 1.10.0 | [✔︎](https://github.com/PoomSmart/Return-YouTube-Dislikes) |
 
 </details>
 
