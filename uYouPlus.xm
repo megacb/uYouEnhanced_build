@@ -21,7 +21,7 @@
 #import "Tweaks/YouTubeHeader/YTReelPlayerBottomButton.h"
 #import "Tweaks/YouTubeHeader/YTReelPlayerViewController.h"
 #import "Tweaks/YouTubeHeader/YTAlertView.h"
-#import "Tweaks/YouTubeHeader/YTIElementRenderer.h"
+#import "Tweaks/YouTubeHeader/YTISectionListRenderer.h"
 
 // Tweak's bundle for Localizations support - @PoomSmart - https://github.com/PoomSmart/YouPiP/commit/aea2473f64c75d73cab713e1e2d5d0a77675024f
 NSBundle *uYouPlusBundle() {
@@ -403,9 +403,6 @@ static BOOL didFinishLaunching;
 %end
 
 // Hide search ads by @PoomSmart - https://github.com/PoomSmart/YouTube-X
-BOOL didLateHook = NO;
-
-%group LateHook
 %hook YTIElementRenderer
 - (NSData *)elementData {
     if (self.hasCompatibilityOptions && self.compatibilityOptions.hasAdLoggingData)
@@ -413,16 +410,20 @@ BOOL didLateHook = NO;
     return %orig;
 }
 %end
-%end
 
 %hook YTSectionListViewController
-- (void)loadWithModel:(id)model {
-    if (!didLateHook) {
-        %init(LateHook);
-        didLateHook = YES;
-    }
+
+- (void)loadWithModel:(YTISectionListRenderer *)model {
+    NSMutableArray <YTISectionListSupportedRenderers *> *contentsArray = model.contentsArray;
+    NSIndexSet *removeIndexes = [contentsArray indexesOfObjectsPassingTest:^BOOL(YTISectionListSupportedRenderers *renderers, NSUInteger idx, BOOL *stop) {
+        YTIItemSectionRenderer *sectionRenderer = renderers.itemSectionRenderer;
+        YTIItemSectionSupportedRenderers *firstObject = [sectionRenderer.contentsArray firstObject];
+        return firstObject.hasPromotedVideoRenderer || firstObject.hasCompactPromotedVideoRenderer || firstObject.hasPromotedVideoInlineMutedRenderer;
+    }];
+    [contentsArray removeObjectsAtIndexes:removeIndexes];
     %orig;
 }
+
 %end
 
 // YTClassicVideoQuality: https://github.com/PoomSmart/YTClassicVideoQuality
@@ -529,6 +530,7 @@ static void replaceTab(YTIGuideResponse *response) {
                 YTIPivotBarSupportedRenderers *exploreTab = [%c(YTIPivotBarRenderer) pivotSupportedRenderersWithBrowseId:[%c(YTIBrowseRequest) browseIDForExploreTab] title:@"Explore" iconType:292];
                 [items insertObject:exploreTab atIndex:1];
             }
+            break;
         }
     }
 }
