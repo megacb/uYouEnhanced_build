@@ -127,8 +127,7 @@ static BOOL oldDarkTheme() {
 %end
 
 %hook YTReelContentView
-- (void)didTapOverflowButton:(id)sender {
-}
+- (void)didTapOverflowButton:(id)sender {}
 %end
 
 %hook NSLayoutConstraint
@@ -449,8 +448,11 @@ static BOOL didFinishLaunching;
 - (BOOL)respectDeviceCaptionSetting { return NO; } // YouRememberCaption: https://poomsmart.github.io/repo/depictions/youremembercaption.html
 - (BOOL)isLandscapeEngagementPanelSwipeRightToDismissEnabled { return YES; } // Swipe right to dismiss the right panel in fullscreen mode
 - (BOOL)mainAppCoreClientIosTransientVisualGlitchInPivotBarFix { return NO; } // Fix uYou's label glitching - qnblackcat/uYouPlus#552
-- (BOOL)enableSwipeToRemoveInPlaylistWatchEp { return YES; } // Enable swipe right to remove video in Playlist. 
-- (BOOL)iosEnableShortsPlayerSplitViewController { return NO; } // Fix uYou's button missing in Shorts
+- (BOOL)enableSwipeToRemoveInPlaylistWatchEp { return YES; } // Enable swipe right to remove video in Playlist.
+%end
+
+%hook YTHotConfig
+- (BOOL)iosEnableShortsPlayerSplitViewController { return NO; } // Fix uYou's button missing in Shorts: qnblackcat/uYouPlus#800
 %end
 
 // NOYTPremium - https://github.com/PoomSmart/NoYTPremium/
