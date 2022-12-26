@@ -216,6 +216,16 @@ static BOOL didFinishLaunching;
 }
 %end
 
+// Remove uYou download button in playlists
+// https://github.com/qnblackcat/uYouPlus/issues/798#issuecomment-1364853420
+%hook YTPlaylistHeaderViewController
+- (id)downloadsButton {
+    UIView *button = %orig;
+    button.hidden = true;
+    return button;
+}
+%end
+
 # pragma mark - YouTube's patches
 // Workaround for MiRO92/uYou-for-YouTube#12, qnblackcat/uYouPlus#263
 %hook YTDataUtils
