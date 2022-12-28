@@ -1318,6 +1318,9 @@ UIColor* raisedColor = [UIColor colorWithRed:0.035 green:0.035 blue:0.035 alpha:
     if (IsEnabled(@"disableHints_enabled")) {
         %init(gDisableHints);
     }
+
+    // Disable updates
+    [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"automaticallyCheckForUpdates"];
  
     // Disable broken options of uYou
     [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"removeYouTubeAds"];
@@ -1325,13 +1328,14 @@ UIColor* raisedColor = [UIColor colorWithRed:0.035 green:0.035 blue:0.035 alpha:
     [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"showedWelcomeVC"];
     
     // Change the default value of some uYou's options
-    if (![[[[NSUserDefaults standardUserDefaults] dictionaryRepresentation] allKeys] containsObject:@"relatedVideosAtTheEndOfYTVideos"]) { 
+    NSArray *allKeys = [[[NSUserDefaults standardUserDefaults] dictionaryRepresentation] allKeys];
+    if (![allKeys containsObject:@"relatedVideosAtTheEndOfYTVideos"]) { 
        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"relatedVideosAtTheEndOfYTVideos"]; 
     }
-    if (![[[[NSUserDefaults standardUserDefaults] dictionaryRepresentation] allKeys] containsObject:@"uYouButtonVideoControlsOverlay"]) { 
+    if (![allKeys containsObject:@"uYouButtonVideoControlsOverlay"]) { 
        [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"uYouButtonVideoControlsOverlay"]; 
     }
-    if (![[[[NSUserDefaults standardUserDefaults] dictionaryRepresentation] allKeys] containsObject:@"uYouPiPButtonVideoControlsOverlay"]) { 
+    if (![allKeys containsObject:@"uYouPiPButtonVideoControlsOverlay"]) { 
        [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"uYouPiPButtonVideoControlsOverlay"]; 
     }
 }
