@@ -8,17 +8,17 @@
 "AUTO_FULLSCREEN" = "Tự động toàn màn hình (YTAutoFullScreen)";
 "AUTO_FULLSCREEN_DESC" = "Tự động phát video ở chế độ toàn màn hình.";
 
-"SNAP_TO_CHAPTER" = "Vô hiệu hóa chuyển video";
-"SNAP_TO_CHAPTER_DESC" = "Tắt tính năng tự động chuyển video khi tìm kiếm video. Yêu cầu khởi động lại ứng dụng.";
+"SNAP_TO_CHAPTER" = "Vô hiệu hóa tự động chuyển tới chương";
+"SNAP_TO_CHAPTER_DESC" = "Tắt tính năng tự động chuyển tới chương gần nhất khi tua video. Cần khởi động lại ứng dụng.";
 
-"PINCH_TO_ZOOM" = "Vô hiệu hóa chụm để thu phóng";
-"PINCH_TO_ZOOM_DESC" = "Yêu cầu khởi động lại ứng dụng.";
+"PINCH_TO_ZOOM" = "Vô hiệu hóa chạm để thu phóng";
+"PINCH_TO_ZOOM_DESC" = "Cần khởi động lại ứng dụng.";
 
 "YT_MINIPLAYER" = "Cho phép sử dụng trình phát thu nhỏ với mọi video";
 "YT_MINIPLAYER_DESC" = "Ví dụ: Video cho trẻ em.";
 
 // Video controls overlay options
-"VIDEO_CONTROLS_OVERLAY_OPTIONS" = "Tùy chọn lớp phủ điều khiển video";
+"VIDEO_CONTROLS_OVERLAY_OPTIONS" = "Tùy chọn hiển thị trong trình phát video";
 
 "HIDE_AUTOPLAY_SWITCH" = "Ẩn nút Tự động phát";
 "HIDE_AUTOPLAY_SWITCH_DESC" = "Ẩn nút Tự động phát trong trình phát video.";
@@ -51,31 +51,31 @@
 "DONT_EAT_MY_CONTENT_DESC" = "Ẩn tai thỏ/Dynamic Island chèn vào các video có tỷ lệ 2:1. Cần khởi động lại ứng dụng.";
 
 // Shorts controls overlay options
-"SHORTS_CONTROLS_OVERLAY_OPTIONS" = "Tùy chọn điều khiển short";
+"SHORTS_CONTROLS_OVERLAY_OPTIONS" = "Tùy chọn hiển thị trong Shorts";
 
-"HIDE_SHORTS_CHANNEL_AVATAR" = "Ẩn hình đại diện của kênh Shorts";
+"HIDE_SHORTS_CHANNEL_AVATAR" = "Ẩn hình đại diện của kênh";
 "HIDE_SHORTS_CHANNEL_AVATAR_DESC" = "";
 
-"HIDE_SHORTS_DISLIKE_BUTTON" = "Ẩn nút không thích Shorts";
+"HIDE_SHORTS_DISLIKE_BUTTON" = "Ẩn nút không thích";
 "HIDE_SHORTS_DISLIKE_BUTTON_DESC" = "";
 
-"HIDE_SHORTS_COMMENT_BUTTON" = "Ẩn nút bình luận Shorts";
+"HIDE_SHORTS_COMMENT_BUTTON" = "Ẩn nút bình luận";
 "HIDE_SHORTS_COMMENT_BUTTON_DESC" = "";
 
-"HIDE_SHORTS_REMIX_BUTTON" = "Ẩn nút phối lại video ngắn";
+"HIDE_SHORTS_REMIX_BUTTON" = "Ẩn nút phối lại video";
 "HIDE_SHORTS_REMIX_BUTTON_DESC" = "";
 
-"HIDE_SHORTS_SHARE_BUTTON" = "Ẩn nút chia sẻ Shorts";
+"HIDE_SHORTS_SHARE_BUTTON" = "Ẩn nút chia sẻ";
 "HIDE_SHORTS_SHARE_BUTTON_DESC" = "";
 
-"HIDE_SUPER_THANKS" = "Ẩn biểu ngữ 'Mua hàng Vô cùng cảm ơn'";
-"HIDE_SUPER_THANKS_DESC" = "Ẩn biểu ngữ "Mua hàng Vô cùng cảm ơn" trong Shorts.";
+"HIDE_SUPER_THANKS" = "Ẩn biểu ngữ 'Mua ảnh động Super Thanks'";
+"HIDE_SUPER_THANKS_DESC" = "Ẩn biểu ngữ 'Mua ảnh động Super Thanks'.";
 
-"DISABLE_RESUME_TO_SHORTS" = "Vô hiệu hóa khôi phục Shorts";
-"DISABLE_RESUME_TO_SHORTS_DESC" = "Nếu bạn đóng YouTube trong khi đang xem các video ngắn, thì các video ngắn đó sẽ không tự động phát vào lần tới khi bạn mở YouTube.";
+"DISABLE_RESUME_TO_SHORTS" = "Tắt tính năng tự động tiếp tục Shorts";
+"DISABLE_RESUME_TO_SHORTS_DESC" = "Nếu bạn thoát YouTube trong khi đang xem video Shorts, video Shorts đó sẽ không tự động phát khi bạn mở lại YouTube.";
 
 // Theme
-"THEME_OPTIONS" = "Tùy chọn chủ đề";
+"THEME_OPTIONS" = "Tùy chọn giao diện";
 
 "OLED_DARK_THEME" = "Chế độ tối cho màn OLED (Thử nghiệm)";
 "OLED_DARK_THEME_2" = "Chế độ tối cho màn OLED";
