@@ -218,10 +218,9 @@ static BOOL didFinishLaunching;
 // Remove uYou download button in playlists
 // https://github.com/qnblackcat/uYouPlus/issues/798#issuecomment-1364853420
 %hook YTPlaylistHeaderViewController
-- (id)downloadsButton {
-    UIView *button = %orig;
-    button.hidden = true;
-    return button;
+- (void)viewDidLoad {
+    %orig;
+    self.downloadsButton.hidden = YES;
 }
 %end
 
@@ -1284,6 +1283,9 @@ UIColor* raisedColor = [UIColor colorWithRed:0.035 green:0.035 blue:0.035 alpha:
 
 # pragma mark - ctor
 %ctor {
+    // Load uYou first so its functions are available for hooks.
+    dlopen([[NSString stringWithFormat:@"%@/Frameworks/uYou.dylib", [[NSBundle mainBundle] bundlePath]] UTF8String], RTLD_LAZY);
+
     %init;
     if (@available(iOS 16, *)) {
        %init(iOS16);

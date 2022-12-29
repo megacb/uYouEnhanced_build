@@ -45,6 +45,10 @@
 @property (nonatomic, assign, readwrite) BOOL enableSnapToChapter;
 @end
 
+@interface YTPlaylistHeaderViewController: UIViewController
+@property UIButton *downloadsButton;
+@end
+
 // DontEatMyContent
 BOOL DEMC_deviceIsSupported();
 void DEMC_activate();
