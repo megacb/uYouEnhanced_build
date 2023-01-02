@@ -44,8 +44,8 @@
 "HIDE_HOVER_CARD" = "영상 끝 부분의 호버카드 숨기기 (YTNoHoverCards)";
 "HIDE_HOVER_CARD_DESC" = "영상의 끝 부분에서 게시자가 표시한 영상 썸네일을 숨깁니다.";
 
-"HIDE_RIGHT_PANEL" = "Hide the right panel in fullscreen mode";
-"HIDE_RIGHT_PANEL_DESC" = "App restart is required.";
+"HIDE_RIGHT_PANEL" = "전체화면 모드에서 오른쪽 패널 숨기기";
+"HIDE_RIGHT_PANEL_DESC" = "앱을 다시 시작해야 합니다.";
 
 "RED_PROGRESS_BAR" = "빨간색 진행 막대";
 "RED_PROGRESS_BAR_DESC" = "영상 진행 막대의 색을 빨간색으로 되돌립니다. 앱을 다시 시작해야 합니다.";
@@ -71,11 +71,11 @@
 "HIDE_SHORTS_SHARE_BUTTON" = "Shorts 영상 공유 버튼 숨기기";
 "HIDE_SHORTS_SHARE_BUTTON_DESC" = "";
 
-"HIDE_SUPER_THANKS" = "Super Thanks 구매 배너 숨기기";
-"HIDE_SUPER_THANKS_DESC" = "Shorts 영상에서 Super Thanks 구매 배너를 숨깁니다.";
+"HIDE_SUPER_THANKS" = "'Super Thanks 구매' 배너 숨기기";
+"HIDE_SUPER_THANKS_DESC" = "Shorts 영상에서 'Super Thanks 구매' 배너를 숨깁니다.";
 
 "DISABLE_RESUME_TO_SHORTS" = "Shorts 복원 사용하지 않음";
-"DISABLE_RESUME_TO_SHORTS_DESC" = "Shorts 영상을 시청하는 도중 앱을 닫을 때, 다음에 앱을 실행할 경우 Shorts 영상이 자동으로 재생되는 기능을 사용하지 않습니다.";
+"DISABLE_RESUME_TO_SHORTS_DESC" = "Shorts를 시청하는 도중 앱을 닫을 때, 다시 앱을 열어도 Shorts 영상이 자동재생되지 않도록 합니다.";
 
 // Theme
 "THEME_OPTIONS" = "테마 설정";
