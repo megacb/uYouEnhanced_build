@@ -44,6 +44,9 @@
 "HIDE_HOVER_CARD" = "A záróképernyők lebegő kártyáinak elrejtése (YTNoHoverCards)";
 "HIDE_HOVER_CARD_DESC" = "Az alkotói záróképernyők (bélyegképek) elrejtése a videók végén.";
 
+"HIDE_RIGHT_PANEL" = "Hide the right panel in fullscreen mode";
+"HIDE_RIGHT_PANEL_DESC" = "App restart is required.";
+
 "RED_PROGRESS_BAR" = "Red progress bar";
 "RED_PROGRESS_BAR_DESC" = "Bring back the red progress bar. App restart is required.";
 

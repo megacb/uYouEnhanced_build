@@ -44,6 +44,9 @@
 "HIDE_HOVER_CARD" = "隱藏片尾畫面懸浮卡片 (YTNoHoverCards)";
 "HIDE_HOVER_CARD_DESC" = "在影片結尾隱藏創作者結束畫面。";
 
+"HIDE_RIGHT_PANEL" = "Hide the right panel in fullscreen mode";
+"HIDE_RIGHT_PANEL_DESC" = "App restart is required.";
+
 "RED_PROGRESS_BAR" = "Red progress bar";
 "RED_PROGRESS_BAR_DESC" = "Bring back the red progress bar. App restart is required.";
 

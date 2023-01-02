@@ -44,6 +44,9 @@
 "HIDE_HOVER_CARD" = "Masquer les cartes de survol des écrans de fin (YTNoHoverCards)";
 "HIDE_HOVER_CARD_DESC" = "Masquer les écrans de fin (vignettes) des créateurs à la fin des vidéos";
 
+"HIDE_RIGHT_PANEL" = "Hide the right panel in fullscreen mode";
+"HIDE_RIGHT_PANEL_DESC" = "App restart is required.";
+
 "RED_PROGRESS_BAR" = "Barre de progression rouge";
 "RED_PROGRESS_BAR_DESC" = "Rétablir la barre de progression rouge. Un redémarrage de l'application est nécessaire.";
 

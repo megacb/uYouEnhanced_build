@@ -44,6 +44,9 @@
 "HIDE_HOVER_CARD" = "Ocultar tarjetas flotantes en las pantallas finales (YTNoHoverCards)";
 "HIDE_HOVER_CARD_DESC" = "Ocultar tarjetas flotantes del creador (miniaturas) al final de los vídeos.";
 
+"HIDE_RIGHT_PANEL" = "Hide the right panel in fullscreen mode";
+"HIDE_RIGHT_PANEL_DESC" = "App restart is required.";
+
 "RED_PROGRESS_BAR" = "Red progress bar";
 "RED_PROGRESS_BAR_DESC" = "Bring back the red progress bar. App restart is required.";
 

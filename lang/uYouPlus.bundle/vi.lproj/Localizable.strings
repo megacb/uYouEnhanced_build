@@ -44,6 +44,9 @@
 "HIDE_HOVER_CARD" = "Ẩn video dạng thumbnails (YTNoHoverCards)";
 "HIDE_HOVER_CARD_DESC" = "Ẩn thumbnail của các video đề xuất xuất hiện ở cuối video.";
 
+"HIDE_RIGHT_PANEL" = "Ẩn bảng điều khiển bên phải";
+"HIDE_RIGHT_PANEL_DESC" = "Ẩn bảng điều khiển bên phải khi ở chế độ toàn màn hình. Cần khởi động lại ứng dụng.";
+
 "RED_PROGRESS_BAR" = "Thanh tiến trình màu đỏ";
 "RED_PROGRESS_BAR_DESC" = "Mang lại thanh tiến trình màu đỏ. Yêu cầu khởi động lại ứng dụng.";
 

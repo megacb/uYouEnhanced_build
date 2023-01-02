@@ -44,6 +44,9 @@
 "HIDE_HOVER_CARD" = "動画終わりのホバーカードを非表示 (YTNoHoverCards)";
 "HIDE_HOVER_CARD_DESC" = "動画の最後のホバーカード(サムネイル)を非表示にします。";
 
+"HIDE_RIGHT_PANEL" = "Hide the right panel in fullscreen mode";
+"HIDE_RIGHT_PANEL_DESC" = "App restart is required.";
+
 "RED_PROGRESS_BAR" = "赤いプログレスバー";
 "RED_PROGRESS_BAR_DESC" = "赤いプログレスバーに戻します。アプリの再起動が必要です。";
 

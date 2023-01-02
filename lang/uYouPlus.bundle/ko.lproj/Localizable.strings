@@ -44,6 +44,9 @@
 "HIDE_HOVER_CARD" = "영상 끝 부분의 호버카드 숨기기 (YTNoHoverCards)";
 "HIDE_HOVER_CARD_DESC" = "영상의 끝 부분에서 게시자가 표시한 영상 썸네일을 숨깁니다.";
 
+"HIDE_RIGHT_PANEL" = "Hide the right panel in fullscreen mode";
+"HIDE_RIGHT_PANEL_DESC" = "App restart is required.";
+
 "RED_PROGRESS_BAR" = "빨간색 진행 막대";
 "RED_PROGRESS_BAR_DESC" = "영상 진행 막대의 색을 빨간색으로 되돌립니다. 앱을 다시 시작해야 합니다.";
 
