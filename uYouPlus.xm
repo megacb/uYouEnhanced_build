@@ -287,6 +287,7 @@ static BOOL didFinishLaunching;
         if ([cell respondsToSelector:@selector(node)]) {
             if ([[[cell node] accessibilityIdentifier] isEqualToString:@"statement_banner.view"]) { [self removeShortsAndFeaturesAdsAtIndexPath:indexPath]; }
             if ([[[cell node] accessibilityIdentifier] isEqualToString:@"compact.view"]) { [self removeShortsAndFeaturesAdsAtIndexPath:indexPath]; }
+            // if ([[[cell node] accessibilityIdentifier] isEqualToString:@"id.ui.video_metadata_carousel"]) { [self removeShortsAndFeaturesAdsAtIndexPath:indexPath]; }
         }
     }
     return %orig;
@@ -831,11 +832,31 @@ void DEMC_centerRenderingView() {
 %end
 
 # pragma mark - uYouPlus
+// Video Player Options
 // Skips content warning before playing *some videos - @PoomSmart
 %hook YTPlayabilityResolutionUserActionUIController
 - (void)showConfirmAlert { [self confirmAlertDidPressConfirm]; }
 %end
 
+// Disable snap to chapter
+%hook YTSegmentableInlinePlayerBarView
+- (void)didMoveToWindow {
+    %orig;
+    if (IsEnabled(@"snapToChapter_enabled")) {
+        self.enableSnapToChapter = NO;
+    }
+}
+%end
+
+// Disable Pinch to zoom
+%hook YTColdConfig
+- (BOOL)videoZoomFreeZoomEnabledGlobalConfig { 
+    if (IsEnabled(@"pinchToZoom_enabled")) { return NO; }
+    else { return %orig; }
+}
+%end
+
+// Video Controls Overlay Options
 // Hide CC / Autoplay switch
 %hook YTMainAppControlsOverlayView
 - (void)setClosedCaptionsOrSubtitlesButtonAvailable:(BOOL)arg1 { // hide CC button
@@ -846,6 +867,21 @@ void DEMC_centerRenderingView() {
 }
 - (void)setAutoplaySwitchButtonRenderer:(id)arg1 { // hide Autoplay
     if (IsEnabled(@"hideAutoplaySwitch_enabled")) {}
+    else { return %orig; }
+}
+%end
+
+// Hide HUD Messages
+%hook YTHUDMessageView
+- (id)initWithMessage:(id)arg1 dismissHandler:(id)arg2 {
+    return IsEnabled(@"hideHUD_enabled") ? nil : %orig;
+}
+%end
+
+// Hide Watermark
+%hook YTAnnotationsViewController
+- (void)loadFeaturedChannelWatermark {
+    if (IsEnabled(@"hideChannelWatermark_enabled")) {}
     else { return %orig; }
 }
 %end
@@ -866,11 +902,97 @@ void DEMC_centerRenderingView() {
 %end
 %end
 
-// Hide HUD Messages
-%hook YTHUDMessageView
-- (id)initWithMessage:(id)arg1 dismissHandler:(id)arg2 {
-    return IsEnabled(@"hideHUD_enabled") ? nil : %orig;
+// Bring back the red progress bar
+%hook YTColdConfig
+- (BOOL)segmentablePlayerBarUpdateColors {  
+    if (IsEnabled(@"redProgressBar_enabled")) { return NO; }
+    else { return %orig; }
 }
+%end
+
+// Disable the right panel in fullscreen mode
+%hook YTColdConfig
+- (BOOL)isLandscapeEngagementPanelEnabled { 
+    if (IsEnabled(@"hideRightPanel_enabled")) { return NO; }
+    else { return %orig; }
+}
+%end
+
+// Shorts Controls Overlay Options
+%hook YTReelWatchPlaybackOverlayView
+- (void)setNativePivotButton:(id)arg1 {
+    if (IsEnabled(@"hideShortsChannelAvatar_enabled")) {}
+    else { return %orig; }
+}
+- (void)setReelDislikeButton:(id)arg1 {
+    if (IsEnabled(@"hideShortsDislikeButton_enabled")) {}
+    else { return %orig; }
+}
+- (void)setViewCommentButton:(id)arg1 {
+    if (IsEnabled(@"hideShortsCommentButton_enabled")) {}
+    else { return %orig; }
+}
+- (void)setRemixButton:(id)arg1 {
+    if (IsEnabled(@"hideShortsRemixButton_enabled")) {}
+    else { return %orig; }
+}
+- (void)setShareButton:(id)arg1 {
+    if (IsEnabled(@"hideShortsShareButton_enabled")) {}
+    else { return %orig; }
+}
+%end
+
+%hook _ASDisplayView
+- (void)didMoveToWindow {
+    %orig;
+    if ((IsEnabled(@"hideBuySuperThanks_enabled")) && ([self.accessibilityIdentifier isEqualToString:@"id.elements.components.suggested_action"])) { self.hidden = YES; }
+}
+%end
+
+%hook YTColdConfig
+- (BOOL)enableResumeToShorts {
+    if (IsEnabled(@"disableResumeToShorts")) { return NO; }
+    else { return %orig; }
+}
+%end
+
+// Theme Options
+// Old dark theme (gray)
+%group gOldDarkTheme
+%hook YTColdConfig
+- (BOOL)uiSystemsClientGlobalConfigUseDarkerPaletteBgColorForNative { return NO; }
+- (BOOL)uiSystemsClientGlobalConfigUseDarkerPaletteTextColorForNative { return NO; }
+- (BOOL)enableCinematicContainerOnClient { return NO; }
+%end
+
+%hook _ASDisplayView
+- (void)didMoveToWindow {
+    %orig;
+    if ([self.accessibilityIdentifier isEqualToString:@"id.elements.components.comment_composer"]) { self.backgroundColor = [UIColor clearColor]; }
+    if ([self.accessibilityIdentifier isEqualToString:@"id.elements.components.video_list_entry"]) { self.backgroundColor = [UIColor clearColor]; }
+}
+%end
+
+%hook ASCollectionView
+- (void)didMoveToWindow {
+    %orig;
+    self.superview.backgroundColor = [UIColor colorWithRed:0.129 green:0.129 blue:0.129 alpha:1.0];
+}
+%end
+
+%hook YTFullscreenEngagementOverlayView
+- (void)didMoveToWindow {
+    %orig;
+    self.subviews[0].backgroundColor = [UIColor clearColor];
+}
+%end
+
+%hook YTRelatedVideosView
+- (void)didMoveToWindow {
+    %orig;
+    self.subviews[0].backgroundColor = [UIColor clearColor];
+}
+%end
 %end
 
 // OLED dark mode by BandarHL
@@ -1165,56 +1287,7 @@ UIColor* raisedColor = [UIColor colorWithRed:0.035 green:0.035 blue:0.035 alpha:
 %end
 %end
 
-// Old dark theme (gray)
-%group gOldDarkTheme
-%hook YTColdConfig
-- (BOOL)uiSystemsClientGlobalConfigUseDarkerPaletteBgColorForNative { return NO; }
-- (BOOL)uiSystemsClientGlobalConfigUseDarkerPaletteTextColorForNative { return NO; }
-- (BOOL)enableCinematicContainerOnClient { return NO; }
-%end
-
-%hook _ASDisplayView
-- (void)didMoveToWindow {
-    %orig;
-    if ([self.accessibilityIdentifier isEqualToString:@"id.elements.components.comment_composer"]) { self.backgroundColor = [UIColor clearColor]; }
-    if ([self.accessibilityIdentifier isEqualToString:@"id.elements.components.video_list_entry"]) { self.backgroundColor = [UIColor clearColor]; }
-}
-%end
-
-%hook ASCollectionView
-- (void)didMoveToWindow {
-    %orig;
-    self.superview.backgroundColor = [UIColor colorWithRed:0.129 green:0.129 blue:0.129 alpha:1.0];
-}
-%end
-%end
-
-// Disable Pinch to zoom
-%hook YTColdConfig
-- (BOOL)videoZoomFreeZoomEnabledGlobalConfig { 
-    if (IsEnabled(@"pinchToZoom_enabled")) { return NO; }
-    else { return %orig; }
-}
-%end
-
-// Disable snap to chapter
-%hook YTSegmentableInlinePlayerBarView
-- (void)didMoveToWindow {
-    %orig;
-    if (IsEnabled(@"snapToChapter_enabled")) {
-        self.enableSnapToChapter = NO;
-    }
-}
-%end
-
-// Hide Watermark
-%hook YTAnnotationsViewController
-- (void)loadFeaturedChannelWatermark {
-    if (IsEnabled(@"hideChannelWatermark_enabled")) {}
-    else { return %orig; }
-}
-%end
-
+// Miscellaneous
 // Disable hints - https://github.com/LillieH001/YouTube-Reborn/blob/v4/
 %group gDisableHints
 %hook YTSettings
@@ -1233,52 +1306,6 @@ UIColor* raisedColor = [UIColor colorWithRed:0.035 green:0.035 blue:0.035 alpha:
     %orig(YES);
 }
 %end
-%end
-
-// Bring back the red progress bar
-%hook YTColdConfig
-- (BOOL)segmentablePlayerBarUpdateColors { 
-    if (IsEnabled(@"redProgressBar_enabled")) { return NO; }
-    else { return %orig; }
-}
-%end
-
-// Shorts options
-%hook YTReelWatchPlaybackOverlayView
-- (void)setNativePivotButton:(id)arg1 {
-    if (IsEnabled(@"hideShortsChannelAvatar_enabled")) {}
-    else { return %orig; }
-}
-- (void)setReelDislikeButton:(id)arg1 {
-    if (IsEnabled(@"hideShortsDislikeButton_enabled")) {}
-    else { return %orig; }
-}
-- (void)setViewCommentButton:(id)arg1 {
-    if (IsEnabled(@"hideShortsCommentButton_enabled")) {}
-    else { return %orig; }
-}
-- (void)setRemixButton:(id)arg1 {
-    if (IsEnabled(@"hideShortsRemixButton_enabled")) {}
-    else { return %orig; }
-}
-- (void)setShareButton:(id)arg1 {
-    if (IsEnabled(@"hideShortsShareButton_enabled")) {}
-    else { return %orig; }
-}
-%end
-
-%hook _ASDisplayView
-- (void)didMoveToWindow {
-    %orig;
-    if ((IsEnabled(@"hideBuySuperThanks_enabled")) && ([self.accessibilityIdentifier isEqualToString:@"id.elements.components.suggested_action"])) { self.hidden = YES; }
-}
-%end
-
-%hook YTColdConfig
-- (BOOL)enableResumeToShorts {
-    if (IsEnabled(@"disableResumeToShorts")) { return NO; }
-    else { return %orig; }
-}
 %end
 
 # pragma mark - ctor
