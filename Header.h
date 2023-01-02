@@ -144,7 +144,13 @@ void DEMC_centerRenderingView();
 - (void)singleVideo:(id)video playbackRateDidChange:(float)rate;
 @end
 
-// OLED Darkmode
+// App Theme
+@interface YTFullscreenEngagementOverlayView : UIView
+@end
+
+@interface YTRelatedVideosView : UIView
+@end
+
 @interface ELMView : UIView
 @end
 
