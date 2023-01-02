@@ -1,24 +1,24 @@
 // Settings
-"VERSION" = "当前uYouPlus插件版本：%@";
+"VERSION" = "当前 uYouPlus 插件版本：%@";
 "VERSION_CHECK" = "点击此处检查更新！";
 
 // Video player options
-"VIDEO_PLAYER_OPTIONS" = "Video Player Options";
+"VIDEO_PLAYER_OPTIONS" = "视频播放器选项";
 
 "AUTO_FULLSCREEN" = "自动全屏 （YTAutoFullScreen）";
 "AUTO_FULLSCREEN_DESC" = "自动全屏播放视频。";
 
-"SNAP_TO_CHAPTER" = "Disable snap to chapter";
-"SNAP_TO_CHAPTER_DESC" = "Disable auto snap to chapter when seeking videos. App restart is required.";
+"SNAP_TO_CHAPTER" = "禁用进度条章节吸附";
+"SNAP_TO_CHAPTER_DESC" = "禁用进度条在手动移动时自动吸附至章节始末处的行为。更改本设置后需要重启App。";
 
-"PINCH_TO_ZOOM" = "Disable pinch to zoom";
-"PINCH_TO_ZOOM_DESC" = "App restart is required.";
+"PINCH_TO_ZOOM" = "禁用捏合缩放";
+"PINCH_TO_ZOOM_DESC" = "更改本设置后需要重启App。";
 
-"YT_MINIPLAYER" = "为所有YouTube视频启用迷你播放器";
+"YT_MINIPLAYER" = "为所有 YouTube 视频启用迷你播放器";
 "YT_MINIPLAYER_DESC" = "例如：面向儿童的视频。";
 
 // Video controls overlay options
-"VIDEO_CONTROLS_OVERLAY_OPTIONS" = "Video Controls Overlay Options";
+"VIDEO_CONTROLS_OVERLAY_OPTIONS" = "播放器控制界面选项";
 
 "HIDE_AUTOPLAY_SWITCH" = "隐藏自动播放模式开关";
 "HIDE_AUTOPLAY_SWITCH_DESC" = "隐藏视频播放器控制界面上的自动播放开关。";
@@ -32,8 +32,8 @@
 "HIDE_PAID_PROMOTION_CARDS" = "隐藏付费宣传内容提醒横幅";
 "HIDE_PAID_PROMOTION_CARDS_DESC" = "隐藏出现在部分视频中的“包含付费宣传内容”横幅。";
 
-"HIDE_CHANNEL_WATERMARK" = "Hide Channel Watermark";
-"HIDE_CHANNEL_WATERMARK_DESC" = "Hide channel's watermark in video controls overlay. App restart is required.";
+"HIDE_CHANNEL_WATERMARK" = "隐藏频道水印";
+"HIDE_CHANNEL_WATERMARK_DESC" = "隐藏视频播放器控制界面上的频道水印。更改本设置后需要重启App。";
 
 "HIDE_PREVIOUS_AND_NEXT_BUTTON" = "隐藏上一个/下一个按钮";
 "HIDE_PREVIOUS_AND_NEXT_BUTTON_DESC" = "隐藏视频播放器控制界面上的上一个/下一个按钮。";
@@ -42,59 +42,59 @@
 "REPLACE_PREVIOUS_NEXT_BUTTON_DESC" = "将视频播放器控制界面上的上一个/下一个按钮替换成快进/快退按钮。更改本设置后需要重启App。";
 
 "HIDE_HOVER_CARD" = "隐藏片尾画面悬浮卡片 （YTNoHoverCards）";
-"HIDE_HOVER_CARD_DESC" = "隐藏视频结尾处的创作者片尾画面元素（缩略图）。";
+"HIDE_HOVER_CARD_DESC" = "隐藏视频结尾处的片尾画面元素。例如：其他视频的封面等。";
 
-"HIDE_RIGHT_PANEL" = "Hide the right panel in fullscreen mode";
-"HIDE_RIGHT_PANEL_DESC" = "App restart is required.";
+"HIDE_RIGHT_PANEL" = "隐藏全屏模式右侧面板";
+"HIDE_RIGHT_PANEL_DESC" = "更改本设置后需要重启App。";
 
-"RED_PROGRESS_BAR" = "Red progress bar";
-"RED_PROGRESS_BAR_DESC" = "Bring back the red progress bar. App restart is required.";
+"RED_PROGRESS_BAR" = "红色进度条";
+"RED_PROGRESS_BAR_DESC" = "将新版本中的白色进度条还原为红色。更改本设置后需要重启App。";
 
 "DONT_EAT_MY_CONTENT" = "2:1视频刘海屏/灵动岛优化 （DontEatMyContent）";
-"DONT_EAT_MY_CONTENT_DESC" = "改进部分机型的刘海区域或灵动岛在2:1比例视频中引发的遮挡问题（缺口）。更改本设置后需要重启App。";
+"DONT_EAT_MY_CONTENT_DESC" = "改进部分机型的刘海区域或灵动岛在2:1比例视频中引发的遮挡问题（如缺口）。更改本设置后需要重启App。";
 
 // Shorts controls overlay options
-"SHORTS_CONTROLS_OVERLAY_OPTIONS" = "Shorts Controls Overlay Options";
+"SHORTS_CONTROLS_OVERLAY_OPTIONS" = "Shorts 短片播放器选项";
 
-"HIDE_SHORTS_CHANNEL_AVATAR" = "Hide Shorts channel's avatar";
+"HIDE_SHORTS_CHANNEL_AVATAR" = "隐藏频道头像";
 "HIDE_SHORTS_CHANNEL_AVATAR_DESC" = "";
 
-"HIDE_SHORTS_DISLIKE_BUTTON" = "Hide Shorts dislike button";
+"HIDE_SHORTS_DISLIKE_BUTTON" = "隐藏“踩”按钮";
 "HIDE_SHORTS_DISLIKE_BUTTON_DESC" = "";
 
-"HIDE_SHORTS_COMMENT_BUTTON" = "Hide Shorts comment button";
+"HIDE_SHORTS_COMMENT_BUTTON" = "隐藏评论按钮";
 "HIDE_SHORTS_COMMENT_BUTTON_DESC" = "";
 
-"HIDE_SHORTS_REMIX_BUTTON" = "Hide Shorts remix button";
+"HIDE_SHORTS_REMIX_BUTTON" = "隐藏混剪按钮";
 "HIDE_SHORTS_REMIX_BUTTON_DESC" = "";
 
-"HIDE_SHORTS_SHARE_BUTTON" = "Hide Shorts share button";
+"HIDE_SHORTS_SHARE_BUTTON" = "隐藏分享按钮";
 "HIDE_SHORTS_SHARE_BUTTON_DESC" = "";
 
-"HIDE_SUPER_THANKS" = "Hide 'Buy Super Thanks' banner";
-"HIDE_SUPER_THANKS_DESC" = "Hide the 'Buy Super Thanks' banner in Shorts.";
+"HIDE_SUPER_THANKS" = "隐藏“购买超级感谢”横幅";
+"HIDE_SUPER_THANKS_DESC" = "隐藏 Shorts 短片播放器中的“购买超级感谢”横幅。";
 
-"DISABLE_RESUME_TO_SHORTS" = "Disable resume to Shorts";
-"DISABLE_RESUME_TO_SHORTS_DESC" = "If you close YouTube while watching Shorts, Shorts won‘t automatically play next time you launch YouTube.";
+"DISABLE_RESUME_TO_SHORTS" = "禁用 Shorts 短片自动恢复";
+"DISABLE_RESUME_TO_SHORTS_DESC" = "若您在观看 Shorts 短片时关闭了 YouTube，下次启动时 Shorts 短片将不会自动继续播放。";
 
 // Theme
-"THEME_OPTIONS" = "Theme Options";
+"THEME_OPTIONS" = "主题选项";
 
 "OLED_DARK_THEME" = "OLED 深色模式（实验性功能）";
 "OLED_DARK_THEME_2" = "OLED 深色模式";
 "OLED_DARK_THEME_DESC" = "在某些情况下可能不会正常工作。更改本设置后需要重启App。";
 
-"OLD_DARK_THEME" = "Old dark theme";
-"OLD_DARK_THEME_DESC" = "Old YouTube's dark theme (grey theme). App restart is required.";
+"OLD_DARK_THEME" = "旧深色模式";
+"OLD_DARK_THEME_DESC" = "启动旧版本 YouTube 的深色模式（灰色模式）。更改本设置后需要重启App。";
 
-"DEFAULT_THEME" = "Defaut";
-"DEFAULT_THEME_DESC" = "Default dark(er) theme of YouTube. App restart is required.";
+"DEFAULT_THEME" = "默认深色模式";
+"DEFAULT_THEME_DESC" = "使用当前版本 YouTube 的默认深色模式（比灰色稍暗）。更改本设置后需要重启App。";
 
 "OLED_KEYBOARD" = "OLED 键盘（实验性功能）";
 "OLED_KEYBOARD_DESC" = "在某些情况下可能不会正常工作。更改本设置后需要重启App。";
 
 // Miscellaneous
-"MISCELLANEOUS" = "Miscellaneous";
+"MISCELLANEOUS" = "其它选项";
 
 "CAST_CONFIRM" = "投屏前确认 （YTCastConfirm）";
 "CAST_CONFIRM_DESC" = "在投屏前显示确认对话框以防意外劫屏。";
@@ -103,14 +103,14 @@
 "MSG_YES" = "确定";
 "MSG_CANCEL" = "取消";
 
-"DISABLE_HINTS" = "Disable hints";
-"DISABLE_HINTS_DESC" = "Disable feature hints from YouTube that usually display when the app is freshly installed.";
+"DISABLE_HINTS" = "禁用首开介绍";
+"DISABLE_HINTS_DESC" = "禁用首次打开 App 时出现的功能探索提示。";
 
-"FIX_GOOGLE_SIGNIN" = "修复Google账号登录问题（仅TrollStore用户有效）";
-"FIX_GOOGLE_SIGNIN_DESC" = "仅在使用TrollStore安装本App的情况下生效：启用本设置后即可正常登录您的Google账号。更改本设置后需要重启App。";
+"FIX_GOOGLE_SIGNIN" = "修复 Google 账号登录问题（仅 TrollStore 用户有效）";
+"FIX_GOOGLE_SIGNIN_DESC" = "仅在使用 TrollStore 安装本 App 的情况下生效：启用本设置后即可正常登录您的 Google 账号。更改本设置后需要重启App。";
 
 "NEW_MINIPLAYER_STYLE" = "新迷你播放器风格 （BigYTMiniPlayer）";
 "NEW_MINIPLAYER_STYLE_DESC" = "更改本设置后需要重启App。";
 
-"YT_RE_EXPLORE" = "将Shorts选项卡替换成探索选项卡 （YTReExplore）";
+"YT_RE_EXPLORE" = "将 Shorts 选项卡替换成探索选项卡 （YTReExplore）";
 "YT_RE_EXPLORE_DESC" = "更改本设置后需要重启App。";
