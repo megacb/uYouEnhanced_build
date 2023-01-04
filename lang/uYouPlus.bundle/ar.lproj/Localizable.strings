@@ -44,8 +44,8 @@
 "HIDE_HOVER_CARD" = "إخفاء صور المقاطع الأخرى في نهاية المقاطع (أداة YTNoHoverCards)";
 "HIDE_HOVER_CARD_DESC" = "إخفاء الصور المصغرة الظاهرة على مشغل الفيديو في نهاية المقطع.";
 
-"HIDE_RIGHT_PANEL" = "Hide the right panel in fullscreen mode";
-"HIDE_RIGHT_PANEL_DESC" = "App restart is required.";
+"HIDE_RIGHT_PANEL" = "إخفاء القائمة اليمنى التي تظهر في وضع ملء الشاشة";
+"HIDE_RIGHT_PANEL_DESC" = "تتطلب إعادة تشغيل التطبيق.";
 
 "RED_PROGRESS_BAR" = "شريط تقدّم أحمر";
 "RED_PROGRESS_BAR_DESC" = "إعادة اللون الأحمر لشريط التقدم. تتطلب إعادة تشغيل التطبيق.";
