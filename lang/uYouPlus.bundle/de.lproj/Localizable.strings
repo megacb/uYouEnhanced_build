@@ -109,6 +109,9 @@
 "FIX_GOOGLE_SIGNIN" = "Google-Anmeldung reparieren (nur für TrollStore-Benutzer!)";
 "FIX_GOOGLE_SIGNIN_DESC" = "Aktiviere diese Option nur, wenn Sie sich nicht mit Ihrem Google-Account anmelden können und die App über TrollStore installiert wurde. Wenn Sie sich normal anmelden können, halte diese Option deaktiviert! App-Neustart erforderlich!";
 
+"HIDE_CHIP_BAR" = "Hide the Upper bar";
+"HIDE_CHIP_BAR" = "Hide Upper bar in the Home feeds (Trends, Music, Gaming...) and Subcription feeds (All videos, Continue watching...).";
+
 "NEW_MINIPLAYER_STYLE" = "Neuer Miniplayer Style (BigYTMiniPlayer)";
 "NEW_MINIPLAYER_STYLE_DESC" = "App-Neustart erforderlich!";
 

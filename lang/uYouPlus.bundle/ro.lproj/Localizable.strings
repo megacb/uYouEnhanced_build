@@ -20,7 +20,7 @@
 // Video controls overlay options
 "VIDEO_CONTROLS_OVERLAY_OPTIONS" = "Video Controls Overlay Options";
 
-HIDE_AUTOPLAY_SWITCH" = "Ascunde comutatorul Redare automată";
+"HIDE_AUTOPLAY_SWITCH" = "Ascunde comutatorul Redare automată";
 "HIDE_AUTOPLAY_SWITCH_DESC" = "Ascunde comutatorul Redare automată din controalele video.";
 
 "HIDE_SUBTITLES_BUTTON" = "Ascunde butonul Subtitrări";
@@ -108,6 +108,9 @@ HIDE_AUTOPLAY_SWITCH" = "Ascunde comutatorul Redare automată";
 
 "FIX_GOOGLE_SIGNIN" = "Rezolvare problemă autentificare cont Google (doar pentru utilizatorii TrollStore)";
 "FIX_GOOGLE_SIGNIN_DESC" = "Activează această opțiune doar în cazul în care nu te poți autentifica în contul tău Google și apariția a fost instalată via TrollStore. Dacă te poți autentifica fără probleme, țineți setarea dezactivată. Este necesară repornirea aplicației.";
+
+"HIDE_CHIP_BAR" = "Hide the Upper bar";
+"HIDE_CHIP_BAR" = "Hide Upper bar in the Home feeds (Trends, Music, Gaming...) and Subcription feeds (All videos, Continue watching...).";
 
 "NEW_MINIPLAYER_STYLE" = "Stil nou bară Miniplayer (BigYTMiniPlayer)";
 "NEW_MINIPLAYER_STYLE_DESC" = "Este necesară repornirea aplicației.";
