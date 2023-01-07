@@ -44,8 +44,8 @@
 "HIDE_HOVER_CARD" = "Masquer les cartes de survol des écrans de fin (YTNoHoverCards)";
 "HIDE_HOVER_CARD_DESC" = "Masquer les écrans de fin (vignettes) des créateurs à la fin des vidéos";
 
-"HIDE_RIGHT_PANEL" = "Hide the right panel in fullscreen mode";
-"HIDE_RIGHT_PANEL_DESC" = "App restart is required.";
+"HIDE_RIGHT_PANEL" = "Masquer le panneau de droite en mode plein écran";
+"HIDE_RIGHT_PANEL_DESC" = "Un redémarrage de l'application est nécessaire.";
 
 "RED_PROGRESS_BAR" = "Barre de progression rouge";
 "RED_PROGRESS_BAR_DESC" = "Rétablir la barre de progression rouge. Un redémarrage de l'application est nécessaire.";
@@ -87,7 +87,7 @@
 "OLD_DARK_THEME" = "Ancien thème sombre";
 "OLD_DARK_THEME_DESC" = "Ancien thème sombre de YouTube (thème gris). Un redémarrage de l'application est nécessaire.";
 
-"DEFAULT_THEME" = "Défault";
+"DEFAULT_THEME" = "Défaut";
 "DEFAULT_THEME_DESC" = "Thème plus sombre par défaut de YouTube. Un redémarrage de l'application est nécessaire.";
 
 "OLED_KEYBOARD" = "Clavier OLED (Expérimental)";
@@ -109,8 +109,8 @@
 "FIX_GOOGLE_SIGNIN" = "Réparer l'identification Google (pour les utilisateurs de TrollStore uniquement)";
 "FIX_GOOGLE_SIGNIN_DESC" = "Activez cette option uniquement si vous ne pouvez pas vous connecter avec votre compte Google et que l'application a été installée via TrollStore. Si vous pouvez vous connecter normalement, laissez-la désactivée. Un redémarrage de l'application est nécessaire.";
 
-"HIDE_CHIP_BAR" = "Hide the Upper bar";
-"HIDE_CHIP_BAR_DESC" = "Hide Upper bar in the Home feeds (Trends, Music, Gaming...) and Subcription feeds (All videos, Continue watching...). App restart is required.";
+"HIDE_CHIP_BAR" = "Masquer la barre supérieure";
+"HIDE_CHIP_BAR_DESC" = "Masquer la barre supérieure dans les fils d'actualité (Tendances, Musique, Gaming...) et les fils d'abonnement (Toutes les vidéos, Poursuivre la lecture...). Un redémarrage de l'application est nécessaire.";
 
 "NEW_MINIPLAYER_STYLE" = "Nouveau style de barre de mini-lecteur (BigYTMiniPlayer)";
 "NEW_MINIPLAYER_STYLE_DESC" = "Un redémarrage de l'application est nécessaire";
