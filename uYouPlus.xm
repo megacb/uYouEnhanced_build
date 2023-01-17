@@ -808,14 +808,21 @@ void DEMC_centerRenderingView() {
 
 %hook MLHAMQueuePlayer
 - (void)setRate:(float)rate {
-	MSHookIvar<float>(self, "_rate") = rate;
+    MSHookIvar<float>(self, "_rate") = rate;
+	MSHookIvar<float>(self, "_preferredRate") = rate;
 
-	id ytPlayer = MSHookIvar<HAMPlayerInternal *>(self, "_player");
-	[ytPlayer setRate:rate];
+	id player = MSHookIvar<HAMPlayerInternal *>(self, "_player");
+	[player setRate: rate];
 
-	[self.playerEventCenter broadcastRateChange:rate];
+	id stickySettings = MSHookIvar<MLPlayerStickySettings *>(self, "_stickySettings");
+	[stickySettings setRate: rate];
+
+	[self.playerEventCenter broadcastRateChange: rate];
+
+	YTSingleVideoController *singleVideoController = self.delegate;
+	[singleVideoController playerRateDidChange: rate];
 }
-%end
+%end 
 
 %hook YTPlayerViewController
 %property float playbackRate;
