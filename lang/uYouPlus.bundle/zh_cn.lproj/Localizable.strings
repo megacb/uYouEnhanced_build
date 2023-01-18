@@ -106,6 +106,9 @@
 "DISABLE_HINTS" = "禁用首开介绍";
 "DISABLE_HINTS_DESC" = "禁用首次打开 App 时出现的功能探索提示。";
 
+"ENABLE_FLEX" = "Enable FLEX";
+"ENABLE_FLEX_DESC" = "Enable FLEX for debugging (not recommended). Leave this off unless you know what you are doing.";
+
 "FIX_GOOGLE_SIGNIN" = "修复 Google 账号登录问题（仅 TrollStore 用户有效）";
 "FIX_GOOGLE_SIGNIN_DESC" = "仅在使用 TrollStore 安装本 App 的情况下生效：启用本设置后即可正常登录您的 Google 账号。更改本设置后需要重启 App。";
 
