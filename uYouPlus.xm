@@ -862,9 +862,8 @@ void DEMC_centerRenderingView() {
 
 // Disable Pinch to zoom
 %hook YTColdConfig
-- (BOOL)videoZoomFreeZoomEnabledGlobalConfig { 
-    if (IsEnabled(@"pinchToZoom_enabled")) { return NO; }
-    else { return %orig; }
+- (BOOL)videoZoomFreeZoomEnabledGlobalConfig {
+    return IsEnabled(@"pinchToZoom_enabled") ? NO : %orig;
 }
 %end
 
@@ -872,10 +871,7 @@ void DEMC_centerRenderingView() {
 // Hide CC / Autoplay switch
 %hook YTMainAppControlsOverlayView
 - (void)setClosedCaptionsOrSubtitlesButtonAvailable:(BOOL)arg1 { // hide CC button
-    if (IsEnabled(@"hideCC_enabled")) { 
-        return %orig(NO); 
-    }   
-    else { return %orig; }
+    return IsEnabled(@"hideCC_enabled") ? %orig(NO) : %orig;
 }
 - (void)setAutoplaySwitchButtonRenderer:(id)arg1 { // hide Autoplay
     if (IsEnabled(@"hideAutoplaySwitch_enabled")) {}
@@ -916,17 +912,15 @@ void DEMC_centerRenderingView() {
 
 // Bring back the red progress bar
 %hook YTColdConfig
-- (BOOL)segmentablePlayerBarUpdateColors {  
-    if (IsEnabled(@"redProgressBar_enabled")) { return NO; }
-    else { return %orig; }
+- (BOOL)segmentablePlayerBarUpdateColors {
+    return IsEnabled(@"redProgressBar_enabled") ? NO : %orig;
 }
 %end
 
 // Disable the right panel in fullscreen mode
 %hook YTColdConfig
-- (BOOL)isLandscapeEngagementPanelEnabled { 
-    if (IsEnabled(@"hideRightPanel_enabled")) { return NO; }
-    else { return %orig; }
+- (BOOL)isLandscapeEngagementPanelEnabled {
+    return IsEnabled(@"hideRightPanel_enabled") ? NO : %orig;
 }
 %end
 
@@ -1012,58 +1006,40 @@ UIColor* raisedColor = [UIColor colorWithRed:0.035 green:0.035 blue:0.035 alpha:
 %group gOLED
 %hook YTCommonColorPalette
 - (UIColor *)brandBackgroundSolid {
-    if (self.pageStyle == 1) {
-        return [UIColor blackColor];
-    }
-        return %orig;
+    return self.pageStyle == 1 ? [UIColor blackColor] : %orig;
 }
 - (UIColor *)brandBackgroundPrimary {
-    if (self.pageStyle == 1) {
-        return [UIColor blackColor];
-    }
-        return %orig;
+    return self.pageStyle == 1 ? [UIColor blackColor] : %orig;
 }
 - (UIColor *)brandBackgroundSecondary {
-    if (self.pageStyle == 1) {
-        return [[UIColor blackColor] colorWithAlphaComponent:0.9];
-    }
-        return %orig;
+    return self.pageStyle == 1 ? [[UIColor blackColor] colorWithAlphaComponent:0.9] : %orig;
 }
 - (UIColor *)raisedBackground {
-    if (self.pageStyle == 1) {
-        return [UIColor blackColor];
-    }
-        return %orig;
+    return self.pageStyle == 1 ? [UIColor blackColor] : %orig;
 }
 - (UIColor *)staticBrandBlack {
-    if (self.pageStyle == 1) {
-        return [UIColor blackColor];
-    }
-        return %orig;
+    return self.pageStyle == 1 ? [UIColor blackColor] : %orig;
 }
 - (UIColor *)generalBackgroundA {
-    if (self.pageStyle == 1) {
-        return [UIColor blackColor];
-    }
-        return %orig;
+    return self.pageStyle == 1 ? [UIColor blackColor] : %orig;
 }
 %end
 
 // Account view controller
-%hook YTAccountPanelBodyViewController
-- (UIColor *)backgroundColor:(NSInteger)pageStyle {
-    if (pageStyle == 1) { 
-        return [UIColor blackColor]; 
-    }
-        return %orig;
-}
-%end
+// %hook YTAccountPanelBodyViewController
+// - (UIColor *)backgroundColor:(NSInteger)pageStyle {
+//     if (pageStyle == 1) { 
+//         return [UIColor greenColor]; 
+//     }
+//         return %orig;
+// }
+// %end
 
 // Explore
 %hook ASScrollView 
 - (void)didMoveToWindow {
     %orig;
-    if (isDarkMode()) { 
+    if (isDarkMode()) {
         self.backgroundColor = [UIColor clearColor];
     }
 }
@@ -1073,7 +1049,7 @@ UIColor* raisedColor = [UIColor colorWithRed:0.035 green:0.035 blue:0.035 alpha:
 %hook ASCollectionView
 - (void)didMoveToWindow {
     %orig;
-    if (isDarkMode() && [self.nextResponder isKindOfClass:%c(_ASDisplayView)]) { 
+    if (isDarkMode() && [self.nextResponder isKindOfClass:%c(_ASDisplayView)]) {
         self.superview.backgroundColor = [UIColor blackColor];
     }
 }
@@ -1110,55 +1086,38 @@ UIColor* raisedColor = [UIColor colorWithRed:0.035 green:0.035 blue:0.035 alpha:
 
 // Search View
 %hook YTSearchBarView 
-- (void)setBackgroundColor:(UIColor *)color { 
-    if (isDarkMode()) {
-        return %orig([UIColor blackColor]);
-    }
-        return %orig;
+- (void)setBackgroundColor:(UIColor *)color {
+    return isDarkMode() ? %orig([UIColor blackColor]) : %orig;
 }
 %end
 
 // History Search view
 %hook YTSearchBoxView 
-- (void)setBackgroundColor:(UIColor *)color { 
-    if (isDarkMode()) {
-        return %orig([UIColor blackColor]);
-    }
-        return %orig;
+- (void)setBackgroundColor:(UIColor *)color {
+    return isDarkMode() ? %orig([UIColor blackColor]) : %orig;
+
 }
 %end
 
 // Comment view
 %hook YTCommentView
-- (void)setBackgroundColor:(UIColor *)color { 
-    if (isDarkMode()) {
-        return %orig([UIColor blackColor]);
-    }
-        return %orig;
+- (void)setBackgroundColor:(UIColor *)color {
+    return isDarkMode() ? %orig([UIColor blackColor]) : %orig;
 }
 %end
 
 %hook YTCreateCommentAccessoryView
-- (void)setBackgroundColor:(UIColor *)color { 
-    if (isDarkMode()) {
-        return %orig([UIColor blackColor]);
-    }
-        return %orig;
+- (void)setBackgroundColor:(UIColor *)color {
+    return isDarkMode() ? %orig([UIColor blackColor]) : %orig;
 }
 %end
 
 %hook YTCreateCommentTextView
-- (void)setBackgroundColor:(UIColor *)color { 
-    if (isDarkMode()) {
-        return %orig([UIColor blackColor]);
-    }
-        return %orig;
+- (void)setBackgroundColor:(UIColor *)color {
+    return isDarkMode() ? %orig([UIColor blackColor]) : %orig;
 }
 - (void)setTextColor:(UIColor *)color { // fix black text in #Shorts video's comment
-    if (isDarkMode()) { 
-        return %orig([UIColor whiteColor]); 
-    }
-        return %orig;
+    return isDarkMode() ? %orig([UIColor whiteColor]) : %orig;
 }
 %end
 
@@ -1173,39 +1132,36 @@ UIColor* raisedColor = [UIColor colorWithRed:0.035 green:0.035 blue:0.035 alpha:
 
 %hook YTFormattedStringLabel  // YT is werid...
 - (void)setBackgroundColor:(UIColor *)color {
-    if (isDarkMode()) {
-        return %orig([UIColor clearColor]);
-    }
-        return %orig;
+    return isDarkMode() ? %orig([UIColor clearColor]) : %orig;
 }
 %end
 
 // Live chat comment
 %hook YCHLiveChatActionPanelView 
 - (void)setBackgroundColor:(UIColor *)color {
-    if (isDarkMode()) {
-        return %orig([UIColor blackColor]);
-    }
-        return %orig;
+    return isDarkMode() ? %orig([UIColor blackColor]) : %orig;
 }
 %end
 
 %hook YTEmojiTextView
 - (void)setBackgroundColor:(UIColor *)color {
+    return isDarkMode() ? %orig([UIColor blackColor]) : %orig;
+}
+%end
+
+%hook YCHLiveChatView
+- (void)didMoveToWindow {
+    %orig;
     if (isDarkMode()) {
-        return %orig([UIColor blackColor]);
+        self.subviews[1].backgroundColor = [UIColor blackColor];
     }
-        return %orig;
 }
 %end
 
 //
 %hook YTBackstageCreateRepostDetailView
 - (void)setBackgroundColor:(UIColor *)color {
-    if (isDarkMode()) {
-        return %orig([UIColor blackColor]);
-    }
-        return %orig;
+    return isDarkMode() ? %orig([UIColor blackColor]) : %orig;
 }
 %end
 
@@ -1231,26 +1187,20 @@ UIColor* raisedColor = [UIColor colorWithRed:0.035 green:0.035 blue:0.035 alpha:
 // Open link with...
 %hook ASWAppSwitchingSheetHeaderView
 - (void)setBackgroundColor:(UIColor *)color {
-    if (isDarkMode()) {
-        return %orig(raisedColor);
-    }
-        return %orig;
+    return isDarkMode() ? %orig(raisedColor) : %orig;
 }
 %end
 
 %hook ASWAppSwitchingSheetFooterView
 - (void)setBackgroundColor:(UIColor *)color {
-    if (isDarkMode()) {
-        return %orig(raisedColor);
-    }
-        return %orig;
+    return isDarkMode() ? %orig(raisedColor) : %orig;
 }
 %end
 
 %hook ASWAppSwitcherCollectionViewCell
 - (void)didMoveToWindow {
     %orig;
-    if (isDarkMode()) { 
+    if (isDarkMode()) {
         self.backgroundColor = raisedColor;
         self.subviews[1].backgroundColor = raisedColor;
         self.superview.backgroundColor = raisedColor;
