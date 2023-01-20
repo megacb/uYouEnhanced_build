@@ -16,7 +16,7 @@ uYouPlus_INJECT_DYLIBS = Tweaks/uYou/Library/MobileSubstrate/DynamicLibraries/uY
 uYouPlus_FILES = uYouPlus.xm Settings.xm $(shell find Tweaks/FLEX -type f \( -iname \*.c -o -iname \*.m -o -iname \*.mm \))
 uYouPlus_IPA = tmp/Payload/YouTube.app
 uYouPlus_FRAMEWORKS = UIKit Security
-uYouPlus_CFLAGS = -fobjc-arc -Wno-deprecated-declarations -Wno-unsupported-availability-guard -DTWEAK_VERSION=$(PACKAGE_VERSION) $(EXTRA_CFLAGS)
+uYouPlus_CFLAGS = -fobjc-arc -Wno-deprecated-declarations -Wno-unsupported-availability-guard -Wno-unused-but-set-variable -DTWEAK_VERSION=$(PACKAGE_VERSION) $(EXTRA_CFLAGS)
 
 include $(THEOS)/makefiles/common.mk
 include $(THEOS_MAKE_PATH)/tweak.mk
