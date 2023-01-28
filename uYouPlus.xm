@@ -1158,6 +1158,12 @@ UIColor* raisedColor = [UIColor colorWithRed:0.035 green:0.035 blue:0.035 alpha:
 }
 %end
 
+%hook YTCollectionView 
+- (void)setBackgroundColor:(UIColor *)color { 
+    return isDarkMode() ? %orig([UIColor blackColor]) : %orig;
+}
+%end
+
 //
 %hook YTBackstageCreateRepostDetailView
 - (void)setBackgroundColor:(UIColor *)color {
@@ -1172,6 +1178,7 @@ UIColor* raisedColor = [UIColor colorWithRed:0.035 green:0.035 blue:0.035 alpha:
     if (isDarkMode()) {
         if ([self.nextResponder isKindOfClass:%c(ASScrollView)]) { self.backgroundColor = [UIColor clearColor]; }
         if ([self.accessibilityIdentifier isEqualToString:@"eml.cvr"]) { self.backgroundColor = [UIColor blackColor]; }
+        if ([self.accessibilityIdentifier isEqualToString:@"eml.live_chat_text_message"]) { self.backgroundColor = [UIColor blackColor]; }
         if ([self.accessibilityIdentifier isEqualToString:@"rich_header"]) { self.backgroundColor = [UIColor blackColor]; }
         if ([self.accessibilityIdentifier isEqualToString:@"id.ui.comment_cell"]) { self.backgroundColor = [UIColor blackColor]; }
         if ([self.accessibilityIdentifier isEqualToString:@"id.ui.cancel.button"]) { self.superview.backgroundColor = [UIColor clearColor]; }
@@ -1344,7 +1351,7 @@ UIColor* raisedColor = [UIColor colorWithRed:0.035 green:0.035 blue:0.035 alpha:
     [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"disableAgeRestriction"];
     [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"showedWelcomeVC"];
     
-    // Change the default value of some uYou's options
+    // Change the default value of some options
     NSArray *allKeys = [[[NSUserDefaults standardUserDefaults] dictionaryRepresentation] allKeys];
     if (![allKeys containsObject:@"relatedVideosAtTheEndOfYTVideos"]) { 
        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"relatedVideosAtTheEndOfYTVideos"]; 
@@ -1354,5 +1361,11 @@ UIColor* raisedColor = [UIColor colorWithRed:0.035 green:0.035 blue:0.035 alpha:
     }
     if (![allKeys containsObject:@"uYouPiPButtonVideoControlsOverlay"]) { 
        [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"uYouPiPButtonVideoControlsOverlay"]; 
+    }
+    if (![allKeys containsObject:@"RYD-ENABLED"]) { 
+       [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"ENABLED"]; 
+    }
+    if (![allKeys containsObject:@"YouPiPEnabled"]) { 
+       [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"YouPiPEnabled"]; 
     }
 }
