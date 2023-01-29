@@ -1363,7 +1363,7 @@ UIColor* raisedColor = [UIColor colorWithRed:0.035 green:0.035 blue:0.035 alpha:
        [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"uYouPiPButtonVideoControlsOverlay"]; 
     }
     if (![allKeys containsObject:@"RYD-ENABLED"]) { 
-       [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"ENABLED"]; 
+       [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"RYD-ENABLED"]; 
     }
     if (![allKeys containsObject:@"YouPiPEnabled"]) { 
        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"YouPiPEnabled"]; 
