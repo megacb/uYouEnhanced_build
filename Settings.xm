@@ -398,6 +398,16 @@ extern NSBundle *uYouPlusBundle();
                     return YES;
                 }
                 settingItemId:0],
+				
+            [YTSettingsSectionItemClass switchItemWithTitle:LOC(@"IPHONE_LAYOUT")
+                titleDescription:LOC(@"IPHONE_LAYOUT_DESC")
+                accessibilityIdentifier:nil
+                switchOn:IsEnabled(@"iPhoneLayout_enabled")
+                switchBlock:^BOOL (YTSettingsCell *cell, BOOL enabled) {
+                    [[NSUserDefaults standardUserDefaults] setBool:enabled forKey:@"iPhoneLayout_enabled"];
+                    return YES;
+                }
+                settingItemId:0], 
 
             [YTSettingsSectionItemClass switchItemWithTitle:LOC(@"NEW_MINIPLAYER_STYLE")
                 titleDescription:LOC(@"NEW_MINIPLAYER_STYLE_DESC")
