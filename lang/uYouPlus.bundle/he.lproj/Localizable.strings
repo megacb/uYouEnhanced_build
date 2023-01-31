@@ -120,3 +120,6 @@
 
 "YT_RE_EXPLORE" = "החלף את לשונית ה-Shorts בלשונית Explore (YTReExplore)";
 "YT_RE_EXPLORE_DESC" = "נדרש לפתוח מחדש את היישום.";
+
+"IPHONE_LAYOUT" = "iPhone Layout";
+"IPHONE_LAYOUT_DESC" = "Toggle to use the iPhone Layout. App restart is required.";

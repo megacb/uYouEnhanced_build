@@ -120,3 +120,6 @@
 
 "YT_RE_EXPLORE" = "Substituir a guia Shorts pela guia Explorar (YTReExplore)";
 "YT_RE_EXPLORE_DESC" = "A reinicialização do app é necessária.";
+
+"IPHONE_LAYOUT" = "iPhone Layout";
+"IPHONE_LAYOUT_DESC" = "Toggle to use the iPhone Layout. App restart is required.";

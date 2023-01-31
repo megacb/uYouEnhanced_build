@@ -120,3 +120,6 @@
 
 "YT_RE_EXPLORE" = "Shorts sekmesini Keşfet sekmesiyle değiştirin (YTReExplore)";
 "YT_RE_EXPLORE_DESC" = "Uygulamanın yeniden başlatılması gerekir.";
+
+"IPHONE_LAYOUT" = "iPhone Layout";
+"IPHONE_LAYOUT_DESC" = "Toggle to use the iPhone Layout. App restart is required.";
