@@ -32,6 +32,12 @@ extern NSBundle *uYouPlusBundle();
 }
 %end
 
+%hook YTSettingsSectionController
+- (void)setSelectedItem:(NSUInteger)selectedItem {
+    if (selectedItem != NSNotFound) %orig;
+}
+%end
+
 %hook YTSettingsSectionItemManager
 %new(v@:@)
 - (void)updateTweakSectionWithEntry:(id)entry {
