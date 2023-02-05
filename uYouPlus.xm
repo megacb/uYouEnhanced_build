@@ -1365,7 +1365,7 @@ UIColor* raisedColor = [UIColor colorWithRed:0.035 green:0.035 blue:0.035 alpha:
     if (IsEnabled(@"hideChipBar_enabled")) {
        %init(gHideChipBar);
     }
-	if (IsEnabled(@"iPhoneLayout_enabled")) {
+    if (IsEnabled(@"iPhoneLayout_enabled") && (UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPad)) {
        %init(giPhoneLayout);
     }
 
