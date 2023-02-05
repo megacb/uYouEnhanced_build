@@ -120,3 +120,6 @@
 
 "YT_RE_EXPLORE" = "Zamień kartę Shorts na kartę Odkrywaj (YTReExplore)";
 "YT_RE_EXPLORE_DESC" = "Restart aplikacji jest wymagany.";
+
+"IPHONE_LAYOUT" = "iPhone Layout";
+"IPHONE_LAYOUT_DESC" = "Toggle to use the iPhone Layout. App restart is required.";

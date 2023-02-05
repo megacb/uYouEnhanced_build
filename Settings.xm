@@ -98,7 +98,7 @@ extern NSBundle *uYouPlusBundle();
                     return YES;
                 }
                 settingItemId:0],
-        ];        
+        ];
         YTSettingsPickerViewController *picker = [[%c(YTSettingsPickerViewController) alloc] initWithNavTitle:LOC(@"VIDEO_PLAYER_OPTIONS") pickerSectionTitle:nil rows:rows selectedItemIndex:NSNotFound parentResponder:[self parentResponder]];
         [settingsViewController pushViewController:picker];
         return YES;
@@ -217,8 +217,7 @@ extern NSBundle *uYouPlusBundle();
                     return YES;
                 }
                 settingItemId:0],
-
-        ];        
+        ];
         YTSettingsPickerViewController *picker = [[%c(YTSettingsPickerViewController) alloc] initWithNavTitle:LOC(@"VIDEO_CONTROLS_OVERLAY_OPTIONS") pickerSectionTitle:nil rows:rows selectedItemIndex:NSNotFound parentResponder:[self parentResponder]];
         [settingsViewController pushViewController:picker];
         return YES;
@@ -297,7 +296,7 @@ extern NSBundle *uYouPlusBundle();
                     return YES;
                 }
                 settingItemId:0],
-        ];        
+        ];
         YTSettingsPickerViewController *picker = [[%c(YTSettingsPickerViewController) alloc] initWithNavTitle:LOC(@"SHORTS_CONTROLS_OVERLAY_OPTIONS") pickerSectionTitle:nil rows:rows selectedItemIndex:NSNotFound parentResponder:[self parentResponder]];
         [settingsViewController pushViewController:picker];
         return YES;
@@ -424,7 +423,22 @@ extern NSBundle *uYouPlusBundle();
                     return YES;
                 }
                 settingItemId:0],
-        ];        
+        ];
+
+            if (UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPad) {
+                YTSettingsSectionItem *ipadItem = [YTSettingsSectionItemClass switchItemWithTitle:LOC(@"IPHONE_LAYOUT")
+                    titleDescription:LOC(@"IPHONE_LAYOUT_DESC")
+                    accessibilityIdentifier:nil
+                    switchOn:IsEnabled(@"iPhoneLayout_enabled")
+                    switchBlock:^BOOL (YTSettingsCell *cell, BOOL enabled) {
+                        [[NSUserDefaults standardUserDefaults] setBool:enabled forKey:@"iPhoneLayout_enabled"];
+                        return YES;
+                    }
+                    settingItemId:0];
+        
+                rows = [rows arrayByAddingObject:ipadItem];
+            }
+            
         YTSettingsPickerViewController *picker = [[%c(YTSettingsPickerViewController) alloc] initWithNavTitle:LOC(@"MISCELLANEOUS") pickerSectionTitle:nil rows:rows selectedItemIndex:NSNotFound parentResponder:[self parentResponder]];
         [settingsViewController pushViewController:picker];
         return YES;

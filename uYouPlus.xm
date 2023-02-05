@@ -1300,6 +1300,29 @@ UIColor* raisedColor = [UIColor colorWithRed:0.035 green:0.035 blue:0.035 alpha:
 // %end
 %end
 
+%group giPhoneLayout
+%hook UIDevice
+- (long long)userInterfaceIdiom {
+    return NO;
+} 
+%end
+%hook UIStatusBarStyleAttributes
+- (long long)idiom {
+    return YES;
+} 
+%end
+%hook UIKBTree
+- (long long)nativeIdiom {
+    return YES;
+} 
+%end
+%hook UIKBRenderer
+- (long long)assetIdiom {
+    return YES;
+} 
+%end
+%end
+
 # pragma mark - ctor
 %ctor {
     // Load uYou first so its functions are available for hooks.
@@ -1341,6 +1364,9 @@ UIColor* raisedColor = [UIColor colorWithRed:0.035 green:0.035 blue:0.035 alpha:
     }
     if (IsEnabled(@"hideChipBar_enabled")) {
        %init(gHideChipBar);
+    }
+    if (IsEnabled(@"iPhoneLayout_enabled") && (UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPad)) {
+       %init(giPhoneLayout);
     }
 
     // Disable updates
