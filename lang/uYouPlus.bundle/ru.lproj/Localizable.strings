@@ -121,5 +121,5 @@
 "YT_RE_EXPLORE" = "Вкладка «Навигация» вместо «Shorts»";
 "YT_RE_EXPLORE_DESC" = "Потребуется перезагрузка.";
 
-"IPHONE_LAYOUT" = "iPhone Layout";
-"IPHONE_LAYOUT_DESC" = "Toggle to use the iPhone Layout. App restart is required.";
+"IPHONE_LAYOUT" = "Оформление приложения как на iPhone";
+"IPHONE_LAYOUT_DESC" = "Переключает оформление приложения как на iPhone. Требуется перезапуск приложения.";
