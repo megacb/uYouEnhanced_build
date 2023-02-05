@@ -121,5 +121,5 @@
 "YT_RE_EXPLORE" = "Shorts 탭 대신 탐색 탭 보이기 (YTReExplore)";
 "YT_RE_EXPLORE_DESC" = "앱을 다시 시작해야 합니다.";
 
-"IPHONE_LAYOUT" = "iPhone Layout";
-"IPHONE_LAYOUT_DESC" = "Toggle to use the iPhone Layout. App restart is required.";
+"IPHONE_LAYOUT" = "아이폰 화면배치";
+"IPHONE_LAYOUT_DESC" = "아이폰의 화면배치를 사용하려면 선택하세요. 앱을 다시 시작해야 합니다.";
