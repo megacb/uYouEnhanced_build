@@ -71,7 +71,7 @@
 "HIDE_SHORTS_SHARE_BUTTON" = "Скрыть кнопку 'Поделиться' в Shorts";
 "HIDE_SHORTS_SHARE_BUTTON_DESC" = "";
 
-"HIDE_SUPER_THANKS" = ""Скрыть баннер 'Купить суперспасибо'";
+"HIDE_SUPER_THANKS" = "Скрыть баннер 'Купить суперспасибо'";
 "HIDE_SUPER_THANKS_DESC" = "Скрывает баннер 'Купить суперспасибо' в Shorts.";
 
 "DISABLE_RESUME_TO_SHORTS" = "Отключить продолжение видео Shorts";
