@@ -74,8 +74,8 @@
 "HIDE_SUPER_THANKS" = "隐藏“购买超级感谢”横幅";
 "HIDE_SUPER_THANKS_DESC" = "隐藏出现在部分 Shorts 短片中的“购买超级感谢”横幅。";
 
-"DISABLE_RESUME_TO_SHORTS" = "禁用 Shorts 短片自动恢复";
-"DISABLE_RESUME_TO_SHORTS_DESC" = "若您在观看 Shorts 短片时关闭了 YouTube，下次启动时 Shorts 短片将不会自动继续播放。";
+"DISABLE_RESUME_TO_SHORTS" = "禁用重启后恢复至 Shorts 短片";
+"DISABLE_RESUME_TO_SHORTS_DESC" = "若您在观看 Shorts 短片时关闭了 YouTube，下次启动时将不再自动进入 Shorts 短片分区。";
 
 // Theme
 "THEME_OPTIONS" = "主题选项";
@@ -121,5 +121,5 @@
 "YT_RE_EXPLORE" = "将 Shorts 选项卡替换成探索选项卡 （YTReExplore）";
 "YT_RE_EXPLORE_DESC" = "更改本设置后需要重启 App。";
 
-"IPHONE_LAYOUT" = "iPhone Layout";
-"IPHONE_LAYOUT_DESC" = "Toggle to use the iPhone Layout. App restart is required.";
+"IPHONE_LAYOUT" = "iPhone 视图";
+"IPHONE_LAYOUT_DESC" = "在 iPad 上使用 iPhone 版本的应用布局，以便访问社区贴子和短片创作功能。更改本设置后需要重启 App。";
