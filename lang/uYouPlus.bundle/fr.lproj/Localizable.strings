@@ -121,5 +121,5 @@
 "YT_RE_EXPLORE" = "Remplacer l'onglet Shorts par l'onglet Explorer (YTReExplore)";
 "YT_RE_EXPLORE_DESC" = "Un redémarrage de l'application est nécessaire";
 
-"IPHONE_LAYOUT" = "iPhone Layout";
-"IPHONE_LAYOUT_DESC" = "Toggle to use the iPhone Layout. App restart is required.";
+"IPHONE_LAYOUT" = "Disposition iPhone";
+"IPHONE_LAYOUT_DESC" = "Basculer pour utiliser la disposition iPhone. Un redémarrage de l'application est nécessaire.";
