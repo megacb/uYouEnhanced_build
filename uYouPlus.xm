@@ -958,10 +958,9 @@ void DEMC_centerRenderingView() {
 }
 %end
 
-%hook YTColdConfig
-- (BOOL)enableResumeToShorts {
-    if (IsEnabled(@"disableResumeToShorts")) { return NO; }
-    else { return %orig; }
+%hook YTShortsStartupCoordinator
+- (id)evaluateResumeToShorts { 
+    return IsEnabled(@"disableResumeToShorts") ? nil : %orig;
 }
 %end
 
