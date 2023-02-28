@@ -72,7 +72,7 @@
 "HIDE_SHORTS_SHARE_BUTTON_DESC" = "";
 
 "HIDE_UYOU_SHORTS_DOWNLOAD_BUTTON" = "Hide uYou's buttons";
-"HIDE_UYOU_SHORTS_DOWNLOAD_BUTTON_DESC" = "Hide uYou's download buttons in Shorts".;
+"HIDE_UYOU_SHORTS_DOWNLOAD_BUTTON_DESC" = "Hide uYou's download buttons in Shorts.";
 
 "HIDE_SUPER_THANKS" = "'Buy Super Thanks'-Banner ausblenden";
 "HIDE_SUPER_THANKS_DESC" = "Ausblenden des "Buy Super Thanks'"-Banners in bestimmten Shorts.";

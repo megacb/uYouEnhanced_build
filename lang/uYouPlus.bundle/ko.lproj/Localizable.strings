@@ -72,7 +72,7 @@
 "HIDE_SHORTS_SHARE_BUTTON_DESC" = "";
 
 "HIDE_UYOU_SHORTS_DOWNLOAD_BUTTON" = "Hide uYou's buttons";
-"HIDE_UYOU_SHORTS_DOWNLOAD_BUTTON_DESC" = "Hide uYou's download buttons in Shorts".;
+"HIDE_UYOU_SHORTS_DOWNLOAD_BUTTON_DESC" = "Hide uYou's download buttons in Shorts.";
 
 "HIDE_SUPER_THANKS" = "'Super Thanks 구매' 배너 숨기기";
 "HIDE_SUPER_THANKS_DESC" = "Shorts 영상에서 'Super Thanks 구매' 배너를 숨깁니다.";

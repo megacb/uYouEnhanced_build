@@ -87,7 +87,7 @@ https://github.com/PoomSmart/Return-YouTube-Dislikes/tree/main/layout/Library/Ap
 "HIDE_SHORTS_SHARE_BUTTON_DESC" = "";
 
 "HIDE_UYOU_SHORTS_DOWNLOAD_BUTTON" = "Hide uYou's buttons";
-"HIDE_UYOU_SHORTS_DOWNLOAD_BUTTON_DESC" = "Hide uYou's download buttons in Shorts".;
+"HIDE_UYOU_SHORTS_DOWNLOAD_BUTTON_DESC" = "Hide uYou's download buttons in Shorts.";
 
 "HIDE_SUPER_THANKS" = "Hide 'Buy Super Thanks' banner";
 "HIDE_SUPER_THANKS_DESC" = "Hide the 'Buy Super Thanks' banner in Shorts.";
