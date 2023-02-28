@@ -71,6 +71,9 @@
 "HIDE_SHORTS_SHARE_BUTTON" = "ショートの共有ボタンを非表示";
 "HIDE_SHORTS_SHARE_BUTTON_DESC" = "";
 
+"HIDE_UYOU_SHORTS_DOWNLOAD_BUTTON" = "Hide uYou's buttons";
+"HIDE_UYOU_SHORTS_DOWNLOAD_BUTTON_DESC" = "Hide uYou's download buttons in Shorts".;
+
 "HIDE_SUPER_THANKS" = "Super Thanks を購入のバナーを非表示";
 "HIDE_SUPER_THANKS_DESC" = "ショート動画のSuper Thanks を購入のバナーを非表示にします。";
 
@@ -108,6 +111,9 @@
 
 "ENABLE_FLEX" = "Enable FLEX";
 "ENABLE_FLEX_DESC" = "Enable FLEX for debugging (not recommended). Leave this off unless you know what you are doing.";
+
+"ENABLE_YT_STARTUP_ANIMATION" = "Enable YouTube startup animation";
+"ENABLE_YT_STARTUP_ANIMATION_DESC" = "";
 
 "FIX_GOOGLE_SIGNIN" = "Googleのサインインを修正 (TrollStoreユーザーのみ)";
 "FIX_GOOGLE_SIGNIN_DESC" = "アプリがTrollStoreでインストールされた場合のみ機能します。このオプションを有効にしてGoogleアカウントでサインインできるようにします。アプリの再起動が必要です。";
