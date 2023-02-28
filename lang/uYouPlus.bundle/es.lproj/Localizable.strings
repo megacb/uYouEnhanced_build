@@ -71,8 +71,8 @@
 "HIDE_SHORTS_SHARE_BUTTON" = "Ocultar el botón de compartir Shorts";
 "HIDE_SHORTS_SHARE_BUTTON_DESC" = "";
 
-"HIDE_UYOU_SHORTS_DOWNLOAD_BUTTON" = "Hide uYou's buttons";
-"HIDE_UYOU_SHORTS_DOWNLOAD_BUTTON_DESC" = "Hide uYou's download buttons in Shorts.";
+"HIDE_UYOU_SHORTS_DOWNLOAD_BUTTON" = "Ocultar botones de uYou";
+"HIDE_UYOU_SHORTS_DOWNLOAD_BUTTON_DESC" = "Ocultar los botones de descarga de uYou en Shorts.";
 
 "HIDE_SUPER_THANKS" = "Ocultar banner 'Comprar Supergracias";
 "HIDE_SUPER_THANKS_DESC" = "Ocultar el banner 'Comprar Supergracias' en Shorts.";
@@ -112,7 +112,7 @@
 "ENABLE_FLEX" = "Activar FLEX";
 "ENABLE_FLEX_DESC" = "Habilitar FLEX para depuración (no recomendado). Déjelo desactivado a menos que sepa lo que está haciendo.";
 
-"ENABLE_YT_STARTUP_ANIMATION" = "Enable YouTube startup animation";
+"ENABLE_YT_STARTUP_ANIMATION" = "Activar la animación de inicio de YouTube";
 "ENABLE_YT_STARTUP_ANIMATION_DESC" = "";
 
 "FIX_GOOGLE_SIGNIN" = "Reparar el inicio de sesión de Google (solo para usuarios de TrollStore)";
