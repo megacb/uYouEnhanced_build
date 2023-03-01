@@ -71,8 +71,8 @@
 "HIDE_SHORTS_SHARE_BUTTON" = "Скрыть кнопку 'Поделиться' в Shorts";
 "HIDE_SHORTS_SHARE_BUTTON_DESC" = "";
 
-"HIDE_UYOU_SHORTS_DOWNLOAD_BUTTON" = "Hide uYou's buttons";
-"HIDE_UYOU_SHORTS_DOWNLOAD_BUTTON_DESC" = "Hide uYou's download buttons in Shorts.";
+"HIDE_UYOU_SHORTS_DOWNLOAD_BUTTON" = "Скрыть кнопки uYou";
+"HIDE_UYOU_SHORTS_DOWNLOAD_BUTTON_DESC" = "Скрывает кнопки uYou для скачивания видеороликов Shorts.";
 
 "HIDE_SUPER_THANKS" = "Скрыть баннер 'Купить суперспасибо'";
 "HIDE_SUPER_THANKS_DESC" = "Скрывает баннер 'Купить суперспасибо' в Shorts.";
@@ -112,7 +112,7 @@
 "ENABLE_FLEX" = "Включить FLEX";
 "ENABLE_FLEX_DESC" = "Включите FLEX для отладки (не рекомендуется). Не включайте эту опцию, если вы не знаете, что делаете.";
 
-"ENABLE_YT_STARTUP_ANIMATION" = "Enable YouTube startup animation";
+"ENABLE_YT_STARTUP_ANIMATION" = "Включить анимацию запуска YouTube";
 "ENABLE_YT_STARTUP_ANIMATION_DESC" = "";
 
 "FIX_GOOGLE_SIGNIN" = "Исправить авторизацию (TrollStore)";
