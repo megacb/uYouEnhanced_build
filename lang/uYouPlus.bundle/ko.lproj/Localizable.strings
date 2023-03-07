@@ -71,8 +71,8 @@
 "HIDE_SHORTS_SHARE_BUTTON" = "Shorts 영상 공유 버튼 숨기기";
 "HIDE_SHORTS_SHARE_BUTTON_DESC" = "";
 
-"HIDE_UYOU_SHORTS_DOWNLOAD_BUTTON" = "Hide uYou's buttons";
-"HIDE_UYOU_SHORTS_DOWNLOAD_BUTTON_DESC" = "Hide uYou's download buttons in Shorts.";
+"HIDE_UYOU_SHORTS_DOWNLOAD_BUTTON" = "uYou 버튼 숨기기";
+"HIDE_UYOU_SHORTS_DOWNLOAD_BUTTON_DESC" = "Shorts에서 uYou의 다운로드 버튼을 숨깁니다.";
 
 "HIDE_SUPER_THANKS" = "'Super Thanks 구매' 배너 숨기기";
 "HIDE_SUPER_THANKS_DESC" = "Shorts 영상에서 'Super Thanks 구매' 배너를 숨깁니다.";
@@ -112,7 +112,7 @@
 "ENABLE_FLEX" = "FLEX 사용";
 "ENABLE_FLEX_DESC" = "디버그를 위해 FLEX를 사용하도록 설정합니다(권장하지 않음). 사용에 익숙하지 않으면 활성화하지 마십시오.";
 
-"ENABLE_YT_STARTUP_ANIMATION" = "Enable YouTube startup animation";
+"ENABLE_YT_STARTUP_ANIMATION" = "YouTube 시작 애니메이션을 표시합니다.";
 "ENABLE_YT_STARTUP_ANIMATION_DESC" = "";
 
 "FIX_GOOGLE_SIGNIN" = "구글 로그인 문제 수정 (TrollStore 사용자만 해당)";
