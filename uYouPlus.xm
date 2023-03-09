@@ -5,7 +5,6 @@
 #import <sys/utsname.h>
 #import <substrate.h>
 #import "Header.h"
-#import "Tweaks/FLEX/FLEX.h"
 #import "Tweaks/YouTubeHeader/YTVideoQualitySwitchOriginalController.h"
 #import "Tweaks/YouTubeHeader/YTPlayerViewController.h"
 #import "Tweaks/YouTubeHeader/YTWatchController.h"
@@ -199,15 +198,15 @@ static BOOL didFinishLaunching;
     self.downloadsVC = [self.downloadsVC init];
 
     if (IsEnabled(@"flex_enabled")) {
-        [[FLEXManager sharedManager] showExplorer];
+        [[%c(FLEXManager) performSelector:@selector(sharedManager)] performSelector:@selector(showExplorer)];
     }
 
     return didFinishLaunching;
 }
 - (void)appWillResignActive:(id)arg1 {
     %orig;
-         if (IsEnabled(@"flex_enabled")) {
-         [[FLEXManager sharedManager] showExplorer];
+    if (IsEnabled(@"flex_enabled")) {
+        [[%c(FLEXManager) performSelector:@selector(sharedManager)] performSelector:@selector(showExplorer)];
     }
 }
 %end
