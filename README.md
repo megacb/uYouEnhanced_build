@@ -11,7 +11,7 @@
 </p>
 
 <p align="center">
-    <a href="https://github.com/qnblackcat/uYouPlus/release/latest"><img src="https://custom-icon-badges.demolab.com/github/v/release/qnblackcat/uYouPlus?color=brightgreen&label=Latest%20release" alt="Badge"></img></a>
+    <a href="https://github.com/qnblackcat/uYouPlus/releases/latest"><img src="https://custom-icon-badges.demolab.com/github/v/release/qnblackcat/uYouPlus?color=brightgreen&label=Latest%20release" alt="Badge"></img></a>
     <a href="https://github.com/qnblackcat/uYouPlus/releases/latest"><img src="https://img.shields.io/github/downloads/qnblackcat/uYouPlus/total?label=Download" alt="Badge"></img></a>
     <a href="https://github.com/qnblackcat/uYouPlus/commit"><img src="https://custom-icon-badges.demolab.com/github/last-commit/qnblackcat/uYouPlus?logo=history&logoColor=white&label=Last commit" alt="Badge"></img></a>
     <a href="https://github.com/qnblackcat/uYouPlus/issues"><img src="https://custom-icon-badges.demolab.com/github/issues-raw/qnblackcat/uYouPlus?logo=issue-opened&label=Issues" alt="Badge"></img></a>
