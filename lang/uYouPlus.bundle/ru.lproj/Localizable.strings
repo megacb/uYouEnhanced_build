@@ -17,6 +17,9 @@
 "YT_MINIPLAYER" = "Мини-плеер для всех видео";
 "YT_MINIPLAYER_DESC" = "Принудительно активирует мини-плеер для всех видео, включая видео, предназначенное для детей.";
 
+"STOCK_VOLUME_HUD" = "Use iOS stock volume HUD";
+"STOCK_VOLUME_HUD_DESC" = "";
+
 // Video controls overlay options
 "VIDEO_CONTROLS_OVERLAY_OPTIONS" = "Параметры элементов оверлея видеоплеера";
 
@@ -73,6 +76,9 @@
 
 "HIDE_UYOU_SHORTS_DOWNLOAD_BUTTON" = "Скрыть кнопки uYou";
 "HIDE_UYOU_SHORTS_DOWNLOAD_BUTTON_DESC" = "Скрывает кнопки uYou для скачивания видеороликов Shorts.";
+
+"HIDE_SUBCRIPTIONS" = "Hide Subscriptions button";
+"HIDE_SUBCRIPTIONS_DESC" = "Hide Subscriptions button which shows up when paused.";
 
 "HIDE_SUPER_THANKS" = "Скрыть баннер 'Купить суперспасибо'";
 "HIDE_SUPER_THANKS_DESC" = "Скрывает баннер 'Купить суперспасибо' в Shorts.";
