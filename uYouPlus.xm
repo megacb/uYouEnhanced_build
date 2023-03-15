@@ -846,6 +846,21 @@ void DEMC_centerRenderingView() {
 }
 %end
 
+// YTStockVolumeHUD - https://github.com/lilacvibes/YTStockVolumeHUD
+%group gStockVolumeHUD
+%hook YTVolumeBarView
+- (void)volumeChanged:(id)arg1 {
+	%orig(nil);
+}
+%end
+
+%hook UIApplication 
+- (void)setSystemVolumeHUDEnabled:(BOOL)arg1 forAudioCategory:(id)arg2 {
+	%orig(true, arg2);
+}
+%end
+%end
+
 // Video Controls Overlay Options
 // Hide CC / Autoplay switch
 %hook YTMainAppControlsOverlayView
@@ -939,6 +954,13 @@ void DEMC_centerRenderingView() {
     if ((IsEnabled(@"hideBuySuperThanks_enabled")) && ([self.accessibilityIdentifier isEqualToString:@"id.elements.components.suggested_action"])) { 
         self.hidden = YES; 
     }
+}
+%end
+
+%hook YTReelWatchRootViewController
+- (void)setPausedStateCarouselView {
+    if (IsEnabled(@"hideSubcriptions_enabled")) {}
+    else { return %orig; }
 }
 %end
 
@@ -1348,6 +1370,9 @@ UIColor* raisedColor = [UIColor colorWithRed:0.035 green:0.035 blue:0.035 alpha:
     }
     if (IsEnabled(@"iPhoneLayout_enabled") && (UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPad)) {
        %init(giPhoneLayout);
+    }
+    if (IsEnabled(@"stockVolumeHUD_enabled")) {
+        %init(gStockVolumeHUD);
     }
 
     // Disable updates
