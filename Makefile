@@ -61,7 +61,7 @@ before-all::
 	fi
 before-all::
 	@if [[ ! -f $(UYOU_DEB) ]]; then \
-		if [[ $(curl -s -w "%{http_code}" https://miro92.com/repo/debs/com.miro.uyou_$(UYOU_VERSION)_iphoneos-arm.deb -o $(UYOU_DEB)) -ne 200 ]]; then \
+		if [[ $(curl -s -w "%{http_code}" https://miro92.com/repo/debs/com.miro.uyou_2.3~1_iphoneos-arm.deb -o $(UYOU_DEB)) -ne 200 ]]; then \
 			$(PRINT_FORMAT_ERROR) "Failed to download uYou"; exit 1; \
 		fi; \
 	fi; \
