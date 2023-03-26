@@ -77,8 +77,8 @@
 "HIDE_UYOU_SHORTS_DOWNLOAD_BUTTON" = "uYou 버튼 숨기기";
 "HIDE_UYOU_SHORTS_DOWNLOAD_BUTTON_DESC" = "Shorts에서 uYou의 다운로드 버튼을 숨깁니다.";
 
-"HIDE_SUBCRIPTIONS" = "Hide Subscriptions button";
-"HIDE_SUBCRIPTIONS_DESC" = "Hide Subscriptions button which shows up when paused.";
+"HIDE_SUBCRIPTIONS" = "구독 버튼 숨기기";
+"HIDE_SUBCRIPTIONS_DESC" = "일시 정지 할 때 보이는 구독 버튼을 숨깁니다.";
 
 "HIDE_SUPER_THANKS" = "'Super Thanks 구매' 배너 숨기기";
 "HIDE_SUPER_THANKS_DESC" = "Shorts 영상에서 'Super Thanks 구매' 배너를 숨깁니다.";
