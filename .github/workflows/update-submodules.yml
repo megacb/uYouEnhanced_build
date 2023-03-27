@@ -36,7 +36,7 @@ jobs:
         id: run_action
         uses: qnblackcat/github-action-create-pr-parent-submodule@main
         with:
-          github_token: ${{ secrets.UPDATE_SUBMODULES }}
+          github_token: ${{ secrets.RELEASE_HUB_SECRET }}
           parent_repository: ${{ env.PARENT_REPOSITORY }}
           checkout_branch: ${{ env.CHECKOUT_BRANCH }}
           pr_against_branch: ${{ env.PR_AGAINST_BRANCH }}
