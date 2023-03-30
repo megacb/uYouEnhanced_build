@@ -14,10 +14,10 @@
 "PINCH_TO_ZOOM" = "停用手勢縮放";
 "PINCH_TO_ZOOM_DESC" = "需要重新啟動應用程式。";
 
-"YT_MINIPLAYER" = "為所有YouTube影片啟用迷你播放器";
+"YT_MINIPLAYER" = "為所有 YouTube 影片啟用迷你播放器";
 "YT_MINIPLAYER_DESC" = "例如兒童影片";
 
-"STOCK_VOLUME_HUD" = "Use iOS stock volume HUD";
+"STOCK_VOLUME_HUD" = "使用 iOS 內建的音量 HUD";
 "STOCK_VOLUME_HUD_DESC" = "";
 
 // Video controls overlay options
@@ -77,8 +77,8 @@
 "HIDE_UYOU_SHORTS_DOWNLOAD_BUTTON" = "隱藏 uYou 按鈕";
 "HIDE_UYOU_SHORTS_DOWNLOAD_BUTTON_DESC" = "在 Shorts 中隱藏 uYou 下載按鈕.";
 
-"HIDE_SUBCRIPTIONS" = "Hide Subscriptions button";
-"HIDE_SUBCRIPTIONS_DESC" = "Hide Subscriptions button which shows up when paused.";
+"HIDE_SUBCRIPTIONS" = "隱藏訂閱按鈕";
+"HIDE_SUBCRIPTIONS_DESC" = "隱藏當暫停時出現的訂閱按鈕。";
 
 "HIDE_SUPER_THANKS" = "隱藏 '購買超級感謝' 橫幅";
 "HIDE_SUPER_THANKS_DESC" = "在 Shorts 中隱藏 '購買超級感謝' 橫幅.";
@@ -105,10 +105,10 @@
 // Miscellaneous
 "MISCELLANEOUS" = "雜項";
 
-"CAST_CONFIRM" = "投影前確認 (YTCastConfirm)";
-"CAST_CONFIRM_DESC" = "在投影前顯示確認訊息，以防止家人幹樵。";
-"CASTING" = "投影中";
-"MSG_ARE_YOU_SURE" = "是否開始投影嗎？";
+"CAST_CONFIRM" = "投放前確認 (YTCastConfirm)";
+"CAST_CONFIRM_DESC" = "在投放前顯示確認訊息，以防止家人幹樵。";
+"CASTING" = "投放中";
+"MSG_ARE_YOU_SURE" = "是否開始投放？";
 "MSG_YES" = "確定";
 "MSG_CANCEL" = "取消";
 
