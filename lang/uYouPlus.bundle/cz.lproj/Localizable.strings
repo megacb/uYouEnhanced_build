@@ -8,6 +8,9 @@
 "AUTO_FULLSCREEN" = "Přes celou obrazovku (YTAutoFullScreen)";
 "AUTO_FULLSCREEN_DESC" = "Automaticky spouští videa přes celou obrazovku.";
 
+"DISABLE_DOUBLE_TAP_TO_SEEK" = "Disable double tap to seek";
+"DISABLE_DOUBLE_TAP_TO_SEEK_DESC" = "";
+
 "SNAP_TO_CHAPTER" = "Disable snap to chapter";
 "SNAP_TO_CHAPTER_DESC" = "Disable auto snap to chapter when seeking in videos. App restart is required.";
 

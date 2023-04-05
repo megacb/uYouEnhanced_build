@@ -5,8 +5,11 @@
 // Video player options
 "VIDEO_PLAYER_OPTIONS" = "Video Player Options";
 
-"AUTO_FULLSCREEN" = "Auto Full Screen (YTAutoFullScreen)";
+"AUTO_FULLSCREEN" = "Auto full screen (YTAutoFullScreen)";
 "AUTO_FULLSCREEN_DESC" = "Autoplay videos at full screen.";
+
+"DISABLE_DOUBLE_TAP_TO_SEEK" = "Disable double tap to seek";
+"DISABLE_DOUBLE_TAP_TO_SEEK_DESC" = "";
 
 "SNAP_TO_CHAPTER" = "Disable snap to chapter";
 "SNAP_TO_CHAPTER_DESC" = "Disable auto snap to chapter when seeking through videos. App restart is required.";
@@ -35,7 +38,7 @@
 "HIDE_PAID_PROMOTION_CARDS" = "Hide Paid Promotion banner";
 "HIDE_PAID_PROMOTION_CARDS_DESC" = "Hide the 'Includes Paid Promotions' banner in some videos.";
 
-"HIDE_CHANNEL_WATERMARK" = "Hide Channel Watermark";
+"HIDE_CHANNEL_WATERMARK" = "Hide channel watermark";
 "HIDE_CHANNEL_WATERMARK_DESC" = "Hide channel's watermark in video controls overlay. App restart is required.";
 
 "HIDE_PREVIOUS_AND_NEXT_BUTTON" = "Hide Previous and Next button";
@@ -53,7 +56,7 @@
 "RED_PROGRESS_BAR" = "Red progress bar";
 "RED_PROGRESS_BAR_DESC" = "Bring back the red progress bar. App restart is required.";
 
-"DONT_EAT_MY_CONTENT" = "Prevent Notch/Island on 2:1 Video Content (DontEatMyContent)";
+"DONT_EAT_MY_CONTENT" = "Prevent Notch/Island on 2:1 video content (DontEatMyContent)";
 "DONT_EAT_MY_CONTENT_DESC" = "Prevent the notch/Dynamic Island from munching on 2:1 video content in YouTube. App restart is required.";
 
 // Shorts controls overlay options

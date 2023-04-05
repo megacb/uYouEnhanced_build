@@ -8,6 +8,9 @@
 "AUTO_FULLSCREEN" = "Plein écran automatique (YTAutoFullScreen)";
 "AUTO_FULLSCREEN_DESC" = "Lecture automatique des vidéos en plein écran";
 
+"DISABLE_DOUBLE_TAP_TO_SEEK" = "Disable double tap to seek";
+"DISABLE_DOUBLE_TAP_TO_SEEK_DESC" = "";
+
 "SNAP_TO_CHAPTER" = "Désactiver l'alignement sur les chapitres";
 "SNAP_TO_CHAPTER_DESC" = "Désactiver l'alignement automatique sur les chapitres lors de la recherche dans les vidéos. Un redémarrage de l'application est nécessaire.";
 

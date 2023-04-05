@@ -8,6 +8,9 @@
 "AUTO_FULLSCREEN" = "自動全螢幕 (YTAutoFullScreen)";
 "AUTO_FULLSCREEN_DESC" = "自動全螢幕播放影片。";
 
+"DISABLE_DOUBLE_TAP_TO_SEEK" = "Disable double tap to seek";
+"DISABLE_DOUBLE_TAP_TO_SEEK_DESC" = "";
+
 "SNAP_TO_CHAPTER" = "停用章節跳轉";
 "SNAP_TO_CHAPTER_DESC" = "停用影片快轉時自動跳轉到章節。. 需要重新啟動應用程式。";
 

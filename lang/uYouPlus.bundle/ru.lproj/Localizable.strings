@@ -8,6 +8,9 @@
 "AUTO_FULLSCREEN" = "Полноэкранный режим (YTAutoFullScreen)";
 "AUTO_FULLSCREEN_DESC" = "Автоматически открывает ролики в полноэкранном режиме.";
 
+"DISABLE_DOUBLE_TAP_TO_SEEK" = "Disable double tap to seek";
+"DISABLE_DOUBLE_TAP_TO_SEEK_DESC" = "";
+
 "SNAP_TO_CHAPTER" = "Отключить привязку к эпизодам";
 "SNAP_TO_CHAPTER_DESC" = "Отключает автоматическую привязку к эпизодам при перемотке видео. Требуется перезапуск приложения.";
 

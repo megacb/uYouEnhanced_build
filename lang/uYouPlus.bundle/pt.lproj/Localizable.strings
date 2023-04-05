@@ -8,6 +8,9 @@
 "AUTO_FULLSCREEN" = "Tela cheia automática (YTAutoFullScreen)";
 "AUTO_FULLSCREEN_DESC" = "Reproduz videos em tela cheia automaticamente.";
 
+"DISABLE_DOUBLE_TAP_TO_SEEK" = "Disable double tap to seek";
+"DISABLE_DOUBLE_TAP_TO_SEEK_DESC" = "";
+
 "SNAP_TO_CHAPTER" = "Desativar ajuste ao capítulo";
 "SNAP_TO_CHAPTER_DESC" = "Desativa o ajuste automático ao capítulo ao buscar no vídeo. A reinicialização do app é necessária.";
 

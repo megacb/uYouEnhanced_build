@@ -8,6 +8,9 @@
 "AUTO_FULLSCREEN" = "自动全屏 （YTAutoFullScreen）";
 "AUTO_FULLSCREEN_DESC" = "自动全屏播放视频。";
 
+"DISABLE_DOUBLE_TAP_TO_SEEK" = "Disable double tap to seek";
+"DISABLE_DOUBLE_TAP_TO_SEEK_DESC" = "";
+
 "SNAP_TO_CHAPTER" = "禁用进度条章节吸附";
 "SNAP_TO_CHAPTER_DESC" = "禁用进度条在手动移动时自动吸附至章节分隔处的行为。更改本设置后需要重启 App。";
 

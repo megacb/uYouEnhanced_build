@@ -8,6 +8,9 @@
 "AUTO_FULLSCREEN" = "Αυτόματη αναπαραγωγή σε πλήρη οθόνη (YTAutoFullScreen)";
 "AUTO_FULLSCREEN_DESC" = "Αυτόματη αναπαραγωγή των βίντεο σε πλήρη οθόνη.";
 
+"DISABLE_DOUBLE_TAP_TO_SEEK" = "Disable double tap to seek";
+"DISABLE_DOUBLE_TAP_TO_SEEK_DESC" = "";
+
 "SNAP_TO_CHAPTER" = "Disable snap to chapter";
 "SNAP_TO_CHAPTER_DESC" = "Disable auto snap to chapter when seeking in videos. App restart is required.";
 

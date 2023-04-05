@@ -8,6 +8,9 @@
 "AUTO_FULLSCREEN" = "Automatisches Vollbild (YTAutoFullScreen)";
 "AUTO_FULLSCREEN_DESC" = "Automatisch Videos im Vollbild starten.";
 
+"DISABLE_DOUBLE_TAP_TO_SEEK" = "Disable double tap to seek";
+"DISABLE_DOUBLE_TAP_TO_SEEK_DESC" = "";
+
 "SNAP_TO_CHAPTER" = "Zu Abschnitten springen deaktivieren";
 "SNAP_TO_CHAPTER_DESC" = "Deaktiviere das automatische springen zu Abschnitten Disable bei der Suche in Videos. App-Neustart erforderlich.";
 

@@ -8,6 +8,9 @@
 "AUTO_FULLSCREEN" = "كامل الشاشة تلقائياً (أداة YTAutoFullScreen)";
 "AUTO_FULLSCREEN_DESC" = "تشغيل الفيديوهات تلقائياً بكامل الشاشة.";
 
+"DISABLE_DOUBLE_TAP_TO_SEEK" = "Disable double tap to seek";
+"DISABLE_DOUBLE_TAP_TO_SEEK_DESC" = "";
+
 "SNAP_TO_CHAPTER" = "منع الارتباط بالفصول";
 "SNAP_TO_CHAPTER_DESC" = "تعطيل الربط التلقائي لبداية الفصول عند تحريك المؤشر في شريط التقدم. تتطلب إعادة تشغيل التطبيق.";
 
