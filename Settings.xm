@@ -69,6 +69,16 @@ extern NSBundle *uYouPlusBundle();
                 }
                 settingItemId:0],
 
+            [YTSettingsSectionItemClass switchItemWithTitle:LOC(@"DISABLE_DOUBLE_TAP_TO_SEEK")
+                titleDescription:LOC(@"DISABLE_DOUBLE_TAP_TO_SEEK_DESC")
+                accessibilityIdentifier:nil
+                switchOn:IsEnabled(@"doubleTapToSeek_disabled")
+                switchBlock:^BOOL (YTSettingsCell *cell, BOOL enabled) {
+                    [[NSUserDefaults standardUserDefaults] setBool:enabled forKey:@"doubleTapToSeek_disabled"];
+                    return YES;
+                }
+                settingItemId:0],
+
             [YTSettingsSectionItemClass switchItemWithTitle:LOC(@"SNAP_TO_CHAPTER")
                 titleDescription:LOC(@"SNAP_TO_CHAPTER_DESC")
                 accessibilityIdentifier:nil
