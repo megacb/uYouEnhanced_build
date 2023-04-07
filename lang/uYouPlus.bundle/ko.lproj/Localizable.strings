@@ -8,7 +8,7 @@
 "AUTO_FULLSCREEN" = "자동 전체화면 재생 (YTAutoFullScreen)";
 "AUTO_FULLSCREEN_DESC" = "자동으로 전체화면에서 재생합니다.";
 
-"DISABLE_DOUBLE_TAP_TO_SEEK" = "Disable double tap to seek";
+"DISABLE_DOUBLE_TAP_TO_SEEK" = "두번 탭하여 탐색 사용하지 않음";
 "DISABLE_DOUBLE_TAP_TO_SEEK_DESC" = "";
 
 "SNAP_TO_CHAPTER" = "챕터 스냅 사용하지 않음";
