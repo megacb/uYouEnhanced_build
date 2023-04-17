@@ -1,27 +1,4 @@
-#import <UIKit/UIKit.h>
-#import <Foundation/Foundation.h>
-#import <objc/runtime.h>
-#import <dlfcn.h>
-#import <sys/utsname.h>
-#import <substrate.h>
 #import "Header.h"
-#import "Tweaks/YouTubeHeader/YTVideoQualitySwitchOriginalController.h"
-#import "Tweaks/YouTubeHeader/YTPlayerViewController.h"
-#import "Tweaks/YouTubeHeader/YTWatchController.h"
-#import "Tweaks/YouTubeHeader/YTIGuideResponse.h"
-#import "Tweaks/YouTubeHeader/YTIGuideResponseSupportedRenderers.h"
-#import "Tweaks/YouTubeHeader/YTIPivotBarSupportedRenderers.h"
-#import "Tweaks/YouTubeHeader/YTIPivotBarRenderer.h"
-#import "Tweaks/YouTubeHeader/YTIBrowseRequest.h"
-#import "Tweaks/YouTubeHeader/YTCommonColorPalette.h"
-#import "Tweaks/YouTubeHeader/ASCollectionView.h"
-#import "Tweaks/YouTubeHeader/YTPlayerOverlay.h"
-#import "Tweaks/YouTubeHeader/YTPlayerOverlayProvider.h"
-#import "Tweaks/YouTubeHeader/YTReelWatchPlaybackOverlayView.h"
-#import "Tweaks/YouTubeHeader/YTReelPlayerBottomButton.h"
-#import "Tweaks/YouTubeHeader/YTReelPlayerViewController.h"
-#import "Tweaks/YouTubeHeader/YTAlertView.h"
-#import "Tweaks/YouTubeHeader/YTISectionListRenderer.h"
 
 // Tweak's bundle for Localizations support - @PoomSmart - https://github.com/PoomSmart/YouPiP/commit/aea2473f64c75d73cab713e1e2d5d0a77675024f
 NSBundle *uYouPlusBundle() {
@@ -32,30 +9,11 @@ NSBundle *uYouPlusBundle() {
         if (tweakBundlePath)
             bundle = [NSBundle bundleWithPath:tweakBundlePath];
         else
-            bundle = [NSBundle bundleWithPath:@"/Library/Application Support/uYouPlus.bundle"];
+            bundle = [NSBundle bundleWithPath:ROOT_PATH_NS(@"/Library/Application Support/uYouPlus.bundle")];
     });
     return bundle;
 }
 NSBundle *tweakBundle = uYouPlusBundle();
-
-// Keychain patching
-static NSString *accessGroupID() {
-    NSDictionary *query = [NSDictionary dictionaryWithObjectsAndKeys:
-                           (__bridge NSString *)kSecClassGenericPassword, (__bridge NSString *)kSecClass,
-                           @"bundleSeedID", kSecAttrAccount,
-                           @"", kSecAttrService,
-                           (id)kCFBooleanTrue, kSecReturnAttributes,
-                           nil];
-    CFDictionaryRef result = nil;
-    OSStatus status = SecItemCopyMatching((__bridge CFDictionaryRef)query, (CFTypeRef *)&result);
-    if (status == errSecItemNotFound)
-        status = SecItemAdd((__bridge CFDictionaryRef)query, (CFTypeRef *)&result);
-        if (status != errSecSuccess)
-            return nil;
-    NSString *accessGroup = [(__bridge NSDictionary *)result objectForKey:(__bridge NSString *)kSecAttrAccessGroup];
-
-    return accessGroup;
-}
 
 //
 static BOOL IsEnabled(NSString *key) {
@@ -73,31 +31,15 @@ static BOOL oldDarkTheme() {
 
 //
 # pragma mark - uYou's patches
-// Workaround for https://github.com/MiRO92/uYou-for-YouTube/issues/94
-%hook UIResponder
-%new
-- (id)entry {
-    return nil;
-}
-%end
-
-// Workaround for https://github.com/MiRO92/uYou-for-YouTube/issues/140
-%hook YTLocalPlaybackController
-%new
-- (id)activeVideoController {
-    return [self activeVideo];
-}
-%end
-
 // Workaround for qnblackcat/uYouPlus#10
-%hook boolSettingsVC
-- (instancetype)initWithTitle:(NSString *)title sections:(NSArray *)sections footer:(NSString *)footer {
-    if (@available(iOS 15, *))
-        if (![self valueForKey:@"_lastNotifiedTraitCollection"])
-            [self setValue:[UITraitCollection currentTraitCollection] forKey:@"_lastNotifiedTraitCollection"];
-    return %orig;
-}
-%end
+// %hook boolSettingsVC
+// - (instancetype)initWithTitle:(NSString *)title sections:(NSArray *)sections footer:(NSString *)footer {
+//     if (@available(iOS 15, *))
+//         if (![self valueForKey:@"_lastNotifiedTraitCollection"])
+//             [self setValue:[UITraitCollection currentTraitCollection] forKey:@"_lastNotifiedTraitCollection"];
+//     return %orig;
+// }
+// %end
 
 // Prevent uYou player bar from showing when not playing downloaded media
 %hook PlayerManager
@@ -113,59 +55,6 @@ static BOOL oldDarkTheme() {
 - (void)updateRelatedVideos {
     if ([[NSUserDefaults standardUserDefaults] boolForKey:@"relatedVideosAtTheEndOfYTVideos"] == NO) {}
     else { return %orig; }
-}
-%end
-
-// Workaround for qnblackcat/uYouPlus#253, qnblackcat/uYouPlus#170
-%hook YTReelWatchPlaybackOverlayView
-- (YTQTMButton *)overflowButton {
-    if ([self respondsToSelector:@selector(orderedRightSideButtons)] &&
-        [self orderedRightSideButtons].count != 0)
-        return [self orderedRightSideButtons][0];
-    return %orig;
-}
-%end
-
-%hook YTReelContentView
-- (void)didTapOverflowButton:(id)sender {}
-%end
-
-%subclass YTReelPlayerBottomButton : YTReelPlayerButton
-%end
-
-%hook NSLayoutConstraint
-+ (instancetype)constraintWithItem:(UIView *)view1
-                         attribute:(NSLayoutAttribute)attr1
-                         relatedBy:(NSLayoutRelation)relation
-                            toItem:(UIView *)view2
-                         attribute:(NSLayoutAttribute)attr2
-                        multiplier:(CGFloat)multiplier
-                          constant:(CGFloat)c {
-    if (![view1 isKindOfClass:%c(YTReelPlayerBottomButton)] &&
-        ![view1.accessibilityIdentifier isEqualToString:@"com.miro.uyou"])
-        return %orig;
-    if (!view2) {
-        view1.hidden = YES;
-        return [NSLayoutConstraint alloc];
-    }
-    YTReelPlayerBottomButton *uYouButton = (YTReelPlayerBottomButton *)view1;
-    YTReelPlayerBottomButton *topButton = (YTReelPlayerBottomButton *)view2;
-    NSString *uYouButtonTitle =
-        [view2.accessibilityIdentifier isEqualToString:@"com.miro.uyou"]
-            ? @"uYou"
-            : @"uYouLocal";
-    uYouButton.accessibilityLabel = uYouButtonTitle;
-    uYouButton.uppercaseTitle = NO;
-    [uYouButton setTitle:uYouButtonTitle forState:UIControlStateNormal];
-    [uYouButton
-        setTitleTypeKind:MSHookIvar<NSInteger>(topButton, "_typeKind")
-            typeVariant:MSHookIvar<NSInteger>(topButton, "_typeVariant")];
-    uYouButton.applyRightSideLayoutImageSize = topButton.applyRightSideLayoutImageSize;
-    uYouButton.buttonImageTitlePadding = topButton.buttonImageTitlePadding;
-    uYouButton.buttonLayoutStyle = topButton.buttonLayoutStyle;
-    uYouButton.sizeWithPaddingAndInsets = topButton.sizeWithPaddingAndInsets;
-    uYouButton.verticalContentPadding = topButton.verticalContentPadding;
-    return %orig;
 }
 %end
 
@@ -217,27 +106,6 @@ static BOOL didFinishLaunching;
 }
 %end
 
-// uYou's slide settings?
-%hook FRPSliderCell
-- (void)didMoveToWindow {
-    %orig;
-    if (self.traitCollection.userInterfaceStyle == UIUserInterfaceStyleDark) {
-        MSHookIvar<UILabel *>(self, "_lLabel").textColor = [UIColor whiteColor];
-        MSHookIvar<UILabel *>(self, "_rLabel").textColor = [UIColor whiteColor];
-        MSHookIvar<UILabel *>(self, "_cLabel").textColor = [UIColor whiteColor];
-    }
-}
-%end
-
-// Remove uYou download button in playlists
-// https://github.com/qnblackcat/uYouPlus/issues/798#issuecomment-1364853420
-%hook YTPlaylistHeaderViewController
-- (void)viewDidLoad {
-    %orig;
-    self.downloadsButton.hidden = YES;
-}
-%end
-
 # pragma mark - YouTube's patches
 // Workaround for MiRO92/uYou-for-YouTube#12, qnblackcat/uYouPlus#263
 %hook YTDataUtils
@@ -254,38 +122,6 @@ static BOOL didFinishLaunching;
 // %hook YTAdsInnerTubeContextDecorator
 // - (void)decorateContext:(id)context {}
 // %end
-
-// Fix login for YouTube 18.13.2 and higher
-%hook SSOKeychainHelper
-+ (NSString *)accessGroup {
-    return accessGroupID();
-}
-+ (NSString *)sharedAccessGroup {
-    return accessGroupID();
-}
-%end
-
-// Fix login for YouTube 17.33.2 and higher
-%hook SSOKeychainCore
-+ (NSString *)accessGroup {
-    return accessGroupID();
-}
-+ (NSString *)sharedAccessGroup {
-    return accessGroupID();
-}
-%end
-
-// Fix App Group Directory by move it to document directory
-%hook NSFileManager
-- (NSURL *)containerURLForSecurityApplicationGroupIdentifier:(NSString *)groupIdentifier {
-    if (groupIdentifier != nil) {
-        NSArray *paths = [[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask];
-        NSURL *documentsURL = [paths lastObject];
-        return [documentsURL URLByAppendingPathComponent:@"AppGroup"];
-    }
-    return %orig(groupIdentifier);
-}
-%end
 
 // Hide YouTube annoying banner in Home page? - @MiRO92 - YTNoShorts: https://github.com/MiRO92/YTNoShorts
 %hook YTAsyncCollectionView
@@ -386,20 +222,6 @@ static BOOL didFinishLaunching;
 }
 %end
 
-// YTAutoFullScreen: https://github.com/PoomSmart/YTAutoFullScreen/
-%hook YTPlayerViewController
-- (void)loadWithPlayerTransition:(id)arg1 playbackConfig:(id)arg2 {
-    %orig;
-    if (IsEnabled(@"autoFull_enabled"))
-        [NSTimer scheduledTimerWithTimeInterval:0.75 target:self selector:@selector(autoFullscreen) userInfo:nil repeats:NO];
-}
-%new
-- (void)autoFullscreen {
-    YTWatchController *watchController = [self valueForKey:@"_UIDelegate"];
-    [watchController showFullScreen];
-}
-%end
-
 // YTNoHoverCards: https://github.com/level3tjg/YTNoHoverCards
 %hook YTCreatorEndscreenView
 - (void)setHidden:(BOOL)hidden {
@@ -426,17 +248,7 @@ static BOOL didFinishLaunching;
 }
 %end
 
-// Hide search ads by @PoomSmart - https://github.com/PoomSmart/YouTube-X
-%hook YTIElementRenderer
-- (NSData *)elementData {
-    if (self.hasCompatibilityOptions && self.compatibilityOptions.hasAdLoggingData)
-        return nil;
-    return %orig;
-}
-%end
-
 %hook YTSectionListViewController
-
 - (void)loadWithModel:(YTISectionListRenderer *)model {
     NSMutableArray <YTISectionListSupportedRenderers *> *contentsArray = model.contentsArray;
     NSIndexSet *removeIndexes = [contentsArray indexesOfObjectsPassingTest:^BOOL(YTISectionListSupportedRenderers *renderers, NSUInteger idx, BOOL *stop) {
@@ -447,7 +259,6 @@ static BOOL didFinishLaunching;
     [contentsArray removeObjectsAtIndexes:removeIndexes];
     %orig;
 }
-
 %end
 
 // YTClassicVideoQuality: https://github.com/PoomSmart/YTClassicVideoQuality
@@ -462,7 +273,6 @@ static BOOL didFinishLaunching;
 %hook YTColdConfig 
 - (BOOL)respectDeviceCaptionSetting { return NO; } // YouRememberCaption: https://poomsmart.github.io/repo/depictions/youremembercaption.html
 - (BOOL)isLandscapeEngagementPanelSwipeRightToDismissEnabled { return YES; } // Swipe right to dismiss the right panel in fullscreen mode
-- (BOOL)mainAppCoreClientIosTransientVisualGlitchInPivotBarFix { return NO; } // Fix uYou's label glitching - qnblackcat/uYouPlus#552
 %end
 
 // NOYTPremium - https://github.com/PoomSmart/NoYTPremium/
@@ -490,28 +300,6 @@ static BOOL didFinishLaunching;
 
 %hook YTSurveyController
 - (void)showSurveyWithRenderer:(id)arg1 surveyParentResponder:(id)arg2 {}
-%end
-
-// YTShortsProgress - @PoomSmart - https://github.com/PoomSmart/YTShortsProgress
-%hook YTReelPlayerViewController
-- (BOOL)shouldEnablePlayerBar { return YES; }
-- (BOOL)shouldAlwaysEnablePlayerBar { return YES; }
-- (BOOL)shouldEnablePlayerBarOnlyOnPause { return NO; }
-%end
-
-%hook YTReelPlayerViewControllerSub
-- (BOOL)shouldEnablePlayerBar { return YES; }
-- (BOOL)shouldAlwaysEnablePlayerBar { return YES; }
-- (BOOL)shouldEnablePlayerBarOnlyOnPause { return NO; }
-%end
-
-%hook YTColdConfig
-- (BOOL)iosEnableVideoPlayerScrubber { return YES; }
-- (BOOL)mobileShortsTabInlined { return YES; }
-%end
-
-%hook YTHotConfig
-- (BOOL)enablePlayerBarForVerticalVideoWhenControlsHiddenInFullscreen { return YES; }
 %end
 
 // YTNoPaidPromo: https://github.com/PoomSmart/YTNoPaidPromo
@@ -929,12 +717,12 @@ void DEMC_centerRenderingView() {
 %end
 %end
 
-// Bring back the red progress bar
-%hook YTColdConfig
-- (BOOL)segmentablePlayerBarUpdateColors {
-    return IsEnabled(@"redProgressBar_enabled") ? NO : %orig;
-}
-%end
+// Bring back the red progress bar - Broken?!
+// %hook YTColdConfig
+// - (BOOL)segmentablePlayerBarUpdateColors {
+//     return IsEnabled(@"redProgressBar_enabled") ? NO : %orig;
+// }
+// %end
 
 // Disable the right panel in fullscreen mode
 %hook YTColdConfig
@@ -944,35 +732,6 @@ void DEMC_centerRenderingView() {
 %end
 
 // Shorts Controls Overlay Options
-%hook YTReelWatchPlaybackOverlayView
-- (void)setNativePivotButton:(id)arg1 {
-    if (IsEnabled(@"hideShortsChannelAvatar_enabled")) {}
-    else { return %orig; }
-}
-- (void)setReelDislikeButton:(id)arg1 {
-    if (IsEnabled(@"hideShortsDislikeButton_enabled")) {}
-    else { return %orig; }
-}
-- (void)setViewCommentButton:(id)arg1 {
-    if (IsEnabled(@"hideShortsCommentButton_enabled")) {}
-    else { return %orig; }
-}
-- (void)setRemixButton:(id)arg1 {
-    if (IsEnabled(@"hideShortsRemixButton_enabled")) {}
-    else { return %orig; }
-}
-- (void)setShareButton:(id)arg1 {
-    if (IsEnabled(@"hideShortsShareButton_enabled")) {}
-    else { return %orig; }
-}
-%end
-
-%hook YTHotConfig
-- (BOOL)iosEnableShortsPlayerSplitViewController { 
-    return IsEnabled(@"hideuYouShortsDownloadButton_enabled") ? YES : NO;
-}
-%end
-
 %hook _ASDisplayView
 - (void)didMoveToWindow {
     %orig;
@@ -1396,20 +1155,15 @@ UIColor* raisedColor = [UIColor colorWithRed:0.035 green:0.035 blue:0.035 alpha:
     [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"automaticallyCheckForUpdates"];
  
     // Disable broken options of uYou
-    [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"removeYouTubeAds"];
     [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"disableAgeRestriction"];
-    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"showedWelcomeVC"];
     
     // Change the default value of some options
     NSArray *allKeys = [[[NSUserDefaults standardUserDefaults] dictionaryRepresentation] allKeys];
     if (![allKeys containsObject:@"relatedVideosAtTheEndOfYTVideos"]) { 
        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"relatedVideosAtTheEndOfYTVideos"]; 
     }
-    if (![allKeys containsObject:@"uYouButtonVideoControlsOverlay"]) { 
-       [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"uYouButtonVideoControlsOverlay"]; 
-    }
-    if (![allKeys containsObject:@"uYouPiPButtonVideoControlsOverlay"]) { 
-       [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"uYouPiPButtonVideoControlsOverlay"]; 
+    if (![allKeys containsObject:@"shortsProgressBar"]) { 
+       [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"shortsProgressBar"]; 
     }
     if (![allKeys containsObject:@"RYD-ENABLED"]) { 
        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"RYD-ENABLED"]; 
