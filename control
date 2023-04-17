@@ -5,4 +5,4 @@ Description: Modified version of uYou
 Maintainer: qnblackcat
 Author: qnblackcat
 Section: Tweaks
-Depends: mobilesubstrate (>= 0.9.5000), com.galacticdev.isponsorblock, com.miro.uyou, com.ps.youpip, com.ps.ytabconfig, com.ps.ytuhd, libflex, weeb.lillie.youtubedislikesreturn
+Depends: mobilesubstrate (>= 0.9.5000), com.miro.uyou, com.ps.youpip, com.ps.ytabconfig, libflex, weeb.lillie.youtubedislikesreturn
