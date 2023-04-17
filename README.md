@@ -146,25 +146,21 @@
 <details>
   <summary>And many more...!</summary>
 
-5. **YTAutoFullScreen:** autoplay videos at full screen.
+5. **YTClassicVideoQuality:** since YouTube v16.xx, you need one more step to change the video quality. YTClassicVideoQuality brings back the old video quality selector, which is a lot better than the new one.
 
-6. **YTClassicVideoQuality:** since YouTube v16.xx, you need one more step to change the video quality. YTClassicVideoQuality brings back the old video quality selector, which is a lot better than the new one.
+6. **YTNoHoverCards:** offer an option to enable/disable the annoying suggested videos show up at the end of the videos.
 
-7. **YTNoHoverCards:** offer an option to enable/disable the annoying suggested videos show up at the end of the videos.
+7. **YouRememberCaption**: make YouTube remember your video caption setting (if not already).
 
-8. **YouRememberCaption**: make YouTube remember your video caption setting (if not already).
+8. **NoYTPremium**: remove YouTube Premium upsells.
 
-9. **NoYTPremium**: remove YouTube Premium upsells.
+9. **YTSpeed**: add 2.25, 2.5, 2.75, and 3x playback speed
 
-10. **YTSpeed**: add 2.25, 2.5, 2.75, and 3x playback speed
+10. **YTMiniplayerEnabler**: enable Miniplayer for all YouTube videos.
 
-11. **YTMiniplayerEnabler**: enable Miniplayer for all YouTube videos.
+11. **DontEatMyContent**: prevent the notch/Dynamic Island from munching on 2:1 video content in YouTube.
 
-12. **DontEatMyContent**: prevent the notch/Dynamic Island from munching on 2:1 video content in YouTube.
-
-13. **YTShortsProgress**: always enable progress bar and scrubbing in YouTube Shorts (iPhone only).
-
-14. **YTABConfig**: allow user to control over YouTube A/B testing flags.
+12. **YTABConfig**: allow user to control over YouTube A/B testing flags.
 
 </details>
 
@@ -182,17 +178,17 @@
 
   - My official AltStore repo: https://qnblackcat.github.io/AltStore/
 
-  - [Open in AltStore (v18.08.1-2.3~1)](https://tinyurl.com/2p8jnjsh) - It will take a while to install because AltStore needs to download the IPA first.
+  - [Open in AltStore (v18.15.1-3.0)](https://tinyurl.com/35txn8xh) - It will take a while to install because AltStore needs to download the IPA first.
 
-- Version info: _(last update: Feb 28)_
+- Version info: _(last update: Apr 17)_
 
 <details>
   <summary>Expand ℹ️</summary>
 
 | **Tweaks/App** | **Developer** | **Version** | **Open source** |
 | - | - | :-: | :-:  |
-| **YouTube** | Google Inc | 18.08.1 | ✖︎ |
-| [uYou](https://github.com/MiRO92/uYou-for-YouTube) | [MiRO92](https://twitter.com/miro92) | 2.3~1 | ✖︎ |
+| **YouTube** | Google Inc | 18.15.1 | ✖︎ |
+| [uYou](https://github.com/MiRO92/uYou-for-YouTube) | [MiRO92](https://twitter.com/miro92) | 3.0 | ✖︎ |
 | **Open in YouTube** | [CokePokes](https://github.com/CokePokes) | 1.2 | [✔︎](https://github.com/CokePokes/YoutubeExtensions) |
 | **iSponsorBlock** | [Galactic-Dev](https://github.com/Galactic-Dev) | 1.0-15 | [✔︎](https://github.com/Galactic-Dev/iSponsorBlock) |
 | **BigYTMiniPlayer** | [Galactic-Dev](https://github.com/Galactic-Dev) | 1.0-1 | [✔︎](https://github.com/Galactic-Dev/BigYTMiniPlayer) |
@@ -202,17 +198,15 @@
 | **YTSpeed** | [Lyvendia](https://github.com/Lyvendia) | 1.0.1 | [✔︎](https://github.com/Lyvendia/YTSpeed) |
 | **YTCastConfirm** | [JamieBerghmans](https://github.com/JamieBerghmans) | 1.0.0 | [✔︎](https://github.com/JamieBerghmans/YTCastConfirm) |
 | **Alderis Color Picker** | [HASHBANG Productions](https://github.com/hbang) | 1.2| [✔︎](https://github.com/hbang/Alderis) |
-| **YTUHD** | [PoomSmart](https://twitter.com/poomsmart) | 1.3.5 | [✔︎](https://github.com/PoomSmart/YTUHD) |
-| **YouPiP** | [PoomSmart](https://twitter.com/poomsmart) | 1.7.19 | [✔︎](https://github.com/PoomSmart/YouPiP) |
+| **YTUHD** | [PoomSmart](https://twitter.com/poomsmart) | 1.3.5-1 | [✔︎](https://github.com/PoomSmart/YTUHD) |
+| **YouPiP** | [PoomSmart](https://twitter.com/poomsmart) | 1.7.19-1 | [✔︎](https://github.com/PoomSmart/YouPiP) |
 | **IAmYouTube** | [PoomSmart](https://twitter.com/poomsmart) | 1.2.0 | [✔︎](https://github.com/PoomSmart/IAmYouTube) |
 | **YTABConfig** | [PoomSmart](https://twitter.com/poomsmart) | 1.5.0 | [✔︎](https://github.com/PoomSmart/YTABConfig) |
 | **YTReExplore** | [PoomSmart](https://twitter.com/poomsmart) | 1.0.2 | [✔︎](https://github.com/PoomSmart/YTReExplore) |
 | **NoYTPremium** | [PoomSmart](https://twitter.com/poomsmart) | 1.0.4 | [✔︎](https://github.com/PoomSmart/NoYTPremium) |
 | **YTNoPaidPromo** | [PoomSmart](https://twitter.com/poomsmart) | 1.0.0 | [✔︎](https://github.com/PoomSmart/YTNoPaidPromo) |
-| **YTAutoFullScreen** | [PoomSmart](https://twitter.com/poomsmart) | 1.0.3 | [✔︎](https://github.com/PoomSmart/YTAutoFullScreen) |
-| **YTShortsProgress** | [PoomSmart](https://twitter.com/poomsmart) | 1.0.2 | [✔︎](https://github.com/PoomSmart/YTShortsProgress) |
 | **YouRememberCaption** | [PoomSmart](https://twitter.com/poomsmart) | 1.0.0 | [✔︎](https://poomsmart.github.io/repo/depictions/youremembercaption.html) |
-| **Return YouTube Dislike** | [PoomSmart](https://twitter.com/poomsmart) | 1.11.0 | [✔︎](https://github.com/PoomSmart/Return-YouTube-Dislikes) |
+| **Return YouTube Dislike** | [PoomSmart](https://twitter.com/poomsmart) | 1.11.3 | [✔︎](https://github.com/PoomSmart/Return-YouTube-Dislikes) |
 
 </details>
 
