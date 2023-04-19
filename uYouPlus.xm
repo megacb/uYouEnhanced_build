@@ -718,11 +718,11 @@ void DEMC_centerRenderingView() {
 %end
 
 // Bring back the red progress bar - Broken?!
-// %hook YTColdConfig
-// - (BOOL)segmentablePlayerBarUpdateColors {
-//     return IsEnabled(@"redProgressBar_enabled") ? NO : %orig;
-// }
-// %end
+%hook YTInlinePlayerBarContainerView
+- (id)quietProgressBarColor {
+    return IsEnabled(@"redProgressBar_enabled") ? [UIColor redColor] : %orig;
+}
+%end
 
 // Disable the right panel in fullscreen mode
 %hook YTColdConfig
