@@ -823,15 +823,6 @@ UIColor* raisedColor = [UIColor colorWithRed:0.035 green:0.035 blue:0.035 alpha:
 }
 %end
 
-%hook YTAsyncCollectionView
-- (UIColor *)darkBackgroundColor {
-    return isDarkMode() ? [UIColor blackColor] : %orig;
-}
-- (void)setDarkBackgroundColor:(UIColor *)color {
-    return isDarkMode() ? %orig([UIColor blackColor]) : %orig;
-}
-%end
-
 // Explore
 %hook ASScrollView 
 - (void)didMoveToWindow {
