@@ -8,7 +8,7 @@
 "AUTO_FULLSCREEN" = "自動でフルスクリーンにする (YTAutoFullScreen)";
 "AUTO_FULLSCREEN_DESC" = "動画を自動でフルスクリーンにします。";
 
-"DISABLE_DOUBLE_TAP_TO_SEEK" = "Disable double tap to seek";
+"DISABLE_DOUBLE_TAP_TO_SEEK" = "ダブルタップによるシークを無効化";
 "DISABLE_DOUBLE_TAP_TO_SEEK_DESC" = "";
 
 "SNAP_TO_CHAPTER" = "チャプターに合わせてのスクラブを無効にする";
@@ -20,7 +20,7 @@
 "YT_MINIPLAYER" = "すべての動画でミニプレーヤーを有効にする";
 "YT_MINIPLAYER_DESC" = "例：子ども向けの動画など";
 
-"STOCK_VOLUME_HUD" = "Use iOS stock volume HUD";
+"STOCK_VOLUME_HUD" = "iOSのstockボリュームHUDを利用する";
 "STOCK_VOLUME_HUD_DESC" = "";
 
 // Video controls overlay options
@@ -36,7 +36,7 @@
 "HIDE_HUD_MESSAGES_DESC" = "例：字幕がオン/オフになりました、ループ再生はオンになっています、等";
 
 "HIDE_PAID_PROMOTION_CARDS" = "プロモーションバナーを非表示";
-"HIDE_PAID_PROMOTION_CARDS_DESC" = "一部の動画で表示される「プロモーションを含みます」のバナーを非表示にします。";
+"HIDE_PAID_PROMOTION_CARDS_DESC" = "「プロモーションを含みます」のバナーを非表示にします。";
 
 "HIDE_CHANNEL_WATERMARK" = "チャンネルのウォーターマークを非表示";
 "HIDE_CHANNEL_WATERMARK_DESC" = "動画再生時のチャンネルのウォーターマークを非表示にします。 アプリの再起動が必要です。";
@@ -44,7 +44,7 @@
 "HIDE_PREVIOUS_AND_NEXT_BUTTON" = "前後の動画を再生するボタンを非表示";
 "HIDE_PREVIOUS_AND_NEXT_BUTTON_DESC" = "動画コントロールのオーバーレイで次の動画と前の動画を再生するボタンを非表示にします。";
 
-"REPLACE_PREVIOUS_NEXT_BUTTON" = "前後の動画を再生するボタンを置き換える";
+"REPLACE_PREVIOUS_NEXT_BUTTON" = "前後の動画を再生するボタンを置換";
 "REPLACE_PREVIOUS_NEXT_BUTTON_DESC" = "次の動画と前の動画を再生するボタンをそれぞれ早送りと巻き戻しボタンに置き換えます。アプリの再起動が必要です。";
 
 "HIDE_HOVER_CARD" = "動画終わりのホバーカードを非表示 (YTNoHoverCards)";
@@ -80,11 +80,11 @@
 "HIDE_UYOU_SHORTS_DOWNLOAD_BUTTON" = "uYouボタンを非表示";
 "HIDE_UYOU_SHORTS_DOWNLOAD_BUTTON_DESC" = "ショートのuYouボタンを非表示にします。";
 
-"HIDE_SUBCRIPTIONS" = "Hide Subscriptions button";
-"HIDE_SUBCRIPTIONS_DESC" = "Hide Subscriptions button which shows up when paused.";
+"HIDE_SUBCRIPTIONS" = "チャンネル登録ボタンを非表示";
+"HIDE_SUBCRIPTIONS_DESC" = "一時停止時に表示されるチャンネル登録ボタンを非表示にします";
 
 "HIDE_SUPER_THANKS" = "Super Thanks を購入のバナーを非表示";
-"HIDE_SUPER_THANKS_DESC" = "ショート動画のSuper Thanks を購入のバナーを非表示にします。";
+"HIDE_SUPER_THANKS_DESC" = "ショートの「Super Thanks」バナーを非表示にします。";
 
 "DISABLE_RESUME_TO_SHORTS" = "ショートの再開を無効化";
 "DISABLE_RESUME_TO_SHORTS_DESC" = "ショート動画を見ていてアプリを終了した後、再度開いた際にショートから再開されるのを防ぎます。";
