@@ -32,14 +32,14 @@ static BOOL oldDarkTheme() {
 //
 # pragma mark - uYou's patches
 // Workaround for qnblackcat/uYouPlus#10
-// %hook boolSettingsVC
-// - (instancetype)initWithTitle:(NSString *)title sections:(NSArray *)sections footer:(NSString *)footer {
-//     if (@available(iOS 15, *))
-//         if (![self valueForKey:@"_lastNotifiedTraitCollection"])
-//             [self setValue:[UITraitCollection currentTraitCollection] forKey:@"_lastNotifiedTraitCollection"];
-//     return %orig;
-// }
-// %end
+%hook boolSettingsVC
+- (instancetype)initWithTitle:(NSString *)title sections:(NSArray *)sections footer:(NSString *)footer {
+    if (@available(iOS 15, *))
+        if (![self valueForKey:@"_lastNotifiedTraitCollection"])
+            [self setValue:[UITraitCollection currentTraitCollection] forKey:@"_lastNotifiedTraitCollection"];
+    return %orig;
+}
+%end
 
 // Prevent uYou player bar from showing when not playing downloaded media
 %hook PlayerManager
@@ -248,18 +248,27 @@ static BOOL didFinishLaunching;
 }
 %end
 
-%hook YTSectionListViewController
-- (void)loadWithModel:(YTISectionListRenderer *)model {
-    NSMutableArray <YTISectionListSupportedRenderers *> *contentsArray = model.contentsArray;
-    NSIndexSet *removeIndexes = [contentsArray indexesOfObjectsPassingTest:^BOOL(YTISectionListSupportedRenderers *renderers, NSUInteger idx, BOOL *stop) {
-        YTIItemSectionRenderer *sectionRenderer = renderers.itemSectionRenderer;
-        YTIItemSectionSupportedRenderers *firstObject = [sectionRenderer.contentsArray firstObject];
-        return firstObject.hasPromotedVideoRenderer || firstObject.hasCompactPromotedVideoRenderer || firstObject.hasPromotedVideoInlineMutedRenderer;
-    }];
-    [contentsArray removeObjectsAtIndexes:removeIndexes];
-    %orig;
-}
-%end
+// Hide search ads by @PoomSmart - https://github.com/PoomSmart/YouTube-X
+// %hook YTIElementRenderer
+// - (NSData *)elementData {
+//     if (self.hasCompatibilityOptions && self.compatibilityOptions.hasAdLoggingData)
+//         return nil;
+//     return %orig;
+// }
+// %end
+
+// %hook YTSectionListViewController
+// - (void)loadWithModel:(YTISectionListRenderer *)model {
+//     NSMutableArray <YTISectionListSupportedRenderers *> *contentsArray = model.contentsArray;
+//     NSIndexSet *removeIndexes = [contentsArray indexesOfObjectsPassingTest:^BOOL(YTISectionListSupportedRenderers *renderers, NSUInteger idx, BOOL *stop) {
+//         YTIItemSectionRenderer *sectionRenderer = renderers.itemSectionRenderer;
+//         YTIItemSectionSupportedRenderers *firstObject = [sectionRenderer.contentsArray firstObject];
+//         return firstObject.hasPromotedVideoRenderer || firstObject.hasCompactPromotedVideoRenderer || firstObject.hasPromotedVideoInlineMutedRenderer;
+//     }];
+//     [contentsArray removeObjectsAtIndexes:removeIndexes];
+//     %orig;
+// }
+// %end
 
 // YTClassicVideoQuality: https://github.com/PoomSmart/YTClassicVideoQuality
 %hook YTVideoQualitySwitchControllerFactory
