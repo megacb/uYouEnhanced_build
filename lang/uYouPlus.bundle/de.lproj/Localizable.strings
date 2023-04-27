@@ -62,29 +62,29 @@
 // Shorts controls overlay options
 "SHORTS_CONTROLS_OVERLAY_OPTIONS" = "Shorts Controls Overlay-Optionen";
 
-"HIDE_SHORTS_CHANNEL_AVATAR" = ""Avatar" des Short-Kanals ausblenden";
+"HIDE_SHORTS_CHANNEL_AVATAR" = "\"Avatar\" des Short-Kanals ausblenden";
 "HIDE_SHORTS_CHANNEL_AVATAR_DESC" = "";
 
-"HIDE_SHORTS_DISLIKE_BUTTON" = "Shorts-Schaltfläche "Dislike" ausblenden";
+"HIDE_SHORTS_DISLIKE_BUTTON" = "Shorts-Schaltfläche \"Dislike\" ausblenden";
 "HIDE_SHORTS_DISLIKE_BUTTON_DESC" = "";
 
-"HIDE_SHORTS_COMMENT_BUTTON" = "Shorts Schaltfläche "Kommentare" ausblenden";
+"HIDE_SHORTS_COMMENT_BUTTON" = "Shorts Schaltfläche \"Kommentare\" ausblenden";
 "HIDE_SHORTS_COMMENT_BUTTON_DESC" = "";
 
-"HIDE_SHORTS_REMIX_BUTTON" = "Shorts-Schaltfläche "Remix" ausblenden";
+"HIDE_SHORTS_REMIX_BUTTON" = "Shorts-Schaltfläche \"Remix\" ausblenden";
 "HIDE_SHORTS_REMIX_BUTTON_DESC" = "";
 
-"HIDE_SHORTS_SHARE_BUTTON" = "Shorts-Schaltfläche "Teilen" ausblenden";
+"HIDE_SHORTS_SHARE_BUTTON" = "Shorts-Schaltfläche \"Teilen\" ausblenden";
 "HIDE_SHORTS_SHARE_BUTTON_DESC" = "";
 
 "HIDE_UYOU_SHORTS_DOWNLOAD_BUTTON" = "uYou Schaltflächen ausblenden";
 "HIDE_UYOU_SHORTS_DOWNLOAD_BUTTON_DESC" = "Die Download-Schaltflächen von uYou bei Shorts ausblenden.";
 
-"HIDE_SUBCRIPTIONS" = "Schaltfläche "Abos" ausblenden";
-"HIDE_SUBCRIPTIONS_DESC" = "Ausblenden der Schaltfläche "Abos", die beim Anhalten angezeigt wird.";
+"HIDE_SUBCRIPTIONS" = "Schaltfläche \"Abos\" ausblenden";
+"HIDE_SUBCRIPTIONS_DESC" = "Ausblenden der Schaltfläche \"Abos\", die beim Anhalten angezeigt wird.";
 
 "HIDE_SUPER_THANKS" = "'Buy Super Thanks'-Banner ausblenden";
-"HIDE_SUPER_THANKS_DESC" = "Ausblenden des "Buy Super Thanks'"-Banners in bestimmten Shorts.";
+"HIDE_SUPER_THANKS_DESC" = "Ausblenden des \"Buy Super Thanks\"-Banners in bestimmten Shorts.";
 
 "DISABLE_RESUME_TO_SHORTS" = "Fortsetzen nach Shorts deaktivieren";
 "DISABLE_RESUME_TO_SHORTS_DESC" = "Wenn Sie YouTube beenden, während Sie Shorts ansehen, werden Shorts beim nächsten Start von YouTube nicht automatisch abgespielt.";
