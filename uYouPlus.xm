@@ -32,12 +32,13 @@ static BOOL oldDarkTheme() {
 //
 # pragma mark - uYou's patches
 // Workaround for qnblackcat/uYouPlus#10
-%hook boolSettingsVC
-- (instancetype)initWithTitle:(NSString *)title sections:(NSArray *)sections footer:(NSString *)footer {
-    if (@available(iOS 15, *))
-        if (![self valueForKey:@"_lastNotifiedTraitCollection"])
-            [self setValue:[UITraitCollection currentTraitCollection] forKey:@"_lastNotifiedTraitCollection"];
-    return %orig;
+%hook UIViewController
+- (UITraitCollection *)traitCollection {
+    @try {
+        return %orig;
+    } @catch(NSException *e) {
+        return [UITraitCollection currentTraitCollection];
+    }
 }
 %end
 
