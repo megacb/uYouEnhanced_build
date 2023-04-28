@@ -80,8 +80,8 @@
 "HIDE_SUBCRIPTIONS" = "Abonelikler düğmesini gizle ";
 "HIDE_SUBCRIPTIONS_DESC" = "Duraklatıldığında görünen Abonelikler düğmesini gizle .";
 
-"HIDE_SUPER_THANKS" = ""Süper Teşekkür Satın Alın" afişini gizle";
-"HIDE_SUPER_THANKS_DESC" = "Shorts'ta "Süper Teşekkür Satın Alın" afişini gizle.";
+"HIDE_SUPER_THANKS" = "\"Süper Teşekkür Satın Alın\" afişini gizle";
+"HIDE_SUPER_THANKS_DESC" = "Shorts'ta \"Süper Teşekkür Satın Alın\" afişini gizle.";
 
 "DISABLE_RESUME_TO_SHORTS" = "Shorts'ta kaldığı yerden devam etmeyi devre dışı bırak";
 "DISABLE_RESUME_TO_SHORTS_DESC" = "Shorts izlerken YouTube'u kapatırsan Shorts, YouTube'u bir sonraki açışında otomatik olarak oynatılmaz.";
