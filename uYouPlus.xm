@@ -78,14 +78,10 @@ static BOOL oldDarkTheme() {
 %end
 %end
 
-// Workaround for qnblackcat/uYouPlus#617
-static BOOL didFinishLaunching;
-
 %hook YTAppDelegate
 - (BOOL)application:(UIApplication *)application
     didFinishLaunchingWithOptions:(NSDictionary<UIApplicationLaunchOptionsKey, id> *)launchOptions {
-    didFinishLaunching = %orig;
-    self.downloadsVC = [self.downloadsVC init];
+    BOOL didFinishLaunching = %orig;
 
     if (IsEnabled(@"flex_enabled")) {
         [[%c(FLEXManager) performSelector:@selector(sharedManager)] performSelector:@selector(showExplorer)];
@@ -98,12 +94,6 @@ static BOOL didFinishLaunching;
     if (IsEnabled(@"flex_enabled")) {
         [[%c(FLEXManager) performSelector:@selector(sharedManager)] performSelector:@selector(showExplorer)];
     }
-}
-%end
-
-%hook DownloadsPagerVC
-- (instancetype)init {
-    return didFinishLaunching ? %orig : self;
 }
 %end
 
