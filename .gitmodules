@@ -39,3 +39,6 @@
 [submodule "Tweaks/RemoteLog"]
 	path = Tweaks/RemoteLog
 	url = https://github.com/Muirey03/RemoteLog
+[submodule "Tweaks/DontEatMyContent"]
+	path = Tweaks/DontEatMyContent
+	url = https://github.com/therealFoxster/DontEatMyContent
