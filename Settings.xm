@@ -218,16 +218,6 @@ extern NSBundle *uYouPlusBundle();
                     return YES;
                 }
                 settingItemId:0],
-
-            [YTSettingsSectionItemClass switchItemWithTitle:LOC(@"DONT_EAT_MY_CONTENT")
-                titleDescription:LOC(@"DONT_EAT_MY_CONTENT_DESC")
-                accessibilityIdentifier:nil
-                switchOn:IsEnabled(@"dontEatMyContent_enabled")
-                switchBlock:^BOOL (YTSettingsCell *cell, BOOL enabled) {
-                    [[NSUserDefaults standardUserDefaults] setBool:enabled forKey:@"dontEatMyContent_enabled"];
-                    return YES;
-                }
-                settingItemId:0],
         ];
         YTSettingsPickerViewController *picker = [[%c(YTSettingsPickerViewController) alloc] initWithNavTitle:LOC(@"VIDEO_CONTROLS_OVERLAY_OPTIONS") pickerSectionTitle:nil rows:rows selectedItemIndex:NSNotFound parentResponder:[self parentResponder]];
         [settingsViewController pushViewController:picker];
