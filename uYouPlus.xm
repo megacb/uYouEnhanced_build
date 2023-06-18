@@ -103,6 +103,9 @@ static BOOL oldDarkTheme() {
 + (NSMutableDictionary *)spamSignalsDictionary {
     return nil;
 }
++ (NSMutableDictionary *)spamSignalsDictionaryWithoutIDFA {
+    return nil;
+}
 %end
 
 %hook YTHotConfig
