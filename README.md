@@ -162,6 +162,12 @@
 
 12. **YTABConfig**: allow user to control over YouTube A/B testing flags.
 
+13. **YouMute**: mute YouTube videos via a button.
+
+14. **YouQuality**: change video quality via a button.
+
+15. **YTVideoOverlay**: add buttons to overlay the video.
+
 </details>
 
 # Known issues 
@@ -174,20 +180,20 @@
 
 - **uYouPlus** (or you can call it uYou+) requires iOS or iPadOS 14.0 or later. The latest version of **uYouPlus** can be found in the [Release tab](https://github.com/qnblackcat/uYouPlus/releases/latest).
 
-- For AltStore user: 
+<!-- - For AltStore user: 
 
   - My official AltStore repo: https://qnblackcat.github.io/AltStore/
 
-  - [Open in AltStore (v18.14.1-3.0)](https://tinyurl.com/yv6wrxjz) - It will take a while to install because AltStore needs to download the IPA first.
+  - [Open in AltStore (v18.14.1-3.0)](https://tinyurl.com/yv6wrxjz) - It will take a while to install because AltStore needs to download the IPA first. -->
 
-- Version info: _(last update: Apr 28)_
+- Version info: _(last update: Aug 5)_
 
 <details>
   <summary>Expand ℹ️</summary>
 
 | **Tweaks/App** | **Developer** | **Version** | **Open source** |
 | - | - | :-: | :-:  |
-| **YouTube** | Google Inc | 18.14.1 | ✖︎ |
+| **YouTube** | Google Inc | 18.30.7 | ✖︎ |
 | [uYou](https://github.com/MiRO92/uYou-for-YouTube) | [MiRO92](https://twitter.com/miro92) | 3.0 | ✖︎ |
 | **Open in YouTube** | [CokePokes](https://github.com/CokePokes) | 1.2 | [✔︎](https://github.com/CokePokes/YoutubeExtensions) |
 | **iSponsorBlock** | [Galactic-Dev](https://github.com/Galactic-Dev) | 1.0-15 | [✔︎](https://github.com/Galactic-Dev/iSponsorBlock) |
@@ -207,6 +213,9 @@
 | **YTNoPaidPromo** | [PoomSmart](https://twitter.com/poomsmart) | 1.0.0 | [✔︎](https://github.com/PoomSmart/YTNoPaidPromo) |
 | **YouRememberCaption** | [PoomSmart](https://twitter.com/poomsmart) | 1.0.0 | [✔︎](https://poomsmart.github.io/repo/depictions/youremembercaption.html) |
 | **Return YouTube Dislike** | [PoomSmart](https://twitter.com/poomsmart) | 1.11.3 | [✔︎](https://github.com/PoomSmart/Return-YouTube-Dislikes) |
+| **YouMute** | [PoomSmart](https://twitter.com/poomsmart) | 1.2.1-2 | [✔︎](https://github.com/PoomSmart/YouMute) |
+| **YouQuality** | [PoomSmart](https://twitter.com/poomsmart) | 1.1.4 | [✔︎](https://github.com/PoomSmart/YouQuality) |
+| **YTVideoOverlay** | [PoomSmart](https://twitter.com/poomsmart) | 1.1.0-2 | [✔︎](https://github.com/PoomSmart/YTVideoOverlay) |
 
 </details>
 
