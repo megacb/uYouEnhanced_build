@@ -182,3 +182,13 @@
 
 @interface UIPredictionViewController : UIViewController
 @end
+
+@interface FRPreferences : UITableViewController
+@end
+
+@interface FRPSelectListTable : UITableViewController
+@end
+
+@interface settingsReorderTable : UIViewController
+@property(nonatomic, strong) UITableView *tableView;
+@end
