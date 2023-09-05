@@ -155,7 +155,7 @@ static BOOL oldDarkTheme() {
 // Remove “Play next in queue” from the menu (@PoomSmart) - qnblackcat/uYouPlus#1138
 %hook YTMenuItemVisibilityHandler
 - (BOOL)shouldShowServiceItemRenderer:(YTIMenuConditionalServiceItemRenderer *)renderer {
-    return renderer.icon.iconType == 251 ? NO : %orig;
+    return IsEnabled(@"hidePlayNextInQueue_enabled") && renderer.icon.iconType == 251 ? NO : %orig;
 }
 %end
 
@@ -1027,6 +1027,9 @@ UIColor* raisedColor = [UIColor colorWithRed:0.035 green:0.035 blue:0.035 alpha:
     
     // Change the default value of some options
     NSArray *allKeys = [[[NSUserDefaults standardUserDefaults] dictionaryRepresentation] allKeys];
+    if (![allKeys containsObject:@"hidePlayNextInQueue_enabled"]) {
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"hidePlayNextInQueue_enabled"];
+    }
     if (![allKeys containsObject:@"relatedVideosAtTheEndOfYTVideos"]) { 
        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"relatedVideosAtTheEndOfYTVideos"]; 
     }
