@@ -130,6 +130,9 @@
 "HIDE_CHIP_BAR" = "Nascondi la barra superiore";
 "HIDE_CHIP_BAR_DESC" = "Nascondi la barra superiore nella Home (Tendenze, Musica, Giochi...) e Iscrizioni (Tutti i video, Continua a guardare...). È richiesto il riavvio dell'app.";
 
+"HIDE_PLAY_NEXT_IN_QUEUE" = "Hide \"Play next in queue\"";
+"HIDE_PLAY_NEXT_IN_QUEUE_DESC" = "Hide the premium \"Play next in queue\" option in video context menus";
+
 "NEW_MINIPLAYER_STYLE" = "Nuovo stile per la barra del miniplayer (BigYTMiniPlayer)";
 "NEW_MINIPLAYER_STYLE_DESC" = "È richiesto un riavvio dell'app.";
 

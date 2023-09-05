@@ -130,6 +130,9 @@
 "HIDE_CHIP_BAR" = "Ẩn thanh phím tắt";
 "HIDE_CHIP_BAR_DESC" = "Ẩn thanh phím tắt trong Home feed (Thịnh hành, Âm nhạc, Trò chơi...) và trong Subciption feed (Tất cả, Tiếp tục xem...).";
 
+"HIDE_PLAY_NEXT_IN_QUEUE" = "Hide \"Play next in queue\"";
+"HIDE_PLAY_NEXT_IN_QUEUE_DESC" = "Hide the premium \"Play next in queue\" option in video context menus";
+
 "NEW_MINIPLAYER_STYLE" = "Giao diện trình phát thu nhỏ kiểu mới (BigYTMiniPlayer)";
 "NEW_MINIPLAYER_STYLE_DESC" = "Cần khởi động lại ứng dụng.";
 

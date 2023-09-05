@@ -130,6 +130,9 @@
 "HIDE_CHIP_BAR" = "Masquer la barre supérieure";
 "HIDE_CHIP_BAR_DESC" = "Masquer la barre supérieure dans les fils d'actualité (Tendances, Musique, Gaming...) et les fils d'abonnement (Toutes les vidéos, Poursuivre la lecture...). Un redémarrage de l'application est nécessaire.";
 
+"HIDE_PLAY_NEXT_IN_QUEUE" = "Hide \"Play next in queue\"";
+"HIDE_PLAY_NEXT_IN_QUEUE_DESC" = "Hide the premium \"Play next in queue\" option in video context menus";
+
 "NEW_MINIPLAYER_STYLE" = "Nouveau style de barre de mini-lecteur (BigYTMiniPlayer)";
 "NEW_MINIPLAYER_STYLE_DESC" = "Un redémarrage de l'application est nécessaire";
 

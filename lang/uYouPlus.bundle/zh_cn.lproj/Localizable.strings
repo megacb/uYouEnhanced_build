@@ -130,6 +130,9 @@
 "HIDE_CHIP_BAR" = "隐藏顶部标签栏";
 "HIDE_CHIP_BAR_DESC" = "隐藏首页和订阅内容页顶部的标签栏（例如：首页顶部的“音乐”、“游戏”、“新闻”以及订阅内容页顶部的“今天”、“继续观看”、“未观看”等）。更改本设置后需要重启 App。";
 
+"HIDE_PLAY_NEXT_IN_QUEUE" = "Hide \"Play next in queue\"";
+"HIDE_PLAY_NEXT_IN_QUEUE_DESC" = "Hide the premium \"Play next in queue\" option in video context menus";
+
 "NEW_MINIPLAYER_STYLE" = "新迷你播放器风格 （BigYTMiniPlayer）";
 "NEW_MINIPLAYER_STYLE_DESC" = "更改本设置后需要重启 App。";
 

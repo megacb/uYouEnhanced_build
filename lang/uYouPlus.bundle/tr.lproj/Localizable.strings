@@ -127,6 +127,9 @@
 "HIDE_CHIP_BAR" = "Üst çubuğu gizle";
 "HIDE_CHIP_BAR_DESC" = "Ana Sayfa akışlarında (Trendler, Müzik, Oyun...) ve Abonelik akışlarında (Tüm videolar, İzlemeye devam et...) Üst çubuğu gizle. Uygulamanın yeniden başlatılması gerekir.";
 
+"HIDE_PLAY_NEXT_IN_QUEUE" = "Hide \"Play next in queue\"";
+"HIDE_PLAY_NEXT_IN_QUEUE_DESC" = "Hide the premium \"Play next in queue\" option in video context menus";
+
 "NEW_MINIPLAYER_STYLE" = "Yeni mini oynatıcı bar stili. (BigYTMiniPlayer)";
 "NEW_MINIPLAYER_STYLE_DESC" = "Uygulamanın yeniden başlatılması gerekir.";
 

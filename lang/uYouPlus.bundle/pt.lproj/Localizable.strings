@@ -130,6 +130,9 @@
 "HIDE_CHIP_BAR" = "Ocultar a Barra superior";
 "HIDE_CHIP_BAR_DESC" = "Oculta a Barra superior nos Feeds iniciais (Tendências, Música, Jogos...) e Feeds de inscrições (Todos os vídeos, Continuar assistindo...). A reinicialização do app é necessária.";
 
+"HIDE_PLAY_NEXT_IN_QUEUE" = "Hide \"Play next in queue\"";
+"HIDE_PLAY_NEXT_IN_QUEUE_DESC" = "Hide the premium \"Play next in queue\" option in video context menus";
+
 "NEW_MINIPLAYER_STYLE" = "Novo estilo de barra de miniplayer (BigYTMiniPlayer)";
 "NEW_MINIPLAYER_STYLE_DESC" = "A reinicialização do app é necessária.";
 

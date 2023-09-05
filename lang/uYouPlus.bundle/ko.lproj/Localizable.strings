@@ -130,6 +130,9 @@
 "HIDE_CHIP_BAR" = "피드 선택 막대 숨기기";
 "HIDE_CHIP_BAR_DESC" = "앱의 홈 화면에서 맞춤 동영상(인기 급상승, 음악, 게임...)과 구독 피드(전체, 감상한 동영상...) 선택 막대를 숨깁니다. 앱을 다시 시작해야 합니다.";
 
+"HIDE_PLAY_NEXT_IN_QUEUE" = "Hide \"Play next in queue\"";
+"HIDE_PLAY_NEXT_IN_QUEUE_DESC" = "Hide the premium \"Play next in queue\" option in video context menus";
+
 "NEW_MINIPLAYER_STYLE" = "새로운 스타일의 미니 플레이어 (BigYTMiniPlayer)";
 "NEW_MINIPLAYER_STYLE_DESC" = "앱을 다시 시작해야 합니다.";
 

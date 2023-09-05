@@ -130,6 +130,9 @@
 "HIDE_CHIP_BAR" = "Ocultar la barra superior";
 "HIDE_CHIP_BAR_DESC" = "Ocultar la barra superior de las fuentes de inicio (Tendencias, Música, Juegos...) y de suscripción (Todos los vídeos, Seguir viendo...). Es necesario reiniciar la aplicación.";
 
+"HIDE_PLAY_NEXT_IN_QUEUE" = "Hide \"Play next in queue\"";
+"HIDE_PLAY_NEXT_IN_QUEUE_DESC" = "Hide the premium \"Play next in queue\" option in video context menus";
+
 "NEW_MINIPLAYER_STYLE" = "Nuevo estilo de barra del minirreproductor (BigYTMiniPlayer)";
 "NEW_MINIPLAYER_STYLE_DESC" = "Requiere reiniciar la app.";
 

@@ -130,6 +130,9 @@
 "HIDE_CHIP_BAR" = "Hide the Upper bar";
 "HIDE_CHIP_BAR_DESC" = "Hide Upper bar in the Home feeds (Trends, Music, Gaming...) and Subcription feeds (All videos, Continue watching...). App restart is required.";
 
+"HIDE_PLAY_NEXT_IN_QUEUE" = "Hide \"Play next in queue\"";
+"HIDE_PLAY_NEXT_IN_QUEUE_DESC" = "Hide the premium \"Play next in queue\" option in video context menus";
+
 "NEW_MINIPLAYER_STYLE" = "Καινούργιο miniplayer θέμα στην μπάρα (BigYTMiniPlayer)";
 "NEW_MINIPLAYER_STYLE_DESC" = "Απαιτείται επανεκκίνηση της εφαρμογής.";
 

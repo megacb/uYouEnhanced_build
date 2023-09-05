@@ -130,6 +130,9 @@
 "HIDE_CHIP_BAR" = "Obere Leiste ausblenden";
 "HIDE_CHIP_BAR_DESC" = "Obere Leiste in den Home-Feeds (Trends, Musik, Spiele...) und Abo-Feeds (Alle Videos, Weiterschauen...) ausblenden. App-Neustart erforderlich.";
 
+"HIDE_PLAY_NEXT_IN_QUEUE" = "Hide \"Play next in queue\"";
+"HIDE_PLAY_NEXT_IN_QUEUE_DESC" = "Hide the premium \"Play next in queue\" option in video context menus";
+
 "NEW_MINIPLAYER_STYLE" = "Neuer Miniplayer Style (BigYTMiniPlayer)";
 "NEW_MINIPLAYER_STYLE_DESC" = "App-Neustart erforderlich!";
 
