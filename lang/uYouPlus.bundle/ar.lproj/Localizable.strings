@@ -130,8 +130,8 @@
 "HIDE_CHIP_BAR" = "إخفاء الشريط العلوي";
 "HIDE_CHIP_BAR_DESC" = "إخفاء الشريط العلوي من تبويب الصفحة الرئيسية (موسيقى، ألعاب فيديو، تشكيلات ...) ومن تبويب الاشتراكات (كل الفيديوهات، متابعة المشاهدة,...). تتطلب إعادة تشغيل التطبيق.";
 
-"HIDE_PLAY_NEXT_IN_QUEUE" = "Hide \"Play next in queue\"";
-"HIDE_PLAY_NEXT_IN_QUEUE_DESC" = "Hide the premium \"Play next in queue\" option in video context menus";
+"HIDE_PLAY_NEXT_IN_QUEUE" = "إخفاء \"تشغيل المقطع التالي من قائمة الانتظار\"";
+"HIDE_PLAY_NEXT_IN_QUEUE_DESC" = "إخفاء خيار \"تشغيل التالي من قائمة الانتظار\" من قائمة السياق في حسابات يوتيوب المدفوعة";
 
 "NEW_MINIPLAYER_STYLE" = "تغيير شكل المشغّل المصغر (أداة BigYTMiniPlayer)";
 "NEW_MINIPLAYER_STYLE_DESC" = "تغيير شكل المشغّل المصغر في الآيفون إلى نفس شكله في الآيباد - تتطلب إغلاق التطبيق وإعادة فتحه.";
