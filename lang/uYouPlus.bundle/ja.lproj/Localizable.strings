@@ -130,8 +130,8 @@
 "HIDE_CHIP_BAR" = "トップバーを非表示";
 "HIDE_CHIP_BAR_DESC" = "ホーム(トレンド,音楽,ゲーム...)とサブスクリプション(すべてのビデオ、視聴を続ける...)リボンのトップバーを非表示にします。アプリの再起動が必要です。";
 
-"HIDE_PLAY_NEXT_IN_QUEUE" = "Hide \"Play next in queue\"";
-"HIDE_PLAY_NEXT_IN_QUEUE_DESC" = "Hide the premium \"Play next in queue\" option in video context menus";
+"HIDE_PLAY_NEXT_IN_QUEUE" = "\"次に再生\"を削除";
+"HIDE_PLAY_NEXT_IN_QUEUE_DESC" = "コンテキストメニューの\"キューの最初に追加\"オプションを非表示にします";
 
 "NEW_MINIPLAYER_STYLE" = "新しいミニプレーヤー・バーを使う (BigYTMiniPlayer)";
 "NEW_MINIPLAYER_STYLE_DESC" = "アプリの再起動が必要です。";
