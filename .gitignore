@@ -5,3 +5,4 @@ tmp/
 Tweaks/uYou/*
 !Tweaks/uYou/.gitkeep
 Resources/
+*.ipa
