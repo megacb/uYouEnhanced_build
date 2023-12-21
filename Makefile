@@ -26,7 +26,7 @@ TWEAK_NAME = uYouPlus
 DISPLAY_NAME = YouTube
 BUNDLE_ID = com.google.ios.youtube
 
-$(TWEAK_NAME)_FILES = uYouPlus.xm Settings.xm
+$(TWEAK_NAME)_FILES = Sources/uYouPlus.xm Sources/Settings.xm
 $(TWEAK_NAME)_FRAMEWORKS = UIKit Security
 $(TWEAK_NAME)_CFLAGS = -fobjc-arc -DTWEAK_VERSION=\"$(PACKAGE_VERSION)\"
 $(TWEAK_NAME)_INJECT_DYLIBS = Tweaks/uYou/Library/MobileSubstrate/DynamicLibraries/uYou.dylib $(THEOS_OBJ_DIR)/libFLEX.dylib $(THEOS_OBJ_DIR)/iSponsorBlock.dylib $(THEOS_OBJ_DIR)/YouPiP.dylib $(THEOS_OBJ_DIR)/YouTubeDislikesReturn.dylib $(THEOS_OBJ_DIR)/YTABConfig.dylib $(THEOS_OBJ_DIR)/YTUHD.dylib $(THEOS_OBJ_DIR)/DontEatMyContent.dylib
