@@ -605,7 +605,7 @@ UIColor* raisedColor = [UIColor colorWithRed:0.035 green:0.035 blue:0.035 alpha:
 - (void)didMoveToWindow {
     %orig;
     if (IS_DARK_APPEARANCE_ENABLED) {
-        self.subviews[0].backgroundColor = [UIColor clearColor];
+        // self.subviews[0].backgroundColor = [UIColor clearColor];
     }
 }
 %end
@@ -670,7 +670,7 @@ UIColor* raisedColor = [UIColor colorWithRed:0.035 green:0.035 blue:0.035 alpha:
 - (void)didMoveToWindow {
     %orig;
     if (IS_DARK_APPEARANCE_ENABLED) {
-        self.subviews[2].backgroundColor = [UIColor blackColor];
+        // self.subviews[2].backgroundColor = [UIColor blackColor];
     }
 }
 %end
@@ -698,7 +698,7 @@ UIColor* raisedColor = [UIColor colorWithRed:0.035 green:0.035 blue:0.035 alpha:
 - (void)didMoveToWindow {
     %orig;
     if (IS_DARK_APPEARANCE_ENABLED) {
-        self.subviews[1].backgroundColor = [UIColor blackColor];
+        // self.subviews[1].backgroundColor = [UIColor blackColor];
     }
 }
 %end
@@ -755,7 +755,7 @@ UIColor* raisedColor = [UIColor colorWithRed:0.035 green:0.035 blue:0.035 alpha:
     %orig;
     if (IS_DARK_APPEARANCE_ENABLED) {
         self.backgroundColor = raisedColor;
-        self.subviews[1].backgroundColor = raisedColor;
+        // self.subviews[1].backgroundColor = raisedColor;
         self.superview.backgroundColor = raisedColor;
     }
 }
