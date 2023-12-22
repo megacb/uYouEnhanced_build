@@ -1,4 +1,4 @@
-export TARGET = iphone:clang:15.5:14.0
+export TARGET = iphone:clang:latest:14.0
 export ARCHS = arm64
 
 export libcolorpicker_ARCHS = arm64
