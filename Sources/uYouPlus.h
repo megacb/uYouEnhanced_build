@@ -1,5 +1,3 @@
-#import "../Tweaks/YouTubeHeader/YTAppDelegate.h"
-#import "../Tweaks/YouTubeHeader/YTPlayerViewController.h"
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
 #import <objc/runtime.h>
@@ -7,6 +5,9 @@
 #import <sys/utsname.h>
 #import <substrate.h>
 #import <rootless.h>
+
+#import "../Tweaks/YouTubeHeader/YTAppDelegate.h"
+#import "../Tweaks/YouTubeHeader/YTPlayerViewController.h"
 #import "../Tweaks/YouTubeHeader/YTVideoQualitySwitchOriginalController.h"
 #import "../Tweaks/YouTubeHeader/YTPlayerViewController.h"
 #import "../Tweaks/YouTubeHeader/YTWatchController.h"
@@ -29,6 +30,8 @@
 #define LOC(x) [tweakBundle localizedStringForKey:x value:nil table:nil]
 #define YT_BUNDLE_ID @"com.google.ios.youtube"
 #define YT_NAME @"YouTube"
+#define IS_ENABLED(k) [[NSUserDefaults standardUserDefaults] boolForKey:k]
+#define APP_THEME_IDX [[NSUserDefaults standardUserDefaults] integerForKey:@"appTheme"]
 #define DEFAULT_RATE 2.0f // YTSpeed
 
 // IAmYouTube

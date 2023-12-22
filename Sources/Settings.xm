@@ -6,12 +6,6 @@
 #import "../Tweaks/YouTubeHeader/YTSettingsPickerViewController.h"
 #import "uYouPlus.h"
 
-static BOOL IsEnabled(NSString *key) {
-    return [[NSUserDefaults standardUserDefaults] boolForKey:key];
-}
-static int GetSelection(NSString *key) {
-    return [[NSUserDefaults standardUserDefaults] integerForKey:key];
-}
 static const NSInteger uYouPlusSection = 500;
 
 @interface YTSettingsSectionItemManager (uYouPlus)
@@ -62,7 +56,7 @@ extern NSBundle *uYouPlusBundle();
             [YTSettingsSectionItemClass switchItemWithTitle:LOC(@"DISABLE_DOUBLE_TAP_TO_SEEK")
                 titleDescription:LOC(@"DISABLE_DOUBLE_TAP_TO_SEEK_DESC")
                 accessibilityIdentifier:nil
-                switchOn:IsEnabled(@"doubleTapToSeek_disabled")
+                switchOn:IS_ENABLED(@"doubleTapToSeek_disabled")
                 switchBlock:^BOOL (YTSettingsCell *cell, BOOL enabled) {
                     [[NSUserDefaults standardUserDefaults] setBool:enabled forKey:@"doubleTapToSeek_disabled"];
                     return YES;
@@ -72,7 +66,7 @@ extern NSBundle *uYouPlusBundle();
             [YTSettingsSectionItemClass switchItemWithTitle:LOC(@"SNAP_TO_CHAPTER")
                 titleDescription:LOC(@"SNAP_TO_CHAPTER_DESC")
                 accessibilityIdentifier:nil
-                switchOn:IsEnabled(@"snapToChapter_enabled")
+                switchOn:IS_ENABLED(@"snapToChapter_enabled")
                 switchBlock:^BOOL (YTSettingsCell *cell, BOOL enabled) {
                     [[NSUserDefaults standardUserDefaults] setBool:enabled forKey:@"snapToChapter_enabled"];
                     return YES;
@@ -82,7 +76,7 @@ extern NSBundle *uYouPlusBundle();
             [YTSettingsSectionItemClass switchItemWithTitle:LOC(@"PINCH_TO_ZOOM")
                 titleDescription:LOC(@"PINCH_TO_ZOOM_DESC")
                 accessibilityIdentifier:nil
-                switchOn:IsEnabled(@"pinchToZoom_enabled")
+                switchOn:IS_ENABLED(@"pinchToZoom_enabled")
                 switchBlock:^BOOL (YTSettingsCell *cell, BOOL enabled) {
                     [[NSUserDefaults standardUserDefaults] setBool:enabled forKey:@"pinchToZoom_enabled"];
                     return YES;
@@ -92,7 +86,7 @@ extern NSBundle *uYouPlusBundle();
             [YTSettingsSectionItemClass switchItemWithTitle:LOC(@"YT_MINIPLAYER")
                 titleDescription:LOC(@"YT_MINIPLAYER_DESC")
                 accessibilityIdentifier:nil
-                switchOn:IsEnabled(@"ytMiniPlayer_enabled")
+                switchOn:IS_ENABLED(@"ytMiniPlayer_enabled")
                 switchBlock:^BOOL (YTSettingsCell *cell, BOOL enabled) {
                     [[NSUserDefaults standardUserDefaults] setBool:enabled forKey:@"ytMiniPlayer_enabled"];
                     return YES;
@@ -102,7 +96,7 @@ extern NSBundle *uYouPlusBundle();
             [YTSettingsSectionItemClass switchItemWithTitle:LOC(@"STOCK_VOLUME_HUD")
                 titleDescription:LOC(@"STOCK_VOLUME_HUD_DESC")
                 accessibilityIdentifier:nil
-                switchOn:IsEnabled(@"stockVolumeHUD_enabled")
+                switchOn:IS_ENABLED(@"stockVolumeHUD_enabled")
                 switchBlock:^BOOL (YTSettingsCell *cell, BOOL enabled) {
                     [[NSUserDefaults standardUserDefaults] setBool:enabled forKey:@"stockVolumeHUD_enabled"];
                     return YES;
@@ -122,7 +116,7 @@ extern NSBundle *uYouPlusBundle();
             [YTSettingsSectionItemClass switchItemWithTitle:LOC(@"HIDE_AUTOPLAY_SWITCH")
                 titleDescription:LOC(@"HIDE_AUTOPLAY_SWITCH_DESC")
                 accessibilityIdentifier:nil
-                switchOn:IsEnabled(@"hideAutoplaySwitch_enabled")
+                switchOn:IS_ENABLED(@"hideAutoplaySwitch_enabled")
                 switchBlock:^BOOL (YTSettingsCell *cell, BOOL enabled) {
                     [[NSUserDefaults standardUserDefaults] setBool:enabled forKey:@"hideAutoplaySwitch_enabled"];
                     return YES;
@@ -132,7 +126,7 @@ extern NSBundle *uYouPlusBundle();
             [YTSettingsSectionItemClass switchItemWithTitle:LOC(@"HIDE_SUBTITLES_BUTTON")
                 titleDescription:LOC(@"HIDE_SUBTITLES_BUTTON_DESC")
                 accessibilityIdentifier:nil
-                switchOn:IsEnabled(@"hideCC_enabled")
+                switchOn:IS_ENABLED(@"hideCC_enabled")
                 switchBlock:^BOOL (YTSettingsCell *cell, BOOL enabled) {
                     [[NSUserDefaults standardUserDefaults] setBool:enabled forKey:@"hideCC_enabled"];
                     return YES;
@@ -142,7 +136,7 @@ extern NSBundle *uYouPlusBundle();
             [YTSettingsSectionItemClass switchItemWithTitle:LOC(@"HIDE_HUD_MESSAGES")
                 titleDescription:LOC(@"HIDE_HUD_MESSAGES_DESC")
                 accessibilityIdentifier:nil
-                switchOn:IsEnabled(@"hideHUD_enabled")
+                switchOn:IS_ENABLED(@"hideHUD_enabled")
                 switchBlock:^BOOL (YTSettingsCell *cell, BOOL enabled) {
                     [[NSUserDefaults standardUserDefaults] setBool:enabled forKey:@"hideHUD_enabled"];
                     return YES;
@@ -152,7 +146,7 @@ extern NSBundle *uYouPlusBundle();
             [YTSettingsSectionItemClass switchItemWithTitle:LOC(@"HIDE_PAID_PROMOTION_CARDS")
                 titleDescription:LOC(@"HIDE_PAID_PROMOTION_CARDS_DESC")
                 accessibilityIdentifier:nil
-                switchOn:IsEnabled(@"hidePaidPromotionCard_enabled")
+                switchOn:IS_ENABLED(@"hidePaidPromotionCard_enabled")
                 switchBlock:^BOOL (YTSettingsCell *cell, BOOL enabled) {
                     [[NSUserDefaults standardUserDefaults] setBool:enabled forKey:@"hidePaidPromotionCard_enabled"];
                     return YES;
@@ -162,7 +156,7 @@ extern NSBundle *uYouPlusBundle();
             [YTSettingsSectionItemClass switchItemWithTitle:LOC(@"HIDE_CHANNEL_WATERMARK")
                 titleDescription:LOC(@"HIDE_CHANNEL_WATERMARK_DESC")
                 accessibilityIdentifier:nil
-                switchOn:IsEnabled(@"hideChannelWatermark_enabled")
+                switchOn:IS_ENABLED(@"hideChannelWatermark_enabled")
                 switchBlock:^BOOL (YTSettingsCell *cell, BOOL enabled) {
                     [[NSUserDefaults standardUserDefaults] setBool:enabled forKey:@"hideChannelWatermark_enabled"];
                     return YES;
@@ -172,7 +166,7 @@ extern NSBundle *uYouPlusBundle();
             [YTSettingsSectionItemClass switchItemWithTitle:LOC(@"HIDE_PREVIOUS_AND_NEXT_BUTTON")
                 titleDescription:LOC(@"HIDE_PREVIOUS_AND_NEXT_BUTTON_DESC")
                 accessibilityIdentifier:nil
-                switchOn:IsEnabled(@"hidePreviousAndNextButton_enabled")
+                switchOn:IS_ENABLED(@"hidePreviousAndNextButton_enabled")
                 switchBlock:^BOOL (YTSettingsCell *cell, BOOL enabled) {
                     [[NSUserDefaults standardUserDefaults] setBool:enabled forKey:@"hidePreviousAndNextButton_enabled"];
                     return YES;
@@ -182,7 +176,7 @@ extern NSBundle *uYouPlusBundle();
             [YTSettingsSectionItemClass switchItemWithTitle:LOC(@"REPLACE_PREVIOUS_NEXT_BUTTON")
                 titleDescription:LOC(@"REPLACE_PREVIOUS_NEXT_BUTTON_DESC")
                 accessibilityIdentifier:nil
-                switchOn:IsEnabled(@"replacePreviousAndNextButton_enabled")
+                switchOn:IS_ENABLED(@"replacePreviousAndNextButton_enabled")
                 switchBlock:^BOOL (YTSettingsCell *cell, BOOL enabled) {
                     [[NSUserDefaults standardUserDefaults] setBool:enabled forKey:@"replacePreviousAndNextButton_enabled"];
                     return YES;
@@ -192,7 +186,7 @@ extern NSBundle *uYouPlusBundle();
             [YTSettingsSectionItemClass switchItemWithTitle:LOC(@"RED_PROGRESS_BAR")
                 titleDescription:LOC(@"RED_PROGRESS_BAR_DESC")
                 accessibilityIdentifier:nil
-                switchOn:IsEnabled(@"redProgressBar_enabled")
+                switchOn:IS_ENABLED(@"redProgressBar_enabled")
                 switchBlock:^BOOL (YTSettingsCell *cell, BOOL enabled) {
                     [[NSUserDefaults standardUserDefaults] setBool:enabled forKey:@"redProgressBar_enabled"];
                     return YES;
@@ -202,7 +196,7 @@ extern NSBundle *uYouPlusBundle();
             [YTSettingsSectionItemClass switchItemWithTitle:LOC(@"HIDE_HOVER_CARD")
                 titleDescription:LOC(@"HIDE_HOVER_CARD_DESC")
                 accessibilityIdentifier:nil
-                switchOn:IsEnabled(@"hideHoverCards_enabled")
+                switchOn:IS_ENABLED(@"hideHoverCards_enabled")
                 switchBlock:^BOOL (YTSettingsCell *cell, BOOL enabled) {
                     [[NSUserDefaults standardUserDefaults] setBool:enabled forKey:@"hideHoverCards_enabled"];
                     return YES;
@@ -212,7 +206,7 @@ extern NSBundle *uYouPlusBundle();
             [YTSettingsSectionItemClass switchItemWithTitle:LOC(@"HIDE_RIGHT_PANEL")
                 titleDescription:LOC(@"HIDE_RIGHT_PANEL_DESC")
                 accessibilityIdentifier:nil
-                switchOn:IsEnabled(@"hideRightPanel_enabled")
+                switchOn:IS_ENABLED(@"hideRightPanel_enabled")
                 switchBlock:^BOOL (YTSettingsCell *cell, BOOL enabled) {
                     [[NSUserDefaults standardUserDefaults] setBool:enabled forKey:@"hideRightPanel_enabled"];
                     return YES;
@@ -231,7 +225,7 @@ extern NSBundle *uYouPlusBundle();
             [YTSettingsSectionItemClass switchItemWithTitle:LOC(@"HIDE_SUPER_THANKS")
                 titleDescription:LOC(@"HIDE_SUPER_THANKS_DESC")
                 accessibilityIdentifier:nil
-                switchOn:IsEnabled(@"hideBuySuperThanks_enabled")
+                switchOn:IS_ENABLED(@"hideBuySuperThanks_enabled")
                 switchBlock:^BOOL (YTSettingsCell *cell, BOOL enabled) {
                     [[NSUserDefaults standardUserDefaults] setBool:enabled forKey:@"hideBuySuperThanks_enabled"];
                     return YES;
@@ -241,7 +235,7 @@ extern NSBundle *uYouPlusBundle();
             [YTSettingsSectionItemClass switchItemWithTitle:LOC(@"HIDE_SUBCRIPTIONS")
                 titleDescription:LOC(@"HIDE_SUBCRIPTIONS_DESC")
                 accessibilityIdentifier:nil
-                switchOn:IsEnabled(@"hideSubcriptions_enabled")
+                switchOn:IS_ENABLED(@"hideSubcriptions_enabled")
                 switchBlock:^BOOL (YTSettingsCell *cell, BOOL enabled) {
                     [[NSUserDefaults standardUserDefaults] setBool:enabled forKey:@"hideSubcriptions_enabled"];
                     return YES;
@@ -251,7 +245,7 @@ extern NSBundle *uYouPlusBundle();
             [YTSettingsSectionItemClass switchItemWithTitle:LOC(@"DISABLE_RESUME_TO_SHORTS")
                 titleDescription:LOC(@"DISABLE_RESUME_TO_SHORTS_DESC")
                 accessibilityIdentifier:nil
-                switchOn:IsEnabled(@"disableResumeToShorts")
+                switchOn:IS_ENABLED(@"disableResumeToShorts")
                 switchBlock:^BOOL (YTSettingsCell *cell, BOOL enabled) {
                     [[NSUserDefaults standardUserDefaults] setBool:enabled forKey:@"disableResumeToShorts"];
                     return YES;
@@ -268,7 +262,7 @@ extern NSBundle *uYouPlusBundle();
     YTSettingsSectionItem *themeGroup = [YTSettingsSectionItemClass itemWithTitle:LOC(@"THEME_OPTIONS")
         accessibilityIdentifier:nil
         detailTextBlock:^NSString *() {
-            switch (GetSelection(@"appTheme")) {
+            switch (APP_THEME_IDX) {
                 case 1:
                     return LOC(@"OLED_DARK_THEME_2");
                 case 2:
@@ -299,14 +293,14 @@ extern NSBundle *uYouPlusBundle();
                 [YTSettingsSectionItemClass switchItemWithTitle:LOC(@"OLED_KEYBOARD")
                 titleDescription:LOC(@"OLED_KEYBOARD_DESC")
                 accessibilityIdentifier:nil
-                switchOn:IsEnabled(@"oledKeyBoard_enabled")
+                switchOn:IS_ENABLED(@"oledKeyBoard_enabled")
                 switchBlock:^BOOL (YTSettingsCell *cell, BOOL enabled) {
                     [[NSUserDefaults standardUserDefaults] setBool:enabled forKey:@"oledKeyBoard_enabled"];
                     return YES;
                 }
                 settingItemId:0]
             ];
-            YTSettingsPickerViewController *picker = [[%c(YTSettingsPickerViewController) alloc] initWithNavTitle:LOC(@"THEME_OPTIONS") pickerSectionTitle:nil rows:rows selectedItemIndex:GetSelection(@"appTheme") parentResponder:[self parentResponder]];
+            YTSettingsPickerViewController *picker = [[%c(YTSettingsPickerViewController) alloc] initWithNavTitle:LOC(@"THEME_OPTIONS") pickerSectionTitle:nil rows:rows selectedItemIndex:APP_THEME_IDX parentResponder:[self parentResponder]];
             [settingsViewController pushViewController:picker];
             return YES;
         }];
@@ -318,7 +312,7 @@ extern NSBundle *uYouPlusBundle();
             [YTSettingsSectionItemClass switchItemWithTitle:LOC(@"CAST_CONFIRM")
                 titleDescription:LOC(@"CAST_CONFIRM_DESC")
                 accessibilityIdentifier:nil
-                switchOn:IsEnabled(@"castConfirm_enabled")
+                switchOn:IS_ENABLED(@"castConfirm_enabled")
                 switchBlock:^BOOL (YTSettingsCell *cell, BOOL enabled) {
                     [[NSUserDefaults standardUserDefaults] setBool:enabled forKey:@"castConfirm_enabled"];
                     return YES;
@@ -328,7 +322,7 @@ extern NSBundle *uYouPlusBundle();
             [YTSettingsSectionItemClass switchItemWithTitle:LOC(@"DISABLE_HINTS")
                 titleDescription:LOC(@"DISABLE_HINTS_DESC")
                 accessibilityIdentifier:nil
-                switchOn:IsEnabled(@"disableHints_enabled")
+                switchOn:IS_ENABLED(@"disableHints_enabled")
                 switchBlock:^BOOL (YTSettingsCell *cell, BOOL enabled) {
                     [[NSUserDefaults standardUserDefaults] setBool:enabled forKey:@"disableHints_enabled"];
                     return YES;
@@ -338,7 +332,7 @@ extern NSBundle *uYouPlusBundle();
             [YTSettingsSectionItemClass switchItemWithTitle:LOC(@"ENABLE_FLEX")
                 titleDescription:LOC(@"ENABLE_FLEX_DESC")
                 accessibilityIdentifier:nil
-                switchOn:IsEnabled(@"flex_enabled")
+                switchOn:IS_ENABLED(@"flex_enabled")
                 switchBlock:^BOOL (YTSettingsCell *cell, BOOL enabled) {
                     [[NSUserDefaults standardUserDefaults] setBool:enabled forKey:@"flex_enabled"];
                     return YES;
@@ -348,7 +342,7 @@ extern NSBundle *uYouPlusBundle();
             [YTSettingsSectionItemClass switchItemWithTitle:LOC(@"ENABLE_YT_STARTUP_ANIMATION")
                 titleDescription:LOC(@"ENABLE_YT_STARTUP_ANIMATION_DESC")
                 accessibilityIdentifier:nil
-                switchOn:IsEnabled(@"ytStartupAnimation_enabled")
+                switchOn:IS_ENABLED(@"ytStartupAnimation_enabled")
                 switchBlock:^BOOL (YTSettingsCell *cell, BOOL enabled) {
                     [[NSUserDefaults standardUserDefaults] setBool:enabled forKey:@"ytStartupAnimation_enabled"];
                     return YES;
@@ -358,7 +352,7 @@ extern NSBundle *uYouPlusBundle();
             [YTSettingsSectionItemClass switchItemWithTitle:LOC(@"HIDE_CHIP_BAR")
                 titleDescription:LOC(@"HIDE_CHIP_BAR_DESC")
                 accessibilityIdentifier:nil
-                switchOn:IsEnabled(@"hideChipBar_enabled")
+                switchOn:IS_ENABLED(@"hideChipBar_enabled")
                 switchBlock:^BOOL (YTSettingsCell *cell, BOOL enabled) {
                     [[NSUserDefaults standardUserDefaults] setBool:enabled forKey:@"hideChipBar_enabled"];
                     return YES;
@@ -368,7 +362,7 @@ extern NSBundle *uYouPlusBundle();
             [YTSettingsSectionItemClass switchItemWithTitle:LOC(@"HIDE_PLAY_NEXT_IN_QUEUE")
                 titleDescription:LOC(@"HIDE_PLAY_NEXT_IN_QUEUE_DESC")
                 accessibilityIdentifier:nil
-                switchOn:IsEnabled(@"hidePlayNextInQueue_enabled")
+                switchOn:IS_ENABLED(@"hidePlayNextInQueue_enabled")
                 switchBlock:^BOOL (YTSettingsCell *cell, BOOL enabled) {
                     [[NSUserDefaults standardUserDefaults] setBool:enabled forKey:@"hidePlayNextInQueue_enabled"];
                     return YES;
@@ -378,7 +372,7 @@ extern NSBundle *uYouPlusBundle();
             [YTSettingsSectionItemClass switchItemWithTitle:LOC(@"IPHONE_LAYOUT")
                 titleDescription:LOC(@"IPHONE_LAYOUT_DESC")
                 accessibilityIdentifier:nil
-                switchOn:IsEnabled(@"iPhoneLayout_enabled")
+                switchOn:IS_ENABLED(@"iPhoneLayout_enabled")
                 switchBlock:^BOOL (YTSettingsCell *cell, BOOL enabled) {
                     [[NSUserDefaults standardUserDefaults] setBool:enabled forKey:@"iPhoneLayout_enabled"];
                     return YES;
@@ -388,7 +382,7 @@ extern NSBundle *uYouPlusBundle();
             [YTSettingsSectionItemClass switchItemWithTitle:LOC(@"NEW_MINIPLAYER_STYLE")
                 titleDescription:LOC(@"NEW_MINIPLAYER_STYLE_DESC")
                 accessibilityIdentifier:nil
-                switchOn:IsEnabled(@"bigYTMiniPlayer_enabled")
+                switchOn:IS_ENABLED(@"bigYTMiniPlayer_enabled")
                 switchBlock:^BOOL (YTSettingsCell *cell, BOOL enabled) {
                     [[NSUserDefaults standardUserDefaults] setBool:enabled forKey:@"bigYTMiniPlayer_enabled"];
                     return YES;
@@ -398,7 +392,7 @@ extern NSBundle *uYouPlusBundle();
             [YTSettingsSectionItemClass switchItemWithTitle:LOC(@"YT_RE_EXPLORE")
                 titleDescription:LOC(@"YT_RE_EXPLORE_DESC")
                 accessibilityIdentifier:nil
-                switchOn:IsEnabled(@"reExplore_enabled")
+                switchOn:IS_ENABLED(@"reExplore_enabled")
                 switchBlock:^BOOL (YTSettingsCell *cell, BOOL enabled) {
                     [[NSUserDefaults standardUserDefaults] setBool:enabled forKey:@"reExplore_enabled"];
                     return YES;
