@@ -41,10 +41,12 @@ extern NSBundle *uYouPlusBundle();
     YTSettingsViewController *settingsViewController = [self valueForKey:@"_settingsViewControllerDelegate"];
 
     YTSettingsSectionItem *version = [%c(YTSettingsSectionItem)
-    itemWithTitle:[NSString stringWithFormat:LOC(@"VERSION"), @(OS_STRINGIFY(TWEAK_VERSION))]
-    titleDescription:LOC(@"VERSION_CHECK")
+    itemWithTitle:LOC(@"VERSION")
+    titleDescription:nil
     accessibilityIdentifier:nil
-    detailTextBlock:nil
+    detailTextBlock:^NSString *() {
+        return [[NSString stringWithFormat:@"v%@", @(OS_STRINGIFY(TWEAK_VERSION))] stringByReplacingOccurrencesOfString:@"\"" withString:@""];
+    }
     selectBlock:^BOOL (YTSettingsCell *cell, NSUInteger arg1) {
         return [%c(YTUIUtils) openURL:[NSURL URLWithString:@"https://github.com/qnblackcat/uYouPlus/releases/latest"]];
     }];
