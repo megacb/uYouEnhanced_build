@@ -57,9 +57,9 @@ extern NSBundle *uYouPlusBundle();
         detailTextBlock:^NSString *() {
             switch (APP_THEME_IDX) {
                 case 1:
-                    return LOC(@"OLED_DARK_THEME_2");
-                case 2:
                     return LOC(@"OLD_DARK_THEME");
+                case 2:
+                    return LOC(@"OLED_DARK_THEME_2");
                 case 0:
                 default:
                     return LOC(@"DEFAULT_THEME");
@@ -74,13 +74,13 @@ extern NSBundle *uYouPlusBundle();
                     return YES;
                 }],
                 [YTSettingsSectionItemClass checkmarkItemWithTitle:LOC(@"OLD_DARK_THEME") titleDescription:LOC(@"OLD_DARK_THEME_DESC") selectBlock:^BOOL (YTSettingsCell *cell, NSUInteger arg1) {
-                    [[NSUserDefaults standardUserDefaults] setInteger:2 forKey:@"appTheme"];
+                    [[NSUserDefaults standardUserDefaults] setInteger:1 forKey:@"appTheme"];
                     [settingsViewController reloadData];
                     SHOW_RELAUNCH_YT_SNACKBAR;
                     return YES;
                 }],
                 [YTSettingsSectionItemClass checkmarkItemWithTitle:LOC(@"OLED_DARK_THEME") titleDescription:LOC(@"OLED_DARK_THEME_DESC") selectBlock:^BOOL (YTSettingsCell *cell, NSUInteger arg1) {
-                    [[NSUserDefaults standardUserDefaults] setInteger:1 forKey:@"appTheme"];
+                    [[NSUserDefaults standardUserDefaults] setInteger:2 forKey:@"appTheme"];
                     [settingsViewController reloadData];
                     SHOW_RELAUNCH_YT_SNACKBAR;
                     return YES;
