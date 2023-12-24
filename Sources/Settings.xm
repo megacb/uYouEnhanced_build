@@ -52,7 +52,7 @@ extern NSBundle *uYouPlusBundle();
     SECTION_HEADER(@"App theme");
 
     YTSettingsSectionItem *themeGroup = [YTSettingsSectionItemClass
-        itemWithTitle:LOC(@"THEME_OPTIONS")
+        itemWithTitle:LOC(@"DARK_THEME")
         accessibilityIdentifier:nil
         detailTextBlock:^NSString *() {
             switch (APP_THEME_IDX) {
@@ -96,7 +96,7 @@ extern NSBundle *uYouPlusBundle();
                 }
                 settingItemId:0]
             ];
-            YTSettingsPickerViewController *picker = [[%c(YTSettingsPickerViewController) alloc] initWithNavTitle:LOC(@"THEME_OPTIONS") pickerSectionTitle:nil rows:rows selectedItemIndex:APP_THEME_IDX parentResponder:[self parentResponder]];
+            YTSettingsPickerViewController *picker = [[%c(YTSettingsPickerViewController) alloc] initWithNavTitle:LOC(@"DARK_THEME") pickerSectionTitle:[LOC(@"DARK_THEME") uppercaseString] rows:rows selectedItemIndex:APP_THEME_IDX parentResponder:[self parentResponder]];
             [settingsViewController pushViewController:picker];
             return YES;
         }
