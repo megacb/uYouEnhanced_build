@@ -474,6 +474,13 @@ static void replaceTab(YTIGuideResponse *response) {
 %end
 
 // Theme Options
+// Fix navigation bar showing a lighter grey with default dark mode
+%hook YTCommonColorPalette
+- (UIColor *)brandBackgroundSolid {
+    return self.pageStyle == 1 ? [UIColor colorWithRed:0.05882352941176471 green:0.05882352941176471 blue:0.05882352941176471 alpha:1.0] : %orig;
+}
+%end
+
 // Old dark theme (gray)
 %group gOldDarkTheme
 %hook YTColdConfig
