@@ -1,12 +1,37 @@
-// Settings
+// About
+"ABOUT" = "About";
+
 "VERSION" = "versione di uYouPlus: %@";
 "VERSION_CHECK" = "Clicca qui per cercare gli aggiornamenti!";
 
+"REPORT_AN_ISSUE" = "Report an issue";
+"ADD_TITLE" = "Add your title here...";
+
+"QUIT_YOUTUBE" = "Quit YouTube";
+
+"RESTART_YOUTUBE" = "Restart YouTube to apply changes";
+
+// App appearance
+"APP_THEME" = "App appearance";
+"THEME_OPTIONS" = "Opzioni Tema";
+
+"DARK_THEME" = "Dark theme";
+
+"DEFAULT_THEME" = "Predefinito";
+"DEFAULT_THEME_DESC" = "Tema scuro predefinito di YouTube. È richiesto il riavvio dell'app.";
+
+"OLD_DARK_THEME" = "Vecchio Tema Scuro (Sperimentale)";
+"OLD_DARK_THEME_DESC" = "Tema scuro del vecchio YouTube (tema grigio). È richiesto il riavvio dell'app.";
+
+"OLED_DARK_THEME" = "Modalità Scura OLED (Sperimentale)";
+"OLED_DARK_THEME_2" = "Modalità Scura OLED";
+"OLED_DARK_THEME_DESC" = "Potrebbe non funzionare correttamente in alcuni scenari. È richiesto un riavvio dell'app dopo aver abilitato/disabilitato questa opzione.";
+
+"OLED_KEYBOARD" = "Tastiera OLED (Sperimentale)";
+"OLED_KEYBOARD_DESC" = "Potrebbe non funzionare correttamente in alcuni scenari. È richiesto un riavvio dell'app.";
+
 // Video player options
 "VIDEO_PLAYER_OPTIONS" = "Opzioni Video Player";
-
-"AUTO_FULLSCREEN" = "Auto Schermo Intero (YTAutoFullScreen)";
-"AUTO_FULLSCREEN_DESC" = "Riproduci automaticamente video a tutto schermo.";
 
 "DISABLE_DOUBLE_TAP_TO_SEEK" = "Disable double tap to seek";
 "DISABLE_DOUBLE_TAP_TO_SEEK_DESC" = "";
@@ -47,63 +72,26 @@
 "REPLACE_PREVIOUS_NEXT_BUTTON" = "Sostituisci i Bottoni Precedente e Successivo";
 "REPLACE_PREVIOUS_NEXT_BUTTON_DESC" = "Sostituisci i Bottoni Precedente e Successivo con Avanti veloce e Indietro veloce. È richiesto un riavvio dell'app.";
 
+"RED_PROGRESS_BAR" = "Barra di avanzamento rossa";
+"RED_PROGRESS_BAR_DESC" = "Ripristina la barra di avanzamento rossa. È richiesto il riavvio dell'app.";
+
 "HIDE_HOVER_CARD" = "Nascondi i riquadri in sovrimpressione a fine video (YTNoHoverCards)";
 "HIDE_HOVER_CARD_DESC" = "Nasconde i riquadri (miniature) a fine video proposti dall'autore.";
 
 "HIDE_RIGHT_PANEL" = "Nascondi il pannello di destra in modalità a schermo intero";
 "HIDE_RIGHT_PANEL_DESC" = "È richiesto un riavvio dell'app.";
 
-"RED_PROGRESS_BAR" = "Barra di avanzamento rossa";
-"RED_PROGRESS_BAR_DESC" = "Ripristina la barra di avanzamento rossa. È richiesto il riavvio dell'app.";
-
-"DONT_EAT_MY_CONTENT" = "Previeni la Tacca/Isola sui Contenuti Video 2:1 (DontEatMyContent)";
-"DONT_EAT_MY_CONTENT_DESC" = "Previene alla Tacca/Isola di nascondere parte dei Contenuti Video 2:1 in YouTube. È richiesto un riavvio dell'app.";
-
 // Shorts controls overlay options
 "SHORTS_CONTROLS_OVERLAY_OPTIONS" = "Opzioni Sovrimpressione (Overlay) Shorts";
-
-"HIDE_SHORTS_CHANNEL_AVATAR" = "Nascondi l'avatar del canale negli Shorts";
-"HIDE_SHORTS_CHANNEL_AVATAR_DESC" = "";
-
-"HIDE_SHORTS_DISLIKE_BUTTON" = "Nascondi il bottone dislike dagli Shorts";
-"HIDE_SHORTS_DISLIKE_BUTTON_DESC" = "";
-
-"HIDE_SHORTS_COMMENT_BUTTON" = "Nascondi il bottone commenti dagli Shorts";
-"HIDE_SHORTS_COMMENT_BUTTON_DESC" = "";
-
-"HIDE_SHORTS_REMIX_BUTTON" = "Nascondi il bottone remix dagli Shorts";
-"HIDE_SHORTS_REMIX_BUTTON_DESC" = "";
-
-"HIDE_SHORTS_SHARE_BUTTON" = "Nascondi il bottone condividi dagli Shorts";
-"HIDE_SHORTS_SHARE_BUTTON_DESC" = "";
-
-"HIDE_UYOU_SHORTS_DOWNLOAD_BUTTON" = "Nascondi il uYou's bottone download Shorts";
-"HIDE_UYOU_SHORTS_DOWNLOAD_BUTTON_DESC" = "Nascondi il bottone uYou's download dagli Shorts.";
-
-"HIDE_SUBCRIPTIONS" = "Hide Subscriptions button";
-"HIDE_SUBCRIPTIONS_DESC" = "Hide Subscriptions button which shows up when paused.";
 
 "HIDE_SUPER_THANKS" = "Nascondi 'Buy Super Thanks'";
 "HIDE_SUPER_THANKS_DESC" = "Nascondi il banner 'Buy Super Thanks' dagli Shorts.";
 
+"HIDE_SUBCRIPTIONS" = "Hide subscriptions button";
+"HIDE_SUBCRIPTIONS_DESC" = "";
+
 "DISABLE_RESUME_TO_SHORTS" = "Disabilita il resume dagli Shorts";
 "DISABLE_RESUME_TO_SHORTS_DESC" = "Se chiudi YouTube mentre guardi uno Short, gli Short non verranno riprodotti automaticamente la prossima volta che avvii YouTube.";
-
-// Theme
-"THEME_OPTIONS" = "Opzioni Tema";
-
-"OLED_DARK_THEME" = "Modalità Scura OLED (Sperimentale)";
-"OLED_DARK_THEME_2" = "Modalità Scura OLED";
-"OLED_DARK_THEME_DESC" = "Potrebbe non funzionare correttamente in alcuni scenari. È richiesto un riavvio dell'app dopo aver abilitato/disabilitato questa opzione.";
-
-"OLD_DARK_THEME" = "Vecchio Tema Scuro (Sperimentale)";
-"OLD_DARK_THEME_DESC" = "Tema scuro del vecchio YouTube (tema grigio). È richiesto il riavvio dell'app.";
-
-"DEFAULT_THEME" = "Predefinito";
-"DEFAULT_THEME_DESC" = "Tema scuro predefinito di YouTube. È richiesto il riavvio dell'app.";
-
-"OLED_KEYBOARD" = "Tastiera OLED (Sperimentale)";
-"OLED_KEYBOARD_DESC" = "Potrebbe non funzionare correttamente in alcuni scenari. È richiesto un riavvio dell'app.";
 
 // Miscellaneous
 "MISCELLANEOUS" = "Varie";
@@ -118,20 +106,17 @@
 "DISABLE_HINTS" = "Disabilita i suggerimenti";
 "DISABLE_HINTS_DESC" = "Disabilita i suggerimenti sulle funzionalità di YouTube che di solito vengono visualizzati quando l'app viene appena installata.";
 
-"ENABLE_FLEX" = "Abilita FLEX";
-"ENABLE_FLEX_DESC" = "Abilita FLEX per il debugging (sconsigliato). Lascialo disabilitato se non sai cosa stai facendo.";
-
 "ENABLE_YT_STARTUP_ANIMATION" = "Abilita YouTube startup animazione";
 "ENABLE_YT_STARTUP_ANIMATION_DESC" = "";
-
-"FIX_GOOGLE_SIGNIN" = "Ripara Google Sign in (solo per utenti TrollStore)";
-"FIX_GOOGLE_SIGNIN_DESC" = "Attiva questa opzione solo quando non puoi accedere al tuo account Google e l'app è stata installata attraverso TrollStore. Se puoi accedere normalmente, tienila disabilitata. È richiesto un riavvio dell'app.";
 
 "HIDE_CHIP_BAR" = "Nascondi la barra superiore";
 "HIDE_CHIP_BAR_DESC" = "Nascondi la barra superiore nella Home (Tendenze, Musica, Giochi...) e Iscrizioni (Tutti i video, Continua a guardare...). È richiesto il riavvio dell'app.";
 
 "HIDE_PLAY_NEXT_IN_QUEUE" = "Hide \"Play next in queue\"";
-"HIDE_PLAY_NEXT_IN_QUEUE_DESC" = "Hide the premium \"Play next in queue\" option in video context menus";
+"HIDE_PLAY_NEXT_IN_QUEUE_DESC" = "";
+
+"IPHONE_LAYOUT" = "iPhone Layout";
+"IPHONE_LAYOUT_DESC" = "Seleziona per usare il Layout Iphone. È richiesto il riavvio dell'app.";
 
 "NEW_MINIPLAYER_STYLE" = "Nuovo stile per la barra del miniplayer (BigYTMiniPlayer)";
 "NEW_MINIPLAYER_STYLE_DESC" = "È richiesto un riavvio dell'app.";
@@ -139,5 +124,8 @@
 "YT_RE_EXPLORE" = "Sostituisci il tab Shorts con il tab Esplora (YTReExplore)";
 "YT_RE_EXPLORE_DESC" = "È richiesto un riavvio dell'app.";
 
-"IPHONE_LAYOUT" = "iPhone Layout";
-"IPHONE_LAYOUT_DESC" = "Seleziona per usare il Layout Iphone. È richiesto il riavvio dell'app.";
+"ENABLE_FLEX" = "Abilita FLEX";
+"ENABLE_FLEX_DESC" = "Abilita FLEX per il debugging (sconsigliato). Lascialo disabilitato se non sai cosa stai facendo.";
+
+"FIX_GOOGLE_SIGNIN" = "Ripara Google Sign in (solo per utenti TrollStore)";
+"FIX_GOOGLE_SIGNIN_DESC" = "Attiva questa opzione solo quando non puoi accedere al tuo account Google e l'app è stata installata attraverso TrollStore. Se puoi accedere normalmente, tienila disabilitata. È richiesto un riavvio dell'app.";

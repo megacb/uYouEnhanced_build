@@ -1,12 +1,37 @@
-// Settings
-"VERSION" = "Phiên bản của uYouPlus: %@";
+// About
+"ABOUT" = "Giới thiệu";
+
+"VERSION" = "Phiên bản";
 "VERSION_CHECK" = "Chạm để kiểm tra bản cập nhật!";
+
+"REPORT_AN_ISSUE" = "Báo lỗi";
+"ADD_TITLE" = "Add your title here...";
+
+"QUIT_YOUTUBE" = "Đóng YouTube";
+
+"RESTART_YOUTUBE" = "Khởi động lại YouTube để áp dụng các thay đổi";
+
+// App appearance
+"APP_THEME" = "Giao diện của ứng dụng";
+"THEME_OPTIONS" = "Tùy chọn giao diện";
+
+"DARK_THEME" = "Giao diện tối";
+
+"DEFAULT_THEME" = "Mặc định";
+"DEFAULT_THEME_DESC" = "";
+
+"OLD_DARK_THEME" = "Xám nhạt hơn";
+"OLD_DARK_THEME_DESC" = "Giao diện tối cũ của YouTube";
+
+"OLED_DARK_THEME" = "OLED (thử nghiệm)";
+"OLED_DARK_THEME_2" = "OLED";
+"OLED_DARK_THEME_DESC" = "Giao diện tối màu đen hoàn toàn";
+
+"OLED_KEYBOARD" = "Bàn phím OLED (thử nghiệm)";
+"OLED_KEYBOARD_DESC" = "";
 
 // Video player options
 "VIDEO_PLAYER_OPTIONS" = "Tùy chọn trình phát video";
-
-"AUTO_FULLSCREEN" = "Tự động toàn màn hình (YTAutoFullScreen)";
-"AUTO_FULLSCREEN_DESC" = "Tự động phát video ở chế độ toàn màn hình.";
 
 "DISABLE_DOUBLE_TAP_TO_SEEK" = "Tắt tình năng chạm 2 lần để tua";
 "DISABLE_DOUBLE_TAP_TO_SEEK_DESC" = "";
@@ -47,38 +72,17 @@
 "REPLACE_PREVIOUS_NEXT_BUTTON" = "Thay thế nút chuyển video";
 "REPLACE_PREVIOUS_NEXT_BUTTON_DESC" = "Thay thế nút chuyển video bằng nút tua nhanh. Cần khởi động lại ứng dụng.";
 
+"RED_PROGRESS_BAR" = "Thanh tiến trình màu đỏ";
+"RED_PROGRESS_BAR_DESC" = "Mang lại thanh tiến trình màu đỏ. Yêu cầu khởi động lại ứng dụng.";
+
 "HIDE_HOVER_CARD" = "Ẩn video dạng thumbnails (YTNoHoverCards)";
 "HIDE_HOVER_CARD_DESC" = "Ẩn thumbnail của các video đề xuất xuất hiện ở cuối video.";
 
 "HIDE_RIGHT_PANEL" = "Ẩn bảng điều khiển bên phải";
 "HIDE_RIGHT_PANEL_DESC" = "Ẩn bảng điều khiển bên phải khi ở chế độ toàn màn hình. Cần khởi động lại ứng dụng.";
 
-"RED_PROGRESS_BAR" = "Thanh tiến trình màu đỏ";
-"RED_PROGRESS_BAR_DESC" = "Mang lại thanh tiến trình màu đỏ. Yêu cầu khởi động lại ứng dụng.";
-
-"DONT_EAT_MY_CONTENT" = "Ẩn tai thỏ/Dynamic Island (DontEatMyContent)";
-"DONT_EAT_MY_CONTENT_DESC" = "Ẩn tai thỏ/Dynamic Island chèn vào các video có tỷ lệ 2:1. Cần khởi động lại ứng dụng.";
-
 // Shorts controls overlay options
 "SHORTS_CONTROLS_OVERLAY_OPTIONS" = "Tùy chọn hiển thị trong Shorts";
-
-"HIDE_SHORTS_CHANNEL_AVATAR" = "Ẩn hình đại diện của kênh";
-"HIDE_SHORTS_CHANNEL_AVATAR_DESC" = "";
-
-"HIDE_SHORTS_DISLIKE_BUTTON" = "Ẩn nút không thích";
-"HIDE_SHORTS_DISLIKE_BUTTON_DESC" = "";
-
-"HIDE_SHORTS_COMMENT_BUTTON" = "Ẩn nút bình luận";
-"HIDE_SHORTS_COMMENT_BUTTON_DESC" = "";
-
-"HIDE_SHORTS_REMIX_BUTTON" = "Ẩn nút phối lại video";
-"HIDE_SHORTS_REMIX_BUTTON_DESC" = "";
-
-"HIDE_SHORTS_SHARE_BUTTON" = "Ẩn nút chia sẻ";
-"HIDE_SHORTS_SHARE_BUTTON_DESC" = "";
-
-"HIDE_UYOU_SHORTS_DOWNLOAD_BUTTON" = "Ẩn nút tải xuống của uYou";
-"HIDE_UYOU_SHORTS_DOWNLOAD_BUTTON_DESC" = "";
 
 "HIDE_SUPER_THANKS" = "Ẩn biểu ngữ 'Mua ảnh động Super Thanks'";
 "HIDE_SUPER_THANKS_DESC" = "Ẩn biểu ngữ 'Mua ảnh động Super Thanks'.";
@@ -88,22 +92,6 @@
 
 "DISABLE_RESUME_TO_SHORTS" = "Tắt tính năng tự động tiếp tục Shorts";
 "DISABLE_RESUME_TO_SHORTS_DESC" = "Nếu bạn thoát YouTube trong khi đang xem video Shorts, video Shorts đó sẽ không tự động phát khi bạn mở lại YouTube.";
-
-// Theme
-"THEME_OPTIONS" = "Tùy chọn giao diện";
-
-"OLED_DARK_THEME" = "Chế độ tối cho màn OLED (Thử nghiệm)";
-"OLED_DARK_THEME_2" = "Chế độ tối cho màn OLED";
-"OLED_DARK_THEME_DESC" = "Có thể không hoạt động tốt trong một số trường hợp. Cần khởi động lại ứng dụng nếu bạn bật/tắt tính năng này, nhưng không cần khởi động lại ứng dụng nếu chuyển giữa chế độ Sáng và chế độ Tối.";
-
-"OLD_DARK_THEME" = "Chủ đề tối cũ";
-"OLD_DARK_THEME_DESC" = "Chủ đề tối cũ của YouTube (chủ đề màu xám). Yêu cầu khởi động lại ứng dụng.";
-
-"DEFAULT_THEME" = "Mặc định";
-"DEFAULT_THEME_DESC" = "Chủ đề tối mặc định của YouTube. Yêu cầu khởi động lại ứng dụng.";
-
-"OLED_KEYBOARD" = "Bàn phím tối cho màn OLED (Thử nghiệm)";
-"OLED_KEYBOARD_DESC" = "Có thể không hoạt động tốt trong một vài trường hợp. Cần khởi động lại ứng dụng.";
 
 // Miscellaneous
 "MISCELLANEOUS" = "Cài đặt khác";
@@ -118,20 +106,17 @@
 "DISABLE_HINTS" = "Ẩn gợi ý";
 "DISABLE_HINTS_DESC" = "Ẩn các gợi ý tính năng thường hiện khi mới cài đặt YouTube.";
 
-"ENABLE_FLEX" = "Bật FLEX";
-"ENABLE_FLEX_DESC" = "Bật FLEX để kiểm tra/sửa lỗi (không khuyến khích). Nếu bạn không biết FLEX là gì thì đừng bật tính năng này.";
-
 "ENABLE_YT_STARTUP_ANIMATION" = "Bật hiệu ứng khi khởi động YouTube";
 "ENABLE_YT_STARTUP_ANIMATION_DESC" = "";
-
-"FIX_GOOGLE_SIGNIN" = "Sửa lỗi không thể đăng nhập tài khoản Google";
-"FIX_GOOGLE_SIGNIN_DESC" = "Chỉ bật tính năng này khi bạn không thể đăng nhập tài khoản Google và ứng dụng được cài qua TrollStore. Nếu bạn có thể đăng nhập bình thường thì hãy tắt tính năng này. Cần khởi động lại ứng dụng.";
 
 "HIDE_CHIP_BAR" = "Ẩn thanh phím tắt";
 "HIDE_CHIP_BAR_DESC" = "Ẩn thanh phím tắt trong Home feed (Thịnh hành, Âm nhạc, Trò chơi...) và trong Subciption feed (Tất cả, Tiếp tục xem...).";
 
 "HIDE_PLAY_NEXT_IN_QUEUE" = "Hide \"Play next in queue\"";
-"HIDE_PLAY_NEXT_IN_QUEUE_DESC" = "Hide the premium \"Play next in queue\" option in video context menus";
+"HIDE_PLAY_NEXT_IN_QUEUE_DESC" = "";
+
+"IPHONE_LAYOUT" = "Force iPhone layout";
+"IPHONE_LAYOUT_DESC" = "";
 
 "NEW_MINIPLAYER_STYLE" = "Giao diện trình phát thu nhỏ kiểu mới (BigYTMiniPlayer)";
 "NEW_MINIPLAYER_STYLE_DESC" = "Cần khởi động lại ứng dụng.";
@@ -139,5 +124,8 @@
 "YT_RE_EXPLORE" = "Thay thế tab Shorts bằng tab Khám phá (YTReExplore)";
 "YT_RE_EXPLORE_DESC" = "Cần khởi động lại ứng dụng.";
 
-"IPHONE_LAYOUT" = "iPhone Layout";
-"IPHONE_LAYOUT_DESC" = "Toggle to use the iPhone Layout. App restart is required.";
+"ENABLE_FLEX" = "Bật FLEX";
+"ENABLE_FLEX_DESC" = "Bật FLEX để kiểm tra/sửa lỗi (không khuyến khích). Nếu bạn không biết FLEX là gì thì đừng bật tính năng này.";
+
+"FIX_GOOGLE_SIGNIN" = "Sửa lỗi không thể đăng nhập tài khoản Google";
+"FIX_GOOGLE_SIGNIN_DESC" = "Chỉ bật tính năng này khi bạn không thể đăng nhập tài khoản Google và ứng dụng được cài qua TrollStore. Nếu bạn có thể đăng nhập bình thường thì hãy tắt tính năng này. Cần khởi động lại ứng dụng.";
