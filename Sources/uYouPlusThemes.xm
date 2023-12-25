@@ -1,4 +1,4 @@
-#import "Themes.h"
+#import "uYouPlusThemes.h"
 
 #define IS_DARK_APPEARANCE_ENABLED ([[NSUserDefaults standardUserDefaults] integerForKey:@"page_style"] == 1)
 #define IS_OLD_DARK_THEME_SELECTED (APP_THEME_IDX == 1)

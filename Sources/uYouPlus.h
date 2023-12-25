@@ -6,7 +6,7 @@
 #import <substrate.h>
 #import <rootless.h>
 
-#import "Themes.h" // Hide "Buy Super Thanks" banner (_ASDisplayView)
+#import "uYouPlusThemes.h" // Hide "Buy Super Thanks" banner (_ASDisplayView)
 #import "../Tweaks/YouTubeHeader/YTAppDelegate.h" // Activate FLEX
 // #import "../Tweaks/YouTubeHeader/YTISectionListRenderer.h" // Hide search ads by @PoomSmart - https://github.com/PoomSmart/YouTube-X
 

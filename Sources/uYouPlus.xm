@@ -16,7 +16,7 @@ NSBundle *uYouPlusBundle() {
 NSBundle *tweakBundle = uYouPlusBundle();
 
 # pragma mark - App appearance
-// See Themes.xm
+// See uYouPlusThemes.xm
 
 # pragma mark - Video player options
 
