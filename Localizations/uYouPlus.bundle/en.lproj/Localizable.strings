@@ -137,7 +137,7 @@
 "NEW_MINIPLAYER_STYLE_DESC" = "New mini player bar style";
 
 "YT_RE_EXPLORE" = "YTReExplore";
-"YT_RE_EXPLORE_DESC" = "Replaces Shorts tab with Explore tab";
+"YT_RE_EXPLORE_DESC" = "Replaces the Shorts tab with the Explore tab";
 
 "IPHONE_LAYOUT" = "Force iPhone layout";
 "IPHONE_LAYOUT_DESC" = "";
@@ -145,7 +145,7 @@
 "DARK_THEME" = "Dark theme";
 "RESTART_YOUTUBE" = "Restart YouTube to apply changes";
 "QUIT_YOUTUBE" = "Quit YouTube";
-"APP_THEME" = "App theme";
+"APP_THEME" = "App appearance";
 "REPORT_AN_ISSUE" = "Report an issue";
 "ABOUT" = "About";
 "ADD_TITLE" = "Add your title here...";
