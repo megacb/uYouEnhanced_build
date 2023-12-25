@@ -6,11 +6,13 @@
 #import "../Tweaks/YouTubeHeader/YTSettingsPickerViewController.h"
 #import "uYouPlus.h"
 
-#define SECTION_HEADER(s) [sectionItems addObject:[%c(YTSettingsSectionItem) itemWithTitle:nil titleDescription:[s uppercaseString] accessibilityIdentifier:nil detailTextBlock:nil selectBlock:^BOOL (YTSettingsCell *cell, NSUInteger sectionItemIndex) { return NO; }]]
+#define VERSION_STRING [[NSString stringWithFormat:@"%@", @(OS_STRINGIFY(TWEAK_VERSION))] stringByReplacingOccurrencesOfString:@"\"" withString:@""]
+
+#define SECTION_HEADER(s) [sectionItems addObject:[%c(YTSettingsSectionItem) itemWithTitle:@"\t" titleDescription:[s uppercaseString] accessibilityIdentifier:nil detailTextBlock:nil selectBlock:^BOOL (YTSettingsCell *cell, NSUInteger sectionItemIndex) { return NO; }]]
 
 #define SWITCH_ITEM(t, d, k) [sectionItems addObject:[YTSettingsSectionItemClass switchItemWithTitle:t titleDescription:d accessibilityIdentifier:nil switchOn:IS_ENABLED(k) switchBlock:^BOOL (YTSettingsCell *cell, BOOL enabled) {[[NSUserDefaults standardUserDefaults] setBool:enabled forKey:k];return YES;} settingItemId:0]]
 
-#define SHOW_RELAUNCH_YT_SNACKBAR [[%c(GOOHUDManagerInternal) sharedInstance] showMessageMainThread:[%c(YTHUDMessage) messageWithText:@"Relaunch YouTube to apply changes"]]
+#define SHOW_RELAUNCH_YT_SNACKBAR [[%c(GOOHUDManagerInternal) sharedInstance] showMessageMainThread:[%c(YTHUDMessage) messageWithText:LOC(@"RESTART_YOUTUBE")]]
 
 #define SWITCH_ITEM2(t, d, k) [sectionItems addObject:[YTSettingsSectionItemClass switchItemWithTitle:t titleDescription:d accessibilityIdentifier:nil switchOn:IS_ENABLED(k) switchBlock:^BOOL (YTSettingsCell *cell, BOOL enabled) {[[NSUserDefaults standardUserDefaults] setBool:enabled forKey:k];SHOW_RELAUNCH_YT_SNACKBAR;return YES;} settingItemId:0]]
 
@@ -48,8 +50,51 @@ extern NSBundle *uYouPlusBundle();
     Class YTSettingsSectionItemClass = %c(YTSettingsSectionItem);
     YTSettingsViewController *settingsViewController = [self valueForKey:@"_settingsViewControllerDelegate"];
 
+    # pragma mark - About
+    // SECTION_HEADER(LOC(@"ABOUT"));
+
+    YTSettingsSectionItem *version = [%c(YTSettingsSectionItem)
+        itemWithTitle:LOC(@"VERSION")
+        titleDescription:nil
+        accessibilityIdentifier:nil
+        detailTextBlock:^NSString *() {
+            return VERSION_STRING;
+        }
+        selectBlock:^BOOL (YTSettingsCell *cell, NSUInteger arg1) {
+            return [%c(YTUIUtils) openURL:[NSURL URLWithString:@"https://github.com/therealFoxster/uYouPlus/releases"]];
+        }
+    ];
+    [sectionItems addObject:version];
+
+    YTSettingsSectionItem *bug = [%c(YTSettingsSectionItem)
+        itemWithTitle:LOC(@"REPORT_AN_ISSUE")
+        titleDescription:nil
+        accessibilityIdentifier:nil
+        detailTextBlock:nil
+        selectBlock:^BOOL (YTSettingsCell *cell, NSUInteger arg1) {
+            NSString *url = [NSString stringWithFormat:@"https://github.com/therealFoxster/uYouPlus/issues/new/?title=[v%@] %@", VERSION_STRING, LOC(@"ADD_TITLE")];
+
+            return [%c(YTUIUtils) openURL:[NSURL URLWithString:[url stringByReplacingOccurrencesOfString:@" " withString:@"%20"]]];
+        }
+    ];
+    [sectionItems addObject:bug];
+
+    YTSettingsSectionItem *exitYT = [%c(YTSettingsSectionItem)
+        itemWithTitle:LOC(@"QUIT_YOUTUBE")
+        titleDescription:nil
+        accessibilityIdentifier:nil
+        detailTextBlock:nil
+        selectBlock:^BOOL (YTSettingsCell *cell, NSUInteger arg1) {
+            // https://stackoverflow.com/a/17802404/19227228
+            [[UIApplication sharedApplication] performSelector:@selector(suspend)];
+            [NSThread sleepForTimeInterval:0.5];
+            exit(0);
+        }
+    ];
+    [sectionItems addObject:exitYT];
+
     # pragma mark - App theme
-    SECTION_HEADER(@"App theme");
+    SECTION_HEADER(LOC(@"APP_THEME"));
 
     YTSettingsSectionItem *themeGroup = [YTSettingsSectionItemClass
         itemWithTitle:LOC(@"DARK_THEME")
@@ -67,36 +112,55 @@ extern NSBundle *uYouPlusBundle();
         }
         selectBlock:^BOOL (YTSettingsCell *cell, NSUInteger arg1) {
             NSArray <YTSettingsSectionItem *> *rows = @[
-                [YTSettingsSectionItemClass checkmarkItemWithTitle:LOC(@"DEFAULT_THEME") titleDescription:LOC(@"DEFAULT_THEME_DESC") selectBlock:^BOOL (YTSettingsCell *cell, NSUInteger arg1) {
-                    [[NSUserDefaults standardUserDefaults] setInteger:0 forKey:@"appTheme"];
-                    [settingsViewController reloadData];
-                    SHOW_RELAUNCH_YT_SNACKBAR;
-                    return YES;
-                }],
-                [YTSettingsSectionItemClass checkmarkItemWithTitle:LOC(@"OLD_DARK_THEME") titleDescription:LOC(@"OLD_DARK_THEME_DESC") selectBlock:^BOOL (YTSettingsCell *cell, NSUInteger arg1) {
-                    [[NSUserDefaults standardUserDefaults] setInteger:1 forKey:@"appTheme"];
-                    [settingsViewController reloadData];
-                    SHOW_RELAUNCH_YT_SNACKBAR;
-                    return YES;
-                }],
-                [YTSettingsSectionItemClass checkmarkItemWithTitle:LOC(@"OLED_DARK_THEME") titleDescription:LOC(@"OLED_DARK_THEME_DESC") selectBlock:^BOOL (YTSettingsCell *cell, NSUInteger arg1) {
-                    [[NSUserDefaults standardUserDefaults] setInteger:2 forKey:@"appTheme"];
-                    [settingsViewController reloadData];
-                    SHOW_RELAUNCH_YT_SNACKBAR;
-                    return YES;
-                }],
-                [YTSettingsSectionItemClass switchItemWithTitle:LOC(@"OLED_KEYBOARD")
-                titleDescription:LOC(@"OLED_KEYBOARD_DESC")
-                accessibilityIdentifier:nil
-                switchOn:IS_ENABLED(@"oledKeyBoard_enabled")
-                switchBlock:^BOOL (YTSettingsCell *cell, BOOL enabled) {
-                    [[NSUserDefaults standardUserDefaults] setBool:enabled forKey:@"oledKeyBoard_enabled"];
-                    SHOW_RELAUNCH_YT_SNACKBAR;
-                    return YES;
-                }
-                settingItemId:0]
+                [YTSettingsSectionItemClass
+                    checkmarkItemWithTitle:LOC(@"DEFAULT_THEME")
+                    titleDescription:LOC(@"DEFAULT_THEME_DESC")
+                    selectBlock:^BOOL (YTSettingsCell *cell, NSUInteger arg1) {
+                        [[NSUserDefaults standardUserDefaults] setInteger:0 forKey:@"appTheme"];
+                        [settingsViewController reloadData];
+                        SHOW_RELAUNCH_YT_SNACKBAR;
+                        return YES;
+                    }
+                ],
+                [YTSettingsSectionItemClass
+                    checkmarkItemWithTitle:LOC(@"OLD_DARK_THEME")
+                    titleDescription:LOC(@"OLD_DARK_THEME_DESC")
+                    selectBlock:^BOOL (YTSettingsCell *cell, NSUInteger arg1) {
+                        [[NSUserDefaults standardUserDefaults] setInteger:1 forKey:@"appTheme"];
+                        [settingsViewController reloadData];
+                        SHOW_RELAUNCH_YT_SNACKBAR;
+                        return YES;
+                    }
+                ],
+                [YTSettingsSectionItemClass
+                    checkmarkItemWithTitle:LOC(@"OLED_DARK_THEME")
+                    titleDescription:LOC(@"OLED_DARK_THEME_DESC")
+                    selectBlock:^BOOL (YTSettingsCell *cell, NSUInteger arg1) {
+                        [[NSUserDefaults standardUserDefaults] setInteger:2 forKey:@"appTheme"];
+                        [settingsViewController reloadData];
+                        SHOW_RELAUNCH_YT_SNACKBAR;
+                        return YES;
+                    }
+                ],
+                [YTSettingsSectionItemClass
+                    switchItemWithTitle:LOC(@"OLED_KEYBOARD")
+                    titleDescription:LOC(@"OLED_KEYBOARD_DESC")
+                    accessibilityIdentifier:nil
+                    switchOn:IS_ENABLED(@"oledKeyBoard_enabled")
+                    switchBlock:^BOOL (YTSettingsCell *cell, BOOL enabled) {
+                        [[NSUserDefaults standardUserDefaults] setBool:enabled forKey:@"oledKeyBoard_enabled"];
+                        SHOW_RELAUNCH_YT_SNACKBAR;
+                        return YES;
+                    }
+                    settingItemId:0
+                ]
             ];
-            YTSettingsPickerViewController *picker = [[%c(YTSettingsPickerViewController) alloc] initWithNavTitle:LOC(@"DARK_THEME") pickerSectionTitle:[LOC(@"DARK_THEME") uppercaseString] rows:rows selectedItemIndex:APP_THEME_IDX parentResponder:[self parentResponder]];
+            YTSettingsPickerViewController *picker = [[%c(YTSettingsPickerViewController) alloc]
+                initWithNavTitle:LOC(@"DARK_THEME")
+                pickerSectionTitle:[LOC(@"DARK_THEME") uppercaseString]
+                rows:rows selectedItemIndex:APP_THEME_IDX
+                parentResponder:[self parentResponder]
+            ];
             [settingsViewController pushViewController:picker];
             return YES;
         }
@@ -145,47 +209,6 @@ extern NSBundle *uYouPlusBundle();
     SWITCH_ITEM2(LOC(@"NEW_MINIPLAYER_STYLE"), LOC(@"NEW_MINIPLAYER_STYLE_DESC"), @"bigYTMiniPlayer_enabled");
     SWITCH_ITEM2(LOC(@"YT_RE_EXPLORE"), LOC(@"YT_RE_EXPLORE_DESC"), @"reExplore_enabled");
     SWITCH_ITEM(LOC(@"ENABLE_FLEX"), LOC(@"ENABLE_FLEX_DESC"), @"flex_enabled");
-
-    # pragma mark - About
-    SECTION_HEADER(@"About");
-
-    YTSettingsSectionItem *bug = [%c(YTSettingsSectionItem)
-        itemWithTitle:@"Report an issue"
-        titleDescription:nil
-        accessibilityIdentifier:nil
-        detailTextBlock:nil
-        selectBlock:^BOOL (YTSettingsCell *cell, NSUInteger arg1) {
-            return [%c(YTUIUtils) openURL:[NSURL URLWithString:@"https://github.com/therealFoxster/uYouPlus/issues"]];
-        }
-    ];
-    [sectionItems addObject:bug];
-
-    YTSettingsSectionItem *version = [%c(YTSettingsSectionItem)
-        itemWithTitle:LOC(@"VERSION")
-        titleDescription:nil
-        accessibilityIdentifier:nil
-        detailTextBlock:^NSString *() {
-            return [[NSString stringWithFormat:@"%@", @(OS_STRINGIFY(TWEAK_VERSION))] stringByReplacingOccurrencesOfString:@"\"" withString:@""];
-        }
-        selectBlock:^BOOL (YTSettingsCell *cell, NSUInteger arg1) {
-            return [%c(YTUIUtils) openURL:[NSURL URLWithString:@"https://github.com/therealFoxster/uYouPlus/releases"]];
-        }
-    ];
-    [sectionItems addObject:version];
-
-    YTSettingsSectionItem *exitYT = [%c(YTSettingsSectionItem)
-        itemWithTitle:@"Exit YouTube"
-        titleDescription:nil
-        accessibilityIdentifier:nil
-        detailTextBlock:nil
-        selectBlock:^BOOL (YTSettingsCell *cell, NSUInteger arg1) {
-            // https://stackoverflow.com/a/17802404/19227228
-            [[UIApplication sharedApplication] performSelector:@selector(suspend)];
-            [NSThread sleepForTimeInterval:0.5];
-            exit(0);
-        }
-    ];
-    [sectionItems addObject:exitYT];
 
     [settingsViewController setSectionItems:sectionItems forCategory:uYouPlusSection title:@"uYouPlus" titleDescription:LOC(@"TITLE DESCRIPTION") headerHidden:YES];
 }
