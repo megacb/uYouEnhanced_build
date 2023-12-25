@@ -61,69 +61,6 @@ NSBundle *tweakBundle = uYouPlusBundle();
 }
 %end
 
-// IAmYouTube - https://github.com/PoomSmart/IAmYouTube/
-%hook YTVersionUtils
-+ (NSString *)appName { return YT_NAME; }
-+ (NSString *)appID { return YT_BUNDLE_ID; }
-%end
-
-%hook GCKBUtils
-+ (NSString *)appIdentifier { return YT_BUNDLE_ID; }
-%end
-
-%hook GPCDeviceInfo
-+ (NSString *)bundleId { return YT_BUNDLE_ID; }
-%end
-
-%hook OGLBundle
-+ (NSString *)shortAppName { return YT_NAME; }
-%end
-
-%hook GVROverlayView
-+ (NSString *)appName { return YT_NAME; }
-%end
-
-%hook OGLPhenotypeFlagServiceImpl
-- (NSString *)bundleId { return YT_BUNDLE_ID; }
-%end
-
-%hook APMAEU
-+ (BOOL)isFAS { return YES; }
-%end
-
-%hook GULAppEnvironmentUtil
-+ (BOOL)isFromAppStore { return YES; }
-%end
-
-%hook SSOConfiguration
-- (id)initWithClientID:(id)clientID supportedAccountServices:(id)supportedAccountServices {
-    self = %orig;
-    [self setValue:YT_NAME forKey:@"_shortAppName"];
-    [self setValue:YT_BUNDLE_ID forKey:@"_applicationIdentifier"];
-    return self;
-}
-%end
-
-%hook NSBundle
-- (NSString *)bundleIdentifier {
-    NSArray *address = [NSThread callStackReturnAddresses];
-    Dl_info info = {0};
-    if (dladdr((void *)[address[2] longLongValue], &info) == 0)
-        return %orig;
-    NSString *path = [NSString stringWithUTF8String:info.dli_fname];
-    if ([path hasPrefix:NSBundle.mainBundle.bundlePath])
-        return YT_BUNDLE_ID;
-    return %orig;
-}
-- (id)objectForInfoDictionaryKey:(NSString *)key {
-    if ([key isEqualToString:@"CFBundleIdentifier"])
-        return YT_BUNDLE_ID;
-    if ([key isEqualToString:@"CFBundleDisplayName"] || [key isEqualToString:@"CFBundleName"])
-        return YT_NAME;
-    return %orig;
-}
-%end
-
 // YTMiniPlayerEnabler: https://github.com/level3tjg/YTMiniplayerEnabler/
 %hook YTWatchMiniBarViewController
 - (void)updateMiniBarPlayerStateFromRenderer {
@@ -192,33 +129,6 @@ NSBundle *tweakBundle = uYouPlusBundle();
 %hook YTColdConfig 
 - (BOOL)respectDeviceCaptionSetting { return NO; } // YouRememberCaption: https://poomsmart.github.io/repo/depictions/youremembercaption.html
 - (BOOL)isLandscapeEngagementPanelSwipeRightToDismissEnabled { return YES; } // Swipe right to dismiss the right panel in fullscreen mode
-%end
-
-// NOYTPremium - https://github.com/PoomSmart/NoYTPremium/
-%hook YTCommerceEventGroupHandler
-- (void)addEventHandlers {}
-%end
-
-%hook YTInterstitialPromoEventGroupHandler
-- (void)addEventHandlers {}
-%end
-
-%hook YTPromosheetEventGroupHandler
-- (void)addEventHandlers {}
-%end
-
-%hook YTPromoThrottleController
-- (BOOL)canShowThrottledPromo { return NO; }
-- (BOOL)canShowThrottledPromoWithFrequencyCap:(id)arg1 { return NO; }
-- (BOOL)canShowThrottledPromoWithFrequencyCaps:(id)arg1 { return NO; }
-%end
-
-%hook YTIShowFullscreenInterstitialCommand
-- (BOOL)shouldThrottleInterstitial { return YES; }
-%end
-
-%hook YTSurveyController
-- (void)showSurveyWithRenderer:(id)arg1 surveyParentResponder:(id)arg2 {}
 %end
 
 // YTNoPaidPromo: https://github.com/PoomSmart/YTNoPaidPromo
@@ -300,52 +210,6 @@ static void replaceTab(YTIGuideResponse *response) {
 %end
 %end
 
-// YTSpeed - https://github.com/Lyvendia/YTSpeed
-%hook YTVarispeedSwitchController
-- (id)init {
-	id result = %orig;
-
-	const int size = 12;
-	float speeds[] = {0.25, 0.5, 0.75, 1.0, 1.25, 1.5, 1.75, 2.0, 2.25, 2.5, 2.75, 3.0};
-	id varispeedSwitchControllerOptions[size];
-
-	for (int i = 0; i < size; ++i) {
-		id title = [NSString stringWithFormat:@"%.2fx", speeds[i]];
-		varispeedSwitchControllerOptions[i] = [[%c(YTVarispeedSwitchControllerOption) alloc] initWithTitle:title rate:speeds[i]];
-	}
-
-	NSUInteger count = sizeof(varispeedSwitchControllerOptions) / sizeof(id);
-	NSArray *varispeedArray = [NSArray arrayWithObjects:varispeedSwitchControllerOptions count:count];
-	MSHookIvar<NSArray *>(self, "_options") = varispeedArray;
-
-	return result;
-}
-%end
-
-%hook MLHAMQueuePlayer
-- (void)setRate:(float)rate {
-    MSHookIvar<float>(self, "_rate") = rate;
-	MSHookIvar<float>(self, "_preferredRate") = rate;
-
-	id player = MSHookIvar<HAMPlayerInternal *>(self, "_player");
-	[player setRate: rate];
-
-	id stickySettings = MSHookIvar<MLPlayerStickySettings *>(self, "_stickySettings");
-	[stickySettings setRate: rate];
-
-	[self.playerEventCenter broadcastRateChange: rate];
-
-	YTSingleVideoController *singleVideoController = self.delegate;
-	[singleVideoController playerRateDidChange: rate];
-}
-%end 
-
-%hook YTPlayerViewController
-%property (nonatomic, assign) float playbackRate;
-- (void)singleVideo:(id)video playbackRateDidChange:(float)rate {
-	%orig;
-}
-%end
 
 # pragma mark - uYouPlus
 

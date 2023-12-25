@@ -54,3 +54,15 @@
 	path = Tweaks/iSponsorBlock
 	url = https://github.com/Galactic-Dev/iSponsorBlock.git
 	branch = master
+[submodule "Tweaks/IAmYouTube"]
+	path = Tweaks/IAmYouTube
+	url = https://github.com/PoomSmart/IAmYouTube.git
+[submodule "Tweaks/YTClassicVideoQuality"]
+	path = Tweaks/YTClassicVideoQuality
+	url = https://github.com/PoomSmart/YTClassicVideoQuality.git
+[submodule "Tweaks/NoYTPremium"]
+	path = Tweaks/NoYTPremium
+	url = https://github.com/PoomSmart/NoYTPremium.git
+[submodule "Tweaks/YTSpeed"]
+	path = Tweaks/YTSpeed
+	url = https://github.com/qnblackcat/YTSpeed.git
