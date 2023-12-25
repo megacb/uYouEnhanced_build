@@ -102,6 +102,38 @@
 }
 %end
 
+// Fix uYou's appearance not updating if the app is backgrounded
+DownloadsPagerVC *downloadsPagerVC;
+static void refreshUYouAppearance() {
+    if (!downloadsPagerVC) return;
+    [downloadsPagerVC updatePageStyles];
+    for (UIViewController *vc in [downloadsPagerVC viewControllers]) {
+        if ([vc isKindOfClass:%c(DownloadingVC)]) {
+            [(DownloadingVC *)vc updatePageStyles];
+            for (UITableViewCell *cell in [(DownloadingVC *)vc tableView].visibleCells)
+                if ([cell isKindOfClass:%c(DownloadingCell)])
+                    [(DownloadingCell *)cell updatePageStyles];
+        } else if ([vc isKindOfClass:%c(DownloadedVC)]) {
+            [(DownloadedVC *)vc updatePageStyles];
+            for (UITableViewCell *cell in [(DownloadedVC *)vc tableView].visibleCells)
+                if ([cell isKindOfClass:%c(DownloadedCell)])
+                    [(DownloadedCell *)cell updatePageStyles];
+        }
+    }
+}
+%hook DownloadsPagerVC
+- (instancetype)init {
+    downloadsPagerVC = %orig;
+    return downloadsPagerVC;
+}
+%end
+%hook UIViewController
+- (void)traitCollectionDidChange:(UITraitCollection *)previousTraitCollection {
+    %orig;
+    refreshUYouAppearance();
+}
+%end
+
 %ctor {
     %init;
     if (@available(iOS 16, *)) {

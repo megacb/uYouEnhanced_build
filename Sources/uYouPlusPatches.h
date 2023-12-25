@@ -25,3 +25,23 @@
 // @interface YTAppDelegate ()
 // @property(nonatomic, strong) id downloadsVC;
 // @end
+
+// Fix uYou's appearance not updating if the app is backgrounded
+@interface DownloadsPagerVC : UIViewController
+- (NSArray<UIViewController *> *)viewControllers;
+- (void)updatePageStyles;
+@end
+@interface DownloadingVC : UIViewController
+- (void)updatePageStyles;
+- (UITableView *)tableView;
+@end
+@interface DownloadingCell : UITableViewCell
+- (void)updatePageStyles;
+@end
+@interface DownloadedVC : UIViewController
+- (void)updatePageStyles;
+- (UITableView *)tableView;
+@end
+@interface DownloadedCell : UITableViewCell
+- (void)updatePageStyles;
+@end
