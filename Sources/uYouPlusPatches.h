@@ -45,3 +45,6 @@
 @interface DownloadedCell : UITableViewCell
 - (void)updatePageStyles;
 @end
+@interface UILabel (uYou)
++ (id)_defaultColor;
+@end
