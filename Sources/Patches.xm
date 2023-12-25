@@ -1,4 +1,4 @@
-#import "uYouPlus.h"
+#import "Patches.h"
 
 # pragma mark - YouTube patches
 
@@ -92,6 +92,13 @@
         [artworkImageView.rightAnchor constraintEqualToAnchor:artworkImageView.superview.rightAnchor constant:-16].active = YES;
     }
     return imageView;
+}
+%end
+
+// Fix navigation bar showing a lighter grey with default dark mode - https://github.com/therealFoxster/uYouPlus/commit/8db8197
+%hook YTCommonColorPalette
+- (UIColor *)brandBackgroundSolid {
+    return self.pageStyle == 1 ? [UIColor colorWithRed:0.05882352941176471 green:0.05882352941176471 blue:0.05882352941176471 alpha:1.0] : %orig;
 }
 %end
 
