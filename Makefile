@@ -26,7 +26,7 @@ TWEAK_NAME = uYouPlus
 DISPLAY_NAME = YouTube
 BUNDLE_ID = com.google.ios.youtube
 
-$(TWEAK_NAME)_FILES = Sources/uYouPlus.xm Sources/uYouPlusSettings.xm Sources/Patches.xm Sources/BigYTMiniPlayer.xm Sources/Themes.xm Sources/YTCastConfirm.xm Sources/YTMiniPlayerEnabler.x Sources/YTNoHoverCards.x Sources/YTNoPaidPromo.x Sources/YTReExplore.x Sources/YTStockVolumeHUD.xm
+$(TWEAK_NAME)_FILES = Sources/uYouPlus.xm Sources/uYouPlusSettings.xm Sources/uYouPlusPatches.xm Sources/BigYTMiniPlayer.xm Sources/Themes.xm Sources/YTCastConfirm.xm Sources/YTMiniPlayerEnabler.x Sources/YTNoHoverCards.x Sources/YTNoPaidPromo.x Sources/YTReExplore.x Sources/YTStockVolumeHUD.xm
 $(TWEAK_NAME)_FRAMEWORKS = UIKit Security
 $(TWEAK_NAME)_CFLAGS = -fobjc-arc -DTWEAK_VERSION=\"$(PACKAGE_VERSION)\"
 $(TWEAK_NAME)_INJECT_DYLIBS = Tweaks/uYou/Library/MobileSubstrate/DynamicLibraries/uYou.dylib $(THEOS_OBJ_DIR)/libFLEX.dylib $(THEOS_OBJ_DIR)/iSponsorBlock.dylib $(THEOS_OBJ_DIR)/YouPiP.dylib $(THEOS_OBJ_DIR)/YouTubeDislikesReturn.dylib $(THEOS_OBJ_DIR)/YTABConfig.dylib $(THEOS_OBJ_DIR)/YTUHD.dylib $(THEOS_OBJ_DIR)/DontEatMyContent.dylib $(THEOS_OBJ_DIR)/IAmYouTube.dylib $(THEOS_OBJ_DIR)/YTClassicVideoQuality.dylib $(THEOS_OBJ_DIR)/NoYTPremium.dylib $(THEOS_OBJ_DIR)/YTSpeed.dylib
