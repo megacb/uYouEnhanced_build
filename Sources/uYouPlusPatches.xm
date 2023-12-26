@@ -172,6 +172,12 @@ BOOL isYTPlaybackActive = NO;
 }
 %end
 
+// Temporarily disable uYou's bouncy animation cause it's buggy
+%hook SSBouncyButton
+- (void)beginShrinkAnimation {}
+- (void)beginEnlargeAnimation {}
+%end
+
 %ctor {
     %init;
     if (@available(iOS 16, *)) {
