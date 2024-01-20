@@ -310,15 +310,6 @@ NSBundle *tweakBundle = uYouPlusBundle();
     if (IS_ENABLED(@"iPhoneLayout_enabled") && (UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPad)) {
         %init(giPhoneLayout);
     }
-
-    // Disable updates
-    [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"automaticallyCheckForUpdates"];
-
-    // Don't show uYou's welcome screen cuz it's currently broken (fix #1147)
-    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"showedWelcomeVC"];
- 
-    // Disable broken options of uYou
-    [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"disableAgeRestriction"];
     
     // Change the default value of some options
     NSArray *allKeys = [[[NSUserDefaults standardUserDefaults] dictionaryRepresentation] allKeys];

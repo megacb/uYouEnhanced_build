@@ -183,4 +183,15 @@ BOOL isYTPlaybackActive = NO;
     if (@available(iOS 16, *)) {
         %init(iOS16);
     }
+
+    // Disable broken options
+    
+    // Disable uYou's auto updates
+    [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"automaticallyCheckForUpdates"];
+
+    // Disable uYou's welcome screen (fix #1147)
+    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"showedWelcomeVC"];
+ 
+    // Disable uYou's disable age restriction
+    [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"disableAgeRestriction"];
 }
