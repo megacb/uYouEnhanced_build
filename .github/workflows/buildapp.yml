@@ -55,6 +55,9 @@ jobs:
           path: main
           submodules: recursive
 
+      - name: Update Homebrew
+        run: brew update
+
       - name: Install Dependencies
         run: brew install ldid dpkg make
 
