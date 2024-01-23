@@ -1,0 +1,131 @@
+// About
+"ABOUT" = "About";
+
+"VERSION" = "Версия uYouPlus: %@";
+"VERSION_CHECK" = "Нажмите, чтобы проверить доступные обновления.";
+
+"REPORT_AN_ISSUE" = "Report an issue";
+"ADD_TITLE" = "Add your title here...";
+
+"QUIT_YOUTUBE" = "Quit YouTube";
+
+"RESTART_YOUTUBE" = "Restart YouTube to apply changes";
+
+// App appearance
+"APP_THEME" = "App appearance";
+"THEME_OPTIONS" = "Параметры темы";
+
+"DARK_THEME" = "Dark theme";
+
+"DEFAULT_THEME" = "По умолчанию";
+"DEFAULT_THEME_DESC" = "Темная(новая) тема YouTube по умолчанию. Требуется перезапуск приложения.";
+
+"OLD_DARK_THEME" = "Старая темная тема";
+"OLD_DARK_THEME_DESC" = "Старая темная тема YouTube (серая тема). Требуется перезапуск приложения.";
+
+"OLED_DARK_THEME" = "Темный режим для OLED (Бета)";
+"OLED_DARK_THEME_2" = "Темный режим для OLED";
+"OLED_DARK_THEME_DESC" = "Понадобится перезагрузка при смене цветовой темы приложения. Если OLED-тема не включится, попробуйте переключиться не светлый режим и обратно, а затем перезагрузить приложение.";
+
+"OLED_KEYBOARD" = "OLED-клавиатура (Бета)";
+"OLED_KEYBOARD_DESC" = "Возможно, на некоторых устройствах будет работать криво. Потребуется перезагрузка.";
+
+// Video player options
+"VIDEO_PLAYER_OPTIONS" = "Параметры видеоплеера";
+
+"DISABLE_DOUBLE_TAP_TO_SEEK" = "Отключить двойное нажатие для перемотки";
+"DISABLE_DOUBLE_TAP_TO_SEEK_DESC" = "";
+
+"SNAP_TO_CHAPTER" = "Отключить привязку к эпизодам";
+"SNAP_TO_CHAPTER_DESC" = "Отключает автоматическую привязку к эпизодам при перемотке видео. Требуется перезапуск приложения.";
+
+"PINCH_TO_ZOOM" = "Отключить функцию масштабирования";
+"PINCH_TO_ZOOM_DESC" = "Требуется перезапуск приложения.";
+
+"YT_MINIPLAYER" = "Мини-плеер для всех видео";
+"YT_MINIPLAYER_DESC" = "Принудительно активирует мини-плеер для всех видео, включая видео, предназначенное для детей.";
+
+"STOCK_VOLUME_HUD" = "Использовать стоковый слайдер грмкости iOS";
+"STOCK_VOLUME_HUD_DESC" = "";
+
+// Video controls overlay options
+"VIDEO_CONTROLS_OVERLAY_OPTIONS" = "Параметры элементов оверлея видеоплеера";
+
+"HIDE_AUTOPLAY_SWITCH" = "Скрыть «Автовоспроизведение»";
+"HIDE_AUTOPLAY_SWITCH_DESC" = "Убирает тумблер «Автовоспроизведение» с оверлея плеера.";
+
+"HIDE_SUBTITLES_BUTTON" = "Скрыть «Субтитры»";
+"HIDE_SUBTITLES_BUTTON_DESC" = "Скрывает кнопку субтитров с оверлея плеера.";
+
+"HIDE_HUD_MESSAGES" = "Скрыть сообщения плеера";
+"HIDE_HUD_MESSAGES_DESC" = "Скрывает надписи YouTube, появляющиеся поверх видео.";
+
+"HIDE_PAID_PROMOTION_CARDS" = "Скрыть рекламный баннер";
+"HIDE_PAID_PROMOTION_CARDS_DESC" = "Скрывает баннер «Есть реклама» в роликах со встроенной рекламой.";
+
+"HIDE_CHANNEL_WATERMARK" = "Скрыть водяной знак канала";
+"HIDE_CHANNEL_WATERMARK_DESC" = "Скрывает водяной знак канала с видео. Требуется перезапуск приложения.";
+
+"HIDE_PREVIOUS_AND_NEXT_BUTTON" = "Скрыть «След.» и «Пред.»";
+"HIDE_PREVIOUS_AND_NEXT_BUTTON_DESC" = "Убирает кнопки переключения видео «Следующий» и «Предыдущий» с плеера.";
+
+"REPLACE_PREVIOUS_NEXT_BUTTON" = "Кнопки перемотки вместо «Пред.» и «След.»";
+"REPLACE_PREVIOUS_NEXT_BUTTON_DESC" = "Заменяет переключатели «Следующий» и «Предыдущий» на кнопки перемотки на 10 сек. Потребуется перезагрузка.";
+
+"RED_PROGRESS_BAR" = "Красная полоса воспроизведения";
+"RED_PROGRESS_BAR_DESC" = "Возвращает красную полосу воспроизведения. Требуется перезапуск приложения.";
+
+"HIDE_HOVER_CARD" = "Скрыть рекомендации (YTNoHoverCards)";
+"HIDE_HOVER_CARD_DESC" = "Скрывает эскизы, отображаемые по окончанию видеоролика.";
+
+"HIDE_RIGHT_PANEL" = "Скрыть правую панель в полноэкранном режиме";
+"HIDE_RIGHT_PANEL_DESC" = "Требуется перезапуск приложения.";
+
+// Shorts controls overlay options
+"SHORTS_CONTROLS_OVERLAY_OPTIONS" = "Параметры элементов оверлея в Shorts";
+
+"HIDE_SUPER_THANKS" = "Скрыть баннер 'Купить суперспасибо'";
+"HIDE_SUPER_THANKS_DESC" = "Скрывает баннер 'Купить суперспасибо' в Shorts.";
+
+"HIDE_SUBCRIPTIONS" = "Скрыть кнопку подписок";
+"HIDE_SUBCRIPTIONS_DESC" = "Скрыть кнопку подписки, которая отображается при приостановке.";
+
+"DISABLE_RESUME_TO_SHORTS" = "Отключить продолжение видео Shorts";
+"DISABLE_RESUME_TO_SHORTS_DESC" = "Если закрыть YouTube во время просмотра видео Shorts, то при следующем запуске YouTube видео Shorts не будет автоматически воспроизводиться.";
+
+// Miscellaneous
+"MISCELLANEOUS" = "Другое";
+
+"CAST_CONFIRM" = "Подтверждение «Трансляции» (YTCastConfirm)";
+"CAST_CONFIRM_DESC" = "Спрашивать подтверждение перед началом трансляции во избежание случайных подключений к ТВ.";
+"CASTING" = "Трансляция";
+"MSG_ARE_YOU_SURE" = "Начать трансляцию экрана?";
+"MSG_YES" = "Да";
+"MSG_CANCEL" = "Отмена";
+
+"DISABLE_HINTS" = "Отключить подсказки";
+"DISABLE_HINTS_DESC" = "Отключает подсказки функций с YouTube, которые обычно отображаются при свежей установке приложения.";
+
+"ENABLE_YT_STARTUP_ANIMATION" = "Включить анимацию запуска YouTube";
+"ENABLE_YT_STARTUP_ANIMATION_DESC" = "";
+
+"HIDE_CHIP_BAR" = "Скрыть верхнюю панель";
+"HIDE_CHIP_BAR_DESC" = "Скрывает верхнюю панель на вкладках «Главная» (Тренды, Музыка, Игры...) и «Подписки» (Все видео, Продолжить просмотр...)\nТребуется перезапуск приложения.";
+
+"HIDE_PLAY_NEXT_IN_QUEUE" = "Hide \"Play next in queue\"";
+"HIDE_PLAY_NEXT_IN_QUEUE_DESC" = "";
+
+"IPHONE_LAYOUT" = "Оформление приложения как на iPhone";
+"IPHONE_LAYOUT_DESC" = "Переключает оформление приложения как на iPhone. Требуется перезапуск приложения.";
+
+"NEW_MINIPLAYER_STYLE" = "Мини-плеер в стиле iPad (BigYTMiniPlayer)";
+"NEW_MINIPLAYER_STYLE_DESC" = "Потребуется перезагрузка.";
+
+"YT_RE_EXPLORE" = "Вкладка «Навигация» вместо «Shorts»";
+"YT_RE_EXPLORE_DESC" = "Потребуется перезагрузка.";
+
+"ENABLE_FLEX" = "Включить FLEX";
+"ENABLE_FLEX_DESC" = "Включите FLEX для отладки (не рекомендуется). Не включайте эту опцию, если вы не знаете, что делаете.";
+
+"FIX_GOOGLE_SIGNIN" = "Исправить авторизацию (TrollStore)";
+"FIX_GOOGLE_SIGNIN_DESC" = "Включите данную опцию только, если не можете войти в учетную запись Google, а приложение установлено через TrollStore. Если удается авторизоваться как обычно, оставьте данную опцию отключенной. Потребуется перезагрузка.";
