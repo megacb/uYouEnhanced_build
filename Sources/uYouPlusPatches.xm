@@ -80,6 +80,19 @@
 %end
 %end
 
+// Fix uYou playback speed crashes YT v18.49.3+, see https://github.com/iCrazeiOS/uYouCrashFix
+%hook YTPlayerViewController
+%new
+-(float)currentPlaybackRateForVarispeedSwitchController:(id)arg1 {
+	return [[self activeVideo] playbackRate];
+}
+
+%new
+-(void)varispeedSwitchController:(id)arg1 didSelectRate:(float)arg2 {
+	[[self activeVideo] setPlaybackRate:arg2];
+}
+%end
+
 // Fix streched artwork in uYou's player view - https://github.com/MiRO92/uYou-for-YouTube/issues/287
 %hook ArtworkImageView
 - (id)imageView {
@@ -196,5 +209,5 @@ BOOL isYTPlaybackActive = NO;
     [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"disableAgeRestriction"];
 
     // Disable uYou's playback speed controls (prevent crash on video playback https://github.com/therealFoxster/uYouPlus/issues/2#issuecomment-1894912963)
-    [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"showPlaybackRate"];
+    // [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"showPlaybackRate"];
 }
