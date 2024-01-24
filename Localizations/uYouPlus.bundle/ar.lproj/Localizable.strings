@@ -12,7 +12,7 @@
 "RESTART_YOUTUBE" = "Restart YouTube to apply changes";
 
 // App appearance
-"APP_THEME" = "App appearance";
+"APP_THEME" = "🎨 App appearance";
 "THEME_OPTIONS" = "خيارات سِمة التطبيق";
 
 "DARK_THEME" = "Dark theme";
@@ -31,7 +31,10 @@
 "OLED_KEYBOARD_DESC" = "قد لا تعمل بشكل صحيح في بعض الحالات. تتطلب إعادة تشغيل التطبيق.";
 
 // Video player options
-"VIDEO_PLAYER_OPTIONS" = "خيارات مشغِّل الفيديو";
+"VIDEO_PLAYER_OPTIONS" = "⏯️ خيارات مشغِّل الفيديو";
+
+"SLIDE_TO_SEEK" = "Enable Slide to seek";
+"SLIDE_TO_SEEK_DESC" = "Bring back the Slide to seek gesture.";
 
 "DISABLE_DOUBLE_TAP_TO_SEEK" = "منع خاصية النقر مرتين للتقدم أو التراجع";
 "DISABLE_DOUBLE_TAP_TO_SEEK_DESC" = "";
@@ -49,7 +52,7 @@
 "STOCK_VOLUME_HUD_DESC" = "إظهار مؤشر تغيير الصوت الرسمي الخاص بـ iOS بدلاً من مؤشر يوتيوب";
 
 // Video controls overlay options
-"VIDEO_CONTROLS_OVERLAY_OPTIONS" = "أزرار التحكم على الطبقة فوق الفيديو";
+"VIDEO_CONTROLS_OVERLAY_OPTIONS" = "📹 أزرار التحكم على الطبقة فوق الفيديو";
 
 "HIDE_AUTOPLAY_SWITCH" = "إخفاء زر التشغيل التلقائي";
 "HIDE_AUTOPLAY_SWITCH_DESC" = "إخفاء زر التشغيل التلقائي من أزرار التحكم على الفيديو.";
@@ -82,7 +85,7 @@
 "HIDE_RIGHT_PANEL_DESC" = "تتطلب إعادة تشغيل التطبيق.";
 
 // Shorts controls overlay options
-"SHORTS_CONTROLS_OVERLAY_OPTIONS" = "خيارات طبقة التحكم بمقاطع Shorts";
+"SHORTS_CONTROLS_OVERLAY_OPTIONS" = "💥 خيارات طبقة التحكم بمقاطع Shorts";
 
 "HIDE_SUPER_THANKS" = "إخفاء عبارة 'شراء سوبر شكراً' في المقاطع القصيرة";
 "HIDE_SUPER_THANKS_DESC" = "إخفاء لافتة 'Buy Super Thanks' من مقاطع Shorts.";
@@ -94,7 +97,7 @@
 "DISABLE_RESUME_TO_SHORTS_DESC" = "إذا أغلقت تطبيق يوتيوب أثناء مشاهدة مقطع Shorts, لن يتم استئناف الشماهدة في المرة القادمة التي تفتح فيها التطبيق.";
 
 // Miscellaneous
-"MISCELLANEOUS" = "خيارات متنوعة";
+"MISCELLANEOUS" = "🔎 خيارات متنوعة";
 
 "CAST_CONFIRM" = "التأكيد قبل البث (أداة YTCastConfirm)";
 "CAST_CONFIRM_DESC" = "إظهار تنبيه للتأكيد قبل البث، من أجل منع البث للتلفاز عن طريق الخطأ.";

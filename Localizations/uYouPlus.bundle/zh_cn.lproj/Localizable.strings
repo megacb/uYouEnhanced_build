@@ -12,7 +12,7 @@
 "RESTART_YOUTUBE" = "Restart YouTube to apply changes";
 
 // App appearance
-"APP_THEME" = "App appearance";
+"APP_THEME" = "🎨 App appearance";
 "THEME_OPTIONS" = "主题选项";
 
 "DARK_THEME" = "Dark theme";
@@ -31,7 +31,10 @@
 "OLED_KEYBOARD_DESC" = "在某些情况下可能不会正常工作。更改本设置后需要重启 App。";
 
 // Video player options
-"VIDEO_PLAYER_OPTIONS" = "视频播放器选项";
+"VIDEO_PLAYER_OPTIONS" = "⏯️ 视频播放器选项";
+
+"SLIDE_TO_SEEK" = "Enable Slide to seek";
+"SLIDE_TO_SEEK_DESC" = "Bring back the Slide to seek gesture";
 
 "DISABLE_DOUBLE_TAP_TO_SEEK" = "禁用双击快进和快退";
 "DISABLE_DOUBLE_TAP_TO_SEEK_DESC" = "";
@@ -49,7 +52,7 @@
 "STOCK_VOLUME_HUD_DESC" = "";
 
 // Video controls overlay options
-"VIDEO_CONTROLS_OVERLAY_OPTIONS" = "视频播放器控制界面选项";
+"VIDEO_CONTROLS_OVERLAY_OPTIONS" = "📹 视频播放器控制界面选项";
 
 "HIDE_AUTOPLAY_SWITCH" = "隐藏自动播放模式开关";
 "HIDE_AUTOPLAY_SWITCH_DESC" = "隐藏视频播放器控制界面上的自动播放开关。";
@@ -82,7 +85,7 @@
 "HIDE_RIGHT_PANEL_DESC" = "更改本设置后需要重启App。";
 
 // Shorts controls overlay options
-"SHORTS_CONTROLS_OVERLAY_OPTIONS" = "Shorts 短片播放器选项";
+"SHORTS_CONTROLS_OVERLAY_OPTIONS" = "💥 Shorts 短片播放器选项";
 
 "HIDE_SUPER_THANKS" = "隐藏“购买超级感谢”横幅";
 "HIDE_SUPER_THANKS_DESC" = "隐藏出现在部分 Shorts 短片中的“购买超级感谢”横幅。";
@@ -94,7 +97,7 @@
 "DISABLE_RESUME_TO_SHORTS_DESC" = "若您在观看 Shorts 短片时关闭了 YouTube，下次启动时将不再自动进入 Shorts 短片分区。";
 
 // Miscellaneous
-"MISCELLANEOUS" = "其它选项";
+"MISCELLANEOUS" = "🔎 其它选项";
 
 "CAST_CONFIRM" = "投屏前确认 （YTCastConfirm）";
 "CAST_CONFIRM_DESC" = "在投屏前显示确认对话框以防意外劫屏。";

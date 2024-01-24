@@ -12,7 +12,7 @@
 "RESTART_YOUTUBE" = "Restart YouTube to apply changes";
 
 // App appearance
-"APP_THEME" = "App appearance";
+"APP_THEME" = "🎨 App appearance";
 "THEME_OPTIONS" = "テーマの設定";
 
 "DARK_THEME" = "Dark theme";
@@ -31,7 +31,10 @@
 "OLED_KEYBOARD_DESC" = "正常に動作しない可能性があります。この設定を変更した場合、アプリの再起動が必要です。";
 
 // Video controls overlay options
-"VIDEO_CONTROLS_OVERLAY_OPTIONS" = "動画コントロールのオーバーレイ設定";
+"VIDEO_CONTROLS_OVERLAY_OPTIONS" = "⏯️ 動画コントロールのオーバーレイ設定";
+
+"SLIDE_TO_SEEK" = "Enable Slide to seek";
+"SLIDE_TO_SEEK_DESC" = "Bring back the Slide to seek gesture.";
 
 "DISABLE_DOUBLE_TAP_TO_SEEK" = "ダブルタップによるシークを無効化";
 "DISABLE_DOUBLE_TAP_TO_SEEK_DESC" = "";
@@ -49,7 +52,7 @@
 "STOCK_VOLUME_HUD_DESC" = "";
 
 // Video controls overlay options
-"VIDEO_CONTROLS_OVERLAY_OPTIONS" = "動画コントロールのオーバーレイ設定";
+"VIDEO_CONTROLS_OVERLAY_OPTIONS" = "📹 動画コントロールのオーバーレイ設定";
 
 "HIDE_AUTOPLAY_SWITCH" = "自動再生ボタンを非表示";
 "HIDE_AUTOPLAY_SWITCH_DESC" = "動画コントロールのオーバーレイから自動再生ボタンを非表示にします。";
@@ -82,7 +85,7 @@
 "HIDE_RIGHT_PANEL_DESC" = "アプリの再起動が必要です。";
 
 // Shorts controls overlay options
-"SHORTS_CONTROLS_OVERLAY_OPTIONS" = "ショートのコントロールのオーバーレイ設定";
+"SHORTS_CONTROLS_OVERLAY_OPTIONS" = "💥 ショートのコントロールのオーバーレイ設定";
 
 "HIDE_SUPER_THANKS" = "Super Thanks を購入のバナーを非表示";
 "HIDE_SUPER_THANKS_DESC" = "ショートの「Super Thanks」バナーを非表示にします。";
@@ -94,7 +97,7 @@
 "DISABLE_RESUME_TO_SHORTS_DESC" = "ショート動画を見ていてアプリを終了した後、再度開いた際にショートから再開されるのを防ぎます。";
 
 // Miscellaneous
-"MISCELLANEOUS" = "その他";
+"MISCELLANEOUS" = "🔎 その他";
 
 "CAST_CONFIRM" = "キャストする前に確認をする (YTCastConfirm)";
 "CAST_CONFIRM_DESC" = "誤ってテレビにキャストしないように、確認の警告を表示します。";

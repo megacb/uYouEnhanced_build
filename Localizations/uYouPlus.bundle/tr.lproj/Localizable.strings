@@ -12,7 +12,7 @@
 "RESTART_YOUTUBE" = "Restart YouTube to apply changes";
 
 // App appearance
-"APP_THEME" = "App appearance";
+"APP_THEME" = "🎨 App appearance";
 "THEME_OPTIONS" = "Tema ayarları";
 
 "DARK_THEME" = "Dark theme";
@@ -31,7 +31,10 @@
 "OLED_KEYBOARD_DESC" = "Bazı durumlarda düzgün çalışmayabilir. Uygulamanın yeniden başlatılması gerekir.";
 
 // Video player options
-"VIDEO_PLAYER_OPTIONS" = "Video Oynatıcı Seçenekleri";
+"VIDEO_PLAYER_OPTIONS" = "⏯️ Video Oynatıcı Seçenekleri";
+
+"SLIDE_TO_SEEK" = "Enable Slide to seek";
+"SLIDE_TO_SEEK_DESC" = "Bring back the Slide to seek gesture.";
 
 "DISABLE_DOUBLE_TAP_TO_SEEK" = "Disable double tap to seek";
 "DISABLE_DOUBLE_TAP_TO_SEEK_DESC" = "";
@@ -49,7 +52,7 @@
 "STOCK_VOLUME_HUD_DESC" = "";
 
 // Video controls overlay options
-"VIDEO_CONTROLS_OVERLAY_OPTIONS" = "Video Kontrolleri Kaplaması Seçenekleri";
+"VIDEO_CONTROLS_OVERLAY_OPTIONS" = "📹 Video Kontrolleri Kaplaması Seçenekleri";
 
 "HIDE_AUTOPLAY_SWITCH" = "Otomatik oynatma anahtarını gizle";
 "HIDE_AUTOPLAY_SWITCH_DESC" = "Otomatik oynat anahtarını video kontrolleri katmanından gizler.";
@@ -82,7 +85,7 @@
 "HIDE_RIGHT_PANEL_DESC" = "Uygulamanın yeniden başlatılması gerekir.";
 
 // Shorts controls overlay options
-"SHORTS_CONTROLS_OVERLAY_OPTIONS" = "Shorts Kontroller Kaplama Seçenekleri";
+"SHORTS_CONTROLS_OVERLAY_OPTIONS" = "💥 Shorts Kontroller Kaplama Seçenekleri";
 
 "HIDE_SUPER_THANKS" = "\"Süper Teşekkür Satın Alın\" afişini gizle";
 "HIDE_SUPER_THANKS_DESC" = "Shorts'ta \"Süper Teşekkür Satın Alın\" afişini gizle.";
@@ -94,7 +97,7 @@
 "DISABLE_RESUME_TO_SHORTS_DESC" = "Shorts izlerken YouTube'u kapatırsan Shorts, YouTube'u bir sonraki açışında otomatik olarak oynatılmaz.";
 
 // Miscellaneous
-"MISCELLANEOUS" = "Diğer";
+"MISCELLANEOUS" = "🔎 Diğer";
 
 "CAST_CONFIRM" = "Yayınlamadan önce uyarıyı onayla (YTCastConfirm)";
 "CAST_CONFIRM_DESC" = "TV'nin yanlışlıkla ele geçirilmesini önlemek için yayınlamadan önce bir onay uyarısı gösterir.";

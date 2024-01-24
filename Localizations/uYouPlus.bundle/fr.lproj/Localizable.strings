@@ -12,7 +12,7 @@
 "RESTART_YOUTUBE" = "Restart YouTube to apply changes";
 
 // App appearance
-"APP_THEME" = "App appearance";
+"APP_THEME" = "🎨 App appearance";
 "THEME_OPTIONS" = "Options du thème";
 
 "DARK_THEME" = "Dark theme";
@@ -31,7 +31,10 @@
 "OLED_KEYBOARD_DESC" = "Peut ne pas fonctionner correctement dans certains cas. Un redémarrage de l'application est nécessaire.";
 
 // Video player options
-"VIDEO_PLAYER_OPTIONS" = "Options du lecteur vidéo";
+"VIDEO_PLAYER_OPTIONS" = "⏯️ Options du lecteur vidéo";
+
+"SLIDE_TO_SEEK" = "Enable Slide to seek";
+"SLIDE_TO_SEEK_DESC" = "Bring back the Slide to seek gesture.";
 
 "DISABLE_DOUBLE_TAP_TO_SEEK" = "Désactiver le double tap pour chercher";
 "DISABLE_DOUBLE_TAP_TO_SEEK_DESC" = "";
@@ -49,7 +52,7 @@
 "STOCK_VOLUME_HUD_DESC" = "";
 
 // Video controls overlay options
-"VIDEO_CONTROLS_OVERLAY_OPTIONS" = "Options de superposition des contrôles vidéo";
+"VIDEO_CONTROLS_OVERLAY_OPTIONS" = "📹 Options de superposition des contrôles vidéo";
 
 "HIDE_AUTOPLAY_SWITCH" = "Masquer l'interrupteur de lecture automatique";
 "HIDE_AUTOPLAY_SWITCH_DESC" = "Masquer le bouton de lecture automatique dans la superposition des contrôles vidéo";
@@ -82,7 +85,7 @@
 "HIDE_RIGHT_PANEL_DESC" = "Un redémarrage de l'application est nécessaire.";
 
 // Shorts controls overlay options
-"SHORTS_CONTROLS_OVERLAY_OPTIONS" = "Options de la superposition de commandes de Shorts";
+"SHORTS_CONTROLS_OVERLAY_OPTIONS" = "💥 Options de la superposition de commandes de Shorts";
 
 "HIDE_SUPER_THANKS" = "Masquer la bannière 'Acheter des Super Thanks'";
 "HIDE_SUPER_THANKS_DESC" = "Masquer la bannière 'Acheter des Super Thanks' dans les Shorts.";
@@ -94,7 +97,7 @@
 "DISABLE_RESUME_TO_SHORTS_DESC" = "Si vous fermez YouTube en regardant des Shorts, ils ne seront pas automatiquement lus la prochaine fois que vous lancerez YouTube.";
 
 // Miscellaneous
-"MISCELLANEOUS" = "Divers";
+"MISCELLANEOUS" = "🔎 Divers";
 
 "CAST_CONFIRM" = "Confirmer l'alerte avant le casting (YTCastConfirm)";
 "CAST_CONFIRM_DESC" = "Afficher une alerte de confirmation avant de lancer le casting afin d'éviter de déclencher accidentellement la télévision";

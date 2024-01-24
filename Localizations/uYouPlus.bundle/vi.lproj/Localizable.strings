@@ -12,7 +12,7 @@
 "RESTART_YOUTUBE" = "Khởi động lại YouTube để áp dụng các thay đổi";
 
 // App appearance
-"APP_THEME" = "Giao diện của ứng dụng";
+"APP_THEME" = "🎨 Giao diện của ứng dụng";
 "THEME_OPTIONS" = "Tùy chọn giao diện";
 
 "DARK_THEME" = "Giao diện tối";
@@ -20,7 +20,7 @@
 "DEFAULT_THEME" = "Mặc định";
 "DEFAULT_THEME_DESC" = "";
 
-"OLD_DARK_THEME" = "Xám nhạt hơn";
+"OLD_DARK_THEME" = "Xám nhạt";
 "OLD_DARK_THEME_DESC" = "Giao diện tối cũ của YouTube";
 
 "OLED_DARK_THEME" = "OLED (thử nghiệm)";
@@ -31,15 +31,18 @@
 "OLED_KEYBOARD_DESC" = "";
 
 // Video player options
-"VIDEO_PLAYER_OPTIONS" = "Tùy chọn trình phát video";
+"VIDEO_PLAYER_OPTIONS" = "⏯️ Tùy chọn trình phát video";
+
+"SLIDE_TO_SEEK" = "Vuốt để tua";
+"SLIDE_TO_SEEK_DESC" = "Đem lại cử chỉ vuốt để tua như trước đây.";
 
 "DISABLE_DOUBLE_TAP_TO_SEEK" = "Tắt tình năng chạm 2 lần để tua";
 "DISABLE_DOUBLE_TAP_TO_SEEK_DESC" = "";
 
-"SNAP_TO_CHAPTER" = "Vô hiệu hóa tự động chuyển tới chương";
+"SNAP_TO_CHAPTER" = "Tắt tự động chuyển tới chương";
 "SNAP_TO_CHAPTER_DESC" = "Tắt tính năng tự động chuyển tới chương gần nhất khi tua video. Cần khởi động lại ứng dụng.";
 
-"PINCH_TO_ZOOM" = "Vô hiệu hóa chạm để thu phóng";
+"PINCH_TO_ZOOM" = "Tắt tính năng chạm để thu phóng";
 "PINCH_TO_ZOOM_DESC" = "Cần khởi động lại ứng dụng.";
 
 "YT_MINIPLAYER" = "Cho phép sử dụng trình phát thu nhỏ với mọi video";
@@ -49,7 +52,7 @@
 "STOCK_VOLUME_HUD_DESC" = "";
 
 // Video controls overlay options
-"VIDEO_CONTROLS_OVERLAY_OPTIONS" = "Tùy chọn hiển thị trong trình phát video";
+"VIDEO_CONTROLS_OVERLAY_OPTIONS" = "📹 Tùy chọn hiển thị trong trình phát video";
 
 "HIDE_AUTOPLAY_SWITCH" = "Ẩn nút Tự động phát";
 "HIDE_AUTOPLAY_SWITCH_DESC" = "Ẩn nút Tự động phát trong trình phát video.";
@@ -63,8 +66,8 @@
 "HIDE_PAID_PROMOTION_CARDS" = "Ẩn banner quảng cáo được trả tiền";
 "HIDE_PAID_PROMOTION_CARDS_DESC" = "Ẩn banner 'Chứa nội dung được trả tiền để quảng cáo' trong một số video.";
 
-"HIDE_CHANNEL_WATERMARK" = "Ẩn hình mờ kênh";
-"HIDE_CHANNEL_WATERMARK_DESC" = "Ẩn hình mờ của kênh trong lớp phủ điều khiển video. Yêu cầu khởi động lại ứng dụng.";
+"HIDE_CHANNEL_WATERMARK" = "Ẩn watermark của kênh";
+"HIDE_CHANNEL_WATERMARK_DESC" = "Ẩn watermark của kênh trong video. Yêu cầu khởi động lại ứng dụng.";
 
 "HIDE_PREVIOUS_AND_NEXT_BUTTON" = "Ẩn nút Next và nút Previous";
 "HIDE_PREVIOUS_AND_NEXT_BUTTON_DESC" = "Ẩn nút Next và nút Previous trong trình phát video.";
@@ -82,7 +85,7 @@
 "HIDE_RIGHT_PANEL_DESC" = "Ẩn bảng điều khiển bên phải khi ở chế độ toàn màn hình. Cần khởi động lại ứng dụng.";
 
 // Shorts controls overlay options
-"SHORTS_CONTROLS_OVERLAY_OPTIONS" = "Tùy chọn hiển thị trong Shorts";
+"SHORTS_CONTROLS_OVERLAY_OPTIONS" = "💥 Tùy chọn hiển thị trong Shorts";
 
 "HIDE_SUPER_THANKS" = "Ẩn biểu ngữ 'Mua ảnh động Super Thanks'";
 "HIDE_SUPER_THANKS_DESC" = "Ẩn biểu ngữ 'Mua ảnh động Super Thanks'.";
@@ -94,7 +97,7 @@
 "DISABLE_RESUME_TO_SHORTS_DESC" = "Nếu bạn thoát YouTube trong khi đang xem video Shorts, video Shorts đó sẽ không tự động phát khi bạn mở lại YouTube.";
 
 // Miscellaneous
-"MISCELLANEOUS" = "Cài đặt khác";
+"MISCELLANEOUS" = "🔎 Cài đặt khác";
 
 "CAST_CONFIRM" = "Xác nhận trước khi cast video (YTCastConfirm)";
 "CAST_CONFIRM_DESC" = "Hiện hộp thoại xác nhận trước khi cast video sang TV để tránh vô tình chiếm quyền điều khiển TV.";
@@ -112,7 +115,7 @@
 "HIDE_CHIP_BAR" = "Ẩn thanh phím tắt";
 "HIDE_CHIP_BAR_DESC" = "Ẩn thanh phím tắt trong Home feed (Thịnh hành, Âm nhạc, Trò chơi...) và trong Subciption feed (Tất cả, Tiếp tục xem...).";
 
-"HIDE_PLAY_NEXT_IN_QUEUE" = "Hide \"Play next in queue\"";
+"HIDE_PLAY_NEXT_IN_QUEUE" = "Ẩn \"Phát tiếp theo trong danh sách chờ\"";
 "HIDE_PLAY_NEXT_IN_QUEUE_DESC" = "";
 
 "IPHONE_LAYOUT" = "Force iPhone layout";

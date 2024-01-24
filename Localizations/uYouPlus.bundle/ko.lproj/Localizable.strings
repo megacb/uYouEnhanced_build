@@ -12,7 +12,7 @@
 "RESTART_YOUTUBE" = "Restart YouTube to apply changes";
 
 // App appearance
-"APP_THEME" = "App appearance";
+"APP_THEME" = "🎨 App appearance";
 "THEME_OPTIONS" = "테마 설정";
 
 "DARK_THEME" = "Dark theme";
@@ -31,7 +31,10 @@
 "OLED_KEYBOARD_DESC" = "몇몇 경우 제대로 동작하지 않을 수도 있습니다. 앱을 다시 시작해야 합니다.";
 
 // Video player options
-"VIDEO_PLAYER_OPTIONS" = "비디오 재생 설정";
+"VIDEO_PLAYER_OPTIONS" = "⏯️ 비디오 재생 설정";
+
+"SLIDE_TO_SEEK" = "Enable Slide to seek";
+"SLIDE_TO_SEEK_DESC" = "Bring back the Slide to seek gesture.";
 
 "DISABLE_DOUBLE_TAP_TO_SEEK" = "두번 탭하여 탐색 사용하지 않음";
 "DISABLE_DOUBLE_TAP_TO_SEEK_DESC" = "";
@@ -49,7 +52,7 @@
 "STOCK_VOLUME_HUD_DESC" = "";
 
 // Video controls overlay options
-"VIDEO_CONTROLS_OVERLAY_OPTIONS" = "비디오 재생 오버레이 설정";
+"VIDEO_CONTROLS_OVERLAY_OPTIONS" = "📹 비디오 재생 오버레이 설정";
 
 "HIDE_AUTOPLAY_SWITCH" = "자동재생 스위치 숨기기";
 "HIDE_AUTOPLAY_SWITCH_DESC" = "비디오 재생 오버레이에서 자동재생 스위치를 숨깁니다.";
@@ -82,7 +85,7 @@
 "HIDE_RIGHT_PANEL_DESC" = "앱을 다시 시작해야 합니다.";
 
 // Shorts controls overlay options
-"SHORTS_CONTROLS_OVERLAY_OPTIONS" = "Shorts 재생 오버레이 설정";
+"SHORTS_CONTROLS_OVERLAY_OPTIONS" = "💥 Shorts 재생 오버레이 설정";
 
 "HIDE_SUPER_THANKS" = "'Super Thanks 구매' 배너 숨기기";
 "HIDE_SUPER_THANKS_DESC" = "Shorts 영상에서 'Super Thanks 구매' 배너를 숨깁니다.";
@@ -94,7 +97,7 @@
 "DISABLE_RESUME_TO_SHORTS_DESC" = "Shorts를 시청하는 도중 앱을 닫을 때, 다시 앱을 열어도 Shorts 영상이 자동재생되지 않도록 합니다.";
 
 // Miscellaneous
-"MISCELLANEOUS" = "기타 설정";
+"MISCELLANEOUS" = "🔎 기타 설정";
 
 "CAST_CONFIRM" = "TV 전송 알림 (YTCastConfirm)";
 "CAST_CONFIRM_DESC" = "의도치 않게 TV로 영상을 전송하지 않도록 보내기 전에 확인 메시지를 표시합니다.";

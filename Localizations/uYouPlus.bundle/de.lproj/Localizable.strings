@@ -12,7 +12,7 @@
 "RESTART_YOUTUBE" = "Restart YouTube to apply changes";
 
 // App appearance
-"APP_THEME" = "App appearance";
+"APP_THEME" = "🎨 App appearance";
 "THEME_OPTIONS" = "Theme Optionen";
 
 "DARK_THEME" = "Dark theme";
@@ -31,7 +31,10 @@
 "OLED_KEYBOARD_DESC" = "Könnte in manchen Fällen nicht richtig funktionieren. App-Neustart erforderlich!";
 
 // Video player options
-"VIDEO_PLAYER_OPTIONS" = "Video-Player-Optionen";
+"VIDEO_PLAYER_OPTIONS" = "⏯️ Video-Player-Optionen";
+
+"SLIDE_TO_SEEK" = "Enable Slide to seek";
+"SLIDE_TO_SEEK_DESC" = "Bring back the Slide to seek gesture.";
 
 "DISABLE_DOUBLE_TAP_TO_SEEK" = "Doppeltippen zum Suchen deaktivieren";
 "DISABLE_DOUBLE_TAP_TO_SEEK_DESC" = "";
@@ -49,7 +52,7 @@
 "STOCK_VOLUME_HUD_DESC" = "";
 
 // Video controls overlay options
-"VIDEO_CONTROLS_OVERLAY_OPTIONS" = "Video Controls Overlay Optionen";
+"VIDEO_CONTROLS_OVERLAY_OPTIONS" = "📹 Video Controls Overlay Optionen";
 
 "HIDE_AUTOPLAY_SWITCH" = "Autoplay-Schalter ausblenden";
 "HIDE_AUTOPLAY_SWITCH_DESC" = "Autoplay-Schalter vom Videoplayer ausblenden.";
@@ -82,7 +85,7 @@
 "HIDE_RIGHT_PANEL_DESC" = "App-Neustart erforderlich.";
 
 // Shorts controls overlay options
-"SHORTS_CONTROLS_OVERLAY_OPTIONS" = "Shorts Controls Overlay-Optionen";
+"SHORTS_CONTROLS_OVERLAY_OPTIONS" = "💥 Shorts Controls Overlay-Optionen";
 
 "HIDE_SUPER_THANKS" = "'Buy Super Thanks'-Banner ausblenden";
 "HIDE_SUPER_THANKS_DESC" = "Ausblenden des \"Buy Super Thanks\"-Banners in bestimmten Shorts.";
@@ -94,7 +97,7 @@
 "DISABLE_RESUME_TO_SHORTS_DESC" = "Wenn Sie YouTube beenden, während Sie Shorts ansehen, werden Shorts beim nächsten Start von YouTube nicht automatisch abgespielt.";
 
 // Miscellaneous
-"MISCELLANEOUS" = "Sonstiges";
+"MISCELLANEOUS" = "🔎 Sonstiges";
 
 "CAST_CONFIRM" = "Warnung vor TV-Übertragungen (YTCastConfirm)";
 "CAST_CONFIRM_DESC" = "Zeigt eine Warnung an, um eine ausversehene TV-Übertragung zu verhindern.";

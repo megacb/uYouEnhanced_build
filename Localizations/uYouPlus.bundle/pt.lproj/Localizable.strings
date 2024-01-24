@@ -12,7 +12,7 @@
 "RESTART_YOUTUBE" = "Restart YouTube to apply changes";
 
 // App appearance
-"APP_THEME" = "App appearance";
+"APP_THEME" = "🎨 App appearance";
 "THEME_OPTIONS" = "Opções de Temas";
 
 "DARK_THEME" = "Dark theme";
@@ -31,7 +31,10 @@
 "OLED_KEYBOARD_DESC" = "Pode não funcionar corretamente em alguns casos. A reinicialização do app é necessária.";
 
 // Video player options
-"VIDEO_PLAYER_OPTIONS" = "Opções do Reprodutor de Vídeo";
+"VIDEO_PLAYER_OPTIONS" = "⏯️ Opções do Reprodutor de Vídeo";
+
+"SLIDE_TO_SEEK" = "Enable Slide to seek";
+"SLIDE_TO_SEEK_DESC" = "Bring back the Slide to seek gesture.";
 
 "DISABLE_DOUBLE_TAP_TO_SEEK" = "Desativar toque duplo para buscar";
 "DISABLE_DOUBLE_TAP_TO_SEEK_DESC" = "";
@@ -49,7 +52,7 @@
 "STOCK_VOLUME_HUD_DESC" = "";
 
 // Video controls overlay options
-"VIDEO_CONTROLS_OVERLAY_OPTIONS" = "Opções de Sobreposição de Controles de Vídeo";
+"VIDEO_CONTROLS_OVERLAY_OPTIONS" = "📹 Opções de Sobreposição de Controles de Vídeo";
 
 "HIDE_AUTOPLAY_SWITCH" = "Ocultar interruptor de Reprodução automática";
 "HIDE_AUTOPLAY_SWITCH_DESC" = "Oculta o interruptor de Reprodução automática na sobreposição de controles de vídeo.";
@@ -82,7 +85,7 @@
 "HIDE_RIGHT_PANEL_DESC" = "A reinicialização do app é necessária.";
 
 // Shorts controls overlay options
-"SHORTS_CONTROLS_OVERLAY_OPTIONS" = "Opções de Sobreposição de Controles de Shorts";
+"SHORTS_CONTROLS_OVERLAY_OPTIONS" = "💥 Opções de Sobreposição de Controles de Shorts";
 
 "HIDE_SUPER_THANKS" = "Ocultar o banner 'Comprar Valeu Demais'";
 "HIDE_SUPER_THANKS_DESC" = "Oculta o banner 'Comprar Valeu Demais' nos Shorts.";
@@ -94,7 +97,7 @@
 "DISABLE_RESUME_TO_SHORTS_DESC" = "Se você fechar o YouTube enquanto assiste a Shorts, os Shorts não serão reproduzidos automaticamente na próxima vez que você iniciar o YouTube.";
 
 // Miscellaneous
-"MISCELLANEOUS" = "Diversos";
+"MISCELLANEOUS" = "🔎 Diversos";
 
 "CAST_CONFIRM" = "Alerta de confirmação antes de transmitir (YTCastConfirm)";
 "CAST_CONFIRM_DESC" = "Mostra um alerta de confirmação antes da transmissão para evitar o sequestro acidental da TV.";

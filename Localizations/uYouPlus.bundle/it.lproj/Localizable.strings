@@ -12,7 +12,7 @@
 "RESTART_YOUTUBE" = "Restart YouTube to apply changes";
 
 // App appearance
-"APP_THEME" = "App appearance";
+"APP_THEME" = "🎨 App appearance";
 "THEME_OPTIONS" = "Opzioni Tema";
 
 "DARK_THEME" = "Dark theme";
@@ -31,7 +31,10 @@
 "OLED_KEYBOARD_DESC" = "Potrebbe non funzionare correttamente in alcuni scenari. È richiesto un riavvio dell'app.";
 
 // Video player options
-"VIDEO_PLAYER_OPTIONS" = "Opzioni Video Player";
+"VIDEO_PLAYER_OPTIONS" = "⏯️ Opzioni Video Player";
+
+"SLIDE_TO_SEEK" = "Enable Slide to seek";
+"SLIDE_TO_SEEK_DESC" = "Bring back the Slide to seek gesture.";
 
 "DISABLE_DOUBLE_TAP_TO_SEEK" = "Disable double tap to seek";
 "DISABLE_DOUBLE_TAP_TO_SEEK_DESC" = "";
@@ -49,7 +52,7 @@
 "STOCK_VOLUME_HUD_DESC" = "";
 
 // Video controls overlay options
-"VIDEO_CONTROLS_OVERLAY_OPTIONS" = "Opzioni Sovrimpressione (Overlay) Video";
+"VIDEO_CONTROLS_OVERLAY_OPTIONS" = "📹 Opzioni Sovrimpressione (Overlay) Video";
 
 "HIDE_AUTOPLAY_SWITCH" = "Nascondi Interruttore Riproduzione Automatica";
 "HIDE_AUTOPLAY_SWITCH_DESC" = "Nasconde il controllo per la riproduzione automatica in sovrimpressione al video.";
@@ -82,7 +85,7 @@
 "HIDE_RIGHT_PANEL_DESC" = "È richiesto un riavvio dell'app.";
 
 // Shorts controls overlay options
-"SHORTS_CONTROLS_OVERLAY_OPTIONS" = "Opzioni Sovrimpressione (Overlay) Shorts";
+"SHORTS_CONTROLS_OVERLAY_OPTIONS" = "💥 Opzioni Sovrimpressione (Overlay) Shorts";
 
 "HIDE_SUPER_THANKS" = "Nascondi 'Buy Super Thanks'";
 "HIDE_SUPER_THANKS_DESC" = "Nascondi il banner 'Buy Super Thanks' dagli Shorts.";
@@ -94,7 +97,7 @@
 "DISABLE_RESUME_TO_SHORTS_DESC" = "Se chiudi YouTube mentre guardi uno Short, gli Short non verranno riprodotti automaticamente la prossima volta che avvii YouTube.";
 
 // Miscellaneous
-"MISCELLANEOUS" = "Varie";
+"MISCELLANEOUS" = "🔎 Varie";
 
 "CAST_CONFIRM" = "Avviso di conferma prima della condivisione su TV (YTCastConfirm)";
 "CAST_CONFIRM_DESC" = "Mostra un avviso di conferma prima della condivisione per evitar e di irrompere accidentalmente sulla TV.";

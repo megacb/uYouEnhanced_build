@@ -12,7 +12,7 @@
 "RESTART_YOUTUBE" = "Restart YouTube to apply changes";
 
 // App appearance
-"APP_THEME" = "App appearance";
+"APP_THEME" = "🎨 App appearance";
 "THEME_OPTIONS" = "Theme Options";
 
 "DARK_THEME" = "Dark theme";
@@ -31,7 +31,10 @@
 "OLED_KEYBOARD_DESC" = "Előfordulhat, hogy bizonyos esetekben nem működik megfelelően. Az alkalmazás újraindítása szükséges az opció engedélyezése/letiltása után.";
 
 // Video player options
-"VIDEO_PLAYER_OPTIONS" = "Video player options";
+"VIDEO_PLAYER_OPTIONS" = "⏯️ Video player options";
+
+"SLIDE_TO_SEEK" = "Enable Slide to seek";
+"SLIDE_TO_SEEK_DESC" = "Bring back the Slide to seek gesture.";
 
 "DISABLE_DOUBLE_TAP_TO_SEEK" = "Disable double tap to seek";
 "DISABLE_DOUBLE_TAP_TO_SEEK_DESC" = "";
@@ -49,7 +52,7 @@
 "STOCK_VOLUME_HUD_DESC" = "";
 
 // Video controls overlay options
-"VIDEO_CONTROLS_OVERLAY_OPTIONS" = "Video controls overlay options";
+"VIDEO_CONTROLS_OVERLAY_OPTIONS" = "📹 Video controls overlay options";
 
 "HIDE_AUTOPLAY_SWITCH" = "Az automatikus lejátszás kapcsoló elrejtése";
 "HIDE_AUTOPLAY_SWITCH_DESC" = "Az Automatikus lejátszás kapcsoló elrejtése a videovezérlők fedvényében.";
@@ -82,7 +85,7 @@
 "HIDE_RIGHT_PANEL_DESC" = "Hides right panels (e.g., comments, live chat, etc.) in landscape";
 
 // Shorts controls overlay options
-"SHORTS_CONTROLS_OVERLAY_OPTIONS" = "Shorts controls overlay options";
+"SHORTS_CONTROLS_OVERLAY_OPTIONS" = "💥 Shorts controls overlay options";
 
 "HIDE_SUPER_THANKS" = "Hide \"Buy Super Thanks\" banner";
 "HIDE_SUPER_THANKS_DESC" = "";
@@ -94,7 +97,7 @@
 "DISABLE_RESUME_TO_SHORTS_DESC" = "If you close YouTube while watching Shorts, this prevents it from automatically resuming the next time you reopen the app";
 
 // Miscellaneous
-"MISCELLANEOUS" = "Miscellaneous";
+"MISCELLANEOUS" = "🔎 Miscellaneous";
 
 "CAST_CONFIRM" = "Megerősítés átküldés előtt (YTCastConfirm)";
 "CAST_CONFIRM_DESC" = "Az átküldés előtt mutasson megerősítő figyelmeztetést, hogy megakadályozza a TV véletlen eltérítését.";

@@ -12,7 +12,7 @@
 "RESTART_YOUTUBE" = "Restart YouTube to apply changes";
 
 // App appearance
-"APP_THEME" = "App appearance";
+"APP_THEME" = "🎨 App appearance";
 "THEME_OPTIONS" = "主題風格選項";
 
 "DARK_THEME" = "Dark theme";
@@ -31,7 +31,10 @@
 "OLED_KEYBOARD_DESC" = "在某些情況下可能無法正常運作。需要重新啟動應用程式。";
 
 // Video player options
-"VIDEO_PLAYER_OPTIONS" = "播放器選項";
+"VIDEO_PLAYER_OPTIONS" = "⏯️ 播放器選項";
+
+"SLIDE_TO_SEEK" = "Enable Slide to seek";
+"SLIDE_TO_SEEK_DESC" = "Bring back the Slide to seek gesture.";
 
 "DISABLE_DOUBLE_TAP_TO_SEEK" = "Disable double tap to seek";
 "DISABLE_DOUBLE_TAP_TO_SEEK_DESC" = "";
@@ -49,7 +52,7 @@
 "STOCK_VOLUME_HUD_DESC" = "";
 
 // Video controls overlay options
-"VIDEO_CONTROLS_OVERLAY_OPTIONS" = "影片懸浮控制選項";
+"VIDEO_CONTROLS_OVERLAY_OPTIONS" = "📹 影片懸浮控制選項";
 
 "HIDE_AUTOPLAY_SWITCH" = "隱藏自動播放開關";
 "HIDE_AUTOPLAY_SWITCH_DESC" = "在影片控制中隱藏自動播放開關。";
@@ -82,7 +85,7 @@
 "HIDE_RIGHT_PANEL_DESC" = "需要重新啟動應用程式。";
 
 // Shorts controls overlay options
-"SHORTS_CONTROLS_OVERLAY_OPTIONS" = "Shorts 懸浮控制選項";
+"SHORTS_CONTROLS_OVERLAY_OPTIONS" = "💥 Shorts 懸浮控制選項";
 
 "HIDE_SUPER_THANKS" = "隱藏 '購買超級感謝' 橫幅";
 "HIDE_SUPER_THANKS_DESC" = "在 Shorts 中隱藏 '購買超級感謝' 橫幅.";
@@ -94,7 +97,7 @@
 "DISABLE_RESUME_TO_SHORTS_DESC" = "如果你在觀看 Shorts 時關閉程式,下次開啟程式時將不再自動播放 Shorts.";
 
 // Miscellaneous
-"MISCELLANEOUS" = "雜項";
+"MISCELLANEOUS" = "🔎 雜項";
 
 "CAST_CONFIRM" = "投放前確認 (YTCastConfirm)";
 "CAST_CONFIRM_DESC" = "在投放前顯示確認訊息，以防止家人幹樵。";
