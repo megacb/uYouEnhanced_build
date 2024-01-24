@@ -19,6 +19,12 @@ NSBundle *tweakBundle = uYouPlusBundle();
 // See uYouPlusThemes.xm
 
 # pragma mark - Video player options
+// Bring back Slide to seek - https://github.com/PoomSmart/YTABConfig/discussions/95#discussioncomment-8166019
+%hook YTColdConfig
+- (BOOL)speedMasterArm2FastForwardWithoutSeekBySliding {
+    return IS_ENABLED(@"slideToSeek_enabled") ? NO : %orig;
+}
+%end
 
 // Disable double tap to seek
 %hook YTDoubleTapToSeekController
