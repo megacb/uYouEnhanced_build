@@ -99,6 +99,8 @@
 // Miscellaneous
 "MISCELLANEOUS" = "🔎 Varie";
 
+"HIDE_UYOU" = "Hide uYou tab";
+
 "CAST_CONFIRM" = "Avviso di conferma prima della condivisione su TV (YTCastConfirm)";
 "CAST_CONFIRM_DESC" = "Mostra un avviso di conferma prima della condivisione per evitar e di irrompere accidentalmente sulla TV.";
 "CASTING" = "Condivisione su TV";

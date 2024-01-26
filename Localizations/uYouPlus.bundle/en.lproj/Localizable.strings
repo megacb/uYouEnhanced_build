@@ -99,6 +99,8 @@
 // Miscellaneous
 "MISCELLANEOUS" = "🔎 Miscellaneous";
 
+"HIDE_UYOU" = "Hide uYou tab";
+
 "CAST_CONFIRM" = "YTCastConfirm";
 "CAST_CONFIRM_DESC" = "Shows a confirmation alert before casting";
 "CASTING" = "Casting";

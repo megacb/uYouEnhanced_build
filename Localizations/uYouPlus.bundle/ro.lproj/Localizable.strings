@@ -99,6 +99,8 @@
 // Miscellaneous
 "MISCELLANEOUS" = "🔎 Miscellaneous";
 
+"HIDE_UYOU" = "Hide uYou tab";
+
 "CAST_CONFIRM" = "Alertă de confirmare înainte de proiectare (YTCastConfirm)";
 "CAST_CONFIRM_DESC" = "Afișează o alertă de confirmare înainte de a proiecta, pentru a preveni deturnarea accidentală a TV-ului.";
 "CASTING" = "Proiectare";

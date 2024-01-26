@@ -99,6 +99,8 @@
 // Miscellaneous
 "MISCELLANEOUS" = "🔎 기타 설정";
 
+"HIDE_UYOU" = "Hide uYou tab";
+
 "CAST_CONFIRM" = "TV 전송 알림 (YTCastConfirm)";
 "CAST_CONFIRM_DESC" = "의도치 않게 TV로 영상을 전송하지 않도록 보내기 전에 확인 메시지를 표시합니다.";
 "CASTING" = "TV로 전송";

@@ -99,6 +99,8 @@
 // Miscellaneous
 "MISCELLANEOUS" = "🔎 Miscellaneous";
 
+"HIDE_UYOU" = "Hide uYou tab";
+
 "CAST_CONFIRM" = "Alert przed przesyłaniem (YTCastConfirm)";
 "CAST_CONFIRM_DESC" = "Pokaż alert przed przesyłaniem aby nie łączyć się przez przypadek z telewizorem.";
 "CASTING" = "Przesyłania";

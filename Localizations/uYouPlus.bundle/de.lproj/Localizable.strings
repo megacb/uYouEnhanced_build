@@ -99,6 +99,8 @@
 // Miscellaneous
 "MISCELLANEOUS" = "🔎 Sonstiges";
 
+"HIDE_UYOU" = "Hide uYou tab";
+
 "CAST_CONFIRM" = "Warnung vor TV-Übertragungen (YTCastConfirm)";
 "CAST_CONFIRM_DESC" = "Zeigt eine Warnung an, um eine ausversehene TV-Übertragung zu verhindern.";
 "CASTING" = "TV-Übertragung";

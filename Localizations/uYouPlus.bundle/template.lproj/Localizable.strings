@@ -114,6 +114,8 @@ https://github.com/PoomSmart/Return-YouTube-Dislikes/tree/main/layout/Library/Ap
 // Miscellaneous
 "MISCELLANEOUS" = "🔎 Miscellaneous";
 
+"HIDE_UYOU" = "Hide uYou tab";
+
 "CAST_CONFIRM" = "YTCastConfirm";
 "CAST_CONFIRM_DESC" = "Shows a confirmation alert before casting";
 "CASTING" = "Casting";
