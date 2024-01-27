@@ -100,6 +100,7 @@
 "MISCELLANEOUS" = "🔎 خيارات متنوعة";
 
 "HIDE_UYOU" = "Hide uYou tab";
+"HIDE_ISPONSORBLOCK" = "Hide iSponsorBlock button";
 
 "CAST_CONFIRM" = "التأكيد قبل البث (أداة YTCastConfirm)";
 "CAST_CONFIRM_DESC" = "إظهار تنبيه للتأكيد قبل البث، من أجل منع البث للتلفاز عن طريق الخطأ.";

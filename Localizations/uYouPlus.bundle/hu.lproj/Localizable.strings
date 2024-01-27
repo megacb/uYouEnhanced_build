@@ -100,6 +100,7 @@
 "MISCELLANEOUS" = "🔎 Miscellaneous";
 
 "HIDE_UYOU" = "Hide uYou tab";
+"HIDE_ISPONSORBLOCK" = "Hide iSponsorBlock button";
 
 "CAST_CONFIRM" = "Megerősítés átküldés előtt (YTCastConfirm)";
 "CAST_CONFIRM_DESC" = "Az átküldés előtt mutasson megerősítő figyelmeztetést, hogy megakadályozza a TV véletlen eltérítését.";

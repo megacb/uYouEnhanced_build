@@ -100,6 +100,7 @@
 "MISCELLANEOUS" = "🔎 Miscellaneous";
 
 "HIDE_UYOU" = "Hide uYou tab";
+"HIDE_ISPONSORBLOCK" = "Hide iSponsorBlock button";
 
 "CAST_CONFIRM" = "Zobrazit potvrzení před začátkem sdílení obrazu (YTCastConfirm)";
 "CAST_CONFIRM_DESC" = "Zobrazí potvrzení aby se zamezilo nechtěnému sdílení do televize.";
