@@ -157,10 +157,10 @@ NSBundle *tweakBundle = uYouPlusBundle();
 
 // Hide iSponsorBlock
 %hook YTRightNavigationButtons
-- (void)setSponsorBlockButton:(id)sponsorBlockButton {
-    if (IS_ENABLED(@"hideiSponsorBlockButton_enabled"))
-        return;
+- (void)layoutSubviews {
     %orig;
+    if (IS_ENABLED(@"hideiSponsorBlockButton_enabled"))
+        self.sponsorBlockButton.hidden = YES;
 }
 %end
 

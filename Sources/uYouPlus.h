@@ -28,6 +28,11 @@
 - (void)confirmAlertDidPressConfirm;
 @end
 
+// Hide iSponsorBlock
+@interface YTRightNavigationButtons : UIView
+@property (nonatomic, readwrite, strong) UIView *sponsorBlockButton;
+@end
+
 // Hide YouTube annoying banner in Home page? - @MiRO92 - YTNoShorts: https://github.com/MiRO92/YTNoShorts
 @interface _ASCollectionViewCell : UICollectionViewCell
 - (id)node;
