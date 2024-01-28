@@ -10,9 +10,13 @@
 -(YTSingleVideoController *)activeVideo;
 @end
 
-// Prevent uYou player bar from showing when not playing downloaded media
 @interface PlayerManager : NSObject
+// Prevent uYou player bar from showing when not playing downloaded media
 - (float)progress;
+// Prevent uYou's playback from colliding with YouTube's
+- (void)setSource:(id)source;
+- (void)pause;
++ (id)sharedInstance;
 @end
 
 // iOS 16 uYou crash fix - @level3tjg: https://github.com/qnblackcat/uYouPlus/pull/224
