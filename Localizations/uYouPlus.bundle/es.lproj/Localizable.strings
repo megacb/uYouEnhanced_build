@@ -1,21 +1,21 @@
 // About
-"ABOUT" = "About";
+"ABOUT" = "Acerca de";
 
-"VERSION" = "Versión uYouPlus's: %@";
+"VERSION" = "Versión";
 "VERSION_CHECK" = "Pulse para comprobar si hay actualizaciones.";
 
-"REPORT_AN_ISSUE" = "Report an issue";
-"ADD_TITLE" = "Add your title here...";
+"REPORT_AN_ISSUE" = "Informar de un problema";
+"ADD_TITLE" = "Añada aquí su título...";
 
-"QUIT_YOUTUBE" = "Quit YouTube";
+"QUIT_YOUTUBE" = "Salir de Youtube";
 
-"RESTART_YOUTUBE" = "Restart YouTube to apply changes";
+"RESTART_YOUTUBE" = "Reinicia YouTube para aplicar los cambios";
 
 // App appearance
-"APP_THEME" = "🎨 App appearance";
+"APP_THEME" = "🎨 Aspecto de la aplicación";
 "THEME_OPTIONS" = "Opciones de Temas";
 
-"DARK_THEME" = "Dark theme";
+"DARK_THEME" = "Tema oscuro";
 
 "DEFAULT_THEME" = "Por defecto";
 "DEFAULT_THEME_DESC" = "Tema oscuro predeterminado de YouTube. Es necesario reiniciar la aplicación.";
@@ -33,8 +33,8 @@
 // Video player options
 "VIDEO_PLAYER_OPTIONS" = "⏯️ Opciones del reproductor de vídeo";
 
-"SLIDE_TO_SEEK" = "Enable Slide to seek";
-"SLIDE_TO_SEEK_DESC" = "Bring back the Slide to seek gesture.";
+"SLIDE_TO_SEEK" = "Activar el deslizamiento para buscar";
+"SLIDE_TO_SEEK_DESC" = "Traer de vuelta la diapositiva para buscar el gesto.";
 
 "DISABLE_DOUBLE_TAP_TO_SEEK" = "Desactivar la doble pulsación para buscar";
 "DISABLE_DOUBLE_TAP_TO_SEEK_DESC" = "";
@@ -48,7 +48,7 @@
 "YT_MINIPLAYER" = "Activar el minirreproductor para todos los vídeos de YouTube";
 "YT_MINIPLAYER_DESC" = "Vídeos infantiles por ejemplo.";
 
-"STOCK_VOLUME_HUD" = "Use iOS stock volume HUD";
+"STOCK_VOLUME_HUD" = "Utiliza el HUD de volumen de iOS";
 "STOCK_VOLUME_HUD_DESC" = "";
 
 // Video controls overlay options
@@ -90,7 +90,7 @@
 "HIDE_SUPER_THANKS" = "Ocultar banner 'Comprar Supergracias";
 "HIDE_SUPER_THANKS_DESC" = "Ocultar el banner 'Comprar Supergracias' en Shorts.";
 
-"HIDE_SUBCRIPTIONS" = "Hide subscriptions button";
+"HIDE_SUBCRIPTIONS" = "Ocultar el botón de suscripción";
 "HIDE_SUBCRIPTIONS_DESC" = "";
 
 "DISABLE_RESUME_TO_SHORTS" = "Desactivar reanudación a Shorts";
@@ -118,7 +118,7 @@
 "HIDE_CHIP_BAR" = "Ocultar la barra superior";
 "HIDE_CHIP_BAR_DESC" = "Ocultar la barra superior de las fuentes de inicio (Tendencias, Música, Juegos...) y de suscripción (Todos los vídeos, Seguir viendo...). Es necesario reiniciar la aplicación.";
 
-"HIDE_PLAY_NEXT_IN_QUEUE" = "Hide \"Play next in queue\"";
+"HIDE_PLAY_NEXT_IN_QUEUE" = "Ocultar \"Reproducir siguiente en cola\"";
 "HIDE_PLAY_NEXT_IN_QUEUE_DESC" = "";
 
 "IPHONE_LAYOUT" = "Diseño para iPhone";
