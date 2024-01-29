@@ -99,6 +99,9 @@
 // Miscellaneous
 "MISCELLANEOUS" = "🔎 Miscellaneous";
 
+"HIDE_UYOU" = "Hide uYou tab";
+"HIDE_ISPONSORBLOCK" = "Hide iSponsorBlock button";
+
 "CAST_CONFIRM" = "התראת אישור לפני שידור לטלוויזיה (YTCastConfirm)";
 "CAST_CONFIRM_DESC" = "הצג התראת אישור לפני שידור לטלוויזיה כדי למנוע לחיצה בטעות.";
 "CASTING" = "משדר";

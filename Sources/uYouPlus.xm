@@ -155,6 +155,15 @@ NSBundle *tweakBundle = uYouPlusBundle();
 
 # pragma mark - Miscellaneous
 
+// Hide iSponsorBlock
+%hook YTRightNavigationButtons
+- (void)didMoveToWindow {
+    %orig;
+    if (IS_ENABLED(@"hideiSponsorBlockButton_enabled"))
+        self.sponsorBlockButton.hidden = YES;
+}
+%end
+
 // YTCastConfirm
 // See YTCastConfirm.xm
 

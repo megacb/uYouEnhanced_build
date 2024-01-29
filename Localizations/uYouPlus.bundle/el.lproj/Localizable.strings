@@ -99,6 +99,9 @@
 // Miscellaneous
 "MISCELLANEOUS" = "🔎 Miscellaneous";
 
+"HIDE_UYOU" = "Hide uYou tab";
+"HIDE_ISPONSORBLOCK" = "Hide iSponsorBlock";
+
 "CAST_CONFIRM" = "Επιβεβαιωτικό μήνυμα πριν γίνει Cast(YTCastConfirm)";
 "CAST_CONFIRM_DESC" = "Να φανεί ένα επιβεβαιωτικό μήνυμα πριν γίνει cast για να αποτρεπτεί η καταλάθως σύνδεση στην τηλεόραση.";
 "CASTING" = "Μετάδοση";

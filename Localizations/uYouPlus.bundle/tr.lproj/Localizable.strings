@@ -99,6 +99,9 @@
 // Miscellaneous
 "MISCELLANEOUS" = "🔎 Diğer";
 
+"HIDE_UYOU" = "Hide uYou tab";
+"HIDE_ISPONSORBLOCK" = "Hide iSponsorBlock button";
+
 "CAST_CONFIRM" = "Yayınlamadan önce uyarıyı onayla (YTCastConfirm)";
 "CAST_CONFIRM_DESC" = "TV'nin yanlışlıkla ele geçirilmesini önlemek için yayınlamadan önce bir onay uyarısı gösterir.";
 "CASTING" = "Yayınlar";

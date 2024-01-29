@@ -194,6 +194,8 @@ extern NSBundle *uYouPlusBundle();
     # pragma mark - Miscellaneous
     SECTION_HEADER(LOC(@"MISCELLANEOUS"));
 
+    // SWITCH_ITEM2(LOC(@"HIDE_UYOU"), nil, @"hideUYouTab_enabled"); // We stay on 19.02.1 until MiRO92 update uYou?
+    SWITCH_ITEM2(LOC(@"HIDE_ISPONSORBLOCK"), nil, @"hideiSponsorBlockButton_enabled");
     SWITCH_ITEM(LOC(@"CAST_CONFIRM"), LOC(@"CAST_CONFIRM_DESC"), @"castConfirm_enabled");
     SWITCH_ITEM(LOC(@"DISABLE_HINTS"), LOC(@"DISABLE_HINTS_DESC"), @"disableHints_enabled");
     SWITCH_ITEM(LOC(@"ENABLE_YT_STARTUP_ANIMATION"), LOC(@"ENABLE_YT_STARTUP_ANIMATION_DESC"), @"ytStartupAnimation_enabled");

@@ -99,6 +99,9 @@
 // Miscellaneous
 "MISCELLANEOUS" = "🔎 Diversos";
 
+"HIDE_UYOU" = "Hide uYou tab";
+"HIDE_ISPONSORBLOCK" = "Hide iSponsorBlock button";
+
 "CAST_CONFIRM" = "Alerta de confirmação antes de transmitir (YTCastConfirm)";
 "CAST_CONFIRM_DESC" = "Mostra um alerta de confirmação antes da transmissão para evitar o sequestro acidental da TV.";
 "CASTING" = "Transmissão";

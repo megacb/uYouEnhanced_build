@@ -99,6 +99,9 @@
 // Miscellaneous
 "MISCELLANEOUS" = "🔎 雜項";
 
+"HIDE_UYOU" = "Hide uYou tab";
+"HIDE_ISPONSORBLOCK" = "Hide iSponsorBlock button";
+
 "CAST_CONFIRM" = "投放前確認 (YTCastConfirm)";
 "CAST_CONFIRM_DESC" = "在投放前顯示確認訊息，以防止家人幹樵。";
 "CASTING" = "投放中";
