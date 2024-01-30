@@ -87,6 +87,11 @@ NSBundle *tweakBundle = uYouPlusBundle();
     else { return %orig; }
 }
 %end
+%hook YTColdConfig
+- (BOOL)iosEnableFeaturedChannelWatermarkOverlayFix {
+    return IS_ENABLED(@"hideChannelWatermark_enabled") ? NO : %orig;
+}
+%end
 
 // Hide next and previous buttons
 %group gHidePreviousAndNextButton
