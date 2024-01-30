@@ -8,6 +8,8 @@
 
 #import "uYouPlusThemes.h" // Hide "Buy Super Thanks" banner (_ASDisplayView)
 #import "../Tweaks/YouTubeHeader/YTAppDelegate.h" // Activate FLEX
+#import "../Tweaks/YouTubeHeader/YTIMenuConditionalServiceItemRenderer.h"
+
 // #import "../Tweaks/YouTubeHeader/YTISectionListRenderer.h" // Hide search ads by @PoomSmart - https://github.com/PoomSmart/YouTube-X
 
 #define LOC(x) [tweakBundle localizedStringForKey:x value:nil table:nil]

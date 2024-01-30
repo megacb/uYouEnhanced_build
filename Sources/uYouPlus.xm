@@ -209,6 +209,13 @@ NSBundle *tweakBundle = uYouPlusBundle();
 %end
 %end
 
+// Hide "Play next in queue" - qnblackcat/uYouPlus#1138
+%hook YTMenuItemVisibilityHandler
+- (BOOL)shouldShowServiceItemRenderer:(YTIMenuConditionalServiceItemRenderer *)renderer {
+    return IS_ENABLED(@"hidePlayNextInQueue_enabled") && renderer.icon.iconType == 251 ? NO : %orig;
+}
+%end
+
 // Force iPhone layout
 %group giPhoneLayout
 %hook UIDevice
