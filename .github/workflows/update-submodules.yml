@@ -18,7 +18,6 @@ jobs:
 
       - name: Add uYouEnhanced submodules
         run: |
-          git submodule add https://github.com/PoomSmart/FLEXing.git Tweaks/FLEXing
           git submodule add https://github.com/dayanch96/uYouLocalization.git Tweaks/uYouLocalization
           git submodule add https://github.com/arichorn/YTHoldForSpeed.git Tweaks/YTHoldForSpeed
           git add .
