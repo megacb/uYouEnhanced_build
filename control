@@ -1,8 +1,8 @@
-Package: com.qnblackcat.uyouplus
-Name: uYouPlus
+Package: com.arichorn.uyouenhanced
+Name: uYouEnhanced
 Architecture: iphoneos-arm
-Description: Modified version of uYou 
-Maintainer: qnblackcat
+Description: An expanded version of uYouPlus
+Maintainer: arichorn
 Author: qnblackcat
 Section: Tweaks
 Depends: mobilesubstrate (>= 0.9.5000), com.miro.uyou
