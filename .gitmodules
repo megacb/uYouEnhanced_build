@@ -1,27 +1,27 @@
 [submodule "Tweaks/YTUHD"]
 	path = Tweaks/YTUHD
-	url = https://github.com/PoomSmart/YTUHD.git
+	url = https://github.com/arichorn/YTUHD.git
 	branch = master
 [submodule "Tweaks/YouPiP"]
 	path = Tweaks/YouPiP
-	url = https://github.com/PoomSmart/YouPiP.git
+	url = https://github.com/arichorn/YouPiP.git
 	branch = main
 [submodule "Tweaks/YouMute"]
 	path = Tweaks/YouMute
-	url = https://github.com/PoomSmart/YouMute.git
+	url = https://github.com/arichornlover/YouMute.git
 	branch = main
 [submodule "Tweaks/YouQuality"]
 	path = Tweaks/YouQuality
-	url = https://github.com/PoomSmart/YouQuality.git
+	url = https://github.com/arichorn/YouQuality.git
 	branch = main
 [submodule "Tweaks/YTVideoOverlay"]
 	path = Tweaks/YTVideoOverlay
-	url = https://github.com/PoomSmart/YTVideoOverlay.git
+	url = https://github.com/arichorn/YTVideoOverlay.git
 	branch = main
 [submodule "Tweaks/Return-YouTube-Dislikes"]
 	path = Tweaks/Return-YouTube-Dislikes
-	url = https://github.com/PoomSmart/Return-YouTube-Dislikes.git
-	branch = main
+	url = https://github.com/arichorn/Return-YouTube-Dislikes.git
+	branch = uYouEnhanced
 [submodule "Tweaks/YouTubeHeader"]
 	path = Tweaks/YouTubeHeader
 	url = https://github.com/PoomSmart/YouTubeHeader.git
@@ -36,12 +36,8 @@
 	branch = main
 [submodule "Tweaks/YTABConfig"]
 	path = Tweaks/YTABConfig
-	url = https://github.com/PoomSmart/YTABConfig.git
+	url = https://github.com/arichornlover/YTABConfig.git
 	branch = main
-[submodule "Tweaks/FLEXing"]
-	path = Tweaks/FLEXing
-	url = https://github.com/PoomSmart/FLEXing
-	branch = rootless
 [submodule "Tweaks/Alderis"]
 	path = Tweaks/Alderis
 	url = https://github.com/hbang/Alderis.git
@@ -55,24 +51,16 @@
 	path = Tweaks/iSponsorBlock
 	url = https://github.com/Galactic-Dev/iSponsorBlock.git
 	branch = master
-[submodule "Tweaks/IAmYouTube"]
-	path = Tweaks/IAmYouTube
-	url = https://github.com/PoomSmart/IAmYouTube.git
-[submodule "Tweaks/YTClassicVideoQuality"]
-	path = Tweaks/YTClassicVideoQuality
-	url = https://github.com/PoomSmart/YTClassicVideoQuality.git
-[submodule "Tweaks/NoYTPremium"]
-	path = Tweaks/NoYTPremium
-	url = https://github.com/PoomSmart/NoYTPremium.git
-[submodule "Tweaks/YTSpeed"]
-	path = Tweaks/YTSpeed
-	url = https://github.com/therealFoxster/YTSpeed.git
+[submodule "Tweaks/MrBeastify"]
+	path = Tweaks/MrBeastify
+	url = https://github.com/arichornlover/MrBeastify.git
+	branch = main
+[submodule "Tweaks/FLEXing"]
+	path = Tweaks/FLEXing
+	url = https://github.com/PoomSmart/FLEXing
+[submodule "Tweaks/YTHoldForSpeed"]
+	path = Tweaks/YTHoldForSpeed
+	url = https://github.com/arichornlover/YTHoldForSpeed.git
 [submodule "Tweaks/uYouLocalization"]
 	path = Tweaks/uYouLocalization
 	url = https://github.com/dayanch96/uYouLocalization.git
-[submodule "Tweaks/YTHoldForSpeed"]
-	path = Tweaks/YTHoldForSpeed
-	url = https://github.com/arichorn/YTHoldForSpeed.git
-[submodule "Tweaks/MrBeastify"]
-	path = Tweaks/MrBeastify
-	url = https://github.com/arichorn/MrBeastify.git
