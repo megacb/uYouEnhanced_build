@@ -1,4 +1,4 @@
-#import "uYouPlusPatches.h"
+#import "uYouPlus.h"
 
 # pragma mark - YouTube patches
 
@@ -25,6 +25,36 @@
 %hook YTHotConfig
 - (BOOL)disableAfmaIdfaCollection { return NO; }
 %end
+
+// Reposition "Create" Tab to the Center in the Pivot Bar - qnblackcat/uYouPlus#107
+/*
+static void repositionCreateTab(YTIGuideResponse *response) {
+    NSMutableArray<YTIGuideResponseSupportedRenderers *> *renderers = [response itemsArray];
+    for (YTIGuideResponseSupportedRenderers *guideRenderers in renderers) {
+        YTIPivotBarRenderer *pivotBarRenderer = [guideRenderers pivotBarRenderer];
+        NSMutableArray<YTIPivotBarSupportedRenderers *> *items = [pivotBarRenderer itemsArray];
+        NSUInteger createIndex = [items indexOfObjectPassingTest:^BOOL(YTIPivotBarSupportedRenderers *renderers, NSUInteger idx, BOOL *stop) {
+            return [[[renderers pivotBarItemRenderer] pivotIdentifier] isEqualToString:@"FEuploads"];
+        }];
+        if (createIndex != NSNotFound) {
+            YTIPivotBarSupportedRenderers *createTab = [items objectAtIndex:createIndex];
+            [items removeObjectAtIndex:createIndex];
+            NSUInteger centerIndex = items.count / 2;
+            [items insertObject:createTab atIndex:centerIndex]; // Reposition the "Create" tab at the center
+        }
+    }
+}
+%hook YTGuideServiceCoordinator
+- (void)handleResponse:(YTIGuideResponse *)response withCompletion:(id)completion {
+    repositionCreateTab(response);
+    %orig(response, completion);
+}
+- (void)handleResponse:(YTIGuideResponse *)response error:(id)error completion:(id)completion {
+    repositionCreateTab(response);
+    %orig(response, error, completion);
+}
+%end
+*/
 
 // https://github.com/PoomSmart/YouTube-X/blob/1e62b68e9027fcb849a75f54a402a530385f2a51/Tweak.x#L27
 // %hook YTAdsInnerTubeContextDecorator
@@ -173,17 +203,14 @@ static void refreshUYouAppearance() {
 %end
 
 // Prevent uYou's playback from colliding with YouTube's
-%hook PlayerVC
-- (void)close {
-    %orig;
-    [[%c(PlayerManager) sharedInstance] setSource:nil];
-}
-%end
+BOOL isYTPlaybackActive = NO;
 %hook HAMPlayerInternal
+- (void)play { %orig; isYTPlaybackActive = YES; }
+- (void)terminate { %orig; isYTPlaybackActive = NO; }
+%end
+%hook PlayerManager
 - (void)play {
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [[%c(PlayerManager) sharedInstance] pause];
-    });
+    if (isYTPlaybackActive) return;
     %orig;
 }
 %end
