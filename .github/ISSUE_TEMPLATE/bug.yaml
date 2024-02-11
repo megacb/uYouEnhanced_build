@@ -1,12 +1,12 @@
 name: Bug
 description: Make sure you complete the template. Otherwise, it will be closed without further explanation!
-title: "[v<replace_this_with_your_uYouPlus_version>] Replace this with your title"
+title: "[Bug] Replace this with your title"
 labels: bug
 body:
 - type: checkboxes
   attributes:
     label: Is there an existing issue for this?
-    description: _Please check the [**issues**](https://github.com/qnblackcat/uYouPlus/issues) page to see if someone has already reported the bug. **I DIDN\'T MAKE THIS CHECKBOX FOR COSMETIC.**_
+    description: Please search to see if an issue already exists for the bug you encountered. **I DIDN\'T MAKE THIS CHECKBOX FOR COSMETICS**
     options:
     - label: I have searched the existing issues
       required: true
@@ -14,70 +14,94 @@ body:
 - type: checkboxes
   attributes:
     label: Have you read the FAQ?
-    description: _Make sure you actually visit the [**FAQ**](https://github.com/qnblackcat/uYouPlus/wiki/FAQ) page! **I DIDN\'T MAKE THIS CHECKBOX FOR COSMETIC**_
+    description: Make sure you actually visit the [**FAQ**](https://github.com/qnblackcat/uYouPlus/wiki/FAQ) page! **I DIDN\'T MAKE THIS CHECKBOX FOR COSMETICS**
     options:
-    - label: Yes, I have read the FAQ
+    - label: Yes, I did read the FAQ
       required: true
-    
+
+- type: markdown
+  attributes:
+    value: "## Device Info"
+
+- type: input
+  attributes:
+    label: iOS/iPadOS version
+  validations:
+    required: true
+
+- type: input
+  attributes:
+    label: Device model
+  validations:
+    required: true
+
+- type: input
+  attributes:
+    label: Sideload tool
+    placeholder: AltStore, Sideloadly, TrollStore, ...
+  validations:
+    required: true
+
+- type: input
+  attributes:
+    label: Tweak version
+    placeholder: uYouEnhanced/uYouPlusExtra/uYouPlus - v18.xx.x-3.0.1
+    description: "**latest or newest is NOT a version number!**"
+  validations:
+    required: true
+
+- type: markdown
+  attributes:
+    value: "## Description"
+
 - type: textarea
   attributes:
-    label: Device information
-    description: 
-    value: |
-        - iOS/iPadOS version: 
-        - Device model: 
-        - Sideload tool (AltStore, Sideloadly, TrollStore, etc.): 
+    label: Describe the bug
+    description: Please attach videos or screenshots if possible
   validations:
     required: true
 
 - type: textarea
   attributes:
-    label: Describe the issue
-    description: _Please attach videos or screenshots if possible_
-  validations:
-    required: true
-
-- type: textarea
-  attributes:
-    label: Steps to reproduce
-    description: _Please attach videos or screenshots if possible_
+    label: Steps to reproduce the issue
+    description: Please attach videos or screenshots if possible
     value: |
         1. 
         2. 
+        3. 
   validations:
     required: true
 
 - type: textarea
   id: logs
   attributes:
-    label: Crash log
-    description: _If the app crashes, **please provide the crash log**. It can be found in Settings > Privacy > Analytics & Improvements > Analytics Data > Youtube-xxx-xxx.ips_
+    label: Crash log (if the app crashes)
+    description: If somehow the app crashes, **you must provide the crash log**. It can be found in your device's Settings App > Privacy > Analytics & Improvements > Analytics Data > Youtube-xxx-xxx.ips
     render: shell
 
 - type: dropdown
   attributes:
-    label: Are you using the latest version of uYouPlus? If not, why?
-    description: _Developers spent loads of time and effort to fix bugs & make improvements with every release. You might want to try and update to the [latest version](https://github.com/qnblackcat/uYouPlus/releases/latest) before reporting an issue._
-    multiple: false
+    label: Are you using the newest version of uYouPlus? If not, why?
+    description: Developers spend time and effort to fix bugs & add improvements with every release. Why don't you update to the [latest version](https://github.com/qnblackcat/uYouPlus/releases/latest) before reporting about an issue?
     options:
-      - ✅ Yes, I'm using the latest version of uYouPlus
-      - ❌ No, I'll explain with additional information below
+      - ✅ Yes, I'm using the latest version of uYouPlus right now
+      - ❌ No, I'll explain at the end of the template
   validations:
     required: true
 
 - type: dropdown
   attributes:
-    label: Does the issue happen with the official YouTube app from the App Store?
-    description: _YouTube itself is buggy sometimes..._
-    multiple: false
+    label: Does the issue happen with the official YouTube from AppStore?
+    description: Well, YouTube itself is buggy sometimes...
     options:
-      - ❌ No, I cannot reproduce this issue in the official YouTube app from the App Store
-      - ✅ Yes, I can reproduce this issue in the official YouTube app from the App Store 
+      - ❌ No, I can't reproduce this issue in the official YouTube from AppStore 
+      - ✅ Yes, I can reproduce this issue in the official YouTube from AppStore 
   validations:
     required: true
 
 - type: textarea
   attributes:
-    label: Additional information
+    label: Additional context
+    description: Um, anything else you want to say?
   validations:
     required: false
