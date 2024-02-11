@@ -73,3 +73,6 @@
 [submodule "Tweaks/YTHoldForSpeed"]
 	path = Tweaks/YTHoldForSpeed
 	url = https://github.com/arichorn/YTHoldForSpeed.git
+[submodule "Tweaks/MrBeastify"]
+	path = Tweaks/MrBeastify
+	url = https://github.com/arichorn/MrBeastify.git
