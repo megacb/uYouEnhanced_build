@@ -18,7 +18,7 @@ jobs:
 
       - name: Add uYouEnhanced submodules
         run: |
-          git submodule add https://github.com/arichorn/MrBeastify.git Tweaks/YTHoldForSpeed
+          git submodule add https://github.com/arichorn/MrBeastify.git Tweaks/MrBeastify
           git add .
           git commit -m "added Another submodule"
           git push origin
