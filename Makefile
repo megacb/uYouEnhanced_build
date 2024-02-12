@@ -63,7 +63,7 @@ before-all::
 	fi
 before-all::
 	@if [[ ! -f $(UYOU_DEB) ]]; then \
- 		curl -s -L "https://www.dropbox.com/scl/fi/5f0esi1en9so7t8lhmyjm/com.miro.uyou_$(UYOU_VERSION)_iphoneos-arm.deb?rlkey=00nncobda6tcfvhzid5or1lnn&dl=1" -o $(UYOU_DEB); \
+ 		curl -s -L "https://www.dropbox.com/scl/fi/0f507nm7o6lkj3tpowotl/com.miro.uyou_$(UYOU_VERSION)_iphoneos-arm.deb?rlkey=ue491s58yivbqg2awvjwz0vc9&dl=1" -o $(UYOU_DEB); \
  	fi; \
 	if [[ ! -f $(UYOU_DYLIB) || ! -d $(UYOU_BUNDLE) ]]; then \
 		tar -xf Tweaks/uYou/com.miro.uyou_$(UYOU_VERSION)_iphoneos-arm.deb -C Tweaks/uYou; tar -xf Tweaks/uYou/data.tar* -C Tweaks/uYou; \
