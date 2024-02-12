@@ -92,10 +92,10 @@ extern NSBundle *uYouPlusBundle();
         tweaks = [NSMutableArray new];
         [tweaks addObjectsFromArray:@[
             @(404), // YTABConfig
-            @(500), // uYouEnhanced / uYouPlus
             @(517), // DontEatMyContent
             @(1080), // Return YouTube Dislike
             @(200), // YouPiP
+            @(500), // uYouEnhanced / uYouPlus
             @(2168), // YTHoldForSpeed
             @(1222), // YTVideoOverlay
         ]];
@@ -210,7 +210,7 @@ extern NSBundle *uYouPlusBundle();
             UIActivityIndicatorView *activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleMedium];
             activityIndicator.color = [UIColor labelColor];
             [activityIndicator startAnimating];
-            cell.accessoryView = activityIndicator;
+            [cell setAccessoryView:activityIndicator];
 
             dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
                 NSString *cachePath = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES).firstObject;
