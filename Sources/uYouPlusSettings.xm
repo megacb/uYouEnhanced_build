@@ -210,7 +210,7 @@ extern NSBundle *uYouPlusBundle();
             UIActivityIndicatorView *activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleMedium];
             activityIndicator.color = [UIColor labelColor];
             [activityIndicator startAnimating];
-            [cell setAccessoryView:activityIndicator];
+            [cell addSubview:activityIndicator];
 
             dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
                 NSString *cachePath = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES).firstObject;
