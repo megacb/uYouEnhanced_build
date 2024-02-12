@@ -1,18 +1,23 @@
 # Original idea by @ISnackable. Thanks to him for handling the hardest parts!
-# https://github.com/ISnackable/CercubePlus/blob/main/.github/workflows/Build.yml
+# https://github.com/ISnackable/YTCubePlus/blob/main/.github/workflows/Build.yml
 
-name: Build and Release uYouPlus
+name: Build and Release uYouEnhanced
 
 on:
   workflow_dispatch:
     inputs:
+      sdk_version:
+        description: "iOS SDK version to be used during build"
+        default: "16.2"
+        required: true
+        type: string
       uyou_version:
         description: "The version of uYou"
         default: "3.0.1"
         required: true
         type: string
       decrypted_youtube_url:
-        description: "Direct URL to the decrypted YouTube ipa. The version of YouTube will be detected automatically."
+        description: "The direct URL to the decrypted YouTube ipa"
         default: ""
         required: true
         type: string
@@ -36,14 +41,14 @@ on:
         default: true
         required: false
         type: boolean
-
+  
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
   build:
-    name: Build uYouPlus
+    name: Build uYouEnhanced
     runs-on: macos-latest
     permissions:
       contents: write
@@ -69,20 +74,22 @@ jobs:
           path: theos
           submodules: recursive
       
-      - name: Caching
+      - name: SDK Caching
         id: SDK
         uses: actions/cache@v4.0.0
         env:
-          cache-name: iOS-16.5-SDK
+          cache-name: iOS-${{ inputs.sdk_version }}-SDK
         with:
           path: theos/sdks/
           key: ${{ env.cache-name }}
-      
-      - name: Download iOS 16.5 SDK
+          restore-keys: ${{ env.cache-name }}
+
+      - name: Download iOS SDK
         if: steps.SDK.outputs.cache-hit != 'true'
         run: |
-          git clone -n --depth=1 --filter=tree:0 https://github.com/theos/sdks.git && cd sdks
-          git sparse-checkout set --no-cone iPhoneOS16.5.sdk
+          git clone --quiet -n --depth=1 --filter=tree:0 https://github.com/arichorn/sdks/
+          cd sdks
+          git sparse-checkout set --no-cone iPhoneOS${{ inputs.sdk_version }}.sdk
           git checkout
           mv *.sdk $THEOS/sdks
         env:
@@ -142,13 +149,13 @@ jobs:
           UYOU_VERSION: ${{ inputs.uyou_version }}
           YOUTUBE_VERSION: ${{ steps.prepare_youtube.outputs.youtube_version }}
         with:
-          name: uYouPlus_${{ env.YOUTUBE_VERSION }}_${{ env.UYOU_VERSION }}
+          name: uYouEnhanced_${{ env.YOUTUBE_VERSION }}_${{ env.UYOU_VERSION }}
           path: ${{ github.workspace }}/main/packages/${{ steps.build_package.outputs.package }}
           if-no-files-found: error
 
       - name: Create Release
         id: create_release
-        uses: qnblackcat/action-gh-release@master
+        uses: softprops/action-gh-release@v0.1.15
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           UYOU_VERSION: ${{ inputs.uyou_version }}
