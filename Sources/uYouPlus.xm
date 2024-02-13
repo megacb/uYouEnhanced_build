@@ -221,6 +221,18 @@ static NSString *accessGroupID() {
 }
 %end
 
+// Remove App Rating Prompt in YouTube - @arichornlover
+%hook UIApplication
+- (BOOL)canOpenURL:(NSURL *)url {
+    NSString *urlString = url.absoluteString;
+    if ([urlString containsString:@"itunes.apple.com/app/id"]) {
+        return NO;
+    }
+
+    return %orig;
+}
+%end
+
 // YTMiniPlayerEnabler: https://github.com/level3tjg/YTMiniplayerEnabler/
 %hook YTWatchMiniBarViewController
 - (void)updateMiniBarPlayerStateFromRenderer {
