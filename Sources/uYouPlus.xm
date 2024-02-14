@@ -232,6 +232,12 @@ static NSString *accessGroupID() {
     return %orig;
 }
 %end
+%hook SKStoreReviewController
++(void)load {
+    %orig;
+    [self presentViewController:nil animated:NO completion:nil];
+}
+%end
 
 // YTMiniPlayerEnabler: https://github.com/level3tjg/YTMiniplayerEnabler/
 %hook YTWatchMiniBarViewController
