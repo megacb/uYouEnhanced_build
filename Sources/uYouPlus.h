@@ -107,8 +107,11 @@
 
 // Buttons
 @interface YTRightNavigationButtons : UIView
+- (id)_viewControllerForAncestor;
 @property YTQTMButton *notificationButton;
 @property YTQTMButton *sponsorBlockButton;
+- (void)setLeadingPadding:(CGFloat)arg1;
+- (void)uYouPlusRootOptionsAction;
 @end
 
 @interface YTISlimMetadataButtonSupportedRenderers : NSObject
