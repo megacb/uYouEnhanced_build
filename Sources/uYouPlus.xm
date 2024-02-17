@@ -704,12 +704,12 @@ static NSString *accessGroupID() {
 %end
 
 // Replace Next & Previous button with Fast forward & Rewind button
-%group gReplacePreviousAndNextButton
-%hook YTColdConfig
-- (BOOL)replaceNextPaddleWithFastForwardButtonForSingletonVods { return YES; }
-- (BOOL)replacePreviousPaddleWithRewindButtonForSingletonVods { return YES; }
-%end
-%end
+// %group gReplacePreviousAndNextButton
+// %hook YTColdConfig
+// - (BOOL)replaceNextPaddleWithFastForwardButtonForSingletonVods { return YES; }
+// - (BOOL)replacePreviousPaddleWithRewindButtonForSingletonVods { return YES; }
+// %end
+// %end
 
 // Hide Shadow Overlay Buttons (Play/Pause, Next, previous, Fast forward & Rewind buttons)
 %group gHideVideoPlayerShadowOverlayButtons
