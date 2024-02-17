@@ -149,30 +149,6 @@ extern NSBundle *uYouPlusBundle();
     ];
     [sectionItems addObject:exitYT];
 
-/* DISABLED
-# pragma mark - Cache
-    SECTION_HEADER(@"Cache");
-    YTSettingsSectionItem *clearCache = [%c(YTSettingsSectionItem)
-        itemWithTitle:LOC(@"Clear Cache")
-        titleDescription:[self getCacheSize]
-        accessibilityIdentifier:nil
-        detailTextBlock:nil
-        selectBlock:^BOOL (YTSettingsCell *cell, NSUInteger arg1) {
-            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-                NSString *cachePath = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES).firstObject;
-                [[NSFileManager defaultManager] removeItemAtPath:cachePath error:nil];
-
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    [settingsViewController reloadData];
-                });
-            });
-
-            return YES;
-        }
-    ];
-    [sectionItems addObject:clearCache];
-*/
-
     # pragma mark - App theme
     SECTION_HEADER(LOC(@"THEME_OPTIONS"));
 //  COLOR_BUTTON_ITEM2(@"Custom Theme Color", @"", ColourOptionsController2);
@@ -257,7 +233,7 @@ extern NSBundle *uYouPlusBundle();
     SWITCH_ITEM2(LOC(@"SNAP_TO_CHAPTER"), LOC(@"SNAP_TO_CHAPTER_DESC"), @"snapToChapter_enabled");
     SWITCH_ITEM2(LOC(@"PINCH_TO_ZOOM"), LOC(@"PINCH_TO_ZOOM_DESC"), @"pinchToZoom_enabled");
     SWITCH_ITEM(LOC(@"YT_MINIPLAYER"), LOC(@"YT_MINIPLAYER_DESC"), @"ytMiniPlayer_enabled");
-    SWITCH_ITEM(LOC(@"STOCK_VOLUME_HUD"), LOC(@"STOCK_VOLUME_HUD_DESC"), @"stockVolumeHUD_enabled");
+    SWITCH_ITEM2(LOC(@"STOCK_VOLUME_HUD"), LOC(@"STOCK_VOLUME_HUD_DESC"), @"stockVolumeHUD_enabled");
 
     # pragma mark - Video controls overlay options
     SECTION_HEADER(LOC(@"VIDEO_CONTROLS_OVERLAY_OPTIONS"));
@@ -271,7 +247,7 @@ extern NSBundle *uYouPlusBundle();
     SWITCH_ITEM2(LOC(@"HIDE_CHANNEL_WATERMARK"), LOC(@"HIDE_CHANNEL_WATERMARK_DESC"), @"hideChannelWatermark_enabled");
     SWITCH_ITEM2(LOC(@"Hide Shadow Overlay Buttons"), LOC(@"Hide the Shadow Overlay on the Play/Pause, Previous, Next, Forward & Rewind Buttons."), @"hideVideoPlayerShadowOverlayButtons_enabled");
     SWITCH_ITEM(LOC(@"HIDE_PREVIOUS_AND_NEXT_BUTTON"), LOC(@"HIDE_PREVIOUS_AND_NEXT_BUTTON_DESC"), @"hidePreviousAndNextButton_enabled");
-    SWITCH_ITEM2(LOC(@"REPLACE_PREVIOUS_NEXT_BUTTON"), LOC(@"REPLACE_PREVIOUS_NEXT_BUTTON_DESC"), @"replacePreviousAndNextButton_enabled");
+//  SWITCH_ITEM2(LOC(@"REPLACE_PREVIOUS_NEXT_BUTTON"), LOC(@"REPLACE_PREVIOUS_NEXT_BUTTON_DESC"), @"replacePreviousAndNextButton_enabled");
     SWITCH_ITEM2(LOC(@"RED_PROGRESS_BAR"), LOC(@"RED_PROGRESS_BAR_DESC"), @"redProgressBar_enabled");
     SWITCH_ITEM(LOC(@"HIDE_HOVER_CARD"), LOC(@"HIDE_HOVER_CARD_DESC"), @"hideHoverCards_enabled");
     SWITCH_ITEM2(LOC(@"HIDE_RIGHT_PANEL"), LOC(@"HIDE_RIGHT_PANEL_DESC"), @"hideRightPanel_enabled");
