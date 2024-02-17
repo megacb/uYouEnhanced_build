@@ -868,6 +868,65 @@ static NSString *accessGroupID() {
 }
 %end
 
+// uYouPlus Button in Navigation Bar (for Clear Cache and Color Options) - @arichornlover
+%hook YTRightNavigationButtons
+%property (retain, nonatomic) YTQTMButton *uYouPlusButton;
+- (NSMutableArray *)buttons {
+	NSString *tweakBundlePath = [[NSBundle mainBundle] pathForResource:@"uYouPlus" ofType:@"bundle"];
+    NSString *uYouPlusLightSettingsPath;
+    NSString *uYouPlusDarkSettingsPath;
+    if (tweakBundlePath) {
+        NSBundle *tweakBundle = [NSBundle bundleWithPath:tweakBundlePath];
+        uYouPlusLightSettingsPath = [tweakBundle pathForResource:@"uYouPlus_logo" ofType:@"png"];
+		uYouPlusDarkSettingsPath = [tweakBundle pathForResource:@"uYouPlus_logo_dark" ofType:@"png"];
+    } else {
+		uYouPlusLightSettingsPath = ROOT_PATH_NS(@"/Localizations/uYouPlus.bundle/uYouPlus_logo.png");
+        uYouPlusDarkSettingsPath = ROOT_PATH_NS(@"/Localizations/uYouPlus.bundle/uYouPlus_logo_dark.png");
+    }
+    NSMutableArray *retVal = %orig.mutableCopy;
+    [self.uYouPlusButton removeFromSuperview];
+    [self addSubview:self.uYouPlusButton];
+    if (!self.uYouPlusButton) {
+        self.uYouPlusButton = [%c(YTQTMButton) iconButton];
+        [self.uYouPlusButton enableNewTouchFeedback];
+        self.uYouPlusButton.frame = CGRectMake(0, 0, 40, 40);
+        
+        if ([%c(YTPageStyleController) pageStyle] == 0) {
+            UIImage *setButtonMode = [UIImage imageWithContentsOfFile:uYouPlusDarkSettingsPath];
+            setButtonMode = [setButtonMode imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+            [self.uYouPlusButton setImage:setButtonMode forState:UIControlStateNormal];
+        }
+        else if ([%c(YTPageStyleController) pageStyle] == 1) {
+            UIImage *setButtonMode = [UIImage imageWithContentsOfFile:uYouPlusLightSettingsPath];
+            setButtonMode = [setButtonMode imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+            [self.uYouPlusButton setImage:setButtonMode forState:UIControlStateNormal];
+        }
+        
+        [self.uYouPlusButton addTarget:self action:@selector(uYouPlusRootOptionsAction) forControlEvents:UIControlEventTouchUpInside];
+        [retVal insertObject:self.uYouPlusButton atIndex:0];
+    }
+    return retVal;
+}
+- (NSMutableArray *)visibleButtons {
+    NSMutableArray *retVal = %orig.mutableCopy;
+    [self setLeadingPadding:+10];
+    if (self.uYouPlusButton) {
+        [self.uYouPlusButton removeFromSuperview];
+        [self addSubview:self.uYouPlusButton];
+        [retVal insertObject:self.uYouPlusButton atIndex:0];
+    }
+    return retVal;
+}
+%new;
+- (void)uYouPlusRootOptionsAction {
+    UINavigationController *uYouPlusRootOptionsControllerView = [[UINavigationController alloc] initWithRootViewController:[[RootOptionsController alloc] init]];
+    [uYouPlusRootOptionsControllerView setModalPresentationStyle:UIModalPresentationFullScreen];
+
+    [self._viewControllerForAncestor presentViewController:uYouPlusRootOptionsControllerView animated:YES completion:nil];
+}
+%end
+//
+
 // Hide the (Connect / Share / Remix / Thanks / Download / Clip / Save) Buttons under the Video Player - 17.x.x and up - @arichornlover
 %hook _ASDisplayView
 - (void)layoutSubviews {
@@ -1132,9 +1191,9 @@ static NSString *accessGroupID() {
     if (IS_ENABLED(@"hidePreviousAndNextButton_enabled")) {
         %init(gHidePreviousAndNextButton);
     }
-    if (IS_ENABLED(@"replacePreviousAndNextButton_enabled")) {
-        %init(gReplacePreviousAndNextButton);
-    }
+//  if (IS_ENABLED(@"replacePreviousAndNextButton_enabled")) {
+//      %init(gReplacePreviousAndNextButton);
+//  }
     if (IS_ENABLED(@"hideOverlayDarkBackground_enabled")) {
         %init(gHideOverlayDarkBackground);
     }
