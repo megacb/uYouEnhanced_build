@@ -222,25 +222,9 @@ static NSString *accessGroupID() {
 }
 %end
 
-// Remove App Rating Prompt in YouTube (for Sideloaded) - @arichornlover
-%hook UIApplication
-- (BOOL)canOpenURL:(NSURL *)url {
-    NSString *urlString = url.absoluteString;
-    if ([urlString containsString:@"itunes.apple.com/app/id"]) {
-        return NO;
-    }
-
-    return %orig;
-}
-%end
+// Remove App Rating Prompt in YouTube (for Sideloaded - iOS 14+) - @arichornlover
 %hook SKStoreReviewController
-+ (void)load {
-    %orig;
-    UIWindow *window = [UIApplication sharedApplication].keyWindow;
-    if (window) {
-        [window.rootViewController presentViewController:[UIViewController new] animated:NO completion:nil];
-    }
-}
++ (void)requestReview { }
 %end
 
 // YTMiniPlayerEnabler: https://github.com/level3tjg/YTMiniplayerEnabler/
