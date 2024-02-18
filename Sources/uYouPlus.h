@@ -43,15 +43,6 @@
 #define DEFAULT_RATE 1.0f // YTSpeed
 #define LOWCONTRASTMODE_CUTOFF_VERSION @"17.38.10" // LowContrastMode
 
-@interface YTSingleVideoController ()
-- (float)playbackRate;
-- (void)setPlaybackRate:(float)arg1;
-@end
-
-@interface YTPlayerViewController ()
-- (YTSingleVideoController *)activeVideo;
-@end
-
 // IAmYouTube
 @interface SSOConfiguration : NSObject
 @end
@@ -93,10 +84,6 @@
 @interface YTPlaybackButton : UIControl
 @end
 
-@interface PlayerManager : NSObject
-- (float)progress;
-@end
-
 @interface YTSegmentableInlinePlayerBarView
 @property (nonatomic, assign, readwrite) BOOL enableSnapToChapter;
 @end
@@ -108,8 +95,10 @@
 // Buttons
 @interface YTRightNavigationButtons : UIView
 - (id)_viewControllerForAncestor;
-@property YTQTMButton *notificationButton;
-@property YTQTMButton *sponsorBlockButton;
+@property(readonly, nonatomic) YTQTMButton *searchButton;
+@property(readonly, nonatomic) YTQTMButton *notificationButton;
+@property(strong, nonatomic) YTQTMButton *sponsorBlockButton;
+@property(strong, nonatomic) YTQTMButton *uYouPlusButton;
 - (void)setLeadingPadding:(CGFloat)arg1;
 - (void)uYouPlusRootOptionsAction;
 @end
@@ -141,39 +130,6 @@
 
 @interface HAMPlayerInternal : NSObject
 - (void)setRate:(float)rate;
-@end
-
-// iOS16 fix
-@interface OBPrivacyLinkButton : UIButton
-- (instancetype)initWithCaption:(NSString *)caption
-                     buttonText:(NSString *)buttonText
-                          image:(UIImage *)image
-                      imageSize:(CGSize)imageSize
-                   useLargeIcon:(BOOL)useLargeIcon
-                displayLanguage:(NSString *)displayLanguage;
-@end
-
-// Fix uYou's appearance not updating if the app is backgrounded
-@interface DownloadsPagerVC : UIViewController
-- (NSArray<UIViewController *> *)viewControllers;
-- (void)updatePageStyles;
-@end
-@interface DownloadingVC : UIViewController
-- (void)updatePageStyles;
-- (UITableView *)tableView;
-@end
-@interface DownloadingCell : UITableViewCell
-- (void)updatePageStyles;
-@end
-@interface DownloadedVC : UIViewController
-- (void)updatePageStyles;
-- (UITableView *)tableView;
-@end
-@interface DownloadedCell : UITableViewCell
-- (void)updatePageStyles;
-@end
-@interface UILabel (uYou)
-+ (id)_defaultColor;
 @end
 
 // YTAutoFullScreen
