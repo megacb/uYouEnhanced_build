@@ -222,7 +222,7 @@ static NSString *accessGroupID() {
 }
 %end
 
-// Remove App Rating Prompt in YouTube - @arichornlover
+// Remove App Rating Prompt in YouTube (for Sideloaded) - @arichornlover
 %hook UIApplication
 - (BOOL)canOpenURL:(NSURL *)url {
     NSString *urlString = url.absoluteString;
@@ -234,9 +234,12 @@ static NSString *accessGroupID() {
 }
 %end
 %hook SKStoreReviewController
-+(void)load {
++ (void)load {
     %orig;
-    [self presentViewController:nil animated:NO completion:nil];
+    UIWindow *window = [UIApplication sharedApplication].keyWindow;
+    if (window) {
+        [window.rootViewController presentViewController:[UIViewController new] animated:NO completion:nil];
+    }
 }
 %end
 
