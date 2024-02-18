@@ -139,8 +139,6 @@
 @property id activeVideo;
 @property float playbackRate;
 - (void)singleVideo:(id)video playbackRateDidChange:(float)rate;
-// uYouCrashFix
-- (YTSingleVideoController *)activeVideo;
 @end
 
 // App Theme
