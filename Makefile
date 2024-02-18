@@ -17,7 +17,7 @@ ifndef YOUTUBE_VERSION
 YOUTUBE_VERSION = 19.06.2
 endif
 ifndef UYOU_VERSION
-UYOU_VERSION = 3.0.2
+UYOU_VERSION = 3.0.3
 endif
 PACKAGE_VERSION = $(YOUTUBE_VERSION)-$(UYOU_VERSION)
 
@@ -28,7 +28,8 @@ BUNDLE_ID = com.google.ios.youtube
 
 $(TWEAK_NAME)_FILES := $(wildcard Sources/*.xm) $(wildcard Sources/*.x)
 $(TWEAK_NAME)_FRAMEWORKS = UIKit Security
-$(TWEAK_NAME)_CFLAGS = -fobjc-arc -DTWEAK_VERSION=\"$(PACKAGE_VERSION)\"
+$(TWEAK_NAME)_LIBRARIES = c++
+$(TWEAK_NAME)_CFLAGS = -fobjc-arc -Wno-unused-but-set-variable -DTWEAK_VERSION=\"$(PACKAGE_VERSION)\"
 $(TWEAK_NAME)_INJECT_DYLIBS = Tweaks/uYou/Library/MobileSubstrate/DynamicLibraries/uYou.dylib $(THEOS_OBJ_DIR)/uYouLocalization.dylib $(THEOS_OBJ_DIR)/libFLEX.dylib  $(THEOS_OBJ_DIR)/iSponsorBlock.dylib $(THEOS_OBJ_DIR)/YouPiP.dylib $(THEOS_OBJ_DIR)/YouTubeDislikesReturn.dylib $(THEOS_OBJ_DIR)/YTABConfig.dylib $(THEOS_OBJ_DIR)/YTUHD.dylib $(THEOS_OBJ_DIR)/DontEatMyContent.dylib .theos/obj/YTHoldForSpeed.dylib $(THEOS_OBJ_DIR)/YTNoCommunityPosts.dylib $(THEOS_OBJ_DIR)/YTVideoOverlay.dylib $(THEOS_OBJ_DIR)/YouMute.dylib $(THEOS_OBJ_DIR)/YouQuality.dylib $(THEOS_OBJ_DIR)/YoutubeSpeed.dylib $(THEOS_OBJ_DIR)/MrBeastify.dylib
 $(TWEAK_NAME)_EMBED_LIBRARIES = $(THEOS_OBJ_DIR)/libcolorpicker.dylib
 $(TWEAK_NAME)_EMBED_FRAMEWORKS = $(_THEOS_LOCAL_DATA_DIR)/$(THEOS_OBJ_DIR_NAME)/install_Alderis.xcarchive/Products/var/jb/Library/Frameworks/Alderis.framework
@@ -61,7 +62,7 @@ before-all::
 	fi
 before-all::
 	@if [[ ! -f $(UYOU_DEB) ]]; then \
- 		curl -s -L "https://www.dropbox.com/scl/fi/0f507nm7o6lkj3tpowotl/com.miro.uyou_$(UYOU_VERSION)_iphoneos-arm.deb?rlkey=ue491s58yivbqg2awvjwz0vc9&dl=1" -o $(UYOU_DEB); \
+ 		curl -s -L "https://www.dropbox.com/scl/fi/01vvu5lm8nkkicrznku9v/com.miro.uyou_$(UYOU_VERSION)_iphoneos-arm.deb?rlkey=efgz7po8kqqvha8doplk1s3ky&dl=1" -o $(UYOU_DEB); \
  	fi; \
 	if [[ ! -f $(UYOU_DYLIB) || ! -d $(UYOU_BUNDLE) ]]; then \
 		tar -xf Tweaks/uYou/com.miro.uyou_$(UYOU_VERSION)_iphoneos-arm.deb -C Tweaks/uYou; tar -xf Tweaks/uYou/data.tar* -C Tweaks/uYou; \
