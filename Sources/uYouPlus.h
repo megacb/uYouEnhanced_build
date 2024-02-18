@@ -130,15 +130,6 @@
 - (void)setRate:(float)rate;
 @end
 
-// YTAutoFullScreen
-@interface YTPlayerViewController (YTAFS)
-- (void)autoFullscreen;
-// YTSpeed
-@property id activeVideo;
-@property float playbackRate;
-- (void)singleVideo:(id)video playbackRateDidChange:(float)rate;
-@end
-
 // App Theme
 @interface YTColor : NSObject
 + (UIColor *)white1;
