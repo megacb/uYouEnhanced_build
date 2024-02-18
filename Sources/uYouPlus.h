@@ -160,6 +160,10 @@
 + (UIColor *)white1Alpha95;
 @end
 
+@interface YTPageStyleController
++ (NSInteger)pageStyle;
+@end
+
 @interface YCHLiveChatView : UIView
 @end
 
