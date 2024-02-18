@@ -1,4 +1,5 @@
 #import "uYouPlus.h"
+#import "uYouPlusPatches.h"
 #import "RootOptionsController.h"
 
 // Tweak's bundle for Localizations support - @PoomSmart - https://github.com/PoomSmart/YouPiP/commit/aea2473f64c75d73cab713e1e2d5d0a77675024f
