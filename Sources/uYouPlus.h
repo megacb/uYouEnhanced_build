@@ -7,10 +7,8 @@
 #import <rootless.h>
 
 #import "Tweaks/YouTubeHeader/YTAppDelegate.h"
-#import "Tweaks/YouTubeHeader/YTPlayerViewController.h"
 #import "Tweaks/YouTubeHeader/YTQTMButton.h"
 #import "Tweaks/YouTubeHeader/YTVideoQualitySwitchOriginalController.h"
-#import "Tweaks/YouTubeHeader/YTPlayerViewController.h"
 #import "Tweaks/YouTubeHeader/YTWatchController.h"
 #import "Tweaks/YouTubeHeader/YTIGuideResponse.h"
 #import "Tweaks/YouTubeHeader/YTIGuideResponseSupportedRenderers.h"
