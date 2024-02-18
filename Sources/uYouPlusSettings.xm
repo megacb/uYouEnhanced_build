@@ -13,18 +13,6 @@
 
 #define SECTION_HEADER(s) [sectionItems addObject:[%c(YTSettingsSectionItem) itemWithTitle:@"\t" titleDescription:[s uppercaseString] accessibilityIdentifier:nil detailTextBlock:nil selectBlock:^BOOL (YTSettingsCell *cell, NSUInteger sectionItemIndex) { return NO; }]]
 
-/* broken button implementation. I tried.
-#define COLOR_BUTTON_ITEM(t, d, ColourOptionsController) [sectionItems addObject:[YTSettingsSectionItemClass buttonItemWithTitle:t titleDescription:d accessibilityIdentifier:nil buttonBlock:^(YTSettingsCell *cell) {\
-    UINavigationController *colourOptionsControllerView = [[UINavigationController alloc] initWithRootViewController:[[ColourOptionsController alloc] init]]; \
-    [colourOptionsControllerView setModalPresentationStyle:UIModalPresentationFullScreen]; \
-    [self._viewControllerForAncestor presentViewController:colourOptionsControllerView animated:YES completion:nil];} settingItemId:0]]
-
-#define COLOR_BUTTON_ITEM2(t, d, ColourOptionsController2) [sectionItems addObject:[YTSettingsSectionItemClass buttonItemWithTitle:t titleDescription:d accessibilityIdentifier:nil buttonBlock:^(YTSettingsCell *cell) {\
-    UINavigationController *colourOptionsController2View = [[UINavigationController alloc] initWithRootViewController:[[ColourOptionsController2 alloc] init]]; \
-    [colourOptionsController2View setModalPresentationStyle:UIModalPresentationFullScreen]; \
-    [self._viewControllerForAncestor presentViewController:colourOptionsController2View animated:YES completion:nil];} settingItemId:0]]
-*/
-
 #define SWITCH_ITEM(t, d, k) [sectionItems addObject:[YTSettingsSectionItemClass switchItemWithTitle:t titleDescription:d accessibilityIdentifier:nil switchOn:IS_ENABLED(k) switchBlock:^BOOL (YTSettingsCell *cell, BOOL enabled) {[[NSUserDefaults standardUserDefaults] setBool:enabled forKey:k];return YES;} settingItemId:0]]
 
 #define SWITCH_ITEM2(t, d, k) [sectionItems addObject:[YTSettingsSectionItemClass switchItemWithTitle:t titleDescription:d accessibilityIdentifier:nil switchOn:IS_ENABLED(k) switchBlock:^BOOL (YTSettingsCell *cell, BOOL enabled) {[[NSUserDefaults standardUserDefaults] setBool:enabled forKey:k];SHOW_RELAUNCH_YT_SNACKBAR;return YES;} settingItemId:0]]
@@ -39,7 +27,6 @@ static const NSInteger uYouPlusSection = 500;
 
 @interface YTSettingsSectionItemManager (uYouPlus)
 - (void)updateTweakSectionWithEntry:(id)entry;
-// - (NSString *)getCacheSize;
 @end
 
 extern NSBundle *uYouPlusBundle();
@@ -81,24 +68,6 @@ extern NSBundle *uYouPlusBundle();
 %end
 
 %hook YTSettingsSectionItemManager
-/* BROKEN
-- (NSString *)getCacheSize {
-    NSString *cachePath = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES).firstObject;
-    NSArray *filesArray = [[NSFileManager defaultManager] subpathsOfDirectoryAtPath:cachePath error:nil];
-
-    unsigned long long int folderSize = 0;
-    for (NSString *fileName in filesArray) {
-        NSString *filePath = [cachePath stringByAppendingPathComponent:fileName];
-        NSDictionary *fileAttributes = [[NSFileManager defaultManager] attributesOfItemAtPath:filePath error:nil];
-        folderSize += [fileAttributes fileSize];
-    }
-
-    NSByteCountFormatter *formatter = [[NSByteCountFormatter alloc] init];
-    formatter.countStyle = NSByteCountFormatterCountStyleFile;
-
-    return [formatter stringFromByteCount:folderSize];
-}
-*/
 %new(v@:@)
 - (void)updateTweakSectionWithEntry:(id)entry {
     NSMutableArray *sectionItems = [NSMutableArray array];
@@ -151,7 +120,6 @@ extern NSBundle *uYouPlusBundle();
 
     # pragma mark - App theme
     SECTION_HEADER(LOC(@"THEME_OPTIONS"));
-//  COLOR_BUTTON_ITEM2(@"Custom Theme Color", @"", ColourOptionsController2);
 
     YTSettingsSectionItem *themeGroup = [YTSettingsSectionItemClass
         itemWithTitle:LOC(@"DARK_THEME")
@@ -256,7 +224,6 @@ extern NSBundle *uYouPlusBundle();
     SWITCH_ITEM2(LOC(@"Hide Dark Overlay Background"), LOC(@"Hide video player's dark overlay background. App restart is required."), @"hideOverlayDarkBackground_enabled");
     SWITCH_ITEM2(LOC(@"Disable Ambient Mode in Fullscreen"), LOC(@"When Enabled, this will Disable the functionality of Ambient Mode from being used in the Video Player when in Fullscreen. App restart is required."), @"disableAmbientMode_enabled");
     SWITCH_ITEM2(LOC(@"Hide Suggested Videos in Fullscreen"), LOC(@"Hide video player's suggested videos whenever in fullscreen. App restart is required."), @"noVideosInFullscreen_enabled");
-    SWITCH_ITEM2(LOC(@"Enable YTSpeed"), LOC(@"Enable YTSpeed to have more Playback Speed Options. App restart is required."), @"ytSpeed_enabled");
 
    # pragma mark - Shorts controls overlay options
     SECTION_HEADER(LOC(@"SHORTS_CONTROLS_OVERLAY_OPTIONS"));
@@ -334,7 +301,6 @@ extern NSBundle *uYouPlusBundle();
         }
     ];
     [sectionItems addObject:lowContrastMode];
-//  COLOR_BUTTON_ITEM(@"Custom LowContrastMode Color", @"if you selected Custom Color than use this to modify the color.", ColourOptionsController);
     SWITCH_ITEM2(LOC(@"Fix LowContrastMode"), LOC(@"This will fix the LowContrastMode functionality by Spoofing to YouTube v17.38.10. App restart is required."), @"fixLowContrastMode_enabled");
     SWITCH_ITEM2(LOC(@"Disable Modern Buttons"), LOC(@"This will remove the new Modern / Chip Buttons in the YouTube App. but not all of them. App restart is required."), @"disableModernButtons_enabled");
     SWITCH_ITEM2(LOC(@"Disable Rounded Corners on Hints"), LOC(@"This will make the Hints in the App to not have Rounded Corners. App restart is required."), @"disableRoundedHints_enabled");
