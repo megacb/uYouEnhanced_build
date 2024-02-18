@@ -2,12 +2,6 @@
 #import "ColourOptionsController.h"
 #import "ColourOptionsController2.h"
 
-#define SYSTEM_VERSION_EQUAL_TO(v)                  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedSame)
-#define SYSTEM_VERSION_GREATER_THAN(v)              ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedDescending)
-#define SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
-#define SYSTEM_VERSION_LESS_THAN(v)                 ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedAscending)
-#define SYSTEM_VERSION_LESS_THAN_OR_EQUAL_TO(v)     ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedDescending)
-
 @interface RootOptionsController ()
 @end
 
@@ -15,7 +9,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self coloursView];
 
     self.title = @"uYouPlus Extras Menu";
 
@@ -100,8 +93,8 @@
                 cache.textAlignment = NSTextAlignmentRight;
                 [cache sizeToFit];
                 cell.accessoryView = cache;
-	            	cell.imageView.image = [UIImage systemImageNamed:@"trash"];
-  	          	cell.imageView.tintColor = cell.textLabel.textColor;
+	        cell.imageView.image = [UIImage systemImageNamed:@"trash"];
+  	        cell.imageView.tintColor = cell.textLabel.textColor;
             }
         }
     }
