@@ -604,7 +604,6 @@ static NSString *accessGroupID() {
     return IS_ENABLED(@"hideChannelWatermark_enabled") ? NO : %orig;
 }
 %end
-
 // Hide Channel Watermark (for Old YouTube Versions / Backwards Compatibility)
 %hook YTAnnotationsViewController
 - (void)loadFeaturedChannelWatermark {
@@ -861,7 +860,8 @@ static NSString *accessGroupID() {
     UINavigationController *uYouPlusRootOptionsControllerView = [[UINavigationController alloc] initWithRootViewController:[[RootOptionsController alloc] init]];
     [uYouPlusRootOptionsControllerView setModalPresentationStyle:UIModalPresentationFullScreen];
 
-    [self._viewControllerForAncestor presentViewController:uYouPlusRootOptionsControllerView animated:YES completion:nil];
+    UIViewController *rootPrefsViewController = [self _viewControllerForAncestor];
+    [rootPrefsViewController presentViewController:uYouPlusRootOptionsControllerView animated:YES completion:nil];
 }
 %end
 //
