@@ -491,7 +491,7 @@ static NSString *accessGroupID() {
 }
 %end
 
-# pragma mark - Hide Notification Button && SponsorBlock Button
+# pragma mark - Hide Notification Button && SponsorBlock Button && uYouPlus Button
 %hook YTRightNavigationButtons
 - (void)layoutSubviews {
     %orig;
@@ -500,6 +500,9 @@ static NSString *accessGroupID() {
     }
     if (IS_ENABLED(@"hideSponsorBlockButton_enabled")) { 
         self.sponsorBlockButton.hidden = YES;
+    }
+    if (IS_ENABLED(@"hideuYouPlusButton_enabled")) { 
+        self.uYouPlusButton.hidden = YES;
     }
 }
 %end
