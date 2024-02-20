@@ -1,4 +1,6 @@
 #import <UIKit/UIKit.h>
+#import <LocalAuthentication/LocalAuthentication.h>
+#import <CaptainHook/CaptainHook.h>
 #import <Foundation/Foundation.h>
 #import <objc/runtime.h>
 #import <dlfcn.h>
