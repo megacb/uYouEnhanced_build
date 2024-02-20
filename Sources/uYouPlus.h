@@ -48,17 +48,6 @@
 @interface SSOConfiguration : NSObject
 @end
 
-// uYouPlus Extras Menu
-@interface FRPreferences : UITableViewController
-@end
-
-@interface FRPSelectListTable : UITableViewController
-@end
-
-@interface settingsReorderTable : UIViewController
-@property(nonatomic, strong) UITableView *tableView;
-@end
-
 // uYouPlus
 @interface YTHeaderLogoController : UIView
 @property(readonly, nonatomic) long long pageStyle;
