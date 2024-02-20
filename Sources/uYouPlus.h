@@ -8,9 +8,6 @@
 #import <substrate.h>
 #import <rootless.h>
 
-#import "RootOptionsController.m"
-#import "ColourOptionsController.m"
-#import "ColourOptionsController2.m"
 #import "Tweaks/YouTubeHeader/YTAppDelegate.h"
 #import "Tweaks/YouTubeHeader/YTQTMButton.h"
 #import "Tweaks/YouTubeHeader/YTVideoQualitySwitchOriginalController.h"
