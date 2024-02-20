@@ -809,6 +809,7 @@ static NSString *accessGroupID() {
 }
 %end
 
+/* disabled so you guys can compile uYouEnhanced.
 // uYouPlus Button in Navigation Bar (for Clear Cache and Color Options) - @arichornlover
 %hook YTRightNavigationButtons
 %property (retain, nonatomic) YTQTMButton *uYouPlusButton;
@@ -867,7 +868,7 @@ static NSString *accessGroupID() {
     [rootPrefsViewController presentViewController:uYouPlusRootOptionsControllerView animated:YES completion:nil];
 }
 %end
-//
+*/
 
 // Hide the (Connect / Share / Remix / Thanks / Download / Clip / Save) Buttons under the Video Player - 17.x.x and up - @arichornlover
 %hook _ASDisplayView
