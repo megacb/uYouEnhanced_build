@@ -814,8 +814,7 @@ static NSString *accessGroupID() {
 %property (retain, nonatomic) YTQTMButton *uYouPlusButton;
 - (NSMutableArray *)buttons {
 	NSString *tweakBundlePath = [[NSBundle mainBundle] pathForResource:@"uYouPlus" ofType:@"bundle"];
-    NSString *uYouPlusLightSettingsPath;
-    NSString *uYouPlusDarkSettingsPath;
+    NSString *uYouPlusMainSettingsPath;
     if (tweakBundlePath) {
         NSBundle *tweakBundle = [NSBundle bundleWithPath:tweakBundlePath];
 	uYouPlusMainSettingsPath = [tweakBundle pathForResource:@"uYouPlus_logo_main" ofType:@"png"];
