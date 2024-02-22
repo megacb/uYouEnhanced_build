@@ -818,11 +818,9 @@ static NSString *accessGroupID() {
     NSString *uYouPlusDarkSettingsPath;
     if (tweakBundlePath) {
         NSBundle *tweakBundle = [NSBundle bundleWithPath:tweakBundlePath];
-        uYouPlusLightSettingsPath = [tweakBundle pathForResource:@"uYouPlus_logo" ofType:@"png"];
-		uYouPlusDarkSettingsPath = [tweakBundle pathForResource:@"uYouPlus_logo_dark" ofType:@"png"];
+	uYouPlusMainSettingsPath = [tweakBundle pathForResource:@"uYouPlus_logo_main" ofType:@"png"];
     } else {
-		uYouPlusLightSettingsPath = ROOT_PATH_NS(@"/Localizations/uYouPlus.bundle/uYouPlus_logo.png");
-        uYouPlusDarkSettingsPath = ROOT_PATH_NS(@"/Localizations/uYouPlus.bundle/uYouPlus_logo_dark.png");
+        uYouPlusMainSettingsPath = ROOT_PATH_NS(@"/Localizations/uYouPlus.bundle/uYouPlus_logo_main.png");
     }
     NSMutableArray *retVal = %orig.mutableCopy;
     [self.uYouPlusButton removeFromSuperview];
@@ -833,14 +831,16 @@ static NSString *accessGroupID() {
         self.uYouPlusButton.frame = CGRectMake(0, 0, 40, 40);
         
         if ([%c(YTPageStyleController) pageStyle] == 0) {
-            UIImage *setButtonMode = [UIImage imageWithContentsOfFile:uYouPlusDarkSettingsPath];
+            UIImage *setButtonMode = [UIImage imageWithContentsOfFile:uYouPlusMainSettingsPath];
             setButtonMode = [setButtonMode imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
             [self.uYouPlusButton setImage:setButtonMode forState:UIControlStateNormal];
+            [self.uYouPlusButton setTintColor:UIColor.blackColor];
         }
         else if ([%c(YTPageStyleController) pageStyle] == 1) {
-            UIImage *setButtonMode = [UIImage imageWithContentsOfFile:uYouPlusLightSettingsPath];
+            UIImage *setButtonMode = [UIImage imageWithContentsOfFile:uYouPlusMainSettingsPath];
             setButtonMode = [setButtonMode imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
             [self.uYouPlusButton setImage:setButtonMode forState:UIControlStateNormal];
+            [self.uYouPlusButton setTintColor:UIColor.whiteColor];
         }
         
         [self.uYouPlusButton addTarget:self action:@selector(uYouPlusRootOptionsAction) forControlEvents:UIControlEventTouchUpInside];
