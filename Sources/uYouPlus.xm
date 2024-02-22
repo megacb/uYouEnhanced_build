@@ -500,9 +500,11 @@ static NSString *accessGroupID() {
     }
     if (IS_ENABLED(@"hideSponsorBlockButton_enabled")) { 
         self.sponsorBlockButton.hidden = YES;
+        self.sponsorBlockButton.frame = CGRectZero;
     }
     if (IS_ENABLED(@"hideuYouPlusButton_enabled")) { 
         self.uYouPlusButton.hidden = YES;
+        self.uYouPlusButton.frame = CGRectZero;
     }
 }
 %end
