@@ -169,6 +169,16 @@ extern NSBundle *uYouPlusBundle();
                     }
                 ],
                 [YTSettingsSectionItemClass
+                    checkmarkItemWithTitle:LOC(@"Custom Dark Theme")
+                    titleDescription:LOC(@"In order to use Custom Themes that is in the uYouPlus Button, you will need to select this to be able to use custom colors.")
+                    selectBlock:^BOOL (YTSettingsCell *cell, NSUInteger arg1) {
+                        [[NSUserDefaults standardUserDefaults] setInteger:3 forKey:@"appTheme"];
+                        [settingsViewController reloadData];
+                        SHOW_RELAUNCH_YT_SNACKBAR;
+                        return YES;
+                    }
+                ],
+                [YTSettingsSectionItemClass
                     switchItemWithTitle:LOC(@"OLED_KEYBOARD")
                     titleDescription:LOC(@"OLED_KEYBOARD_DESC")
                     accessibilityIdentifier:nil
