@@ -622,6 +622,8 @@ static NSString *accessGroupID() {
 %hook YTColdConfig
 - (BOOL)removeNextPaddleForSingletonVideos { return YES; }
 - (BOOL)removePreviousPaddleForSingletonVideos { return YES; }
+- (BOOL)removeNextPaddleForAllVideos { return YES; }
+- (BOOL)removePreviousPaddleForAllVideos { return YES; }
 %end
 
 // %hook YTMainAppControlsOverlayView // this is only used for v16.xx.x (issues if using with YouTube v17.xx.x up to latest)
