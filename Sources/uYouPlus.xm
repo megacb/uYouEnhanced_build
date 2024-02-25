@@ -620,8 +620,10 @@ static NSString *accessGroupID() {
 // Hide Next & Previous button
 %group gHidePreviousAndNextButton
 %hook YTColdConfig
+- (BOOL)removeNextPaddleForAllVideos { return YES; }
 - (BOOL)removeNextPaddleForSingletonVideos { return YES; }
 - (BOOL)removePreviousPaddleForSingletonVideos { return YES; }
+- (BOOL)removePreviousPaddleForAllVideos { return YES; }
 %end
 
 // %hook YTMainAppControlsOverlayView // this is only used for v16.xx.x (issues if using with YouTube v17.xx.x up to latest)
