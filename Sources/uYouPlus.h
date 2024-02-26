@@ -30,6 +30,7 @@
 #import "Tweaks/YouTubeHeader/YTReelPlayerBottomButton.h"
 #import "Tweaks/YouTubeHeader/YTReelPlayerViewController.h"
 #import "Tweaks/YouTubeHeader/YTIMenuConditionalServiceItemRenderer.h"
+#import "Tweaks/YouTubeHeader/YTInlinePlayerBarContainerView.h"
 #import "Tweaks/YouTubeHeader/YTPivotBarItemView.h"
 #import "Tweaks/YouTubeHeader/YTVideoWithContextNode.h" // YouTube-X
 #import "Tweaks/YouTubeHeader/ELMCellNode.h" // YouTube-X
@@ -84,10 +85,6 @@
 @interface YTPlaybackButton : UIControl
 @end
 
-@interface YTSegmentableInlinePlayerBarView
-@property (nonatomic, assign, readwrite) BOOL enableSnapToChapter;
-@end
-
 @interface YTPlaylistHeaderViewController: UIViewController
 @property UIButton *downloadsButton;
 @end
@@ -118,10 +115,6 @@
 @property id delegate;
 - (void)setRate:(float)rate;
 - (void)internalSetRate;
-@end
-
-@interface MLPlayerStickySettings : NSObject
-- (void)setRate:(float)rate;
 @end
 
 @interface MLPlayerEventCenter : NSObject
