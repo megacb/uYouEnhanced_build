@@ -571,7 +571,7 @@ static NSString *accessGroupID() {
 %end
 
 // Video Controls Overlay Options
-// Hide CC / Autoplay switch / Enable Share Button / Enable Save to Playlist Button / Hide YTMusic Button
+// Hide CC / Hide Autoplay switch / Hide YTMusic Button / Enable Share Button / Enable Save to Playlist Button
 %hook YTMainAppControlsOverlayView
 - (void)setClosedCaptionsOrSubtitlesButtonAvailable:(BOOL)arg1 { // hide CC button
     return IS_ENABLED(@"hideCC_enabled") ? %orig(NO) : %orig;
@@ -579,6 +579,12 @@ static NSString *accessGroupID() {
 - (void)setAutoplaySwitchButtonRenderer:(id)arg1 { // hide Autoplay
     if (IS_ENABLED(@"hideAutoplaySwitch_enabled")) {}
     else { return %orig; }
+}
+- (void)setYoutubeMusicButton:(id)arg1 {
+    if (IS_ENABLED(@"hideYTMusicButton_enabled")) {
+    } else {
+        %orig(arg1);
+    }
 }
 - (void)setShareButtonAvailable:(BOOL)arg1 {
     if (IS_ENABLED(@"enableShareButton_enabled")) {
@@ -594,11 +600,20 @@ static NSString *accessGroupID() {
         %orig(NO);
     }
 }
-- (void)setYoutubeMusicButton:(id)arg1 {
-    if (IS_ENABLED(@"hideYTMusicButton_enabled")) {
-        // Do not set
-    } else {
-        %orig(arg1);
+%end
+
+// Hide Fullscreen Button
+%hook YTInlinePlayerBarContainerView
+- (void)layoutSubviews {
+    %orig; 
+    if (IS_ENABLED(@"disableFullscreenButton_enabled")) {
+        if (self.exitFullscreenButton) {
+            [self.exitFullscreenButton removeFromSuperview];
+        }
+        if (self.enterFullscreenButton) {
+            [self.enterFullscreenButton removeFromSuperview];
+        }
+        self.fullscreenButtonDisabled = YES;
     }
 }
 %end
