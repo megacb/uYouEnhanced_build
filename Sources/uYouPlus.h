@@ -30,7 +30,6 @@
 #import "Tweaks/YouTubeHeader/YTReelPlayerBottomButton.h"
 #import "Tweaks/YouTubeHeader/YTReelPlayerViewController.h"
 #import "Tweaks/YouTubeHeader/YTIMenuConditionalServiceItemRenderer.h"
-#import "Tweaks/YouTubeHeader/YTInlinePlayerBarContainerView.h"
 #import "Tweaks/YouTubeHeader/YTPivotBarItemView.h"
 #import "Tweaks/YouTubeHeader/YTVideoWithContextNode.h" // YouTube-X
 #import "Tweaks/YouTubeHeader/ELMCellNode.h" // YouTube-X
