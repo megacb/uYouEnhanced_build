@@ -1,9 +1,9 @@
-# Security Policy for This Repostory
-If I verify a reported security vulnerability, my policy is:
+# Code of Conduct for This Repostory
+If I verify a reported Code of Conduct violation, my policy is:
 
 - Contributors are allowed to make patches only to the main branch, unless an additional branch is involved. This policy applies to the implementation of custom features/options, updated features/options, and grammar errors.
 
-- uYouEnhanced does not support Localization pull requests. While it may seem like a sudden change, maintaining localization becomes challenging when the branch needs to be reset due to the changes from qnblackcat/uYouPlus repostory. Therefore, it is difficult to preserve any localization changes that were added on uYouEnhanced since the fork/branch can get resetted.
+- uYouEnhanced does not support Localization pull requests. While it may seem like a sudden change, maintaining localization becomes challenging when the branch needs to be reset due to the changes from qnblackcat/uYouPlus repository. Therefore, it is difficult to preserve any localization changes that were added on uYouEnhanced since the fork/branch can get reset and takes too long to add them all back.
 
 - The use of the name `uYouPlusExtra` is prohibited on the releases **v18.49.3-3.0.1** and beyond. The correct and updated name for the repository is `uYouEnhanced`.
 
