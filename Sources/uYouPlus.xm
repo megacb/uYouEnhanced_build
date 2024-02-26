@@ -571,7 +571,7 @@ static NSString *accessGroupID() {
 %end
 
 // Video Controls Overlay Options
-// Hide CC / Autoplay switch / Enable Share Button / Enable Save to Playlist Button
+// Hide CC / Autoplay switch / Enable Share Button / Enable Save to Playlist Button / Hide YTMusic Button
 %hook YTMainAppControlsOverlayView
 - (void)setClosedCaptionsOrSubtitlesButtonAvailable:(BOOL)arg1 { // hide CC button
     return IS_ENABLED(@"hideCC_enabled") ? %orig(NO) : %orig;
@@ -592,6 +592,13 @@ static NSString *accessGroupID() {
         %orig(YES);
     } else {
         %orig(NO);
+    }
+}
+- (void)setYoutubeMusicButton:(id)arg1 {
+    if (IS_ENABLED(@"hideYTMusicButton_enabled")) {
+        // Do not set
+    } else {
+        %orig(arg1);
     }
 }
 %end

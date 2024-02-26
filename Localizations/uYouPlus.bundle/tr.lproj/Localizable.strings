@@ -57,6 +57,9 @@
 "HIDE_AUTOPLAY_SWITCH" = "Otomatik oynatma anahtarını gizle";
 "HIDE_AUTOPLAY_SWITCH_DESC" = "Otomatik oynatma anahtarını video kontrolleri katmanından gizler.";
  
+"HIDE_YTMUSIC_BUTTON" = "Hide Youtube Music button";
+"HIDE_YTMUSIC_BUTTON_DESC" = "Hides Youtube Music button that appears with Premium";
+
 "HIDE_SUBTITLES_BUTTON" = "Altyazıları düğmesini gizle";
 "HIDE_SUBTITLES_BUTTON_DESC" = "Video kontrolleri katmanındaki Altyazılar düğmesini gizler.";
  

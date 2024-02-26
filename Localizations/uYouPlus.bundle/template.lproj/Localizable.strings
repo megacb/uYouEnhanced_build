@@ -72,6 +72,9 @@ https://github.com/PoomSmart/Return-YouTube-Dislikes/tree/main/layout/Library/Ap
 "HIDE_AUTOPLAY_SWITCH" = "Hide autoplay switch";
 "HIDE_AUTOPLAY_SWITCH_DESC" = "";
 
+"HIDE_YTMUSIC_BUTTON" = "Hide Youtube Music button";
+"HIDE_YTMUSIC_BUTTON_DESC" = "Hides Youtube Music button that appears with Premium";
+
 "HIDE_SUBTITLES_BUTTON" = "Hide subtitles button";
 "HIDE_SUBTITLES_BUTTON_DESC" = "";
 
