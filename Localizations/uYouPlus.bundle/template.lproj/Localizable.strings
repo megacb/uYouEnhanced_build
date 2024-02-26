@@ -85,7 +85,7 @@ https://github.com/PoomSmart/Return-YouTube-Dislikes/tree/main/layout/Library/Ap
 "HIDE_CHANNEL_WATERMARK_DESC" = "";
 
 "HIDE_PREVIOUS_AND_NEXT_BUTTON" = "Hide previous and next buttons";
-"HIDE_PREVIOUS_AND_NEXT_BUTTON_DESC" = "";
+"HIDE_PREVIOUS_AND_NEXT_BUTTON_DESC" = "Hides on all videos, including playlists";
 
 "REPLACE_PREVIOUS_NEXT_BUTTON" = "Use fast forward and rewind buttons";
 "REPLACE_PREVIOUS_NEXT_BUTTON_DESC" = "Replaces previous and next buttons with fast forward and rewind";

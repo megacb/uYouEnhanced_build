@@ -617,26 +617,15 @@ static NSString *accessGroupID() {
 }
 %end
 
-// Hide Next & Previous button
 %group gHidePreviousAndNextButton
 %hook YTColdConfig
-- (BOOL)removeNextPaddleForAllVideos { return YES; }
-- (BOOL)removeNextPaddleForSingletonVideos { return YES; }
-- (BOOL)removePreviousPaddleForSingletonVideos { return YES; }
-- (BOOL)removePreviousPaddleForAllVideos { return YES; }
+- (BOOL)removeNextPaddleForAllVideos { 
+    return YES; 
+}
+- (BOOL)removePreviousPaddleForAllVideos { 
+    return YES; 
+}
 %end
-
-// %hook YTMainAppControlsOverlayView // this is only used for v16.xx.x (issues if using with YouTube v17.xx.x up to latest)
-// - (void)layoutSubviews { // hide Next & Previous legacy buttons
-//     %orig;
-//     if (IsEnabled(@"hidePreviousAndNextButton_enabled")) { 
-//    	      MSHookIvar<YTMainAppControlsOverlayView *>(self, "_nextButton").hidden = YES;
-//         MSHookIvar<YTMainAppControlsOverlayView *>(self, "_previousButton").hidden = YES;
-//        MSHookIvar<YTTransportControlsButtonView *>(self, "_nextButtonView").hidden = YES;
-//    MSHookIvar<YTTransportControlsButtonView *>(self, "_previousButtonView").hidden = YES;
-//     }
-// }
-// %end
 %end
 
 // Hide Dark Overlay Background
