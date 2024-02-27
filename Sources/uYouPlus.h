@@ -8,6 +8,7 @@
 #import <substrate.h>
 #import <rootless.h>
 
+#import "uYouPlusThemes.h"
 #import "Tweaks/YouTubeHeader/YTAppDelegate.h"
 #import "Tweaks/YouTubeHeader/YTQTMButton.h"
 #import "Tweaks/YouTubeHeader/YTVideoQualitySwitchOriginalController.h"
