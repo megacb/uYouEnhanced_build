@@ -256,7 +256,7 @@ extern NSBundle *uYouPlusBundle();
     SWITCH_ITEM(LOC(@"Hide the Share Button under player"), LOC(@"Hides the Share Button under the video player."), @"hideShareButton_enabled");
     SWITCH_ITEM(LOC(@"Hide the Remix Button under player"), LOC(@"Hides the Remix Button under the video player."), @"hideRemixButton_enabled");
     SWITCH_ITEM(LOC(@"Hide the Thanks Button under player"), LOC(@"Hides the Thanks Button under the video player."), @"hideThanksButton_enabled");
-    SWITCH_ITEM(LOC(@"Hide the Download Button under player"), LOC(@"Hides the Download Button under the video player."), @"hideAddToOfflineButton_enabled");
+    SWITCH_ITEM(LOC(@"Hide the Download Button under player"), LOC(@"Hides the Download Button under the video player."), @"hideDownloadButton_enabled");
     SWITCH_ITEM(LOC(@"Hide the Clip Button under player"), LOC(@"Hides the Clip Button under the video player."), @"hideClipButton_enabled");
     SWITCH_ITEM(LOC(@"Hide the Save to playlist Button under player"), LOC(@"Hides the Save to playlist Button under the video player."), @"hideSaveToPlaylistButton_enabled");
     SWITCH_ITEM(LOC(@"Hide the comment section under player"), LOC(@"Hides the Comment Section below the player."), @"hideCommentSection_enabled");
