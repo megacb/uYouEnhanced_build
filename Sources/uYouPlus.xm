@@ -881,16 +881,16 @@ static NSString *accessGroupID() {
 }
 %end
 
-// Hide the (Connect / Share / Remix / Thanks / Download / Clip / Save) Buttons under the Video Player - 17.x.x and up - @arichornlover
+// Hide the (Connect / Share / Thanks / Save) Buttons under the Video Player - 17.x.x and up - @PoomSmart (inspired by @arichornlover)
 %hook _ASDisplayView
 - (void)layoutSubviews {
     %orig;
     BOOL hideConnectButton = IS_ENABLED(@"hideConnectButton_enabled");
     BOOL hideShareButton = IS_ENABLED(@"hideShareButton_enabled");
-    BOOL hideRemixButton = IS_ENABLED(@"hideRemixButton_enabled");
+//    BOOL hideRemixButton = IS_ENABLED(@"hideRemixButton_enabled"); // OLD
     BOOL hideThanksButton = IS_ENABLED(@"hideThanksButton_enabled");
-    BOOL hideAddToOfflineButton = IS_ENABLED(@"hideAddToOfflineButton_enabled");
-    BOOL hideClipButton = IS_ENABLED(@"hideClipButton_enabled");
+//    BOOL hideAddToOfflineButton = IS_ENABLED(@"hideAddToOfflineButton_enabled"); // OLD
+//    BOOL hideClipButton = IS_ENABLED(@"hideClipButton_enabled"); // OLD
     BOOL hideSaveToPlaylistButton = IS_ENABLED(@"hideSaveToPlaylistButton_enabled");
 
     for (UIView *subview in self.subviews) {
@@ -899,19 +899,10 @@ static NSString *accessGroupID() {
  //         subview.frame = hideConnectButton ? CGRectZero : subview.frame;
         } else if ([subview.accessibilityIdentifier isEqualToString:@"id.video.share.button"] || [subview.accessibilityLabel isEqualToString:@"Share"]) {
             subview.hidden = hideShareButton;
- //         subview.frame = hideShareButton ? CGRectZero : subview.frame;
-        } else if ([subview.accessibilityIdentifier isEqualToString:@"id.video.remix.button"] || [subview.accessibilityLabel isEqualToString:@"Create a Short with this video"]) {
-            subview.hidden = hideRemixButton;
- //         subview.frame = hideRemixButton ? CGRectZero : subview.frame;
+//          subview.frame = hideShareButton ? CGRectZero : subview.frame;
         } else if ([subview.accessibilityLabel isEqualToString:@"Thanks"]) {
             subview.hidden = hideThanksButton;
- //         subview.frame = hideThanksButton ? CGRectZero : subview.frame;
-        } else if ([subview.accessibilityIdentifier isEqualToString:@"id.ui.add_to.offline.button"] || [subview.accessibilityLabel isEqualToString:@"Download"]) {
-            subview.hidden = hideAddToOfflineButton;
- //         subview.frame = hideAddToOfflineButton ? CGRectZero : subview.frame;
-        } else if ([subview.accessibilityLabel isEqualToString:@"Clip"]) {
-            subview.hidden = hideClipButton;
- //         subview.frame = hideClipButton ? CGRectZero : subview.frame;
+//          subview.frame = hideThanksButton ? CGRectZero : subview.frame;
         } else if ([subview.accessibilityLabel isEqualToString:@"Save to playlist"]) {
             subview.hidden = hideSaveToPlaylistButton;
  //         subview.frame = hideSaveToPlaylistButton ? CGRectZero : subview.frame;
@@ -920,10 +911,61 @@ static NSString *accessGroupID() {
 }
 %end
 
+static BOOL findCell(ASNodeController *nodeController, NSArray <NSString *> *identifiers) {
+    for (id child in [nodeController children]) {
+        if ([child isKindOfClass:%c(ELMNodeController)]) {
+            NSArray <ELMComponent *> *elmChildren = [(ELMNodeController *)child children];
+            for (ELMComponent *elmChild in elmChildren) {
+                for (NSString *identifier in identifiers) {
+                    if ([[elmChild description] containsString:identifier])
+                        return YES;
+                }
+            }
+        }
+
+        if ([child isKindOfClass:%c(ASNodeController)]) {
+            ASDisplayNode *childNode = ((ASNodeController *)child).node; // ELMContainerNode
+            NSArray *yogaChildren = childNode.yogaChildren;
+            for (ASDisplayNode *displayNode in yogaChildren) {
+                if ([identifiers containsObject:displayNode.accessibilityIdentifier])
+                    return YES;
+            }
+
+            return findCell(child, identifiers);
+        }
+
+        return NO;
+    }
+    return NO;
+}
+
+%hook ASCollectionView
+
+- (CGSize)sizeForElement:(ASCollectionElement *)element {
+    if ([self.accessibilityIdentifier isEqualToString:@"id.video.scrollable_action_bar"]) {
+        ASCellNode *node = [element node];
+        ASNodeController *nodeController = [node controller];
+        if (IS_ENABLED(@"hideRemixButton_enabled") && findCell(nodeController, @[@"id.video.remix.button"])) {
+            return CGSizeZero;
+        }
+
+        if (IS_ENABLED(@"hideClipButton_enabled") && findCell(nodeController, @[@"clip_button.eml"])) {
+            return CGSizeZero;
+        }
+
+        if (IS_ENABLED(@"hideDownloadButton_enabled") && findCell(nodeController, @[@"id.ui.add_to.offline.button"])) {
+            return CGSizeZero;
+        }
+    }
+    return %orig;
+}
+
+%end
+
 // Hide the (Download) Button under the Video Player - Legacy Version - @arichorn
 %hook YTISlimMetadataButtonSupportedRenderers
 - (BOOL)slimButton_isOfflineButton {
-    return IS_ENABLED(@"hideAddToOfflineButton_enabled") ? NO : %orig;
+    return IS_ENABLED(@"hideDownloadButton_enabled") ? NO : %orig;
 }
 %end
 
