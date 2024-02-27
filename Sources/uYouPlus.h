@@ -23,7 +23,6 @@
 #import "Tweaks/YouTubeHeader/YTColorPalette.h"
 #import "Tweaks/YouTubeHeader/YTCommonColorPalette.h"
 #import "Tweaks/YouTubeHeader/YTSettingsSectionItemManager.h"
-#import "Tweaks/YouTubeHeader/ASCollectionView.h"
 #import "Tweaks/YouTubeHeader/YTPlayerOverlay.h"
 #import "Tweaks/YouTubeHeader/YTPlayerOverlayProvider.h"
 #import "Tweaks/YouTubeHeader/YTReelWatchPlaybackOverlayView.h"
@@ -32,9 +31,13 @@
 #import "Tweaks/YouTubeHeader/YTIMenuConditionalServiceItemRenderer.h"
 #import "Tweaks/YouTubeHeader/YTInlinePlayerBarContainerView.h"
 #import "Tweaks/YouTubeHeader/YTPivotBarItemView.h"
-#import "Tweaks/YouTubeHeader/YTVideoWithContextNode.h" // YouTube-X
+// Hide buttons under the video player by @PoomSmart
+#import "Tweaks/YouTubeHeader/ASCollectionElement.h"
+#import "Tweaks/YouTubeHeader/ASCollectionView.h"
+#import "Tweaks/YouTubeHeader/ELMNodeController.h"
+ // YouTube-X
+#import "Tweaks/YouTubeHeader/YTVideoWithContextNode.h"
 #import "Tweaks/YouTubeHeader/ELMCellNode.h" // YouTube-X
-#import "Tweaks/YouTubeHeader/ELMNodeController.h" // YouTube-X
 
 #define LOC(x) [tweakBundle localizedStringForKey:x value:nil table:nil]
 #define IS_ENABLED(k) [[NSUserDefaults standardUserDefaults] boolForKey:k]
