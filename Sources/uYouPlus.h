@@ -88,7 +88,11 @@
 @interface YTPlaybackButton : UIControl
 @end
 
-@interface YTPlaylistHeaderViewController: UIViewController
+@interface YTSegmentableInlinePlayerBarView (uYouPlus)
+@property (nonatomic, assign, readwrite) BOOL enableSnapToChapter;
+@end
+
+@interface YTPlaylistHeaderViewController : UIViewController
 @property UIButton *downloadsButton;
 @end
 
@@ -118,6 +122,10 @@
 @property id delegate;
 - (void)setRate:(float)rate;
 - (void)internalSetRate;
+@end
+
+@interface MLPlayerStickySettings (uYouPlus)
+- (void)setRate:(float)rate;
 @end
 
 @interface MLPlayerEventCenter : NSObject
