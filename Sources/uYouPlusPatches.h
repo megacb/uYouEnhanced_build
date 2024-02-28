@@ -1,3 +1,4 @@
+#import "../Tweaks/YouTubeHeader/YTColorPalette.h"
 #import "../Tweaks/YouTubeHeader/YTCommonColorPalette.h"
 #import "uYouPlus.h"
 
