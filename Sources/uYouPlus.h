@@ -151,8 +151,6 @@
 + (UIColor *)blackPure;
 + (UIColor *)grey1;
 + (UIColor *)grey2;
-+ (UIColor *)white1Alpha98;
-+ (UIColor *)white1Alpha95;
 @end
 
 @interface YTPageStyleController
@@ -163,9 +161,6 @@
 @end
 
 @interface ELMView : UIView
-@end
-
-@interface _ASDisplayView : UIView
 @end
 
 @interface ELMContainerNode : NSObject
