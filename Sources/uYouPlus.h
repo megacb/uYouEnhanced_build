@@ -88,10 +88,6 @@
 @interface YTPlaybackButton : UIControl
 @end
 
-@interface YTSegmentableInlinePlayerBarView
-@property (nonatomic, assign, readwrite) BOOL enableSnapToChapter;
-@end
-
 @interface YTPlaylistHeaderViewController : UIViewController
 @property UIButton *downloadsButton;
 @end
