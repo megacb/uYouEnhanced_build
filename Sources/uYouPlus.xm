@@ -738,11 +738,23 @@ static NSString *accessGroupID() {
         [self removeFromSuperview];
     }
 
-// Hide the Comment Section under the Video Player - @arichorn
+// Completely Remove the Comment Section under the Video Player - @arichorn
     if ((IS_ENABLED(@"hideCommentSection_enabled")) && ([self.accessibilityIdentifier isEqualToString:@"id.ui.comments_entry_point_teaser"] 
     || [self.accessibilityIdentifier isEqualToString:@"id.ui.comments_entry_point_simplebox"] 
     || [self.accessibilityIdentifier isEqualToString:@"id.ui.video_metadata_carousel"] 
     || [self.accessibilityIdentifier isEqualToString:@"id.ui.carousel_header"])) {
+        self.hidden = YES;
+        self.opaque = YES;
+        self.userInteractionEnabled = NO;
+        CGRect bounds = self.frame;
+        bounds.size.height = 0;
+        self.frame = bounds;
+        [self setNeedsLayout];
+        [self removeFromSuperview];
+    }
+
+// Hide the Comment Section Previews under the Video Player - @arichorn
+    if ((IS_ENABLED(@"hidePreviewCommentSection_enabled")) && ([self.accessibilityIdentifier isEqualToString:@"id.ui.comments_entry_point_teaser"])) {
         self.hidden = YES;
         self.opaque = YES;
         self.userInteractionEnabled = NO;
@@ -898,12 +910,12 @@ static NSString *accessGroupID() {
 }
 %end
 
-// Hide the (Connect / Share / Thanks / Save) Buttons under the Video Player - 17.x.x and up - @PoomSmart (inspired by @arichornlover)
+// Hide the (Connect / Thanks / Save) Buttons under the Video Player - 17.x.x and up - @PoomSmart (inspired by @arichornlover)
 %hook _ASDisplayView
 - (void)layoutSubviews {
     %orig;
     BOOL hideConnectButton = IS_ENABLED(@"hideConnectButton_enabled");
-    BOOL hideShareButton = IS_ENABLED(@"hideShareButton_enabled");
+//    BOOL hideShareButton = IS_ENABLED(@"hideShareButton_enabled"); // OLD
 //    BOOL hideRemixButton = IS_ENABLED(@"hideRemixButton_enabled"); // OLD
     BOOL hideThanksButton = IS_ENABLED(@"hideThanksButton_enabled");
 //    BOOL hideAddToOfflineButton = IS_ENABLED(@"hideAddToOfflineButton_enabled"); // OLD
@@ -914,9 +926,6 @@ static NSString *accessGroupID() {
         if ([subview.accessibilityLabel isEqualToString:@"connect account"]) {
             subview.hidden = hideConnectButton;
  //         subview.frame = hideConnectButton ? CGRectZero : subview.frame;
-        } else if ([subview.accessibilityIdentifier isEqualToString:@"id.video.share.button"] || [subview.accessibilityLabel isEqualToString:@"Share"]) {
-            subview.hidden = hideShareButton;
-//          subview.frame = hideShareButton ? CGRectZero : subview.frame;
         } else if ([subview.accessibilityLabel isEqualToString:@"Thanks"]) {
             subview.hidden = hideThanksButton;
 //          subview.frame = hideThanksButton ? CGRectZero : subview.frame;
@@ -962,6 +971,10 @@ static BOOL findCell(ASNodeController *nodeController, NSArray <NSString *> *ide
     if ([self.accessibilityIdentifier isEqualToString:@"id.video.scrollable_action_bar"]) {
         ASCellNode *node = [element node];
         ASNodeController *nodeController = [node controller];
+        if (IS_ENABLED(@"hideShareButton_enabled") && findCell(nodeController, @[@"id.video.share.button"])) {
+            return CGSizeZero;
+        }
+
         if (IS_ENABLED(@"hideRemixButton_enabled") && findCell(nodeController, @[@"id.video.remix.button"])) {
             return CGSizeZero;
         }
@@ -973,17 +986,14 @@ static BOOL findCell(ASNodeController *nodeController, NSArray <NSString *> *ide
         if (IS_ENABLED(@"hideDownloadButton_enabled") && findCell(nodeController, @[@"id.ui.add_to.offline.button"])) {
             return CGSizeZero;
         }
+
+        if (IS_ENABLED(@"hideCommentSection_enabled") && findCell(nodeController, @[@"id.ui.carousel_header"])) {
+            return CGSizeZero;
+        }
     }
     return %orig;
 }
 
-%end
-
-// Hide the (Download) Button under the Video Player - Legacy Version - @arichorn
-%hook YTISlimMetadataButtonSupportedRenderers
-- (BOOL)slimButton_isOfflineButton {
-    return IS_ENABLED(@"hideDownloadButton_enabled") ? NO : %orig;
-}
 %end
 
 // App Settings Overlay Options
