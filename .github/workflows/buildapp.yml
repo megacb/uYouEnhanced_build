@@ -70,13 +70,13 @@ jobs:
         uses: actions/checkout@v4.1.1
         with:
           repository: theos/theos
-          ref: master
+          ref: 4bcc52914e0eeca719288522938185decaa8a1cb
           path: theos
           submodules: recursive
       
       - name: SDK Caching
         id: SDK
-        uses: actions/cache@v4.0.0
+        uses: actions/cache@v4.0.1
         env:
           cache-name: iOS-${{ inputs.sdk_version }}-SDK
         with:
@@ -144,7 +144,7 @@ jobs:
 
       - name: Upload Artifact
         if: ${{ inputs.upload_artifact }}
-        uses: actions/upload-artifact@v4.3.0
+        uses: actions/upload-artifact@v4.3.1
         env:
           UYOU_VERSION: ${{ inputs.uyou_version }}
           YOUTUBE_VERSION: ${{ steps.prepare_youtube.outputs.youtube_version }}
