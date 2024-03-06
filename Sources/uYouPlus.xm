@@ -605,17 +605,25 @@ static NSString *accessGroupID() {
 // Hide Video Player Collapse Button - @arichornlover
 %hook YTMainAppControlsOverlayView
 - (void)layoutSubviews {
-    %orig;   
-    if (IS_ENABLED(@"disableCollapseButton_enabled")) {
+    %orig; 
+    if (IS_ENABLED(@"disableCollapseButton_enabled")) {  
         if (self.watchCollapseButton) {
             [self.watchCollapseButton removeFromSuperview];
         }
     }
 }
 - (BOOL)watchCollapseButtonHidden {
-    return YES;
+    if (IS_ENABLED(@"disableCollapseButton_enabled")) {
+        return YES;
+    } else {
+        return %orig;
+    }
 }
 - (void)setWatchCollapseButtonAvailable:(BOOL)available {
+    if (IS_ENABLED(@"disableCollapseButton_enabled")) {
+    } else {
+        %orig(available);
+    }
 }
 %end
 
@@ -910,14 +918,14 @@ static NSString *accessGroupID() {
 }
 %end
 
-// Hide the (Connect / Thanks / Save) Buttons under the Video Player - 17.x.x and up - @PoomSmart (inspired by @arichornlover)
+// Hide the (Connect / Save) Buttons under the Video Player - 17.x.x and up - @PoomSmart (inspired by @arichornlover)
 %hook _ASDisplayView
 - (void)layoutSubviews {
     %orig;
     BOOL hideConnectButton = IS_ENABLED(@"hideConnectButton_enabled");
 //    BOOL hideShareButton = IS_ENABLED(@"hideShareButton_enabled"); // OLD
 //    BOOL hideRemixButton = IS_ENABLED(@"hideRemixButton_enabled"); // OLD
-    BOOL hideThanksButton = IS_ENABLED(@"hideThanksButton_enabled");
+//    BOOL hideThanksButton = IS_ENABLED(@"hideThanksButton_enabled"); // OLD
 //    BOOL hideAddToOfflineButton = IS_ENABLED(@"hideAddToOfflineButton_enabled"); // OLD
 //    BOOL hideClipButton = IS_ENABLED(@"hideClipButton_enabled"); // OLD
     BOOL hideSaveToPlaylistButton = IS_ENABLED(@"hideSaveToPlaylistButton_enabled");
@@ -926,9 +934,6 @@ static NSString *accessGroupID() {
         if ([subview.accessibilityLabel isEqualToString:@"connect account"]) {
             subview.hidden = hideConnectButton;
  //         subview.frame = hideConnectButton ? CGRectZero : subview.frame;
-        } else if ([subview.accessibilityLabel isEqualToString:@"Thanks"]) {
-            subview.hidden = hideThanksButton;
-//          subview.frame = hideThanksButton ? CGRectZero : subview.frame;
         } else if ([subview.accessibilityLabel isEqualToString:@"Save to playlist"]) {
             subview.hidden = hideSaveToPlaylistButton;
  //         subview.frame = hideSaveToPlaylistButton ? CGRectZero : subview.frame;
@@ -976,6 +981,10 @@ static BOOL findCell(ASNodeController *nodeController, NSArray <NSString *> *ide
         }
 
         if (IS_ENABLED(@"hideRemixButton_enabled") && findCell(nodeController, @[@"id.video.remix.button"])) {
+            return CGSizeZero;
+        }
+
+        if (IS_ENABLED(@"hideThanksButton_enabled") && findCell(nodeController, @[@"thanks_button.eml"])) {
             return CGSizeZero;
         }
 
