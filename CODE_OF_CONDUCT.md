@@ -7,7 +7,12 @@ If I verify a reported Code of Conduct violation, my policy is:
 
 - The use of the name `uYouPlusExtra` is prohibited. The correct and updated name for this repository is `uYouEnhanced`.
 
+- Users who fork this repository, utilize it in actions, or build it from the repository on Git are prohibited from releasing .ipa files on their forked repositories. This restriction is in place to comply with the following https://enterprise.githubsupport.com/attachments/token/1u4kyYJnjA8HZTPMXOGBhRk4Q/?, also, preventing any potential legal issues. If a user violates this rule by including an .ipa file in their GitHub release publicly, appropriate actions will be taken. I do apologize for this y'all.
+
+<details>
+  <summary>Exclusive Rule for uYouPlus devs ⬇️</summary>
 - The Users **qnblackcat** and **PoomSmart** are prohibited from utilizing any new or modified code that was introduced in the uYouEnhanced fork, but I'll allow you to use submodules and I allow you to utize the code you made for this fork. but Violation of this rule from the ones I don't allow will result in appropriate consequences, including but not limited to account suspension, access revocation, or other disciplinary actions as deemed necessary by the project administrators. Furthermore, it is strictly forbidden to publicly share or showcase the content of this policy on any social media platforms. Any breach of this restriction may result in similar disciplinary actions. This was policy was made to keep any rejected features on uYouEnhanced.
+</details>
 
 ## Supported Versions
 
