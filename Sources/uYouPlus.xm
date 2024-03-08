@@ -1230,9 +1230,6 @@ static BOOL findCell(ASNodeController *nodeController, NSArray <NSString *> *ide
     if (IS_ENABLED(@"hidePreviousAndNextButton_enabled")) {
         %init(gHidePreviousAndNextButton);
     }
-//  if (IS_ENABLED(@"replacePreviousAndNextButton_enabled")) {
-//      %init(gReplacePreviousAndNextButton);
-//  }
     if (IS_ENABLED(@"hideOverlayDarkBackground_enabled")) {
         %init(gHideOverlayDarkBackground);
     }
