@@ -639,17 +639,19 @@ static NSString *accessGroupID() {
 
 // Hide Fullscreen Button - @arichornlover
 %hook YTInlinePlayerBarContainerView
-- (void)setFullscreenButtonDisabled:(BOOL)fullscreenButtonDisabled {
-    %orig;
+- (void)layoutSubviews {
+    %orig; 
     if (IS_ENABLED(@"disableFullscreenButton_enabled")) {
-        if (self.exitFullscreenButton && self.enterFullscreenButton) {
+        if (self.exitFullscreenButton) {
             [self.exitFullscreenButton removeFromSuperview];
-            [self.enterFullscreenButton removeFromSuperview];
             self.exitFullscreenButton.frame = CGRectZero;
+        }
+        if (self.enterFullscreenButton) {
+            [self.enterFullscreenButton removeFromSuperview];
             self.enterFullscreenButton.frame = CGRectZero;
         }
+        self.fullscreenButtonDisabled = YES;
     }
-    self.fullscreenButtonDisabled = YES;
 }
 %end
 
