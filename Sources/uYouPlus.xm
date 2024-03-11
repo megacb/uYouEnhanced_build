@@ -573,7 +573,7 @@ static NSString *accessGroupID() {
 // Hide double tap to seek overlay - @arichornlover
 %hook YTInlinePlayerDoubleTapIndicatorView
 - (CGFloat)circleRadius {
-    if IS_ENABLED(@"hideDoubleTapToSeekOverlay_enabled") {
+    if (IS_ENABLED(@"hideDoubleTapToSeekOverlay_enabled")) {
         return 0;
     }
     return %orig;
