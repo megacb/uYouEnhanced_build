@@ -570,6 +570,16 @@ static NSString *accessGroupID() {
 }
 %end
 
+// Hide double tap to seek overlay - @arichornlover
+%hook YTInlinePlayerDoubleTapIndicatorView
+- (CGFloat)circleRadius {
+    if IS_ENABLED(@"hideDoubleTapToSeekOverlay_enabled") {
+        return 0;
+    }
+    return %orig;
+}
+%end
+
 // Video Controls Overlay Options
 // Hide CC / Hide Autoplay switch / Hide YTMusic Button / Enable Share Button / Enable Save to Playlist Button
 %hook YTMainAppControlsOverlayView
