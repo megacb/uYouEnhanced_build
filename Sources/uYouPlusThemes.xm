@@ -292,7 +292,10 @@ UIColor* raisedColor = [UIColor colorWithRed:0.035 green:0.035 blue:0.035 alpha:
 %hook UIApplication
 - (void)applicationDidFinishLaunching:(UIApplication *)application {
     if (@available(iOS 14.0, *)) {
-        self.window.backgroundColor = [UIColor blackColor];
+        NSArray<UIWindow *> *windows = application.windows;
+        if (windows.count > 0) {
+            windows[0].backgroundColor = [UIColor blackColor];
+        }
     }
     %orig;
 }
@@ -585,7 +588,10 @@ UIColor *customHexColor;
 %hook UIApplication
 - (void)applicationDidFinishLaunching:(UIApplication *)application {
     if (@available(iOS 14.0, *)) {
-        self.window.backgroundColor = customHexColor;
+        NSArray<UIWindow *> *windows = application.windows;
+        if (windows.count > 0) {
+            windows[0].backgroundColor = customHexColor;
+        }
     }
     %orig;
 }
