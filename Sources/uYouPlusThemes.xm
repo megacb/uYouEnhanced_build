@@ -585,7 +585,7 @@ UIColor *customHexColor;
 %hook UIApplication
 - (void)applicationDidFinishLaunching:(UIApplication *)application {
     if (@available(iOS 14.0, *)) {
-        self.window.backgroundColor = [UIColor blackColor];
+        self.window.backgroundColor = customHexColor;
     }
     %orig;
 }
