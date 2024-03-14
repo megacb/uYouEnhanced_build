@@ -575,7 +575,7 @@ static NSString *accessGroupID() {
 - (void)layoutSubviews {
     %orig;
     if (IS_ENABLED(@"hideDoubleTapToSeekOverlay_enabled")) {
-        _scrimOverlay.backgroundColor = [UIColor clearColor];
+        self._scrimOverlay.backgroundColor = [UIColor clearColor];
     }
 }
 %end
