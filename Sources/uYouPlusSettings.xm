@@ -74,14 +74,14 @@ extern NSBundle *uYouPlusBundle();
     // SECTION_HEADER(LOC(@"ABOUT"));
 
     YTSettingsSectionItem *version = [%c(YTSettingsSectionItem)
-        itemWithTitle:LOC(@"VERSION")
+        itemWithTitle:LOC(@"uYouEnhanced")
         titleDescription:nil
         accessibilityIdentifier:nil
         detailTextBlock:^NSString *() {
             return VERSION_STRING;
         }
         selectBlock:^BOOL (YTSettingsCell *cell, NSUInteger arg1) {
-            return [%c(YTUIUtils) openURL:[NSURL URLWithString:@"https://github.com/arichornlover/uYouEnhanced/releases/latest"]];
+            return [%c(YTUIUtils) openURL:[NSURL URLWithString:@""]];
         }
     ];
     [sectionItems addObject:version];
