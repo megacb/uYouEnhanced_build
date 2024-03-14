@@ -970,7 +970,7 @@ static BOOL findCell(ASNodeController *nodeController, NSArray <NSString *> *ide
             return CGSizeZero;
         }
 
-        if (IS_ENABLED(@"hideThanksButton_enabled") && findCell(nodeController, @[@"thanks_button.eml"])) {
+        if (IS_ENABLED(@"hideThanksButton_enabled") && findCell(nodeController, @[@"Thanks"])) {
             return CGSizeZero;
         }
 
