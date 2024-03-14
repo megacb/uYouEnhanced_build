@@ -5,6 +5,8 @@ Description: An expanded version of uYouPlus
 Maintainer: arichorn
 Author: qnblackcat
 Section: Tweaks
-Depends: mobilesubstrate (>= 0.9.5000), com.miro.uyou
-Conflicts: com.level3tjg.ytminiplayerenabler, com.level3tjg.ytnohovercards, com.devvix.ytcastconfirm, com.ps.ytclassicvideoquality, com.ps.noytpremium, com.ps.ytnopaidpromo, com.ps.ytreexplore, com.galacticdev.bigytminiplayer, me.foxster.donteatmycontent, com.lilacvibes.ytstockvolumehud, net.sarahh12099.youtubereborn, com.twickd.sarahh12099.youtube-reborn, h.ryan.youtubereborn, weeb.lillie.enhancerforyoutubepremium, com.ps.uyoucompat, com.ichitaso.uyouplus
-Recommends: com.ps.youmute, com.ps.youpip, com.ps.youquality, com.ps.ytabconfig, com.ps.ytvideooverlay, libflex, weeb.lillie.youtubedislikesreturn
+Depends: mobilesubstrate (>= 0.9.5000), firmware (>= 14.0)
+Replaces: com.miro.uyou, org.thebigboss.libcolorpicker, me.nepeta.libcolorpicker, ws.hbang.alderis, libflex
+Provides: com.miro.uyou (= 99.0), org.thebigboss.libcolorpicker (= 99.0), me.nepeta.libcolorpicker (= 99.0), ws.hbang.alderis (= 99.0), libflex (= 99.0)
+Conflicts: com.miro.uyou, com.ps.youmute, com.ps.youpip, com.ps.youquality, com.ps.ytabconfig, com.ps.ytvideooverlay, libflex, weeb.lillie.youtubedislikesreturn, com.level3tjg.ytminiplayerenabler, com.level3tjg.ytnohovercards, com.ps.noytpremium, com.ps.ytnopaidpromo, com.ps.ytreexplore, com.galacticdev.bigytminiplayer, com.lilacvibes.ytstockvolumehud, net.sarahh12099.youtubereborn, com.twickd.sarahh12099.youtube-reborn, h.ryan.youtubereborn, weeb.lillie.enhancerforyoutubepremium, com.ps.uyoucompat, com.ichitaso.uyouplus
+Recommends: com.miro.uyouimport
