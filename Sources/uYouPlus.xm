@@ -748,7 +748,7 @@ static NSString *accessGroupID() {
         self.hidden = YES; 
     }
 
-// Hide Header Links under Channel Profile - @arichorn
+// Hide Header Links under Channel Profile - @arichornlover - Deprecated ⚠️
     if ((IS_ENABLED(@"hideChannelHeaderLinks_enabled")) && ([self.accessibilityIdentifier isEqualToString:@"eml.channel_header_links"])) {
         self.hidden = YES;
         self.opaque = YES;
@@ -758,7 +758,7 @@ static NSString *accessGroupID() {
         [self removeFromSuperview];
     }
 
-// Completely Remove the Comment Section under the Video Player - @arichorn
+// Completely Remove the Comment Section under the Video Player - @arichornlover - Deprecated ⚠️
     if ((IS_ENABLED(@"hideCommentSection_enabled")) && ([self.accessibilityIdentifier isEqualToString:@"id.ui.comments_entry_point_teaser"] 
     || [self.accessibilityIdentifier isEqualToString:@"id.ui.comments_entry_point_simplebox"] 
     || [self.accessibilityIdentifier isEqualToString:@"id.ui.video_metadata_carousel"] 
@@ -773,7 +773,7 @@ static NSString *accessGroupID() {
         [self removeFromSuperview];
     }
 
-// Hide the Comment Section Previews under the Video Player - @arichorn
+// Hide the Comment Section Previews under the Video Player - @arichornlover - Deprecated ⚠️
     if ((IS_ENABLED(@"hidePreviewCommentSection_enabled")) && ([self.accessibilityIdentifier isEqualToString:@"id.ui.comments_entry_point_teaser"])) {
         self.hidden = YES;
         self.opaque = YES;
@@ -814,7 +814,7 @@ static NSString *accessGroupID() {
             }
         }
     }
-// Hide Community Posts - @michael-winay & @arichorn
+// Hide Community Posts - @michael-winay & @arichornlover - Deprecated ⚠️
     if (IS_ENABLED(@"hideCommunityPosts_enabled")) {
         if ([description containsString:@"post_base_wrapper.eml"]) {
             return nil;
@@ -823,32 +823,6 @@ static NSString *accessGroupID() {
     return %orig;
 }
 %end
-
-/* Deprecated Code - Loads indefinitely on newer YouTube Versions
-// Hide Community Posts - @michael-winay & @arichorn
-%hook YTAsyncCollectionView
-- (id)cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    UICollectionViewCell *cell = %orig;
-    
-    if ([cell isKindOfClass:objc_lookUpClass("_ASCollectionViewCell")]) {
-        _ASCollectionViewCell *cell = %orig;
-        if ([cell respondsToSelector:@selector(node)]) {
-            NSString *idToRemove = [[cell node] accessibilityIdentifier];
-            if (IsEnabled(@"hideCommunityPosts_enabled")) {
-                if ([idToRemove rangeOfString:@"id.ui.backstage.post"].location != NSNotFound) {
-                    [self removeShortsAndFeaturesAdsAtIndexPath:indexPath];
-                }
-            }
-        }
-    }
-    return cell;
-}
-%new
-- (void)removeShortsAndFeaturesAdsAtIndexPath:(NSIndexPath *)indexPath {
-    [self deleteItemsAtIndexPaths:@[indexPath]];
-}
-%end
-*/
 
 // Red Subscribe Button - @arichorn
 %hook ELMContainerNode
