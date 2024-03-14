@@ -46,6 +46,11 @@
 @interface SSOConfiguration : NSObject
 @end
 
+// Hide Double tap to seek Overlay
+@interface YTInlinePlayerDoubleTapIndicatorView : UIView
+@property (nonatomic, strong) UIView *_scrimOverlay;
+@end
+
 // uYouPlus
 @interface YTHeaderLogoController : UIView
 @property(readonly, nonatomic) long long pageStyle;
