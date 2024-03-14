@@ -572,11 +572,11 @@ static NSString *accessGroupID() {
 
 // Hide double tap to seek overlay - @arichornlover
 %hook YTInlinePlayerDoubleTapIndicatorView
-- (CGFloat)circleRadius {
+- (void)layoutSubviews {
+    %orig;
     if (IS_ENABLED(@"hideDoubleTapToSeekOverlay_enabled")) {
-        return 0;
+        _scrimOverlay.backgroundColor = [UIColor clearColor];
     }
-    return %orig;
 }
 %end
 
