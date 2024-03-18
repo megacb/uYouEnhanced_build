@@ -509,6 +509,17 @@ static NSString *accessGroupID() {
 }
 %end
 
+// Hide fullscreen actions buttons at the bottom - @bhackel
+%hook YTFullscreenActionsView
+- (void)layoutSubviews {
+    %orig;
+    if (IS_ENABLED(@"hideFullscreenActions_enabled")) {
+        self.fullscreenActionsButton.hidden = YES;
+        self.fullscreenActionsButton.frame = CGRectZero;
+    }
+}
+%end
+
 # pragma mark - uYouPlus
 // Video Player Options
 // Skips content warning before playing *some videos - @PoomSmart
