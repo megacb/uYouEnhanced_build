@@ -22,7 +22,7 @@ endif
 PACKAGE_VERSION = $(YOUTUBE_VERSION)-$(UYOU_VERSION)
 
 INSTALL_TARGET_PROCESSES = YouTube
-TWEAK_NAME = uYouPlus
+TWEAK_NAME = uYouEnhanced
 DISPLAY_NAME = YouTube
 BUNDLE_ID = com.google.ios.youtube
 
