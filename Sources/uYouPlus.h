@@ -52,8 +52,8 @@
 @end
 
 // YTTapToSeek - https://github.com/bhackel/YTTapToSeek
-@interface YTPlayerViewController : UIViewController
-- (void)seekToTime:(double)time;
+@interface YTMainAppVideoPlayerOverlayViewController : UIViewController
+- (CGFloat)totalTime;
 @end
 
 // uYouPlus
