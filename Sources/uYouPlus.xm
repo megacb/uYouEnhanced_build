@@ -491,6 +491,28 @@ static NSString *accessGroupID() {
 }
 %end
 
+// YTTapToSeek - https://github.com/bhackel/YTTapToSeek
+%group YTTTS_Tweak
+    %hook YTInlinePlayerBarContainerView
+    - (void)didPressScrubber:(id)arg1 {
+        %orig;
+        // Get access to the seekToTime method
+        YTMainAppVideoPlayerOverlayViewController *mainAppController = [self.delegate valueForKey:@"_delegate"];
+        YTPlayerViewController *playerViewController = [mainAppController valueForKey:@"parentViewController"];
+        // Get the X position of this tap from arg1
+        UIGestureRecognizer *gestureRecognizer = (UIGestureRecognizer *)arg1;
+        CGPoint location = [gestureRecognizer locationInView:self];
+        CGFloat x = location.x;
+        // Get the associated proportion of time using scrubRangeForScrubX
+        double timestampFraction = [self scrubRangeForScrubX:x];
+        // Get the timestamp from the fraction
+        double timestamp = [mainAppController totalTime] * timestampFraction;
+        // Jump to the timestamp
+        [playerViewController seekToTime:timestamp];
+    }
+    %end
+%end
+
 # pragma mark - Hide Notification Button && SponsorBlock Button && uYouPlus Button
 %hook YTRightNavigationButtons
 - (void)layoutSubviews {
@@ -1295,6 +1317,9 @@ static BOOL findCell(ASNodeController *nodeController, NSArray <NSString *> *ide
     }
     if (IS_ENABLED(@"disableLiveChatSection_enabled")) {
         %init(gDisableLiveChatSection);
+    }
+    if (IS_ENABLED(@"YTTapToSeek_enabled")) {
+        %init(YTTTS_Tweak);
     }
 
     // YTNoModernUI - @arichorn

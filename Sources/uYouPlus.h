@@ -51,6 +51,11 @@
 @property (nonatomic, strong) UIView *_scrimOverlay;
 @end
 
+// YTTapToSeek - https://github.com/bhackel/YTTapToSeek
+@interface YTMainAppVideoPlayerOverlayViewController : UIViewController
+- (CGFloat)totalTime;
+@end
+
 // uYouPlus
 @interface YTHeaderLogoController : UIView
 @property(readonly, nonatomic) long long pageStyle;
