@@ -1,4 +1,4 @@
-export TARGET = iphone:clang:16.2:14.0
+export TARGET = iphone:clang:17.2:14.0
 export ARCHS = arm64
 
 export libcolorpicker_ARCHS = arm64
@@ -14,7 +14,7 @@ MODULES = jailed
 endif
 
 ifndef YOUTUBE_VERSION
-YOUTUBE_VERSION = 19.09.4
+YOUTUBE_VERSION = 19.10.5
 endif
 ifndef UYOU_VERSION
 UYOU_VERSION = 3.0.3
@@ -22,7 +22,7 @@ endif
 PACKAGE_VERSION = $(YOUTUBE_VERSION)-$(UYOU_VERSION)
 
 INSTALL_TARGET_PROCESSES = YouTube
-TWEAK_NAME = uYouPlus
+TWEAK_NAME = uYouEnhanced
 DISPLAY_NAME = YouTube
 BUNDLE_ID = com.google.ios.youtube
 
