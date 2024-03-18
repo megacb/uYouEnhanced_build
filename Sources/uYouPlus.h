@@ -51,6 +51,19 @@
 @property (nonatomic, strong) UIView *_scrimOverlay;
 @end
 
+// YTTapToSeek - https://github.com/bhackel/YTTapToSeek
+@interface YTInlinePlayerBarContainerView : UIView
+@property (nonatomic, weak, readwrite) id delegate;
+- (void)didPressScrubber:(id)arg1;
+- (CGFloat)scrubRangeForScrubX:(CGFloat)arg1;
+@end
+@interface YTMainAppVideoPlayerOverlayViewController : UIViewController
+- (CGFloat)totalTime;
+@end
+@interface YTPlayerViewController : UIViewController
+- (void)seekToTime:(double)time;
+@end
+
 // uYouPlus
 @interface YTHeaderLogoController : UIView
 @property(readonly, nonatomic) long long pageStyle;
