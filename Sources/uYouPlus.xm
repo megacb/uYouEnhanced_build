@@ -514,8 +514,8 @@ static NSString *accessGroupID() {
 - (void)layoutSubviews {
     %orig;
     if (IS_ENABLED(@"hideFullscreenActions_enabled")) {
-        self.fullscreenActionsButton.hidden = YES;
-        self.fullscreenActionsButton.frame = CGRectZero;
+        self.hidden = YES;
+        self.frame = CGRectZero;
     }
 }
 %end
