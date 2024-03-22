@@ -18,6 +18,7 @@
 #import "Tweaks/YouTubeHeader/YTIPivotBarItemRenderer.h"
 #import "Tweaks/YouTubeHeader/YTIBrowseRequest.h"
 #import "Tweaks/YouTubeHeader/YTIButtonRenderer.h"
+#import "Tweaks/YouTubeHeader/YTIElementRenderer.h"
 #import "Tweaks/YouTubeHeader/YTISectionListRenderer.h"
 #import "Tweaks/YouTubeHeader/YTWatchNextResultsViewController.h"
 #import "Tweaks/YouTubeHeader/YTPlayerOverlay.h"
