@@ -87,7 +87,7 @@ static NSString *accessGroupID() {
 %end
 %end
 
-// YouTube Premium Logo - @arichorn - this doesn't always function
+// YouTube Premium Logo - @arichornlover - this doesn't always function.
 %group gPremiumYouTubeLogo
 %hook YTHeaderLogoController
 - (void)setPremiumLogo:(BOOL)isPremiumLogo {
@@ -98,6 +98,37 @@ static NSString *accessGroupID() {
     return YES;
 }
 - (void)setTopbarLogoRenderer:(id)renderer {
+}
+%end
+
+// Workaround: uYou 3.0.3 Adblock fix.
+%hook YTSectionListViewController
+- (void)loadWithModel:(YTISectionListRenderer *)model {
+    if ([@"removeYouTubeAds" boolValue]) {
+    NSMutableArray <YTISectionListSupportedRenderers *> *contentsArray = model.contentsArray;
+    NSIndexSet *removeIndexes = [contentsArray indexesOfObjectsPassingTest:^BOOL(YTISectionListSupportedRenderers *renderers, NSUInteger idx, BOOL *stop) {
+        YTIItemSectionRenderer *sectionRenderer = renderers.itemSectionRenderer;
+        YTIItemSectionSupportedRenderers *firstObject = [sectionRenderer.contentsArray firstObject];
+        return firstObject.hasPromotedVideoRenderer || firstObject.hasCompactPromotedVideoRenderer || firstObject.hasPromotedVideoInlineMutedRenderer || isAd(firstObject.elementRenderer);
+    }];
+    [contentsArray removeObjectsAtIndexes:removeIndexes];
+    }
+    %orig;
+}
+%end
+
+%hook YTWatchNextResultsViewController
+- (void)loadWithModel:(YTISectionListRenderer *)watchNextResults {
+    if ([@"removeYouTubeAds" boolValue]) {
+    NSMutableArray <YTISectionListSupportedRenderers *> *contentsArray = watchNextResults.contentsArray;
+    NSIndexSet *removeIndexes = [contentsArray indexesOfObjectsPassingTest:^BOOL(YTISectionListSupportedRenderers *renderers, NSUInteger idx, BOOL *stop) {
+        YTIItemSectionRenderer *sectionRenderer = renderers.itemSectionRenderer;
+        YTIItemSectionSupportedRenderers *firstObject = [sectionRenderer.contentsArray firstObject];
+        return firstObject.hasPromotedVideoRenderer || firstObject.hasCompactPromotedVideoRenderer || firstObject.hasPromotedVideoInlineMutedRenderer || isAd(firstObject.elementRenderer);
+    }];
+    [contentsArray removeObjectsAtIndexes:removeIndexes];
+    }
+    %orig;
 }
 %end
 
