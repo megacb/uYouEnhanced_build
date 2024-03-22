@@ -19,6 +19,7 @@
 #import "Tweaks/YouTubeHeader/YTIBrowseRequest.h"
 #import "Tweaks/YouTubeHeader/YTIButtonRenderer.h"
 #import "Tweaks/YouTubeHeader/YTISectionListRenderer.h"
+#import "Tweaks/YouTubeHeader/YTWatchNextResultsViewController.h"
 #import "Tweaks/YouTubeHeader/YTPlayerOverlay.h"
 #import "Tweaks/YouTubeHeader/YTPlayerOverlayProvider.h"
 #import "Tweaks/YouTubeHeader/YTReelWatchPlaybackOverlayView.h"
