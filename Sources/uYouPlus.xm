@@ -104,7 +104,7 @@ static NSString *accessGroupID() {
 // Workaround: uYou 3.0.3 Adblock fix.
 %hook YTSectionListViewController
 - (void)loadWithModel:(YTISectionListRenderer *)model {
-    if ([@"removeYouTubeAds" boolValue]) {
+    if ([NSUserDefaults.standardUserDefaults boolForKey:@"removeYouTubeAds"]) {
     NSMutableArray <YTISectionListSupportedRenderers *> *contentsArray = model.contentsArray;
     NSIndexSet *removeIndexes = [contentsArray indexesOfObjectsPassingTest:^BOOL(YTISectionListSupportedRenderers *renderers, NSUInteger idx, BOOL *stop) {
         YTIItemSectionRenderer *sectionRenderer = renderers.itemSectionRenderer;
@@ -119,7 +119,7 @@ static NSString *accessGroupID() {
 
 %hook YTWatchNextResultsViewController
 - (void)loadWithModel:(YTISectionListRenderer *)watchNextResults {
-    if ([@"removeYouTubeAds" boolValue]) {
+    if ([NSUserDefaults.standardUserDefaults boolForKey:@"removeYouTubeAds"]) {
     NSMutableArray <YTISectionListSupportedRenderers *> *contentsArray = watchNextResults.contentsArray;
     NSIndexSet *removeIndexes = [contentsArray indexesOfObjectsPassingTest:^BOOL(YTISectionListSupportedRenderers *renderers, NSUInteger idx, BOOL *stop) {
         YTIItemSectionRenderer *sectionRenderer = renderers.itemSectionRenderer;
