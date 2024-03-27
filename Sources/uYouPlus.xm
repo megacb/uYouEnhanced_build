@@ -63,6 +63,7 @@ if ([NSUserDefaults.standardUserDefaults boolForKey:@"removeYouTubeAds"]) {
 - (void)decorateContext:(id)context {}
 }
 %end
+
 %hook YTAccountScopedAdsInnerTubeContextDecorator
 if ([NSUserDefaults.standardUserDefaults boolForKey:@"removeYouTubeAds"]) {
 - (void)decorateContext:(id)context {}
@@ -70,12 +71,28 @@ if ([NSUserDefaults.standardUserDefaults boolForKey:@"removeYouTubeAds"]) {
 %end
 %hook YTIElementRenderer
 - (NSData *)elementData {
+    NSString *description = [self description];
     if ([NSUserDefaults.standardUserDefaults boolForKey:@"removeYouTubeAds"]) {
         if (self.hasCompatibilityOptions && self.compatibilityOptions.hasAdLoggingData) return nil;
-        return %orig;
+            return %orig;
         }
+    }
+// Hide Shorts Cells - @PoomSmart & @iCrazeiOS
+    if ([NSUserDefaults.standardUserDefaults boolForKey:@"removeShortsCell"]) {
+        if ([description containsString:@"shorts_shelf.eml"] || [description containsString:@"#shorts"] || [description containsString:@"shorts_video_cell.eml"] || [description containsString:@"6Shorts"]) {
+            if (![description containsString:@"history*"]) {
+                return nil;
+            }
+        }
+    }
+    // Hide Community Posts - Deprecated ⚠️
+    if (IS_ENABLED(@"hideCommunityPosts_enabled") && [description containsString:@"post_base_wrapper.eml"]) {
+        return nil;
+    } 
+    return %orig;
 }
 %end
+//
 BOOL isAd(YTIElementRenderer *self) {
     if ([NSUserDefaults.standardUserDefaults boolForKey:@"removeYouTubeAds"]) {
         if (self != nil) {
@@ -94,20 +111,21 @@ BOOL isAd(YTIElementRenderer *self) {
                 || [description containsString:@"landscape_image_wide_button_layout"]
                 || [description containsString:@"feed_ad_metadata"])
                 return YES;
-            }
         }
+    }
     return NO;
 }
+
 %hook YTSectionListViewController
 - (void)loadWithModel:(YTISectionListRenderer *)model {
     if ([NSUserDefaults.standardUserDefaults boolForKey:@"removeYouTubeAds"]) {
-    NSMutableArray <YTISectionListSupportedRenderers *> *contentsArray = model.contentsArray;
-    NSIndexSet *removeIndexes = [contentsArray indexesOfObjectsPassingTest:^BOOL(YTISectionListSupportedRenderers *renderers, NSUInteger idx, BOOL *stop) {
-        YTIItemSectionRenderer *sectionRenderer = renderers.itemSectionRenderer;
-        YTIItemSectionSupportedRenderers *firstObject = [sectionRenderer.contentsArray firstObject];
-        return firstObject.hasPromotedVideoRenderer || firstObject.hasCompactPromotedVideoRenderer || firstObject.hasPromotedVideoInlineMutedRenderer || isAd(firstObject.elementRenderer);
-    }];
-    [contentsArray removeObjectsAtIndexes:removeIndexes];
+        NSMutableArray <YTISectionListSupportedRenderers *> *contentsArray = model.contentsArray;
+        NSIndexSet *removeIndexes = [contentsArray indexesOfObjectsPassingTest:^BOOL(YTISectionListSupportedRenderers *renderers, NSUInteger idx, BOOL *stop) {
+            YTIItemSectionRenderer *sectionRenderer = renderers.itemSectionRenderer;
+            YTIItemSectionSupportedRenderers *firstObject = [sectionRenderer.contentsArray firstObject];
+            return firstObject.hasPromotedVideoRenderer || firstObject.hasCompactPromotedVideoRenderer || firstObject.hasPromotedVideoInlineMutedRenderer || isAd(firstObject.elementRenderer);
+        }];
+        [contentsArray removeObjectsAtIndexes:removeIndexes];
     }
     %orig;
 }
@@ -116,13 +134,13 @@ BOOL isAd(YTIElementRenderer *self) {
 %hook YTWatchNextResultsViewController
 - (void)loadWithModel:(YTISectionListRenderer *)watchNextResults {
     if ([NSUserDefaults.standardUserDefaults boolForKey:@"removeYouTubeAds"]) {
-    NSMutableArray <YTISectionListSupportedRenderers *> *contentsArray = watchNextResults.contentsArray;
-    NSIndexSet *removeIndexes = [contentsArray indexesOfObjectsPassingTest:^BOOL(YTISectionListSupportedRenderers *renderers, NSUInteger idx, BOOL *stop) {
-        YTIItemSectionRenderer *sectionRenderer = renderers.itemSectionRenderer;
-        YTIItemSectionSupportedRenderers *firstObject = [sectionRenderer.contentsArray firstObject];
-        return firstObject.hasPromotedVideoRenderer || firstObject.hasCompactPromotedVideoRenderer || firstObject.hasPromotedVideoInlineMutedRenderer || isAd(firstObject.elementRenderer);
-    }];
-    [contentsArray removeObjectsAtIndexes:removeIndexes];
+        NSMutableArray <YTISectionListSupportedRenderers *> *contentsArray = watchNextResults.contentsArray;
+        NSIndexSet *removeIndexes = [contentsArray indexesOfObjectsPassingTest:^BOOL(YTISectionListSupportedRenderers *renderers, NSUInteger idx, BOOL *stop) {
+            YTIItemSectionRenderer *sectionRenderer = renderers.itemSectionRenderer;
+            YTIItemSectionSupportedRenderers *firstObject = [sectionRenderer.contentsArray firstObject];
+            return firstObject.hasPromotedVideoRenderer || firstObject.hasCompactPromotedVideoRenderer || firstObject.hasPromotedVideoInlineMutedRenderer || isAd(firstObject.elementRenderer);
+        }];
+        [contentsArray removeObjectsAtIndexes:removeIndexes];
     }
     %orig;
 }
@@ -800,30 +818,6 @@ BOOL isAd(YTIElementRenderer *self) {
 %hook YTShortsStartupCoordinator
 - (id)evaluateResumeToShorts { 
     return IS_ENABLED(@"disableResumeToShorts_enabled") ? nil : %orig;
-}
-%end
-
-// Hide Shorts Cells - @PoomSmart & @iCrazeiOS
-%hook YTIElementRenderer
-- (NSData *)elementData {
-        NSString *description = [self description];
-    if ([NSUserDefaults.standardUserDefaults boolForKey:@"removeShortsCell"]) { // uYou (Hide Shorts Cells)
-        if ([description containsString:@"shorts_shelf.eml"] ||
-            [description containsString:@"#shorts"] ||
-            [description containsString:@"shorts_video_cell.eml"] ||
-            [description containsString:@"6Shorts"]) {
-            if (![description containsString:@"history*"]) {
-                return nil;
-            }
-        }
-    }
-// Hide Community Posts - @michael-winay & @arichornlover - Deprecated ⚠️
-    if (IS_ENABLED(@"hideCommunityPosts_enabled")) {
-        if ([description containsString:@"post_base_wrapper.eml"]) {
-            return nil;
-        }
-    }
-    return %orig;
 }
 %end
 
