@@ -50,30 +50,6 @@ if ([NSUserDefaults.standardUserDefaults boolForKey:@"removeYouTubeAds"]) {
 - (void)decorateContext:(id)context {}
 }
 %end
-%hook YTIElementRenderer
-- (NSData *)elementData {
-    NSString *description = [self description];
-    if ([NSUserDefaults.standardUserDefaults boolForKey:@"removeYouTubeAds"]) {
-        if (self.hasCompatibilityOptions && self.compatibilityOptions.hasAdLoggingData) return nil;
-            return %orig;
-        }
-    }
-// Hide Shorts Cells - @PoomSmart & @iCrazeiOS
-    if ([NSUserDefaults.standardUserDefaults boolForKey:@"removeShortsCell"]) {
-        if ([description containsString:@"shorts_shelf.eml"] || [description containsString:@"#shorts"] || [description containsString:@"shorts_video_cell.eml"] || [description containsString:@"6Shorts"]) {
-            if (![description containsString:@"history*"]) {
-                return nil;
-            }
-        }
-    }
-    // Hide Community Posts - Deprecated ⚠️
-    if (IS_ENABLED(@"hideCommunityPosts_enabled") && [description containsString:@"post_base_wrapper.eml"]) {
-        return nil;
-    } 
-    return %orig;
-}
-%end
-//
 BOOL isAd(YTIElementRenderer *self) {
     if ([NSUserDefaults.standardUserDefaults boolForKey:@"removeYouTubeAds"]) {
         if (self != nil) {
@@ -799,6 +775,30 @@ BOOL isAd(YTIElementRenderer *self) {
 %hook YTShortsStartupCoordinator
 - (id)evaluateResumeToShorts { 
     return IS_ENABLED(@"disableResumeToShorts_enabled") ? nil : %orig;
+}
+%end
+
+// Hide Shorts Cells - @PoomSmart & @iCrazeiOS
+%hook YTIElementRenderer
+- (NSData *)elementData {
+        NSString *description = [self description];
+    if ([NSUserDefaults.standardUserDefaults boolForKey:@"removeShortsCell"]) { // uYou (Hide Shorts Cells)
+        if ([description containsString:@"shorts_shelf.eml"] ||
+            [description containsString:@"#shorts"] ||
+            [description containsString:@"shorts_video_cell.eml"] ||
+            [description containsString:@"6Shorts"]) {
+            if (![description containsString:@"history*"]) {
+                return nil;
+            }
+        }
+    }
+// Hide Community Posts - @michael-winay & @arichornlover - Deprecated ⚠️
+    if (IS_ENABLED(@"hideCommunityPosts_enabled")) {
+        if ([description containsString:@"post_base_wrapper.eml"]) {
+            return nil;
+        }
+    }
+    return %orig;
 }
 %end
 
