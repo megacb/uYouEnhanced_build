@@ -41,13 +41,15 @@ NSBundle *tweakBundle = uYouPlusBundle();
 // Workaround: uYou 3.0.3 Adblock fix.
 %hook YTAdsInnerTubeContextDecorator
 if ([NSUserDefaults.standardUserDefaults boolForKey:@"removeYouTubeAds"]) {
-- (void)decorateContext:(id)context {}
+- (void)decorateContext:(id)context {
+        }
 }
 %end
 
 %hook YTAccountScopedAdsInnerTubeContextDecorator
 if ([NSUserDefaults.standardUserDefaults boolForKey:@"removeYouTubeAds"]) {
-- (void)decorateContext:(id)context {}
+- (void)decorateContext:(id)context {
+        }
 }
 %end
 BOOL isAd(YTIElementRenderer *self) {
