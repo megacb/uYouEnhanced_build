@@ -51,12 +51,6 @@
 @property (nonatomic, strong) UIView *_scrimOverlay;
 @end
 
-// Hide fullscreen action buttons at the bottom = @bhackel
-@interface YTFullscreenActionsView : UIView
-@property (atomic, assign, readwrite, getter=isHidden) BOOL hidden;
-@property (atomic, assign, readwrite) CGRect frame;
-@end
-
 // uYouPlus
 @interface YTHeaderLogoController : UIView
 @property(readonly, nonatomic) long long pageStyle;

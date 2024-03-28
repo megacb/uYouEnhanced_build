@@ -509,14 +509,10 @@ static NSString *accessGroupID() {
 }
 %end
 
-// Hide fullscreen actions buttons at the bottom - @bhackel
-%hook YTFullscreenActionsView
-- (void)layoutSubviews {
-    %orig;
-    if (IS_ENABLED(@"hideFullscreenActions_enabled")) {
-        self.hidden = YES;
-        self.frame = CGRectZero;
-    }
+// Hide fullscreen action buttons - @bhackel
+%hook YTMainAppVideoPlayerOverlayViewController
+- (BOOL)isFullscreenActionsEnabled {
+    return IS_ENABLED(@"hideFullscreenActions_enabled") ? NO : %orig;
 }
 %end
 
