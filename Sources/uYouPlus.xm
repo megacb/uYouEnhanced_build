@@ -882,30 +882,34 @@ BOOL isAd(YTIElementRenderer *self) {
 }
 %end
 
-// Hide the (Connect / Save) Buttons under the Video Player - 17.x.x and up - @PoomSmart (inspired by @arichornlover)
+// Hide the (Connect / Thanks / Save / Report) Buttons under the Video Player - 17.x.x and up - @PoomSmart (inspired by @arichornlover) DEPRECATED METHOD ⚠️
 %hook _ASDisplayView
 - (void)layoutSubviews {
     %orig;
     BOOL hideConnectButton = IS_ENABLED(@"hideConnectButton_enabled");
-//    BOOL hideShareButton = IS_ENABLED(@"hideShareButton_enabled"); // OLD
-//    BOOL hideRemixButton = IS_ENABLED(@"hideRemixButton_enabled"); // OLD
-//    BOOL hideThanksButton = IS_ENABLED(@"hideThanksButton_enabled"); // OLD
-//    BOOL hideAddToOfflineButton = IS_ENABLED(@"hideAddToOfflineButton_enabled"); // OLD
-//    BOOL hideClipButton = IS_ENABLED(@"hideClipButton_enabled"); // OLD
+//  BOOL hideShareButton = IS_ENABLED(@"hideShareButton_enabled"); // OLD
+//  BOOL hideRemixButton = IS_ENABLED(@"hideRemixButton_enabled"); // OLD
+    BOOL hideThanksButton = IS_ENABLED(@"hideThanksButton_enabled");
+//  BOOL hideAddToOfflineButton = IS_ENABLED(@"hideAddToOfflineButton_enabled"); // OLD
+//  BOOL hideClipButton = IS_ENABLED(@"hideClipButton_enabled"); // OLD
     BOOL hideSaveToPlaylistButton = IS_ENABLED(@"hideSaveToPlaylistButton_enabled");
+    BOOL hideReportButton = IS_ENABLED(@"hideReportButton_enabled");
 
     for (UIView *subview in self.subviews) {
         if ([subview.accessibilityLabel isEqualToString:@"connect account"]) {
             subview.hidden = hideConnectButton;
- //         subview.frame = hideConnectButton ? CGRectZero : subview.frame;
+        } else if ([subview.accessibilityLabel isEqualToString:@"Thanks"]) {
+            subview.hidden = hideRemixButton;
         } else if ([subview.accessibilityLabel isEqualToString:@"Save to playlist"]) {
             subview.hidden = hideSaveToPlaylistButton;
- //         subview.frame = hideSaveToPlaylistButton ? CGRectZero : subview.frame;
+        } else if ([subview.accessibilityLabel isEqualToString:@"Report"]) {
+            subview.hidden = hideReportButton;
         }
     }
 }
 %end
 
+// Hide the (Connect / Share / Remix / Thanks / Download / Clip / Save / Report) Buttons under the Video Player - 17.x.x and up - @PoomSmart (inspired by @arichornlover) - NEW METHOD
 static BOOL findCell(ASNodeController *nodeController, NSArray <NSString *> *identifiers) {
     for (id child in [nodeController children]) {
         if ([child isKindOfClass:%c(ELMNodeController)]) {
