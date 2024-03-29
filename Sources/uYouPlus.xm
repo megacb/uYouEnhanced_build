@@ -888,7 +888,7 @@ BOOL isAd(YTIElementRenderer *self) {
     %orig;
     BOOL hideConnectButton = IS_ENABLED(@"hideConnectButton_enabled");
 //  BOOL hideShareButton = IS_ENABLED(@"hideShareButton_enabled"); // OLD
-    BOOL hideRemixButton = IS_ENABLED(@"hideRemixButton_enabled"); // OLD
+//  BOOL hideRemixButton = IS_ENABLED(@"hideRemixButton_enabled"); // OLD
     BOOL hideThanksButton = IS_ENABLED(@"hideThanksButton_enabled");
 //  BOOL hideAddToOfflineButton = IS_ENABLED(@"hideAddToOfflineButton_enabled"); // OLD
 //  BOOL hideClipButton = IS_ENABLED(@"hideClipButton_enabled"); // OLD
@@ -899,7 +899,7 @@ BOOL isAd(YTIElementRenderer *self) {
         if ([subview.accessibilityLabel isEqualToString:@"connect account"]) {
             subview.hidden = hideConnectButton;
         } else if ([subview.accessibilityLabel isEqualToString:@"Thanks"]) {
-            subview.hidden = hideRemixButton;
+            subview.hidden = hideThanksButton;
         } else if ([subview.accessibilityLabel isEqualToString:@"Save to playlist"]) {
             subview.hidden = hideSaveToPlaylistButton;
         } else if ([subview.accessibilityLabel isEqualToString:@"Report"]) {
