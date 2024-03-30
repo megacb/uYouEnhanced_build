@@ -5,11 +5,11 @@ on:
       days:
         description: 'Days-worth of runs to keep for each workflow'
         required: true
-        default: '30'
+        default: '7' # default value is "30"
       minimum_runs:
         description: 'Minimum runs to keep for each workflow'
         required: true
-        default: '6'
+        default: '5' # default value is "6"
       delete_workflow_pattern:
         description: 'Name or filename of the workflow (if not set, all workflows are targeted)'
         required: false
@@ -40,6 +40,9 @@ on:
       dry_run:
         description: 'Logs simulated changes, no deletions are performed'
         required: false
+
+  schedule:
+    - cron: '0 0 * * *'
 
 jobs:
   del_runs:
