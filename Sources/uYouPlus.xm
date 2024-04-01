@@ -509,11 +509,20 @@ static NSString *accessGroupID() {
 }
 %end
 
-// Hide fullscreen action buttons - @bhackel
-%hook YTMainAppVideoPlayerOverlayViewController
-- (BOOL)isFullscreenActionsEnabled {
-    return IS_ENABLED(@"hideFullscreenActions_enabled") ? NO : %orig;
-}
+// Hide Fullscreen Actions buttons - @bhackel
+%group hideFullscreenActions
+    %hook YTMainAppVideoPlayerOverlayViewController
+    - (BOOL)isFullscreenActionsEnabled {
+        // This didn't work on its own - weird
+        return IS_ENABLED(@"hideFullscreenActions_enabled") ? NO : %orig;
+    }
+    %end
+    %hook YTFullscreenActionsView
+    - (BOOL)enabled {
+        // Attempt 2
+        return IS_ENABLED(@"hideFullscreenActions_enabled") ? NO : %orig;
+    }
+    %end
 %end
 
 # pragma mark - uYouPlus
@@ -1245,6 +1254,9 @@ static BOOL findCell(ASNodeController *nodeController, NSArray <NSString *> *ide
     }
     if (IS_ENABLED(@"portraitFullscreen_enabled")) {
         %init(gPortraitFullscreen);
+    }
+    if (IS_ENABLED(@"hideFullscreenActions_enabled")) {
+        %init(hideFullscreenActions);
     }
     if (IS_ENABLED(@"iPhoneLayout_enabled") && (UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPad)) {
         %init(giPhoneLayout);
