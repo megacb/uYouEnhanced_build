@@ -133,8 +133,29 @@ BOOL isAd(YTIElementRenderer *self) {
 %end
 %end
 
-// YouTube Premium Logo - @arichornlover - this doesn't always function.
+// YouTube Premium Logo - @arichornlover - this doesn't always function
+// Modern implementation - @bhackel
 %group gPremiumYouTubeLogo
+%hook YTHeaderLogoController
+    - (void)setTopbarLogoRenderer:(id)renderer {
+        // Modify the type of the icon before setting the renderer
+        YTITopbarLogoRenderer *logoRenderer = (YTITopbarLogoRenderer *)renderer;
+        YTIIcon *iconImage = logoRenderer.iconImage;
+        iconImage.iconType = 537; // magic number for Premium icon, hopefully it doesnt change. 158 is default logo.
+        // Use this modified renderer
+        %orig(logoRenderer);
+    }
+    // For when spoofing before 18.34.5
+    - (void)setPremiumLogo:(BOOL)isPremiumLogo {
+        isPremiumLogo = YES;
+        %orig;
+    }
+    - (BOOL)isPremiumLogo {
+        return YES;
+    }
+%end
+
+/*
 %hook YTHeaderLogoController
 - (void)setPremiumLogo:(BOOL)isPremiumLogo {
     isPremiumLogo = YES;
@@ -162,6 +183,7 @@ BOOL isAd(YTIElementRenderer *self) {
     } %orig(arg1);
 }
 %end
+*/
 %end
 
 // Fix App Group Directory by move it to document directory
