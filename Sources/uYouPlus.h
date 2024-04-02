@@ -59,6 +59,11 @@
 - (CGFloat)totalTime;
 @end
 
+// Enable Premium logo - @bhackel
+@interface YTITopbarLogoRenderer : NSObject
+@property(readonly, nonatomic) YTIIcon *iconImage;
+@end
+
 // uYouPlus
 @interface YTHeaderLogoController : UIView
 @property(readonly, nonatomic) long long pageStyle;
