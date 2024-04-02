@@ -507,6 +507,22 @@ BOOL isAd(YTIElementRenderer *self) {
 }
 %end
 
+// Hide Fullscreen Actions buttons - @bhackel
+%group hideFullscreenActions
+    %hook YTMainAppVideoPlayerOverlayViewController
+    - (BOOL)isFullscreenActionsEnabled {
+        // This didn't work on its own - weird
+        return IS_ENABLED(@"hideFullscreenActions_enabled") ? NO : %orig;
+    }
+    %end
+    %hook YTFullscreenActionsView
+    - (BOOL)enabled {
+        // Attempt 2
+        return IS_ENABLED(@"hideFullscreenActions_enabled") ? NO : %orig;
+    }
+    %end
+%end
+
 # pragma mark - uYouPlus
 // Video Player Options
 // Skips content warning before playing *some videos - @PoomSmart
@@ -1242,6 +1258,9 @@ static BOOL findCell(ASNodeController *nodeController, NSArray <NSString *> *ide
     }
     if (IS_ENABLED(@"portraitFullscreen_enabled")) {
         %init(gPortraitFullscreen);
+    }
+    if (IS_ENABLED(@"hideFullscreenActions_enabled")) {
+        %init(hideFullscreenActions);
     }
     if (IS_ENABLED(@"iPhoneLayout_enabled") && (UIDevice.currentDevice.userInterfaceIdiom == UIUserInterfaceIdiomPad)) {
         %init(giPhoneLayout);
