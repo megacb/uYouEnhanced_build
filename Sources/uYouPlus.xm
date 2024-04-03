@@ -281,10 +281,10 @@ BOOL isAd(YTIElementRenderer *self) {
     - (void)layoutSubviews {
         %orig;
         // Get the badge of this cell, as it is language-independent and unique
-        YTIconBadgeView *badgeView = self._iconBadgeView;
+        YTIconBadgeView *badgeView = [self valueForKey:@"_iconBadgeView"];
         // First null check for badgeView
         if (!badgeView) {
-            return; // Early return if badgeView is nil
+            return;
         }
         // Walk down the subviews to get to a specific view
         UIView *subview = badgeView.subviews.firstObject;
@@ -293,12 +293,12 @@ BOOL isAd(YTIElementRenderer *self) {
             return;
         }
         UIImageView *imageView = subview.subviews.firstObject;
-        // Third null check for the imageView
-        if (!imageView) {
+        // Third null/inavlid check for the imageView
+        if (!imageView || ![imageView respondsToSelector:@selector(description)]) {
             return;
         }
         // Get the description of this view
-        NSString *description = imageView.description;
+        NSString *description = [imageView description];
         // Check if "yt_outline_youtube_logo_icon" is in the description
         if ([description containsString:@"yt_outline_youtube_logo_icon"]) {
             self.hidden = YES;          // Hide the cell
