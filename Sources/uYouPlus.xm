@@ -696,16 +696,16 @@ BOOL isAd(YTIElementRenderer *self) {
 }
 %end
 
-%group gHidePreviousAndNextButton
-%hook YTColdConfig
-- (BOOL)removeNextPaddleForAllVideos { 
-    return YES; 
-}
-- (BOOL)removePreviousPaddleForAllVideos { 
-    return YES; 
-}
-%end
-%end
+// %group gHidePreviousAndNextButton
+// %hook YTColdConfig
+// - (BOOL)removeNextPaddleForAllVideos { 
+//     return YES; 
+// }
+// - (BOOL)removePreviousPaddleForAllVideos { 
+//     return YES; 
+// }
+// %end
+// %end
 
 // Hide Dark Overlay Background
 %group gHideOverlayDarkBackground
@@ -1237,9 +1237,9 @@ static BOOL findCell(ASNodeController *nodeController, NSArray <NSString *> *ide
     if (IS_ENABLED(@"hideSubscriptionsNotificationBadge_enabled")) {
         %init(gHideSubscriptionsNotificationBadge);
     }
-    if (IS_ENABLED(@"hidePreviousAndNextButton_enabled")) {
-        %init(gHidePreviousAndNextButton);
-    }
+    // if (IS_ENABLED(@"hidePreviousAndNextButton_enabled")) {
+    //     %init(gHidePreviousAndNextButton);
+    // }
     if (IS_ENABLED(@"hideOverlayDarkBackground_enabled")) {
         %init(gHideOverlayDarkBackground);
     }
