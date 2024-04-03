@@ -13,7 +13,15 @@
 #define SWITCH_ITEM2(t, d, k) [sectionItems addObject:[YTSettingsSectionItemClass switchItemWithTitle:t titleDescription:d accessibilityIdentifier:nil switchOn:IS_ENABLED(k) switchBlock:^BOOL (YTSettingsCell *cell, BOOL enabled) {[[NSUserDefaults standardUserDefaults] setBool:enabled forKey:k];SHOW_RELAUNCH_YT_SNACKBAR;return YES;} settingItemId:0]]
 
 static int contrastMode() {
-    return [[NSUserDefaults standardUserDefaults] integerForKey:@"lcm"];
+    NSString *appVersion = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
+    NSComparisonResult result1 = [appVersion compare:@"17.33.2" options:NSNumericSearch];
+    NSComparisonResult result2 = [appVersion compare:@"17.38.10" options:NSNumericSearch];
+
+    if (result1 != NSOrderedAscending && result2 != NSOrderedDescending) {
+        return [[NSUserDefaults standardUserDefaults] integerForKey:@"lcm"];
+    } else {
+        return 0;
+    }
 }
 static int appVersionSpoofer() {
     return [[NSUserDefaults standardUserDefaults] integerForKey:@"versionSpoofer"];
@@ -279,20 +287,53 @@ extern NSBundle *uYouPlusBundle();
     # pragma mark - UI interface options
     SECTION_HEADER(LOC(@"UI Interface Options"));
 
-    SWITCH_ITEM2(LOC(@"Low Contrast Mode"), LOC(@"This will lower the contrast of texts and buttons, similar to the old YouTube Interface. App restart is required."), @"lowContrastMode_enabled");
-    YTSettingsSectionItem *lowContrastMode = [%c(YTSettingsSectionItem)
-        itemWithTitle:@"Low Contrast Mode Selector"
-        accessibilityIdentifier:nil
-        detailTextBlock:^NSString *() {
-            switch (contrastMode()) {
-                case 1:
-                    return LOC(@"Custom Color");
-                case 0:
-                default:
-                    return LOC(@"Default");
+YTSettingsSectionItem *lowContrastMode = [YTSettingsSectionItemClass
+    switchItemWithTitle:LOC(@"Low Contrast Mode")
+    titleDescription:LOC(@"This will lower the contrast of texts and buttons, similar to the old YouTube Interface. App restart is required.")
+    accessibilityIdentifier:nil
+    switchOn:IS_ENABLED(@"lowContrastMode_enabled")
+    switchBlock:^BOOL (YTSettingsCell *cell, BOOL enabled) {
+        if (enabled) {
+            NSString *appVersion = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
+            NSComparisonResult result1 = [appVersion compare:@"17.33.2" options:NSNumericSearch];
+            NSComparisonResult result2 = [appVersion compare:@"17.38.10" options:NSNumericSearch];
+            if (result1 == NSOrderedAscending || result2 == NSOrderedDescending) {
+                UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Incompatibile" message:[NSString stringWithFormat:@"LowContrastMode is only available for app versions between v17.33.2-v17.38.10. you are using v%@, \n\nWorkaround: if you want to use this then I recommend enabling \"Fix LowContrastMode\" Option.", appVersion] preferredStyle:UIAlertControllerStyleAlert];
+                UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
+                [alert addAction:okAction];
+                [settingsViewController presentViewController:alert animated:YES completion:nil];
+                return NO;
             }
         }
-        selectBlock:^BOOL (YTSettingsCell *cell, NSUInteger arg1) {
+        [[NSUserDefaults standardUserDefaults] setBool:enabled forKey:@"lowContrastMode_enabled"];
+        [settingsViewController reloadData];
+        SHOW_RELAUNCH_YT_SNACKBAR;
+        return YES;
+    }
+    settingItemId:0
+];
+[sectionItems addObject:lowContrastMode];
+YTSettingsSectionItem *lowContrastModeButton = [%c(YTSettingsSectionItem)
+    itemWithTitle:@"Low Contrast Mode Selector"
+    accessibilityIdentifier:nil
+    detailTextBlock:^NSString *() {
+        switch (contrastMode()) {
+            case 1:
+                return LOC(@"Custom Color");
+            case 0:
+            default:
+                return LOC(@"Default");
+        }
+    }
+    selectBlock:^BOOL (YTSettingsCell *cell, NSUInteger arg1) {
+        if (contrastMode() == 0) {
+            NSString *appVersion = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Incompatibile" message:[NSString stringWithFormat:@"LowContrastMode is only available for app versions between v17.33.2-v17.38.10. you are using v%@, \n\nWorkaround: if you want to use this then I recommend enabling \"Fix LowContrastMode\" Option.", appVersion] preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
+            [alert addAction:okAction];
+            [settingsViewController presentViewController:alert animated:YES completion:nil];
+            return NO;
+        } else {
             NSArray <YTSettingsSectionItem *> *rows = @[
                 [YTSettingsSectionItemClass checkmarkItemWithTitle:LOC(@"Default") titleDescription:nil selectBlock:^BOOL (YTSettingsCell *cell, NSUInteger arg1) {
                     [[NSUserDefaults standardUserDefaults] setInteger:0 forKey:@"lcm"];
@@ -310,8 +351,9 @@ extern NSBundle *uYouPlusBundle();
             [settingsViewController pushViewController:picker];
             return YES;
         }
-    ];
-    [sectionItems addObject:lowContrastMode];
+    }
+];
+[sectionItems addObject:lowContrastModeButton];
     SWITCH_ITEM2(LOC(@"Fix LowContrastMode"), LOC(@"This will fix the LowContrastMode functionality by Spoofing to YouTube v17.38.10. App restart is required."), @"fixLowContrastMode_enabled");
     SWITCH_ITEM2(LOC(@"Disable Modern Buttons"), LOC(@"This will remove the new Modern / Chip Buttons in the YouTube App. but not all of them. App restart is required."), @"disableModernButtons_enabled");
     SWITCH_ITEM2(LOC(@"Disable Rounded Corners on Hints"), LOC(@"This will make the Hints in the App to not have Rounded Corners. App restart is required."), @"disableRoundedHints_enabled");
