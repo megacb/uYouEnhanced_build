@@ -27,6 +27,7 @@
 #import "Tweaks/YouTubeHeader/YTInlinePlayerBarContainerView.h"
 #import "Tweaks/YouTubeHeader/YTInnerTubeCollectionViewController.h"
 #import "Tweaks/YouTubeHeader/YTPivotBarItemView.h"
+#import "Tweaks/YouTubeHeader/YTCollectionViewCell.h"
 
 // Hide buttons under the video player by @PoomSmart
 #import "Tweaks/YouTubeHeader/ASCollectionElement.h"
@@ -62,6 +63,13 @@
 // Enable Premium logo - @bhackel
 @interface YTITopbarLogoRenderer : NSObject
 @property(readonly, nonatomic) YTIIcon *iconImage;
+@end
+
+// Hide Premium Promo in You tab - @bhackel
+@interface YTFormattedStringLabel : UILabel
+@end
+@interface YTLinkCell : YTCollectionViewCell
+@property(readonly, nonatomic) YTFormattedStringLabel *titleLabel;
 @end
 
 // uYouPlus

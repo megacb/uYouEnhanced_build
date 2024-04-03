@@ -274,6 +274,25 @@ BOOL isAd(YTIElementRenderer *self) {
 - (BOOL)savedSettingShouldExpire { return NO; }
 %end
 
+// Hide Premium promos in "You" and "Library" tab - @bhackel
+%group gHidePremiumPromos
+    // Hide "Get Youtube Premium" in the "You" tab
+    %hook YTLinkCell
+    - (void)layoutSubviews {
+        %orig;
+        // Get the text label object for this cell
+        YTFormattedStringLabel *label = self.titleLabel;
+        // Check if the cell is a premium promo
+        if ([label.accessibilityLabel isEqualToString:@"Get YouTube Premium"]) {
+            // Hide the cell
+            self.hidden = YES;
+            self.frame = CGRectZero;
+        }
+    }
+    %end
+%end
+
+
 // YTShortsProgress - https://github.com/PoomSmart/YTShortsProgress/
 %hook YTShortsPlayerViewController
 - (BOOL)shouldAlwaysEnablePlayerBar { return YES; }
@@ -1321,6 +1340,9 @@ static BOOL findCell(ASNodeController *nodeController, NSArray <NSString *> *ide
     }
     if (IS_ENABLED(@"YTTapToSeek_enabled")) {
         %init(YTTTS_Tweak);
+    }
+    if (IS_ENABLED(@"hidePremiumPromos_enabled")) {
+        %init(gHidePremiumPromos);
     }
 
     // YTNoModernUI - @arichorn
