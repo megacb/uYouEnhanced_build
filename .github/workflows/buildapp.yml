@@ -16,6 +16,11 @@ on:
         default: "3.0.3"
         required: true
         type: string
+      uyouenhanced_version:
+        description: "The version of uYouEnhanced (Commit ID)"
+        default: "main"
+        required: true
+        type: string
       decrypted_youtube_url:
         description: "The direct URL to the decrypted YouTube ipa"
         default: ""
@@ -58,6 +63,7 @@ jobs:
         uses: actions/checkout@v4.1.1
         with:
           path: main
+          ref: ${{ inputs.uyouenhanced_version }}
           submodules: recursive
 
       - name: Install Dependencies
