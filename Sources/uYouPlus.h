@@ -27,6 +27,7 @@
 #import "Tweaks/YouTubeHeader/YTInlinePlayerBarContainerView.h"
 #import "Tweaks/YouTubeHeader/YTInnerTubeCollectionViewController.h"
 #import "Tweaks/YouTubeHeader/YTPivotBarItemView.h"
+#import "Tweaks/YouTubeHeader/YTCollectionViewCell.h"
 
 // Hide buttons under the video player by @PoomSmart
 #import "Tweaks/YouTubeHeader/ASCollectionElement.h"
