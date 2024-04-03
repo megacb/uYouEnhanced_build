@@ -280,13 +280,29 @@ BOOL isAd(YTIElementRenderer *self) {
     %hook YTLinkCell
     - (void)layoutSubviews {
         %orig;
-        // Get the text label object for this cell
-        YTFormattedStringLabel *label = self.titleLabel;
-        // Check if the cell is a premium promo
-        if ([label.accessibilityLabel isEqualToString:@"Get YouTube Premium"]) {
-            // Hide the cell
-            self.hidden = YES;
-            self.frame = CGRectZero;
+        // Get the badge of this cell, as it is language-independent and unique
+        YTIconBadgeView *badgeView = self._iconBadgeView;
+        // First null check for badgeView
+        if (!badgeView) {
+            return; // Early return if badgeView is nil
+        }
+        // Walk down the subviews to get to a specific view
+        UIView *subview = badgeView.subviews.firstObject;
+        // Second null check for the first subview
+        if (!subview) {
+            return;
+        }
+        UIImageView *imageView = subview.subviews.firstObject;
+        // Third null check for the imageView
+        if (!imageView) {
+            return;
+        }
+        // Get the description of this view
+        NSString *description = imageView.description;
+        // Check if "yt_outline_youtube_logo_icon" is in the description
+        if ([description containsString:@"yt_outline_youtube_logo_icon"]) {
+            self.hidden = YES;          // Hide the cell
+            self.frame = CGRectZero;    // Eliminate free space
         }
     }
     %end

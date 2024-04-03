@@ -66,11 +66,12 @@
 @end
 
 // Hide Premium Promo in You tab - @bhackel
-@interface YTFormattedStringLabel : UILabel
+@interface YTIconBadgeView : UIView
 @end
 @interface YTLinkCell : YTCollectionViewCell
-@property(readonly, nonatomic) YTFormattedStringLabel *titleLabel;
+@property(readonly, nonatomic) YTIconBadgeView *_iconBadgeView;
 @end
+
 
 // uYouPlus
 @interface YTHeaderLogoController : UIView
