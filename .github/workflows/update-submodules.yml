@@ -18,7 +18,7 @@ jobs:
 
       - name: Add PoomSmart/YouGroupSettings submodule
         run: |
-          git submodule add https://github.com/arichorn/YouGroupSettings.git Tweaks/YouGroupSettings
+          git submodule add https://github.com/arichornlover/YouGroupSettings.git Tweaks/YouGroupSettings
           git add .
           git commit -m "added PoomSmart/YouGroupSettings submodule (1/2)"
           git push origin
