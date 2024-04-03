@@ -16,6 +16,20 @@ NSBundle *uYouPlusBundle() {
 }
 NSBundle *tweakBundle = uYouPlusBundle();
 
+// uYouPlusSettings.xm
+static int contrastMode() {
+    NSString *appVersion = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
+    NSComparisonResult result1 = [appVersion compare:@"17.33.2" options:NSNumericSearch];
+    NSComparisonResult result2 = [appVersion compare:@"17.38.10" options:NSNumericSearch];
+
+    if (result1 != NSOrderedAscending && result2 != NSOrderedDescending) {
+        return [[NSUserDefaults standardUserDefaults] integerForKey:@"lcm"];
+    } else {
+        return 0;
+    }
+}
+//
+
 # pragma mark - Tweaks
 
 // Activate FLEX
