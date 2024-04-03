@@ -560,10 +560,12 @@ BOOL isAd(YTIElementRenderer *self) {
 
 // YTStockVolumeHUD - https://github.com/lilacvibes/YTStockVolumeHUD
 %group gStockVolumeHUD
-%hook YTVolumeBarView
-- (void)volumeChanged:(id)arg1 {
-        %orig(nil);
+// Use YTColdConfig's method instead of YTStockVolumeHUD.xm, see https://x.com/PoomSmart/status/1756904290445332653
+%hook YTColdConfig
+- (BOOL)iosUseSystemVolumeControlInFullscreen {
+    return IS_ENABLED(@"stockVolumeHUD_enabled") ? YES : %orig;
 }
+%end
 %end
 
 %hook UIApplication 
