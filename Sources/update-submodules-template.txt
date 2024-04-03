@@ -22,8 +22,8 @@ jobs:
         run: |
 #         git submodule add https://github.com/PoomSmart/FLEXing.git Tweaks/FLEXing
           git submodule add https://github.com/dayanch96/uYouLocalization.git Tweaks/uYouLocalization
-          git submodule add https://github.com/arichorn/YTHoldForSpeed.git Tweaks/YTHoldForSpeed
-          git submodule add https://github.com/arichorn/YouGroupSettings.git Tweaks/YouGroupSettings
+          git submodule add https://github.com/arichornlover/YTHoldForSpeed.git Tweaks/YTHoldForSpeed
+          git submodule add https://github.com/arichornlover/YouGroupSettings.git Tweaks/YouGroupSettings
           git add .
           git commit -m "added uYouEnhanced submodules"
           git push origin
