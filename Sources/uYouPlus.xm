@@ -352,6 +352,15 @@ BOOL isAd(YTIElementRenderer *self) {
 
 // Fix LowContrastMode - @arichornlover
 %group gFixLowContrastMode
+%hook NSUserDefaults
+- (NSInteger)integerForKey:(NSString *)defaultName {
+    if ([defaultName isEqualToString:@"lcm"]) {
+        return contrastMode();
+    }
+    return %orig;
+}
+%end
+
 %hook NSBundle
 - (id)objectForInfoDictionaryKey:(NSString *)key {
     if ([key isEqualToString:@"CFBundleShortVersionString"]) {
@@ -367,6 +376,7 @@ BOOL isAd(YTIElementRenderer *self) {
 }
 %end
 
+/*
 %hook YTSettingsCell // Remove v17.38.10 Version Number - @Dayanch96
 - (void)setDetailText:(id)arg1 {
     NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
@@ -377,9 +387,10 @@ BOOL isAd(YTIElementRenderer *self) {
     } %orig(arg1);
 }
 %end
+*/
 %end
 
-// Disable Modern/Rounded Buttons (_ASDisplayView not included) - @arichornlover
+// Disable Modern/Rounded Buttons (_ASDisplayView Version's not included) - @arichornlover
 %group gDisableModernButtons 
 %hook YTQTMButton // Disable Modern/Rounded Buttons
 + (BOOL)buttonModernizationEnabled { return NO; }
