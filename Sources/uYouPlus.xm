@@ -299,7 +299,7 @@ BOOL isAd(YTIElementRenderer *self) {
 - (BOOL)enablePlayerBarForVerticalVideoWhenControlsHiddenInFullscreen { return YES; }
 %end
 
-// YTNoTracking - @arichorn - https://github.com/arichorn/YTNoTracking/
+// YTNoTracking - @arichornlover - https://github.com/arichornlover/YTNoTracking/
 %hook UIApplication
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey, id> *)options {
     NSString *originalURLString = [url absoluteString];
@@ -350,10 +350,21 @@ BOOL isAd(YTIElementRenderer *self) {
 }
 %end
 
-// Fix LowContrastMode - @arichorn
+// Fix LowContrastMode - @arichornlover
 %group gFixLowContrastMode
-%hook YTVersionUtils // Supported LowContrastMode Version
-+ (NSString *)appVersion { return @"17.38.10"; }
+%hook NSBundle
+- (id)objectForInfoDictionaryKey:(NSString *)key {
+    if ([key isEqualToString:@"CFBundleShortVersionString"]) {
+        return @"17.38.10";
+    }
+    return %orig;
+}
+%end
+
+%hook YTVersionUtils
++ (NSString *)appVersion { 
+    return @"17.38.10";
+}
 %end
 
 %hook YTSettingsCell // Remove v17.38.10 Version Number - @Dayanch96
@@ -368,21 +379,21 @@ BOOL isAd(YTIElementRenderer *self) {
 %end
 %end
 
-// Disable Modern/Rounded Buttons (_ASDisplayView not included) - @arichorn
+// Disable Modern/Rounded Buttons (_ASDisplayView not included) - @arichornlover
 %group gDisableModernButtons 
 %hook YTQTMButton // Disable Modern/Rounded Buttons
 + (BOOL)buttonModernizationEnabled { return NO; }
 %end
 %end
 
-// Disable Rounded Hints with no Rounded Corners - @arichorn
+// Disable Rounded Hints with no Rounded Corners - @arichornlover
 %group gDisableRoundedHints
 %hook YTBubbleHintView // Disable Modern/Rounded Hints
 + (BOOL)modernRoundedCornersEnabled { return NO; }
 %end
 %end
 
-// Disable Modern Flags - @arichorn
+// Disable Modern Flags - @arichornlover
 %group gDisableModernFlags
 %hook YTColdConfig
 // Disable Modern Content
@@ -423,7 +434,7 @@ BOOL isAd(YTIElementRenderer *self) {
 %end
 %end
 
-// Disable Ambient Mode in Fullscreen - @arichorn
+// Disable Ambient Mode in Fullscreen - @arichornlover
 %group gDisableAmbientMode
 %hook YTCinematicContainerView
 - (BOOL)watchFullScreenCinematicSupported {
