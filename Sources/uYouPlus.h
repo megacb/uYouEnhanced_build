@@ -52,7 +52,7 @@
 
 // Hide Double tap to seek Overlay
 @interface YTInlinePlayerDoubleTapIndicatorView : UIView
-@property (nonatomic, strong) UIView *_scrimOverlay;
+@property (nonatomic, strong) UIView *scrimOverlay;
 @end
 
 // YTTapToSeek - https://github.com/bhackel/YTTapToSeek
