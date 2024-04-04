@@ -42,8 +42,8 @@ on:
         description: 'Logs simulated changes, no deletions are performed'
         required: false
 
-  schedule:
-    - cron: '0 0 * * *'
+# schedule:
+#   - cron: '0 0 * * *'
 
 jobs:
   del_runs:
