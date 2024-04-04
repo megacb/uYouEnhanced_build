@@ -622,17 +622,15 @@ BOOL isAd(YTIElementRenderer *self) {
 }
 %end
 
-/* DISABLED
 // Hide double tap to seek overlay - @arichornlover
 %hook YTInlinePlayerDoubleTapIndicatorView
 - (void)layoutSubviews {
     %orig;
     if (IS_ENABLED(@"hideDoubleTapToSeekOverlay_enabled")) {
-        self._scrimOverlay.backgroundColor = [UIColor clearColor];
+        self.scrimOverlay.backgroundColor = [UIColor clearColor];
     }
 }
 %end
-*/
 
 // Video Controls Overlay Options
 // Hide CC / Hide Autoplay switch / Hide YTMusic Button / Enable Share Button / Enable Save to Playlist Button
