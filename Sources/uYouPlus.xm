@@ -301,8 +301,30 @@ BOOL isAd(YTIElementRenderer *self) {
         NSString *description = [imageView description];
         // Check if "yt_outline_youtube_logo_icon" is in the description
         if ([description containsString:@"yt_outline_youtube_logo_icon"]) {
-            self.hidden = YES;          // Hide the cell
-            self.frame = CGRectZero;    // Eliminate free space
+            // Only perform changes once
+            if (self.hidden) {
+                return;
+            }
+            // Move all subviews that are below this one upwards to remove blank space
+            CGFloat viewHeight = self.frame.size.height;
+            bool foundThisSubview = false;
+            for (UIView *subview in self.superview.subviews) {
+                if (foundThisSubview) {
+                    CGFloat oldX = subview.frame.origin.x;
+                    CGFloat newY = subview.frame.origin.y - viewHeight;
+                    CGFloat width = subview.frame.size.width;
+                    CGFloat height = subview.frame.size.height;
+                    subview.frame = CGRectMake(oldX, newY, width, height);
+                }
+                // If we find this subview, we know that all subviews below it are to be moved
+                if (subview == self) {
+                    foundThisSubview = true;
+                }
+            }
+            // Remove this cell from existence
+            self.hidden = YES;
+            self.frame = CGRectZero;
+            [self removeFromSuperview];
         }
     }
     %end
