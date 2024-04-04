@@ -275,7 +275,7 @@ extern NSBundle *uYouPlusBundle();
     SWITCH_ITEM2(LOC(@"Hide `Your data in YouTube` Section"), LOC(@"App restart is required."), @"disableYourDataInYouTubeSection_enabled");
     SWITCH_ITEM2(LOC(@"Hide `Privacy` Section"), LOC(@"App restart is required."), @"disablePrivacySection_enabled");
     SWITCH_ITEM2(LOC(@"Hide `Live Chat` Section"), LOC(@"App restart is required."), @"disableLiveChatSection_enabled");
-    SWITCH_ITEM2(LOC(@"Hide Premium Promos"), LOC(@"App restart is required."), @"hidePremiumPromos_enabled");
+    SWITCH_ITEM2(LOC(@"Hide `Get Youtube Premium` Section"), LOC(@"App restart is required."), @"hidePremiumPromos_enabled");
 
     # pragma mark - UI interface options
     SECTION_HEADER(LOC(@"UI Interface Options"));

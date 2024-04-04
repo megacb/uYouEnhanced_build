@@ -277,55 +277,96 @@ BOOL isAd(YTIElementRenderer *self) {
 // Hide Premium promos in "You" and "Library" tab - @bhackel
 %group gHidePremiumPromos
     // Hide "Get Youtube Premium" in the "You" tab
-    %hook YTLinkCell
+    %hook YTAsyncCollectionView
+    // Property for tracking if the cell was hidden
     - (void)layoutSubviews {
         %orig;
-        // Get the badge of this cell, as it is language-independent and unique
-        YTIconBadgeView *badgeView = [self valueForKey:@"_iconBadgeView"];
-        // First null check for badgeView
-        if (!badgeView) {
-            return;
-        }
-        // Walk down the subviews to get to a specific view
-        UIView *subview = badgeView.subviews.firstObject;
-        // Second null check for the first subview
-        if (!subview) {
-            return;
-        }
-        UIImageView *imageView = subview.subviews.firstObject;
-        // Third null/inavlid check for the imageView
-        if (!imageView || ![imageView respondsToSelector:@selector(description)]) {
-            return;
-        }
-        // Get the description of this view
-        NSString *description = [imageView description];
-        // Check if "yt_outline_youtube_logo_icon" is in the description
-        if ([description containsString:@"yt_outline_youtube_logo_icon"]) {
-            // Only perform changes once
-            if (self.hidden) {
-                return;
+        // Check each subview for the "Get YouTube Premium" cell
+        UIView *foundSubview = nil;
+        for (UIView *subview in self.subviews) {
+            // The cell is of type YTLinkCell
+            if (![subview isKindOfClass:NSClassFromString(@"YTLinkCell")]) {
+                continue;
             }
-            // Move all subviews that are below this one upwards to remove blank space
-            CGFloat viewHeight = self.frame.size.height;
-            bool foundThisSubview = false;
-            for (UIView *subview in self.superview.subviews) {
-                if (foundThisSubview) {
-                    CGFloat oldX = subview.frame.origin.x;
-                    CGFloat newY = subview.frame.origin.y - viewHeight;
-                    CGFloat width = subview.frame.size.width;
-                    CGFloat height = subview.frame.size.height;
-                    subview.frame = CGRectMake(oldX, newY, width, height);
-                }
-                // If we find this subview, we know that all subviews below it are to be moved
-                if (subview == self) {
-                    foundThisSubview = true;
-                }
+            // Get the badge of this cell, as it is language-independent and unique
+            YTIconBadgeView *badgeView = [subview valueForKey:@"_iconBadgeView"];
+            if (!badgeView) {
+                continue;
             }
-            // Remove this cell from existence
-            self.hidden = YES;
-            self.frame = CGRectZero;
-            [self removeFromSuperview];
+            // Walk down the subviews to get to a specific view
+            UIView *firstSubview = badgeView.subviews.firstObject;
+            if (!subview) {
+                continue;
+            }
+            UIImageView *secondSubview = firstSubview.subviews.firstObject;
+            if (!secondSubview || ![secondSubview respondsToSelector:@selector(description)]) {
+                continue;
+            }
+            // Check if "yt_outline_youtube_logo_icon" is in the description
+            NSString *description = secondSubview.description;
+            if ([description containsString:@"yt_outline_youtube_logo_icon"]) {
+                foundSubview = subview;
+                break;
+            }
         }
+        if (self.hidden) {
+            return;
+        }
+        
+        // Move all subviews that are below this cell upwards to remove blank space
+        CGFloat viewHeight = foundSubview.frame.size.height;
+        bool foundThisSubview = false;
+        // Create a copy of foundSubview.superview.subviews
+        NSArray *subviewsCopy = [foundSubview.superview.subviews copy];
+        for (UIView *subview in subviewsCopy) {
+            if (foundThisSubview) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Debug"
+                                                                                message:@"moved a view up"
+                                                                            preferredStyle:UIAlertControllerStyleAlert];
+                    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK"
+                                                                    style:UIAlertActionStyleDefault
+                                                                    handler:nil];
+                    
+                    [alert addAction:okAction];
+                    // Find the appropriate view controller to present this alert
+                    UIViewController *rootViewController = [UIApplication sharedApplication].keyWindow.rootViewController;
+                    while (rootViewController.presentedViewController) {
+                        rootViewController = rootViewController.presentedViewController;
+                    }
+                    [rootViewController presentViewController:alert animated:YES completion:nil];
+                });
+                CGFloat oldX = subview.frame.origin.x;
+                CGFloat newY = subview.frame.origin.y - viewHeight;
+                CGFloat width = subview.frame.size.width;
+                CGFloat height = subview.frame.size.height;
+                subview.frame = CGRectMake(oldX, newY, width, height);
+            }
+            // If we find this subview, we know that all subviews below it are to be moved
+            if (subview == foundSubview) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Debug"
+                                                                                message:@"found this subview"
+                                                                            preferredStyle:UIAlertControllerStyleAlert];
+                    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK"
+                                                                    style:UIAlertActionStyleDefault
+                                                                    handler:nil];
+                    
+                    [alert addAction:okAction];
+                    // Find the appropriate view controller to present this alert
+                    UIViewController *rootViewController = [UIApplication sharedApplication].keyWindow.rootViewController;
+                    while (rootViewController.presentedViewController) {
+                        rootViewController = rootViewController.presentedViewController;
+                    }
+                    [rootViewController presentViewController:alert animated:YES completion:nil];
+                });
+                foundThisSubview = true;
+            }
+        }
+        // Remove this cell from existence
+        foundSubview.hidden = YES;
+        foundSubview.frame = CGRectZero;
+        
     }
     %end
 %end
