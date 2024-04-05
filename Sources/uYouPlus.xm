@@ -214,6 +214,7 @@ BOOL isAd(YTIElementRenderer *self) {
 // YTNoHoverCards: https://github.com/level3tjg/YTNoHoverCards
 %hook YTCreatorEndscreenView
 - (void)setHidden:(BOOL)hidden {
+    NSLog(@"bhackel debug: setHidden method called");
     if (IS_ENABLED(@"hideHoverCards_enabled"))
         hidden = YES;
     %orig;
@@ -274,99 +275,125 @@ BOOL isAd(YTIElementRenderer *self) {
 - (BOOL)savedSettingShouldExpire { return NO; }
 %end
 
-// Hide Premium promos in "You" and "Library" tab - @bhackel
+// Hide Premium promos in "You" tab - @bhackel
 %group gHidePremiumPromos
     // Hide "Get Youtube Premium" in the "You" tab
-    %hook YTAsyncCollectionView
-    // Property for tracking if the cell was hidden
-    - (void)layoutSubviews {
-        %orig;
-        // Check each subview for the "Get YouTube Premium" cell
-        UIView *foundSubview = nil;
-        for (UIView *subview in self.subviews) {
-            // The cell is of type YTLinkCell
-            if (![subview isKindOfClass:NSClassFromString(@"YTLinkCell")]) {
-                continue;
+    %hook YTAppCollectionViewController
+    - (void)loadWithModel:(YTISectionListRenderer *)model {
+        NSLog(@"bhackel debug: loadWithModel method called");
+        NSMutableArray <YTISectionListSupportedRenderers *> *overallContentsArray = model.contentsArray;
+        // Check each item in the overall array - this represents the whole You page
+        YTISectionListSupportedRenderers *supportedRenderers;
+        for (supportedRenderers in overallContentsArray) {
+            NSLog(@"bhackel debug: in 1st loop");
+            YTIItemSectionRenderer *itemSectionRenderer = supportedRenderers.itemSectionRenderer;
+            // Check each subobject - this would be visible as a cell in the You page
+            NSMutableArray <YTIItemSectionSupportedRenderers *> *subContentsArray = itemSectionRenderer.contentsArray;
+            bool found = NO;
+            YTIItemSectionSupportedRenderers *itemSectionSupportedRenderers;
+            for (itemSectionSupportedRenderers in subContentsArray) {
+                NSLog(@"bhackel debug: in 2nd loop");
+                // Check for a link cell
+                if ([itemSectionSupportedRenderers hasCompactLinkRenderer]) {
+                    NSLog(@"bhackel debug: hasCompactLinkRenderer");
+                    YTICompactLinkRenderer *compactLinkRenderer = [itemSectionSupportedRenderers compactLinkRenderer];
+                    // Check for an icon in this cell
+                    if ([compactLinkRenderer hasIcon]) {
+                        NSLog(@"bhackel debug: hasIcon");
+                        YTIIcon *icon = [compactLinkRenderer icon];
+                        // Check if the icon is for the premium promo
+                        if ([icon hasIconType] && icon.iconType == 117) {
+                            NSLog(@"bhackel debug: iconType == 117, found... :D");
+                            found = YES;
+                            break;
+                        }
+                    }
+                }
             }
-            // Get the badge of this cell, as it is language-independent and unique
-            YTIconBadgeView *badgeView = [subview valueForKey:@"_iconBadgeView"];
-            if (!badgeView) {
-                continue;
-            }
-            // Walk down the subviews to get to a specific view
-            UIView *firstSubview = badgeView.subviews.firstObject;
-            if (!subview) {
-                continue;
-            }
-            UIImageView *secondSubview = firstSubview.subviews.firstObject;
-            if (!secondSubview || ![secondSubview respondsToSelector:@selector(description)]) {
-                continue;
-            }
-            // Check if "yt_outline_youtube_logo_icon" is in the description
-            NSString *description = secondSubview.description;
-            if ([description containsString:@"yt_outline_youtube_logo_icon"]) {
-                foundSubview = subview;
+            // Remove object from array - perform outside of loop to avoid error
+            if (found) {
+                NSLog(@"bhackel debug: removing...");
+                [subContentsArray removeObject:itemSectionSupportedRenderers];
                 break;
             }
         }
-        if (self.hidden) {
-            return;
-        }
-        
-        // Move all subviews that are below this cell upwards to remove blank space
-        CGFloat viewHeight = foundSubview.frame.size.height;
-        bool foundThisSubview = false;
-        // Create a copy of foundSubview.superview.subviews
-        NSArray *subviewsCopy = [foundSubview.superview.subviews copy];
-        for (UIView *subview in subviewsCopy) {
-            if (foundThisSubview) {
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Debug"
-                                                                                message:@"moved a view up"
-                                                                            preferredStyle:UIAlertControllerStyleAlert];
-                    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK"
-                                                                    style:UIAlertActionStyleDefault
-                                                                    handler:nil];
-                    
-                    [alert addAction:okAction];
-                    // Find the appropriate view controller to present this alert
-                    UIViewController *rootViewController = [UIApplication sharedApplication].keyWindow.rootViewController;
-                    while (rootViewController.presentedViewController) {
-                        rootViewController = rootViewController.presentedViewController;
+        %orig;
+    }
+    %end
+%end
+
+// Fake premium in the You tab - @bhackel
+%group gYouTabFakePremium
+    %hook YTAppCollectionViewController
+    - (void)loadWithModel:(YTISectionListRenderer *)model {
+        NSLog(@"bhackel debug: loadWithModel method called");
+        NSUInteger yourVideosIndex = -1;
+        NSMutableArray <YTISectionListSupportedRenderers *> *overallContentsArray = model.contentsArray;
+        // Check each item in the overall array - this represents the whole You page
+        YTISectionListSupportedRenderers *supportedRenderers;
+        for (supportedRenderers in overallContentsArray) {
+            NSLog(@"bhackel debug: in 1st loop");
+            YTIItemSectionRenderer *itemSectionRenderer = supportedRenderers.itemSectionRenderer;
+            // Check each subobject - this would be visible as a cell in the You page
+            NSMutableArray <YTIItemSectionSupportedRenderers *> *subContentsArray = itemSectionRenderer.contentsArray;
+            YTIItemSectionSupportedRenderers *itemSectionSupportedRenderers;
+            for (itemSectionSupportedRenderers in subContentsArray) {
+                NSLog(@"bhackel debug: in 2nd loop");
+                // Check for a specific type of cell of type CompactLinkRenderer
+                if ([itemSectionSupportedRenderers hasCompactLinkRenderer]) {
+                    NSLog(@"bhackel debug: hasCompactLinkRenderer");
+                    YTICompactLinkRenderer *compactLinkRenderer = [itemSectionSupportedRenderers compactLinkRenderer];
+                    // Check for an icon in this cell
+                    if ([compactLinkRenderer hasIcon]) {
+                        NSLog(@"bhackel debug: hasIcon");
+                        YTIIcon *icon = [compactLinkRenderer icon];
+                        // Check if the icon is for the premium promo
+                        if ([icon hasIconType] && icon.iconType == 117) {
+                            NSLog(@"bhackel debug: iconType == 117, found... :D");
+                            // Modify the icon type to be Premium
+                            icon.iconType = 741;
+                            // Modify the text
+                            ((YTIStringRun *)(compactLinkRenderer.title.runsArray.firstObject)).text = @"Your Premium benefits";
+                        }
                     }
-                    [rootViewController presentViewController:alert animated:YES completion:nil];
-                });
-                CGFloat oldX = subview.frame.origin.x;
-                CGFloat newY = subview.frame.origin.y - viewHeight;
-                CGFloat width = subview.frame.size.width;
-                CGFloat height = subview.frame.size.height;
-                subview.frame = CGRectMake(oldX, newY, width, height);
-            }
-            // If we find this subview, we know that all subviews below it are to be moved
-            if (subview == foundSubview) {
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Debug"
-                                                                                message:@"found this subview"
-                                                                            preferredStyle:UIAlertControllerStyleAlert];
-                    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK"
-                                                                    style:UIAlertActionStyleDefault
-                                                                    handler:nil];
-                    
-                    [alert addAction:okAction];
-                    // Find the appropriate view controller to present this alert
-                    UIViewController *rootViewController = [UIApplication sharedApplication].keyWindow.rootViewController;
-                    while (rootViewController.presentedViewController) {
-                        rootViewController = rootViewController.presentedViewController;
+                }
+                // Check for a specific type of cell of type CompactListItemRenderer
+                if ([itemSectionSupportedRenderers hasCompactListItemRenderer]) {
+                    NSLog(@"bhackel debug: 2 hasCompactListItemRenderer");
+                    YTICompactListItemRenderer *compactListItemRenderer = itemSectionSupportedRenderers.compactListItemRenderer;
+                    if ([compactListItemRenderer hasThumbnail]) {
+                        NSLog(@"bhackel debug: 2 hasThumbnail");
+                        YTICompactListItemThumbnailSupportedRenderers *thumbnail = compactListItemRenderer.thumbnail;
+                        if ([thumbnail hasIconThumbnailRenderer]) {
+                            NSLog(@"bhackel debug: 2 hasIconThumbnailRenderer");
+                            YTIIconThumbnailRenderer *iconThumbnailRenderer = thumbnail.iconThumbnailRenderer;
+                            if ([iconThumbnailRenderer hasIcon]) {
+                                NSLog(@"bhackel debug: 2 hasIcon");
+                                YTIIcon *icon = iconThumbnailRenderer.icon;
+                                if ([icon hasIconType] && icon.iconType == 658) {
+                                    NSLog(@"bhackel debug: 2 iconType == 658, found... :D");
+                                    // Note the index of this cell in the array
+                                    yourVideosIndex = [subContentsArray indexOfObject:itemSectionSupportedRenderers];
+                                }
+                            }
+                        }
                     }
-                    [rootViewController presentViewController:alert animated:YES completion:nil];
-                });
-                foundThisSubview = true;
+                }
+            }
+            if (yourVideosIndex != -1) {
+                NSLog(@"bhackel debug: yourVideosIndex != -1");
+                // Create a new cell with the same properties as the original cell
+                YTIItemSectionSupportedRenderers *newItemSectionSupportedRenderers = [subContentsArray[yourVideosIndex] copy];
+                // Modify the text
+                ((YTIStringRun *)(newItemSectionSupportedRenderers.compactListItemRenderer.title.runsArray.firstObject)).text = @"Downloads";
+                // Modify the icon
+                newItemSectionSupportedRenderers.compactListItemRenderer.thumbnail.iconThumbnailRenderer.icon.iconType = 147;
+                // Insert the new cell at the index of the original cell
+                [subContentsArray insertObject:newItemSectionSupportedRenderers atIndex:yourVideosIndex + 1];
+                yourVideosIndex = -1;
             }
         }
-        // Remove this cell from existence
-        foundSubview.hidden = YES;
-        foundSubview.frame = CGRectZero;
-        
+        %orig;
     }
     %end
 %end
@@ -1422,6 +1449,9 @@ static BOOL findCell(ASNodeController *nodeController, NSArray <NSString *> *ide
     }
     if (IS_ENABLED(@"hidePremiumPromos_enabled")) {
         %init(gHidePremiumPromos);
+    }
+    if (IS_ENABLED(@"youTabFakePremium_enabled")) {
+        %init(gYouTabFakePremium);
     }
 
     // YTNoModernUI - @arichorn

@@ -276,6 +276,7 @@ extern NSBundle *uYouPlusBundle();
     SWITCH_ITEM2(LOC(@"Hide `Privacy` Section"), LOC(@"App restart is required."), @"disablePrivacySection_enabled");
     SWITCH_ITEM2(LOC(@"Hide `Live Chat` Section"), LOC(@"App restart is required."), @"disableLiveChatSection_enabled");
     SWITCH_ITEM2(LOC(@"Hide `Get Youtube Premium` Section"), LOC(@"App restart is required."), @"hidePremiumPromos_enabled");
+    SWITCH_ITEM2(LOC(@"Fake Premium in You tab"), LOC(@"Makes it look like you have Premium. English only."), @"youTabFakePremium_enabled");
 
     # pragma mark - UI interface options
     SECTION_HEADER(LOC(@"UI Interface Options"));
