@@ -163,22 +163,19 @@ UIColor* raisedColor = [UIColor colorWithRed:0.035 green:0.035 blue:0.035 alpha:
 }
 %end
 
-// Your videos
+// Download sort
+%hook GOODialogView
+- (void)setBackgroundColor:(UIColor *)color {
+    return IS_DARK_APPEARANCE_ENABLED ? %orig([UIColor blackColor]) : %orig;
+%end
+
+// Playlist sort
 %hook ASCollectionView
 - (void)didMoveToWindow {
     %orig;
     if (IS_DARK_APPEARANCE_ENABLED && [self.nextResponder isKindOfClass:%c(_ASDisplayView)]) {
         self.superview.backgroundColor = [UIColor blackColor];
-    }
-}
-%end
-
-// Sub menu?
-%hook ELMView
-- (void)didMoveToWindow {
-    %orig;
-    if (IS_DARK_APPEARANCE_ENABLED) {
-        // self.subviews[0].backgroundColor = [UIColor clearColor];
+        self.backgroundColor = [UIColor clearColor];
     }
 }
 %end
@@ -199,93 +196,6 @@ UIColor* raisedColor = [UIColor colorWithRed:0.035 green:0.035 blue:0.035 alpha:
         %orig;
         self.view.backgroundColor = [UIColor blackColor];
     } else { return %orig; }
-}
-%end
-
-// Search view
-%hook YTSearchBarView 
-- (void)setBackgroundColor:(UIColor *)color {
-    return IS_DARK_APPEARANCE_ENABLED ? %orig([UIColor blackColor]) : %orig;
-}
-%end
-
-// History search view
-%hook YTSearchBoxView 
-- (void)setBackgroundColor:(UIColor *)color {
-    return IS_DARK_APPEARANCE_ENABLED ? %orig([UIColor blackColor]) : %orig;
-
-}
-%end
-
-// Comment view
-%hook YTCommentView
-- (void)setBackgroundColor:(UIColor *)color {
-    return IS_DARK_APPEARANCE_ENABLED ? %orig([UIColor blackColor]) : %orig;
-}
-%end
-
-%hook YTCreateCommentAccessoryView
-- (void)setBackgroundColor:(UIColor *)color {
-    return IS_DARK_APPEARANCE_ENABLED ? %orig([UIColor blackColor]) : %orig;
-}
-%end
-
-%hook YTCreateCommentTextView
-- (void)setBackgroundColor:(UIColor *)color {
-    return IS_DARK_APPEARANCE_ENABLED ? %orig([UIColor blackColor]) : %orig;
-}
-- (void)setTextColor:(UIColor *)color { // fix black text in #Shorts video's comment
-    return IS_DARK_APPEARANCE_ENABLED ? %orig([UIColor whiteColor]) : %orig;
-}
-%end
-
-%hook YTCommentDetailHeaderCell
-- (void)didMoveToWindow {
-    %orig;
-    if (IS_DARK_APPEARANCE_ENABLED) {
-        // self.subviews[2].backgroundColor = [UIColor blackColor];
-    }
-}
-%end
-
-%hook YTFormattedStringLabel  // YT is werid...
-- (void)setBackgroundColor:(UIColor *)color {
-    return IS_DARK_APPEARANCE_ENABLED ? %orig([UIColor clearColor]) : %orig;
-}
-%end
-
-// Live chat comment
-%hook YCHLiveChatActionPanelView 
-- (void)setBackgroundColor:(UIColor *)color {
-    return IS_DARK_APPEARANCE_ENABLED ? %orig([UIColor blackColor]) : %orig;
-}
-%end
-
-%hook YTEmojiTextView
-- (void)setBackgroundColor:(UIColor *)color {
-    return IS_DARK_APPEARANCE_ENABLED ? %orig([UIColor blackColor]) : %orig;
-}
-%end
-
-%hook YCHLiveChatView
-- (void)didMoveToWindow {
-    %orig;
-    if (IS_DARK_APPEARANCE_ENABLED) {
-        // self.subviews[1].backgroundColor = [UIColor blackColor];
-    }
-}
-%end
-
-%hook YTCollectionView 
-- (void)setBackgroundColor:(UIColor *)color { 
-    return IS_DARK_APPEARANCE_ENABLED ? %orig([UIColor blackColor]) : %orig;
-}
-%end
-
-//
-%hook YTBackstageCreateRepostDetailView
-- (void)setBackgroundColor:(UIColor *)color {
-    return IS_DARK_APPEARANCE_ENABLED ? %orig([UIColor blackColor]) : %orig;
 }
 %end
 
