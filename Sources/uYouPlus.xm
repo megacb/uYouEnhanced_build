@@ -558,9 +558,9 @@ BOOL isAd(YTIElementRenderer *self) {
 }
 %end
 
-// YTStockVolumeHUD - https://github.com/lilacvibes/YTStockVolumeHUD
-%group gStockVolumeHUD
+// Use stock iOS volume HUD
 // Use YTColdConfig's method instead of YTStockVolumeHUD.xm, see https://x.com/PoomSmart/status/1756904290445332653
+%group gStockVolumeHUD
 %hook YTColdConfig
 - (BOOL)iosUseSystemVolumeControlInFullscreen {
     return IS_ENABLED(@"stockVolumeHUD_enabled") ? YES : %orig;
@@ -814,11 +814,6 @@ BOOL isAd(YTIElementRenderer *self) {
 }
 %end
 
-%hook YTShortsStartupCoordinator
-- (id)evaluateResumeToShorts { 
-    return IS_ENABLED(@"disableResumeToShorts_enabled") ? nil : %orig;
-}
-%end
 
 // Hide Shorts Cells - @PoomSmart & @iCrazeiOS
 %hook YTIElementRenderer
