@@ -318,7 +318,9 @@ YTSettingsSectionItem *lowContrastMode = [YTSettingsSectionItemClass
                 return NO;
             }
         }
-        [[NSUserDefaults standardUserDefaults] setBool:enabled forKey:@"lowContrastMode_enabled"];
+        if (IS_ENABLED(@"fixLowContrastMode_enabled")) {
+            [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"lowContrastMode_enabled"];
+        }
         [settingsViewController reloadData];
         SHOW_RELAUNCH_YT_SNACKBAR;
         return YES;
