@@ -550,20 +550,25 @@ BOOL isAd(YTIElementRenderer *self) {
 }
 %end
 
-// Hide Fullscreen Actions buttons - @bhackel
+// Hide Fullscreen Actions buttons - @bhackel & @arichornlover
 %group hideFullscreenActions
-    %hook YTMainAppVideoPlayerOverlayViewController
-    - (BOOL)isFullscreenActionsEnabled {
-        // This didn't work on its own - weird
-        return IS_ENABLED(@"hideFullscreenActions_enabled") ? NO : %orig;
+%hook YTMainAppVideoPlayerOverlayViewController
+- (BOOL)isFullscreenActionsEnabled {
+// This didn't work on its own - weird
+   return IS_ENABLED(@"hideFullscreenActions_enabled") ? NO : %orig;
+}
+%end
+%hook YTFullscreenActionsView
+- (BOOL)enabled {
+// Attempt 2
+   return IS_ENABLED(@"hideFullscreenActions_enabled") ? NO : %orig;
+}
+- (void)removeFromSuperview {
+    if (IS_ENABLED(@"hideFullscreenActions_enabled")) {
+        [super removeFromSuperview];
     }
-    %end
-    %hook YTFullscreenActionsView
-    - (BOOL)enabled {
-        // Attempt 2
-        return IS_ENABLED(@"hideFullscreenActions_enabled") ? NO : %orig;
-    }
-    %end
+}
+%end
 %end
 
 # pragma mark - uYouPlus
