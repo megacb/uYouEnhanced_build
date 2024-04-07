@@ -214,7 +214,6 @@ BOOL isAd(YTIElementRenderer *self) {
 // YTNoHoverCards: https://github.com/level3tjg/YTNoHoverCards
 %hook YTCreatorEndscreenView
 - (void)setHidden:(BOOL)hidden {
-    NSLog(@"bhackel debug: setHidden method called");
     if (IS_ENABLED(@"hideHoverCards_enabled"))
         hidden = YES;
     %orig;
@@ -275,127 +274,107 @@ BOOL isAd(YTIElementRenderer *self) {
 - (BOOL)savedSettingShouldExpire { return NO; }
 %end
 
-// Hide Premium promos in "You" tab - @bhackel
+// Hide "Get Youtube Premium" in "You" tab - @bhackel
 %group gHidePremiumPromos
-    // Hide "Get Youtube Premium" in the "You" tab
-    %hook YTAppCollectionViewController
-    - (void)loadWithModel:(YTISectionListRenderer *)model {
-        NSLog(@"bhackel debug: loadWithModel method called");
-        NSMutableArray <YTISectionListSupportedRenderers *> *overallContentsArray = model.contentsArray;
-        // Check each item in the overall array - this represents the whole You page
-        YTISectionListSupportedRenderers *supportedRenderers;
-        for (supportedRenderers in overallContentsArray) {
-            NSLog(@"bhackel debug: in 1st loop");
-            YTIItemSectionRenderer *itemSectionRenderer = supportedRenderers.itemSectionRenderer;
-            // Check each subobject - this would be visible as a cell in the You page
-            NSMutableArray <YTIItemSectionSupportedRenderers *> *subContentsArray = itemSectionRenderer.contentsArray;
-            bool found = NO;
-            YTIItemSectionSupportedRenderers *itemSectionSupportedRenderers;
-            for (itemSectionSupportedRenderers in subContentsArray) {
-                NSLog(@"bhackel debug: in 2nd loop");
-                // Check for a link cell
-                if ([itemSectionSupportedRenderers hasCompactLinkRenderer]) {
-                    NSLog(@"bhackel debug: hasCompactLinkRenderer");
-                    YTICompactLinkRenderer *compactLinkRenderer = [itemSectionSupportedRenderers compactLinkRenderer];
-                    // Check for an icon in this cell
-                    if ([compactLinkRenderer hasIcon]) {
-                        NSLog(@"bhackel debug: hasIcon");
-                        YTIIcon *icon = [compactLinkRenderer icon];
-                        // Check if the icon is for the premium promo
-                        if ([icon hasIconType] && icon.iconType == 117) {
-                            NSLog(@"bhackel debug: iconType == 117, found... :D");
-                            found = YES;
-                            break;
-                        }
+%hook YTAppCollectionViewController
+- (void)loadWithModel:(YTISectionListRenderer *)model {
+    NSMutableArray <YTISectionListSupportedRenderers *> *overallContentsArray = model.contentsArray;
+    // Check each item in the overall array - this represents the whole You page
+    YTISectionListSupportedRenderers *supportedRenderers;
+    for (supportedRenderers in overallContentsArray) {
+        YTIItemSectionRenderer *itemSectionRenderer = supportedRenderers.itemSectionRenderer;
+        // Check each subobject - this would be visible as a cell in the You page
+        NSMutableArray <YTIItemSectionSupportedRenderers *> *subContentsArray = itemSectionRenderer.contentsArray;
+        bool found = NO;
+        YTIItemSectionSupportedRenderers *itemSectionSupportedRenderers;
+        for (itemSectionSupportedRenderers in subContentsArray) {
+            // Check for a link cell
+            if ([itemSectionSupportedRenderers hasCompactLinkRenderer]) {
+                YTICompactLinkRenderer *compactLinkRenderer = [itemSectionSupportedRenderers compactLinkRenderer];
+                // Check for an icon in this cell
+                if ([compactLinkRenderer hasIcon]) {
+                    YTIIcon *icon = [compactLinkRenderer icon];
+                    // Check if the icon is for the premium promo
+                    if ([icon hasIconType] && icon.iconType == 117) {
+                        found = YES;
+                        break;
                     }
                 }
             }
-            // Remove object from array - perform outside of loop to avoid error
-            if (found) {
-                NSLog(@"bhackel debug: removing...");
-                [subContentsArray removeObject:itemSectionSupportedRenderers];
-                break;
-            }
         }
-        %orig;
+        // Remove object from array - perform outside of loop to avoid error
+        if (found) {
+            [subContentsArray removeObject:itemSectionSupportedRenderers];
+            break;
+        }
     }
-    %end
+    %orig;
+}
+%end
 %end
 
 // Fake premium in the You tab - @bhackel
 %group gYouTabFakePremium
-    %hook YTAppCollectionViewController
-    - (void)loadWithModel:(YTISectionListRenderer *)model {
-        NSLog(@"bhackel debug: loadWithModel method called");
-        NSUInteger yourVideosIndex = -1;
-        NSMutableArray <YTISectionListSupportedRenderers *> *overallContentsArray = model.contentsArray;
-        // Check each item in the overall array - this represents the whole You page
-        YTISectionListSupportedRenderers *supportedRenderers;
-        for (supportedRenderers in overallContentsArray) {
-            NSLog(@"bhackel debug: in 1st loop");
-            YTIItemSectionRenderer *itemSectionRenderer = supportedRenderers.itemSectionRenderer;
-            // Check each subobject - this would be visible as a cell in the You page
-            NSMutableArray <YTIItemSectionSupportedRenderers *> *subContentsArray = itemSectionRenderer.contentsArray;
-            YTIItemSectionSupportedRenderers *itemSectionSupportedRenderers;
-            for (itemSectionSupportedRenderers in subContentsArray) {
-                NSLog(@"bhackel debug: in 2nd loop");
-                // Check for a specific type of cell of type CompactLinkRenderer
-                if ([itemSectionSupportedRenderers hasCompactLinkRenderer]) {
-                    NSLog(@"bhackel debug: hasCompactLinkRenderer");
-                    YTICompactLinkRenderer *compactLinkRenderer = [itemSectionSupportedRenderers compactLinkRenderer];
-                    // Check for an icon in this cell
-                    if ([compactLinkRenderer hasIcon]) {
-                        NSLog(@"bhackel debug: hasIcon");
-                        YTIIcon *icon = [compactLinkRenderer icon];
-                        // Check if the icon is for the premium promo
-                        if ([icon hasIconType] && icon.iconType == 117) {
-                            NSLog(@"bhackel debug: iconType == 117, found... :D");
-                            // Modify the icon type to be Premium
-                            icon.iconType = 741;
-                            // Modify the text
-                            ((YTIStringRun *)(compactLinkRenderer.title.runsArray.firstObject)).text = @"Your Premium benefits";
-                        }
+%hook YTAppCollectionViewController
+- (void)loadWithModel:(YTISectionListRenderer *)model {
+    NSUInteger yourVideosIndex = -1;
+    NSMutableArray <YTISectionListSupportedRenderers *> *overallContentsArray = model.contentsArray;
+    // Check each item in the overall array - this represents the whole You page
+    YTISectionListSupportedRenderers *supportedRenderers;
+    for (supportedRenderers in overallContentsArray) {
+        YTIItemSectionRenderer *itemSectionRenderer = supportedRenderers.itemSectionRenderer;
+        // Check each subobject - this would be visible as a cell in the You page
+        NSMutableArray <YTIItemSectionSupportedRenderers *> *subContentsArray = itemSectionRenderer.contentsArray;
+        YTIItemSectionSupportedRenderers *itemSectionSupportedRenderers;
+        for (itemSectionSupportedRenderers in subContentsArray) {
+            // Check for a specific type of cell of type CompactLinkRenderer
+            if ([itemSectionSupportedRenderers hasCompactLinkRenderer]) {
+                YTICompactLinkRenderer *compactLinkRenderer = [itemSectionSupportedRenderers compactLinkRenderer];
+                // Check for an icon in this cell
+                if ([compactLinkRenderer hasIcon]) {
+                    YTIIcon *icon = [compactLinkRenderer icon];
+                    // Check if the icon is for the premium promo
+                    if ([icon hasIconType] && icon.iconType == 117) {
+                        // Modify the icon type to be Premium
+                        icon.iconType = 741;
+                        // Modify the text
+                        ((YTIStringRun *)(compactLinkRenderer.title.runsArray.firstObject)).text = @"Your Premium benefits";
                     }
                 }
-                // Check for a specific type of cell of type CompactListItemRenderer
-                if ([itemSectionSupportedRenderers hasCompactListItemRenderer]) {
-                    NSLog(@"bhackel debug: 2 hasCompactListItemRenderer");
-                    YTICompactListItemRenderer *compactListItemRenderer = itemSectionSupportedRenderers.compactListItemRenderer;
-                    if ([compactListItemRenderer hasThumbnail]) {
-                        NSLog(@"bhackel debug: 2 hasThumbnail");
-                        YTICompactListItemThumbnailSupportedRenderers *thumbnail = compactListItemRenderer.thumbnail;
-                        if ([thumbnail hasIconThumbnailRenderer]) {
-                            NSLog(@"bhackel debug: 2 hasIconThumbnailRenderer");
-                            YTIIconThumbnailRenderer *iconThumbnailRenderer = thumbnail.iconThumbnailRenderer;
-                            if ([iconThumbnailRenderer hasIcon]) {
-                                NSLog(@"bhackel debug: 2 hasIcon");
-                                YTIIcon *icon = iconThumbnailRenderer.icon;
-                                if ([icon hasIconType] && icon.iconType == 658) {
-                                    NSLog(@"bhackel debug: 2 iconType == 658, found... :D");
-                                    // Note the index of this cell in the array
-                                    yourVideosIndex = [subContentsArray indexOfObject:itemSectionSupportedRenderers];
-                                }
+            }
+            // Check for a specific type of cell of type CompactListItemRenderer
+            if ([itemSectionSupportedRenderers hasCompactListItemRenderer]) {
+                YTICompactListItemRenderer *compactListItemRenderer = itemSectionSupportedRenderers.compactListItemRenderer;
+                if ([compactListItemRenderer hasThumbnail]) {
+                    YTICompactListItemThumbnailSupportedRenderers *thumbnail = compactListItemRenderer.thumbnail;
+                    if ([thumbnail hasIconThumbnailRenderer]) {
+                        YTIIconThumbnailRenderer *iconThumbnailRenderer = thumbnail.iconThumbnailRenderer;
+                        if ([iconThumbnailRenderer hasIcon]) {
+                            YTIIcon *icon = iconThumbnailRenderer.icon;
+                            if ([icon hasIconType] && icon.iconType == 658) {
+                                // Note the index of this cell in the array
+                                yourVideosIndex = [subContentsArray indexOfObject:itemSectionSupportedRenderers];
                             }
                         }
                     }
                 }
             }
-            if (yourVideosIndex != -1) {
-                NSLog(@"bhackel debug: yourVideosIndex != -1");
-                // Create a new cell with the same properties as the original cell
-                YTIItemSectionSupportedRenderers *newItemSectionSupportedRenderers = [subContentsArray[yourVideosIndex] copy];
-                // Modify the text
-                ((YTIStringRun *)(newItemSectionSupportedRenderers.compactListItemRenderer.title.runsArray.firstObject)).text = @"Downloads";
-                // Modify the icon
-                newItemSectionSupportedRenderers.compactListItemRenderer.thumbnail.iconThumbnailRenderer.icon.iconType = 147;
-                // Insert the new cell at the index of the original cell
-                [subContentsArray insertObject:newItemSectionSupportedRenderers atIndex:yourVideosIndex + 1];
-                yourVideosIndex = -1;
-            }
         }
-        %orig;
+        if (yourVideosIndex != -1) {
+            // Create a new cell with the same properties as the original cell
+            YTIItemSectionSupportedRenderers *newItemSectionSupportedRenderers = [subContentsArray[yourVideosIndex] copy];
+            // Modify the text
+            ((YTIStringRun *)(newItemSectionSupportedRenderers.compactListItemRenderer.title.runsArray.firstObject)).text = @"Downloads";
+            // Modify the icon
+            newItemSectionSupportedRenderers.compactListItemRenderer.thumbnail.iconThumbnailRenderer.icon.iconType = 147;
+            // Insert the new cell at the index of the original cell
+            [subContentsArray insertObject:newItemSectionSupportedRenderers atIndex:yourVideosIndex + 1];
+            yourVideosIndex = -1;
+        }
     }
-    %end
+    %orig;
+}
+%end
 %end
 
 
