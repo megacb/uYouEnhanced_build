@@ -786,15 +786,28 @@ BOOL isAd(YTIElementRenderer *self) {
 
 // Bring back the Red Progress Bar and Gray Buffer Progress
 %group gRedProgressBar
-%hook YTInlinePlayerBarContainerView
+%hook YTSegmentableInlinePlayerBarView
+- (void)setBufferedProgressBarColor:(id)arg1 {
+     [UIColor colorWithRed:1.00 green:1.00 blue:1.00 alpha:0.50];
+}
+%end
+
+%hook YTInlinePlayerBarContainerView // Red Progress Bar - Old (Compatible for v17.33.2-v19.10.7)
 - (id)quietProgressBarColor {
     return [UIColor redColor];
 }
 %end
 
-%hook YTSegmentableInlinePlayerBarView
-- (void)setBufferedProgressBarColor:(id)arg1 {
-     [UIColor colorWithRed:1.00 green:1.00 blue:1.00 alpha:0.50];
+%hook YTPlayerBarRectangleDecorationView // Red Progress Bar - New (Compatible for v19.10.7-latest)
+- (void)drawRectangleDecorationWithSideMasks:(CGRect)rect {
+    if (IS_ENABLED(@"redProgressBar_enabled")) {
+        YTIPlayerBarDecorationModel *model = [self valueForKey:@"_model"];
+        int overlayMode = model.playingState.overlayMode;
+        model.playingState.overlayMode = 1;
+        %orig;
+        model.playingState.overlayMode = overlayMode;
+    } else
+        %orig;
 }
 %end
 %end
