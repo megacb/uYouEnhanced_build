@@ -560,12 +560,14 @@ BOOL isAd(YTIElementRenderer *self) {
 %end
 %hook YTFullscreenActionsView
 - (BOOL)enabled {
-// Attempt 2
-   return IS_ENABLED(@"hideFullscreenActions_enabled") ? NO : %orig;
+    // Attempt 2
+    return IS_ENABLED(@"hideFullscreenActions_enabled") ? NO : %orig;
 }
 - (void)removeFromSuperview {
+    %orig;
+    // Attempt 3
     if (IS_ENABLED(@"hideFullscreenActions_enabled")) {
-        [super removeFromSuperview];
+        [self removeFromSuperview];
     }
 }
 %end
