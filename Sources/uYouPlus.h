@@ -44,7 +44,7 @@
 #define YT_BUNDLE_ID @"com.google.ios.youtube"
 #define YT_NAME @"YouTube"
 #define DEFAULT_RATE 1.0f // YTSpeed
-#define LOWCONTRASTMODE_CUTOFF_VERSION @"17.38.10" // LowContrastMode
+#define LOWCONTRASTMODE_CUTOFF_VERSION @"17.38.10" // LowContrastMode (v17.33.2-17.38.10)
 
 // IAmYouTube
 @interface SSOConfiguration : NSObject
@@ -85,6 +85,9 @@
 @end
 
 @interface YTTransportControlsButtonView : UIView
+@end
+
+@interface YTFullscreenActionsView : UIView
 @end
 
 @interface _ASCollectionViewCell : UICollectionViewCell
