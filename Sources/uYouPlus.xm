@@ -564,11 +564,11 @@ BOOL isAd(YTIElementRenderer *self) {
     return IS_ENABLED(@"hideFullscreenActions_enabled") ? NO : %orig;
 }
 - (void)removeFromSuperview {
-    %orig;
     // Attempt 3
     if (IS_ENABLED(@"hideFullscreenActions_enabled")) {
         [self removeFromSuperview];
     }
+%orig;
 }
 %end
 %end
