@@ -8,9 +8,11 @@
 #import <substrate.h>
 #import <rootless.h>
 
-#import "uYouPlusThemes.h"
-#import "Tweaks/YouTubeHeader/YTAppDelegate.h"
+#import "uYouPlusThemes.h" // Hide "Buy Super Thanks" banner (_ASDisplayView)
+#import "Tweaks/YouTubeHeader/YTAppDelegate.h" // Activate FLEX
 #import "Tweaks/YouTubeHeader/YTIMenuConditionalServiceItemRenderer.h"
+#import <YouTubeHeader/YTIPlayerBarDecorationModel.h>
+#import <YouTubeHeader/YTPlayerBarRectangleDecorationView.h>
 #import "Tweaks/YouTubeHeader/YTVideoQualitySwitchOriginalController.h"
 #import "Tweaks/YouTubeHeader/YTIGuideResponse.h"
 #import "Tweaks/YouTubeHeader/YTIGuideResponseSupportedRenderers.h"
