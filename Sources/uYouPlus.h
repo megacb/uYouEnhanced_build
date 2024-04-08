@@ -100,6 +100,7 @@
     - (bool)hasCompactListItemRenderer;
 @end
 @interface YTAppCollectionViewController : YTInnerTubeCollectionViewController
+- (void)uYouEnhancedFakePremiumModel:(YTISectionListRenderer *)model;
 @end
 @interface YTInnerTubeCollectionViewController (uYouEnhanced)
     @property(readonly, nonatomic) YTISectionListRenderer *model;

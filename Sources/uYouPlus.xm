@@ -316,8 +316,16 @@ BOOL isAd(YTIElementRenderer *self) {
 // Fake premium in the You tab - @bhackel
 %group gYouTabFakePremium
 %hook YTAppCollectionViewController
-- (void)loadWithModel:(YTISectionListRenderer *)model {
-    NSUInteger yourVideosIndex = -1;
+/**
+  * Modify a given renderer data model to fake premium in the You tab
+  * Replaces the "Get YouTube Premium" cell with a "Your Premium benefits" cell
+  * and adds a "Downloads" cell below the "Your videos" cell
+  * @param model The model for the You tab
+  * TODO Add localization support for the Get Youtube Premium and Downloads text
+  */
+%new
+- (void)uYouEnhancedFakePremiumModel:(YTISectionListRenderer *)model {
+    NSUInteger yourVideosCellIndex = -1;
     NSMutableArray <YTISectionListSupportedRenderers *> *overallContentsArray = model.contentsArray;
     // Check each item in the overall array - this represents the whole You page
     YTISectionListSupportedRenderers *supportedRenderers;
@@ -327,22 +335,22 @@ BOOL isAd(YTIElementRenderer *self) {
         NSMutableArray <YTIItemSectionSupportedRenderers *> *subContentsArray = itemSectionRenderer.contentsArray;
         YTIItemSectionSupportedRenderers *itemSectionSupportedRenderers;
         for (itemSectionSupportedRenderers in subContentsArray) {
-            // Check for a specific type of cell of type CompactLinkRenderer
+            // Check for Get Youtube Premium cell, which is of type CompactLinkRenderer
             if ([itemSectionSupportedRenderers hasCompactLinkRenderer]) {
                 YTICompactLinkRenderer *compactLinkRenderer = [itemSectionSupportedRenderers compactLinkRenderer];
                 // Check for an icon in this cell
                 if ([compactLinkRenderer hasIcon]) {
                     YTIIcon *icon = [compactLinkRenderer icon];
-                    // Check if the icon is for the premium promo
+                    // Check if the icon is for the premium advertisement - 117 is magic number for the icon
                     if ([icon hasIconType] && icon.iconType == 117) {
                         // Modify the icon type to be Premium
-                        icon.iconType = 741;
+                        icon.iconType = 741; // Magic number for premium icon
                         // Modify the text
                         ((YTIStringRun *)(compactLinkRenderer.title.runsArray.firstObject)).text = @"Your Premium benefits";
                     }
                 }
             }
-            // Check for a specific type of cell of type CompactListItemRenderer
+            // Check for Your Videos cell using similar logic explained above
             if ([itemSectionSupportedRenderers hasCompactListItemRenderer]) {
                 YTICompactListItemRenderer *compactListItemRenderer = itemSectionSupportedRenderers.compactListItemRenderer;
                 if ([compactListItemRenderer hasThumbnail]) {
@@ -352,26 +360,35 @@ BOOL isAd(YTIElementRenderer *self) {
                         if ([iconThumbnailRenderer hasIcon]) {
                             YTIIcon *icon = iconThumbnailRenderer.icon;
                             if ([icon hasIconType] && icon.iconType == 658) {
-                                // Note the index of this cell in the array
-                                yourVideosIndex = [subContentsArray indexOfObject:itemSectionSupportedRenderers];
+                                // Store the index of this cell
+                                yourVideosCellIndex = [subContentsArray indexOfObject:itemSectionSupportedRenderers];
                             }
                         }
                     }
                 }
             }
         }
-        if (yourVideosIndex != -1) {
-            // Create a new cell with the same properties as the original cell
-            YTIItemSectionSupportedRenderers *newItemSectionSupportedRenderers = [subContentsArray[yourVideosIndex] copy];
-            // Modify the text
+        if (yourVideosCellIndex != -1) {
+            // Create the fake Downloads page by copying the Your Videos page and modifying it
+            // Note that this must be done outside the loop to avoid a runtime exception
+            // TODO Link this to the uYou downloads page
+            YTIItemSectionSupportedRenderers *newItemSectionSupportedRenderers = [subContentsArray[yourVideosCellIndex] copy];
             ((YTIStringRun *)(newItemSectionSupportedRenderers.compactListItemRenderer.title.runsArray.firstObject)).text = @"Downloads";
-            // Modify the icon
             newItemSectionSupportedRenderers.compactListItemRenderer.thumbnail.iconThumbnailRenderer.icon.iconType = 147;
-            // Insert the new cell at the index of the original cell
-            [subContentsArray insertObject:newItemSectionSupportedRenderers atIndex:yourVideosIndex + 1];
-            yourVideosIndex = -1;
+            // Insert this cell after the Your Videos cell
+            [subContentsArray insertObject:newItemSectionSupportedRenderers atIndex:yourVideosCellIndex + 1];
+            yourVideosCellIndex = -1;
         }
     }
+}
+- (void)loadWithModel:(YTISectionListRenderer *)model {
+    // This method is called on first load of the You page
+    [self uYouEnhancedFakePremiumModel:model];
+    %orig;
+}
+- (void)setupSectionListWithModel:(YTISectionListRenderer *)model isLoadingMore:(BOOL)isLoadingMore isRefreshingFromContinuation:(BOOL)isRefreshingFromContinuation {
+    // This method is called on refresh of the You page
+    [self uYouEnhancedFakePremiumModel:model];
     %orig;
 }
 %end
