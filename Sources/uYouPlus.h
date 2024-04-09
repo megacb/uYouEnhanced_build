@@ -8,9 +8,11 @@
 #import <substrate.h>
 #import <rootless.h>
 
-#import "uYouPlusThemes.h"
-#import "Tweaks/YouTubeHeader/YTAppDelegate.h"
+#import "uYouPlusThemes.h" // Hide "Buy Super Thanks" banner (_ASDisplayView)
+#import "Tweaks/YouTubeHeader/YTAppDelegate.h" // Activate FLEX
 #import "Tweaks/YouTubeHeader/YTIMenuConditionalServiceItemRenderer.h"
+#import "Tweaks/YouTubeHeader/YTIPlayerBarDecorationModel.h"
+#import "Tweaks/YouTubeHeader/YTPlayerBarRectangleDecorationView.h"
 #import "Tweaks/YouTubeHeader/YTVideoQualitySwitchOriginalController.h"
 #import "Tweaks/YouTubeHeader/YTIGuideResponse.h"
 #import "Tweaks/YouTubeHeader/YTIGuideResponseSupportedRenderers.h"
@@ -47,7 +49,7 @@
 #define YT_BUNDLE_ID @"com.google.ios.youtube"
 #define YT_NAME @"YouTube"
 #define DEFAULT_RATE 1.0f // YTSpeed
-#define LOWCONTRASTMODE_CUTOFF_VERSION @"17.38.10" // LowContrastMode
+#define LOWCONTRASTMODE_CUTOFF_VERSION @"17.38.10" // LowContrastMode (v17.33.2-17.38.10)
 
 // IAmYouTube
 @interface SSOConfiguration : NSObject
@@ -55,7 +57,7 @@
 
 // Hide Double tap to seek Overlay
 @interface YTInlinePlayerDoubleTapIndicatorView : UIView
-@property (nonatomic, strong) UIView *_scrimOverlay;
+@property (nonatomic, strong) UIView *scrimOverlay;
 @end
 
 // YTTapToSeek - https://github.com/bhackel/YTTapToSeek
@@ -126,6 +128,9 @@
 @end
 
 @interface YTTransportControlsButtonView : UIView
+@end
+
+@interface YTFullscreenActionsView : UIView
 @end
 
 @interface _ASCollectionViewCell : UICollectionViewCell

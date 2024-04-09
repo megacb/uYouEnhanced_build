@@ -16,6 +16,20 @@ NSBundle *uYouPlusBundle() {
 }
 NSBundle *tweakBundle = uYouPlusBundle();
 
+// uYouPlusSettings.xm
+static int contrastMode() {
+    NSString *appVersion = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
+    NSComparisonResult result1 = [appVersion compare:@"17.33.2" options:NSNumericSearch];
+    NSComparisonResult result2 = [appVersion compare:@"17.38.10" options:NSNumericSearch];
+
+    if (result1 != NSOrderedAscending && result2 != NSOrderedDescending) {
+        return [[NSUserDefaults standardUserDefaults] integerForKey:@"lcm"];
+    } else {
+        return 0;
+    }
+}
+//
+
 # pragma mark - Tweaks
 
 // Activate FLEX
@@ -38,7 +52,14 @@ NSBundle *tweakBundle = uYouPlusBundle();
 }
 %end
 
-// Workaround: uYou 3.0.3 Adblock fix.
+// Enable Alternate Icons
+%hook UIApplication
+- (BOOL)supportsAlternateIcons {
+    return YES;
+}
+%end
+
+// Workaround: uYou 3.0.3 Adblock fix - @PoomSmart
 %hook YTAdsInnerTubeContextDecorator
 - (void)decorateContext:(id)context {
 if ([NSUserDefaults.standardUserDefaults boolForKey:@"removeYouTubeAds"]) {}
@@ -133,6 +154,7 @@ BOOL isAd(YTIElementRenderer *self) {
 %end
 %end
 
+
 // Fix App Group Directory by move it to document directory
 %hook NSFileManager
 - (NSURL *)containerURLForSecurityApplicationGroupIdentifier:(NSString *)groupIdentifier {
@@ -185,6 +207,7 @@ BOOL isAd(YTIElementRenderer *self) {
 %hook YTColdConfig 
 - (BOOL)respectDeviceCaptionSetting { return NO; } // YouRememberCaption: https://poomsmart.github.io/repo/depictions/youremembercaption.html
 - (BOOL)isLandscapeEngagementPanelSwipeRightToDismissEnabled { return YES; } // Swipe right to dismiss the right panel in fullscreen mode
+- (BOOL)enableModularPlayerBarController { return NO; } // fixes some of the iSponorBlock problems
 %end
 
 // NOYTPremium - https://github.com/PoomSmart/NoYTPremium/
@@ -262,8 +285,7 @@ BOOL isAd(YTIElementRenderer *self) {
 
 // Fake premium - @bhackel
 %group gFakePremium
-// YouTube Premium Logo - @arichornlover - this doesn't always function
-// Modern implementation - @bhackel
+// YouTube Premium Logo - @arichornlover & bhackel
 %hook YTHeaderLogoController
     - (void)setTopbarLogoRenderer:(id)renderer {
         // Modify the type of the icon before setting the renderer
@@ -388,7 +410,7 @@ BOOL isAd(YTIElementRenderer *self) {
 - (BOOL)enablePlayerBarForVerticalVideoWhenControlsHiddenInFullscreen { return YES; }
 %end
 
-// YTNoTracking - @arichorn - https://github.com/arichorn/YTNoTracking/
+// YTNoTracking - @arichornlover - https://github.com/arichornlover/YTNoTracking/ - OUTDATED
 %hook UIApplication
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey, id> *)options {
     NSString *originalURLString = [url absoluteString];
@@ -439,12 +461,33 @@ BOOL isAd(YTIElementRenderer *self) {
 }
 %end
 
-// Fix LowContrastMode - @arichorn
+// Fix LowContrastMode - @arichornlover
 %group gFixLowContrastMode
-%hook YTVersionUtils // Supported LowContrastMode Version
-+ (NSString *)appVersion { return @"17.38.10"; }
+%hook NSUserDefaults
+- (NSInteger)integerForKey:(NSString *)defaultName {
+    if ([defaultName isEqualToString:@"lcm"]) {
+        return contrastMode();
+    }
+    return %orig;
+}
 %end
 
+%hook NSBundle
+- (id)objectForInfoDictionaryKey:(NSString *)key {
+    if ([key isEqualToString:@"CFBundleShortVersionString"]) {
+        return @"17.38.10";
+    }
+    return %orig;
+}
+%end
+
+%hook YTVersionUtils
++ (NSString *)appVersion { 
+    return @"17.38.10";
+}
+%end
+
+/*
 %hook YTSettingsCell // Remove v17.38.10 Version Number - @Dayanch96
 - (void)setDetailText:(id)arg1 {
     NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
@@ -455,23 +498,24 @@ BOOL isAd(YTIElementRenderer *self) {
     } %orig(arg1);
 }
 %end
+*/
 %end
 
-// Disable Modern/Rounded Buttons (_ASDisplayView not included) - @arichorn
+// Disable Modern/Rounded Buttons (_ASDisplayView Version's not included) - @arichornlover
 %group gDisableModernButtons 
 %hook YTQTMButton // Disable Modern/Rounded Buttons
 + (BOOL)buttonModernizationEnabled { return NO; }
 %end
 %end
 
-// Disable Rounded Hints with no Rounded Corners - @arichorn
+// Disable Rounded Hints with no Rounded Corners - @arichornlover
 %group gDisableRoundedHints
 %hook YTBubbleHintView // Disable Modern/Rounded Hints
 + (BOOL)modernRoundedCornersEnabled { return NO; }
 %end
 %end
 
-// Disable Modern Flags - @arichorn
+// Disable Modern Flags - @arichornlover
 %group gDisableModernFlags
 %hook YTColdConfig
 // Disable Modern Content
@@ -512,7 +556,7 @@ BOOL isAd(YTIElementRenderer *self) {
 %end
 %end
 
-// Disable Ambient Mode in Fullscreen - @arichorn
+// Disable Ambient Mode in Fullscreen - @arichornlover
 %group gDisableAmbientMode
 %hook YTCinematicContainerView
 - (BOOL)watchFullScreenCinematicSupported {
@@ -596,20 +640,27 @@ BOOL isAd(YTIElementRenderer *self) {
 }
 %end
 
-// Hide Fullscreen Actions buttons - @bhackel
+// Hide Fullscreen Actions buttons - @bhackel & @arichornlover
 %group hideFullscreenActions
-    %hook YTMainAppVideoPlayerOverlayViewController
-    - (BOOL)isFullscreenActionsEnabled {
-        // This didn't work on its own - weird
-        return IS_ENABLED(@"hideFullscreenActions_enabled") ? NO : %orig;
+%hook YTMainAppVideoPlayerOverlayViewController
+- (BOOL)isFullscreenActionsEnabled {
+// This didn't work on its own - weird
+   return IS_ENABLED(@"hideFullscreenActions_enabled") ? NO : %orig;
+}
+%end
+%hook YTFullscreenActionsView
+- (BOOL)enabled {
+    // Attempt 2
+    return IS_ENABLED(@"hideFullscreenActions_enabled") ? NO : %orig;
+}
+- (void)removeFromSuperview {
+    // Attempt 3
+    if (IS_ENABLED(@"hideFullscreenActions_enabled")) {
+        [self removeFromSuperview];
     }
-    %end
-    %hook YTFullscreenActionsView
-    - (BOOL)enabled {
-        // Attempt 2
-        return IS_ENABLED(@"hideFullscreenActions_enabled") ? NO : %orig;
-    }
-    %end
+%orig;
+}
+%end
 %end
 
 # pragma mark - uYouPlus
@@ -675,17 +726,15 @@ BOOL isAd(YTIElementRenderer *self) {
 }
 %end
 
-/* DISABLED
 // Hide double tap to seek overlay - @arichornlover
 %hook YTInlinePlayerDoubleTapIndicatorView
 - (void)layoutSubviews {
     %orig;
     if (IS_ENABLED(@"hideDoubleTapToSeekOverlay_enabled")) {
-        self._scrimOverlay.backgroundColor = [UIColor clearColor];
+        self.scrimOverlay.backgroundColor = [UIColor clearColor];
     }
 }
 %end
-*/
 
 // Video Controls Overlay Options
 // Hide CC / Hide Autoplay switch / Hide YTMusic Button / Enable Share Button / Enable Save to Playlist Button
@@ -744,7 +793,7 @@ BOOL isAd(YTIElementRenderer *self) {
 }
 %end
 
-// Hide Fullscreen Button - @arichornlover
+// Hide Fullscreen Button - @arichornlover - PoomSmart's YouQuality tweak breaks when enabling this
 %hook YTInlinePlayerBarContainerView
 - (void)layoutSubviews {
     %orig; 
@@ -827,15 +876,28 @@ BOOL isAd(YTIElementRenderer *self) {
 
 // Bring back the Red Progress Bar and Gray Buffer Progress
 %group gRedProgressBar
-%hook YTInlinePlayerBarContainerView
+%hook YTSegmentableInlinePlayerBarView
+- (void)setBufferedProgressBarColor:(id)arg1 {
+     [UIColor colorWithRed:1.00 green:1.00 blue:1.00 alpha:0.50];
+}
+%end
+
+%hook YTInlinePlayerBarContainerView // Red Progress Bar - Old (Compatible for v17.33.2-v19.10.7)
 - (id)quietProgressBarColor {
     return [UIColor redColor];
 }
 %end
 
-%hook YTSegmentableInlinePlayerBarView
-- (void)setBufferedProgressBarColor:(id)arg1 {
-     [UIColor colorWithRed:1.00 green:1.00 blue:1.00 alpha:0.50];
+%hook YTPlayerBarRectangleDecorationView // Red Progress Bar - New (Compatible for v19.10.7-latest)
+- (void)drawRectangleDecorationWithSideMasks:(CGRect)rect {
+    if (IS_ENABLED(@"redProgressBar_enabled")) {
+        YTIPlayerBarDecorationModel *model = [self valueForKey:@"_model"];
+        int overlayMode = model.playingState.overlayMode;
+        model.playingState.overlayMode = 1;
+        %orig;
+        model.playingState.overlayMode = overlayMode;
+    } else
+        %orig;
 }
 %end
 %end
@@ -931,7 +993,7 @@ BOOL isAd(YTIElementRenderer *self) {
 }
 %end
 
-// Red Subscribe Button - @arichorn
+// Red Subscribe Button - @arichornlover
 %hook ELMContainerNode
 - (void)setBackgroundColor:(id)color {
     NSString *description = [self description];
@@ -940,7 +1002,7 @@ BOOL isAd(YTIElementRenderer *self) {
             color = [UIColor redColor];
         }
     }
-// Hide the Button Containers under the Video Player - 17.x.x and up - @arichorn
+// Hide the Button Containers under the Video Player - 17.x.x and up - @arichornlover
     if (IS_ENABLED(@"hideButtonContainers_enabled")) {
         if ([description containsString:@"id.video.like.button"] ||
             [description containsString:@"id.video.dislike.button"] ||
@@ -1011,7 +1073,7 @@ BOOL isAd(YTIElementRenderer *self) {
 }
 %end
 
-// Hide the (Connect / Thanks / Save / Report) Buttons under the Video Player - 17.x.x and up - @PoomSmart (inspired by @arichornlover) DEPRECATED METHOD ⚠️
+// Hide the (Connect / Thanks / Save / Report) Buttons under the Video Player - 17.x.x and up - @arichornlover (inspired by @PoomSmart's version) DEPRECATED METHOD ⚠️
 %hook _ASDisplayView
 - (void)layoutSubviews {
     %orig;
@@ -1245,7 +1307,7 @@ static BOOL findCell(ASNodeController *nodeController, NSArray <NSString *> *ide
 %end
 %end
 
-// Hide Videos in Fullscreen - @arichorn
+// Hide Videos in Fullscreen - @arichornlover
 %group gNoVideosInFullscreen
 %hook YTFullScreenEngagementOverlayView
 - (void)setRelatedVideosView:(id)view {
@@ -1266,7 +1328,7 @@ static BOOL findCell(ASNodeController *nodeController, NSArray <NSString *> *ide
 %end
 %end
 
-// iPhone Layout - @LillieH1000 & @arichorn
+// iPhone Layout - @LillieH1000 & @arichornlover
 %group giPhoneLayout
 %hook UIDevice
 - (long long)userInterfaceIdiom {
@@ -1290,7 +1352,7 @@ static BOOL findCell(ASNodeController *nodeController, NSArray <NSString *> *ide
 %end
 %end
 
-// Hide Indicators - @Dayanch96 & @arichorn
+// Hide Indicators - @Dayanch96 & @arichornlover
 %group gHideSubscriptionsNotificationBadge
 %hook YTPivotBarIndicatorView
 - (void)didMoveToWindow {
