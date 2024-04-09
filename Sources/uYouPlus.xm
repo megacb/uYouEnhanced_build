@@ -602,15 +602,13 @@ BOOL isAd(YTIElementRenderer *self) {
 %end
 
 // Use stock iOS volume HUD
-// Use YTColdConfig's method instead of YTStockVolumeHUD.xm, see https://x.com/PoomSmart/status/1756904290445332653
+// Use YTColdConfig's method, see https://x.com/PoomSmart/status/1756904290445332653
 %group gStockVolumeHUD
 %hook YTColdConfig
 - (BOOL)iosUseSystemVolumeControlInFullscreen {
     return IS_ENABLED(@"stockVolumeHUD_enabled") ? YES : %orig;
 }
 %end
-%end
-
 %hook UIApplication 
 - (void)setSystemVolumeHUDEnabled:(BOOL)arg1 forAudioCategory:(id)arg2 {
         %orig(true, arg2);

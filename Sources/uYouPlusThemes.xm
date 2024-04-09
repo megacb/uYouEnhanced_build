@@ -167,6 +167,7 @@ UIColor* raisedColor = [UIColor colorWithRed:0.035 green:0.035 blue:0.035 alpha:
 %hook GOODialogView
 - (void)setBackgroundColor:(UIColor *)color {
     return IS_DARK_APPEARANCE_ENABLED ? %orig([UIColor blackColor]) : %orig;
+}
 %end
 
 // Playlist sort
