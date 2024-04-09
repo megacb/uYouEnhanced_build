@@ -1,9 +1,9 @@
-#import <YouTubeHeader/YTSettingsViewController.h">
-#import <YouTubeHeader/YTSearchableSettingsViewController.h">
-#import <YouTubeHeader/YTSettingsSectionItem.h">
-#import <YouTubeHeader/YTSettingsSectionItemManager.h">
-#import <YouTubeHeader/YTUIUtils.h">
-#import <YouTubeHeader/YTSettingsPickerViewController.h">
+#import <YouTubeHeader/YTSettingsViewController.h>
+#import <YouTubeHeader/YTSearchableSettingsViewController.h>
+#import <YouTubeHeader/YTSettingsSectionItem.h>
+#import <YouTubeHeader/YTSettingsSectionItemManager.h>
+#import <YouTubeHeader/YTUIUtils.h>
+#import <YouTubeHeader/YTSettingsPickerViewController.h>
 #import "uYouPlus.h"
 
 // For displaying snackbars
