@@ -8,26 +8,28 @@
 #import <substrate.h>
 #import <rootless.h>
 
-#import "uYouPlusThemes.h"
-#import <YouTubeHeader/YTAppDelegate.h>
-#import <YouTubeHeader/YTIMenuConditionalServiceItemRenderer.h>
-#import <YouTubeHeader/YTVideoQualitySwitchOriginalController.h>
-#import <YouTubeHeader/YTIGuideResponse.h>
-#import <YouTubeHeader/YTIGuideResponseSupportedRenderers.h>
-#import <YouTubeHeader/YTIPivotBarSupportedRenderers.h>
-#import <YouTubeHeader/YTIPivotBarItemRenderer.h>
-#import <YouTubeHeader/YTIBrowseRequest.h>
-#import <YouTubeHeader/YTIButtonRenderer.h>
-#import <YouTubeHeader/YTIElementRenderer.h>
-#import <YouTubeHeader/YTISectionListRenderer.h>
-#import <YouTubeHeader/YTWatchNextResultsViewController.h>
-#import <YouTubeHeader/YTPlayerOverlay.h>
-#import <YouTubeHeader/YTPlayerOverlayProvider.h>
-#import <YouTubeHeader/YTReelWatchPlaybackOverlayView.h>
-#import <YouTubeHeader/YTInlinePlayerBarContainerView.h>
-#import <YouTubeHeader/YTInnerTubeCollectionViewController.h>
-#import <YouTubeHeader/YTPivotBarItemView.h>
-#import <YouTubeHeader/YTCollectionViewCell.h>
+#import "uYouPlusThemes.h" // Hide "Buy Super Thanks" banner (_ASDisplayView)
+#import <YoutubeHeader/YTAppDelegate.h> // Activate FLEX
+#import <YoutubeHeader/YTIMenuConditionalServiceItemRenderer.h>
+#import <YoutubeHeader/YTIPlayerBarDecorationModel.h>
+#import <YoutubeHeader/YTPlayerBarRectangleDecorationView.h>
+#import <YoutubeHeader/YTVideoQualitySwitchOriginalController.h>
+#import <YoutubeHeader/YTIGuideResponse.h>
+#import <YoutubeHeader/YTIGuideResponseSupportedRenderers.h>
+#import <YoutubeHeader/YTIPivotBarSupportedRenderers.h>
+#import <YoutubeHeader/YTIPivotBarItemRenderer.h>
+#import <YoutubeHeader/YTIBrowseRequest.h>
+#import <YoutubeHeader/YTIButtonRenderer.h>
+#import <YoutubeHeader/YTIElementRenderer.h>
+#import <YoutubeHeader/YTISectionListRenderer.h>
+#import <YoutubeHeader/YTWatchNextResultsViewController.h>
+#import <YoutubeHeader/YTPlayerOverlay.h>
+#import <YoutubeHeader/YTPlayerOverlayProvider.h>
+#import <YoutubeHeader/YTReelWatchPlaybackOverlayView.h>
+#import <YoutubeHeader/YTInlinePlayerBarContainerView.h>
+#import <YoutubeHeader/YTInnerTubeCollectionViewController.h>
+#import <YoutubeHeader/YTPivotBarItemView.h>
+#import <YoutubeHeader/YTCollectionViewCell.h>
 
 // Hide buttons under the video player by @PoomSmart
 #import <YouTubeHeader/ASCollectionElement.h>
@@ -44,7 +46,7 @@
 #define YT_BUNDLE_ID @"com.google.ios.youtube"
 #define YT_NAME @"YouTube"
 #define DEFAULT_RATE 1.0f // YTSpeed
-#define LOWCONTRASTMODE_CUTOFF_VERSION @"17.38.10" // LowContrastMode
+#define LOWCONTRASTMODE_CUTOFF_VERSION @"17.38.10" // LowContrastMode (v17.33.2-17.38.10)
 
 // IAmYouTube
 @interface SSOConfiguration : NSObject
@@ -85,6 +87,9 @@
 @end
 
 @interface YTTransportControlsButtonView : UIView
+@end
+
+@interface YTFullscreenActionsView : UIView
 @end
 
 @interface _ASCollectionViewCell : UICollectionViewCell
