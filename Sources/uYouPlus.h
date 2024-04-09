@@ -27,6 +27,7 @@
 #import <YouTubeHeader/YTInlinePlayerBarContainerView.h>
 #import <YouTubeHeader/YTInnerTubeCollectionViewController.h>
 #import <YouTubeHeader/YTPivotBarItemView.h>
+#import <Tweaks/YouTubeHeader/YTCollectionViewCell.h>
 
 // Hide buttons under the video player by @PoomSmart
 #import <YouTubeHeader/ASCollectionElement.h>
@@ -51,7 +52,7 @@
 
 // Hide Double tap to seek Overlay
 @interface YTInlinePlayerDoubleTapIndicatorView : UIView
-@property (nonatomic, strong) UIView *_scrimOverlay;
+@property (nonatomic, strong) UIView *scrimOverlay;
 @end
 
 // YTTapToSeek - https://github.com/bhackel/YTTapToSeek
