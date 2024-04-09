@@ -138,3 +138,6 @@
 
 "FIX_GOOGLE_SIGNIN" = "Fix Inloggen met Google (Alleen voor TrollStore gebruikers)";
 "FIX_GOOGLE_SIGNIN_DESC" = "Zet dit aan wanneer je niet kan inloggen met je Google account en je de app hebt geïnstalleerd met Trollstore. Als je in kan loggen laat dit dan met rust. Om dit te activeren moet je de app opnieuw opstarten.";
+
+"FAKE_YOUR_PREMIUM_BENEFITS" = "Jouw Premium-voordelen";
+"FAKE_DOWNLOADS" = "Downloads";

@@ -288,8 +288,6 @@ BOOL isAd(YTIElementRenderer *self) {
   * Replaces the "Get YouTube Premium" cell with a "Your Premium benefits" cell
   * and adds a "Downloads" cell below the "Your videos" cell
   * @param model The model for the You tab
-  * TODO Add localization support for the Get Youtube Premium and Downloads text
-  * TODO Combine with the Fake Youtube Premium logo
   */
 %new
 - (void)uYouEnhancedFakePremiumModel:(YTISectionListRenderer *)model {
@@ -314,7 +312,7 @@ BOOL isAd(YTIElementRenderer *self) {
                         // Modify the icon type to be Premium
                         icon.iconType = 741; // Magic number for premium icon
                         // Modify the text
-                        ((YTIStringRun *)(compactLinkRenderer.title.runsArray.firstObject)).text = @"Your Premium benefits";
+                        ((YTIStringRun *)(compactLinkRenderer.title.runsArray.firstObject)).text = LOC(@"FAKE_YOUR_PREMIUM_BENEFITS");
                     }
                 }
             }
@@ -341,7 +339,7 @@ BOOL isAd(YTIElementRenderer *self) {
             // Note that this must be done outside the loop to avoid a runtime exception
             // TODO Link this to the uYou downloads page
             YTIItemSectionSupportedRenderers *newItemSectionSupportedRenderers = [subContentsArray[yourVideosCellIndex] copy];
-            ((YTIStringRun *)(newItemSectionSupportedRenderers.compactListItemRenderer.title.runsArray.firstObject)).text = @"Downloads";
+            ((YTIStringRun *)(newItemSectionSupportedRenderers.compactListItemRenderer.title.runsArray.firstObject)).text = LOC(@"FAKE_DOWNLOADS");
             newItemSectionSupportedRenderers.compactListItemRenderer.thumbnail.iconThumbnailRenderer.icon.iconType = 147;
             // Insert this cell after the Your Videos cell
             [subContentsArray insertObject:newItemSectionSupportedRenderers atIndex:yourVideosCellIndex + 1];

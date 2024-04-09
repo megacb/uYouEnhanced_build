@@ -138,3 +138,6 @@
 
 "FIX_GOOGLE_SIGNIN" = "תקן כניסה של Google (עבור משתמש TrollStore בלבד)";
 "FIX_GOOGLE_SIGNIN_DESC" = "הפעל אפשרות זו רק כאשר אינך יכול להיכנס עם חשבון Google שלך והאפליקציה הותקנה דרך TrollStore. אם אתה יכול להתחבר כרגיל, השאר אותה מושבתת. נדרשת הפעלה מחדש של האפליקציה.";
+
+"FAKE_YOUR_PREMIUM_BENEFITS" = "Your Premium benefits";
+"FAKE_DOWNLOADS" = "Downloads";

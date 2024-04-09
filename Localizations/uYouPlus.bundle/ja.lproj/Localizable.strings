@@ -138,3 +138,6 @@
 
 "FIX_GOOGLE_SIGNIN" = "Googleのサインインを修正 (TrollStoreユーザーのみ)";
 "FIX_GOOGLE_SIGNIN_DESC" = "Googleアカウントでサインインできない場合で、アプリがTrollStore経由でインストールされている場合のみ、このオプションをオンにしてください。通常通りサインインできる場合はオフのままにしてください。アプリの再起動が必要です。";
+
+"FAKE_YOUR_PREMIUM_BENEFITS" = "Your Premium benefits";
+"FAKE_DOWNLOADS" = "Downloads";
