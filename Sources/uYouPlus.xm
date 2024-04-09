@@ -133,59 +133,6 @@ BOOL isAd(YTIElementRenderer *self) {
 %end
 %end
 
-// YouTube Premium Logo - @arichornlover - this doesn't always function
-// Modern implementation - @bhackel
-%group gPremiumYouTubeLogo
-%hook YTHeaderLogoController
-    - (void)setTopbarLogoRenderer:(id)renderer {
-        // Modify the type of the icon before setting the renderer
-        YTITopbarLogoRenderer *logoRenderer = (YTITopbarLogoRenderer *)renderer;
-        YTIIcon *iconImage = logoRenderer.iconImage;
-        iconImage.iconType = 537; // magic number for Premium icon, hopefully it doesnt change. 158 is default logo.
-        // Use this modified renderer
-        %orig(logoRenderer);
-    }
-    // For when spoofing before 18.34.5
-    - (void)setPremiumLogo:(BOOL)isPremiumLogo {
-        isPremiumLogo = YES;
-        %orig;
-    }
-    - (BOOL)isPremiumLogo {
-        return YES;
-    }
-%end
-
-/*
-%hook YTHeaderLogoController
-- (void)setPremiumLogo:(BOOL)isPremiumLogo {
-    isPremiumLogo = YES;
-    %orig;
-}
-- (BOOL)isPremiumLogo {
-    return YES;
-}
-- (void)setTopbarLogoRenderer:(id)renderer {
-}
-%end
-
-// Workaround: fix YouTube Premium Logo not working on v18.35.4 or above.
-%hook YTVersionUtils // Working Version for Premium Logo
-+ (NSString *)appVersion { return @"18.34.5"; }
-%end
-
-%hook YTSettingsCell // Remove v18.34.5 Version Number - @Dayanch96
-- (void)setDetailText:(id)arg1 {
-    NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
-    NSString *appVersion = infoDictionary[@"CFBundleShortVersionString"];
-
-    if ([arg1 isEqualToString:@"18.34.5"]) {
-        arg1 = appVersion;
-    } %orig(arg1);
-}
-%end
-*/
-%end
-
 // Fix App Group Directory by move it to document directory
 %hook NSFileManager
 - (NSURL *)containerURLForSecurityApplicationGroupIdentifier:(NSString *)groupIdentifier {
@@ -313,8 +260,28 @@ BOOL isAd(YTIElementRenderer *self) {
 %end
 %end
 
-// Fake premium in the You tab - @bhackel
-%group gYouTabFakePremium
+// Fake premium - @bhackel
+%group gFakePremium
+// YouTube Premium Logo - @arichornlover - this doesn't always function
+// Modern implementation - @bhackel
+%hook YTHeaderLogoController
+    - (void)setTopbarLogoRenderer:(id)renderer {
+        // Modify the type of the icon before setting the renderer
+        YTITopbarLogoRenderer *logoRenderer = (YTITopbarLogoRenderer *)renderer;
+        YTIIcon *iconImage = logoRenderer.iconImage;
+        iconImage.iconType = 537; // magic number for Premium icon, hopefully it doesnt change. 158 is default logo.
+        // Use this modified renderer
+        %orig(logoRenderer);
+    }
+    // For when spoofing before 18.34.5
+    - (void)setPremiumLogo:(BOOL)isPremiumLogo {
+        isPremiumLogo = YES;
+        %orig;
+    }
+    - (BOOL)isPremiumLogo {
+        return YES;
+    }
+%end
 %hook YTAppCollectionViewController
 /**
   * Modify a given renderer data model to fake premium in the You tab
@@ -1353,9 +1320,6 @@ static BOOL findCell(ASNodeController *nodeController, NSArray <NSString *> *ide
     if (IS_ENABLED(@"centerYouTubeLogo_enabled")) {
         %init(gCenterYouTubeLogo);
     }
-    if (IS_ENABLED(@"premiumYouTubeLogo_enabled")) {
-        %init(gPremiumYouTubeLogo);
-    }
     if (IS_ENABLED(@"hideSubscriptionsNotificationBadge_enabled")) {
         %init(gHideSubscriptionsNotificationBadge);
     }
@@ -1450,7 +1414,7 @@ static BOOL findCell(ASNodeController *nodeController, NSArray <NSString *> *ide
         %init(gHidePremiumPromos);
     }
     if (IS_ENABLED(@"youTabFakePremium_enabled")) {
-        %init(gYouTabFakePremium);
+        %init(gFakePremium);
     }
 
     // YTNoModernUI - @arichorn
@@ -1458,14 +1422,11 @@ static BOOL findCell(ASNodeController *nodeController, NSArray <NSString *> *ide
     if (ytNoModernUIEnabled) {
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     [userDefaults setBool:NO forKey:@"enableVersionSpoofer_enabled"];
-    [userDefaults setBool:NO forKey:@"premiumYouTubeLogo_enabled"];
     } else {
     BOOL enableVersionSpooferEnabled = IS_ENABLED(@"enableVersionSpoofer_enabled");
-    BOOL premiumYouTubeLogoEnabled = IS_ENABLED(@"premiumYouTubeLogo_enabled");
 
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     [userDefaults setBool:enableVersionSpooferEnabled forKey:@"enableVersionSpoofer_enabled"];
-    [userDefaults setBool:premiumYouTubeLogoEnabled forKey:@"premiumYouTubeLogo_enabled"];
     }
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     [userDefaults setBool:ytNoModernUIEnabled ? ytNoModernUIEnabled : [userDefaults boolForKey:@"fixLowContrastMode_enabled"] forKey:@"fixLowContrastMode_enabled"];

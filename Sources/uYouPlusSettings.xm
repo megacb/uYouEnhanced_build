@@ -276,7 +276,6 @@ extern NSBundle *uYouPlusBundle();
     SWITCH_ITEM2(LOC(@"Hide `Privacy` Section"), LOC(@"App restart is required."), @"disablePrivacySection_enabled");
     SWITCH_ITEM2(LOC(@"Hide `Live Chat` Section"), LOC(@"App restart is required."), @"disableLiveChatSection_enabled");
     SWITCH_ITEM2(LOC(@"Hide `Get Youtube Premium` Section"), LOC(@"App restart is required."), @"hidePremiumPromos_enabled");
-    SWITCH_ITEM2(LOC(@"Fake Premium in You tab"), LOC(@"Makes it look like you have Premium. English only."), @"youTabFakePremium_enabled");
 
     # pragma mark - UI interface options
     SECTION_HEADER(LOC(@"UI Interface Options"));
@@ -915,7 +914,7 @@ extern NSBundle *uYouPlusBundle();
     # pragma mark - Miscellaneous
     SECTION_HEADER(LOC(@"MISCELLANEOUS"));
 
-    SWITCH_ITEM(LOC(@"YouTube Premium Logo"), LOC(@"Toggle this to use the official YouTube Premium Logo. App restart is required."), @"premiumYouTubeLogo_enabled");
+    SWITCH_ITEM2(LOC(@"Fake Premium"), LOC(@"Uses Premium logo and creates fake buttons in the You tab"), @"youTabFakePremium_enabled");
 //  SWITCH_ITEM(LOC(@"Center YouTube Logo"), LOC(@"Toggle this to move the official YouTube Logo to the Center. App restart is required."), @"centerYouTubeLogo_enabled");
     SWITCH_ITEM(LOC(@"Hide YouTube Logo"), LOC(@"Toggle this to hide the YouTube Logo in the YouTube App."), @"hideYouTubeLogo_enabled");
     SWITCH_ITEM(LOC(@"ENABLE_YT_STARTUP_ANIMATION"), LOC(@"ENABLE_YT_STARTUP_ANIMATION_DESC"), @"ytStartupAnimation_enabled");
