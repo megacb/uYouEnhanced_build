@@ -322,6 +322,7 @@ BOOL isAd(YTIElementRenderer *self) {
   * and adds a "Downloads" cell below the "Your videos" cell
   * @param model The model for the You tab
   * TODO Add localization support for the Get Youtube Premium and Downloads text
+  * TODO Combine with the Fake Youtube Premium logo
   */
 %new
 - (void)uYouEnhancedFakePremiumModel:(YTISectionListRenderer *)model {
@@ -368,7 +369,7 @@ BOOL isAd(YTIElementRenderer *self) {
                 }
             }
         }
-        if (yourVideosCellIndex != -1) {
+        if (yourVideosCellIndex != -1 && subContentsArray[yourVideosCellIndex].accessibilityLabel == nil) {
             // Create the fake Downloads page by copying the Your Videos page and modifying it
             // Note that this must be done outside the loop to avoid a runtime exception
             // TODO Link this to the uYou downloads page
@@ -377,6 +378,8 @@ BOOL isAd(YTIElementRenderer *self) {
             newItemSectionSupportedRenderers.compactListItemRenderer.thumbnail.iconThumbnailRenderer.icon.iconType = 147;
             // Insert this cell after the Your Videos cell
             [subContentsArray insertObject:newItemSectionSupportedRenderers atIndex:yourVideosCellIndex + 1];
+            // Inject a note to not modify this again
+            subContentsArray[yourVideosCellIndex].accessibilityLabel = @"uYouEnhanced Modified";
             yourVideosCellIndex = -1;
         }
     }
