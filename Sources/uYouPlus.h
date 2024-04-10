@@ -9,39 +9,39 @@
 #import <rootless.h>
 
 #import "uYouPlusThemes.h" // Hide "Buy Super Thanks" banner (_ASDisplayView)
-#import "Tweaks/YouTubeHeader/YTAppDelegate.h" // Activate FLEX
-#import "Tweaks/YouTubeHeader/YTIMenuConditionalServiceItemRenderer.h"
-#import "Tweaks/YouTubeHeader/YTIPlayerBarDecorationModel.h"
-#import "Tweaks/YouTubeHeader/YTPlayerBarRectangleDecorationView.h"
-#import "Tweaks/YouTubeHeader/YTVideoQualitySwitchOriginalController.h"
-#import "Tweaks/YouTubeHeader/YTIGuideResponse.h"
-#import "Tweaks/YouTubeHeader/YTIGuideResponseSupportedRenderers.h"
-#import "Tweaks/YouTubeHeader/YTIPivotBarSupportedRenderers.h"
-#import "Tweaks/YouTubeHeader/YTIPivotBarItemRenderer.h"
-#import "Tweaks/YouTubeHeader/YTIBrowseRequest.h"
-#import "Tweaks/YouTubeHeader/YTIButtonRenderer.h"
-#import "Tweaks/YouTubeHeader/YTIElementRenderer.h"
-#import "Tweaks/YouTubeHeader/YTISectionListRenderer.h"
-#import "Tweaks/YouTubeHeader/YTWatchNextResultsViewController.h"
-#import "Tweaks/YouTubeHeader/YTPlayerOverlay.h"
-#import "Tweaks/YouTubeHeader/YTPlayerOverlayProvider.h"
-#import "Tweaks/YouTubeHeader/YTReelWatchPlaybackOverlayView.h"
-#import "Tweaks/YouTubeHeader/YTInlinePlayerBarContainerView.h"
-#import "Tweaks/YouTubeHeader/YTInnerTubeCollectionViewController.h"
-#import "Tweaks/YouTubeHeader/YTPivotBarItemView.h"
-#import "Tweaks/YouTubeHeader/YTCollectionViewCell.h"
-#import "Tweaks/YouTubeHeader/YTIFormattedString.h"
-#import "Tweaks/YouTubeHeader/GPBMessage.h"
-#import "Tweaks/YouTubeHeader/YTIStringRun.h"
+#import <YouTubeHeader/YTAppDelegate.h> // Activate FLEX
+#import <YouTubeHeader/YTIMenuConditionalServiceItemRenderer.h>
+#import <YouTubeHeader/YTIPlayerBarDecorationModel.h>
+#import <YouTubeHeader/YTPlayerBarRectangleDecorationView.h>
+#import <YouTubeHeader/YTVideoQualitySwitchOriginalController.h>
+#import <YouTubeHeader/YTIGuideResponse.h>
+#import <YouTubeHeader/YTIGuideResponseSupportedRenderers.h>
+#import <YouTubeHeader/YTIPivotBarSupportedRenderers.h>
+#import <YouTubeHeader/YTIPivotBarItemRenderer.h>
+#import <YouTubeHeader/YTIBrowseRequest.h>
+#import <YouTubeHeader/YTIButtonRenderer.h>
+#import <YouTubeHeader/YTIElementRenderer.h>
+#import <YouTubeHeader/YTISectionListRenderer.h>
+#import <YouTubeHeader/YTWatchNextResultsViewController.h>
+#import <YouTubeHeader/YTPlayerOverlay.h>
+#import <YouTubeHeader/YTPlayerOverlayProvider.h>
+#import <YouTubeHeader/YTReelWatchPlaybackOverlayView.h>
+#import <YouTubeHeader/YTInlinePlayerBarContainerView.h>
+#import <YouTubeHeader/YTInnerTubeCollectionViewController.h>
+#import <YouTubeHeader/YTPivotBarItemView.h>
+#import <YouTubeHeader/YTCollectionViewCell.h>
+#import <YouTubeHeader/YTIFormattedString.h>
+#import <YouTubeHeader/GPBMessage.h>
+#import <YouTubeHeader/YTIStringRun.h>
 
 // Hide buttons under the video player by @PoomSmart
-#import "Tweaks/YouTubeHeader/ASCollectionElement.h"
-#import "Tweaks/YouTubeHeader/ASCollectionView.h"
-#import "Tweaks/YouTubeHeader/ELMNodeController.h"
+#import <YouTubeHeader/ASCollectionElement.h>
+#import <YouTubeHeader/ASCollectionView.h>
+#import <YouTubeHeader/ELMNodeController.h>
 
 // YouTube-X
-#import "Tweaks/YouTubeHeader/YTVideoWithContextNode.h"
-#import "Tweaks/YouTubeHeader/ELMCellNode.h"
+#import <YouTubeHeader/YTVideoWithContextNode.h>
+#import <YouTubeHeader/ELMCellNode.h>
 
 #define LOC(x) [tweakBundle localizedStringForKey:x value:nil table:nil]
 #define IS_ENABLED(k) [[NSUserDefaults standardUserDefaults] boolForKey:k]
