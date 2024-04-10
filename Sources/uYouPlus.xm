@@ -554,7 +554,7 @@ BOOL isAd(YTIElementRenderer *self) {
 %group hideFullscreenActions
 %hook YTMainAppVideoPlayerOverlayViewController
 - (BOOL)isFullscreenActionsEnabled {
-// This didn't work on its own - weird
+    // Attempt 1
    return IS_ENABLED(@"hideFullscreenActions_enabled") ? NO : %orig;
 }
 %end
@@ -563,12 +563,17 @@ BOOL isAd(YTIElementRenderer *self) {
     // Attempt 2
     return IS_ENABLED(@"hideFullscreenActions_enabled") ? NO : %orig;
 }
-- (void)removeFromSuperview {
+- (void)layoutSubviews {
     // Attempt 3
     if (IS_ENABLED(@"hideFullscreenActions_enabled")) {
-        [self removeFromSuperview];
+        // Check if already removed from superview
+        if (self.superview) {
+            [self removeFromSuperview];
+        }
+        self.hidden = YES;
+        self.frame = CGRectZero;
     }
-%orig;
+    %orig;
 }
 %end
 %end
