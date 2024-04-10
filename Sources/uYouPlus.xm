@@ -608,14 +608,14 @@ BOOL isAd(YTIElementRenderer *self) {
 }
 %end
 
-// YTStockVolumeHUD - https://github.com/lilacvibes/YTStockVolumeHUD
+// Use stock iOS volume HUD
+// Use YTColdConfig's method, see https://x.com/PoomSmart/status/1756904290445332653
 %group gStockVolumeHUD
-%hook YTVolumeBarView
-- (void)volumeChanged:(id)arg1 {
-        %orig(nil);
+%hook YTColdConfig
+- (BOOL)iosUseSystemVolumeControlInFullscreen {
+    return IS_ENABLED(@"stockVolumeHUD_enabled") ? YES : %orig;
 }
 %end
-
 %hook UIApplication 
 - (void)setSystemVolumeHUDEnabled:(BOOL)arg1 forAudioCategory:(id)arg2 {
         %orig(true, arg2);
@@ -742,16 +742,16 @@ BOOL isAd(YTIElementRenderer *self) {
 }
 %end
 
-%group gHidePreviousAndNextButton
-%hook YTColdConfig
-- (BOOL)removeNextPaddleForAllVideos { 
-    return YES; 
-}
-- (BOOL)removePreviousPaddleForAllVideos { 
-    return YES; 
-}
-%end
-%end
+// %group gHidePreviousAndNextButton
+// %hook YTColdConfig
+// - (BOOL)removeNextPaddleForAllVideos { 
+//     return YES; 
+// }
+// - (BOOL)removePreviousPaddleForAllVideos { 
+//     return YES; 
+// }
+// %end
+// %end
 
 // Hide Dark Overlay Background
 %group gHideOverlayDarkBackground
@@ -873,11 +873,6 @@ BOOL isAd(YTIElementRenderer *self) {
 }
 %end
 
-%hook YTShortsStartupCoordinator
-- (id)evaluateResumeToShorts { 
-    return IS_ENABLED(@"disableResumeToShorts_enabled") ? nil : %orig;
-}
-%end
 
 // Hide Shorts Cells - @PoomSmart & @iCrazeiOS
 %hook YTIElementRenderer
@@ -1296,9 +1291,9 @@ static BOOL findCell(ASNodeController *nodeController, NSArray <NSString *> *ide
     if (IS_ENABLED(@"hideSubscriptionsNotificationBadge_enabled")) {
         %init(gHideSubscriptionsNotificationBadge);
     }
-    if (IS_ENABLED(@"hidePreviousAndNextButton_enabled")) {
-        %init(gHidePreviousAndNextButton);
-    }
+    // if (IS_ENABLED(@"hidePreviousAndNextButton_enabled")) {
+    //     %init(gHidePreviousAndNextButton);
+    // }
     if (IS_ENABLED(@"hideOverlayDarkBackground_enabled")) {
         %init(gHideOverlayDarkBackground);
     }
