@@ -1418,4 +1418,8 @@ static BOOL findCell(ASNodeController *nodeController, NSArray <NSString *> *ide
     if (![allKeys containsObject:@"YouPiPEnabled"]) { 
        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"YouPiPEnabled"]; 
     }
+    // Broken uYou setting, change default to allow autoplay, user can disable later
+    if (![allKeys containsObject:@"noSuggestedVideoAtEnd"]) { 
+       [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"noSuggestedVideoAtEnd"]; 
+    }
 }
