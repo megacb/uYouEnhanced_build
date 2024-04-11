@@ -32,7 +32,7 @@
 	branch = main
 [submodule "Tweaks/YTABConfig"]
 	path = Tweaks/YTABConfig
-	url = https://github.com/arichornlover/YTABConfig.git
+	url = https://github.com/arichornlover/YTABConfig2.git
 	branch = main
 [submodule "Tweaks/Alderis"]
 	path = Tweaks/Alderis
