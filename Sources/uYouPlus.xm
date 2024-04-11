@@ -1418,8 +1418,14 @@ static BOOL findCell(ASNodeController *nodeController, NSArray <NSString *> *ide
     if (![allKeys containsObject:@"YouPiPEnabled"]) { 
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"YouPiPEnabled"]; 
     }
-    // Broken uYou setting, change default to allow autoplay, user can disable later
+    // Broken uYou 3.0.3 setting: No Suggested Videos at The Video End
+    // Set default to allow autoplay, user can disable later
     if (![allKeys containsObject:@"noSuggestedVideoAtEnd"]) { 
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"noSuggestedVideoAtEnd"]; 
+    }
+    // Broken uYou 3.0.2 setting: Playback Speed Controls
+    // Set default to disabled
+    if (![allKeys containsObject:@"showPlaybackRate"]) { 
+        [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"showPlaybackRate"]; 
     }
 }
