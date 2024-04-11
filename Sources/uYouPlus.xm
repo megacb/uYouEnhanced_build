@@ -657,6 +657,16 @@ BOOL isAd(YTIElementRenderer *self) {
 }
 %end
 
+// Disable pull to enter vertical fullscreen gesture - @bhackel
+// This was introduced in version 19.XX
+%group gDisablePullToFull
+%hook YTColdConfig
+- (BOOL)enablePullToFull { return NO; }
+- (BOOL)enablePullToFullAlwaysExitFullscreenLandscape { return NO; }
+%end
+%end
+
+
 // Video Controls Overlay Options
 // Hide CC / Hide Autoplay switch / Hide YTMusic Button / Enable Share Button / Enable Save to Playlist Button
 %hook YTMainAppControlsOverlayView
@@ -1388,6 +1398,9 @@ static BOOL findCell(ASNodeController *nodeController, NSArray <NSString *> *ide
     }
     if (IS_ENABLED(@"YTTapToSeek_enabled")) {
         %init(YTTTS_Tweak);
+    }
+    if (IS_ENABLED(@"disablePullToFull_enabled")) {
+        %init(gDisablePullToFull);
     }
 
     // YTNoModernUI - @arichorn
