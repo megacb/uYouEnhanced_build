@@ -2,6 +2,7 @@
 #import "RootOptionsController.h"
 #import "ColourOptionsController.h"
 #import "ColourOptionsController2.h"
+#import "AppIconOptionsController.h"
 
 #define VERSION_STRING [[NSString stringWithFormat:@"%@", @(OS_STRINGIFY(TWEAK_VERSION))] stringByReplacingOccurrencesOfString:@"\"" withString:@""]
 #define SHOW_RELAUNCH_YT_SNACKBAR [[%c(GOOHUDManagerInternal) sharedInstance] showMessageMainThread:[%c(YTHUDMessage) messageWithText:LOC(@"RESTART_YOUTUBE")]]
