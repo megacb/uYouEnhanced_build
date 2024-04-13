@@ -82,7 +82,7 @@
 
 - (void)saveIcon {
     if (self.selectedIconFile) {
-        [[UIApplication sharedApplication] setAlternateIconName:[self.selectedIconFile.lastPathComponent stringByDeletingPathExtension] completionHandler:^(NSError * _Nullable error){
+        [[UIApplication sharedApplication] setAlternateIconName:@"logo_youtube_color60x60" completionHandler:^(NSError * _Nullable error){
             if (error) {
                 NSLog(@"Error setting alternate icon: %@", error.localizedDescription);
                 dispatch_async(dispatch_get_main_queue(), ^{
