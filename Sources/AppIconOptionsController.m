@@ -20,7 +20,10 @@
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     [self.view addSubview:self.tableView];
-    
+
+    UIBarButtonItem *closeButton = [[UIBarButtonItem alloc] initWithTitle:@"Close" style:UIBarButtonItemStylePlain target:self action:@selector(close)];
+    self.navigationItem.leftBarButtonItem = closeButton;
+
     UIButton *defaultButton = [UIButton buttonWithType:UIButtonTypeSystem];
     defaultButton.frame = CGRectMake(20, 100, 100, 40);
     [defaultButton setTitle:@"Default" forState:UIControlStateNormal];
@@ -108,6 +111,10 @@
         [alert addAction:okAction];
         [self presentViewController:alert animated:YES completion:nil];
     });
+}
+
+- (void)close {
+    [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end
