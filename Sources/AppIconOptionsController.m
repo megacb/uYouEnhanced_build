@@ -6,6 +6,7 @@
 @property (strong, nonatomic) UIImageView *iconPreview;
 @property (strong, nonatomic) NSArray<NSString *> *appIcons;
 @property (assign, nonatomic) NSInteger selectedIconIndex;
+@property (assign, nonatomic) NSInteger defaultIconIndex;
 
 @end
 
@@ -15,6 +16,7 @@
     [super viewDidLoad];
 
     self.selectedIconIndex = 0;
+    self.defaultIconIndex = 0;
 
     self.tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
     self.tableView.dataSource = self;
@@ -24,17 +26,8 @@
     UIBarButtonItem *closeButton = [[UIBarButtonItem alloc] initWithTitle:@"Close" style:UIBarButtonItemStylePlain target:self action:@selector(close)];
     self.navigationItem.leftBarButtonItem = closeButton;
 
-    UIButton *defaultButton = [UIButton buttonWithType:UIButtonTypeSystem];
-    defaultButton.frame = CGRectMake(20, 100, 100, 40);
-    [defaultButton setTitle:@"Default" forState:UIControlStateNormal];
-    [defaultButton addTarget:self action:@selector(setDefaultIcon) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:defaultButton];
-    
-    UIButton *saveButton = [UIButton buttonWithType:UIButtonTypeSystem];
-    saveButton.frame = CGRectMake(20, 100, 100, 40);
-    [saveButton setTitle:@"Save" forState:UIControlStateNormal];
-    [saveButton addTarget:self action:@selector(saveIcon) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:saveButton];
+    UIBarButtonItem *saveButton = [[UIBarButtonItem alloc] initWithTitle:@"Save" style:UIBarButtonItemStylePlain target:self action:@selector(saveIcon)];
+    self.navigationItem.rightBarButtonItem = saveButton;
 
     self.iconPreview = [[UIImageView alloc] initWithFrame:CGRectMake(20, 150, 60, 60)];
     self.iconPreview.layer.cornerRadius = 10.0;
@@ -50,7 +43,7 @@
     }
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger section) {
     return self.appIcons.count;
 }
 
@@ -60,12 +53,20 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
     }
     cell.textLabel.text = [self.appIcons[indexPath.row] lastPathComponent];
+    
+    UIImage *iconImage = [UIImage imageWithContentsOfFile:self.appIcons[indexPath.row]];
+    cell.imageView.image = [self resizedImageWithImage:iconImage];
 
     if (indexPath.row == self.selectedIconIndex) {
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
     } else {
         cell.accessoryType = UITableViewCellAccessoryNone;
     }
+
+    if (indexPath.row == self.defaultIconIndex) {
+        cell.textLabel.text = @"Default";
+    }
+    
     return cell;
 }
 
