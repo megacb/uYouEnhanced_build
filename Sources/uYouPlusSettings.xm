@@ -244,7 +244,7 @@ extern NSBundle *uYouPlusBundle();
     SWITCH_ITEM2(LOC(@"PINCH_TO_ZOOM"), LOC(@"PINCH_TO_ZOOM_DESC"), @"pinchToZoom_enabled");
     SWITCH_ITEM(LOC(@"YT_MINIPLAYER"), LOC(@"YT_MINIPLAYER_DESC"), @"ytMiniPlayer_enabled");
     SWITCH_ITEM2(LOC(@"STOCK_VOLUME_HUD"), LOC(@"STOCK_VOLUME_HUD_DESC"), @"stockVolumeHUD_enabled");
-    SWITCH_ITEM2(LOC(@"Disable portrait fullscreen gesture"), LOC(@"Disable the drag gesture to enter vertical fullscreen"), @"disablePullToFull_enabled");
+    SWITCH_ITEM2(LOC(@"Disable pull-to-fullscreen gesture"), LOC(@"Disable the drag gesture to enter vertical fullscreen. Only applies to landscape videos."), @"disablePullToFull_enabled");
 
     # pragma mark - Video controls overlay options
     SECTION_HEADER(LOC(@"VIDEO_PLAYER_OPTIONS"));
