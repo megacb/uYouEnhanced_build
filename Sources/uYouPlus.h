@@ -33,6 +33,7 @@
 #import <YouTubeHeader/YTIFormattedString.h>
 #import <YouTubeHeader/GPBMessage.h>
 #import <YouTubeHeader/YTIStringRun.h>
+#import <YouTubeHeader/YTCellController.h>
 
 // Hide buttons under the video player by @PoomSmart
 #import <YouTubeHeader/ASCollectionElement.h>
@@ -72,40 +73,49 @@
 
 // Hide Premium Promo in You tab - @bhackel
 @interface YTIIconThumbnailRenderer : GPBMessage
-    @property (nonatomic, strong) YTIIcon *icon;
-    - (bool)hasIcon;
+@property (nonatomic, strong) YTIIcon *icon;
+- (bool)hasIcon;
 @end
 @interface YTICompactListItemThumbnailSupportedRenderers : GPBMessage
-    @property (nonatomic, strong) YTIIconThumbnailRenderer *iconThumbnailRenderer;
-    - (bool)hasIconThumbnailRenderer;
+@property (nonatomic, strong) YTIIconThumbnailRenderer *iconThumbnailRenderer;
+- (bool)hasIconThumbnailRenderer;
 @end
 @interface YTICompactListItemRenderer : GPBMessage
-    @property (nonatomic, strong) YTICompactListItemThumbnailSupportedRenderers *thumbnail;
-    @property (nonatomic, strong) YTIFormattedString *title;
-    - (bool)hasThumbnail;
-    - (bool)hasTitle;
+@property (nonatomic, strong) YTICompactListItemThumbnailSupportedRenderers *thumbnail;
+@property (nonatomic, strong) YTIFormattedString *title;
+- (bool)hasThumbnail;
+- (bool)hasTitle;
 @end
 @interface YTIIcon (uYouEnhanced)
-    - (bool)hasIconType;
+- (bool)hasIconType;
 @end
 @interface YTICompactLinkRenderer : GPBMessage
-    @property (nonatomic, strong) YTIIcon *icon;
-    @property (nonatomic, strong) YTIFormattedString *title;
-    @property (nonatomic, strong) YTICompactListItemThumbnailSupportedRenderers *thumbnail;
-    - (bool)hasIcon;
-    - (bool)hasThumbnail;
+@property (nonatomic, strong) YTIIcon *icon;
+@property (nonatomic, strong) YTIFormattedString *title;
+@property (nonatomic, strong) YTICompactListItemThumbnailSupportedRenderers *thumbnail;
+- (bool)hasIcon;
+- (bool)hasThumbnail;
 @end
 @interface YTIItemSectionSupportedRenderers (uYouEnhanced)
-    @property(readonly, nonatomic) YTICompactLinkRenderer *compactLinkRenderer;
-    @property(readonly, nonatomic) YTICompactListItemRenderer *compactListItemRenderer;
-    - (bool)hasCompactLinkRenderer;
-    - (bool)hasCompactListItemRenderer;
+@property(readonly, nonatomic) YTICompactLinkRenderer *compactLinkRenderer;
+@property(readonly, nonatomic) YTICompactListItemRenderer *compactListItemRenderer;
+- (bool)hasCompactLinkRenderer;
+- (bool)hasCompactListItemRenderer;
 @end
 @interface YTAppCollectionViewController : YTInnerTubeCollectionViewController
 - (void)uYouEnhancedFakePremiumModel:(YTISectionListRenderer *)model;
 @end
 @interface YTInnerTubeCollectionViewController (uYouEnhanced)
-    @property(readonly, nonatomic) YTISectionListRenderer *model;
+@property(readonly, nonatomic) YTISectionListRenderer *model;
+@end
+@interface YTLinkCell : UICollectionViewCell
+@end
+@interface YTCompactListItemCellController : YTCellController
+@property(nonatomic, weak, readwrite) id entry;
+@end
+@interface GLViewPagerViewController : UIViewController
+@end
+@interface DownloadsPagerVC : GLViewPagerViewController
 @end
 
 // uYouPlus
