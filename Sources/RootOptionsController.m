@@ -1,7 +1,6 @@
 #import "RootOptionsController.h"
 #import "ColourOptionsController.h"
 #import "ColourOptionsController2.h"
-#import "AppIconOptionsController.h"
 
 @interface RootOptionsController ()
 @end
@@ -15,9 +14,6 @@
 
     UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(done)];
     self.navigationItem.leftBarButtonItem = doneButton;
-    
-    UIBarButtonItem *appIconButton = [[UIBarButtonItem alloc] initWithTitle:@"App Icon" style:UIBarButtonItemStylePlain target:self action:@selector(showAppIconOptions)];
-    self.navigationItem.rightBarButtonItem = appIconButton;
 
     UITableViewStyle style;
     if (@available(iOS 13, *)) {
