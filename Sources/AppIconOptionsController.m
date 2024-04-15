@@ -129,7 +129,7 @@
     }];
 }
 
-- (void)resizedImageWithImage:(UIImage *)image {
+- (UIImage *)resizedImageWithImage:(UIImage *)image {
     CGFloat scale = [UIScreen mainScreen].scale;
     CGSize newSize = CGSizeMake(image.size.width / scale, image.size.height / scale);
     UIGraphicsBeginImageContextWithOptions(newSize, NO, scale);
