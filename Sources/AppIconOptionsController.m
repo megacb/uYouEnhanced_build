@@ -46,8 +46,12 @@
     }
 }
 
+- (NSArray<NSString *> *)sortedAppIcons {
+    return [self.appIcons sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.appIcons.count + 1;
+    return self.appIcons.count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -59,28 +63,19 @@
     if (!cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
     }
+    NSArray<NSString *> *sortedIcons = [self sortedAppIcons];
+    NSString *iconPath = self.appIcons[indexPath.row];
+    cell.textLabel.text = [iconPath.lastPathComponent stringByDeletingPathExtension];
     
-    if (indexPath.row == 0) {
-        cell.textLabel.text = @"Reset";
-        if (indexPath.row == self.defaultIconIndex) {
-            cell.accessoryType = UITableViewCellAccessoryCheckmark;
-        } else {
-            cell.accessoryType = UITableViewCellAccessoryNone;
-        }
-    } else {
-        NSString *iconPath = self.appIcons[indexPath.row - 1];
-        cell.textLabel.text = [iconPath.lastPathComponent stringByDeletingPathExtension];
-    
-        UIImage *iconImage = [UIImage imageWithContentsOfFile:iconPath];
-        cell.imageView.image = [self resizedImageWithImage:iconImage];
-        cell.imageView.layer.cornerRadius = 10.0;
-        cell.imageView.clipsToBounds = YES;
+    UIImage *iconImage = [UIImage imageWithContentsOfFile:iconPath];
+    cell.imageView.image = [self resizedImageWithImage:iconImage];
+    cell.imageView.layer.cornerRadius = 10.0;
+    cell.imageView.clipsToBounds = YES;
         
-        if (indexPath.row - 1 == self.selectedIconIndex) {
-            cell.accessoryType = UITableViewCellAccessoryCheckmark;
-        } else {
-            cell.accessoryType = UITableViewCellAccessoryNone;
-        }
+    if (indexPath.row == self.selectedIconIndex) {
+        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+    } else {
+        cell.accessoryType = UITableViewCellAccessoryNone;
     }
     
     return cell;
