@@ -23,7 +23,7 @@
     self.tableView.delegate = self;
     [self.view addSubview:self.tableView];
 
-    UIImage *backImage = [UIImage imageNamed:@"yt_outline_chevron_left_ios_24pt"];
+    UIImage *backImage = [UIImage imageNamed:@"yt_outline_chevron_left_ios_24pt" inBundle:[NSBundle mainBundle] compatibleWithTraitCollection:nil];
     UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithImage:backImage style:UIBarButtonItemStylePlain target:self action:@selector(back)];
     self.navigationItem.leftBarButtonItem = backButton;
 
