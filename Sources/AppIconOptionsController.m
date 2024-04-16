@@ -15,12 +15,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectZero];
-    titleLabel.text = @"Change App Icon";
-    titleLabel.font = [UIFont fontWithName:@"YTSans-Bold" size:17];
-    titleLabel.textColor = [UIColor whiteColor];
-    [titleLabel sizeToFit];
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:titleLabel];
+    self.title = @"Change App Icon";
+    [self.navigationController.navigationBar setTitleTextAttributes:@{NSFontAttributeName: [UIFont fontWithName:@"YTSans-Bold" size:17], NSForegroundColorAttributeName: [UIColor whiteColor]}];
 
     self.selectedIconIndex = -1;
     
@@ -29,13 +25,14 @@
     self.tableView.delegate = self;
     [self.view addSubview:self.tableView];
 
-    UIBarButtonItem *backButton = [[UIBarButtonItem alloc] init];
+    UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:self action:@selector(back)];
     UIImage *backImage = [UIImage imageNamed:@"yt_outline_chevron_left_ios_24pt" inBundle:[NSBundle mainBundle] compatibleWithTraitCollection:nil];
     if (!backImage) {
         backButton.image = [UIImage systemImageNamed:@"chevron.backward"];
     } else {
         backButton.image = backImage;
     }
+    [backButton setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor whiteColor], NSFontAttributeName: [UIFont fontWithName:@"YTSans-Medium" size:17]} forState:UIControlStateNormal];
     self.navigationItem.leftBarButtonItem = backButton;
 
     UIBarButtonItem *resetButton = [[UIBarButtonItem alloc] initWithTitle:@"Reset" style:UIBarButtonItemStylePlain target:self action:@selector(resetIcon)];
