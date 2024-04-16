@@ -105,16 +105,26 @@
 
 - (void)saveIcon {
     NSString *selectedIconPath = self.selectedIconIndex >= 0 ? self.appIcons[self.selectedIconIndex] : nil;
-    
-    [[UIApplication sharedApplication] setAlternateIconName:selectedIconPath completionHandler:^(NSError * _Nullable error) {
-        if (error) {
-            NSLog(@"Error setting alternate icon: %@", error.localizedDescription);
-            [self showAlertWithTitle:@"Error" message:@"Failed to set alternate icon"];
+    if (selectedIconPath) {
+        NSURL *iconURL = [NSURL fileURLWithPath:selectedIconPath];
+        if ([[UIApplication sharedApplication] respondsToSelector:@selector(setAlternateIconName:completionHandler:)]) {
+            [[UIApplication sharedApplication] setAlternateIconName:selectedIconPath completionHandler:^(NSError * _Nullable error) {
+                if (error) {
+                    NSLog(@"Error setting alternate icon: %@", error.localizedDescription);
+                    [self showAlertWithTitle:@"Error" message:@"Failed to set alternate icon"];
+                } else {
+                    NSLog(@"Alternate icon set successfully");
+                    [self showAlertWithTitle:@"Success" message:@"Alternate icon set successfully"];
+                }
+            }];
         } else {
-            NSLog(@"Alternate icon set successfully");
-            [self showAlertWithTitle:@"Success" message:@"Alternate icon set successfully"];
+            NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+            [dict setObject:iconURL forKey:@"iconURL"];
+            [dict writeToFile:[[NSBundle mainBundle] pathForResource:@"Info" ofType:@"plist"] atomically:YES];
+            
+            [self showAlertWithTitle:@"Alternate Icon" message:@"Please restart the app to apply the alternate icon"];
         }
-    }];
+    }
 }
 
 - (void)showAlertWithTitle:(NSString *)title message:(NSString *)message {
