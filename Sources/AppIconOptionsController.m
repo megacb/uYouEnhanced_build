@@ -116,10 +116,10 @@
 
 - (void)showAlertWithTitle:(NSString *)title message:(NSString *)message {
     dispatch_async(dispatch_get_main_queue(), ^{
-        YTAlertView *alert = [[YTAlertView alloc] init];
-        alert.title = title;
-        alert.subtitle = message;
-        [alert show];
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
+        [alert addAction:okAction];
+        [self presentViewController:alert animated:YES completion:nil];
     });
 }
 
