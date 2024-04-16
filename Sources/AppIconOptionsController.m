@@ -29,13 +29,14 @@
     self.tableView.delegate = self;
     [self.view addSubview:self.tableView];
 
-    self.backButton = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
+    UIBarButtonItem *backButton = [[UIBarButtonItem alloc] init];
     UIImage *backImage = [UIImage imageNamed:@"yt_outline_chevron_left_ios_24pt" inBundle:[NSBundle mainBundle] compatibleWithTraitCollection:nil];
     if (!backImage) {
         backButton.image = [UIImage systemImageNamed:@"chevron.backward"];
     } else {
         backButton.image = backImage;
     }
+    self.navigationItem.leftBarButtonItem = backButton;
 
     UIBarButtonItem *resetButton = [[UIBarButtonItem alloc] initWithTitle:@"Reset" style:UIBarButtonItemStylePlain target:self action:@selector(resetIcon)];
     [resetButton setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor whiteColor], NSFontAttributeName: [UIFont fontWithName:@"YTSans-Medium" size:17]} forState:UIControlStateNormal];
