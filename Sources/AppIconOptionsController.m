@@ -6,6 +6,7 @@
 @property (strong, nonatomic) UITableView *tableView;
 @property (strong, nonatomic) NSArray<NSString *> *appIcons;
 @property (assign, nonatomic) NSInteger selectedIconIndex;
+@property (strong, nonatomic) UIImageView *backButton;
 
 @end
 
@@ -28,6 +29,7 @@
     self.tableView.delegate = self;
     [self.view addSubview:self.tableView];
 
+    self.backButton = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
     UIImage *backImage = [UIImage imageNamed:@"yt_outline_chevron_left_ios_24pt" inBundle:[NSBundle mainBundle] compatibleWithTraitCollection:nil];
     if (!backImage) {
         backButton.image = [UIImage systemImageNamed:@"chevron.backward"];
@@ -41,7 +43,7 @@
     UIBarButtonItem *saveButton = [[UIBarButtonItem alloc] initWithTitle:@"Save" style:UIBarButtonItemStylePlain target:self action:@selector(saveIcon)];
     [saveButton setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor whiteColor], NSFontAttributeName: [UIFont fontWithName:@"YTSans-Medium" size:17]} forState:UIControlStateNormal];
     
-    self.navigationItem.rightBarButtonItems = @[resetButton, saveButton];
+    self.navigationItem.rightBarButtonItems = @[saveButton, resetButton];
     
     NSString *path = [[NSBundle mainBundle] pathForResource:@"uYouPlus" ofType:@"bundle"];
     NSBundle *bundle = [NSBundle bundleWithPath:path];
