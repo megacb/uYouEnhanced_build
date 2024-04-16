@@ -66,7 +66,7 @@
     if (!cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
     }
-    [self sortedAppIcons]
+    [self sortedAppIcons];
     NSString *iconPath = self.appIcons[indexPath.row];
     cell.textLabel.text = [iconPath.lastPathComponent stringByDeletingPathExtension];
     
