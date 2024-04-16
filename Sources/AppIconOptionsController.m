@@ -17,7 +17,6 @@
     [super viewDidLoad];
     
     self.selectedIconIndex = 0;
-    self.defaultIconIndex = 0;
     
     self.tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
     self.tableView.dataSource = self;
@@ -63,7 +62,7 @@
     if (!cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
     }
-    NSArray<NSString *> *sortedIcons = [self sortedAppIcons];
+    [self sortedAppIcons]
     NSString *iconPath = self.appIcons[indexPath.row];
     cell.textLabel.text = [iconPath.lastPathComponent stringByDeletingPathExtension];
     
