@@ -15,7 +15,14 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+
+    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+    titleLabel.text = @"Change App Icon";
+    titleLabel.font = [UIFont fontWithName:@"YTSans-Bold" size:17];
+    titleLabel.textColor = [UIColor whiteColor];
+    [titleLabel sizeToFit];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:titleLabel];
+
     self.selectedIconIndex = 0;
     
     self.tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
