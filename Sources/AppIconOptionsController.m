@@ -1,4 +1,5 @@
 #import "AppIconOptionsController.h"
+#import <YouTubeHeader/YTAssetLoader.h>
 
 @interface AppIconOptionsController () <UITableViewDataSource, UITableViewDelegate>
 
