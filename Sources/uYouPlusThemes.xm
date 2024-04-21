@@ -181,25 +181,6 @@ UIColor* raisedColor = [UIColor colorWithRed:0.035 green:0.035 blue:0.035 alpha:
 }
 %end
 
-// iSponsorBlock
-%hook SponsorBlockSettingsController
-- (void)viewDidLoad {
-    if (self.traitCollection.userInterfaceStyle == UIUserInterfaceStyleDark) {
-        %orig;
-        self.tableView.backgroundColor = [UIColor blackColor];
-    } else { return %orig; }
-}
-%end
-
-%hook SponsorBlockViewController
-- (void)viewDidLoad {
-    if (self.traitCollection.userInterfaceStyle == UIUserInterfaceStyleDark) {
-        %orig;
-        self.view.backgroundColor = [UIColor blackColor];
-    } else { return %orig; }
-}
-%end
-
 %hook UIApplication
 - (void)applicationDidFinishLaunching:(UIApplication *)application {
     if (@available(iOS 14.0, *)) {
@@ -408,25 +389,6 @@ UIColor *customHexColor;
     if (IS_DARK_APPEARANCE_ENABLED) {
         // self.subviews[0].backgroundColor = [UIColor clearColor];
     }
-}
-%end
-
-// iSponsorBlock
-%hook SponsorBlockSettingsController
-- (void)viewDidLoad {
-    if (self.traitCollection.userInterfaceStyle == UIUserInterfaceStyleDark) {
-        %orig;
-        self.tableView.backgroundColor = customHexColor;
-    } else { return %orig; }
-}
-%end
-
-%hook SponsorBlockViewController
-- (void)viewDidLoad {
-    if (self.traitCollection.userInterfaceStyle == UIUserInterfaceStyleDark) {
-        %orig;
-        self.view.backgroundColor = customHexColor;
-    } else { return %orig; }
 }
 %end
 
