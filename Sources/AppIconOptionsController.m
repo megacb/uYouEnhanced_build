@@ -16,7 +16,7 @@
     [super viewDidLoad];
 
     self.title = @"Change App Icon";
-    [self.navigationController.navigationBar setTitleTextAttributes:@{NSFontAttributeName: [UIFont fontWithName:@"YTSans-Bold" size:17], NSForegroundColorAttributeName: [UIColor whiteColor]}];
+    [self.navigationController.navigationBar setTitleTextAttributes:@{NSFontAttributeName: [UIFont fontWithName:@"YTSans-Bold" size:22], NSForegroundColorAttributeName: [UIColor whiteColor]}];
 
     self.selectedIconIndex = -1;
     
