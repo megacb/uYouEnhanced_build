@@ -73,7 +73,9 @@
     cell.imageView.image = iconImage;
     cell.imageView.layer.cornerRadius = 10.0;
     cell.imageView.clipsToBounds = YES;
-        
+    cell.imageView.frame = CGRectMake(10, 10, 40, 40);
+    cell.textLabel.frame = CGRectMake(60, 10, self.view.frame.size.width - 70, 40);
+    
     if (indexPath.row == self.selectedIconIndex) {
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
     } else {
