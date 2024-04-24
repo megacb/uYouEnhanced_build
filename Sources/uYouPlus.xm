@@ -30,7 +30,7 @@ static int contrastMode() {
 }
 //
 
-# pragma mark - Tweaks
+# pragma mark - Other hooks
 
 // Activate FLEX
 %hook YTAppDelegate
@@ -49,6 +49,33 @@ static int contrastMode() {
          if (IS_ENABLED(@"flex_enabled")) {
         [[%c(FLEXManager) performSelector:@selector(sharedManager)] performSelector:@selector(showExplorer)];
     }
+}
+%end
+
+// Fixes uYou crash when trying to play video (#1422)
+@interface YTVarispeedSwitchController : NSObject
+@end
+
+@interface YTPlayerOverlayManager : NSObject
+@property (nonatomic, assign) float currentPlaybackRate;
+@property (nonatomic, strong, readonly) YTVarispeedSwitchController *varispeedController;
+
+- (void)varispeedSwitchController:(YTVarispeedSwitchController *)varispeed didSelectRate:(float)rate;
+- (void)setCurrentPlaybackRate:(float)rate;
+- (void)setPlaybackRate:(float)rate;
+@end
+
+%hook YTPlayerOverlayManager
+%property (nonatomic, assign) float currentPlaybackRate;
+
+%new
+- (void)setCurrentPlaybackRate:(float)rate {
+    [self varispeedSwitchController:self.varispeedController didSelectRate:rate];
+}
+
+%new
+- (void)setPlaybackRate:(float)rate {
+    [self varispeedSwitchController:self.varispeedController didSelectRate:rate];
 }
 %end
 
@@ -677,7 +704,6 @@ BOOL isAd(YTIElementRenderer *self) {
 }
 %end
 %end
-
 
 // Video Controls Overlay Options
 // Hide CC / Hide Autoplay switch / Hide YTMusic Button / Enable Share Button / Enable Save to Playlist Button
