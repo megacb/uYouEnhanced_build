@@ -20,5 +20,39 @@
 	<string>1.0</string>
 	<key>NSPrincipalClass</key>
 	<string>uYouPlus</string>
+	<key>CFBundleIcons</key>
+	<dict>
+		<key>CFBundlePrimaryIcon</key>
+		<dict>
+			<key>CFBundleIconFiles</key>
+			<array>
+				<string>AppIcon</string>
+			</array>
+		</dict>
+		<key>CFBundleAlternateIcons</key>
+		<dict>
+			<key>2007Icon</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>2007</string>
+				</array>
+			</dict>
+			<key>2012Icon</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>2012</string>
+				</array>
+			</dict>
+			<key>2013Icon</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>2013</string>
+				</array>
+			</dict>
+		</dict>
+	</dict>
 </dict>
 </plist>
