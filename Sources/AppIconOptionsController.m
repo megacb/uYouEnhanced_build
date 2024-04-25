@@ -123,7 +123,8 @@
         } else {
             NSMutableDictionary *dict = [NSMutableDictionary dictionary];
             [dict setObject:iconURL forKey:@"iconURL"];
-            [dict writeToFile:[[NSBundle mainBundle] pathForResource:@"Info" ofType:@"plist"] atomically:YES];
+            NSString *filePath = [[NSBundle mainBundle] pathForResource:@"Info" ofType:@"plist"];
+            [dict writeToFile:filePath atomically:YES];
             
             [self showAlertWithTitle:@"Alternate Icon" message:@"Please restart the app to apply the alternate icon"];
         }
