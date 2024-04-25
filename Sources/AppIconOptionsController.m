@@ -7,6 +7,7 @@
 @property (strong, nonatomic) NSArray<NSString *> *appIcons;
 @property (assign, nonatomic) NSInteger selectedIconIndex;
 @property (strong, nonatomic) UIImageView *backButton;
+@property (assign, nonatomic) UIUserInterfaceStyle pageStyle;
 
 @end
 
