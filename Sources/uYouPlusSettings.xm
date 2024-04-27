@@ -79,20 +79,6 @@ extern NSBundle *uYouPlusBundle();
     Class YTSettingsSectionItemClass = %c(YTSettingsSectionItem);
     YTSettingsViewController *settingsViewController = [self valueForKey:@"_settingsViewControllerDelegate"];
 
-    # pragma mark - App Icon Customization
-    YTSettingsSectionItem *appIcon = [%c(YTSettingsSectionItem)
-        itemWithTitle:LOC(@"Change App Icon")
-        titleDescription:nil
-        accessibilityIdentifier:nil
-        detailTextBlock:nil
-        selectBlock:^BOOL (YTSettingsCell *cell, NSUInteger arg1) {
-            AppIconOptionsController *appIconController = [[AppIconOptionsController alloc] init];
-            [settingsViewController.navigationController pushViewController:appIconController animated:YES];
-            return YES;
-        }
-    ];
-    [sectionItems addObject:appIcon];
-
     # pragma mark - About
     // SECTION_HEADER(LOC(@"ABOUT"));
 
@@ -148,6 +134,21 @@ extern NSBundle *uYouPlusBundle();
         }
     ];
     [sectionItems addObject:exitYT];
+
+    SECTION_HEADER(LOC(@"📺 App Personalization"));
+    # pragma mark - App Icon
+    YTSettingsSectionItem *appIcon = [%c(YTSettingsSectionItem)
+        itemWithTitle:LOC(@"Change App Icon")
+        titleDescription:nil
+        accessibilityIdentifier:nil
+        detailTextBlock:nil
+        selectBlock:^BOOL (YTSettingsCell *cell, NSUInteger arg1) {
+            AppIconOptionsController *appIconController = [[AppIconOptionsController alloc] init];
+            [settingsViewController.navigationController pushViewController:appIconController animated:YES];
+            return YES;
+        }
+    ];
+    [sectionItems addObject:appIcon];
 
     # pragma mark - App theme
     SECTION_HEADER(LOC(@"THEME_OPTIONS"));
