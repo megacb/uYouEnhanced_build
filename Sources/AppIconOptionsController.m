@@ -27,13 +27,7 @@
     self.tableView.backgroundColor = (self.pageStyle == UIUserInterfaceStyleLight) ? [UIColor whiteColor] : [UIColor blackColor];
     [self.view addSubview:self.tableView];
 
-    UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:self action:@selector(back)];
-    UIImage *backImage = [UIImage imageNamed:@"yt_outline_chevron_left_ios_24pt" inBundle:[NSBundle mainBundle] compatibleWithTraitCollection:nil];
-    if (!backImage) {
-        backButton.image = [UIImage systemImageNamed:@"chevron.backward"];
-    } else {
-        backButton.image = backImage;
-    }
+    UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Back.png" inBundle:[NSBundle mainBundle] compatibleWithTraitCollection:nil] style:UIBarButtonItemStylePlain target:self action:@selector(back)];
     [backButton setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor blackColor], NSFontAttributeName: [UIFont fontWithName:@"YTSans-Medium" size:20]} forState:UIControlStateNormal];
     self.navigationItem.leftBarButtonItem = backButton;
 
