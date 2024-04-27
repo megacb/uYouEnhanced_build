@@ -9,7 +9,7 @@
 - (void)loadView {
 	[super loadView];
 
-    self.title = @"Theme Custom Color";
+    self.title = @"Custom Theme Color";
     
     UIBarButtonItem *closeButton = [[UIBarButtonItem alloc] initWithTitle:@"Close" style:UIBarButtonItemStylePlain target:self action:@selector(close)];
     UIBarButtonItem *saveButton = [[UIBarButtonItem alloc] initWithTitle:@"Save" style:UIBarButtonItemStylePlain target:self action:@selector(save)];
@@ -24,10 +24,19 @@
     [unarchiver setRequiresSecureCoding:NO];
     UIColor *color = [unarchiver decodeObjectForKey:NSKeyedArchiveRootObjectKey];
     self.selectedColor = color;
+
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad && UIInterfaceOrientationIsLandscape(self.interfaceOrientation)) {
+        CGRect screenRect = [[UIScreen mainScreen] bounds];
+        CGFloat screenWidth = screenRect.size.width;
+        if (screenWidth > 1024) {
+            self.view.transform = CGAffineTransformMakeScale(0.7, 0.7);
+        }
+    }
 }
 
 - (void)traitCollectionDidChange:(UITraitCollection *)previousTraitCollection {
     [super traitCollectionDidChange:previousTraitCollection];
+    [self loadView];
 }
 
 @end
