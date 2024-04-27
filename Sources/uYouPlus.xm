@@ -811,7 +811,7 @@ BOOL isAd(YTIElementRenderer *self) {
 // Hide Video Title (in Fullscreen) - @arichornlover
 %hook YTMainAppVideoPlayerOverlayView
 - (BOOL)titleViewHidden {
-    return YES;
+    return IS_ENABLED(@"hideVideoTitle_enabled") ? YES : %orig;
 }
 %end
 
