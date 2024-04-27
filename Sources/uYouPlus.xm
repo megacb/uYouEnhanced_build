@@ -1330,6 +1330,12 @@ static BOOL findCell(ASNodeController *nodeController, NSArray <NSString *> *ide
     %orig([UIColor clearColor]);
 }
 %end
+%hook YTCountView
+- (void)removeFromSuperview {
+    [self setHidden:YES];
+    %orig();
+}
+%end
 %end
 
 # pragma mark - ctor
