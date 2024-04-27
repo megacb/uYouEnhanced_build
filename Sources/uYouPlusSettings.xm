@@ -136,7 +136,20 @@ extern NSBundle *uYouPlusBundle();
     [sectionItems addObject:exitYT];
 
     SECTION_HEADER(LOC(@"📺 App Personalization"));
-    # pragma mark - App Icon
+    # pragma mark - uYouEnhanced Extras Menu
+    YTSettingsSectionItem *customAppMenu = [%c(YTSettingsSectionItem)
+        itemWithTitle:LOC(@"uYouEnhanced Extras Menu")
+        titleDescription:LOC(@"This menu includes App Color Customization & Clearing the Cache 🗑️")
+        accessibilityIdentifier:nil
+        detailTextBlock:nil
+        selectBlock:^BOOL (YTSettingsCell *cell, NSUInteger arg1) {
+            RootOptionsController *rootOptionsController = [[RootOptionsController alloc] init];
+            [settingsViewController.navigationController pushViewController:rootOptionsController animated:YES];
+            return YES;
+        }
+    ];
+    [sectionItems addObject:customAppMenu];
+
     YTSettingsSectionItem *appIcon = [%c(YTSettingsSectionItem)
         itemWithTitle:LOC(@"Change App Icon")
         titleDescription:nil
@@ -255,6 +268,7 @@ extern NSBundle *uYouPlusBundle();
     SWITCH_ITEM(LOC(@"HIDE_YTMUSIC_BUTTON"), LOC(@"HIDE_YTMUSIC_BUTTON_DESC"), @"hideYTMusicButton_enabled");
     SWITCH_ITEM(LOC(@"HIDE_AUTOPLAY_SWITCH"), LOC(@"HIDE_AUTOPLAY_SWITCH_DESC"), @"hideAutoplaySwitch_enabled");
     SWITCH_ITEM(LOC(@"HIDE_SUBTITLES_BUTTON"), LOC(@"HIDE_SUBTITLES_BUTTON_DESC"), @"hideCC_enabled");
+    SWITCH_ITEM(LOC(@"Hide Video Title (in Fullscreen)"), LOC(@"Hides and Disables the Video Title and including the functionality that was shown on the Top Left of the Video Player."), @"hideVideoTitle_enabled");
     SWITCH_ITEM(LOC(@"Hide Collapse (Arrow) Button"), LOC(@"Hides and Disables the Arrow Button in the Top Left of the Video Player."), @"disableCollapseButton_enabled");
     SWITCH_ITEM(LOC(@"Hide Fullscreen Button"), LOC(@"Hides and Disables the Fullscreen Button in the Video Player."), @"disableFullscreenButton_enabled");
     SWITCH_ITEM(LOC(@"HIDE_HUD_MESSAGES"), LOC(@"HIDE_HUD_MESSAGES_DESC"), @"hideHUD_enabled");
