@@ -65,26 +65,31 @@
     
     NSString *iconPath = self.appIcons[indexPath.row];
     UIImage *iconImage = [UIImage imageWithContentsOfFile:iconPath];
-    
+
     cell.backgroundColor = [UIColor whiteColor];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    
+
     UIImageView *iconImageView = [[UIImageView alloc] initWithImage:iconImage];
-    iconImageView.frame = CGRectMake(16, 8, 24, 24);
+    iconImageView.contentMode = UIViewContentModeScaleAspectFit;
+    iconImageView.frame = CGRectMake(16, 10, 30, 30);
     [cell.contentView addSubview:iconImageView];
-    
-    UILabel *iconNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(56, 0, self.view.frame.size.width - 56, 40)];
+
+    UILabel *iconNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(56, 5, self.view.frame.size.width - 56, 30)];
     iconNameLabel.text = [iconPath.lastPathComponent stringByDeletingPathExtension];
     iconNameLabel.textColor = [UIColor blackColor];
-    iconNameLabel.font = [UIFont systemFontOfSize:18.0 weight:UIFontWeightMedium];
+    iconNameLabel.font = [UIFont systemFontOfSize:16.0 weight:UIFontWeightMedium];
     [cell.contentView addSubview:iconNameLabel];
-    
+
     if (indexPath.row == self.selectedIconIndex) {
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
     } else {
         cell.accessoryType = UITableViewCellAccessoryNone;
     }
-    
+
+    UIView *separatorView = [[UIView alloc] initWithFrame:CGRectMake(0, cell.contentView.frame.size.height - 1, cell.contentView.frame.size.width, 1)];
+    separatorView.backgroundColor = [UIColor lightGrayColor];
+    [cell.contentView addSubview:separatorView];
+
     return cell;
 }
 
