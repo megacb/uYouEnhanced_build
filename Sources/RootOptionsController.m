@@ -3,6 +3,10 @@
 #import "ColourOptionsController2.h"
 
 @interface RootOptionsController ()
+
+@property (strong, nonatomic) UIImageView *backButton;
+@property (assign, nonatomic) UIUserInterfaceStyle pageStyle;
+
 @end
 
 @implementation RootOptionsController
@@ -10,10 +14,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    self.title = @"uYouPlus Extras Menu";
+    self.title = @"uYouEnhanced Extras Menu";
+    [self.navigationController.navigationBar setTitleTextAttributes:@{NSFontAttributeName: [UIFont fontWithName:@"YTSans-Bold" size:22], NSForegroundColorAttributeName: [UIColor whiteColor]}];
 
-    UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(done)];
-    self.navigationItem.leftBarButtonItem = doneButton;
+    UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Back.png" inBundle:[NSBundle mainBundle] compatibleWithTraitCollection:nil] style:UIBarButtonItemStylePlain target:self action:@selector(back)];
+    [backButton setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor blackColor], NSFontAttributeName: [UIFont fontWithName:@"YTSans-Medium" size:20]} forState:UIControlStateNormal];
+    self.navigationItem.leftBarButtonItem = backButton;
 
     UITableViewStyle style;
     if (@available(iOS 13, *)) {
@@ -164,8 +170,8 @@
 
 @implementation RootOptionsController (Privates)
 
-- (void)done {
-    [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+- (void)back {
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 @end
