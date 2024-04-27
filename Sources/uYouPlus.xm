@@ -581,10 +581,6 @@ BOOL isAd(YTIElementRenderer *self) {
         self.sponsorBlockButton.hidden = YES;
         self.sponsorBlockButton.frame = CGRectZero;
     }
-    if (IS_ENABLED(@"hideuYouPlusButton_enabled")) { 
-        self.uYouPlusButton.hidden = YES;
-        self.uYouPlusButton.frame = CGRectZero;
-    }
 }
 %end
 
@@ -812,7 +808,14 @@ BOOL isAd(YTIElementRenderer *self) {
 // %end
 // %end
 
-// Hide Dark Overlay Background
+// Hide Video Title (in Fullscreen) - @arichornlover
+%hook YTMainAppVideoPlayerOverlayView
+- (BOOL)titleViewHidden {
+    return YES;
+}
+%end
+
+// Hide Dark Overlay Background - @Dayanch96
 %group gHideOverlayDarkBackground
 %hook YTMainAppVideoPlayerOverlayView
 - (void)setBackgroundVisible:(BOOL)arg1 isGradientBackground:(BOOL)arg2 {
@@ -977,63 +980,6 @@ BOOL isAd(YTIElementRenderer *self) {
         }
     }
     %orig(color);
-}
-%end
-
-// uYouPlus Button in Navigation Bar (for Clear Cache and Color Options) - @arichornlover
-%hook YTRightNavigationButtons
-%property (retain, nonatomic) YTQTMButton *uYouPlusButton;
-- (NSMutableArray *)buttons {
-	NSString *tweakBundlePath = [[NSBundle mainBundle] pathForResource:@"uYouPlus" ofType:@"bundle"];
-    NSString *uYouPlusMainSettingsPath;
-    if (tweakBundlePath) {
-        NSBundle *tweakBundle = [NSBundle bundleWithPath:tweakBundlePath];
-	uYouPlusMainSettingsPath = [tweakBundle pathForResource:@"uYouPlus_logo_main" ofType:@"png"];
-    } else {
-        uYouPlusMainSettingsPath = ROOT_PATH_NS(@"/Localizations/uYouPlus.bundle/uYouPlus_logo_main.png");
-    }
-    NSMutableArray *retVal = %orig.mutableCopy;
-    [self.uYouPlusButton removeFromSuperview];
-    [self addSubview:self.uYouPlusButton];
-    if (!self.uYouPlusButton) {
-        self.uYouPlusButton = [%c(YTQTMButton) iconButton];
-        [self.uYouPlusButton enableNewTouchFeedback];
-        self.uYouPlusButton.frame = CGRectMake(0, 0, 40, 40);
-        
-        if ([%c(YTPageStyleController) pageStyle] == 0) {
-            UIImage *setButtonMode = [UIImage imageWithContentsOfFile:uYouPlusMainSettingsPath];
-            setButtonMode = [setButtonMode imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
-            [self.uYouPlusButton setImage:setButtonMode forState:UIControlStateNormal];
-            [self.uYouPlusButton setTintColor:UIColor.blackColor];
-        }
-        else if ([%c(YTPageStyleController) pageStyle] == 1) {
-            UIImage *setButtonMode = [UIImage imageWithContentsOfFile:uYouPlusMainSettingsPath];
-            setButtonMode = [setButtonMode imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
-            [self.uYouPlusButton setImage:setButtonMode forState:UIControlStateNormal];
-            [self.uYouPlusButton setTintColor:UIColor.whiteColor];
-        }
-        
-        [self.uYouPlusButton addTarget:self action:@selector(uYouPlusRootOptionsAction) forControlEvents:UIControlEventTouchUpInside];
-        [retVal insertObject:self.uYouPlusButton atIndex:0];
-    }
-    return retVal;
-}
-- (NSMutableArray *)visibleButtons {
-    NSMutableArray *retVal = %orig.mutableCopy;
-    [self setLeadingPadding:+10];
-    if (self.uYouPlusButton) {
-        [self.uYouPlusButton removeFromSuperview];
-        [self addSubview:self.uYouPlusButton];
-        [retVal insertObject:self.uYouPlusButton atIndex:0];
-    }
-    return retVal;
-}
-%new;
-- (void)uYouPlusRootOptionsAction {
-    UINavigationController *rootOptionsControllerView = [[UINavigationController alloc] initWithRootViewController:[[RootOptionsController alloc] init]];
-    [rootOptionsControllerView setModalPresentationStyle:UIModalPresentationFullScreen];
-    
-    [self._viewControllerForAncestor presentViewController:rootOptionsControllerView animated:YES completion:nil];
 }
 %end
 
