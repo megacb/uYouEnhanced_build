@@ -1277,11 +1277,9 @@ static BOOL findCell(ASNodeController *nodeController, NSArray <NSString *> *ide
 }
 %end
 %hook YTCountView
-- (void)setHidden:(BOOL)hidden {
-    %orig(hidden);
-    if (hidden) {
-        [self setBackgroundColor:[UIColor clearColor]];
-    }
+- (void)layoutSubviews {
+    %orig;
+    self.hidden = YES;
 }
 %end
 %end
