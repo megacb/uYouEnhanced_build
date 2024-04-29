@@ -24,7 +24,7 @@
     self.tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
-    self.tableView.backgroundColor = (self.pageStyle == UIUserInterfaceStyleLight) ? [UIColor whiteColor] : [UIColor blackColor];
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.view addSubview:self.tableView];
 
     UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Back.png" inBundle:[NSBundle mainBundle] compatibleWithTraitCollection:nil] style:UIBarButtonItemStylePlain target:self action:@selector(back)];
@@ -62,15 +62,14 @@
     NSString *iconPath = self.appIcons[indexPath.row];
     UIImage *iconImage = [UIImage imageWithContentsOfFile:iconPath];
 
-    cell.backgroundColor = [UIColor whiteColor];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
 
     UIImageView *iconImageView = [[UIImageView alloc] initWithImage:iconImage];
     iconImageView.contentMode = UIViewContentModeScaleAspectFit;
-    iconImageView.frame = CGRectMake(16, 10, 30, 30);
+    iconImageView.frame = CGRectMake(16, 10, 90, 90);
     [cell.contentView addSubview:iconImageView];
 
-    UILabel *iconNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(56, 5, self.view.frame.size.width - 56, 30)];
+    UILabel *iconNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(120, 5, self.view.frame.size.width - 120, 100)];
     iconNameLabel.text = [iconPath.lastPathComponent stringByDeletingPathExtension];
     iconNameLabel.textColor = [UIColor blackColor];
     iconNameLabel.font = [UIFont systemFontOfSize:16.0 weight:UIFontWeightMedium];
@@ -81,10 +80,6 @@
     } else {
         cell.accessoryType = UITableViewCellAccessoryNone;
     }
-
-    UIView *separatorView = [[UIView alloc] initWithFrame:CGRectMake(0, cell.contentView.frame.size.height - 1, cell.contentView.frame.size.width, 1)];
-    separatorView.backgroundColor = [UIColor lightGrayColor];
-    [cell.contentView addSubview:separatorView];
 
     return cell;
 }
@@ -110,38 +105,40 @@
 }
 
 - (void)saveIcon {
-    NSString *selectedIcon = self.selectedIconIndex >= 0 ? self.appIcons[self.selectedIconIndex] : nil;
-    if (selectedIcon) {
-        NSString *iconName = [selectedIcon.lastPathComponent stringByDeletingPathExtension];
-        NSString *plistPath = [[NSBundle mainBundle] pathForResource:@"Info" ofType:@"plist"];
-        NSMutableDictionary *infoDict = [NSMutableDictionary dictionaryWithContentsOfFile:plistPath];
-        NSMutableDictionary *iconsDict = [infoDict objectForKey:@"CFBundleIcons"];
-        
-        if (iconsDict) {
-            NSMutableDictionary *primaryIconDict = [iconsDict objectForKey:@"CFBundlePrimaryIcon"];
-            if (primaryIconDict) {
-                NSMutableArray *iconFiles = [primaryIconDict objectForKey:@"CFBundleIconFiles"];
-                [iconFiles addObject:iconName];
-                primaryIconDict[@"CFBundleIconFiles"] = iconFiles;
-            }
-            [infoDict setObject:iconsDict forKey:@"CFBundleIcons"];
-            [infoDict writeToFile:plistPath atomically:YES];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        NSString *selectedIcon = self.selectedIconIndex >= 0 ? self.appIcons[self.selectedIconIndex] : nil;
+        if (selectedIcon) {
+            NSString *iconName = [selectedIcon.lastPathComponent stringByDeletingPathExtension];
+            NSString *plistPath = [[NSBundle mainBundle] pathForResource:@"Info" ofType:@"plist"];
+            NSMutableDictionary *infoDict = [NSMutableDictionary dictionaryWithContentsOfFile:plistPath];
+            NSMutableDictionary *iconsDict = [infoDict objectForKey:@"CFBundleIcons"];
             
-            [[UIApplication sharedApplication] setAlternateIconName:iconName completionHandler:^(NSError * _Nullable error) {
-                if (error) {
-                    NSLog(@"Error setting alternate icon: %@", error.localizedDescription);
-                    [self showAlertWithTitle:@"Error" message:@"Failed to set alternate icon"];
-                } else {
-                    NSLog(@"Alternate icon set successfully");
-                    [self showAlertWithTitle:@"Success" message:@"Alternate icon set successfully"];
+            if (iconsDict) {
+                NSMutableDictionary *primaryIconDict = [iconsDict objectForKey:@"CFBundlePrimaryIcon"];
+                if (primaryIconDict) {
+                    NSMutableArray *iconFiles = [primaryIconDict objectForKey:@"CFBundleIconFiles"];
+                    [iconFiles addObject:iconName];
+                    primaryIconDict[@"CFBundleIconFiles"] = iconFiles;
                 }
-            }];
+                [infoDict setObject:iconsDict forKey:@"CFBundleIcons"];
+                [infoDict writeToFile:plistPath atomically:YES];
+                
+                [[UIApplication sharedApplication] setAlternateIconName:iconName completionHandler:^(NSError * _Nullable error) {
+                    if (error) {
+                        NSLog(@"Error setting alternate icon: %@", error.localizedDescription);
+                        [self showAlertWithTitle:@"Error" message:@"Failed to set alternate icon"];
+                    } else {
+                        NSLog(@"Alternate icon set successfully");
+                        [self showAlertWithTitle:@"Success" message:@"Alternate icon set successfully"];
+                    }
+                }];
+            } else {
+                NSLog(@"CFBundleIcons key not found in Info.plist");
+            }
         } else {
-            NSLog(@"CFBundleIcons key not found in Info.plist");
+            NSLog(@"Selected icon path is nil");
         }
-    } else {
-        NSLog(@"Selected icon path is nil");
-    }
+    });
 }
 
 - (void)showAlertWithTitle:(NSString *)title message:(NSString *)message {
