@@ -28,7 +28,7 @@
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad && UIInterfaceOrientationIsLandscape(self.interfaceOrientation)) {
         CGRect screenRect = [[UIScreen mainScreen] bounds];
         CGFloat screenWidth = screenRect.size.width;
-        if (screenWidth > 1024) {
+        if (screenWidth == 1024 || screenWidth == 1112) {
             self.view.transform = CGAffineTransformMakeScale(0.7, 0.7);
         }
     }
