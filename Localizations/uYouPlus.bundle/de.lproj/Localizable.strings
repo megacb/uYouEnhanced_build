@@ -147,3 +147,6 @@
 
 "FIX_GOOGLE_SIGNIN" = "Google-Anmeldung reparieren (nur für TrollStore-Benutzer!)";
 "FIX_GOOGLE_SIGNIN_DESC" = "Aktiviere diese Option nur, wenn Sie sich nicht mit Ihrem Google-Account anmelden können und die App über TrollStore installiert wurde. Wenn Sie sich normal anmelden können, halte diese Option deaktiviert! App-Neustart erforderlich!";
+
+"FAKE_YOUR_PREMIUM_BENEFITS" = "Your Premium benefits";
+"FAKE_DOWNLOADS" = "Downloads";

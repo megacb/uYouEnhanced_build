@@ -147,3 +147,6 @@
 
 "FIX_GOOGLE_SIGNIN" = "Fix Google Sign in (for TrollStore user only)";
 "FIX_GOOGLE_SIGNIN_DESC" = "Only turn on this option when you can't sign in with your Google account and the app was installed via TrollStore. If you can log in normally, keep it disabled. App restart is required.";
+
+"FAKE_YOUR_PREMIUM_BENEFITS" = "Your Premium benefits";
+"FAKE_DOWNLOADS" = "Downloads";

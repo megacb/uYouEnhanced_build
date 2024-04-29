@@ -146,3 +146,6 @@
 
 "FIX_GOOGLE_SIGNIN" = "แก้ไขปัญหาการเข้าสู่ระบบบัญชี Google (ใช้ได้สำหรับผู้ใช้ TrollStore เท่านั้น)";
 "FIX_GOOGLE_SIGNIN_DESC" = "ใช้ได้เฉพาะเมื่อใช้ TrollStore เพื่อติดตั้งแอปพลิเคชันนี้: หลังจากเปิดใช้งานการตั้งค่านี้ คุณสามารถเข้าสู่ระบบบัญชี Google ของคุณได้ตามปกติ และคุณต้องรีสตาร์ทแอปพลิเคชัน";
+
+"FAKE_YOUR_PREMIUM_BENEFITS" = "Your Premium benefits";
+"FAKE_DOWNLOADS" = "Downloads";

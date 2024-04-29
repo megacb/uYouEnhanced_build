@@ -181,57 +181,6 @@ BOOL isAd(YTIElementRenderer *self) {
 %end
 %end
 
-// YouTube Premium Logo - @arichornlover & bhackel
-%group gPremiumYouTubeLogo
-%hook YTHeaderLogoController
-    - (void)setTopbarLogoRenderer:(id)renderer {
-        // Modify the type of the icon before setting the renderer
-        YTITopbarLogoRenderer *logoRenderer = (YTITopbarLogoRenderer *)renderer;
-        YTIIcon *iconImage = logoRenderer.iconImage;
-        iconImage.iconType = 537; // magic number for Premium icon, hopefully it doesnt change. 158 is default logo.
-        // Use this modified renderer
-        %orig(logoRenderer);
-    }
-    // For when spoofing before 18.34.5
-    - (void)setPremiumLogo:(BOOL)isPremiumLogo {
-        isPremiumLogo = YES;
-        %orig;
-    }
-    - (BOOL)isPremiumLogo {
-        return YES;
-    }
-%end
-
-/*
-%hook YTHeaderLogoController
-- (void)setPremiumLogo:(BOOL)isPremiumLogo {
-    isPremiumLogo = YES;
-    %orig;
-}
-- (BOOL)isPremiumLogo {
-    return YES;
-}
-- (void)setTopbarLogoRenderer:(id)renderer {
-}
-%end
-
-// Workaround: fix YouTube Premium Logo not working on v18.35.4 or above.
-%hook YTVersionUtils // Working Version for Premium Logo
-+ (NSString *)appVersion { return @"18.34.5"; }
-%end
-
-%hook YTSettingsCell // Remove v18.34.5 Version Number - @Dayanch96
-- (void)setDetailText:(id)arg1 {
-    NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
-    NSString *appVersion = infoDictionary[@"CFBundleShortVersionString"];
-
-    if ([arg1 isEqualToString:@"18.34.5"]) {
-        arg1 = appVersion;
-    } %orig(arg1);
-}
-%end
-*/
-%end
 
 // Fix App Group Directory by move it to document directory
 %hook NSFileManager
@@ -321,6 +270,147 @@ BOOL isAd(YTIElementRenderer *self) {
 %new
 - (BOOL)savedSettingShouldExpire { return NO; }
 %end
+
+// Hide "Get Youtube Premium" in "You" tab - @bhackel
+%group gHidePremiumPromos
+%hook YTAppCollectionViewController
+- (void)loadWithModel:(YTISectionListRenderer *)model {
+    NSMutableArray <YTISectionListSupportedRenderers *> *overallContentsArray = model.contentsArray;
+    // Check each item in the overall array - this represents the whole You page
+    YTISectionListSupportedRenderers *supportedRenderers;
+    for (supportedRenderers in overallContentsArray) {
+        YTIItemSectionRenderer *itemSectionRenderer = supportedRenderers.itemSectionRenderer;
+        // Check each subobject - this would be visible as a cell in the You page
+        NSMutableArray <YTIItemSectionSupportedRenderers *> *subContentsArray = itemSectionRenderer.contentsArray;
+        bool found = NO;
+        YTIItemSectionSupportedRenderers *itemSectionSupportedRenderers;
+        for (itemSectionSupportedRenderers in subContentsArray) {
+            // Check for a link cell
+            if ([itemSectionSupportedRenderers hasCompactLinkRenderer]) {
+                YTICompactLinkRenderer *compactLinkRenderer = [itemSectionSupportedRenderers compactLinkRenderer];
+                // Check for an icon in this cell
+                if ([compactLinkRenderer hasIcon]) {
+                    YTIIcon *icon = [compactLinkRenderer icon];
+                    // Check if the icon is for the premium promo
+                    if ([icon hasIconType] && icon.iconType == 117) {
+                        found = YES;
+                        break;
+                    }
+                }
+            }
+        }
+        // Remove object from array - perform outside of loop to avoid error
+        if (found) {
+            [subContentsArray removeObject:itemSectionSupportedRenderers];
+            break;
+        }
+    }
+    %orig;
+}
+%end
+%end
+
+// Fake premium - @bhackel
+%group gFakePremium
+// YouTube Premium Logo - @arichornlover & bhackel
+%hook YTHeaderLogoController
+    - (void)setTopbarLogoRenderer:(id)renderer {
+        // Modify the type of the icon before setting the renderer
+        YTITopbarLogoRenderer *logoRenderer = (YTITopbarLogoRenderer *)renderer;
+        YTIIcon *iconImage = logoRenderer.iconImage;
+        iconImage.iconType = 537; // magic number for Premium icon, hopefully it doesnt change. 158 is default logo.
+        // Use this modified renderer
+        %orig(logoRenderer);
+    }
+    // For when spoofing before 18.34.5
+    - (void)setPremiumLogo:(BOOL)isPremiumLogo {
+        isPremiumLogo = YES;
+        %orig;
+    }
+    - (BOOL)isPremiumLogo {
+        return YES;
+    }
+%end
+%hook YTAppCollectionViewController
+/**
+  * Modify a given renderer data model to fake premium in the You tab
+  * Replaces the "Get YouTube Premium" cell with a "Your Premium benefits" cell
+  * and adds a "Downloads" cell below the "Your videos" cell
+  * @param model The model for the You tab
+  */
+%new
+- (void)uYouEnhancedFakePremiumModel:(YTISectionListRenderer *)model {
+    NSUInteger yourVideosCellIndex = -1;
+    NSMutableArray <YTISectionListSupportedRenderers *> *overallContentsArray = model.contentsArray;
+    // Check each item in the overall array - this represents the whole You page
+    YTISectionListSupportedRenderers *supportedRenderers;
+    for (supportedRenderers in overallContentsArray) {
+        YTIItemSectionRenderer *itemSectionRenderer = supportedRenderers.itemSectionRenderer;
+        // Check each subobject - this would be visible as a cell in the You page
+        NSMutableArray <YTIItemSectionSupportedRenderers *> *subContentsArray = itemSectionRenderer.contentsArray;
+        YTIItemSectionSupportedRenderers *itemSectionSupportedRenderers;
+        for (itemSectionSupportedRenderers in subContentsArray) {
+            // Check for Get Youtube Premium cell, which is of type CompactLinkRenderer
+            if ([itemSectionSupportedRenderers hasCompactLinkRenderer]) {
+                YTICompactLinkRenderer *compactLinkRenderer = [itemSectionSupportedRenderers compactLinkRenderer];
+                // Check for an icon in this cell
+                if ([compactLinkRenderer hasIcon]) {
+                    YTIIcon *icon = [compactLinkRenderer icon];
+                    // Check if the icon is for the premium advertisement - 117 is magic number for the icon
+                    if ([icon hasIconType] && icon.iconType == 117) {
+                        // Modify the icon type to be Premium
+                        icon.iconType = 741; // Magic number for premium icon
+                        // Modify the text
+                        ((YTIStringRun *)(compactLinkRenderer.title.runsArray.firstObject)).text = LOC(@"FAKE_YOUR_PREMIUM_BENEFITS");
+                    }
+                }
+            }
+            // Check for Your Videos cell using similar logic explained above
+            if ([itemSectionSupportedRenderers hasCompactListItemRenderer]) {
+                YTICompactListItemRenderer *compactListItemRenderer = itemSectionSupportedRenderers.compactListItemRenderer;
+                if ([compactListItemRenderer hasThumbnail]) {
+                    YTICompactListItemThumbnailSupportedRenderers *thumbnail = compactListItemRenderer.thumbnail;
+                    if ([thumbnail hasIconThumbnailRenderer]) {
+                        YTIIconThumbnailRenderer *iconThumbnailRenderer = thumbnail.iconThumbnailRenderer;
+                        if ([iconThumbnailRenderer hasIcon]) {
+                            YTIIcon *icon = iconThumbnailRenderer.icon;
+                            if ([icon hasIconType] && icon.iconType == 658) {
+                                // Store the index of this cell
+                                yourVideosCellIndex = [subContentsArray indexOfObject:itemSectionSupportedRenderers];
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        if (yourVideosCellIndex != -1 && subContentsArray[yourVideosCellIndex].accessibilityLabel == nil) {
+            // Create the fake Downloads page by copying the Your Videos page and modifying it
+            // Note that this must be done outside the loop to avoid a runtime exception
+            // TODO Link this to the uYou downloads page
+            YTIItemSectionSupportedRenderers *newItemSectionSupportedRenderers = [subContentsArray[yourVideosCellIndex] copy];
+            ((YTIStringRun *)(newItemSectionSupportedRenderers.compactListItemRenderer.title.runsArray.firstObject)).text = LOC(@"FAKE_DOWNLOADS");
+            newItemSectionSupportedRenderers.compactListItemRenderer.thumbnail.iconThumbnailRenderer.icon.iconType = 147;
+            // Insert this cell after the Your Videos cell
+            [subContentsArray insertObject:newItemSectionSupportedRenderers atIndex:yourVideosCellIndex + 1];
+            // Inject a note to not modify this again
+            subContentsArray[yourVideosCellIndex].accessibilityLabel = @"uYouEnhanced Modified";
+            yourVideosCellIndex = -1;
+        }
+    }
+}
+- (void)loadWithModel:(YTISectionListRenderer *)model {
+    // This method is called on first load of the You page
+    [self uYouEnhancedFakePremiumModel:model];
+    %orig;
+}
+- (void)setupSectionListWithModel:(YTISectionListRenderer *)model isLoadingMore:(BOOL)isLoadingMore isRefreshingFromContinuation:(BOOL)isRefreshingFromContinuation {
+    // This method is called on refresh of the You page
+    [self uYouEnhancedFakePremiumModel:model];
+    %orig;
+}
+%end
+%end
+
 
 // YTShortsProgress - https://github.com/PoomSmart/YTShortsProgress/
 %hook YTShortsPlayerViewController
@@ -1296,9 +1386,6 @@ static BOOL findCell(ASNodeController *nodeController, NSArray <NSString *> *ide
     if (IS_ENABLED(@"centerYouTubeLogo_enabled")) {
         %init(gCenterYouTubeLogo);
     }
-    if (IS_ENABLED(@"premiumYouTubeLogo_enabled")) {
-        %init(gPremiumYouTubeLogo);
-    }
     if (IS_ENABLED(@"hideSubscriptionsNotificationBadge_enabled")) {
         %init(gHideSubscriptionsNotificationBadge);
     }
@@ -1389,6 +1476,12 @@ static BOOL findCell(ASNodeController *nodeController, NSArray <NSString *> *ide
     if (IS_ENABLED(@"YTTapToSeek_enabled")) {
         %init(YTTTS_Tweak);
     }
+    if (IS_ENABLED(@"hidePremiumPromos_enabled")) {
+        %init(gHidePremiumPromos);
+    }
+    if (IS_ENABLED(@"youTabFakePremium_enabled")) {
+        %init(gFakePremium);
+    }
     if (IS_ENABLED(@"disablePullToFull_enabled")) {
         %init(gDisablePullToFull);
     }
@@ -1398,14 +1491,11 @@ static BOOL findCell(ASNodeController *nodeController, NSArray <NSString *> *ide
     if (ytNoModernUIEnabled) {
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     [userDefaults setBool:NO forKey:@"enableVersionSpoofer_enabled"];
-    [userDefaults setBool:NO forKey:@"premiumYouTubeLogo_enabled"];
     } else {
     BOOL enableVersionSpooferEnabled = IS_ENABLED(@"enableVersionSpoofer_enabled");
-    BOOL premiumYouTubeLogoEnabled = IS_ENABLED(@"premiumYouTubeLogo_enabled");
 
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     [userDefaults setBool:enableVersionSpooferEnabled forKey:@"enableVersionSpoofer_enabled"];
-    [userDefaults setBool:premiumYouTubeLogoEnabled forKey:@"premiumYouTubeLogo_enabled"];
     }
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     [userDefaults setBool:ytNoModernUIEnabled ? ytNoModernUIEnabled : [userDefaults boolForKey:@"fixLowContrastMode_enabled"] forKey:@"fixLowContrastMode_enabled"];
