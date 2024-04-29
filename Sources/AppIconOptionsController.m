@@ -53,6 +53,17 @@
     return self.appIcons.count;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (self.selectedIconIndex == indexPath.row) {
+        return;
+    }
+    
+    NSIndexPath *previousIndexPath = [NSIndexPath indexPathForRow:self.selectedIconIndex inSection:0];
+    self.selectedIconIndex = indexPath.row;
+    
+    [tableView reloadRowsAtIndexPaths:@[indexPath, previousIndexPath] withRowAnimation:UITableViewRowAnimationNone];
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
     if (!cell) {
@@ -73,7 +84,7 @@
     iconImageView.layer.masksToBounds = YES;
     [cell.contentView addSubview:iconImageView];
 
-    UILabel *iconNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(120, 5, self.view.frame.size.width - 120, 100)];
+    UILabel *iconNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(120, 10, self.view.frame.size.width - 120, 80)];
     iconNameLabel.text = [iconPath.lastPathComponent stringByDeletingPathExtension];
     iconNameLabel.textColor = [UIColor blackColor];
     iconNameLabel.font = [UIFont systemFontOfSize:16.0 weight:UIFontWeightMedium];
