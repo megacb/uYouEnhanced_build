@@ -59,6 +59,8 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
     }
     
+    [cell.contentView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+    
     NSString *iconPath = self.appIcons[indexPath.row];
     UIImage *iconImage = [UIImage imageWithContentsOfFile:iconPath];
 
@@ -67,6 +69,8 @@
     UIImageView *iconImageView = [[UIImageView alloc] initWithImage:iconImage];
     iconImageView.contentMode = UIViewContentModeScaleAspectFit;
     iconImageView.frame = CGRectMake(16, 10, 90, 90);
+    iconImageView.layer.cornerRadius = 10;
+    iconImageView.layer.masksToBounds = YES;
     [cell.contentView addSubview:iconImageView];
 
     UILabel *iconNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(120, 5, self.view.frame.size.width - 120, 100)];
@@ -75,20 +79,9 @@
     iconNameLabel.font = [UIFont systemFontOfSize:16.0 weight:UIFontWeightMedium];
     [cell.contentView addSubview:iconNameLabel];
 
-    if (indexPath.row == self.selectedIconIndex) {
-        cell.accessoryType = UITableViewCellAccessoryCheckmark;
-    } else {
-        cell.accessoryType = UITableViewCellAccessoryNone;
-    }
+    cell.accessoryType = (indexPath.row == self.selectedIconIndex) ? UITableViewCellAccessoryCheckmark : UITableViewCellAccessoryNone;
 
     return cell;
-}
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
-    self.selectedIconIndex = indexPath.row;
-    [self.tableView reloadData];
 }
 
 - (void)resetIcon {
@@ -130,6 +123,10 @@
                     } else {
                         NSLog(@"Alternate icon set successfully");
                         [self showAlertWithTitle:@"Success" message:@"Alternate icon set successfully"];
+                        
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                            [self.tableView reloadData];
+                        });
                     }
                 }];
             } else {
