@@ -33,6 +33,7 @@
 #import <YouTubeHeader/YTIFormattedString.h>
 #import <YouTubeHeader/GPBMessage.h>
 #import <YouTubeHeader/YTIStringRun.h>
+#import <YouTubeHeader/YTWatchViewController.h>
 
 // Hide buttons under the video player by @PoomSmart
 #import <YouTubeHeader/ASCollectionElement.h>
@@ -108,6 +109,15 @@
     @property(readonly, nonatomic) YTISectionListRenderer *model;
 @end
 
+// Disable Pull to Full for landscape videos - @bhackel
+@interface YTWatchPullToFullController : NSObject
+@property(nonatomic, strong) YTWatchViewController *playerViewSource;
+@end
+@interface YTWatchViewController (uYouEnhanced)
+@property(nonatomic, strong) YTWatchPullToFullController *pullToFullController;
+- (NSUInteger)allowedFullScreenOrientations;
+@end
+
 // uYouPlus
 @interface YTHeaderLogoController : UIView
 @property(readonly, nonatomic) long long pageStyle;
@@ -117,6 +127,9 @@
 @end
 
 @interface YTChipCloudCell : UIView
+@end
+
+@interface YTCountView : UIView
 @end
 
 @interface YTPlayabilityResolutionUserActionUIController : NSObject // Skips content warning before playing *some videos - @PoomSmart

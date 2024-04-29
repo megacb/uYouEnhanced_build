@@ -1,11 +1,10 @@
 #import "AppIconOptionsController.h"
 
-@interface AppIconOptionsController () <UICollectionViewDataSource, UICollectionViewDelegate>
+@interface AppIconOptionsController () <UITableViewDataSource, UITableViewDelegate>
 
-@property (strong, nonatomic) UICollectionView *collectionView;
-@property (strong, nonatomic) UIImageView *iconPreview;
+@property (strong, nonatomic) UITableView *tableView;
 @property (strong, nonatomic) NSArray<NSString *> *appIcons;
-@property (strong, nonatomic) NSString *selectedIconFile;
+@property (assign, nonatomic) NSInteger selectedIconIndex;
 
 @end
 
@@ -14,110 +13,135 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
-    self.collectionView = [[UICollectionView alloc] initWithFrame:self.view.bounds collectionViewLayout:layout];
-    self.collectionView.dataSource = self;
-    self.collectionView.delegate = self;
-    [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"Cell"];
-    [self.view addSubview:self.collectionView];
+    self.title = @"Change App Icon";
+    [self.navigationController.navigationBar setTitleTextAttributes:@{NSFontAttributeName: [UIFont fontWithName:@"YTSans-Bold" size:22], NSForegroundColorAttributeName: [UIColor whiteColor]}];
+
+    self.selectedIconIndex = -1;
     
-    UIButton *defaultButton = [UIButton buttonWithType:UIButtonTypeSystem];
-    defaultButton.frame = CGRectMake(20, 100, 100, 40);
-    [defaultButton setTitle:@"Default" forState:UIControlStateNormal];
-    [defaultButton addTarget:self action:@selector(setDefaultIcon) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:defaultButton];
-    
-    UIButton *saveButton = [UIButton buttonWithType:UIButtonTypeSystem];
-    saveButton.frame = CGRectMake(150, 100, 100, 40);
-    [saveButton setTitle:@"Save" forState:UIControlStateNormal];
-    [saveButton addTarget:self action:@selector(saveIcon) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:saveButton];
-    
-    self.iconPreview = [[UIImageView alloc] initWithFrame:CGRectMake(20, 150, 60, 60)];
-    self.iconPreview.layer.cornerRadius = 10.0;
-    self.iconPreview.clipsToBounds = YES;
-    [self.view addSubview:self.iconPreview];
-        
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"uYouPlus" ofType:@"bundle"];
-    NSBundle *bundle = [NSBundle bundleWithPath:path];
-    self.appIcons = [bundle pathsForResourcesOfType:@"png" inDirectory:@"AppIcons"];
-    
-    if ([UIApplication sharedApplication].supportsAlternateIcons) {
-    } else {
-        NSLog(@"Alternate icons are not supported on this device.");
-    }
+    self.tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
+    self.tableView.dataSource = self;
+    self.tableView.delegate = self;
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    [self.view addSubview:self.tableView];
+
+    UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Back.png" inBundle:[NSBundle mainBundle] compatibleWithTraitCollection:nil] style:UIBarButtonItemStylePlain target:self action:@selector(back)];
+    self.navigationItem.leftBarButtonItem = backButton;
+
+    self.appIcons = [self loadAppIcons];
+    [self setupNavigationBar];
 }
 
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+- (NSArray<NSString *> *)loadAppIcons {
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"uYouPlus" ofType:@"bundle"];
+    NSBundle *bundle = [NSBundle bundleWithPath:path];
+    return [bundle pathsForResourcesOfType:@"png" inDirectory:@"AppIcons"];
+}
+
+- (void)setupNavigationBar {
+    UIBarButtonItem *resetButton = [[UIBarButtonItem alloc] initWithImage:[UIImage systemImageNamed:@"arrow.clockwise.circle.fill"] style:UIBarButtonItemStylePlain target:self action:@selector(resetIcon)];
+
+    UIBarButtonItem *saveButton = [[UIBarButtonItem alloc] initWithTitle:@"Save" style:UIBarButtonItemStylePlain target:self action:@selector(saveIcon)];
+    [self.navigationItem setRightBarButtonItems:@[saveButton, resetButton]];
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.appIcons.count;
 }
 
-- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"Cell" forIndexPath:indexPath];
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
+    if (!cell) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
+    }
     
-    UIImage *appIconImage = [UIImage imageWithContentsOfFile:self.appIcons[indexPath.row]];
-    UIImage *resizedIconImage = [self resizedImageWithImage:appIconImage];
+    [cell.contentView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
     
-    UIImageView *imageView = [[UIImageView alloc] initWithImage:resizedIconImage];
-    imageView.contentMode = UIViewContentModeScaleAspectFit;
-    imageView.frame = cell.contentView.bounds;
-    imageView.layer.cornerRadius = 10.0;
-    imageView.clipsToBounds = YES;
-    [cell.contentView addSubview:imageView];
-    
+    NSString *iconPath = self.appIcons[indexPath.row];
+    UIImage *iconImage = [UIImage imageWithContentsOfFile:iconPath];
+
+    UIImageView *iconImageView = [[UIImageView alloc] initWithImage:iconImage];
+    iconImageView.contentMode = UIViewContentModeScaleAspectFit;
+    iconImageView.frame = CGRectMake(16, 10, 60, 60);
+    iconImageView.layer.cornerRadius = 8;
+    iconImageView.layer.masksToBounds = YES;
+    [cell.contentView addSubview:iconImageView];
+
+    UILabel *iconNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(90, 10, self.view.frame.size.width - 90, 60)];
+    iconNameLabel.text = [iconPath.lastPathComponent stringByDeletingPathExtension];
+    iconNameLabel.textColor = [UIColor blackColor];
+    iconNameLabel.font = [UIFont systemFontOfSize:16.0 weight:UIFontWeightMedium];
+    [cell.contentView addSubview:iconNameLabel];
+
+    cell.accessoryType = (indexPath.row == self.selectedIconIndex) ? UITableViewCellAccessoryCheckmark : UITableViewCellAccessoryNone;
+
     return cell;
 }
 
-- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    self.selectedIconFile = self.appIcons[indexPath.row];
-    UIImage *selectedIconImage = [UIImage imageWithContentsOfFile:self.selectedIconFile];
-    UIImage *resizedSelectedIconImage = [self resizedImageWithImage:selectedIconImage];
-    self.iconPreview.image = resizedSelectedIconImage;
-}
-
-- (void)setDefaultIcon {
-    self.iconPreview.image = nil;
-    self.selectedIconFile = nil;
+- (void)resetIcon {
+    [[UIApplication sharedApplication] setAlternateIconName:nil completionHandler:^(NSError * _Nullable error) {
+        if (error) {
+            NSLog(@"Error resetting icon: %@", error.localizedDescription);
+            [self showAlertWithTitle:@"Error" message:@"Failed to reset icon"];
+        } else {
+            NSLog(@"Icon reset successfully");
+            [self showAlertWithTitle:@"Success" message:@"Icon reset successfully"];
+            [self.tableView reloadData];
+        }
+    }];
 }
 
 - (void)saveIcon {
-    if (self.selectedIconFile) {
-        [[UIApplication sharedApplication] setAlternateIconName:[self.selectedIconFile.lastPathComponent stringByDeletingPathExtension] completionHandler:^(NSError * _Nullable error){
-            if (error) {
-                NSLog(@"Error setting alternate icon: %@", error.localizedDescription);
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Error" message:@"Failed to set alternate icon" preferredStyle:UIAlertControllerStyleAlert];
-                    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
-                    [alert addAction:okAction];
-                    [self presentViewController:alert animated:YES completion:nil];
-                });
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        NSString *selectedIcon = self.selectedIconIndex >= 0 ? self.appIcons[self.selectedIconIndex] : nil;
+        if (selectedIcon) {
+            NSString *iconName = [selectedIcon.lastPathComponent stringByDeletingPathExtension];
+            NSString *plistPath = [[NSBundle mainBundle] pathForResource:@"Info" ofType:@"plist"];
+            NSMutableDictionary *infoDict = [NSMutableDictionary dictionaryWithContentsOfFile:plistPath];
+            NSMutableDictionary *iconsDict = [infoDict objectForKey:@"CFBundleIcons"];
+            
+            if (iconsDict) {
+                NSMutableDictionary *primaryIconDict = [iconsDict objectForKey:@"CFBundlePrimaryIcon"];
+                if (primaryIconDict) {
+                    NSMutableArray *iconFiles = [primaryIconDict objectForKey:@"CFBundleIconFiles"];
+                    [iconFiles addObject:iconName];
+                    primaryIconDict[@"CFBundleIconFiles"] = iconFiles;
+                }
+                [infoDict setObject:iconsDict forKey:@"CFBundleIcons"];
+                [infoDict writeToFile:plistPath atomically:YES];
+                
+                [[UIApplication sharedApplication] setAlternateIconName:iconName completionHandler:^(NSError * _Nullable error) {
+                    if (error) {
+                        NSLog(@"Error setting alternate icon: %@", error.localizedDescription);
+                        [self showAlertWithTitle:@"Error" message:@"Failed to set alternate icon"];
+                    } else {
+                        NSLog(@"Alternate icon set successfully");
+                        [self showAlertWithTitle:@"Success" message:@"Alternate icon set successfully"];
+                        
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                            [self.tableView reloadData];
+                        });
+                    }
+                }];
             } else {
-                NSLog(@"Alternate icon set successfully");
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Success" message:@"Alternate icon set successfully" preferredStyle:UIAlertControllerStyleAlert];
-                    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
-                    [alert addAction:okAction];
-                    [self presentViewController:alert animated:YES completion:nil];
-                });
+                NSLog(@"CFBundleIcons key not found in Info.plist");
             }
-        }];
-    } else {
-        NSLog(@"No icon selected to save");
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"No Icon Selected" message:@"Please select an icon before saving" preferredStyle:UIAlertControllerStyleAlert];
+        } else {
+            NSLog(@"Selected icon path is nil");
+        }
+    });
+}
+
+- (void)showAlertWithTitle:(NSString *)title message:(NSString *)message {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
         UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
         [alert addAction:okAction];
         [self presentViewController:alert animated:YES completion:nil];
-    }
+    });
 }
 
-- (UIImage *)resizedImageWithImage:(UIImage *)image {
-    CGFloat scale = [UIScreen mainScreen].scale;
-    CGSize newSize = CGSizeMake(image.size.width / scale, image.size.height / scale);
-    UIGraphicsBeginImageContextWithOptions(newSize, NO, scale);
-    [image drawInRect:CGRectMake(0, 0, newSize.width, newSize.height)];
-    UIImage *resizedImage = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    return resizedImage;
+- (void)back {
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 @end

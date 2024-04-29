@@ -1,9 +1,12 @@
 #import "RootOptionsController.h"
 #import "ColourOptionsController.h"
 #import "ColourOptionsController2.h"
-#import "AppIconOptionsController.h"
 
 @interface RootOptionsController ()
+
+@property (strong, nonatomic) UIImageView *backButton;
+@property (assign, nonatomic) UIUserInterfaceStyle pageStyle;
+
 @end
 
 @implementation RootOptionsController
@@ -11,13 +14,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    self.title = @"uYouPlus Extras Menu";
+    self.title = @"uYouEnhanced Extras Menu";
+    [self.navigationController.navigationBar setTitleTextAttributes:@{NSFontAttributeName: [UIFont fontWithName:@"YTSans-Bold" size:22], NSForegroundColorAttributeName: [UIColor whiteColor]}];
 
-    UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(done)];
-    self.navigationItem.leftBarButtonItem = doneButton;
-    
-    UIBarButtonItem *appIconButton = [[UIBarButtonItem alloc] initWithTitle:@"App Icon" style:UIBarButtonItemStylePlain target:self action:@selector(showAppIconOptions)];
-    self.navigationItem.rightBarButtonItem = appIconButton;
+    UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Back.png" inBundle:[NSBundle mainBundle] compatibleWithTraitCollection:nil] style:UIBarButtonItemStylePlain target:self action:@selector(back)];
+    [backButton setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor blackColor], NSFontAttributeName: [UIFont fontWithName:@"YTSans-Medium" size:20]} forState:UIControlStateNormal];
+    self.navigationItem.leftBarButtonItem = backButton;
 
     UITableViewStyle style;
     if (@available(iOS 13, *)) {
@@ -168,21 +170,8 @@
 
 @implementation RootOptionsController (Privates)
 
-- (void)showAppIconOptions {
-    if (@available(iOS 15.0, *)) {
-        AppIconOptionsController *appIconOptionsController = [[AppIconOptionsController alloc] init];
-        UINavigationController *appIconOptionsNavController = [[UINavigationController alloc] initWithRootViewController:appIconOptionsController];
-        [self presentViewController:appIconOptionsNavController animated:YES completion:nil];
-    } else {
-        NSString *systemVersion = [[UIDevice currentDevice] systemVersion];
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Incompatible" message:[NSString stringWithFormat:@"Changing app icons is only available on iOS 15 and later.\nYour Device is currently using iOS %@.", systemVersion] preferredStyle:UIAlertControllerStyleAlert];
-        [alert addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil]];
-        [self presentViewController:alert animated:YES completion:nil];
-    }
-}
-
-- (void)done {
-    [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+- (void)back {
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 @end

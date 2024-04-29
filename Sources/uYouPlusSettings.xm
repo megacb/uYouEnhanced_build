@@ -2,6 +2,7 @@
 #import "RootOptionsController.h"
 #import "ColourOptionsController.h"
 #import "ColourOptionsController2.h"
+#import "AppIconOptionsController.h"
 
 #define VERSION_STRING [[NSString stringWithFormat:@"%@", @(OS_STRINGIFY(TWEAK_VERSION))] stringByReplacingOccurrencesOfString:@"\"" withString:@""]
 #define SHOW_RELAUNCH_YT_SNACKBAR [[%c(GOOHUDManagerInternal) sharedInstance] showMessageMainThread:[%c(YTHUDMessage) messageWithText:LOC(@"RESTART_YOUTUBE")]]
@@ -134,6 +135,34 @@ extern NSBundle *uYouPlusBundle();
     ];
     [sectionItems addObject:exitYT];
 
+    SECTION_HEADER(LOC(@"📺 App Personalization"));
+    # pragma mark - uYouEnhanced Extras Menu
+    YTSettingsSectionItem *customAppMenu = [%c(YTSettingsSectionItem)
+        itemWithTitle:LOC(@"uYouEnhanced Extras Menu")
+        titleDescription:LOC(@"This menu includes App Color Customization & Clearing the Cache 🗑️")
+        accessibilityIdentifier:nil
+        detailTextBlock:nil
+        selectBlock:^BOOL (YTSettingsCell *cell, NSUInteger arg1) {
+            RootOptionsController *rootOptionsController = [[RootOptionsController alloc] init];
+            [settingsViewController.navigationController pushViewController:rootOptionsController animated:YES];
+            return YES;
+        }
+    ];
+    [sectionItems addObject:customAppMenu];
+
+    YTSettingsSectionItem *appIcon = [%c(YTSettingsSectionItem)
+        itemWithTitle:LOC(@"Change App Icon")
+        titleDescription:nil
+        accessibilityIdentifier:nil
+        detailTextBlock:nil
+        selectBlock:^BOOL (YTSettingsCell *cell, NSUInteger arg1) {
+            AppIconOptionsController *appIconController = [[AppIconOptionsController alloc] init];
+            [settingsViewController.navigationController pushViewController:appIconController animated:YES];
+            return YES;
+        }
+    ];
+    [sectionItems addObject:appIcon];
+
     # pragma mark - App theme
     SECTION_HEADER(LOC(@"THEME_OPTIONS"));
 
@@ -229,6 +258,7 @@ extern NSBundle *uYouPlusBundle();
     SWITCH_ITEM2(LOC(@"PINCH_TO_ZOOM"), LOC(@"PINCH_TO_ZOOM_DESC"), @"pinchToZoom_enabled");
     SWITCH_ITEM(LOC(@"YT_MINIPLAYER"), LOC(@"YT_MINIPLAYER_DESC"), @"ytMiniPlayer_enabled");
     SWITCH_ITEM2(LOC(@"STOCK_VOLUME_HUD"), LOC(@"STOCK_VOLUME_HUD_DESC"), @"stockVolumeHUD_enabled");
+    SWITCH_ITEM2(LOC(@"Disable pull-to-fullscreen gesture"), LOC(@"Disable the drag gesture to enter vertical fullscreen. Only applies to landscape videos."), @"disablePullToFull_enabled");
 
     # pragma mark - Video controls overlay options
     SECTION_HEADER(LOC(@"VIDEO_PLAYER_OPTIONS"));
@@ -238,6 +268,7 @@ extern NSBundle *uYouPlusBundle();
     SWITCH_ITEM(LOC(@"HIDE_YTMUSIC_BUTTON"), LOC(@"HIDE_YTMUSIC_BUTTON_DESC"), @"hideYTMusicButton_enabled");
     SWITCH_ITEM(LOC(@"HIDE_AUTOPLAY_SWITCH"), LOC(@"HIDE_AUTOPLAY_SWITCH_DESC"), @"hideAutoplaySwitch_enabled");
     SWITCH_ITEM(LOC(@"HIDE_SUBTITLES_BUTTON"), LOC(@"HIDE_SUBTITLES_BUTTON_DESC"), @"hideCC_enabled");
+    SWITCH_ITEM(LOC(@"Hide Video Title (in Fullscreen)"), LOC(@"Hides and Disables the Video Title and including the functionality that was shown on the Top Left of the Video Player."), @"hideVideoTitle_enabled");
     SWITCH_ITEM(LOC(@"Hide Collapse (Arrow) Button"), LOC(@"Hides and Disables the Arrow Button in the Top Left of the Video Player."), @"disableCollapseButton_enabled");
     SWITCH_ITEM(LOC(@"Hide Fullscreen Button"), LOC(@"Hides and Disables the Fullscreen Button in the Video Player."), @"disableFullscreenButton_enabled");
     SWITCH_ITEM(LOC(@"HIDE_HUD_MESSAGES"), LOC(@"HIDE_HUD_MESSAGES_DESC"), @"hideHUD_enabled");

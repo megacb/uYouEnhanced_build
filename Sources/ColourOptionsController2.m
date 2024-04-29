@@ -24,10 +24,19 @@
     [lcmUnarchiver setRequiresSecureCoding:NO];
     UIColor *color = [lcmUnarchiver decodeObjectForKey:NSKeyedArchiveRootObjectKey];
     self.selectedColor = color;
+
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad && UIInterfaceOrientationIsLandscape(self.interfaceOrientation)) {
+        CGRect screenRect = [[UIScreen mainScreen] bounds];
+        CGFloat screenWidth = screenRect.size.width;
+        if (screenWidth == 1024 || screenWidth == 1112) {
+            self.view.transform = CGAffineTransformMakeScale(0.7, 0.7);
+        }
+    }
 }
 
 - (void)traitCollectionDidChange:(UITraitCollection *)previousTraitCollection {
     [super traitCollectionDidChange:previousTraitCollection];
+    [self loadView];
 }
 
 @end
