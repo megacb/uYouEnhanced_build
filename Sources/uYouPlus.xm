@@ -86,6 +86,7 @@ static int contrastMode() {
 }
 %end
 
+/*
 // Workaround: uYou 3.0.3 Adblock fix - @PoomSmart
 %hook YTAdsInnerTubeContextDecorator
 - (void)decorateContext:(id)context {
@@ -150,6 +151,7 @@ BOOL isAd(YTIElementRenderer *self) {
     %orig;
 }
 %end
+*/
 
 // Hide YouTube Logo - @dayanch96
 %group gHideYouTubeLogo
