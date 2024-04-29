@@ -1,13 +1,10 @@
 #import "AppIconOptionsController.h"
-#import <YouTubeHeader/YTAssetLoader.h>
 
 @interface AppIconOptionsController () <UITableViewDataSource, UITableViewDelegate>
 
 @property (strong, nonatomic) UITableView *tableView;
 @property (strong, nonatomic) NSArray<NSString *> *appIcons;
 @property (assign, nonatomic) NSInteger selectedIconIndex;
-@property (strong, nonatomic) UIImageView *backButton;
-@property (assign, nonatomic) UIUserInterfaceStyle pageStyle;
 
 @end
 
@@ -28,40 +25,27 @@
     [self.view addSubview:self.tableView];
 
     UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Back.png" inBundle:[NSBundle mainBundle] compatibleWithTraitCollection:nil] style:UIBarButtonItemStylePlain target:self action:@selector(back)];
-    [backButton setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor blackColor], NSFontAttributeName: [UIFont fontWithName:@"YTSans-Medium" size:20]} forState:UIControlStateNormal];
-    [backButton setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor blackColor], NSFontAttributeName: [UIFont fontWithName:@"YTSans-Medium" size:20]} forState:UIControlStateHighlighted];
     self.navigationItem.leftBarButtonItem = backButton;
 
+    self.appIcons = [self loadAppIcons];
+    [self setupNavigationBar];
+}
+
+- (NSArray<NSString *> *)loadAppIcons {
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"uYouPlus" ofType:@"bundle"];
+    NSBundle *bundle = [NSBundle bundleWithPath:path];
+    return [bundle pathsForResourcesOfType:@"png" inDirectory:@"AppIcons"];
+}
+
+- (void)setupNavigationBar {
     UIBarButtonItem *resetButton = [[UIBarButtonItem alloc] initWithImage:[UIImage systemImageNamed:@"arrow.clockwise.circle.fill"] style:UIBarButtonItemStylePlain target:self action:@selector(resetIcon)];
 
     UIBarButtonItem *saveButton = [[UIBarButtonItem alloc] initWithTitle:@"Save" style:UIBarButtonItemStylePlain target:self action:@selector(saveIcon)];
-    [saveButton setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor colorWithRed:203.0/255.0 green:22.0/255.0 blue:51.0/255.0 alpha:1.0], NSFontAttributeName: [UIFont fontWithName:@"YTSans-Medium" size:20]} forState:UIControlStateNormal];
-    [saveButton setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor colorWithRed:203.0/255.0 green:22.0/255.0 blue:51.0/255.0 alpha:1.0], NSFontAttributeName: [UIFont fontWithName:@"YTSans-Medium" size:20]} forState:UIControlStateHighlighted];
-
-    self.navigationItem.rightBarButtonItems = @[saveButton, resetButton];
-
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"uYouPlus" ofType:@"bundle"];
-    NSBundle *bundle = [NSBundle bundleWithPath:path];
-    self.appIcons = [bundle pathsForResourcesOfType:@"png" inDirectory:@"AppIcons"];
-    
-    if (![UIApplication sharedApplication].supportsAlternateIcons) {
-        NSLog(@"Alternate icons are not supported on this device.");
-    }
+    [self.navigationItem setRightBarButtonItems:@[saveButton, resetButton]];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.appIcons.count;
-}
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (self.selectedIconIndex == indexPath.row) {
-        return;
-    }
-    
-    NSIndexPath *previousIndexPath = [NSIndexPath indexPathForRow:self.selectedIconIndex inSection:0];
-    self.selectedIconIndex = indexPath.row;
-    
-    [tableView reloadRowsAtIndexPaths:@[indexPath, previousIndexPath] withRowAnimation:UITableViewRowAnimationNone];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -75,16 +59,14 @@
     NSString *iconPath = self.appIcons[indexPath.row];
     UIImage *iconImage = [UIImage imageWithContentsOfFile:iconPath];
 
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
-
     UIImageView *iconImageView = [[UIImageView alloc] initWithImage:iconImage];
     iconImageView.contentMode = UIViewContentModeScaleAspectFit;
-    iconImageView.frame = CGRectMake(16, 10, 90, 90);
-    iconImageView.layer.cornerRadius = 10;
+    iconImageView.frame = CGRectMake(16, 10, 60, 60);
+    iconImageView.layer.cornerRadius = 8;
     iconImageView.layer.masksToBounds = YES;
     [cell.contentView addSubview:iconImageView];
 
-    UILabel *iconNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(120, 10, self.view.frame.size.width - 120, 80)];
+    UILabel *iconNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(90, 10, self.view.frame.size.width - 90, 60)];
     iconNameLabel.text = [iconPath.lastPathComponent stringByDeletingPathExtension];
     iconNameLabel.textColor = [UIColor blackColor];
     iconNameLabel.font = [UIFont systemFontOfSize:16.0 weight:UIFontWeightMedium];
