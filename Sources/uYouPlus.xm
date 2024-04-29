@@ -359,6 +359,7 @@ BOOL isAd(YTIElementRenderer *self) {
         if (yourVideosCellIndex != -1 && subContentsArray[yourVideosCellIndex].accessibilityLabel == nil) {
             // Create the fake Downloads page by copying the Your Videos page and modifying it
             // Note that this must be done outside the loop to avoid a runtime exception
+            // TODO Link this to the uYou downloads page
             YTIItemSectionSupportedRenderers *newItemSectionSupportedRenderers = [subContentsArray[yourVideosCellIndex] copy];
             ((YTIStringRun *)(newItemSectionSupportedRenderers.compactListItemRenderer.title.runsArray.firstObject)).text = LOC(@"FAKE_DOWNLOADS");
             newItemSectionSupportedRenderers.compactListItemRenderer.thumbnail.iconThumbnailRenderer.icon.iconType = 147;
@@ -367,8 +368,6 @@ BOOL isAd(YTIElementRenderer *self) {
             // Inject a note to not modify this again
             subContentsArray[yourVideosCellIndex].accessibilityLabel = @"uYouEnhanced Modified";
             yourVideosCellIndex = -1;
-            // Insert accessibility info into the YTLinkCell so that it can be hooked later
-            newItemSectionSupportedRenderers.compactListItemRenderer.title.accessibility.accessibilityData.label = @"uYouEnhanced Fake Downloads";
         }
     }
 }
@@ -381,44 +380,6 @@ BOOL isAd(YTIElementRenderer *self) {
     // This method is called on refresh of the You page
     [self uYouEnhancedFakePremiumModel:model];
     %orig;
-}
-%end
-// Change the destination of the fake Downloads cell
-%hook YTCompactListItemCellController
-- (void)didSelectItem {
-    NSLog(@"bhackel: _handleMenuGesture");
-    id entry = self.entry;
-    // Avoid modifying the wrong things
-    if (![entry isKindOfClass:NSClassFromString(@"YTICompactListItemRenderer")]) {
-        %orig;
-        return;
-    }
-    YTICompactListItemRenderer *compactListItemRenderer = (YTICompactListItemRenderer *)entry;
-    // Check title for accessibility label that was stored
-    if ([compactListItemRenderer.title.accessibility.accessibilityData.label isEqualToString:@"uYouEnhanced Fake Downloads"]) {
-        NSLog(@"bhackel: uYouEnhanced Fake Downloads");
-        // Chatgpt generated code to show DownloadsPagerVC, which is the uYou page
-        // Instantiate your custom DownloadsPagerVC
-        // Avoid linker stuff
-        Class downloadsPagerVCClass = objc_getClass("DownloadsPagerVC");
-        if (downloadsPagerVCClass) {
-            id downloadsPagerVCid = [[downloadsPagerVCClass alloc] init];
-            // Now you can use `downloadsPagerVC` as needed
-        }
-        DownloadsPagerVC *downloadsPagerVC = (DownloadsPagerVC *)downloadsPagerVCid;
-        // Assuming you need navigation controller to push
-        UIViewController *rootViewController = [[[[UIApplication sharedApplication] delegate] window] rootViewController];
-        UINavigationController *navigationController = (UINavigationController *)rootViewController;
-        if ([navigationController isKindOfClass:[UINavigationController class]]) {
-            [navigationController pushViewController:downloadsPagerVC animated:YES];
-        } else {
-            // If not in a navigation controller context, present modally
-            [rootViewController presentViewController:downloadsPagerVC animated:YES completion:nil];
-        }
-    } else {
-        NSLog(@"bhackel: Not uYouEnhanced Fake Downloads");
-        %orig;
-    }
 }
 %end
 %end

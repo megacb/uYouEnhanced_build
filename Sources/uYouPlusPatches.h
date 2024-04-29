@@ -32,7 +32,7 @@
 // @end
 
 // Fix uYou's appearance not updating if the app is backgrounded
-@interface DownloadsPagerVC (uYouEnhancedPatches)
+@interface DownloadsPagerVC : UIViewController
 - (NSArray<UIViewController *> *)viewControllers;
 - (void)updatePageStyles;
 @end
