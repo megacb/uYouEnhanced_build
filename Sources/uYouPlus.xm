@@ -86,7 +86,7 @@ static int contrastMode() {
 }
 %end
 
-/*
+%group uYouAdBlockingWorkaround
 // Workaround: uYou 3.0.3 Adblock fix - @PoomSmart
 %hook YTAdsInnerTubeContextDecorator
 - (void)decorateContext:(id)context {
@@ -151,7 +151,7 @@ BOOL isAd(YTIElementRenderer *self) {
     %orig;
 }
 %end
-*/
+%end
 
 // Hide YouTube Logo - @dayanch96
 %group gHideYouTubeLogo
@@ -1487,6 +1487,9 @@ static BOOL findCell(ASNodeController *nodeController, NSArray <NSString *> *ide
     if (IS_ENABLED(@"disablePullToFull_enabled")) {
         %init(gDisablePullToFull);
     }
+    if (IS_ENABLED(@"uYouAdBlockingWorkaround_enabled")) {
+        %init(uYouAdBlockingWorkaround);
+    }
 
     // YTNoModernUI - @arichorn
     BOOL ytNoModernUIEnabled = IS_ENABLED(@"ytNoModernUI_enabled");
@@ -1523,6 +1526,9 @@ static BOOL findCell(ASNodeController *nodeController, NSArray <NSString *> *ide
     }
     if (![allKeys containsObject:@"YouPiPEnabled"]) { 
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"YouPiPEnabled"]; 
+    }
+    if (![allKeys containsObject:@"uYouAdBlockingWorkaround_enabled"]) { 
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"uYouAdBlockingWorkaround_enabled"]; 
     }
     // Broken uYou 3.0.3 setting: No Suggested Videos at The Video End
     // Set default to allow autoplay, user can disable later

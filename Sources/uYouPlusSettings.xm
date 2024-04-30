@@ -1002,6 +1002,7 @@ YTSettingsSectionItem *lowContrastModeButton = [%c(YTSettingsSectionItem)
     # pragma mark - Miscellaneous
     SECTION_HEADER(LOC(@"MISCELLANEOUS"));
 
+    SWITCH_ITEM2(LOC(@"Adblock Workaround"), LOC(@"Uses stronger adblocking code. Can cause blank spots on homepage"), @"uYouAdBlockingWorkaround_enabled");
     SWITCH_ITEM2(LOC(@"Fake Premium"), LOC(@"Uses Premium logo and creates fake buttons in the You tab"), @"youTabFakePremium_enabled");
 //  SWITCH_ITEM(LOC(@"Center YouTube Logo"), LOC(@"Toggle this to move the official YouTube Logo to the Center. App restart is required."), @"centerYouTubeLogo_enabled");
     SWITCH_ITEM(LOC(@"Hide YouTube Logo"), LOC(@"Toggle this to hide the YouTube Logo in the YouTube App."), @"hideYouTubeLogo_enabled");
