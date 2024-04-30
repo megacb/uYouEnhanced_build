@@ -1003,7 +1003,31 @@ YTSettingsSectionItem *lowContrastModeButton = [%c(YTSettingsSectionItem)
     SECTION_HEADER(LOC(@"MISCELLANEOUS"));
 
     SWITCH_ITEM2(LOC(@"Adblock Workaround"), LOC(@"Uses stronger adblocking code. Can cause blank spots on homepage"), @"uYouAdBlockingWorkaround_enabled");
-    SWITCH_ITEM2(LOC(@"Fake Premium"), LOC(@"Uses Premium logo and creates fake buttons in the You tab"), @"youTabFakePremium_enabled");
+
+    YTSettingsSectionItem *fakePremium = [YTSettingsSectionItemClass
+    switchItemWithTitle:LOC(@"Fake Premium")
+    titleDescription:LOC(@"Uses Premium logo and creates fake buttons in the You tab")
+    accessibilityIdentifier:nil
+    switchOn:IS_ENABLED(@"youTabFakePremium_enabled")
+    switchBlock:^BOOL (YTSettingsCell *cell, BOOL enabled) {
+        NSString *appVersion = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
+        NSComparisonResult result = [appVersion compare:@"18.35.4" options:NSNumericSearch]; 
+        if (result == NSOrderedAscending) {
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Incompatible" message:[NSString stringWithFormat:@"Error: The \"You\" Tab doesn't exist in v%@. \nFake Premium is only available for app versions v18.35.4 and higher.", appVersion] preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
+            [alert addAction:okAction];
+            [settingsViewController presentViewController:alert animated:YES completion:nil];
+            [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"youTabFakePremium_enabled"];
+            return NO;
+        }
+        [settingsViewController reloadData];
+        SHOW_RELAUNCH_YT_SNACKBAR;
+        return YES;
+    }
+    settingItemId:0
+];
+[sectionItems addObject:fakePremium];
+
 //  SWITCH_ITEM(LOC(@"Center YouTube Logo"), LOC(@"Toggle this to move the official YouTube Logo to the Center. App restart is required."), @"centerYouTubeLogo_enabled");
     SWITCH_ITEM(LOC(@"Hide YouTube Logo"), LOC(@"Toggle this to hide the YouTube Logo in the YouTube App."), @"hideYouTubeLogo_enabled");
     SWITCH_ITEM2(LOC(@"ENABLE_YT_STARTUP_ANIMATION"), LOC(@"ENABLE_YT_STARTUP_ANIMATION_DESC"), @"ytStartupAnimation_enabled");
