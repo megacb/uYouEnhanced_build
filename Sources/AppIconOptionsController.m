@@ -1,10 +1,12 @@
 #import "AppIconOptionsController.h"
+#import <YouTubeHeader/YTAssetLoader.h>
 
 @interface AppIconOptionsController () <UITableViewDataSource, UITableViewDelegate>
 
 @property (strong, nonatomic) UITableView *tableView;
 @property (strong, nonatomic) NSArray<NSString *> *appIcons;
 @property (assign, nonatomic) NSInteger selectedIconIndex;
+@property (strong, nonatomic) UIImageView *backButton;
 
 @end
 
@@ -21,31 +23,33 @@
     self.tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
-    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.view addSubview:self.tableView];
 
     UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Back.png" inBundle:[NSBundle mainBundle] compatibleWithTraitCollection:nil] style:UIBarButtonItemStylePlain target:self action:@selector(back)];
-    self.navigationItem.leftBarButtonItem = backButton;
 
-    self.appIcons = [self loadAppIcons];
-    [self setupNavigationBar];
-}
-
-- (NSArray<NSString *> *)loadAppIcons {
+    UIColor *buttonColor = [UIColor colorWithRed:203.0/255.0 green:22.0/255.0 blue:51.0/255.0 alpha:1.0];
+    UIBarButtonItem *resetButton = [[UIBarButtonItem alloc] initWithImage:[UIImage systemImageNamed:@"arrow.clockwise.circle.fill"] style:UIBarButtonItemStylePlain target:self action:@selector(resetIcon)];
+    
+    UIBarButtonItem *saveButton = [[UIBarButtonItem alloc] initWithTitle:@"Save" style:UIBarButtonItemStylePlain target:self action:@selector(saveIcon)];
+    [saveButton setTitleTextAttributes:@{NSForegroundColorAttributeName: buttonColor, NSFontAttributeName: [UIFont fontWithName:@"YTSans-Medium" size:17]} forState:UIControlStateNormal];
+    
+    self.navigationItem.rightBarButtonItems = @[saveButton, resetButton];
+    
     NSString *path = [[NSBundle mainBundle] pathForResource:@"uYouPlus" ofType:@"bundle"];
     NSBundle *bundle = [NSBundle bundleWithPath:path];
-    return [bundle pathsForResourcesOfType:@"png" inDirectory:@"AppIcons"];
-}
-
-- (void)setupNavigationBar {
-    UIBarButtonItem *resetButton = [[UIBarButtonItem alloc] initWithImage:[UIImage systemImageNamed:@"arrow.clockwise.circle.fill"] style:UIBarButtonItemStylePlain target:self action:@selector(resetIcon)];
-
-    UIBarButtonItem *saveButton = [[UIBarButtonItem alloc] initWithTitle:@"Save" style:UIBarButtonItemStylePlain target:self action:@selector(saveIcon)];
-    [self.navigationItem setRightBarButtonItems:@[saveButton, resetButton]];
+    self.appIcons = [bundle pathsForResourcesOfType:@"png" inDirectory:@"AppIcons"];
+    
+    if (![UIApplication sharedApplication].supportsAlternateIcons) {
+        NSLog(@"Alternate icons are not supported on this device.");
+    }
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.appIcons.count;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 60.0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -54,27 +58,30 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
     }
     
-    [cell.contentView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
-    
     NSString *iconPath = self.appIcons[indexPath.row];
+    cell.textLabel.text = [iconPath.lastPathComponent stringByDeletingPathExtension];
+    
     UIImage *iconImage = [UIImage imageWithContentsOfFile:iconPath];
-
-    UIImageView *iconImageView = [[UIImageView alloc] initWithImage:iconImage];
-    iconImageView.contentMode = UIViewContentModeScaleAspectFit;
-    iconImageView.frame = CGRectMake(16, 10, 60, 60);
-    iconImageView.layer.cornerRadius = 8;
-    iconImageView.layer.masksToBounds = YES;
-    [cell.contentView addSubview:iconImageView];
-
-    UILabel *iconNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(90, 10, self.view.frame.size.width - 90, 60)];
-    iconNameLabel.text = [iconPath.lastPathComponent stringByDeletingPathExtension];
-    iconNameLabel.textColor = [UIColor blackColor];
-    iconNameLabel.font = [UIFont systemFontOfSize:16.0 weight:UIFontWeightMedium];
-    [cell.contentView addSubview:iconNameLabel];
-
-    cell.accessoryType = (indexPath.row == self.selectedIconIndex) ? UITableViewCellAccessoryCheckmark : UITableViewCellAccessoryNone;
-
+    cell.imageView.image = iconImage;
+    cell.imageView.layer.cornerRadius = 10.0;
+    cell.imageView.clipsToBounds = YES;
+    cell.imageView.frame = CGRectMake(10, 10, 40, 40);
+    cell.textLabel.frame = CGRectMake(60, 10, self.view.frame.size.width - 70, 40);
+    
+    if (indexPath.row == self.selectedIconIndex) {
+        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+    } else {
+        cell.accessoryType = UITableViewCellAccessoryNone;
+    }
+    
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    self.selectedIconIndex = indexPath.row;
+    [self.tableView reloadData];
 }
 
 - (void)resetIcon {
