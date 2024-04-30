@@ -1222,6 +1222,24 @@ static BOOL findCell(ASNodeController *nodeController, NSArray <NSString *> *ide
 %end
 
 // Miscellaneous
+
+// Hide Home Tab - @bhackel
+%group gHideHomeTab
+%hook YTPivotBarItemView
+- (void)layoutSubviews {
+    %orig;
+    // Check if this is the home tab button
+    YTPivotBarItemViewAccessibilityControl *hitTarget = self.hitTarget;
+    if (!self.hidden && [hitTarget.accessibilityIdentifier isEqualToString:@"id.ui.pivotbar.FEwhat_to_watch.button"]) {
+        // Hide the home tab button
+        self.hidden = YES;
+        self.frame = CGRectZero;
+        [self removeFromSuperview];
+    }
+}
+%end
+%end
+
 // YT startup animation
 %hook YTColdConfig
 - (BOOL)mainAppCoreClientIosEnableStartupAnimation {
@@ -1489,6 +1507,9 @@ static BOOL findCell(ASNodeController *nodeController, NSArray <NSString *> *ide
     }
     if (IS_ENABLED(@"uYouAdBlockingWorkaround_enabled")) {
         %init(uYouAdBlockingWorkaround);
+    }
+    if (IS_ENABLED(@"hideHomeTab_enabled")) {
+        %init(gHideHomeTab);
     }
 
     // YTNoModernUI - @arichorn

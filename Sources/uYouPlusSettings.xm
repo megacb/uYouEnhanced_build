@@ -332,6 +332,8 @@ extern NSBundle *uYouPlusBundle();
     # pragma mark - UI interface options
     SECTION_HEADER(LOC(@"UI Interface Options"));
 
+    SWITCH_ITEM2(LOC(@"Hide Home Tab"), LOC(@""), @"hideHomeTab_enabled");
+
 YTSettingsSectionItem *lowContrastMode = [YTSettingsSectionItemClass
     switchItemWithTitle:LOC(@"Low Contrast Mode")
     titleDescription:LOC(@"This will lower the contrast of texts and buttons, similar to the old YouTube Interface. App restart is required.")

@@ -61,6 +61,13 @@
 @property (nonatomic, strong) UIView *scrimOverlay;
 @end
 
+// Hide Home Tab - @bhackel
+@interface YTPivotBarItemViewAccessibilityControl : UIControl
+@end
+@interface YTPivotBarItemView (uYouEnhanced)
+@property (nonatomic, strong) YTPivotBarItemViewAccessibilityControl *hitTarget;
+@end
+
 // YTTapToSeek - https://github.com/bhackel/YTTapToSeek
 @interface YTMainAppVideoPlayerOverlayViewController : UIViewController
 - (CGFloat)totalTime;
