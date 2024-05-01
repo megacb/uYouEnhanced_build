@@ -43,7 +43,7 @@
     NSBundle *bundle = [NSBundle bundleWithPath:path];
     self.appIcons = [bundle pathsForResourcesOfType:@"png" inDirectory:@"AppIcons"];
     
-    if (![UIApplication sharedApplication] supportsAlternateIcons) {
+    if (![UIApplication sharedApplication].supportsAlternateIcons) {
         NSLog(@"Alternate icons are not supported on this device.");
     }
 }
