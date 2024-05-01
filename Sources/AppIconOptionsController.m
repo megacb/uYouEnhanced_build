@@ -103,43 +103,44 @@
 
 - (void)saveIcon {
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        NSString *selectedIcon = self.selectedIconIndex >= 0 ? self.appIcons[self.selectedIconIndex] : nil;
-        if (selectedIcon) {
-            NSString *iconName = [selectedIcon.lastPathComponent stringByDeletingPathExtension];
-            NSString *plistPath = [[NSBundle mainBundle] pathForResource:@"Info" ofType:@"plist"];
-            NSMutableDictionary *infoDict = [NSMutableDictionary dictionaryWithContentsOfFile:plistPath];
-            NSMutableDictionary *iconsDict = [infoDict objectForKey:@"CFBundleIcons"];
+        NSString *selectedIconName = self.selectedIconIndex >= 0 ? [self.appIcons[self.selectedIconIndex] lastPathComponent] : nil;
+        
+        if (selectedIconName) {
+            NSDictionary *iconsDict = [infoDict objectForKey:@"CFBundleIcons"];
+            NSDictionary *primaryIconDict = [iconsDict objectForKey:@"CFBundlePrimaryIcon"];
+            NSArray *iconFiles = [primaryIconDict objectForKey:@"CFBundleIconFiles"];
             
-            if (iconsDict) {
-                NSMutableDictionary *primaryIconDict = [iconsDict objectForKey:@"CFBundlePrimaryIcon"];
-                if (primaryIconDict) {
-                    NSMutableArray *iconFiles = [primaryIconDict objectForKey:@"CFBundleIconFiles"];
-                    [iconFiles addObject:iconName];
-                    primaryIconDict[@"CFBundleIconFiles"] = iconFiles;
+            UIImage *selectedIconImage = [UIImage imageWithContentsOfFile:self.appIcons[self.selectedIconIndex]];
+            CGSize appIconSize = CGSizeMake(60, 60);
+            
+            selectedIconImage = [self resizeImage:selectedIconImage toSize:appIconSize];
+            
+            [[UIApplication sharedApplication] setAlternateIconImage:selectedIconImage completionHandler:^(NSError * _Nullable error) {
+                if (error) {
+                    NSLog(@"Error setting alternate icon: %@", error.localizedDescription);
+                    [self showAlertWithTitle:@"Error" message:@"Failed to set alternate icon"];
+                } else {
+                    NSLog(@"Alternate icon set successfully");
+                    [self showAlertWithTitle:@"Success" message:@"Alternate icon set successfully"];
+                    
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [self.tableView reloadData];
+                    });
                 }
-                [infoDict setObject:iconsDict forKey:@"CFBundleIcons"];
-                [infoDict writeToFile:plistPath atomically:YES];
-                
-                [[UIApplication sharedApplication] setAlternateIconName:iconName completionHandler:^(NSError * _Nullable error) {
-                    if (error) {
-                        NSLog(@"Error setting alternate icon: %@", error.localizedDescription);
-                        [self showAlertWithTitle:@"Error" message:@"Failed to set alternate icon"];
-                    } else {
-                        NSLog(@"Alternate icon set successfully");
-                        [self showAlertWithTitle:@"Success" message:@"Alternate icon set successfully"];
-                        
-                        dispatch_async(dispatch_get_main_queue(), ^{
-                            [self.tableView reloadData];
-                        });
-                    }
-                }];
-            } else {
-                NSLog(@"CFBundleIcons key not found in Info.plist");
-            }
+            }];
         } else {
             NSLog(@"Selected icon path is nil");
         }
     });
+}
+
+- (UIImage *)resizeImage:(UIImage *)image toSize:(CGSize)size {
+    UIGraphicsBeginImageContextWithOptions(size, NO, [UIScreen mainScreen].scale);
+    [image drawInRect:CGRectMake(0, 0, size.width, size.height)];
+    UIImage *resizedImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return resizedImage;
 }
 
 - (void)showAlertWithTitle:(NSString *)title message:(NSString *)message {
