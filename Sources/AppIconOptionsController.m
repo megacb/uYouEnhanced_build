@@ -25,18 +25,22 @@
     [self.view addSubview:self.tableView];
 
     self.backButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [self.backButton setImage:[UIImage imageNamed:@"Back.png" inBundle:[NSBundle mainBundle] compatibleWithTraitCollection:nil] forState:UIControlStateNormal];
+    UIImage *backImage = [UIImage imageNamed:@"Back.png" inBundle:bundle compatibleWithTraitCollection:nil];
+    [self.backButton setImage:backImage forState:UIControlStateNormal];
     [self.backButton addTarget:self action:@selector(back) forControlEvents:UIControlEventTouchUpInside];
     [self.backButton setFrame:CGRectMake(0, 0, 24, 24)];
     UIBarButtonItem *customBackButton = [[UIBarButtonItem alloc] initWithCustomView:self.backButton];
     self.navigationItem.leftBarButtonItem = customBackButton;
 
     UIColor *buttonColor = [UIColor colorWithRed:203.0/255.0 green:22.0/255.0 blue:51.0/255.0 alpha:1.0];
-    UIBarButtonItem *resetButton = [[UIBarButtonItem alloc] initWithImage:[UIImage systemImageNamed:@"arrow.clockwise.circle.fill"] style:UIBarButtonItemStylePlain target:self action:@selector(resetIcon)];
+    UIImage *resetImage = [UIImage systemImageNamed:@"arrow.clockwise.circle.fill"];
+    UIBarButtonItem *resetButton = [[UIBarButtonItem alloc] initWithImage:resetImage style:UIBarButtonItemStylePlain target:self action:@selector(resetIcon)];
+    resetButton.tintColor = buttonColor;
     
-    UIBarButtonItem *saveButton = [[UIBarButtonItem alloc] initWithTitle:@"Save" style:UIBarButtonItemStylePlain target:self action:@selector(saveIcon)];
-    [saveButton setTitleTextAttributes:@{NSForegroundColorAttributeName: buttonColor, NSFontAttributeName: [UIFont fontWithName:@"YTSans-Medium" size:17]} forState:UIControlStateNormal];
-    
+    UIImage *saveImage = [UIImage systemImageNamed:@"square.and.arrow.up.fill"];
+    UIBarButtonItem *saveButton = [[UIBarButtonItem alloc] initWithImage:saveImage style:UIBarButtonItemStylePlain target:self action:@selector(saveIcon)];
+    saveButton.tintColor = buttonColor;
+
     self.navigationItem.rightBarButtonItems = @[saveButton, resetButton];
     
     NSString *path = [[NSBundle mainBundle] pathForResource:@"uYouPlus" ofType:@"bundle"];
