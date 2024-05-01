@@ -43,7 +43,7 @@
     NSBundle *bundle = [NSBundle bundleWithPath:path];
     self.appIcons = [bundle pathsForResourcesOfType:@"png" inDirectory:@"AppIcons"];
     
-    if (![UIApplication sharedApplication].supportsAlternateIcons) {
+    if (![UIApplication sharedApplication] supportsAlternateIcons) {
         NSLog(@"Alternate icons are not supported on this device.");
     }
 }
@@ -103,6 +103,7 @@
 
 - (void)saveIcon {
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        NSDictionary *infoDict = [[NSBundle mainBundle] infoDictionary];
         NSString *selectedIconName = self.selectedIconIndex >= 0 ? [self.appIcons[self.selectedIconIndex] lastPathComponent] : nil;
         
         if (selectedIconName) {
