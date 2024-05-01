@@ -1,4 +1,3 @@
-#import <YouTubeHeader/YTIPivotBarRenderer.h>
 #import <YouTubeHeader/YTIGuideResponse.h>
 #import <YouTubeHeader/YTIGuideResponseSupportedRenderers.h>
 #import <YouTubeHeader/YTIBrowseRequest.h>

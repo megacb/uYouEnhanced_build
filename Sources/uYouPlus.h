@@ -34,6 +34,7 @@
 #import <YouTubeHeader/GPBMessage.h>
 #import <YouTubeHeader/YTIStringRun.h>
 #import <YouTubeHeader/YTWatchViewController.h>
+#import <YouTubeHeader/YTIPivotBarRenderer.h>
 
 // Hide buttons under the video player by @PoomSmart
 #import <YouTubeHeader/ASCollectionElement.h>
