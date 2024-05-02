@@ -34,6 +34,7 @@
 #import <YouTubeHeader/GPBMessage.h>
 #import <YouTubeHeader/YTIStringRun.h>
 #import <YouTubeHeader/YTWatchViewController.h>
+#import <YouTubeHeader/YTIPivotBarRenderer.h>
 
 // Hide buttons under the video player by @PoomSmart
 #import <YouTubeHeader/ASCollectionElement.h>
@@ -59,6 +60,13 @@
 // Hide Double tap to seek Overlay
 @interface YTInlinePlayerDoubleTapIndicatorView : UIView
 @property (nonatomic, strong) UIView *scrimOverlay;
+@end
+
+// Hide Home Tab - @bhackel
+@interface YTPivotBarItemViewAccessibilityControl : UIControl
+@end
+@interface YTPivotBarItemView (uYouEnhanced)
+@property (nonatomic, strong) YTPivotBarItemViewAccessibilityControl *hitTarget;
 @end
 
 // YTTapToSeek - https://github.com/bhackel/YTTapToSeek

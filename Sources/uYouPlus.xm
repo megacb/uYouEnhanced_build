@@ -1222,6 +1222,38 @@ static BOOL findCell(ASNodeController *nodeController, NSArray <NSString *> *ide
 %end
 
 // Miscellaneous
+
+// Hide Home Tab - @bhackel
+%group gHideHomeTab
+%hook YTPivotBarView
+- (void)setRenderer:(YTIPivotBarRenderer *)renderer {
+    // Iterate over each renderer item
+    NSLog(@"bhackel: setting renderer");
+    NSUInteger indexToRemove = -1;
+    NSMutableArray <YTIPivotBarSupportedRenderers *> *itemsArray = renderer.itemsArray;
+    NSLog(@"bhackel: starting loop");
+    for (NSUInteger i = 0; i < itemsArray.count; i++) {
+        NSLog(@"bhackel: iterating index %lu", (unsigned long)i);
+        YTIPivotBarSupportedRenderers *item = itemsArray[i];
+        // Check if this is the home tab button
+        NSLog(@"bhackel: checking identifier");
+        YTIPivotBarItemRenderer *pivotBarItemRenderer = item.pivotBarItemRenderer;
+        NSString *pivotIdentifier = pivotBarItemRenderer.pivotIdentifier;
+        if ([pivotIdentifier isEqualToString:@"FEwhat_to_watch"]) {
+            NSLog(@"bhackel: removing home tab button");
+            // Remove the home tab button
+            indexToRemove = i;
+            break;
+        }
+    }
+    if (indexToRemove != -1) {
+        [itemsArray removeObjectAtIndex:indexToRemove];
+    }
+    %orig;
+}
+%end
+%end
+
 // YT startup animation
 %hook YTColdConfig
 - (BOOL)mainAppCoreClientIosEnableStartupAnimation {
@@ -1489,6 +1521,9 @@ static BOOL findCell(ASNodeController *nodeController, NSArray <NSString *> *ide
     }
     if (IS_ENABLED(@"uYouAdBlockingWorkaround_enabled")) {
         %init(uYouAdBlockingWorkaround);
+    }
+    if (IS_ENABLED(@"hideHomeTab_enabled")) {
+        %init(gHideHomeTab);
     }
 
     // YTNoModernUI - @arichorn
