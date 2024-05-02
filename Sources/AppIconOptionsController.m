@@ -28,13 +28,8 @@
     NSBundle *backIcon = [NSBundle bundleWithPath:[[NSBundle mainBundle] pathForResource:@"uYouPlus" ofType:@"bundle"]];
     UIImage *backImage = [UIImage imageNamed:@"Back.png" inBundle:backIcon compatibleWithTraitCollection:nil];
     backImage = [self resizeImage:backImage newSize:CGSizeMake(24, 24)];
-    if ([self isDarkBackground]) {
-        backImage = [backImage imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
-        [self.backButton setTintColor:[UIColor whiteColor]];
-    } else {
-        backImage = [backImage imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
-        [self.backButton setTintColor:[UIColor blackColor]];
-    }
+    backImage = [backImage imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    [self.backButton setTintColor:[UIColor whiteColor]];
     [self.backButton setImage:backImage forState:UIControlStateNormal];
     [self.backButton addTarget:self action:@selector(back) forControlEvents:UIControlEventTouchUpInside];
     [self.backButton setFrame:CGRectMake(0, 0, 24, 24)];
