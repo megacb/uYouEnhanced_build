@@ -810,6 +810,12 @@ BOOL isAd(YTIElementRenderer *self) {
 - (CABasicAnimation *)laterBackgroundcolorAnimation {
     return [self uYouEnhancedGetBlankColorAnimation];
 }
+
+- (void)layoutSubviews {
+    %orig;
+    // Set the 0th subview (which darkens the screen) to hidden
+    self.subviews[0].hidden = YES;
+}
 %end
 %end
 
