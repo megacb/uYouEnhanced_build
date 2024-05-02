@@ -765,30 +765,50 @@ BOOL isAd(YTIElementRenderer *self) {
 // Hide double tap to seek overlay - @arichornlover & @bhackel
 %group gHideDoubleTapToSeekOverlay
 %hook YTInlinePlayerDoubleTapIndicatorView
-%property(nonatomic, assign) CABasicAnimation *uYouEnhancedBlankAnimation;
+%property(nonatomic, strong) CABasicAnimation *uYouEnhancedBlankAlphaAnimation;
+%property(nonatomic, strong) CABasicAnimation *uYouEnhancedBlankColorAnimation;
+%new
+- (CABasicAnimation *)uYouEnhancedGetBlankColorAnimation {
+    if (!self.uYouEnhancedBlankColorAnimation) {
+        // Create a new basic animation for the color property
+        self.uYouEnhancedBlankColorAnimation = [CABasicAnimation animationWithKeyPath:@"backgroundColor"];
+        // Set values to 0 to prevent visibility
+        self.uYouEnhancedBlankColorAnimation.fromValue = (id)[UIColor clearColor].CGColor;
+        self.uYouEnhancedBlankColorAnimation.toValue = (id)[UIColor clearColor].CGColor;
+        self.uYouEnhancedBlankColorAnimation.duration = 0.0;
+        self.uYouEnhancedBlankColorAnimation.fillMode = kCAFillModeForwards;
+        self.uYouEnhancedBlankColorAnimation.removedOnCompletion = NO;
+    }
+    return self.uYouEnhancedBlankColorAnimation;
+}
 - (CABasicAnimation *)alphaAnimation {
-    NSLog(@"bhackel: alphaAnimation 1");
-    // Create a new basic animation for the opacity property
-    CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"opacity"];
-    
-    // Set both fromValue and toValue to 1.0 - no visible change will occur
-    NSLog(@"bhackel: alphaAnimation 2");
-    animation.fromValue = @0.0;
-    NSLog(@"bhackel: alphaAnimation 3");
-    animation.toValue = @0.0;
-
-    // Set the duration of the animation
-    NSLog(@"bhackel: alphaAnimation 4");
-    animation.duration = 0.0; // The animation will apply immediately
-
-    // Additional properties to ensure the animation does not alter the layer
-    NSLog(@"bhackel: alphaAnimation 5");
-    animation.fillMode = kCAFillModeForwards;
-    NSLog(@"bhackel: alphaAnimation 6");
-    animation.removedOnCompletion = NO;
-    
-    NSLog(@"bhackel: alphaAnimation 7");
-    return animation;
+    if (!self.uYouEnhancedBlankAlphaAnimation) {
+        NSLog(@"bhackel: Creating new alpha animation");
+        // Create a new basic animation for the opacity property
+        self.uYouEnhancedBlankAlphaAnimation = [CABasicAnimation animationWithKeyPath:@"opacity"];
+        // Set values to 0 to prevent visibility
+        NSLog(@"bhackel: Creating new alpha animation 2");
+        self.uYouEnhancedBlankAlphaAnimation.fromValue = @0.0;
+        NSLog(@"bhackel: Creating new alpha animation 3");
+        self.uYouEnhancedBlankAlphaAnimation.toValue = @0.0;
+        NSLog(@"bhackel: Creating new alpha animation 4");
+        self.uYouEnhancedBlankAlphaAnimation.duration = 0.0;
+        NSLog(@"bhackel: Creating new alpha animation 5");
+        self.uYouEnhancedBlankAlphaAnimation.fillMode = kCAFillModeForwards;
+        NSLog(@"bhackel: Creating new alpha animation 6");
+        self.uYouEnhancedBlankAlphaAnimation.removedOnCompletion = NO; 
+        NSLog(@"bhackel: Creating new alpha animation 7");
+    }
+    return self.uYouEnhancedBlankAlphaAnimation;
+}
+- (CABasicAnimation *)fillColorAnimation {
+    return [self uYouEnhancedGetBlankColorAnimation];
+}
+- (CABasicAnimation *)earlyBackgroundColorAnimation {
+    return [self uYouEnhancedGetBlankColorAnimation];
+}
+- (CABasicAnimation *)laterBackgroundcolorAnimation {
+    return [self uYouEnhancedGetBlankColorAnimation];
 }
 %end
 %end

@@ -60,7 +60,9 @@
 // Hide Double tap to seek Overlay
 @interface YTInlinePlayerDoubleTapIndicatorView : UIView
 @property (nonatomic, strong) UIView *scrimOverlay;
-@property(nonatomic, assign) CABasicAnimation *uYouEnhancedBlankAnimation;
+@property(nonatomic, strong) CABasicAnimation *uYouEnhancedBlankAlphaAnimation;
+@property(nonatomic, strong) CABasicAnimation *uYouEnhancedBlankColorAnimation;
+- (CABasicAnimation *)uYouEnhancedGetBlankColorAnimation;
 @end
 
 // Hide Home Tab - @bhackel
