@@ -762,14 +762,35 @@ BOOL isAd(YTIElementRenderer *self) {
 }
 %end
 
-// Hide double tap to seek overlay - @arichornlover
+// Hide double tap to seek overlay - @arichornlover & @bhackel
+%group gHideDoubleTapToSeekOverlay
 %hook YTInlinePlayerDoubleTapIndicatorView
-- (void)layoutSubviews {
-    %orig;
-    if (IS_ENABLED(@"hideDoubleTapToSeekOverlay_enabled")) {
-        self.frame = CGRectZero;
-    }
+%property(nonatomic, assign) CABasicAnimation *uYouEnhancedBlankAnimation;
+- (CABasicAnimation *)alphaAnimation {
+    NSLog(@"bhackel: alphaAnimation 1");
+    // Create a new basic animation for the opacity property
+    CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"opacity"];
+    
+    // Set both fromValue and toValue to 1.0 - no visible change will occur
+    NSLog(@"bhackel: alphaAnimation 2");
+    animation.fromValue = @0.0;
+    NSLog(@"bhackel: alphaAnimation 3");
+    animation.toValue = @0.0;
+
+    // Set the duration of the animation
+    NSLog(@"bhackel: alphaAnimation 4");
+    animation.duration = 0.0; // The animation will apply immediately
+
+    // Additional properties to ensure the animation does not alter the layer
+    NSLog(@"bhackel: alphaAnimation 5");
+    animation.fillMode = kCAFillModeForwards;
+    NSLog(@"bhackel: alphaAnimation 6");
+    animation.removedOnCompletion = NO;
+    
+    NSLog(@"bhackel: alphaAnimation 7");
+    return animation;
 }
+%end
 %end
 
 // Disable pull to enter vertical/portrait fullscreen gesture - @bhackel
@@ -1524,6 +1545,9 @@ static BOOL findCell(ASNodeController *nodeController, NSArray <NSString *> *ide
     }
     if (IS_ENABLED(@"hideHomeTab_enabled")) {
         %init(gHideHomeTab);
+    }
+    if (IS_ENABLED(@"hideDoubleTapToSeekOverlay_enabled")) {
+        %init(gHideDoubleTapToSeekOverlay);
     }
 
     // YTNoModernUI - @arichorn
