@@ -27,6 +27,14 @@
     self.backButton = [UIButton buttonWithType:UIButtonTypeCustom];
     NSBundle *backIcon = [NSBundle bundleWithPath:[[NSBundle mainBundle] pathForResource:@"uYouPlus" ofType:@"bundle"]];
     UIImage *backImage = [UIImage imageNamed:@"Back.png" inBundle:backIcon compatibleWithTraitCollection:nil];
+    backImage = [self resizeImage:backImage newSize:CGSizeMake(24, 24)];
+    if ([self isDarkBackground]) {
+        backImage = [backImage imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+        [self.backButton setTintColor:[UIColor whiteColor]];
+    } else {
+        backImage = [backImage imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+        [self.backButton setTintColor:[UIColor blackColor]];
+    }
     [self.backButton setImage:backImage forState:UIControlStateNormal];
     [self.backButton addTarget:self action:@selector(back) forControlEvents:UIControlEventTouchUpInside];
     [self.backButton setFrame:CGRectMake(0, 0, 24, 24)];
@@ -149,6 +157,14 @@
     UIGraphicsEndImageContext();
     
     return resizedImage;
+}
+
+- (UIImage *)resizeImage:(UIImage *)image newSize:(CGSize)newSize {
+    UIGraphicsBeginImageContextWithOptions(newSize, NO, [UIScreen mainScreen].scale);
+    [image drawInRect:CGRectMake(0, 0, newSize.width, newSize.height)];
+    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return newImage;
 }
 
 - (void)showAlertWithTitle:(NSString *)title message:(NSString *)message {
