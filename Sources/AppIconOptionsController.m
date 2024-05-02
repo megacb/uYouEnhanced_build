@@ -25,7 +25,8 @@
     [self.view addSubview:self.tableView];
 
     self.backButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    UIImage *backImage = [UIImage imageNamed:@"Back.png" inBundle:[[NSBundle mainBundle] pathForResource:@"uYouPlus" ofType:@"bundle"] compatibleWithTraitCollection:nil];
+    NSBundle *bundle = [NSBundle bundleWithPath:[[NSBundle mainBundle] pathForResource:@"uYouPlus" ofType:@"bundle"]];
+    UIImage *backImage = [UIImage imageNamed:@"Back.png" inBundle:bundle compatibleWithTraitCollection:nil];
     [self.backButton setImage:backImage forState:UIControlStateNormal];
     [self.backButton addTarget:self action:@selector(back) forControlEvents:UIControlEventTouchUpInside];
     [self.backButton setFrame:CGRectMake(0, 0, 24, 24)];
