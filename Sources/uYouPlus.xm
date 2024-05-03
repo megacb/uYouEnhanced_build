@@ -767,6 +767,9 @@ BOOL isAd(YTIElementRenderer *self) {
 %hook YTInlinePlayerDoubleTapIndicatorView
 %property(nonatomic, strong) CABasicAnimation *uYouEnhancedBlankAlphaAnimation;
 %property(nonatomic, strong) CABasicAnimation *uYouEnhancedBlankColorAnimation;
+/**
+ * @return A clear color animation
+ */
 %new
 - (CABasicAnimation *)uYouEnhancedGetBlankColorAnimation {
     if (!self.uYouEnhancedBlankColorAnimation) {
@@ -781,26 +784,7 @@ BOOL isAd(YTIElementRenderer *self) {
     }
     return self.uYouEnhancedBlankColorAnimation;
 }
-- (CABasicAnimation *)alphaAnimation {
-    if (!self.uYouEnhancedBlankAlphaAnimation) {
-        NSLog(@"bhackel: Creating new alpha animation");
-        // Create a new basic animation for the opacity property
-        self.uYouEnhancedBlankAlphaAnimation = [CABasicAnimation animationWithKeyPath:@"opacity"];
-        // Set values to 0 to prevent visibility
-        NSLog(@"bhackel: Creating new alpha animation 2");
-        self.uYouEnhancedBlankAlphaAnimation.fromValue = @0.0;
-        NSLog(@"bhackel: Creating new alpha animation 3");
-        self.uYouEnhancedBlankAlphaAnimation.toValue = @0.0;
-        NSLog(@"bhackel: Creating new alpha animation 4");
-        self.uYouEnhancedBlankAlphaAnimation.duration = 0.0;
-        NSLog(@"bhackel: Creating new alpha animation 5");
-        self.uYouEnhancedBlankAlphaAnimation.fillMode = kCAFillModeForwards;
-        NSLog(@"bhackel: Creating new alpha animation 6");
-        self.uYouEnhancedBlankAlphaAnimation.removedOnCompletion = NO; 
-        NSLog(@"bhackel: Creating new alpha animation 7");
-    }
-    return self.uYouEnhancedBlankAlphaAnimation;
-}
+// Replace all color animations with a clear one
 - (CABasicAnimation *)fillColorAnimation {
     return [self uYouEnhancedGetBlankColorAnimation];
 }
@@ -810,7 +794,21 @@ BOOL isAd(YTIElementRenderer *self) {
 - (CABasicAnimation *)laterBackgroundcolorAnimation {
     return [self uYouEnhancedGetBlankColorAnimation];
 }
-
+// Replace the opacity animation with a clear one
+- (CABasicAnimation *)alphaAnimation {
+    if (!self.uYouEnhancedBlankAlphaAnimation) {
+        // Create a new basic animation for the opacity property
+        self.uYouEnhancedBlankAlphaAnimation = [CABasicAnimation animationWithKeyPath:@"opacity"];
+        // Set values to 0 to prevent visibility
+        self.uYouEnhancedBlankAlphaAnimation.fromValue = @0.0;
+        self.uYouEnhancedBlankAlphaAnimation.toValue = @0.0;
+        self.uYouEnhancedBlankAlphaAnimation.duration = 0.0;
+        self.uYouEnhancedBlankAlphaAnimation.fillMode = kCAFillModeForwards;
+        self.uYouEnhancedBlankAlphaAnimation.removedOnCompletion = NO; 
+    }
+    return self.uYouEnhancedBlankAlphaAnimation;
+}
+// Remove the screen darkening effect
 - (void)layoutSubviews {
     %orig;
     // Set the 0th subview (which darkens the screen) to hidden
