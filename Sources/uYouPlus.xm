@@ -762,14 +762,59 @@ BOOL isAd(YTIElementRenderer *self) {
 }
 %end
 
-// Hide double tap to seek overlay - @arichornlover
+// Hide double tap to seek overlay - @arichornlover & @bhackel
+%group gHideDoubleTapToSeekOverlay
 %hook YTInlinePlayerDoubleTapIndicatorView
+%property(nonatomic, strong) CABasicAnimation *uYouEnhancedBlankAlphaAnimation;
+%property(nonatomic, strong) CABasicAnimation *uYouEnhancedBlankColorAnimation;
+/**
+ * @return A clear color animation
+ */
+%new
+- (CABasicAnimation *)uYouEnhancedGetBlankColorAnimation {
+    if (!self.uYouEnhancedBlankColorAnimation) {
+        // Create a new basic animation for the color property
+        self.uYouEnhancedBlankColorAnimation = [CABasicAnimation animationWithKeyPath:@"backgroundColor"];
+        // Set values to 0 to prevent visibility
+        self.uYouEnhancedBlankColorAnimation.fromValue = (id)[UIColor clearColor].CGColor;
+        self.uYouEnhancedBlankColorAnimation.toValue = (id)[UIColor clearColor].CGColor;
+        self.uYouEnhancedBlankColorAnimation.duration = 0.0;
+        self.uYouEnhancedBlankColorAnimation.fillMode = kCAFillModeForwards;
+        self.uYouEnhancedBlankColorAnimation.removedOnCompletion = NO;
+    }
+    return self.uYouEnhancedBlankColorAnimation;
+}
+// Replace all color animations with a clear one
+- (CABasicAnimation *)fillColorAnimation {
+    return [self uYouEnhancedGetBlankColorAnimation];
+}
+- (CABasicAnimation *)earlyBackgroundColorAnimation {
+    return [self uYouEnhancedGetBlankColorAnimation];
+}
+- (CABasicAnimation *)laterBackgroundcolorAnimation {
+    return [self uYouEnhancedGetBlankColorAnimation];
+}
+// Replace the opacity animation with a clear one
+- (CABasicAnimation *)alphaAnimation {
+    if (!self.uYouEnhancedBlankAlphaAnimation) {
+        // Create a new basic animation for the opacity property
+        self.uYouEnhancedBlankAlphaAnimation = [CABasicAnimation animationWithKeyPath:@"opacity"];
+        // Set values to 0 to prevent visibility
+        self.uYouEnhancedBlankAlphaAnimation.fromValue = @0.0;
+        self.uYouEnhancedBlankAlphaAnimation.toValue = @0.0;
+        self.uYouEnhancedBlankAlphaAnimation.duration = 0.0;
+        self.uYouEnhancedBlankAlphaAnimation.fillMode = kCAFillModeForwards;
+        self.uYouEnhancedBlankAlphaAnimation.removedOnCompletion = NO; 
+    }
+    return self.uYouEnhancedBlankAlphaAnimation;
+}
+// Remove the screen darkening effect
 - (void)layoutSubviews {
     %orig;
-    if (IS_ENABLED(@"hideDoubleTapToSeekOverlay_enabled")) {
-        self.frame = CGRectZero;
-    }
+    // Set the 0th subview (which darkens the screen) to hidden
+    self.subviews[0].hidden = YES;
 }
+%end
 %end
 
 // Disable pull to enter vertical/portrait fullscreen gesture - @bhackel
@@ -1524,6 +1569,9 @@ static BOOL findCell(ASNodeController *nodeController, NSArray <NSString *> *ide
     }
     if (IS_ENABLED(@"hideHomeTab_enabled")) {
         %init(gHideHomeTab);
+    }
+    if (IS_ENABLED(@"hideDoubleTapToSeekOverlay_enabled")) {
+        %init(gHideDoubleTapToSeekOverlay);
     }
 
     // YTNoModernUI - @arichorn
