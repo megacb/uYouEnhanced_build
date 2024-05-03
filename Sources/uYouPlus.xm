@@ -715,6 +715,16 @@ BOOL isAd(YTIElementRenderer *self) {
 %end
 %end
 
+// Disable Double tap to skip chapter - @bhackel
+%hook YTDoubleTapToSeekController
+- (void)didTwoFingerDoubleTap:(id)arg1 {
+    if (IS_ENABLED(@"disableChapterSkip_enabled")) {
+        return;
+    }
+    %orig;
+}
+%end
+
 
 // Disable snap to chapter
 %hook YTSegmentableInlinePlayerBarView
