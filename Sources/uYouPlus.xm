@@ -715,7 +715,7 @@ BOOL isAd(YTIElementRenderer *self) {
 %end
 %end
 
-/* This is disabled due to "self.enableSnapToChapter" not existing.
+
 // Disable snap to chapter
 %hook YTSegmentableInlinePlayerBarView
 - (void)didMoveToWindow {
@@ -725,7 +725,7 @@ BOOL isAd(YTIElementRenderer *self) {
     }
 }
 %end
-*/
+
 
 // Disable Pinch to zoom
 %hook YTColdConfig
