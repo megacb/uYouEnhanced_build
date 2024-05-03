@@ -715,7 +715,17 @@ BOOL isAd(YTIElementRenderer *self) {
 %end
 %end
 
-/* This is disabled due to "self.enableSnapToChapter" not existing.
+// Disable Double tap to skip chapter - @bhackel
+%hook YTDoubleTapToSeekController
+- (void)didTwoFingerDoubleTap:(id)arg1 {
+    if (IS_ENABLED(@"disableChapterSkip_enabled")) {
+        return;
+    }
+    %orig;
+}
+%end
+
+
 // Disable snap to chapter
 %hook YTSegmentableInlinePlayerBarView
 - (void)didMoveToWindow {
@@ -725,7 +735,7 @@ BOOL isAd(YTIElementRenderer *self) {
     }
 }
 %end
-*/
+
 
 // Disable Pinch to zoom
 %hook YTColdConfig
@@ -934,16 +944,16 @@ BOOL isAd(YTIElementRenderer *self) {
 }
 %end
 
-// %group gHidePreviousAndNextButton
-// %hook YTColdConfig
-// - (BOOL)removeNextPaddleForAllVideos { 
-//     return YES; 
-// }
-// - (BOOL)removePreviousPaddleForAllVideos { 
-//     return YES; 
-// }
-// %end
-// %end
+%group gHidePreviousAndNextButton
+%hook YTColdConfig
+- (BOOL)removeNextPaddleForAllVideos { 
+    return YES; 
+}
+- (BOOL)removePreviousPaddleForAllVideos { 
+    return YES; 
+}
+%end
+%end
 
 // Hide Video Title (in Fullscreen) - @arichornlover
 %hook YTMainAppVideoPlayerOverlayView
@@ -1468,9 +1478,9 @@ static BOOL findCell(ASNodeController *nodeController, NSArray <NSString *> *ide
     if (IS_ENABLED(@"hideSubscriptionsNotificationBadge_enabled")) {
         %init(gHideSubscriptionsNotificationBadge);
     }
-    // if (IS_ENABLED(@"hidePreviousAndNextButton_enabled")) {
-    //     %init(gHidePreviousAndNextButton);
-    // }
+    if (IS_ENABLED(@"hidePreviousAndNextButton_enabled")) {
+        %init(gHidePreviousAndNextButton);
+    }
     if (IS_ENABLED(@"hideOverlayDarkBackground_enabled")) {
         %init(gHideOverlayDarkBackground);
     }

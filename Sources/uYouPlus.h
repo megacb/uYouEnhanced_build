@@ -57,6 +57,11 @@
 @interface SSOConfiguration : NSObject
 @end
 
+// Disable Snap to chapter
+@interface YTSegmentableInlinePlayerBarView : UIView
+@property(nonatomic, assign) BOOL enableSnapToChapter;
+@end
+
 // Hide Double tap to seek Overlay
 @interface YTInlinePlayerDoubleTapIndicatorView : UIView
 @property (nonatomic, strong) UIView *scrimOverlay;
