@@ -1012,7 +1012,7 @@ YTSettingsSectionItem *lowContrastModeButton = [%c(YTSettingsSectionItem)
     # pragma mark - Miscellaneous
     SECTION_HEADER(LOC(@"MISCELLANEOUS"));
 
-    SWITCH_ITEM2(LOC(@"Adblock Workaround"), LOC(@"Uses stronger adblocking code. Can cause blank spots on homepage"), @"uYouAdBlockingWorkaround_enabled");
+    SWITCH_ITEM2(LOC(@"Adblock Workaround"), LOC(@"Uses stronger adblocking code"), @"uYouAdBlockingWorkaround_enabled");
 
     YTSettingsSectionItem *fakePremium = [YTSettingsSectionItemClass
     switchItemWithTitle:LOC(@"Fake Premium")
@@ -1020,9 +1020,12 @@ YTSettingsSectionItem *lowContrastModeButton = [%c(YTSettingsSectionItem)
     accessibilityIdentifier:nil
     switchOn:IS_ENABLED(@"youTabFakePremium_enabled")
     switchBlock:^BOOL (YTSettingsCell *cell, BOOL enabled) {
+        NSLog(@"backel: Switch toggled: %@", enabled ? @"ON" : @"OFF");
         NSString *appVersion = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
-        NSComparisonResult result = [appVersion compare:@"18.35.4" options:NSNumericSearch]; 
+        NSComparisonResult result = [appVersion compare:@"18.35.4" options:NSNumericSearch];
+        NSLog(@"backel: App Version: %@, Required: 18.35.4, Result: %ld", appVersion, (long)result);
         if (result == NSOrderedAscending) {
+            NSLog(@"backel: Incompatible version detected: %@", appVersion);
             UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Incompatible" message:[NSString stringWithFormat:@"Error: The \"You\" Tab doesn't exist in v%@. \nFake Premium is only available for app versions v18.35.4 and higher.", appVersion] preferredStyle:UIAlertControllerStyleAlert];
             UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
             [alert addAction:okAction];
@@ -1037,6 +1040,10 @@ YTSettingsSectionItem *lowContrastModeButton = [%c(YTSettingsSectionItem)
     settingItemId:0
 ];
 [sectionItems addObject:fakePremium];
+
+// Additional logging for initial load
+NSLog(@"backel: youTabFakePremium_enabled is currently set to: %@", IS_ENABLED(@"youTabFakePremium_enabled") ? @"YES" : @"NO");
+
 
 //  SWITCH_ITEM(LOC(@"Center YouTube Logo"), LOC(@"Toggle this to move the official YouTube Logo to the Center. App restart is required."), @"centerYouTubeLogo_enabled");
     SWITCH_ITEM(LOC(@"Hide YouTube Logo"), LOC(@"Toggle this to hide the YouTube Logo in the YouTube App."), @"hideYouTubeLogo_enabled");
