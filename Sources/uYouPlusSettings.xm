@@ -342,7 +342,10 @@ YTSettingsSectionItem *lowContrastMode = [YTSettingsSectionItemClass
     switchOn:IS_ENABLED(@"lowContrastMode_enabled")
     switchBlock:^BOOL (YTSettingsCell *cell, BOOL enabled) {
         if (enabled) {
-            NSString *appVersion = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
+            // Get the current version (including spoofed versions)
+            Class YTVersionUtilsClass = %c(YTVersionUtils);
+            NSString *appVersion = [YTVersionUtilsClass performSelector:@selector(appVersion)];
+            // Compare the current version to the supported version range
             NSComparisonResult result1 = [appVersion compare:@"17.33.2" options:NSNumericSearch];
             NSComparisonResult result2 = [appVersion compare:@"17.38.10" options:NSNumericSearch];
             if (result1 == NSOrderedAscending) {
@@ -360,9 +363,8 @@ YTSettingsSectionItem *lowContrastMode = [YTSettingsSectionItemClass
                 return NO;
             }
         }
-        if (IS_ENABLED(@"fixLowContrastMode_enabled")) {
-            [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"lowContrastMode_enabled"];
-        }
+        // Refresh the stored value
+        [[NSUserDefaults standardUserDefaults] setBool:enabled forKey:@"lowContrastMode_enabled"];
         [settingsViewController reloadData];
         SHOW_RELAUNCH_YT_SNACKBAR;
         return YES;
@@ -370,6 +372,7 @@ YTSettingsSectionItem *lowContrastMode = [YTSettingsSectionItemClass
     settingItemId:0
 ];
 [sectionItems addObject:lowContrastMode];
+
 YTSettingsSectionItem *lowContrastModeButton = [%c(YTSettingsSectionItem)
     itemWithTitle:@"Low Contrast Mode Selector"
     accessibilityIdentifier:nil
@@ -384,7 +387,10 @@ YTSettingsSectionItem *lowContrastModeButton = [%c(YTSettingsSectionItem)
     }
     selectBlock:^BOOL (YTSettingsCell *cell, NSUInteger arg1) {
         if (contrastMode() == 0) {
-            NSString *appVersion = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
+            // Get the current version (including spoofed versions)
+            Class YTVersionUtilsClass = %c(YTVersionUtils);
+            NSString *appVersion = [YTVersionUtilsClass performSelector:@selector(appVersion)];
+            // Alert the user that they need to enable the fix
             UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Incompatibile" message:[NSString stringWithFormat:@"LowContrastMode is only available for app versions v17.33.2-v17.38.10. \nYou are currently using v%@. \n\nWorkaround: if you want to use this then I recommend enabling \"Fix LowContrastMode\" Option.", appVersion] preferredStyle:UIAlertControllerStyleAlert];
             UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
             [alert addAction:okAction];
@@ -415,7 +421,7 @@ YTSettingsSectionItem *lowContrastModeButton = [%c(YTSettingsSectionItem)
     SWITCH_ITEM2(LOC(@"Disable Modern Buttons"), LOC(@"This will remove the new Modern / Chip Buttons in the YouTube App. but not all of them. App restart is required."), @"disableModernButtons_enabled");
     SWITCH_ITEM2(LOC(@"Disable Rounded Corners on Hints"), LOC(@"This will make the Hints in the App to not have Rounded Corners. App restart is required."), @"disableRoundedHints_enabled");
     SWITCH_ITEM2(LOC(@"Disable Modern A/B Flags"), LOC(@"This will turn off any Modern Flag that was enabled by default. App restart is required."), @"disableModernFlags_enabled");
-    SWITCH_ITEM2(LOC(@"Enable Specific UI Related Options (YTNoModernUI)"), LOC(@"When Enabled, this will enable other options to give it a less-modern feeling. App restart is required."), @"ytNoModernUI_enabled");
+    SWITCH_ITEM2(LOC(@"Enable Specific UI Related Options (YTNoModernUI)"), LOC(@"This will force-enable other options to give it a less-modern feeling. App restart is required."), @"ytNoModernUI_enabled");
     SWITCH_ITEM2(LOC(@"Enable App Version Spoofer"), LOC(@"Enable this to use the Version Spoofer and select your perferred version below. App restart is required."), @"enableVersionSpoofer_enabled");
     YTSettingsSectionItem *versionSpoofer = [%c(YTSettingsSectionItem)
         itemWithTitle:@"Version spoofer picker"
@@ -1020,8 +1026,6 @@ YTSettingsSectionItem *lowContrastModeButton = [%c(YTSettingsSectionItem)
     accessibilityIdentifier:nil
     switchOn:IS_ENABLED(@"youTabFakePremium_enabled")
     switchBlock:^BOOL (YTSettingsCell *cell, BOOL enabled) {
-        // Store the received value
-        [[NSUserDefaults standardUserDefaults] setBool:enabled forKey:@"youTabFakePremium_enabled"];
         // Get the current version (including spoofed versions)
         Class YTVersionUtilsClass = %c(YTVersionUtils);
         NSString *appVersion = [YTVersionUtilsClass performSelector:@selector(appVersion)];
@@ -1034,6 +1038,7 @@ YTSettingsSectionItem *lowContrastModeButton = [%c(YTSettingsSectionItem)
             [settingsViewController presentViewController:alert animated:YES completion:nil];
         }
         // Refresh data and show the relaunch popup
+        [[NSUserDefaults standardUserDefaults] setBool:enabled forKey:@"youTabFakePremium_enabled"];
         [settingsViewController reloadData];
         SHOW_RELAUNCH_YT_SNACKBAR;
         return YES;
