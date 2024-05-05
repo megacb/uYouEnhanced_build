@@ -1587,13 +1587,13 @@ static BOOL findCell(ASNodeController *nodeController, NSArray <NSString *> *ide
     // YTNoModernUI - @arichorn
     BOOL ytNoModernUIEnabled = IS_ENABLED(@"ytNoModernUI_enabled");
     if (ytNoModernUIEnabled) {
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    [userDefaults setBool:NO forKey:@"enableVersionSpoofer_enabled"];
+        NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+        [userDefaults setBool:NO forKey:@"enableVersionSpoofer_enabled"];
     } else {
-    BOOL enableVersionSpooferEnabled = IS_ENABLED(@"enableVersionSpoofer_enabled");
+        BOOL enableVersionSpooferEnabled = IS_ENABLED(@"enableVersionSpoofer_enabled");
 
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    [userDefaults setBool:enableVersionSpooferEnabled forKey:@"enableVersionSpoofer_enabled"];
+        NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+        [userDefaults setBool:enableVersionSpooferEnabled forKey:@"enableVersionSpoofer_enabled"];
     }
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     [userDefaults setBool:ytNoModernUIEnabled ? ytNoModernUIEnabled : [userDefaults boolForKey:@"fixLowContrastMode_enabled"] forKey:@"fixLowContrastMode_enabled"];

@@ -1020,8 +1020,20 @@ YTSettingsSectionItem *lowContrastModeButton = [%c(YTSettingsSectionItem)
     accessibilityIdentifier:nil
     switchOn:IS_ENABLED(@"youTabFakePremium_enabled")
     switchBlock:^BOOL (YTSettingsCell *cell, BOOL enabled) {
+        // Store the received value
+        [[NSUserDefaults standardUserDefaults] setBool:enabled forKey:@"youTabFakePremium_enabled"];
         NSLog(@"backel: Switch toggled: %@", enabled ? @"ON" : @"OFF");
-        NSString *appVersion = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
+        // Get the current version (including spoofed versions)
+        NSString *appVersion;
+        Class YTVersionUtilsClass = %c(YTVersionUtils);
+        if ([YTVersionUtilsClass respondsToSelector:@selector(appVersion)]) {
+            appVersion = [YTVersionUtilsClass performSelector:@selector(appVersion)];
+            NSLog(@"backel: App Version: %@", appVersion);
+        } else {
+            NSLog(@"backel: The YTVersionUtils class does not respond to -appVersion");
+        }
+        // appVersion = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
+        // Check if current version is less than the required version
         NSComparisonResult result = [appVersion compare:@"18.35.4" options:NSNumericSearch];
         NSLog(@"backel: App Version: %@, Required: 18.35.4, Result: %ld", appVersion, (long)result);
         if (result == NSOrderedAscending) {
