@@ -316,7 +316,7 @@ BOOL isAd(YTIElementRenderer *self) {
 %group gFakePremium
 // YouTube Premium Logo - @arichornlover & bhackel
 %hook YTHeaderLogoController
-- (void)setTopbarLogoRenderer:(YTITopbarLogoRenderer)renderer {
+- (void)setTopbarLogoRenderer:(YTITopbarLogoRenderer *)renderer {
     // Modify the type of the icon before setting the renderer
     YTIIcon *iconImage = renderer.iconImage;
     iconImage.iconType = 537; // magic number for Premium icon, hopefully it doesnt change. 158 is default logo.
