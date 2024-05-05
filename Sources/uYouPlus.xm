@@ -316,22 +316,21 @@ BOOL isAd(YTIElementRenderer *self) {
 %group gFakePremium
 // YouTube Premium Logo - @arichornlover & bhackel
 %hook YTHeaderLogoController
-    - (void)setTopbarLogoRenderer:(id)renderer {
-        // Modify the type of the icon before setting the renderer
-        YTITopbarLogoRenderer *logoRenderer = (YTITopbarLogoRenderer *)renderer;
-        YTIIcon *iconImage = logoRenderer.iconImage;
-        iconImage.iconType = 537; // magic number for Premium icon, hopefully it doesnt change. 158 is default logo.
-        // Use this modified renderer
-        %orig(logoRenderer);
-    }
-    // For when spoofing before 18.34.5
-    - (void)setPremiumLogo:(BOOL)isPremiumLogo {
-        isPremiumLogo = YES;
-        %orig;
-    }
-    - (BOOL)isPremiumLogo {
-        return YES;
-    }
+- (void)setTopbarLogoRenderer:(YTITopbarLogoRenderer *)renderer {
+    // Modify the type of the icon before setting the renderer
+    YTIIcon *iconImage = renderer.iconImage;
+    iconImage.iconType = 537; // magic number for Premium icon, hopefully it doesnt change. 158 is default logo.
+    // Use this modified renderer
+    %orig;
+}
+// For when spoofing before 18.34.5
+- (void)setPremiumLogo:(BOOL)isPremiumLogo {
+    isPremiumLogo = YES;
+    %orig;
+}
+- (BOOL)isPremiumLogo {
+    return YES;
+}
 %end
 %hook YTAppCollectionViewController
 /**
@@ -342,6 +341,13 @@ BOOL isAd(YTIElementRenderer *self) {
   */
 %new
 - (void)uYouEnhancedFakePremiumModel:(YTISectionListRenderer *)model {
+    // Don't do anything if the version is too low
+    Class YTVersionUtilsClass = %c(YTVersionUtils);
+    NSString *appVersion = [YTVersionUtilsClass performSelector:@selector(appVersion)];
+    NSComparisonResult result = [appVersion compare:@"18.35.4" options:NSNumericSearch];
+    if (result == NSOrderedAscending) {
+        return;
+    }
     NSUInteger yourVideosCellIndex = -1;
     NSMutableArray <YTISectionListSupportedRenderers *> *overallContentsArray = model.contentsArray;
     // Check each item in the overall array - this represents the whole You page
@@ -1600,13 +1606,13 @@ static BOOL findCell(ASNodeController *nodeController, NSArray <NSString *> *ide
     // YTNoModernUI - @arichorn
     BOOL ytNoModernUIEnabled = IS_ENABLED(@"ytNoModernUI_enabled");
     if (ytNoModernUIEnabled) {
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    [userDefaults setBool:NO forKey:@"enableVersionSpoofer_enabled"];
+        NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+        [userDefaults setBool:NO forKey:@"enableVersionSpoofer_enabled"];
     } else {
-    BOOL enableVersionSpooferEnabled = IS_ENABLED(@"enableVersionSpoofer_enabled");
+        BOOL enableVersionSpooferEnabled = IS_ENABLED(@"enableVersionSpoofer_enabled");
 
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    [userDefaults setBool:enableVersionSpooferEnabled forKey:@"enableVersionSpoofer_enabled"];
+        NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+        [userDefaults setBool:enableVersionSpooferEnabled forKey:@"enableVersionSpoofer_enabled"];
     }
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     [userDefaults setBool:ytNoModernUIEnabled ? ytNoModernUIEnabled : [userDefaults boolForKey:@"fixLowContrastMode_enabled"] forKey:@"fixLowContrastMode_enabled"];
