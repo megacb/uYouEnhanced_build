@@ -944,6 +944,19 @@ BOOL isAd(YTIElementRenderer *self) {
 }
 %end
 
+// Always use remaining time in the video player - @bhackel
+%hook YTInlinePlayerBarContainerView
+// Modify constructor to enable the feature when it is done
+- (instancetype)init {
+    YTInlinePlayerBarContainerView *playerBar = (YTInlinePlayerBarContainerView *)%orig;
+    if (playerBar && IS_ENABLED(@"alwaysShowRemainingTime_enabled")) {
+        playerBar.shouldDisplayTimeRemaining = YES;
+    }
+    return playerBar;
+}
+%end
+
+// Hide previous and next buttons in all videos - @bhackel
 %group gHidePreviousAndNextButton
 %hook YTColdConfig
 - (BOOL)removeNextPaddleForAllVideos { 
