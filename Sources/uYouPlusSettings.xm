@@ -48,6 +48,29 @@
         } \
         settingItemId:0]]
 
+/** Example SWITCH_ITEM3 Usage
+SWITCH_ITEM3(
+    LOC(@"Your title here"), 
+    LOC(@"Your description here"), 
+    @"yourKey_enabled",
+    // Custom code goes in this block, wrapped in ({...}); Make sure to return YES at the end
+    ({
+        // Show an alert if this setting is being enabled
+        if (enable) {
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Warning" message:@"Some alert message here" preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
+            [alert addAction:okAction];
+            [settingsViewController presentViewController:alert animated:YES completion:nil];
+        }
+        // Update the setting in the storage and reload
+        [[NSUserDefaults standardUserDefaults] setBool:enable forKey:@"yourKey_enabled"];
+        [settingsViewController reloadData];
+        SHOW_RELAUNCH_YT_SNACKBAR;
+        return YES;
+    });
+);
+*/
+
 
 static int contrastMode() {
     NSString *appVersion = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
@@ -451,7 +474,7 @@ extern NSBundle *uYouPlusBundle();
     SWITCH_ITEM3(
         LOC(@"Enable Specific UI Related Options (YTNoModernUI)"), 
         LOC(@"This will enable other options to give it a less-modern feeling. App restart is required."), 
-        @"ytNoModernUI_enabled"
+        @"ytNoModernUI_enabled",
         ({
             if (enable) {
                 UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Warning" message:@"This will force-enable other settings on restart. To disable them, you must turn this setting off." preferredStyle:UIAlertControllerStyleAlert];
