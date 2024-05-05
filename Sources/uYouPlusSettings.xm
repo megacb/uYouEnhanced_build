@@ -1022,39 +1022,25 @@ YTSettingsSectionItem *lowContrastModeButton = [%c(YTSettingsSectionItem)
     switchBlock:^BOOL (YTSettingsCell *cell, BOOL enabled) {
         // Store the received value
         [[NSUserDefaults standardUserDefaults] setBool:enabled forKey:@"youTabFakePremium_enabled"];
-        NSLog(@"backel: Switch toggled: %@", enabled ? @"ON" : @"OFF");
         // Get the current version (including spoofed versions)
-        NSString *appVersion;
         Class YTVersionUtilsClass = %c(YTVersionUtils);
-        if ([YTVersionUtilsClass respondsToSelector:@selector(appVersion)]) {
-            appVersion = [YTVersionUtilsClass performSelector:@selector(appVersion)];
-            NSLog(@"backel: App Version: %@", appVersion);
-        } else {
-            NSLog(@"backel: The YTVersionUtils class does not respond to -appVersion");
-        }
-        // appVersion = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
-        // Check if current version is less than the required version
+        NSString *appVersion = [YTVersionUtilsClass performSelector:@selector(appVersion)];
+        // Alert if the version is partially incompatible and the toggle is being turned on
         NSComparisonResult result = [appVersion compare:@"18.35.4" options:NSNumericSearch];
-        NSLog(@"backel: App Version: %@, Required: 18.35.4, Result: %ld", appVersion, (long)result);
-        if (result == NSOrderedAscending) {
-            NSLog(@"backel: Incompatible version detected: %@", appVersion);
-            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Incompatible" message:[NSString stringWithFormat:@"Error: The \"You\" Tab doesn't exist in v%@. \nFake Premium is only available for app versions v18.35.4 and higher.", appVersion] preferredStyle:UIAlertControllerStyleAlert];
+        if (enabled && result == NSOrderedAscending) {
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Incompatible" message:[NSString stringWithFormat:@"Warning: The \"You\" Tab doesn't exist in v%@.\nFake Logo will still work.", appVersion] preferredStyle:UIAlertControllerStyleAlert];
             UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
             [alert addAction:okAction];
             [settingsViewController presentViewController:alert animated:YES completion:nil];
-            [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"youTabFakePremium_enabled"];
-            return NO;
         }
+        // Refresh data and show the relaunch popup
         [settingsViewController reloadData];
         SHOW_RELAUNCH_YT_SNACKBAR;
         return YES;
     }
     settingItemId:0
-];
-[sectionItems addObject:fakePremium];
-
-// Additional logging for initial load
-NSLog(@"backel: youTabFakePremium_enabled is currently set to: %@", IS_ENABLED(@"youTabFakePremium_enabled") ? @"YES" : @"NO");
+    ];
+    [sectionItems addObject:fakePremium];
 
 
 //  SWITCH_ITEM(LOC(@"Center YouTube Logo"), LOC(@"Toggle this to move the official YouTube Logo to the Center. App restart is required."), @"centerYouTubeLogo_enabled");

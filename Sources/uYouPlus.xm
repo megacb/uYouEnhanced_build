@@ -316,22 +316,21 @@ BOOL isAd(YTIElementRenderer *self) {
 %group gFakePremium
 // YouTube Premium Logo - @arichornlover & bhackel
 %hook YTHeaderLogoController
-    - (void)setTopbarLogoRenderer:(id)renderer {
-        // Modify the type of the icon before setting the renderer
-        YTITopbarLogoRenderer *logoRenderer = (YTITopbarLogoRenderer *)renderer;
-        YTIIcon *iconImage = logoRenderer.iconImage;
-        iconImage.iconType = 537; // magic number for Premium icon, hopefully it doesnt change. 158 is default logo.
-        // Use this modified renderer
-        %orig(logoRenderer);
-    }
-    // For when spoofing before 18.34.5
-    - (void)setPremiumLogo:(BOOL)isPremiumLogo {
-        isPremiumLogo = YES;
-        %orig;
-    }
-    - (BOOL)isPremiumLogo {
-        return YES;
-    }
+- (void)setTopbarLogoRenderer:(YTITopbarLogoRenderer)renderer {
+    // Modify the type of the icon before setting the renderer
+    YTIIcon *iconImage = renderer.iconImage;
+    iconImage.iconType = 537; // magic number for Premium icon, hopefully it doesnt change. 158 is default logo.
+    // Use this modified renderer
+    %orig;
+}
+// For when spoofing before 18.34.5
+- (void)setPremiumLogo:(BOOL)isPremiumLogo {
+    isPremiumLogo = YES;
+    %orig;
+}
+- (BOOL)isPremiumLogo {
+    return YES;
+}
 %end
 %hook YTAppCollectionViewController
 /**
