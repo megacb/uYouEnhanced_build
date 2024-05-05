@@ -448,7 +448,23 @@ extern NSBundle *uYouPlusBundle();
     SWITCH_ITEM2(LOC(@"Disable Modern Buttons"), LOC(@"This will remove the new Modern / Chip Buttons in the YouTube App. but not all of them. App restart is required."), @"disableModernButtons_enabled");
     SWITCH_ITEM2(LOC(@"Disable Rounded Corners on Hints"), LOC(@"This will make the Hints in the App to not have Rounded Corners. App restart is required."), @"disableRoundedHints_enabled");
     SWITCH_ITEM2(LOC(@"Disable Modern A/B Flags"), LOC(@"This will turn off any Modern Flag that was enabled by default. App restart is required."), @"disableModernFlags_enabled");
-    SWITCH_ITEM2(LOC(@"Enable Specific UI Related Options (YTNoModernUI)"), LOC(@"This will force-enable other options to give it a less-modern feeling. App restart is required."), @"ytNoModernUI_enabled");
+    SWITCH_ITEM3(
+        LOC(@"Enable Specific UI Related Options (YTNoModernUI)"), 
+        LOC(@"This will enable other options to give it a less-modern feeling. App restart is required."), 
+        @"ytNoModernUI_enabled"
+        ({
+            if (enable) {
+                UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Warning" message:@"This will force-enable other settings on restart. To disable them, you must turn this setting off." preferredStyle:UIAlertControllerStyleAlert];
+                UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
+                [alert addAction:okAction];
+                [settingsViewController presentViewController:alert animated:YES completion:nil];
+            }
+            [[NSUserDefaults standardUserDefaults] setBool:enable forKey:@"ytNoModernUI_enabled"];
+            [settingsViewController reloadData];
+            SHOW_RELAUNCH_YT_SNACKBAR;
+            return YES;
+        });
+    );
     SWITCH_ITEM2(LOC(@"Enable App Version Spoofer"), LOC(@"Enable this to use the Version Spoofer and select your perferred version below. App restart is required."), @"enableVersionSpoofer_enabled");
     
     YTSettingsSectionItem *versionSpoofer = [%c(YTSettingsSectionItem)
