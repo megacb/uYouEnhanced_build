@@ -398,7 +398,7 @@ extern NSBundle *uYouPlusBundle();
             [settingsViewController reloadData];
             SHOW_RELAUNCH_YT_SNACKBAR;
             return YES;
-        })
+        });
     );
     YTSettingsSectionItem *lowContrastModeButton = [%c(YTSettingsSectionItem)
         itemWithTitle:@"Low Contrast Mode Selector"
@@ -1057,7 +1057,7 @@ extern NSBundle *uYouPlusBundle();
             NSString *appVersion = [YTVersionUtilsClass performSelector:@selector(appVersion)];
             // Alert if the version is partially incompatible and the toggle is being turned on
             NSComparisonResult result = [appVersion compare:@"18.35.4" options:NSNumericSearch];
-            if (enabled && result == NSOrderedAscending) {
+            if (enable && result == NSOrderedAscending) {
                 UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Incompatible" message:[NSString stringWithFormat:@"Warning: The \"You\" Tab doesn't exist in v%@.\nFake Logo will still work.", appVersion] preferredStyle:UIAlertControllerStyleAlert];
                 UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
                 [alert addAction:okAction];
@@ -1068,7 +1068,7 @@ extern NSBundle *uYouPlusBundle();
             [settingsViewController reloadData];
             SHOW_RELAUNCH_YT_SNACKBAR;
             return YES;
-        })
+        });
     );
 //  SWITCH_ITEM(LOC(@"Center YouTube Logo"), LOC(@"Toggle this to move the official YouTube Logo to the Center. App restart is required."), @"centerYouTubeLogo_enabled");
     SWITCH_ITEM(LOC(@"Hide YouTube Logo"), LOC(@"Toggle this to hide the YouTube Logo in the YouTube App."), @"hideYouTubeLogo_enabled");

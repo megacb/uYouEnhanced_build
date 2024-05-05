@@ -341,6 +341,13 @@ BOOL isAd(YTIElementRenderer *self) {
   */
 %new
 - (void)uYouEnhancedFakePremiumModel:(YTISectionListRenderer *)model {
+    // Don't do anything if the version is too low
+    Class YTVersionUtilsClass = %c(YTVersionUtils);
+    NSString *appVersion = [YTVersionUtilsClass performSelector:@selector(appVersion)];
+    NSComparisonResult result = [appVersion compare:@"18.35.4" options:NSNumericSearch];
+    if (result == NSOrderedAscending) {
+        return;
+    }
     NSUInteger yourVideosCellIndex = -1;
     NSMutableArray <YTISectionListSupportedRenderers *> *overallContentsArray = model.contentsArray;
     // Check each item in the overall array - this represents the whole You page
