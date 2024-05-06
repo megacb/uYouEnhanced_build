@@ -17,10 +17,20 @@ If I verify a reported Code of Conduct violation, my policy is:
 To prevent conflicts and misunderstandings related to donations, all users should use code from the uYouEnhanced fork responsibly and honor the permissions and restrictions provided by the project administrators and tweak developers. Failure to do so may result in access revocation.
 </details>
 
-## Supported Versions
+## uYouEnhanced Version Info
 
 The following versions of the uYouEnhanced Tweak are currently supported with security and feature updates.
 
 | Developer(s) | Version | LTS Support | YT Version Supported | App Stability | uYou Functionality | uYouEnhanced Functionality |
-|  ----------- | ------- | ----------- | -------------------- | ------------- | ------------------ | - |
+|  - | - | - | - | - | - | - |
 | MiRO92(uYou) & arichornlover(uYouEnhanced) | [latest](https://github.com/arichornlover/uYouEnhanced/releases/latest) | ✅ | ✅ | Stable | Fully functional | Change App Icon isn't functional, Timestamping url isn't functional |
+
+
+## uYouEnhanced Branches Info
+| Branche(s) | About |
+|  - | - |
+| `main` | The Default and Maintained Branch of uYouEnhanced. |
+| `main-beta` | The Branch that is used for whenever Refreshing/Resetting the `main` branch. |
+| `main-16.42.3LTS` | This Branch is an older version of `main` and includes outdated code for v16.42.3. This Version is discontinued but could still work in some cases. |
+| `main-nightly` | The Branch that is similar to `main` but adds experimental features and functionality. |
+| `YouTimeStamp` | The Branch that is similar to `main` & `main-nightly` branche(s) but includes a option that doesn't work yet. |
