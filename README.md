@@ -26,7 +26,7 @@
 </p>
 
 > [!NOTE]
-> uYouEnhanced/uYouPlus is a **modified version** of uYou. **Please DO NOT bother MiRO92 with issues unrelated to uYou!**
+> uYouEnhanced is a **modified version** of uYou. **Please DO NOT bother MiRO92 with issues unrelated to uYou!**
 
 # Table of Contents
 
@@ -40,7 +40,7 @@
 [![Building (Optional)](https://img.shields.io/badge/Building%20%28Optional%29-blue?style=flat)](#building-optional)
 
 # Credits
-- Special thanks to all the developers who have worked on uYouPlus/uYouPlusExtra! 
+- Special thanks to all the developers who have worked on uYouPlus/uYouEnhanced! 
 
 <table id='credit'>
 <tr>
@@ -268,9 +268,9 @@
 
 # Known issues
 
-- **uYou**: All the known issues of uYou are listed [here](https://github.com/MiRO92/uYou-for-YouTube/issues). Make sure you take a look at it before reporting any bugs! Also, keep in mind that uYou+ is a modified version of uYou. DO NOT bother MiRO92 with problems unrelated to uYou!
+- **uYou**: Issues related to uYou are listed [here](https://github.com/MiRO92/uYou-for-YouTube/issues). Because uYou is not being updated frequently, we recommended creating bug reports on this repo.
 
-- Issues related to **uYouPlus** can be found [here](https://github.com/qnblackcat/uYouPlus/issues/), or issues related to **uYouEnhanced** can be found [here](https://github.com/arichornlover/uYouEnhanced/issues/).
+- Issues related to **uYouEnhanced** can be found [here](https://github.com/arichornlover/uYouEnhanced/issues/).
 
 ## Download
 
@@ -323,7 +323,13 @@
 | MiRO92 | uYou 3.0.1 | v18.19.1 - v18.41.5 | iOS 14 - iOS 17 |
 | MiRO92 | uYou 3.0.2 / 3.0.3 | v19.06.2 - latest | iOS 14 - iOS 17.4.1 |
 
+# Building
+
+See [arichornlover/Building - Wiki](https://github.com/arichornlover/uYouEnhanced/wiki/Building)
+or [qnblackcat/Building - Wiki](https://github.com/qnblackcat/uYouPlus/wiki/Building).
+
 # Installation
+
 See [Installation - Wiki](https://github.com/qnblackcat/uYouPlus/wiki/Installation).
 
 # Support the developers
@@ -336,18 +342,16 @@ See [Installation - Wiki](https://github.com/qnblackcat/uYouPlus/wiki/Installati
   - Paypal: https://www.paypal.com/paypalme/DBrett684 
   - Venmo: https://venmo.com/u/DavidBrett
 
-# FAQ
+# Wiki
 
-See [FAQ - Wiki](https://github.com/qnblackcat/uYouPlus/wiki/FAQ).
+See [arichornlover - Wiki](https://github.com/arichornlover/uYouenhanced/wiki/) or [qnblackcat - Wiki](https://github.com/qnblackcat/uYouPlus/wiki/)
 
-# Building (optional)
 
-See [qnblackcat/Building - Wiki](https://github.com/qnblackcat/uYouPlus/wiki/Building)
-or [arichornlover/Building - Wiki](https://github.com/arichornlover/uYouEnhanced/wiki/Building).
+## Lightweight Alternative - YTLitePlus
 
 <details>
-    <summary>Balackburn's YTLitePlus</summary><br>
-- Change from uYouPlus/uYouEnhanced to YTLitePlus (optional)
+    <summary>Read more</summary><br>
+- Change from uYouEnhanced to YTLitePlus (optional)
 
 Hello, this is here to showcase this tweak. I have been seeing the YTLitePlus tweak on Reddit for quite some time now and decided to join in. Before you download the tweak, you should take a look at the pros and cons below to learn more about the tweak.
 
