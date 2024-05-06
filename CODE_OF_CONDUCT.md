@@ -21,8 +21,6 @@ To prevent conflicts and misunderstandings related to donations, all users shoul
 
 The following versions of the uYouEnhanced Tweak are currently supported with security and feature updates.
 
-| Developer(s) | Version | LTS Support | YT Version Supported | App Stability | uYou Functionality |
-|  ----------- | ------- | ----------- | -------------------- | ------------- | ------------------ |
-| MiRO92(uYou) & arichornlover(uYouEnhanced) | [latest](https://github.com/arichornlover/uYouEnhanced/releases/latest) | ✅ | ✅ | Stable | Fully functional |
-| MiRO92(uYou) & bhackel(uYouEnhanced-LTS) | 19.06.2-3.0.3 LTS | Discontinued | ❌ | Stable, only provides version 19.06.2 of YouTube and uYou 3.0.3 | Crashes the app if the video is in fullscreen on an iPad, which would only happen if you installed the .ipa using a different sideloading/jailbreak tool. |
-| MiRO92(uYou) & arichornlover(uYouEnhanced-LTS)| [16.42.3-2.1 LTS](https://github.com/arichornlover/uYouEnhanced/tree/main-16.42.3LTS) | Discontinued | ❌ | iOS 16+ compatibility issues, some features may not work properly. App will not work anymore, affecting versions v16.05.7-v17.32.2 as well. 💔 | uYou Video/Audio Downloading is offline (except uYouLocal). |
+| Developer(s) | Version | LTS Support | YT Version Supported | App Stability | uYou Functionality | uYouEnhanced Functionality |
+|  ----------- | ------- | ----------- | -------------------- | ------------- | ------------------ | - |
+| MiRO92(uYou) & arichornlover(uYouEnhanced) | [latest](https://github.com/arichornlover/uYouEnhanced/releases/latest) | ✅ | ✅ | Stable | Fully functional | Change App Icon isn't functional, Timestamping url isn't functional |
