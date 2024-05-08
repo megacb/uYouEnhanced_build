@@ -90,22 +90,24 @@ static int contrastMode() {
 // Workaround: uYou 3.0.3 Adblock fix - @PoomSmart
 %hook YTReelInfinitePlaybackDataSource
 - (void)setReels:(NSMutableOrderedSet <YTReelModel *> *)reels {
-    [reels removeObjectsAtIndexes:[reels indexesOfObjectsPassingTest:^BOOL(YTReelModel *obj, NSUInteger idx, BOOL *stop) {
-        return [obj respondsToSelector:@selector(videoType)] ? obj.videoType == 3 : NO;
-    }]];
+    if ([NSUserDefaults.standardUserDefaults boolForKey:@"removeYouTubeAds"]) {
+        [reels removeObjectsAtIndexes:[reels indexesOfObjectsPassingTest:^BOOL(YTReelModel *obj, NSUInteger idx, BOOL *stop) {
+            return [obj respondsToSelector:@selector(videoType)] ? obj.videoType == 3 : NO;
+        }]];
+    }
     %orig;
 }
 %end
 
 %hook YTAdsInnerTubeContextDecorator
 - (void)decorateContext:(id)context {
-if ([NSUserDefaults.standardUserDefaults boolForKey:@"removeYouTubeAds"]) {}
+    if ([NSUserDefaults.standardUserDefaults boolForKey:@"removeYouTubeAds"]) {}
 }
 %end
 
 %hook YTAccountScopedAdsInnerTubeContextDecorator
 - (void)decorateContext:(id)context {
-if ([NSUserDefaults.standardUserDefaults boolForKey:@"removeYouTubeAds"]) {}
+    if ([NSUserDefaults.standardUserDefaults boolForKey:@"removeYouTubeAds"]) {}
 }
 %end
 
@@ -148,21 +150,23 @@ NSData *cellDividerData;
 
 %hook YTInnerTubeCollectionViewController
 - (void)loadWithModel:(YTISectionListRenderer *)model {
-    if ([model isKindOfClass:%c(YTISectionListRenderer)]) {
-        NSMutableArray <YTISectionListSupportedRenderers *> *contentsArray = model.contentsArray;
-        NSIndexSet *removeIndexes = [contentsArray indexesOfObjectsPassingTest:^BOOL(YTISectionListSupportedRenderers *renderers, NSUInteger idx, BOOL *stop) {
-            if (![renderers isKindOfClass:%c(YTISectionListSupportedRenderers)])
-                return NO;
-            YTIItemSectionRenderer *sectionRenderer = renderers.itemSectionRenderer;
-            YTIItemSectionSupportedRenderers *firstObject = [sectionRenderer.contentsArray firstObject];
-            YTIElementRenderer *elementRenderer = firstObject.elementRenderer;
-            NSString *description = [elementRenderer description];
-            return isAdString(description)
-                || [description containsString:@"post_shelf"]
-                || [description containsString:@"product_carousel"]
-                || [description containsString:@"statement_banner"];
-        }];
-        [contentsArray removeObjectsAtIndexes:removeIndexes];
+    if ([NSUserDefaults.standardUserDefaults boolForKey:@"removeYouTubeAds"]) {
+        if ([model isKindOfClass:%c(YTISectionListRenderer)]) {
+            NSMutableArray <YTISectionListSupportedRenderers *> *contentsArray = model.contentsArray;
+            NSIndexSet *removeIndexes = [contentsArray indexesOfObjectsPassingTest:^BOOL(YTISectionListSupportedRenderers *renderers, NSUInteger idx, BOOL *stop) {
+                if (![renderers isKindOfClass:%c(YTISectionListSupportedRenderers)])
+                    return NO;
+                YTIItemSectionRenderer *sectionRenderer = renderers.itemSectionRenderer;
+                YTIItemSectionSupportedRenderers *firstObject = [sectionRenderer.contentsArray firstObject];
+                YTIElementRenderer *elementRenderer = firstObject.elementRenderer;
+                NSString *description = [elementRenderer description];
+                return isAdString(description)
+                    || [description containsString:@"post_shelf"]
+                    || [description containsString:@"product_carousel"]
+                    || [description containsString:@"statement_banner"];
+            }];
+            [contentsArray removeObjectsAtIndexes:removeIndexes];
+        }
     }
     %orig;
 }
