@@ -274,40 +274,40 @@
 
 ## Download
 
-- ~The latest version of **uYouEnhanced** can be found under [Releases](https://github.com/arichornlover/uYouEnhanced/releases/latest).~
+- The latest version of **uYouEnhanced** can be found under [Releases](https://github.com/arichornlover/uYouEnhanced/releases/latest).
 - **Compatibility:** Requires iOS/iPadOS 14.0 or later.
 - For AltStore user: 
 
   - My official AltStore repo: https://therealfoxster.github.io/altsource-viewer/view/?source=https://raw.githubusercontent.com/arichornlover/arichornlover.github.io/main/apps.json
 
-  - [Open in AltStore (v19.16.3-3.0.3)](https://tinyurl.com/bdhby39h) - It will take a while to install because AltStore needs to download the IPA first.
+  - [Open in AltStore (v19.18.2-3.0.3)](https://tinyurl.com/5n95av49) - It will take a while to install because AltStore needs to download the IPA first.
 
 <details>
-  <summary>Version information (last updated: May 2, 2024)</summary>
+  <summary>Version information (last updated: May 8, 2024)</summary>
 
 | **Tweaks/App** | **Developer** | **Version** | **Open source** |
 | - | - | :-: | :-:  |
-| **YouTube** | Google Inc | 19.16.3 | ✖︎ |
+| **YouTube** | Google Inc | 19.18.2 | ✖︎ |
 | [uYou](https://github.com/MiRO92/uYou-for-YouTube) | [MiRO92](https://twitter.com/miro92) | 3.0.3 | ✖︎ |
 | **Open in YouTube** | [CokePokes](https://github.com/CokePokes) | 1.2 | [✔︎](https://github.com/CokePokes/YoutubeExtensions) |
-| **iSponsorBlock** | [Galactic-Dev](https://github.com/Galactic-Dev) | 1.2.4 | [✔︎](https://github.com/Galactic-Dev/iSponsorBlock) |
+| **iSponsorBlock** | [Galactic-Dev](https://github.com/Galactic-Dev) | 1.2.5 | [✔︎](https://github.com/Galactic-Dev/iSponsorBlock) |
 | **BigYTMiniPlayer** | [Galactic-Dev](https://github.com/Galactic-Dev) | 1.0-1 | [✔︎](https://github.com/Galactic-Dev/BigYTMiniPlayer) |
 | **YTNoHoverCards** | [level3tjg](https://twitter.com/level3tjg) | 0.0.3 | [✔︎](https://github.com/level3tjg/YTNoHoverCards) |
 | **YTMiniplayerEnabler** | [level3tjg](https://twitter.com/level3tjg) | 0.0.2 | [✔︎](https://github.com/level3tjg/YTMiniplayerEnabler) |
-| **DontEatMyContent** | [therealFoxster](https://github.com/therealFoxster) | 1.1.5 | [✔︎](https://github.com/therealFoxster/DontEatMyContent) |
+| **DontEatMyContent** | [therealFoxster](https://github.com/therealFoxster) | 1.1.6 | [✔︎](https://github.com/therealFoxster/DontEatMyContent) |
 | **YTSpeed** | [Lyvendia](https://github.com/Lyvendia) | 1.0.1 | [✔︎](https://github.com/Lyvendia/YTSpeed) |
 | **Alderis Color Picker** | [HASHBANG Productions](https://github.com/hbang) | 1.2 | [✔︎](https://github.com/hbang/Alderis) |
-| **YTUHD** | [PoomSmart](https://twitter.com/poomsmart) | 1.4.3 | [✔︎](https://github.com/PoomSmart/YTUHD) |
-| **YouPiP** | [PoomSmart](https://twitter.com/poomsmart) | 1.8.4 | [✔︎](https://github.com/PoomSmart/YouPiP) |
+| **YTUHD** | [PoomSmart](https://twitter.com/poomsmart) | 1.5.1 | [✔︎](https://github.com/PoomSmart/YTUHD) |
+| **YouPiP** | [PoomSmart](https://twitter.com/poomsmart) | 1.8.9 | [✔︎](https://github.com/PoomSmart/YouPiP) |
 | **IAmYouTube** | [PoomSmart](https://twitter.com/poomsmart) | 1.3.0 | [✔︎](https://github.com/PoomSmart/IAmYouTube) |
 | **YTABConfig** | [PoomSmart](https://twitter.com/poomsmart) | 1.7.2 | [✔︎](https://github.com/PoomSmart/YTABConfig) |
 | **YTReExplore** | [PoomSmart](https://twitter.com/poomsmart) | 1.0.2 | [✔︎](https://github.com/PoomSmart/YTReExplore) |
 | **NoYTPremium** | [PoomSmart](https://twitter.com/poomsmart) | 1.0.4 | [✔︎](https://github.com/PoomSmart/NoYTPremium) |
 | **YTNoPaidPromo** | [PoomSmart](https://twitter.com/poomsmart) | 1.0.0 | [✔︎](https://github.com/PoomSmart/YTNoPaidPromo) |
 | **YouRememberCaption** | [PoomSmart](https://twitter.com/poomsmart) | 1.0.0 | [✔︎](https://poomsmart.github.io/repo/depictions/youremembercaption.html) |
-| **Return YouTube Dislike** | [PoomSmart](https://twitter.com/poomsmart) | 1.11.6 | [✔︎](https://github.com/PoomSmart/Return-YouTube-Dislikes) |
+| **Return YouTube Dislike** | [PoomSmart](https://twitter.com/poomsmart) | 1.11.11 | [✔︎](https://github.com/PoomSmart/Return-YouTube-Dislikes) |
 | **YouMute** | [PoomSmart](https://twitter.com/poomsmart) | 1.2.1-3 | [✔︎](https://github.com/PoomSmart/YouMute) |
-| **YouQuality** | [PoomSmart](https://twitter.com/poomsmart) | 1.1.4-2 | [✔︎](https://github.com/PoomSmart/YouQuality) |
+| **YouQuality** | [PoomSmart](https://twitter.com/poomsmart) | 1.2.1 | [✔︎](https://github.com/PoomSmart/YouQuality) |
 | **YTVideoOverlay** | [PoomSmart](https://twitter.com/poomsmart) | 1.1.6 | [✔︎](https://github.com/PoomSmart/YTVideoOverlay) |
 | **YTHoldForSpeed** | [joshuaseltzer](https://github.com/joshuaseltzer) | 1.2.0 | [✔︎](https://github.com/joshuaseltzer/YTHoldForSpeed) |
 | **LowContrastMode** | [arichornlover](https://github.com/arichornlover) | 1.5.2 | [✔︎](https://github.com/arichornlover/YTLowContrastMode) |
@@ -318,10 +318,10 @@
 
 | Developer | Tweak Name and Version | App Version Compatibility | iOS Version Compatibility |
 |-----------|-----------------------|--------------------------|--------------------------|
-| MiRO92 | uYou 2.1 / 2.3~1 | ~v16.42.3~ v17.33.2 - 18.01.6 | iOS 13 - iOS 15 |
-| MiRO92 | uYou 3.0 | v18.06.6 - 18.18.2 | iOS 14 - iOS 15 |
-| MiRO92 | uYou 3.0.1 | v18.19.1 - v18.41.5 | iOS 14 - iOS 17 |
-| MiRO92 | uYou 3.0.2 / 3.0.3 | v19.06.2 - latest | iOS 14 - iOS 17.4.1 |
+| MiRO92 | uYou 2.1 / 2.3~1 | ~v16.42.3~ v17.33.2 - 18.01.6 | iOS 13.0 - iOS 15.8.2 |
+| MiRO92 | uYou 3.0 | v18.06.6 - v18.18.2 | iOS 14.0 - iOS 15.8.2 |
+| MiRO92 | uYou 3.0.1 | v18.19.1 - v18.41.5 | iOS 14 - iOS 17.4.1 |
+| MiRO92 | uYou 3.0.2 / 3.0.3 | v19.06.2 - v19.15.1 | iOS 14 - iOS 17.4.1 |
 
 # Building
 
