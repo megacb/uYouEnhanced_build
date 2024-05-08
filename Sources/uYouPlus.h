@@ -42,6 +42,7 @@
 #import <YouTubeHeader/ELMNodeController.h>
 
 // YouTube-X
+#import <YouTubeHeader/YTReelModel.h>
 #import <YouTubeHeader/YTVideoWithContextNode.h>
 #import <YouTubeHeader/ELMCellNode.h>
 
