@@ -19,7 +19,7 @@ To prevent conflicts and misunderstandings related to donations, all users shoul
 
 ## uYouEnhanced Version Info
 
-The following versions of the uYouEnhanced Tweak are currently supported with security and feature updates.
+this following version of the uYouEnhanced Tweak is currently supported with feature updates.
 
 | Developer(s) | Version | LTS Support | YT Version Supported | App Stability | uYou Functionality | uYouEnhanced Functionality |
 |  - | - | - | - | - | - | - |
@@ -32,5 +32,4 @@ The following versions of the uYouEnhanced Tweak are currently supported with se
 | `main` | The Default and Maintained Branch of uYouEnhanced. |
 | `main-beta` | The Branch that is used for whenever Refreshing/Resetting the `main` branch. |
 | `main-16.42.3LTS` | This Branch is an older version of `main` and includes outdated code for v16.42.3. This Version is discontinued but could still work in some cases. |
-| `main-nightly` | The Branch that is similar to `main` but adds experimental features and functionality. |
-| `YouTimeStamp` | The Branch that is similar to `main` & `main-nightly` branche(s) but includes a option that doesn't work yet. |
+| `main-nightly` | The Branch that is similar to `main` but adds experimental features like the tweak ‘YouTimeStamp‘ and other content in the app. |
