@@ -86,6 +86,33 @@ static int contrastMode() {
 }
 %end
 
+// uYou AdBlocking Workaround LITE (This Version only removes ads from Videos/Shorts) - @PoomSmart
+%group uYouAdBlockingWorkaroundLite
+%hook YTReelInfinitePlaybackDataSource
+- (void)setReels:(NSMutableOrderedSet <YTReelModel *> *)reels {
+    if ([NSUserDefaults.standardUserDefaults boolForKey:@"removeYouTubeAds"]) {
+        [reels removeObjectsAtIndexes:[reels indexesOfObjectsPassingTest:^BOOL(YTReelModel *obj, NSUInteger idx, BOOL *stop) {
+            return [obj respondsToSelector:@selector(videoType)] ? obj.videoType == 3 : NO;
+        }]];
+    }
+    %orig;
+}
+%end
+
+%hook YTAdsInnerTubeContextDecorator
+- (void)decorateContext:(id)context {
+    if ([NSUserDefaults.standardUserDefaults boolForKey:@"removeYouTubeAds"]) {}
+}
+%end
+
+%hook YTAccountScopedAdsInnerTubeContextDecorator
+- (void)decorateContext:(id)context {
+    if ([NSUserDefaults.standardUserDefaults boolForKey:@"removeYouTubeAds"]) {}
+}
+%end
+%end
+
+// uYou AdBlocking Workaround - @PoomSmart
 %group uYouAdBlockingWorkaround
 // Workaround: uYou 3.0.3 Adblock fix - @PoomSmart
 %hook YTReelInfinitePlaybackDataSource
