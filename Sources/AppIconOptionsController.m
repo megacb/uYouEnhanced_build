@@ -1,4 +1,5 @@
 #import "AppIconOptionsController.h"
+#import "uYouPlusSettings.h"
 #import <YouTubeHeader/YTAssetLoader.h>
 
 @interface AppIconOptionsController () <UITableViewDataSource, UITableViewDelegate>
@@ -117,6 +118,11 @@
 }
 
 - (void)saveIcon {
+    if (![UIApplication sharedApplication].supportsAlternateIcons) {
+        NSLog(@"Alternate icons are not supported on this device.");
+        [[%c(GOOHUDManagerInternal) sharedInstance] showMessageMainThread:[%c(YTHUDMessage) messageWithText:LOC(@"ERROR: Alternate icons are not supported on this device.")]];
+        return;
+    }
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         NSString *selectedIcon = self.selectedIconIndex >= 0 ? self.appIcons[self.selectedIconIndex] : nil;
         if (selectedIcon) {
@@ -130,7 +136,7 @@
             [[UIApplication sharedApplication] setAlternateIconName:iconName completionHandler:^(NSError * _Nullable error) {
                 if (error) {
                     NSLog(@"Error setting alternate icon: %@", error.localizedDescription);
-                    [self showAlertWithTitle:@"Error" message:@"Failed to set alternate icon"];
+                    [[%c(GOOHUDManagerInternal) sharedInstance] showMessageMainThread:[%c(YTHUDMessage) messageWithText:LOC(@"ERROR: Failed to set alternate icon")]];
                 } else {
                     NSLog(@"Alternate icon set successfully");
                     [self showAlertWithTitle:@"Success" message:@"Alternate icon set successfully"];
