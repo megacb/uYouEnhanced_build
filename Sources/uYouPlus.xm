@@ -986,6 +986,22 @@ NSData *cellDividerData;
 }
 %end
 
+// Disable toggle time remaining - @bhackel
+%hook YTInlinePlayerBarContainerView
+- (void)setShouldDisplayTimeRemaining:(BOOL)arg1 {
+    if (IS_ENABLED(@"disableRemainingTime_enabled")) {
+        // Set true if alwaysShowRemainingTime
+        if (IS_ENABLED(@"alwaysShowRemainingTime_enabled")) {
+            %orig(YES);
+        } else {
+            %orig(NO);
+        }
+        return;
+    }
+    %orig;
+}
+%end
+
 // Hide previous and next buttons in all videos - @bhackel
 %group gHidePreviousAndNextButton
 %hook YTColdConfig
