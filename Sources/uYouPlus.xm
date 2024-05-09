@@ -971,14 +971,34 @@ NSData *cellDividerData;
 %end
 
 // Always use remaining time in the video player - @bhackel
-%hook YTInlinePlayerBarContainerView
-// Modify constructor to enable the feature when it is done
-- (instancetype)init {
-    YTInlinePlayerBarContainerView *playerBar = (YTInlinePlayerBarContainerView *)%orig;
-    if (playerBar && IS_ENABLED(@"alwaysShowRemainingTime_enabled")) {
-        playerBar.shouldDisplayTimeRemaining = YES;
+%hook YTPlayerBarController
+// When a new video is played, enable time remaining flag
+- (void)setActiveSingleVideo:(id)arg1 {
+    %orig;
+    if (IS_ENABLED(@"alwaysShowRemainingTime_enabled")) {
+        // Get the player bar view
+        YTInlinePlayerBarContainerView *playerBar = self.playerBar;
+        if (playerBar) {
+            // Enable the time remaining flag
+            playerBar.shouldDisplayTimeRemaining = YES;
+        }
     }
-    return playerBar;
+}
+%end
+
+// Disable toggle time remaining - @bhackel
+%hook YTInlinePlayerBarContainerView
+- (void)setShouldDisplayTimeRemaining:(BOOL)arg1 {
+    if (IS_ENABLED(@"disableRemainingTime_enabled")) {
+        // Set true if alwaysShowRemainingTime
+        if (IS_ENABLED(@"alwaysShowRemainingTime_enabled")) {
+            %orig(YES);
+        } else {
+            %orig(NO);
+        }
+        return;
+    }
+    %orig;
 }
 %end
 

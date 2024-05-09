@@ -55,6 +55,9 @@
 #define LOWCONTRASTMODE_CUTOFF_VERSION @"17.38.10" // LowContrastMode (v17.33.2-17.38.10)
 
 // Always show remaining time in video player - @bhackel
+@interface YTPlayerBarController : NSObject
+@property(nonatomic, strong) YTInlinePlayerBarContainerView *playerBar;
+@end
 @interface YTInlinePlayerBarContainerView (uYouEnhanced)
 @property(nonatomic, assign) BOOL shouldDisplayTimeRemaining;
 @end
