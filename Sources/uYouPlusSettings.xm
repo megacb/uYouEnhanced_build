@@ -1087,6 +1087,7 @@ extern NSBundle *uYouPlusBundle();
     # pragma mark - Miscellaneous
     SECTION_HEADER(LOC(@"MISCELLANEOUS"));
 
+    SWITCH_ITEM2(LOC(@"Adblock Workaround (Lite)"), LOC(@"Uses weaker adblocking code, this will disable uYou's Adblocking Option."), @"uYouAdBlockingWorkaroundLite_enabled");
     SWITCH_ITEM2(LOC(@"Adblock Workaround"), LOC(@"Uses stronger adblocking code"), @"uYouAdBlockingWorkaround_enabled");
     SWITCH_ITEM3(
         LOC(@"Fake Premium"),
