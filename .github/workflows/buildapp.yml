@@ -161,7 +161,7 @@ jobs:
           if-no-files-found: error
 
       - name: Create Release
-        if: inputs.create_release == 'true'
+        if: ${{ inputs.create_release }}
         id: create_release
         uses: softprops/action-gh-release@v2.0.4
         env:
