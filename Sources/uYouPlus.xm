@@ -1,5 +1,4 @@
 #import "uYouPlus.h"
-#import "RootOptionsController.h"
 
 // Tweak's bundle for Localizations support - @PoomSmart - https://github.com/PoomSmart/YouPiP/commit/aea2473f64c75d73cab713e1e2d5d0a77675024f
 NSBundle *uYouPlusBundle() {
@@ -90,29 +89,23 @@ static int contrastMode() {
 %group uYouAdBlockingWorkaroundLite
 %hook YTReelInfinitePlaybackDataSource
 - (void)setReels:(NSMutableOrderedSet <YTReelModel *> *)reels {
-    if ([NSUserDefaults.standardUserDefaults boolForKey:@"removeYouTubeAds"]) {
-        [reels removeObjectsAtIndexes:[reels indexesOfObjectsPassingTest:^BOOL(YTReelModel *obj, NSUInteger idx, BOOL *stop) {
-            return [obj respondsToSelector:@selector(videoType)] ? obj.videoType == 3 : NO;
-        }]];
-    }
+    [reels removeObjectsAtIndexes:[reels indexesOfObjectsPassingTest:^BOOL(YTReelModel *obj, NSUInteger idx, BOOL *stop) {
+        return [obj respondsToSelector:@selector(videoType)] ? obj.videoType == 3 : NO;
+    }]];
     %orig;
 }
 %end
 
 %hook YTAdsInnerTubeContextDecorator
-- (void)decorateContext:(id)context {
-    if ([NSUserDefaults.standardUserDefaults boolForKey:@"removeYouTubeAds"]) {}
-}
+- (void)decorateContext:(id)context {}
 %end
 
 %hook YTAccountScopedAdsInnerTubeContextDecorator
-- (void)decorateContext:(id)context {
-    if ([NSUserDefaults.standardUserDefaults boolForKey:@"removeYouTubeAds"]) {}
-}
+- (void)decorateContext:(id)context {}
 %end
 %end
 
-// uYou AdBlocking Workaround - @PoomSmart
+// uYou AdBlocking Workaround (for uYou Option) - @PoomSmart
 %group uYouAdBlockingWorkaround
 // Workaround: uYou 3.0.3 Adblock fix - @PoomSmart
 %hook YTReelInfinitePlaybackDataSource
@@ -1660,6 +1653,9 @@ static BOOL findCell(ASNodeController *nodeController, NSArray <NSString *> *ide
     if (IS_ENABLED(@"disablePullToFull_enabled")) {
         %init(gDisablePullToFull);
     }
+    if (IS_ENABLED(@"uYouAdBlockingWorkaroundLite_enabled")) {
+        %init(uYouAdBlockingWorkaroundLite);
+    }
     if (IS_ENABLED(@"uYouAdBlockingWorkaround_enabled")) {
         %init(uYouAdBlockingWorkaround);
     }
@@ -1705,6 +1701,10 @@ static BOOL findCell(ASNodeController *nodeController, NSArray <NSString *> *ide
     }
     if (![allKeys containsObject:@"YouPiPEnabled"]) { 
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"YouPiPEnabled"]; 
+    }
+    if (![allKeys containsObject:@"uYouAdBlockingWorkaroundLite_enabled"]) { 
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"uYouAdBlockingWorkaroundLite_enabled"]; 
+        [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"removeYouTubeAds"]; 
     }
     if (![allKeys containsObject:@"uYouAdBlockingWorkaround_enabled"]) { 
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"uYouAdBlockingWorkaround_enabled"]; 
