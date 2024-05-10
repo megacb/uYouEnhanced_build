@@ -136,8 +136,7 @@
             [[UIApplication sharedApplication] setAlternateIconName:iconName completionHandler:^(NSError * _Nullable error) {
                 if (error) {
                     NSLog(@"Error setting alternate icon: %@", error.localizedDescription);
-                    [[GOOHUDManagerInternal sharedInstance] showMessageMainThread:[YTHUDMessage messageWithText:NSLocalizedString(@"ERROR: Alternate icons are not supported on this device.", nil)]];
-                    [[%c(GOOHUDManagerInternal) sharedInstance] showMessageMainThread:[%c(YTHUDMessage) messageWithText:NSLocalizedString(@"ERROR: Failed to set alternate icon.", nil)]];
+                    [[GOOHUDManagerInternal sharedInstance] showMessageMainThread:[YTHUDMessage messageWithText:NSLocalizedString(@"ERROR: Failed to set alternate icon.", nil)]];
                 } else {
                     NSLog(@"Alternate icon set successfully");
                     [self showAlertWithTitle:@"Success" message:@"Alternate icon set successfully"];
