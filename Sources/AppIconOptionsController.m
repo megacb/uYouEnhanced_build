@@ -1,5 +1,4 @@
 #import "AppIconOptionsController.h"
-#import "uYouPlusSettings.h"
 #import <YouTubeHeader/YTAssetLoader.h>
 
 @interface AppIconOptionsController () <UITableViewDataSource, UITableViewDelegate>
@@ -120,7 +119,6 @@
 - (void)saveIcon {
     if (![UIApplication sharedApplication].supportsAlternateIcons) {
         NSLog(@"Alternate icons are not supported on this device.");
-        [[GOOHUDManagerInternal sharedInstance] showMessageMainThread:[YTHUDMessage messageWithText:NSLocalizedString(@"ERROR: Alternate icons are not supported on this device.", nil)]];
         return;
     }
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
