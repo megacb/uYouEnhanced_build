@@ -180,6 +180,33 @@ extern NSBundle *uYouPlusBundle();
     ];
     [sectionItems addObject:developers];
 
+    YTSettingsSectionItem *pasteSettings = [%c(YTSettingsSectionItem)
+        itemWithTitle:LOC(@"Paste Settings")
+        titleDescription:LOC(@"Paste settings from clipboard and apply")
+        accessibilityIdentifier:nil
+        detailTextBlock:nil
+        selectBlock:^BOOL (YTSettingsCell *cell, NSUInteger arg1) {
+            NSString *settingsString = [[UIPasteboard generalPasteboard] string];
+
+            if (settingsString.length > 0) {
+                NSArray *lines = [settingsString componentsSeparatedByString:@"\n"];
+
+                for (NSString *line in lines) {
+                    NSArray *components = [line componentsSeparatedByString:@": "];
+                    if (components.count == 2) {
+                        NSString *key = components[0];
+                        BOOL value = [components[1] intValue];
+                        [[NSUserDefaults standardUserDefaults] setBool:value forKey:key];
+                    }
+                }
+            }
+            [settingsViewController reloadData];
+            SHOW_RELAUNCH_YT_SNACKBAR;
+            return YES;
+        }
+    ];
+    [sectionItems addObject:pasteSettings];
+
     YTSettingsSectionItem *exitYT = [%c(YTSettingsSectionItem)
         itemWithTitle:LOC(@"QUIT_YOUTUBE")
         titleDescription:nil
