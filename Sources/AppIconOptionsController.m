@@ -136,7 +136,7 @@
             [[UIApplication sharedApplication] setAlternateIconName:iconName completionHandler:^(NSError * _Nullable error) {
                 if (error) {
                     NSLog(@"Error setting alternate icon: %@", error.localizedDescription);
-                    [[GOOHUDManagerInternal sharedInstance] showMessageMainThread:[YTHUDMessage messageWithText:NSLocalizedString(@"ERROR: Failed to set alternate icon.", nil)]];
+                    [self showAlertWithTitle:@"Error" message:@"Failed to set alternate icon"];
                 } else {
                     NSLog(@"Alternate icon set successfully");
                     [self showAlertWithTitle:@"Success" message:@"Alternate icon set successfully"];
@@ -161,6 +161,7 @@
 }
 
 - (UIImage *)resizeImage:(UIImage *)image newSize:(CGSize)newSize {
+    CGSize newSize = CGSizeMake(30, 30);
     UIGraphicsBeginImageContextWithOptions(newSize, NO, [UIScreen mainScreen].scale);
     [image drawInRect:CGRectMake(0, 0, newSize.width, newSize.height)];
     UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
