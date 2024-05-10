@@ -32,4 +32,4 @@ this following version of the uYouEnhanced Tweak is currently supported with fea
 | `main` | The Default and Maintained Branch of uYouEnhanced. |
 | `main-beta` | The Branch that is used for whenever Refreshing/Resetting the `main` branch. |
 | `main-16.42.3LTS` | This Branch is an older version of `main` and includes outdated code for v16.42.3. This Version is discontinued but could still work in some cases. |
-| `main-nightly` | The Branch that is similar to `main` but adds experimental features like the tweak ‘YouTimeStamp‘ and other content in the app. |
+| `main-nightly` | The Branch that is similar to `main` but adds experimental features like the tweak `YouTimeStamp` and other content in the app. |
