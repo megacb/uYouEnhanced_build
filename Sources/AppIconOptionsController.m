@@ -161,7 +161,6 @@
 }
 
 - (UIImage *)resizeImage:(UIImage *)image newSize:(CGSize)newSize {
-    CGSize newSize = CGSizeMake(30, 30);
     UIGraphicsBeginImageContextWithOptions(newSize, NO, [UIScreen mainScreen].scale);
     [image drawInRect:CGRectMake(0, 0, newSize.width, newSize.height)];
     UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
