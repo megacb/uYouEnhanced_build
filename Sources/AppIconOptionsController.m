@@ -120,7 +120,7 @@
 - (void)saveIcon {
     if (![UIApplication sharedApplication].supportsAlternateIcons) {
         NSLog(@"Alternate icons are not supported on this device.");
-        [[%c(GOOHUDManagerInternal) sharedInstance] showMessageMainThread:[%c(YTHUDMessage) messageWithText:LOC(@"ERROR: Alternate icons are not supported on this device.")]];
+        [[GOOHUDManagerInternal sharedInstance] showMessageMainThread:[YTHUDMessage messageWithText:NSLocalizedString(@"ERROR: Alternate icons are not supported on this device.", nil)]];
         return;
     }
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
@@ -136,7 +136,8 @@
             [[UIApplication sharedApplication] setAlternateIconName:iconName completionHandler:^(NSError * _Nullable error) {
                 if (error) {
                     NSLog(@"Error setting alternate icon: %@", error.localizedDescription);
-                    [[%c(GOOHUDManagerInternal) sharedInstance] showMessageMainThread:[%c(YTHUDMessage) messageWithText:LOC(@"ERROR: Failed to set alternate icon")]];
+                    [[GOOHUDManagerInternal sharedInstance] showMessageMainThread:[YTHUDMessage messageWithText:NSLocalizedString(@"ERROR: Alternate icons are not supported on this device.", nil)]];
+                    [[%c(GOOHUDManagerInternal) sharedInstance] showMessageMainThread:[%c(YTHUDMessage) messageWithText:NSLocalizedString(@"ERROR: Failed to set alternate icon.", nil)]];
                 } else {
                     NSLog(@"Alternate icon set successfully");
                     [self showAlertWithTitle:@"Success" message:@"Alternate icon set successfully"];
