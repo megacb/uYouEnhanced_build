@@ -10,12 +10,14 @@ body:
     - label: I have searched the existing issues
       required: true
 
-- type: checkboxes
+- type: dropdown
   attributes:
-    label: Do you have Youtube Premium?
+    label: Do you use YouTube Premium?
     options:
-    - label: Yes, I have Youtube Premium
-      required: false
+      - ❌ No, I don't use YouTube Premium
+      - ✅ Yes, I do use YouTube Premium
+  validations:
+    required: true
 
 - type: textarea
   attributes:
