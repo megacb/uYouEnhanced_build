@@ -279,6 +279,18 @@ NSData *cellDividerData;
 - (BOOL)enableModularPlayerBarController { return NO; } // fixes some of the iSponorBlock problems
 %end
 
+// Fix Casting: https://github.com/arichornlover/uYouEnhanced/issues/606#issuecomment-2098289942
+%group gFixCasting
+%hook YTColdConfig
+- (BOOL)cxClientEnableIosLocalNetworkPermissionReliabilityFixes { return YES; }
+- (BOOL)cxClientEnableIosLocalNetworkPermissionUsingSockets { return NO; }
+- (BOOL)cxClientEnableIosLocalNetworkPermissionWifiFixes { return YES; }
+%end
+%hook YTHotConfig
+- (BOOL)isPromptForLocalNetworkPermissionsEnabled { return YES; }
+%end
+%end
+
 // NOYTPremium - https://github.com/PoomSmart/NoYTPremium/
 %hook YTCommerceEventGroupHandler
 - (void)addEventHandlers {}
@@ -1665,6 +1677,9 @@ static BOOL findCell(ASNodeController *nodeController, NSArray <NSString *> *ide
     if (IS_ENABLED(@"hideDoubleTapToSeekOverlay_enabled")) {
         %init(gHideDoubleTapToSeekOverlay);
     }
+    if (IS_ENABLED(@"fixCasting_enabled")) {
+        %init(gFixCasting);
+    }
 
     // YTNoModernUI - @arichorn
     BOOL ytNoModernUIEnabled = IS_ENABLED(@"ytNoModernUI_enabled");
@@ -1718,5 +1733,9 @@ static BOOL findCell(ASNodeController *nodeController, NSArray <NSString *> *ide
     // Set default to disabled
     if (![allKeys containsObject:@"showPlaybackRate"]) { 
         [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"showPlaybackRate"]; 
+    }
+    // Set video casting fix default to enabled
+    if (![allKeys containsObject:@"fixCasting_enabled"]) { 
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"fixCasting_enabled"]; 
     }
 }
