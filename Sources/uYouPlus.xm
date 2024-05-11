@@ -1035,7 +1035,7 @@ NSData *cellDividerData;
 %end
 
 // Hide Video Title (in Fullscreen) - @arichornlover
-%hook YTMainAppVideoPlayerOverlayView
+%hook YTMainAppControlsOverlayView
 - (BOOL)titleViewHidden {
     return IS_ENABLED(@"hideVideoTitle_enabled") ? YES : %orig;
 }
