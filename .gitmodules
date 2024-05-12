@@ -52,7 +52,7 @@
 	url = https://github.com/PoomSmart/IAmYouTube.git
 [submodule "Tweaks/YTClassicVideoQuality"]
 	path = Tweaks/YTClassicVideoQuality
-	url = https://github.com/arichornloverALT/YTClassicVideoQuality.git
+	url = https://github.com/PoomSmart/YTClassicVideoQuality.git
 [submodule "Tweaks/NoYTPremium"]
 	path = Tweaks/NoYTPremium
 	url = https://github.com/PoomSmart/NoYTPremium.git
