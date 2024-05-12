@@ -249,6 +249,19 @@ extern NSBundle *uYouPlusBundle();
     ];
     [sectionItems addObject:appIcon];
 
+    YTSettingsSectionItem *clearNotifications = [%c(YTSettingsSectionItem)
+        itemWithTitle:LOC(@"Clear Notifications")
+        titleDescription:LOC(@"Force clear all notifications (Recommended if uYouEnhanced is Sideloaded)")
+        accessibilityIdentifier:nil
+        detailTextBlock:nil
+        selectBlock:^BOOL (YTSettingsCell *cell, NSUInteger arg1) {
+            [[UIApplication sharedApplication] cancelAllLocalNotifications];
+            [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
+            return YES;
+        }
+    ];
+    [sectionItems addObject:clearNotifications];
+
     # pragma mark - App theme
     SECTION_HEADER(LOC(@"THEME_OPTIONS"));
 
