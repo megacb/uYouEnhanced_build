@@ -78,7 +78,19 @@ static int contrastMode() {
 }
 %end
 
-// Enable Alternate Icons
+// Remove notification badge (App Home Screen) - fixes https://github.com/arichornlover/uYouEnhanced/issues/603 - @arichornlover
+%hook UIApplication
+- (void)setApplicationIconBadgeNumber:(NSInteger)badgeNumber { // this is a Sideload Fix, not recommended for Jailbroken users.
+    if ([self respondsToSelector:@selector(setApplicationIconBadgeNumber:)]) {
+        if ([[[NSBundle mainBundle] bundleIdentifier] isEqualToString:@"com.google.ios.youtube"]) { // may break implementation if you modify Bundle ID
+            badgeNumber = 0;
+        }
+    }
+    %orig(badgeNumber);
+}
+%end
+
+// Enable Alternate Icons - @arichornlover
 %hook UIApplication
 - (BOOL)supportsAlternateIcons {
     return YES;
