@@ -34,10 +34,10 @@
 [![Features](https://img.shields.io/badge/Features-blue?style=flat)](#features)<br>
 [![Known Issues](https://img.shields.io/badge/Known%20Issues-blue?style=flat)](#known-issues)<br>
 [![Download](https://img.shields.io/badge/Download-blue?style=flat)](#download)<br>
+[![Building](https://img.shields.io/badge/Building-blue?style=flat)](#building)<br>
 [![Installation](https://img.shields.io/badge/Installation-blue?style=flat)](#installation)<br>
 [![Support the Developers](https://img.shields.io/badge/Support%20the%20Developers-blue?style=flat)](#support-the-developers)<br>
-[![FAQ](https://img.shields.io/badge/FAQ-blue?style=flat)](#faq)<br>
-[![Building (Optional)](https://img.shields.io/badge/Building%20%28Optional%29-blue?style=flat)](#building-optional)
+[![Wiki](https://img.shields.io/badge/Wiki-blue?style=flat)](#wiki)<br>
 
 # Credits
 - Special thanks to all the developers who have worked on uYouPlus/uYouEnhanced! 
@@ -280,10 +280,10 @@
 
   - My official AltStore repo: https://therealfoxster.github.io/altsource-viewer/view/?source=https://raw.githubusercontent.com/arichornlover/arichornlover.github.io/main/apps.json
 
-  - [Open in AltStore (v19.18.2-3.0.3)](https://tinyurl.com/5n95av49) - It will take a while to install because AltStore needs to download the IPA first.
+  - [Open in AltStore (v19.18.2-3.0.3-F2)](https://tinyurl.com/5n95av49) - It will take a while to install because AltStore needs to download the IPA first.
 
 <details>
-  <summary>Version information (last updated: May 8, 2024)</summary>
+  <summary>Version information (last updated: May 12, 2024)</summary>
 
 | **Tweaks/App** | **Developer** | **Version** | **Open source** |
 | - | - | :-: | :-:  |
