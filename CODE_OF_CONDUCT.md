@@ -8,8 +8,8 @@ If I verify a reported Code of Conduct violation, my policy is:
 - The use of the name `uYouPlusExtra` is prohibited. The correct and updated name for this repository is `uYouEnhanced`.
   - if there is a tweak named or have the description of the word `uYouPlusExtra` then please do check it out before you interact with it or use it.
 
-- Users who fork this repository, utilize it in actions, or build it from the repository on Git are prohibited from releasing .ipa files on their forked repositories. This restriction is in place to comply with the following https://enterprise.githubsupport.com/attachments/token/1u4kyYJnjA8HZTPMXOGBhRk4Q/?, also, preventing any potential legal issues. If a user violates this rule by including an .ipa file in their GitHub release publicly, appropriate actions will be taken from either the tweak developer or Google since .ipa's aren't allowed, they have the rights to do that. I apologize but it's the only way keep the repo from getting taken down.
-**Simpiflied Version:** when building the ipa from your forked repository of uYouEnhanced, please do not upload and publish any .ipa files or I will have to do a request to take it down.
+- Users who fork this repository, utilize it in actions, or build it from the repository on Git are strictly prohibited from releasing .ipa files in any form on their forked repositories. This restriction is in place to comply with the terms outlined in the following link: https://enterprise.githubsupport.com/attachments/token/1u4kyYJnjA8HZTPMXOGBhRk4Q/?. Failure to adhere to this rule may result in legal action being taken by either the tweak developer or Google, as .ipa files are strictly prohibited. I apologize for any inconvenience, but it is essential to maintain the uYouEnhanced repository.
+**Simplified Version:** When building the ipa from your forked repository of uYouEnhanced, do not upload, publish, or distribute any .ipa files under any circumstances. Violation of this rule may lead to immediate action to have the content removed.
 
 <details>
   <summary>Exclusive Rule for the original uYouPlus devs ⬇️</summary>
