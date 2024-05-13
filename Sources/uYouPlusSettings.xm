@@ -180,6 +180,26 @@ extern NSBundle *uYouPlusBundle();
     ];
     [sectionItems addObject:developers];
 
+/* UNFINISHED BUTTON
+    YTSettingsSectionItem *copySettings = [%c(YTSettingsSectionItem)
+        itemWithTitle:LOC(@"Copy Settings")
+        titleDescription:LOC(@"Copy all current settings to the clipboard")
+        accessibilityIdentifier:nil
+        detailTextBlock:nil
+        selectBlock:^BOOL (YTSettingsCell *cell, NSUInteger arg1) {
+            NSMutableString *settingsString = [NSMutableString string];
+            for (NSString *key in @{ MISSING KEYS }) {
+                BOOL enabled = [[NSUserDefaults standardUserDefaults] boolForKey:key];
+                [settingsString appendFormat:@"%@: %d", key, enabled ? 1 : 0];
+            }
+            [[UIPasteboard generalPasteboard] setString:settingsString];
+            // show a confirmation message or perform some other action here - @arichornlover
+            return YES;
+        }
+    ];
+    [sectionItems addObject:copySettings];
+*/
+
     YTSettingsSectionItem *pasteSettings = [%c(YTSettingsSectionItem)
         itemWithTitle:LOC(@"Paste Settings")
         titleDescription:LOC(@"Paste settings from clipboard and apply")
@@ -195,8 +215,8 @@ extern NSBundle *uYouPlusBundle();
                     NSArray *components = [line componentsSeparatedByString:@": "];
                     if (components.count == 2) {
                         NSString *key = components[0];
-                        BOOL value = [components[1] intValue];
-                        [[NSUserDefaults standardUserDefaults] setBool:value forKey:key];
+                        NSString *value = components[1];
+                        [[NSUserDefaults standardUserDefaults] setObject:value forKey:key];
                     }
                 }
             }
