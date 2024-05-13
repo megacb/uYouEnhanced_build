@@ -61,7 +61,7 @@
 "STOCK_VOLUME_HUD_DESC" = "";
 
 // Video controls overlay options
-"VIDEO_PLAYER_OPTIONS" = "📹 Opciones de superposición de controles de vídeo";
+"VIDEO_CONTROLS_OVERLAY_OPTIONS" = "📹 Opciones de superposición de controles de vídeo";
 
 "HIDE_AUTOPLAY_SWITCH" = "Ocultar interruptor de Reproducir automáticamente";
 "HIDE_AUTOPLAY_SWITCH_DESC" = "Ocultar el interruptor de Reproducir automáticamente en los botones superpuestos.";

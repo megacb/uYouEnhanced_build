@@ -30,7 +30,7 @@
 "OLED_KEYBOARD" = "OLEDキーボード (実験的)";
 "OLED_KEYBOARD_DESC" = "";
 
-// Video controls overlay options
+// Video player options
 "VIDEO_PLAYER_OPTIONS" = "⏯️ 動画コントロールのオーバーレイ設定";
 
 "SLIDE_TO_SEEK" = "スライドシークを有効化";
@@ -61,7 +61,7 @@
 "STOCK_VOLUME_HUD_DESC" = "";
 
 // Video controls overlay options
-"VIDEO_PLAYER_OPTIONS" = "📹 動画コントロールのオーバーレイ設定";
+"VIDEO_CONTROLS_OVERLAY_OPTIONS" = "📹 動画コントロールのオーバーレイ設定";
 
 "HIDE_AUTOPLAY_SWITCH" = "自動再生ボタンを非表示";
 "HIDE_AUTOPLAY_SWITCH_DESC" = "";

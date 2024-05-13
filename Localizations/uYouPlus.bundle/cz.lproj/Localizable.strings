@@ -61,7 +61,7 @@
 "STOCK_VOLUME_HUD_DESC" = "";
 
 // Video controls overlay options
-"VIDEO_PLAYER_OPTIONS" = "📹 Video Controls Overlay Options";
+"VIDEO_CONTROLS_OVERLAY_OPTIONS" = "📹 Video Controls Overlay Options";
 
 "HIDE_AUTOPLAY_SWITCH" = "Skrýt přepínač automatického přehrávání";
 "HIDE_AUTOPLAY_SWITCH_DESC" = "Skryje přepínač automatického přehrávání v překrytí ovládání videa.";

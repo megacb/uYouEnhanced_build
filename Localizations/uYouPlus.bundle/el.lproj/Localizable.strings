@@ -61,7 +61,7 @@
 "STOCK_VOLUME_HUD_DESC" = "";
 
 // Video controls overlay options
-"VIDEO_PLAYER_OPTIONS" = "📹 Video controls overlay options";
+"VIDEO_CONTROLS_OVERLAY_OPTIONS" = "📹 Video controls overlay options";
 
 "HIDE_AUTOPLAY_SWITCH" = "Κρύψτε τον διακόπτη της αυτόματης αναπαραγωγής";
 "HIDE_AUTOPLAY_SWITCH_DESC" = "Κρύψτε τον διακόπτη της αυτόματης αναπαραγωγής κατά την αναπαραγωγή βίντεο";

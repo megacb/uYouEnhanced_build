@@ -61,7 +61,7 @@
 "STOCK_VOLUME_HUD_DESC" = "";
 
 // Video controls overlay options
-"VIDEO_PLAYER_OPTIONS" = "📹 Video Controls Overlay Optionen";
+"VIDEO_CONTROLS_OVERLAY_OPTIONS" = "📹 Video Controls Overlay Optionen";
 
 "HIDE_AUTOPLAY_SWITCH" = "Autoplay-Schalter ausblenden";
 "HIDE_AUTOPLAY_SWITCH_DESC" = "Autoplay-Schalter vom Videoplayer ausblenden.";

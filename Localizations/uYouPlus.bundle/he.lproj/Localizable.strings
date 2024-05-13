@@ -61,7 +61,7 @@
 "STOCK_VOLUME_HUD_DESC" = "";
 
 // Video controls overlay options
-"VIDEO_PLAYER_OPTIONS" = "📹 Video controls overlay options";
+"VIDEO_CONTROLS_OVERLAY_OPTIONS" = "📹 Video controls overlay options";
 
 "HIDE_AUTOPLAY_SWITCH" = "הסתר את כפתור ההפעלה האוטומטית";
 "HIDE_AUTOPLAY_SWITCH_DESC" = "הסתר את כפתור ההפעלה האוטומטית בתצוגת השליטה בסרטון.";

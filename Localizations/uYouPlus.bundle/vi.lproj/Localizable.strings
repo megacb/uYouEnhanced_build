@@ -61,7 +61,7 @@
 "STOCK_VOLUME_HUD_DESC" = "";
 
 // Video controls overlay options
-"VIDEO_PLAYER_OPTIONS" = "📹 Tùy chọn hiển thị trong trình phát video";
+"VIDEO_CONTROLS_OVERLAY_OPTIONS" = "📹 Tùy chọn hiển thị trong trình phát video";
 
 "HIDE_AUTOPLAY_SWITCH" = "Ẩn nút Tự động phát";
 "HIDE_AUTOPLAY_SWITCH_DESC" = "Ẩn nút Tự động phát trong trình phát video.";

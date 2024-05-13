@@ -61,7 +61,7 @@
 "STOCK_VOLUME_HUD_DESC" = "";
 
 // Video controls overlay options
-"VIDEO_PLAYER_OPTIONS" = "📹 影片懸浮控制選項";
+"VIDEO_CONTROLS_OVERLAY_OPTIONS" = "📹 影片懸浮控制選項";
 
 "HIDE_AUTOPLAY_SWITCH" = "隱藏自動播放開關";
 "HIDE_AUTOPLAY_SWITCH_DESC" = "在影片控制中隱藏自動播放開關。";

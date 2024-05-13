@@ -363,7 +363,7 @@ extern NSBundle *uYouPlusBundle();
     SWITCH_ITEM(LOC(@"Disable toggle time remaining"), LOC(@"Disables changing time elapsed to time remaining. Use with other setting to always show remaining time."), @"disableRemainingTime_enabled");
 
     # pragma mark - Video controls overlay options
-    SECTION_HEADER(LOC(@"VIDEO_PLAYER_OPTIONS"));
+    SECTION_HEADER(LOC(@"VIDEO_CONTROLS_OVERLAY_OPTIONS"));
 
     SWITCH_ITEM(LOC(@"Enable Share Button"), LOC(@"Enable the Share Button in video controls overlay."), @"enableShareButton_enabled");
     SWITCH_ITEM(LOC(@"Enable 'Save To Playlist' Button"), LOC(@"Enable the 'Save To Playlist' Button in video controls overlay."), @"enableSaveToButton_enabled");
