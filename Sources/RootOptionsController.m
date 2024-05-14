@@ -178,6 +178,15 @@
 
 @implementation RootOptionsController (Privates)
 
+- (UIImage *)resizeImage:(UIImage *)image toSize:(CGSize)size {
+    UIGraphicsBeginImageContextWithOptions(size, NO, [UIScreen mainScreen].scale);
+    [image drawInRect:CGRectMake(0, 0, size.width, size.height)];
+    UIImage *resizedImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return resizedImage;
+}
+
 - (UIImage *)resizeImage:(UIImage *)image newSize:(CGSize)newSize {
     UIGraphicsBeginImageContextWithOptions(newSize, NO, [UIScreen mainScreen].scale);
     [image drawInRect:CGRectMake(0, 0, newSize.width, newSize.height)];
