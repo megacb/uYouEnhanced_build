@@ -280,14 +280,14 @@
 
   - My official AltStore repo: https://therealfoxster.github.io/altsource-viewer/view/?source=https://raw.githubusercontent.com/arichornlover/arichornlover.github.io/main/apps.json
 
-  - [Open in AltStore (v19.18.2-3.0.3-F2)](https://tinyurl.com/5n95av49) - It will take a while to install because AltStore needs to download the IPA first.
+  - [Open in AltStore (v19.19.5-3.0.3)](https://tinyurl.com/3yhed9zx) - It will take a while to install because AltStore needs to download the IPA first.
 
 <details>
-  <summary>Version information (last updated: May 12, 2024)</summary>
+  <summary>Version information (last updated: May 13, 2024)</summary>
 
 | **Tweaks/App** | **Developer** | **Version** | **Open source** |
 | - | - | :-: | :-:  |
-| **YouTube** | Google Inc | 19.18.2 | ✖︎ |
+| **YouTube** | Google Inc | 19.19.5 | ✖︎ |
 | [uYou](https://github.com/MiRO92/uYou-for-YouTube) | [MiRO92](https://twitter.com/miro92) | 3.0.3 | ✖︎ |
 | **Open in YouTube** | [CokePokes](https://github.com/CokePokes) | 1.2 | [✔︎](https://github.com/CokePokes/YoutubeExtensions) |
 | **iSponsorBlock** | [Galactic-Dev](https://github.com/Galactic-Dev) | 1.2.5 | [✔︎](https://github.com/Galactic-Dev/iSponsorBlock) |
