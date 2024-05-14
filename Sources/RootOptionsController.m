@@ -4,6 +4,7 @@
 
 @interface RootOptionsController ()
 
+- (UIImage *)resizeImage:(UIImage *)image newSize:(CGSize)newSize;
 @property (strong, nonatomic) UIButton *backButton;
 @property (assign, nonatomic) UIUserInterfaceStyle pageStyle;
 
