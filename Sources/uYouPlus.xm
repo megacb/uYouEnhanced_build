@@ -497,35 +497,24 @@ NSData *cellDividerData;
 - (BOOL)enablePlayerBarForVerticalVideoWhenControlsHiddenInFullscreen { return YES; }
 %end
 
-// YTNoTracking - @arichornlover - https://github.com/arichornlover/YTNoTracking/ - OUTDATED
-%hook UIApplication
-- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey, id> *)options {
-    NSString *originalURLString = [url absoluteString];
-    NSString *modifiedURLString = originalURLString;
-    if ([modifiedURLString isEqualToString:originalURLString]) {
-        modifiedURLString = [modifiedURLString stringByReplacingOccurrencesOfString:@"&si=[a-zA-Z0-9_-]+" withString:@"" options:NSRegularExpressionSearch range:NSMakeRange(0, modifiedURLString.length)];
-    }
-    NSURL *modifiedURL = [NSURL URLWithString:modifiedURLString];
-    BOOL result = %orig(application, modifiedURL, options);
-    return result;
-}
-%end
-
-%hook YTICompactLinkRenderer
-+ (BOOL)hasTrackingParams {
-    return NO;
-}
-%end
-
-%hook YTIReelPlayerOverlayRenderer
-+ (BOOL)hasTrackingParams {
-    return NO;
-}
-%end
-
-%hook YTIShareTargetServiceUpdateRenderer
-+ (BOOL)hasTrackingParams {
-    return NO;
+// YTNoTracking - @arichornlover - https://github.com/arichornlover/YTNoTracking/
+%hook UIPasteboard
+- (void)setString:(NSString *)string {
+    // Check if the shared string is a YouTube URL
+    if ([string containsString:@"youtu"]) {
+        NSError *error = NULL;
+        NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"youtu\\.be\\/(\\w+)" options:NSRegularExpressionCaseInsensitive error:&error];
+        NSArray *matches = [regex matchesInString:string options:0 range:NSMakeRange(0, [string length])]; 
+        for (NSTextCheckingResult *match in matches) {
+            NSRange videoIDRange = [match rangeAtIndex:1];
+            NSString *videoID = [string substringWithRange:videoIDRange];
+            NSRange timeRange = [string rangeOfString:@"t=" options:NSBackwardsSearch];
+            NSString *sanitizedURL = [NSString stringWithFormat:@"https://youtu.be/%@%@", videoID, [string substringFromIndex:timeRange.location]];
+            %orig(sanitizedURL);
+            return;
+        }
+    } 
+    %orig(string);
 }
 %end
 
