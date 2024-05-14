@@ -75,3 +75,6 @@
 [submodule "Tweaks/YouGroupSettings"]
 	path = Tweaks/YouGroupSettings
 	url = https://github.com/arichornlover/YouGroupSettings.git
+[submodule "Tweaks/YouTimeStamp"]
+	path = Tweaks/YouTimeStamp
+	url = https://github.com/arichornlover/YouTimeStamp.git
