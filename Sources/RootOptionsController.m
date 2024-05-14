@@ -4,6 +4,7 @@
 
 @interface RootOptionsController ()
 
+@property (strong, nonatomic) UIButton *backButton;
 @property (assign, nonatomic) UIUserInterfaceStyle pageStyle;
 
 @end
@@ -176,6 +177,14 @@
 @end
 
 @implementation RootOptionsController (Privates)
+
+- (UIImage *)resizeImage:(UIImage *)image newSize:(CGSize)newSize {
+    UIGraphicsBeginImageContextWithOptions(newSize, NO, [UIScreen mainScreen].scale);
+    [image drawInRect:CGRectMake(0, 0, newSize.width, newSize.height)];
+    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return newImage;
+}
 
 - (void)back {
     [self.navigationController popViewControllerAnimated:YES];
