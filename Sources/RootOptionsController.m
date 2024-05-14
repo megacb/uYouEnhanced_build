@@ -4,7 +4,6 @@
 
 @interface RootOptionsController ()
 
-@property (strong, nonatomic) UIImageView *backButton;
 @property (assign, nonatomic) UIUserInterfaceStyle pageStyle;
 
 @end
@@ -17,9 +16,17 @@
     self.title = @"uYouEnhanced Extras Menu";
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSFontAttributeName: [UIFont fontWithName:@"YTSans-Bold" size:22], NSForegroundColorAttributeName: [UIColor whiteColor]}];
 
-    UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Back.png" inBundle:[NSBundle mainBundle] compatibleWithTraitCollection:nil] style:UIBarButtonItemStylePlain target:self action:@selector(back)];
-    [backButton setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor blackColor], NSFontAttributeName: [UIFont fontWithName:@"YTSans-Medium" size:20]} forState:UIControlStateNormal];
-    self.navigationItem.leftBarButtonItem = backButton;
+    self.backButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    NSBundle *backIcon = [NSBundle bundleWithPath:[[NSBundle mainBundle] pathForResource:@"uYouPlus" ofType:@"bundle"]];
+    UIImage *backImage = [UIImage imageNamed:@"Back.png" inBundle:backIcon compatibleWithTraitCollection:nil];
+    backImage = [self resizeImage:backImage newSize:CGSizeMake(24, 24)];
+    backImage = [backImage imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    [self.backButton setTintColor:[UIColor whiteColor]];
+    [self.backButton setImage:backImage forState:UIControlStateNormal];
+    [self.backButton addTarget:self action:@selector(back) forControlEvents:UIControlEventTouchUpInside];
+    [self.backButton setFrame:CGRectMake(0, 0, 24, 24)];
+    UIBarButtonItem *customBackButton = [[UIBarButtonItem alloc] initWithCustomView:self.backButton];
+    self.navigationItem.leftBarButtonItem = customBackButton;
 
     UITableViewStyle style;
     if (@available(iOS 13, *)) {
@@ -83,7 +90,7 @@
                 cell.imageView.tintColor = cell.textLabel.textColor;
             }
             if (indexPath.row == 1) {
-                cell.textLabel.text = @"Custom LowContrastMode Color";
+                cell.textLabel.text = @"Custom Tint Color";
                 cell.imageView.image = [UIImage systemImageNamed:@"drop.fill"];
                 cell.imageView.tintColor = cell.textLabel.textColor;
             }
