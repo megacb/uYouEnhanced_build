@@ -3,8 +3,6 @@ If I verify a reported Code of Conduct violation, my policy is:
 
 - Contributors are allowed to make patches only to the main branch, unless an additional branch is involved. This policy applies to the implementation of custom features/options, updated features/options, and grammar errors.
 
-- uYouEnhanced does not support Localization pull requests. While it may seem like a sudden change, maintaining localization becomes challenging when the branch needs to be reset due in order to push to the latest changes from qnblackcat/uYouPlus repository. Therefore, it is difficult to preserve any localization changes that were added on uYouEnhanced since the fork/branch can get reset and takes too long to add them all back.
-
 - The use of the name `uYouPlusExtra` is prohibited. The correct and updated name for this repository is `uYouEnhanced`.
   - if there is a tweak named or have the description of the word `uYouPlusExtra` then please do check it out before you interact with it or use it.
 
