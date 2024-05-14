@@ -25,17 +25,17 @@
     UIColor *color = [lcmUnarchiver decodeObjectForKey:NSKeyedArchiveRootObjectKey];
     self.selectedColor = color;
 
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad && UIInterfaceOrientationIsLandscape(self.interfaceOrientation)) {
-        CGFloat scale = MIN(self.view.bounds.size.width / 1024, self.view.bounds.size.height / 768);
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
+        CGFloat scale = MIN(self.view.bounds.size.width / 768, self.view.bounds.size.height / 1024);
         self.view.transform = CGAffineTransformMakeScale(scale, scale);
     }
 }
 
 - (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator {
     [super viewWillTransitionToSize:size withTransitionCoordinator:coordinator];
-
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
-        CGFloat scale = MIN(size.width / 1024, size.height / 768);
+    
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad && UIInterfaceOrientationIsLandscape(self.interfaceOrientation)) {
+        CGFloat scale = MIN(size.width / 768, size.height / 1024);
         [coordinator animateAlongsideTransition:^(id<UIViewControllerTransitionCoordinatorContext> context) {
             self.view.transform = CGAffineTransformMakeScale(scale, scale);
         } completion:^(id<UIViewControllerTransitionCoordinatorContext> context) {
