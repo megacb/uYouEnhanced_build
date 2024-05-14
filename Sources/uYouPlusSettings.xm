@@ -168,7 +168,7 @@ extern NSBundle *uYouPlusBundle();
     [sectionItems addObject:bug];
 
     YTSettingsSectionItem *developers = [%c(YTSettingsSectionItem)
-        itemWithTitle:LOC(@"Support the Developers")
+        itemWithTitle:LOC(@"SUPPORT_THE_DEVELOPERS")
         titleDescription:LOC(@"MiRO92, PoomSmart, level3tjg, BandarHL, julioverne & Galactic-dev")
         accessibilityIdentifier:nil
         detailTextBlock:^NSString *() {
@@ -182,8 +182,8 @@ extern NSBundle *uYouPlusBundle();
 
 /* UNFINISHED BUTTON
     YTSettingsSectionItem *copySettings = [%c(YTSettingsSectionItem)
-        itemWithTitle:LOC(@"Copy Settings")
-        titleDescription:LOC(@"Copy all current settings to the clipboard")
+        itemWithTitle:LOC(@"COPY_SETTINGS")
+        titleDescription:LOC(@"COPY_SETTINGS_DESC")
         accessibilityIdentifier:nil
         detailTextBlock:nil
         selectBlock:^BOOL (YTSettingsCell *cell, NSUInteger arg1) {
@@ -201,8 +201,8 @@ extern NSBundle *uYouPlusBundle();
 */
 
     YTSettingsSectionItem *pasteSettings = [%c(YTSettingsSectionItem)
-        itemWithTitle:LOC(@"Paste Settings")
-        titleDescription:LOC(@"Paste settings from clipboard and apply")
+        itemWithTitle:LOC(@"PASTE_SETTINGS")
+        titleDescription:LOC(@"PASTE_SETTINGS_DESC")
         accessibilityIdentifier:nil
         detailTextBlock:nil
         selectBlock:^BOOL (YTSettingsCell *cell, NSUInteger arg1) {
@@ -242,9 +242,9 @@ extern NSBundle *uYouPlusBundle();
     [sectionItems addObject:exitYT];
 
     SECTION_HEADER(LOC(@"📺 App Personalization"));
-    # pragma mark - uYouEnhanced Extras Menu
+    # pragma mark - uYouEnhanced Essential Menu
     YTSettingsSectionItem *customAppMenu = [%c(YTSettingsSectionItem)
-        itemWithTitle:LOC(@"uYouEnhanced Extras Menu")
+        itemWithTitle:LOC(@"UYOUENHANCED_ESSENTIAL_MENU")
         titleDescription:LOC(@"This menu includes App Color Customization & Clearing the Cache 🗑️")
         accessibilityIdentifier:nil
         detailTextBlock:nil
@@ -257,7 +257,7 @@ extern NSBundle *uYouPlusBundle();
     [sectionItems addObject:customAppMenu];
 
     YTSettingsSectionItem *appIcon = [%c(YTSettingsSectionItem)
-        itemWithTitle:LOC(@"Change App Icon")
+        itemWithTitle:LOC(@"CHANGE_APP_ICON")
         titleDescription:nil
         accessibilityIdentifier:nil
         detailTextBlock:nil
@@ -270,8 +270,8 @@ extern NSBundle *uYouPlusBundle();
     [sectionItems addObject:appIcon];
 
     YTSettingsSectionItem *clearNotifications = [%c(YTSettingsSectionItem)
-        itemWithTitle:LOC(@"Clear Notifications")
-        titleDescription:LOC(@"Force clear all notifications (Recommended if uYouEnhanced is Sideloaded)")
+        itemWithTitle:LOC(@"CLEAR_NOTIFICATIONS")
+        titleDescription:LOC(@"CLEAR_NOTIFICATIONS_DESC")
         accessibilityIdentifier:nil
         detailTextBlock:nil
         selectBlock:^BOOL (YTSettingsCell *cell, NSUInteger arg1) {
@@ -332,8 +332,8 @@ extern NSBundle *uYouPlusBundle();
                     }
                 ],
                 [YTSettingsSectionItemClass
-                    checkmarkItemWithTitle:LOC(@"Custom Dark Theme")
-                    titleDescription:LOC(@"In order to use Custom Themes that is in the uYouPlus Button, you will need to select this to be able to use custom colors.")
+                    checkmarkItemWithTitle:LOC(@"CUSTOM_DARK_THEME")
+                    titleDescription:LOC(@"In order to use Custom Themes, go to uYouEnhanced Essential Menu, you will need to press Custom Tint Color and than change the colors.")
                     selectBlock:^BOOL (YTSettingsCell *cell, NSUInteger arg1) {
                         [[NSUserDefaults standardUserDefaults] setInteger:3 forKey:@"appTheme"];
                         [settingsViewController reloadData];
@@ -369,18 +369,35 @@ extern NSBundle *uYouPlusBundle();
     # pragma mark - Video player options
     SECTION_HEADER(LOC(@"VIDEO_PLAYER_OPTIONS"));
 
-    SWITCH_ITEM2(LOC(@"Enable Portrait Fullscreen"), LOC(@"Enables Portrait Fullscreen on the YouTube App. App restart is required. (only for iPhone)"), @"portraitFullscreen_enabled");
+    SWITCH_ITEM3(
+        LOC(@"ENABLE_PORTRAIT_FULLSCREEN"), 
+        LOC(@"ENABLE_PORTRAIT_FULLSCREEN_DESC"), 
+        @"portraitFullscreen_enabled",
+        ({
+            if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
+                [[NSUserDefaults standardUserDefaults] setBool:enable forKey:@"portraitFullscreen_enabled"];
+                SHOW_RELAUNCH_YT_SNACKBAR;
+                return YES;
+            } else {
+                UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Incompatibile" message:@"Portrait Fullscreen Mode is not compatible on iPad." preferredStyle:UIAlertControllerStyleAlert];
+                UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
+                [alert addAction:okAction];
+                [settingsViewController presentViewController:alert animated:YES completion:nil];
+                return NO;
+            }
+        });
+    );
     SWITCH_ITEM2(LOC(@"SLIDE_TO_SEEK"), LOC(@"SLIDE_TO_SEEK_DESC"), @"slideToSeek_enabled");
-    SWITCH_ITEM2(LOC(@"Enable Tap To Seek"), LOC(@"Jump to anywhere in a video by single-tapping the seek bar"), @"YTTapToSeek_enabled");
+    SWITCH_ITEM2(LOC(@"ENABLE_TAP_TO_SEEK"), LOC(@"ENABLE_TAP_TO_SEEK_DESC"), @"YTTapToSeek_enabled");
     SWITCH_ITEM(LOC(@"DISABLE_DOUBLE_TAP_TO_SEEK"), LOC(@"DISABLE_DOUBLE_TAP_TO_SEEK_DESC"), @"doubleTapToSeek_disabled");
     SWITCH_ITEM(LOC(@"SNAP_TO_CHAPTER"), LOC(@"SNAP_TO_CHAPTER_DESC"), @"snapToChapter_enabled");
     SWITCH_ITEM2(LOC(@"PINCH_TO_ZOOM"), LOC(@"PINCH_TO_ZOOM_DESC"), @"pinchToZoom_enabled");
     SWITCH_ITEM(LOC(@"YT_MINIPLAYER"), LOC(@"YT_MINIPLAYER_DESC"), @"ytMiniPlayer_enabled");
     SWITCH_ITEM2(LOC(@"STOCK_VOLUME_HUD"), LOC(@"STOCK_VOLUME_HUD_DESC"), @"stockVolumeHUD_enabled");
-    SWITCH_ITEM2(LOC(@"Disable pull-to-fullscreen gesture"), LOC(@"Disable the drag gesture to enter vertical fullscreen. Only applies to landscape videos."), @"disablePullToFull_enabled");
-    SWITCH_ITEM(LOC(@"Disable Double tap to skip chapter"), LOC(@"Disable the 2-finger double tap gesture that skips forward/backward by a chapter"), @"disableChapterSkip_enabled");
-    SWITCH_ITEM(LOC(@"Always use remaining time"), LOC(@"Change the default to show time remaining in the player bar"), @"alwaysShowRemainingTime_enabled");
-    SWITCH_ITEM(LOC(@"Disable toggle time remaining"), LOC(@"Disables changing time elapsed to time remaining. Use with other setting to always show remaining time."), @"disableRemainingTime_enabled");
+    SWITCH_ITEM2(LOC(@"DISABLE_PULL_TO_FULLSCREEN_GESTURE"), LOC(@"ENABLE_PORTRAIT_FULLSCREEN_DESC"), @"disablePullToFull_enabled");
+    SWITCH_ITEM(LOC(@"DISABLE_DOUBLE_TAP_TO_SKIP_CHAPTER"), LOC(@"DISABLE_DOUBLE_TAP_TO_SKIP_CHAPTER_DESC"), @"disableChapterSkip_enabled");
+    SWITCH_ITEM(LOC(@"ALWAYS_USE_REMAINING_TIME"), LOC(@"ALWAYS_USE_REMAINING_TIME_DESC"), @"alwaysShowRemainingTime_enabled");
+    SWITCH_ITEM(LOC(@"DISABLE_TOGGLE_TIME_REMAINING"), LOC(@"DISABLE_TOGGLE_TIME_REMAINING_DESC"), @"disableRemainingTime_enabled");
 
     # pragma mark - Video controls overlay options
     SECTION_HEADER(LOC(@"VIDEO_CONTROLS_OVERLAY_OPTIONS"));
@@ -1180,7 +1197,6 @@ extern NSBundle *uYouPlusBundle();
     SWITCH_ITEM(LOC(@"DISABLE_HINTS"), LOC(@"DISABLE_HINTS_DESC"), @"disableHints_enabled");
     SWITCH_ITEM(LOC(@"Stick Navigation Bar"), LOC(@"Enable to make the Navigation Bar stay on the App when scrolling."), @"stickNavigationBar_enabled");
     SWITCH_ITEM2(LOC(@"HIDE_ISPONSORBLOCK"), nil, @"hideSponsorBlockButton_enabled");
-    SWITCH_ITEM2(LOC(@"Hides uYouPlus button"), nil, @"hideuYouPlusButton_enabled");
     SWITCH_ITEM(LOC(@"HIDE_CHIP_BAR"), LOC(@"HIDE_CHIP_BAR_DESC"), @"hideChipBar_enabled");
     SWITCH_ITEM(LOC(@"HIDE_PLAY_NEXT_IN_QUEUE"), LOC(@"HIDE_PLAY_NEXT_IN_QUEUE_DESC"), @"hidePlayNextInQueue_enabled");
     SWITCH_ITEM2(LOC(@"Hide Community Posts"), LOC(@"Hides the Community Posts. App restart is required."), @"hideCommunityPosts_enabled");
