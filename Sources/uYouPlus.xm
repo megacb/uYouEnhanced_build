@@ -155,8 +155,6 @@ BOOL isAdString(NSString *description) {
     return NO;
 }
 
-NSData *cellDividerData;
-
 %hook YTIElementRenderer
 - (NSData *)elementData {
     NSString *description = [self description];
