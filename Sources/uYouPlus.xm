@@ -1,5 +1,7 @@
 #import "uYouPlus.h"
 
+NSData *cellDividerData;
+
 // Tweak's bundle for Localizations support - @PoomSmart - https://github.com/PoomSmart/YouPiP/commit/aea2473f64c75d73cab713e1e2d5d0a77675024f
 NSBundle *uYouPlusBundle() {
     static NSBundle *bundle = nil;
@@ -85,7 +87,7 @@ static int contrastMode() {
 }
 %end
 
-// uYou AdBlocking Workaround LITE (This Version only removes ads from Videos/Shorts) - @PoomSmart
+// uYou AdBlocking Workaround LITE (This Version will only remove ads from Videos/Shorts!) - @PoomSmart
 %group uYouAdBlockingWorkaroundLite
 %hook YTReelInfinitePlaybackDataSource
 - (void)setReels:(NSMutableOrderedSet <YTReelModel *> *)reels {
@@ -952,7 +954,7 @@ NSData *cellDividerData;
 }
 %end
 
-// Hide Fullscreen Button - @arichornlover - PoomSmart's YouQuality tweak breaks when enabling this
+// Hide Fullscreen Button - @arichornlover - PoomSmart's Newer Version of the *YouQuality* tweak breaks when enabling this
 %hook YTInlinePlayerBarContainerView
 - (void)layoutSubviews {
     %orig; 
@@ -1116,17 +1118,18 @@ NSData *cellDividerData;
         self.hidden = YES; 
     }
 
-// Hide Header Links under Channel Profile - @arichornlover - Deprecated ⚠️
+// Hide Header Links under Channel Profile - @arichornlover
     if ((IS_ENABLED(@"hideChannelHeaderLinks_enabled")) && ([self.accessibilityIdentifier isEqualToString:@"eml.channel_header_links"])) {
         self.hidden = YES;
         self.opaque = YES;
         self.userInteractionEnabled = NO;
         [self sizeToFit];
+        [self.superview layoutIfNeeded];
         [self setNeedsLayout];
         [self removeFromSuperview];
     }
 
-// Completely Remove the Comment Section under the Video Player - @arichornlover - Deprecated ⚠️
+// Completely Remove the Comment Section under the Video Player - @arichornlover
     if ((IS_ENABLED(@"hideCommentSection_enabled")) && ([self.accessibilityIdentifier isEqualToString:@"id.ui.comments_entry_point_teaser"] 
     || [self.accessibilityIdentifier isEqualToString:@"id.ui.comments_entry_point_simplebox"] 
     || [self.accessibilityIdentifier isEqualToString:@"id.ui.video_metadata_carousel"] 
@@ -1137,11 +1140,12 @@ NSData *cellDividerData;
         CGRect bounds = self.frame;
         bounds.size.height = 0;
         self.frame = bounds;
+        [self.superview layoutIfNeeded];
         [self setNeedsLayout];
         [self removeFromSuperview];
     }
 
-// Hide the Comment Section Previews under the Video Player - @arichornlover - Deprecated ⚠️
+// Hide the Comment Section Previews under the Video Player - @arichornlover
     if ((IS_ENABLED(@"hidePreviewCommentSection_enabled")) && ([self.accessibilityIdentifier isEqualToString:@"id.ui.comments_entry_point_teaser"])) {
         self.hidden = YES;
         self.opaque = YES;
@@ -1149,6 +1153,7 @@ NSData *cellDividerData;
         CGRect bounds = self.frame;
         bounds.size.height = 0;
         self.frame = bounds;
+        [self.superview layoutIfNeeded];
         [self setNeedsLayout];
         [self removeFromSuperview];
     }
@@ -1162,32 +1167,35 @@ NSData *cellDividerData;
 }
 %end
 
-
-// Hide Shorts Cells - @PoomSmart & @iCrazeiOS
+// Hide Shorts Cells - @PoomSmart, @iCrazeiOS & @Dayanch96
 %hook YTIElementRenderer
 - (NSData *)elementData {
-        NSString *description = [self description];
+    NSString *description = [self description];
     if ([NSUserDefaults.standardUserDefaults boolForKey:@"removeShortsCell"]) { // uYou (Hide Shorts Cells)
-        if ([description containsString:@"shorts_shelf.eml"] ||
-            [description containsString:@"#shorts"] ||
-            [description containsString:@"shorts_video_cell.eml"] ||
-            [description containsString:@"6Shorts"]) {
+        if ([description containsString:@"shorts_shelf.eml"] || [description containsString:@"#shorts"] || [description containsString:@"shorts_video_cell.eml"] || [description containsString:@"6Shorts"]) {
             if (![description containsString:@"history*"]) {
-                return nil;
+                if (!cellDividerData) cellDividerData = %orig;
+                return cellDividerData;
             }
         }
     }
-// Hide Community Posts - @michael-winay & @arichornlover - Deprecated ⚠️
+// Hide Community Posts @michael-winay & @arichornlover
     if (IS_ENABLED(@"hideCommunityPosts_enabled")) {
         if ([description containsString:@"post_base_wrapper.eml"]) {
-            return nil;
+            if (!cellDividerData) cellDividerData = %orig;
+            return cellDividerData;
         }
     }
+// etc. - @Dayanch96
+    BOOL hasShorts = ([description containsString:@"shorts_shelf.eml"] || [description containsString:@"shorts_video_cell.eml"] || [description containsString:@"6Shorts"]) && ![description containsString:@"history*"];
+    BOOL hasShortsInHistory = [description containsString:@"compact_video.eml"] && [description containsString:@"youtube_shorts_"];
+
+    if (hasShorts || hasShortsInHistory) return cellDividerData;
     return %orig;
 }
 %end
 
-// Red Subscribe Button - @arichornlover
+// Red Subscribe Button - 17.33.2 and up - @arichornlover
 %hook ELMContainerNode
 - (void)setBackgroundColor:(id)color {
     NSString *description = [self description];
@@ -1196,7 +1204,7 @@ NSData *cellDividerData;
             color = [UIColor redColor];
         }
     }
-// Hide the Button Containers under the Video Player - 17.x.x and up - @arichornlover
+// Hide the Button Containers under the Video Player - 17.33.2 and up - @arichornlover
     if (IS_ENABLED(@"hideButtonContainers_enabled")) {
         if ([description containsString:@"id.video.like.button"] ||
             [description containsString:@"id.video.dislike.button"] ||
@@ -1210,7 +1218,7 @@ NSData *cellDividerData;
 }
 %end
 
-// Hide the (Connect / Thanks / Save / Report) Buttons under the Video Player - 17.x.x and up - @arichornlover (inspired by @PoomSmart's version) DEPRECATED METHOD ⚠️
+// Hide the (Connect / Thanks / Save / Report) Buttons under the Video Player - 17.33.2 and up - @arichornlover (inspired by @PoomSmart's version) DEPRECATED METHOD ⚠️
 %hook _ASDisplayView
 - (void)layoutSubviews {
     %orig;
@@ -1237,7 +1245,7 @@ NSData *cellDividerData;
 }
 %end
 
-// Hide the (Connect / Share / Remix / Thanks / Download / Clip / Save / Report) Buttons under the Video Player - 17.x.x and up - @PoomSmart (inspired by @arichornlover) - NEW METHOD
+// Hide the (Connect / Share / Remix / Thanks / Download / Clip / Save / Report) Buttons under the Video Player - 17.33.2 and up - @PoomSmart (inspired by @arichornlover) - NEW METHOD
 static BOOL findCell(ASNodeController *nodeController, NSArray <NSString *> *identifiers) {
     for (id child in [nodeController children]) {
         if ([child isKindOfClass:%c(ELMNodeController)]) {
@@ -1266,7 +1274,7 @@ static BOOL findCell(ASNodeController *nodeController, NSArray <NSString *> *ide
     return NO;
 }
 
-%hook ASCollectionView
+%hook ASCollectionView // This stopped working on May 14th 2024 due to a Server-Side Change from YouTube.
 
 - (CGSize)sizeForElement:(ASCollectionElement *)element {
     if ([self.accessibilityIdentifier isEqualToString:@"id.video.scrollable_action_bar"]) {
