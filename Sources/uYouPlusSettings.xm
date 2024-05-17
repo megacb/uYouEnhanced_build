@@ -451,9 +451,10 @@ extern NSBundle *uYouPlusBundle();
     SWITCH_ITEM(LOC(@"HIDE_SUPER_THANKS"), LOC(@"HIDE_SUPER_THANKS_DESC"), @"hideBuySuperThanks_enabled");
     SWITCH_ITEM(LOC(@"HIDE_SUBCRIPTIONS"), LOC(@"HIDE_SUBCRIPTIONS_DESC"), @"hideSubcriptions_enabled");
     // SWITCH_ITEM(LOC(@"DISABLE_RESUME_TO_SHORTS"), LOC(@"DISABLE_RESUME_TO_SHORTS_DESC"), @"disableResumeToShorts_enabled");
+    SWITCH_ITEM2(LOC(@"SHORTS_QUALITY_PICKER"), LOC(@"SHORTS_QUALITY_PICKER_DESC"), @"shortsQualityPicker_enabled");
 
     # pragma mark - Video player button options
-    SECTION_HEADER(LOC(@"Video Player Button Options"));
+    SECTION_HEADER(LOC(@"VIDEO_PLAYER_BUTTON_OPTIONS"));
 
 // (the options "Red Subscribe Button" and "Hide Button Containers under player" are currently not working)
 //
@@ -527,10 +528,10 @@ extern NSBundle *uYouPlusBundle();
         detailTextBlock:^NSString *() {
             switch (contrastMode()) {
                 case 1:
-                    return LOC(@"Custom Color");
+                    return LOC(@"CUSTOM_COLOR");
                 case 0:
                 default:
-                    return LOC(@"Default");
+                    return LOC(@"DEFAULT");
             }
         }
         selectBlock:^BOOL (YTSettingsCell *cell, NSUInteger arg1) {
@@ -1221,6 +1222,7 @@ extern NSBundle *uYouPlusBundle();
     SWITCH_ITEM2(LOC(@"IPHONE_LAYOUT"), LOC(@"IPHONE_LAYOUT_DESC"), @"iPhoneLayout_enabled");
     SWITCH_ITEM2(LOC(@"NEW_MINIPLAYER_STYLE"), LOC(@"NEW_MINIPLAYER_STYLE_DESC"), @"bigYTMiniPlayer_enabled");
     SWITCH_ITEM2(LOC(@"YT_RE_EXPLORE"), LOC(@"YT_RE_EXPLORE_DESC"), @"reExplore_enabled");
+    SWITCH_ITEM2(LOC(@"AUTO_HIDE_HOME_INDICATOR"), LOC(@"AUTO_HIDE_HOME_INDICATOR_DESC"), @"autoHideHomeBar_enabled");
     SWITCH_ITEM2(LOC(@"HIDE_INDICATORS"), LOC(@"HIDE_INDICATORS_DESC"), @"hideSubscriptionsNotificationBadge_enabled");
     SWITCH_ITEM2(LOC(@"FIX_CASTING"), LOC(@"FIX_CASTING_DESC"), @"fixCasting_enabled");
     SWITCH_ITEM(LOC(@"ENABLE_FLEX"), LOC(@"ENABLE_FLEX_DESC"), @"flex_enabled");
