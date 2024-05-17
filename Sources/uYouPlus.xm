@@ -471,6 +471,17 @@ BOOL isAdString(NSString *description) {
 %end
 %end
 
+// Shorts Quality Picker - @arichornlover
+%group gShortsQualityPicker
+%hook YTHotConfig
+- (BOOL)enableOmitAdvancedMenuInShortsVideoQualityPicker { return YES; }
+- (BOOL)enableShortsVideoQualityPicker { return YES; }
+- (BOOL)iosEnableImmersiveLivePlayerVideoQuality { return YES; }
+- (BOOL)iosEnableShortsPlayerVideoQuality { return YES; }
+- (BOOL)iosEnableShortsPlayerVideoQualityRestartVideo { return YES; }
+- (BOOL)iosEnableSimplerTitleInShortsVideoQualityPicker { return YES; }
+%end
+%end
 
 // YTShortsProgress - https://github.com/PoomSmart/YTShortsProgress/
 %hook YTShortsPlayerViewController
@@ -1671,6 +1682,9 @@ static BOOL findCell(ASNodeController *nodeController, NSArray <NSString *> *ide
     }
     if (IS_ENABLED(@"hideDoubleTapToSeekOverlay_enabled")) {
         %init(gHideDoubleTapToSeekOverlay);
+    }
+    if (IS_ENABLED(@"shortsQualityPicker_enabled")) {
+        %init(gShortsQualityPicker);
     }
     if (IS_ENABLED(@"fixCasting_enabled")) {
         %init(gFixCasting);
