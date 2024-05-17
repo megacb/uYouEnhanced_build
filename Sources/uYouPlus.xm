@@ -1406,6 +1406,15 @@ static BOOL findCell(ASNodeController *nodeController, NSArray <NSString *> *ide
 %end
 %end
 
+// Auto-Hide Home Bar - @arichornlover
+%group gAutoHideHomeBar
+%hook UIViewController
+- (BOOL)prefersHomeIndicatorAutoHidden {
+    return YES;
+}
+%end
+%end
+
 // YT startup animation
 %hook YTColdConfig
 - (BOOL)mainAppCoreClientIosEnableStartupAnimation {
@@ -1679,6 +1688,9 @@ static BOOL findCell(ASNodeController *nodeController, NSArray <NSString *> *ide
     }
     if (IS_ENABLED(@"hideHomeTab_enabled")) {
         %init(gHideHomeTab);
+    }
+    if (IS_ENABLED(@"autoHideHomeBar_enabled")) {
+        %init(gAutoHideHomeBar);
     }
     if (IS_ENABLED(@"hideDoubleTapToSeekOverlay_enabled")) {
         %init(gHideDoubleTapToSeekOverlay);
