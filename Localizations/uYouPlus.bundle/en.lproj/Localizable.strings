@@ -203,6 +203,11 @@
 "HIDE_ALL_VIDEOS_UNDER_PLAYER" = "Hide all videos under player";
 "HIDE_ALL_VIDEOS_UNDER_PLAYER_DESC" = "Remove all videos under the video player. Depends on which Device Orientation.";
 
+"SHORTS_QUALITY_PICKER" = "Shorts Quality Picker";
+"SHORTS_QUALITY_PICKER_DESC" = "Enables the YouTube Shorts Quality Picker";
+
+"VIDEO_PLAYER_BUTTON_OPTIONS" = "Video Player Button Options";
+
 "RED_SUBSCRIBE_BUTTON" = "Red Subscribe Button";
 "RED_SUBSCRIBE_BUTTON_DESC" = "Restores the Subscribe Button Color to be Red.";
 "HIDE_BUTTON_CONTAINERS_UNDER_PLAYER" = "Hide Button Containers under player";
@@ -276,6 +281,8 @@
 "HIDE_COMMUNITY_POSTS_DESC" = "Hides the Community Posts. App restart is required.";
 "HIDE_HEADER_LINKS_UNDER_PROFILE" = "Hide Header Links under channel profile";
 "HIDE_HEADER_LINKS_UNDER_PROFILE_DESC" = "Hides the Header Links under any channel profile.";
+"AUTO_HIDE_HOME_INDICATOR" = "Auto-Hide Home Indicator";
+"AUTO_HIDE_HOME_INDICATOR_DESC" = "Automatically Hides the iOS Home Indicator when not interacting with the App.";
 "HIDE_INDICATORS" = "Hide Indicators";
 "HIDE_INDICATORS_DESC" = "Hides all Indicators that are currently in the App.";
 "FIX_CASTING" = "Fix Casting";
