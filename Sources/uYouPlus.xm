@@ -87,8 +87,29 @@ static int contrastMode() {
 }
 %end
 
-// uYou AdBlocking Workaround LITE (This Version will only remove ads from Videos/Shorts!) - @PoomSmart
+// uYou AdBlock Workaround LITE (This Version will only remove ads from Videos/Shorts!) - @PoomSmart
 %group uYouAdBlockingWorkaroundLite
+%hook YTHotConfig
+- (BOOL)disableAfmaIdfaCollection { return NO; }
+%end
+
+%hook YTIPlayerResponse
+- (BOOL)isMonetized { return NO; }
+%end
+
+%hook YTDataUtils
++ (id)spamSignalsDictionary { return @{}; }
++ (id)spamSignalsDictionaryWithoutIDFA { return @{}; }
+%end
+
+%hook YTAdsInnerTubeContextDecorator
+- (void)decorateContext:(id)context { %orig(nil); }
+%end
+
+%hook YTAccountScopedAdsInnerTubeContextDecorator
+- (void)decorateContext:(id)context { %orig(nil); }
+%end
+
 %hook YTReelInfinitePlaybackDataSource
 - (void)setReels:(NSMutableOrderedSet <YTReelModel *> *)reels {
     [reels removeObjectsAtIndexes:[reels indexesOfObjectsPassingTest:^BOOL(YTReelModel *obj, NSUInteger idx, BOOL *stop) {
@@ -97,17 +118,9 @@ static int contrastMode() {
     %orig;
 }
 %end
-
-%hook YTAdsInnerTubeContextDecorator
-- (void)decorateContext:(id)context {}
 %end
 
-%hook YTAccountScopedAdsInnerTubeContextDecorator
-- (void)decorateContext:(id)context {}
-%end
-%end
-
-// uYou AdBlocking Workaround (for uYou Option) - @PoomSmart
+// uYou AdBlock Workaround (for uYou Option) - @PoomSmart
 %group uYouAdBlockingWorkaround
 // Workaround: uYou 3.0.3 Adblock fix - @PoomSmart
 %hook YTReelInfinitePlaybackDataSource
