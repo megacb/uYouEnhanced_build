@@ -60,7 +60,7 @@ jobs:
 
     steps:
       - name: Checkout Main
-        uses: actions/checkout@v4.1.4
+        uses: actions/checkout@v4.1.6
         with:
           path: main
           ref: ${{ github.event.inputs.commit_id || github.ref }}
@@ -73,7 +73,7 @@ jobs:
         run: echo "$(brew --prefix make)/libexec/gnubin" >> $GITHUB_PATH 
 
       - name: Setup Theos
-        uses: actions/checkout@v4.1.4
+        uses: actions/checkout@v4.1.6
         with:
           repository: theos/theos
           ref: 5bfdc3cb7133ec1cab43182115d902e2b57c9eac
@@ -102,7 +102,7 @@ jobs:
           THEOS: ${{ github.workspace }}/theos
 
       - name: Setup Theos Jailed
-        uses: actions/checkout@v4.1.4
+        uses: actions/checkout@v4.1.6
         with:
           repository: qnblackcat/theos-jailed
           ref: master
