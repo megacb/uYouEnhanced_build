@@ -1,143 +1,293 @@
 // About
 "ABOUT" = "Hakkında";
- 
-"VERSION" = "uYouPlus'ın sürümü: %@";
-"VERSION_CHECK" = "Güncellemeyi kontrol etmek için dokun!";
- 
-"REPORT_AN_ISSUE" = "Bir sorunu bildir";
+
+"VERSION" = "Versiyon";
+"VERSION_CHECK" = "Güncellemeleri kontrol etmek için dokunun!";
+
+"REPORT_AN_ISSUE" = "Bir sorun bildir";
 "ADD_TITLE" = "Başlığınızı buraya ekleyin...";
- 
-"QUIT_YOUTUBE" = "YouTube'u kapat";
- 
-"RESTART_YOUTUBE" = "Değişiklikleri uygulamak için YouTube'u yeniden başlat";
- 
+
+"QUIT_YOUTUBE" = "YouTube'u Kapat";
+
+"RESTART_YOUTUBE" = "Değişiklikleri uygulamak için YouTube'u yeniden başlatın";
+
 // App appearance
 "APP_THEME" = "🎨 Uygulama görünümü";
 "THEME_OPTIONS" = "Tema seçenekleri";
- 
-"DARK_THEME" = "Koyu tema";
- 
-"DEFAULT_THEME" = "Varsayılan";
-"DEFAULT_THEME_DESC" = "YouTube'un varsayılan daha koyu teması. Uygulamanın yeniden başlatılması gerekir.";
- 
-"OLD_DARK_THEME" = "Eski koyu tema";
-"OLD_DARK_THEME_DESC" = "Eski YouTube'un koyu teması (gri tema). Uygulamanın yeniden başlatılması gerekir.";
- 
-"OLED_DARK_THEME" = "OLED Koyu modu (Deneysel)";
-"OLED_DARK_THEME_2" = "OLED Koyu modu";
-"OLED_DARK_THEME_DESC" = "Bazı durumlarda düzgün çalışmayabilir. Bu seçeneği etkinleştirdikten/devre dışı bıraktıktan sonra uygulamanın yeniden başlatılması gerekir.";
- 
-"OLED_KEYBOARD" = "OLED Klavye (Deneysel)";
-"OLED_KEYBOARD_DESC" = "Bazı durumlarda düzgün çalışmayabilir. Uygulamanın yeniden başlatılması gerekir.";
- 
-// Video player options
-"VIDEO_PLAYER_OPTIONS" = "⏯️ Video Oynatıcı Seçenekleri";
- 
-"SLIDE_TO_SEEK" = "Kaydırmayla geçme özelliğini etkinleştir";
-"SLIDE_TO_SEEK_DESC" = "Kaydırmayla geçme jestini geri getirir.";
- 
-"DISABLE_DOUBLE_TAP_TO_SEEK" = "Çift dokunmayla geçmeyi devre dışı bırak";
-"DISABLE_DOUBLE_TAP_TO_SEEK_DESC" = "";
- 
-"SNAP_TO_CHAPTER" = "Bölüme geçişi kapat";
-"SNAP_TO_CHAPTER_DESC" = "Video arama sırasında otomatik olarak bölüme geçişi devre dışı bırakır. Uygulamanın yeniden başlatılması gerekir.";
- 
-"PINCH_TO_ZOOM" = "Yakınlaştırmayı sıkıştırmayı devre dışı bırak";
-"PINCH_TO_ZOOM_DESC" = "Uygulamanın yeniden başlatılması gerekir.";
- 
-"YT_MINIPLAYER" = "Tüm YouTube videoları için Mini Oynatıcıyı etkinleştir";
-"YT_MINIPLAYER_DESC" = "Örneğin çocuk videoları.";
- 
-"STOCK_VOLUME_HUD" = "Mevcut iOS baş yukarı göstergesi(HUD) alanını kullan";
-"STOCK_VOLUME_HUD_DESC" = "";
- 
-// Video controls overlay options
-"VIDEO_CONTROLS_OVERLAY_OPTIONS" = "📹 Video Kontrolleri Kaplaması Seçenekleri";
- 
-"HIDE_AUTOPLAY_SWITCH" = "Otomatik oynatma anahtarını gizle";
-"HIDE_AUTOPLAY_SWITCH_DESC" = "Otomatik oynatma anahtarını video kontrolleri katmanından gizler.";
- 
-"HIDE_YTMUSIC_BUTTON" = "Hide Youtube Music button";
-"HIDE_YTMUSIC_BUTTON_DESC" = "Hides Youtube Music button that appears with Premium";
 
-"HIDE_SUBTITLES_BUTTON" = "Altyazıları düğmesini gizle";
-"HIDE_SUBTITLES_BUTTON_DESC" = "Video kontrolleri katmanındaki Altyazılar düğmesini gizler.";
- 
-"HIDE_HUD_MESSAGES" = "Gösterge Paneli Mesajlarını gizle";
-"HIDE_HUD_MESSAGES_DESC" = "Örnek: Altyazılar açıldı/kapandı, Video döngüsü açık,...";
- 
-"HIDE_PAID_PROMOTION_CARDS" = "Ücretli Promosyon afişini gizle";
-"HIDE_PAID_PROMOTION_CARDS_DESC" = "Bazı videolarda 'Ücretli Promosyonları İçerir' afişini gizler.";
- 
-"HIDE_CHANNEL_WATERMARK" = "Kanal Filigranını Gizle";
-"HIDE_CHANNEL_WATERMARK_DESC" = "Video kontrolleri yer paylaşımında kanalın filigranını gizle. Uygulamanın yeniden başlatılması gerekir.";
- 
-"HIDE_PREVIOUS_AND_NEXT_BUTTON" = "Önceki ve Sonraki düğmelerini gizle";
-"HIDE_PREVIOUS_AND_NEXT_BUTTON_DESC" = "Video kontrolleri katmanında Önceki ve Sonraki düğmelerini gizler.";
- 
-"REPLACE_PREVIOUS_NEXT_BUTTON" = "Önceki ve Sonraki Düğmelerini Değiştir";
-"REPLACE_PREVIOUS_NEXT_BUTTON_DESC" = "Önceki ve Sonraki Düğmelerini Hızlı ileri ve Geri Sar düğmeleriyle değiştir. Uygulamanın yeniden başlatılması gerekir.";
- 
+"DARK_THEME" = "Koyu tema";
+
+"DEFAULT_THEME" = "Varsayılan";
+"DEFAULT_THEME_DESC" = "";
+
+"OLD_DARK_THEME" = "Daha açık gri";
+"OLD_DARK_THEME_DESC" = "YouTube'un eski koyu teması";
+
+"OLED_DARK_THEME" = "OLED (deneysel)";
+"OLED_DARK_THEME_2" = "OLED";
+"OLED_DARK_THEME_DESC" = "Tam siyah koyu tema";
+
+"OLED_KEYBOARD" = "OLED klavye (deneysel)";
+"OLED_KEYBOARD_DESC" = "";
+
+// Video player options
+"VIDEO_PLAYER_OPTIONS" = "⏯️ Video oynatıcı seçenekleri";
+
+"SLIDE_TO_SEEK" = "Sürükleyerek aramayı etkinleştir";
+"SLIDE_TO_SEEK_DESC" = "Sürükleyerek arama hareketini geri getirin.";
+
+"DISABLE_DOUBLE_TAP_TO_SEEK" = "Çift dokunarak aramayı devre dışı bırak";
+"DISABLE_DOUBLE_TAP_TO_SEEK_DESC" = "";
+
+"SNAP_TO_CHAPTER" = "Bölüme otomatik geçmeyi devre dışı bırak";
+"SNAP_TO_CHAPTER_DESC" = "Videoları ararken otomatik olarak bölüme geçmeyi devre dışı bırakır";
+
+"PINCH_TO_ZOOM" = "Sıkıştırarak yakınlaştırmayı devre dışı bırak";
+"PINCH_TO_ZOOM_DESC" = "";
+
+"YT_MINIPLAYER" = "Tüm videolar için miniplayer'ı etkinleştir";
+"YT_MINIPLAYER_DESC" = "Miniplayer belirli videolar için etkinleştirilemez (ör. çocuk videoları). Bu seçenek bunu aşar";
+
+"HIDE_REMIX_BUTTON" = "Remix düğmesini gizle";
+"HIDE_REMIX_BUTTON_DESC" = "";
+
+"HIDE_CLIP_BUTTON" = "Klip düğmesini gizle";
+"HIDE_CLIP_BUTTON_DESC" = "";
+
+"HIDE_DOWNLOAD_BUTTON" = "İndirme düğmesini gizle";
+"HIDE_DOWNLOAD_BUTTON_DESC" = "";
+
+"STOCK_VOLUME_HUD" = "Stok iOS ses HUD'unu kullan";
+"STOCK_VOLUME_HUD_DESC" = "";
+
+// Video controls overlay options
+"VIDEO_CONTROLS_OVERLAY_OPTIONS" = "📹 Video kontrolleri kaplama seçenekleri";
+
+"HIDE_AUTOPLAY_SWITCH" = "Otomatik oynatma anahtarını gizle";
+"HIDE_AUTOPLAY_SWITCH_DESC" = "";
+
+"HIDE_SUBTITLES_BUTTON" = "Altyazı düğmesini gizle";
+"HIDE_SUBTITLES_BUTTON_DESC" = "";
+
+"HIDE_HUD_MESSAGES" = "HUD mesajlarını gizle";
+"HIDE_HUD_MESSAGES_DESC" = "Belirli işlemler için görüntülenen bildirim çubuklarını gizler (ör. CC açıldı/kapandı)";
+
+"HIDE_PAID_PROMOTION_CARDS" = "Ücretli promosyon bandını gizle";
+"HIDE_PAID_PROMOTION_CARDS_DESC" = "";
+
+"HIDE_CHANNEL_WATERMARK" = "Kanal filigranını gizle";
+"HIDE_CHANNEL_WATERMARK_DESC" = "";
+
+"HIDE_PREVIOUS_AND_NEXT_BUTTON" = "Önceki ve sonraki düğmeleri gizle";
+"HIDE_PREVIOUS_AND_NEXT_BUTTON_DESC" = "Tüm videolarda, çalma listeleri dahil, gizler";
+
+"REPLACE_PREVIOUS_NEXT_BUTTON" = "Hızlı ileri ve geri sarma düğmelerini kullan";
+"REPLACE_PREVIOUS_NEXT_BUTTON_DESC" = "Önceki ve sonraki düğmelerini hızlı ileri ve geri sarma ile değiştirir";
+
 "RED_PROGRESS_BAR" = "Kırmızı ilerleme çubuğu";
-"RED_PROGRESS_BAR_DESC" = "Kırmızı ilerleme çubuğunu geri getirir. Uygulamanın yeniden başlatılması gerekir.";
- 
-"HIDE_HOVER_CARD" = "Bitiş ekranlarının üzerine gelen kartları gizle.(YTNoHoverCards)";
-"HIDE_HOVER_CARD_DESC" = "Videoların sonundaki içerik oluşturucu bitiş ekranlarını (küçük resimler) gizler.";
- 
-"HIDE_RIGHT_PANEL" = "Tam ekran modunda sağ paneli gizle";
-"HIDE_RIGHT_PANEL_DESC" = "Uygulamanın yeniden başlatılması gerekir.";
- 
+"RED_PROGRESS_BAR_DESC" = "";
+
+"HIDE_HOVER_CARD" = "YTNoHoverCards";
+"HIDE_HOVER_CARD_DESC" = "Videoların son ekranlarını gizler";
+
+"HIDE_RIGHT_PANEL" = "Tam ekranda etkileşim panellerini gizle";
+"HIDE_RIGHT_PANEL_DESC" = "Manzara modunda sağ panelleri (ör. yorumlar, canlı sohbet, vb.) gizler";
+
 // Shorts controls overlay options
-"SHORTS_CONTROLS_OVERLAY_OPTIONS" = "💥 Shorts Kontroller Kaplama Seçenekleri";
- 
-"HIDE_SUPER_THANKS" = "\"Süper Teşekkür Satın Alın\" afişini gizle";
-"HIDE_SUPER_THANKS_DESC" = "Shorts'ta \"Süper Teşekkür Satın Alın\" afişini gizle.";
- 
-"HIDE_SUBCRIPTIONS" = "Abonelikler düğmesini gizle ";
-"HIDE_SUBCRIPTIONS_DESC" = "Duraklatıldığında görünen Abonelikler düğmesini gizle .";
- 
-"DISABLE_RESUME_TO_SHORTS" = "Shorts'ta kaldığı yerden devam etmeyi devre dışı bırak";
-"DISABLE_RESUME_TO_SHORTS_DESC" = "Shorts izlerken YouTube'u kapatırsan Shorts, YouTube'u bir sonraki açışında otomatik olarak oynatılmaz.";
- 
+"SHORTS_CONTROLS_OVERLAY_OPTIONS" = "💥 Shorts kontrolleri kaplama seçenekleri";
+
+"HIDE_SUPER_THANKS" = "\"Süper Teşekkürler Satın Al\" bandını gizle";
+"HIDE_SUPER_THANKS_DESC" = "";
+
+"HIDE_SUBCRIPTIONS" = "Abonelikler düğmesini gizle";
+"HIDE_SUBCRIPTIONS_DESC" = "";
+
+"DISABLE_RESUME_TO_SHORTS" = "Shorts'larda devam etmeyi devre dışı bırak";
+"DISABLE_RESUME_TO_SHORTS_DESC" = "YouTube'u Shorts izlerken kapatırsanız, uygulamayı bir dahaki açışınızda otomatik olarak Shorts'a devam etmesini engeller";
+
 // Miscellaneous
-"MISCELLANEOUS" = "🔎 Diğer";
- 
+"MISCELLANEOUS" = "🔎 Çeşitli";
+
 "HIDE_UYOU" = "uYou sekmesini gizle";
 "HIDE_ISPONSORBLOCK" = "iSponsorBlock düğmesini gizle";
- 
-"CAST_CONFIRM" = "Yayınlamadan önce uyarıyı onayla (YTCastConfirm)";
-"CAST_CONFIRM_DESC" = "TV'nin yanlışlıkla ele geçirilmesini önlemek için yayınlamadan önce bir onay uyarısı gösterir.";
-"CASTING" = "Yayınlar";
-"MSG_ARE_YOU_SURE" = "Yayınlamaya başlamak istediğinden emin misin?";
+
+"CAST_CONFIRM" = "YTCastConfirm";
+"CAST_CONFIRM_DESC" = "Yayınlamaya başlamadan önce onay uyarısı gösterir";
+"CASTING" = "Yayınlanıyor";
+"MSG_ARE_YOU_SURE" = "Yayınlamaya başlamak istediğinizden emin misiniz?";
 "MSG_YES" = "Evet";
 "MSG_CANCEL" = "İptal";
- 
+
 "DISABLE_HINTS" = "İpuçlarını devre dışı bırak";
-"DISABLE_HINTS_DESC" = "Genellikle uygulama yeni yüklendiğinde görüntülenen YouTube'dan özellik ipuçlarını devre dışı bırak.";
- 
+"DISABLE_HINTS_DESC" = "Uygulama yeni yüklendiğinde görüntülenen YouTube özellik ipuçlarını devre dışı bırakır";
+
 "ENABLE_YT_STARTUP_ANIMATION" = "YouTube başlangıç animasyonunu etkinleştir";
 "ENABLE_YT_STARTUP_ANIMATION_DESC" = "";
- 
-"HIDE_CHIP_BAR" = "Üst çubuğu gizle";
-"HIDE_CHIP_BAR_DESC" = "Ana Sayfa akışlarında (Trendler, Müzik, Oyun...) ve Abonelik akışlarında (Tüm videolar, İzlemeye devam et...) Üst çubuğu gizle. Uygulamanın yeniden başlatılması gerekir.";
- 
-"HIDE_PLAY_NEXT_IN_QUEUE" = "\"Sıradaki videoyu oynat\" düğmesini gizle";
-"HIDE_PLAY_NEXT_IN_QUEUE_DESC" = "";
- 
-"IPHONE_LAYOUT" = "iPhone Düzeni";
-"IPHONE_LAYOUT_DESC" = "iPhone Düzenini kullanmak istersen etkinleştir. Uygulamanın yeniden başlatılması gerekir.";
- 
-"NEW_MINIPLAYER_STYLE" = "Yeni mini oynatıcı bar stili. (BigYTMiniPlayer)";
-"NEW_MINIPLAYER_STYLE_DESC" = "Uygulamanın yeniden başlatılması gerekir.";
- 
-"YT_RE_EXPLORE" = "Shorts sekmesini Keşfet sekmesiyle değiştirin (YTReExplore)";
-"YT_RE_EXPLORE_DESC" = "Uygulamanın yeniden başlatılması gerekir.";
- 
-"ENABLE_FLEX" = "FLEX'i etkinleştir";
-"ENABLE_FLEX_DESC" = "Hata ayıklama için FLEX'i etkinleştir (önerilmez). Ne yaptığını bilmiyorsan bunu kapalı bırak.";
- 
-"FIX_GOOGLE_SIGNIN" = "Google Oturumu Açma'yı düzeltin (yalnızca TrollStore kullanıcıları için)";
-"FIX_GOOGLE_SIGNIN_DESC" = "Bu seçeneği yalnızca Google hesabınızla oturum açamadığınızda ve uygulama TrollStore aracılığıyla yüklendiyse aç. Normal olarak giriş yapabiliyorsan, devre dışı bırak. Uygulamanın yeniden başlatılması gerekir.";
 
-"FAKE_YOUR_PREMIUM_BENEFITS" = "Your Premium benefits";
-"FAKE_DOWNLOADS" = "Downloads";
+"HIDE_CHIP_BAR" = "Üst çubuğu gizle";
+"HIDE_CHIP_BAR_DESC" = "Ana sayfa ve abonelik akışlarında üst çubuğu gizler (ör. Tüm videolar, İzlemeye devam et, vb.)";
+
+"HIDE_PLAY_NEXT_IN_QUEUE" = "\"Sonraki sırada oynat\" düğmesini gizle";
+"HIDE_PLAY_NEXT_IN_QUEUE_DESC" = "";
+
+"IPHONE_LAYOUT" = "iPhone düzenini zorla";
+"IPHONE_LAYOUT_DESC" = "";
+
+"NEW_MINIPLAYER_STYLE" = "Yeni Mini Oynatıcı Tarzı";
+"NEW_MINIPLAYER_STYLE_DESC" = "Yeni mini oynatıcı çubuğu tarzı";
+
+"YT_RE_EXPLORE" = "YTReExplore";
+"YT_RE_EXPLORE_DESC" = "Shorts sekmesini Keşfet sekmesi ile değiştirir";
+
+"ENABLE_FLEX" = "FLEX'i etkinleştir";
+"ENABLE_FLEX_DESC" = "Hata ayıklama için FLEX'i etkinleştirir";
+
+"FIX_GOOGLE_SIGNIN" = "Google Girişini Düzelt (yalnızca TrollStore kullanıcıları için)";
+"FIX_GOOGLE_SIGNIN_DESC" = "Google hesabınızla giriş yapamıyorsanız ve uygulama TrollStore üzerinden yüklendiyse bu seçeneği açın. Normal giriş yapabiliyorsanız, kapalı tutun. Uygulama yeniden başlatılması gereklidir.";
+
+// uYouEnhanced Localization ➕
+"SUPPORT_THE_DEVELOPERS" = "Geliştiricileri Destekleyin";
+"COPY_SETTINGS" = "Ayarları Kopyala";
+"COPY_SETTINGS_DESC" = "Tüm mevcut ayarları panoya kopyala";
+"PASTE_SETTINGS" = "Ayarları Yapıştır";
+"PASTE_SETTINGS_DESC" = "Panodaki ayarları yapıştır ve uygula";
+
+"UYOUENHANCED_ESSENTIAL_MENU" = "uYouEnhanced Temel Menü";
+"CHANGE_APP_ICON" = "Uygulama Simgesini Değiştir";
+"CLEAR_NOTIFICATIONS" = "Bildirimleri Temizle";
+"CLEAR_NOTIFICATIONS_DESC" = "Tüm uygulama bildirimlerini zorla temizle (Yan yükleme durumunda önerilir)";
+
+"CUSTOM_DARK_THEME" = "Özel Koyu Tema";
+
+"ENABLE_PORTRAIT_FULLSCREEN" = "Dikey Tam Ekranı Etkinleştir";
+"ENABLE_PORTRAIT_FULLSCREEN_DESC" = "YouTube Uygulamasında Dikey Tam Ekranı etkinleştirir. Uygulama yeniden başlatılması gereklidir.";
+"ENABLE_TAP_TO_SEEK" = "Dokunarak Aramayı Etkinleştir";
+"ENABLE_TAP_TO_SEEK_DESC" = "İzleme çubuğuna tek dokunarak videoda herhangi bir yere atlayın";
+"DISABLE_PULL_TO_FULLSCREEN_GESTURE" = "Tam ekran hareketini devre dışı bırak";
+"DISABLE_PULL_TO_FULLSCREEN_GESTURE_DESC" = "Mini oynatıcıyı yukarı çekerek tam ekran yapma hareketini devre dışı bırak";
+"DISABLE_DOUBLE_TAP_TO_SKIP_CHAPTER" = "Çift dokunarak bölümü atlamayı devre dışı bırak";
+"DISABLE_DOUBLE_TAP_TO_SKIP_CHAPTER_DESC" = "İki parmakla çift dokunarak bölümü atlama hareketini devre dışı bırakır.";
+"ALWAYS_USE_REMAINING_TIME" = "Her zaman kalan zamanı kullan";
+"ALWAYS_USE_REMAINING_TIME_DESC" = "Varsayılan olarak oynatıcı çubuğunda kalan zamanı göster.";
+"DISABLE_TOGGLE_TIME_REMAINING" = "Kalan zamanı değiştirme işlevini devre dışı bırak";
+"DISABLE_TOGGLE_TIME_REMAINING_DESC" = "Geçen süreyi kalan zaman ile değiştirmeyi devre dışı bırak.";
+
+"ENABLE_SHARE_BUTTON" = "Paylaş Düğmesini Etkinleştir";
+"ENABLE_SHARE_BUTTON_DESC" = "Video kontrolleri katmanında Paylaş düğmesini etkinleştirir.";
+"ENABLE_SAVE_TO_PLAYLIST_BUTTON" = "Çalma Listesine Kaydet Düğmesini Etkinleştir";
+"ENABLE_SAVE_TO_PLAYLIST_BUTTON_DESC" = "Video kontrolleri katmanında Çalma Listesine Kaydet düğmesini etkinleştirir.";
+"HIDE_YTMUSIC_BUTTON" = "YouTube Music düğmesini gizle";
+"HIDE_YTMUSIC_BUTTON_DESC" = "Premium ile birlikte görünen YouTube Music düğmesini gizler.";
+"HIDE_VIDEO_TITLE_IN_FULLSCREEN" = "Tam ekranda video başlığını gizle";
+"HIDE_VIDEO_TITLE_IN_FULLSCREEN_DESC" = "Tam ekran video oynatıcıda video başlığını ve sol üstteki işlevi gizler.";
+"HIDE_COLLAPSE_BUTTON" = "Daraltma Düğmesini Gizle";
+"HIDE_COLLAPSE_BUTTON_DESC" = "Video oynatıcıda sol üstte görünen ok ile daraltma düğmesini gizler.";
+"HIDE_FULLSCREEN_BUTTON" = "Tam Ekran Düğmesini Gizle";
+"HIDE_FULLSCREEN_BUTTON_DESC" = "Video oynatıcıda sağ altta görünen tam ekran düğmesini gizler.";
+"HIDE_SHADOW_OVERLAY_BUTTONS" = "Gölge Katman Düğmelerini Gizle";
+"HIDE_SHADOW_OVERLAY_BUTTONS_DESC" = "Oynat/Duraklat, Önceki, Sonraki, İleri Sar ve Geri Sar düğmelerindeki gölge katmanını gizler.";
+"HIDE_FULLSCREEN_ACTION_BUTTONS" = "Tam Ekran Eylem Düğmelerini Gizle";
+"HIDE_FULLSCREEN_ACTION_BUTTONS_DESC" = "Manzara modunda ekranın altındaki düğmeleri gizler.";
+"HIDE_SUGGESTED_VIDEO" = "Önerilen Videoyu Gizle";
+"HIDE_SUGGESTED_VIDEO_DESC" = "Bir video bitince önerilen video açılır penceresini kaldırır. Bu, otomatik oynatmanın çalışmasını engeller.";
+"HIDE_HEATWAVES_BAR" = "Isı Dalgaları Çubuğunu Gizle";
+"HIDE_HEATWAVES_BAR_DESC" = "Video oynatıcısındaki İlerleme Çubuğunda varsayılan olarak gösterilen Isı Dalgaları Çubuğunu gizler. Uygulama yeniden başlatılması gereklidir.";
+"HIDE_DOUBLE_TAP_TO_SEEK_OVERLAY" = "Çift Dokunarak Arama Katmanını Gizle";
+"HIDE_DOUBLE_TAP_TO_SEEK_OVERLAY_DESC" = "Video oynatıcıdaki çift dokunarak arama animasyonlu katmanını gizler. Uygulama yeniden başlatılması gereklidir.";
+"HIDE_DARK_OVERLAY_BACKGROUND" = "Koyu Katman Arka Planını Gizle";
+"HIDE_DARK_OVERLAY_BACKGROUND_DESC" = "Video oynatıcıdaki koyu katman arka planını gizler. Uygulama yeniden başlatılması gereklidir.";
+"HIDE_AMBIENT_MODE_IN_FULLSCREEN" = "Tam Ekranda Ortam Modunu Gizle";
+"HIDE_AMBIENT_MODE_IN_FULLSCREEN_DESC" = "Tam ekran modunda video oynatıcıda ortam modunu gizler ve kullanımını engeller. Uygulama yeniden başlatılması gereklidir.";
+"HIDE_SUGGESTED_VIDEOS_IN_FULLSCREEN" = "Tam Ekranda Önerilen Videoları Gizle";
+"HIDE_SUGGESTED_VIDEOS_IN_FULLSCREEN_DESC" = "Tam ekran video oynatıcıda önerilen videoları gizler. Uygulama yeniden başlatılması gereklidir.";
+"HIDE_ALL_VIDEOS_UNDER_PLAYER" = "Oynatıcının Altındaki Tüm Videoları Gizle";
+"HIDE_ALL_VIDEOS_UNDER_PLAYER_DESC" = "Video oynatıcının altındaki tüm videoları kaldırır. Cihaz yönelimine bağlı olarak.";
+
+"SHORTS_QUALITY_PICKER" = "Shorts Kalite Seçici";
+"SHORTS_QUALITY_PICKER_DESC" = "YouTube Shorts Kalite Seçicisini etkinleştirir.";
+
+"VIDEO_PLAYER_BUTTON_OPTIONS" = "Video Oynatıcı Düğme Seçenekleri";
+
+"RED_SUBSCRIBE_BUTTON" = "Kırmızı Abone Ol Düğmesi";
+"RED_SUBSCRIBE_BUTTON_DESC" = "Abone Ol düğmesinin rengini kırmızı olarak geri getirir.";
+"HIDE_BUTTON_CONTAINERS_UNDER_PLAYER" = "Oynatıcının Altındaki Düğme Kaplarını Gizle";
+"HIDE_BUTTON_CONTAINERS_UNDER_PLAYER_DESC" = "Video oynatıcının altındaki düğme kaplarını gizler.";
+"HIDE_CONNECT_BUTTON" = "Oynatıcının Altındaki Bağlan Düğmesini Gizle";
+"HIDE_CONNECT_BUTTON_DESC" = "Video oynatıcının altındaki Bağlan düğmesini gizler.";
+"HIDE_SHARE_BUTTON" = "Oynatıcının Altındaki Paylaş Düğmesini Gizle";
+"HIDE_SHARE_BUTTON_DESC" = "Video oynatıcının altındaki Paylaş düğmesini gizler.";
+"HIDE_THANKS_BUTTON" = "Oynatıcının Altındaki Teşekkür Düğmesini Gizle";
+"HIDE_THANKS_BUTTON_DESC" = "Video oynatıcının altındaki Teşekkür düğmesini gizler.";
+"HIDE_SAVE_BUTTON" = "Oynatıcının Altındaki Kaydet Düğmesini Gizle";
+"HIDE_SAVE_BUTTON_DESC" = "Video oynatıcının altındaki Kaydet düğmesini gizler.";
+"HIDE_REPORT_BUTTON" = "Oynatıcının Altındaki Bildir Düğmesini Gizle";
+"HIDE_REPORT_BUTTON_DESC" = "Video oynatıcının altındaki Bildir düğmesini gizler.";
+"HIDE_COMMENT_PREVIEWS_UNDER_PLAYER" = "Oynatıcının Altındaki Yorum Önizlemelerini Gizle";
+"HIDE_COMMENT_PREVIEWS_UNDER_PLAYER_DESC" = "Video oynatıcının altındaki yorum önizlemelerini gizler.";
+"HIDE_COMMENT_SECTION_BUTTON" = "Oynatıcının Altındaki Yorum Bölümünü Gizle";
+"HIDE_COMMENT_SECTION_BUTTON_DESC" = "Video oynatıcının altındaki Yorum Bölümünü gizler.";
+
+"APP_SETTINGS_OVERLAY_OPTIONS" = "Uygulama Ayarları Katman Seçenekleri";
+
+"HIDE_ACCOUNT_SECTION" = "`Hesap` Bölümünü Gizle";
+"HIDE_AUTOPLAY_SECTION" = "`Otomatik Oynatma` Bölümünü Gizle";
+"HIDE_TRY_NEW_FEATURES_SECTION" = "`Yeni Özellikleri Deneyin` Bölümünü Gizle";
+"HIDE_VIDEO_QUALITY_PREFERENCES_SECTION" = "`Video Kalitesi Tercihleri` Bölümünü Gizle";
+"HIDE_NOTIFICATIONS_SECTION" = "`Bildirimler` Bölümünü Gizle";
+"HIDE_MANAGE_ALL_HISTORY_SECTION" = "`Tüm Geçmişi Yönet` Bölümünü Gizle";
+"HIDE_YOUR_DATA_IN_YOUTUBE_SECTION" = "`YouTube'daki Verileriniz` Bölümünü Gizle";
+"HIDE_PRIVACY_SECTION" = "`Gizlilik` Bölümünü Gizle";
+"HIDE_LIVE_CHAT_SECTION" = "`Canlı Sohbet` Bölümünü Gizle";
+"HIDE_GET_YOUTUBE_PREMIUM_SECTION" = "`YouTube Premium Edinin` Bölümünü Gizle";
+
+"UI_INTERFACE_OPTIONS" = "Kullanıcı Arayüzü Seçenekleri";
+
+"HIDE_HOME_TAB" = "Ana Sekmeyi Gizle";
+"LOW_CONTRAST_MODE" = "Düşük Kontrast Modu";
+"LOW_CONTRAST_MODE_DESC" = "Bu, metinler ve düğmelerdeki renk kontrastını YouTube'un 2020 öncesi uygulama arayüzüne benzer şekilde düşürecektir.";
+"LOW_CONTRAST_MODE_SELECTOR" = "Düşük Kontrast Modu Seçici";
+"LOW_CONTRAST_MODE_ERROR_1" = "v%@ kullanıyorsunuz, bu YouTube'un artık çalışmayan eski bir sürümüdür. Düşük Kontrast Modu'nu kullanmak için lütfen v17.33.2-17.38.10 sürümlerini kullanın.";
+"LOW_CONTRAST_MODE_ERROR_2" = "Düşük Kontrast Modu yalnızca v17.33.2-v17.38.10 uygulama sürümleri için geçerlidir. \nŞu anda v%@ kullanıyorsunuz. \nGeçici çözüm: Bunu kullanmak istiyorsanız, \"Düşük Kontrast Modu'nu Düzelt\" seçeneğini etkinleştirmenizi öneririm.";
+"FIX_LOWCONTRASTMODE" = "Düşük Kontrast Modu'nu Düzelt";
+"FIX_LOWCONTRASTMODE_DESC" = "YouTube v17.38.10'a sahte olarak geçiş yaparak Düşük Kontrast Modu işlevini düzeltir ve etkinleştirir. Uygulama yeniden başlatılması gereklidir.";
+"DISABLE_MODERN_BUTTONS" = "Modern Düğmeleri Devre Dışı Bırak";
+"DISABLE_MODERN_BUTTONS_DESC" = "YouTube uygulamasındaki bazı yeni modern/çip düğmelerini kaldırır. Uygulama yeniden başlatılması gereklidir.";
+"DISABLE_ROUNDED_CORNERS_ON_HINTS" = "İpuçlarındaki Yuvarlatılmış Köşeleri Devre Dışı Bırak";
+"DISABLE_ROUNDED_CORNERS_ON_HINTS_DESC" = "Uygulama içindeki ipuçlarında yuvarlatılmış köşeleri kaldırır. Uygulama yeniden başlatılması gereklidir.";
+"DISABLE_MODERN_FLAGS" = "Modern A/B Bayraklarını Devre Dışı Bırak";
+"DISABLE_MODERN_FLAGS_DESC" = "Varsayılan olarak etkinleştirilen herhangi bir modern bayrağı kapatır. Uygulama yeniden başlatılması gereklidir.";
+"YTNOMODERNUI" = "Belirli UI İlgili Seçenekleri Etkinleştir (YTNoModernUI)";
+"YTNOMODERNUI_DESC" = "Uygulamanın modern görünümünü azaltmak için diğer seçenekleri belirli olarak etkinleştirir. Uygulama yeniden başlatılması gereklidir.";
+"ENABLE_APP_VERSION_SPOOFER" = "Uygulama Sürüm Sahtekarını Etkinleştir";
+"ENABLE_APP_VERSION_SPOOFER_DESC" = "Uygulama Sürüm Sahtekarını etkinleştirerek tercih ettiğiniz sürümü seçmenizi sağlar. Uygulama yeniden başlatılması gereklidir.";
+"VERSION_SPOOFER_SELECTOR" = "Sürüm sahtekarını seçici";
+
+"ADBLOCK_WORKAROUND_LITE" = "Reklam Engelleme Çözümü (Hafif)";
+"ADBLOCK_WORKAROUND_LITE_DESC" = "Daha zayıf reklam engelleme kodu kullanır, bu uYou'nun reklam engelleme seçeneğini devre dışı bırakır.";
+"ADBLOCK_WORKAROUND" = "Reklam Engelleme Çözümü";
+"ADBLOCK_WORKAROUND_DESC" = "Daha güçlü reklam engelleme kodu kullanır.";
+"FAKE_PREMIUM" = "Sahte Premium";
+"FAKE_PREMIUM_DESC" = "Premium logosunu kullanır ve You sekmesinde sahte düğmeler oluşturur.";
+"FAKE_PREMIUM_WARNING" = "You sekmesi v%@ 'de mevcut değil, sahte düğmeler oluşturulmayacak.\nAncak, *Sahte Premium Logosu* hala çalışacaktır.";
+"FAKE_YOUR_PREMIUM_BENEFITS" = "Premium faydalarınız";
+"FAKE_DOWNLOADS" = "İndirmeler";
+"CENTER_YOUTUBE_LOGO" = "YouTube Logosunu Ortala";
+"CENTER_YOUTUBE_LOGO_DESC" = "Resmi YouTube Logosunu ortalamak için bu seçeneği açın. Uygulama yeniden başlatılması gereklidir.";
+"HIDE_YOUTUBE_LOGO" = "YouTube Logosunu Gizle";
+"HIDE_YOUTUBE_LOGO_DESC" = "YouTube Logosunu YouTube uygulamasında gizlemek için bu seçeneği açın.";
+"STICK_NAVIGATION_BAR" = "Gezinti Çubuğunu Sabitle";
+"STICK_NAVIGATION_BAR_DESC" = "Uygulama içinde gezinirken gezinti çubuğunu sabitler.";
+"HIDE_COMMUNITY_POSTS" = "Topluluk Gönderilerini Gizle";
+"HIDE_COMMUNITY_POSTS_DESC" = "Topluluk Gönderilerini gizler. Uygulama yeniden başlatılması gereklidir.";
+"HIDE_HEADER_LINKS_UNDER_PROFILE" = "Kanal profili altındaki başlık bağlantılarını gizle";
+"HIDE_HEADER_LINKS_UNDER_PROFILE_DESC" = "Herhangi bir kanal profili altındaki başlık bağlantılarını gizler.";
+"AUTO_HIDE_HOME_INDICATOR" = "Ana Ekran Göstergesini Otomatik Gizle";
+"AUTO_HIDE_HOME_INDICATOR_DESC" = "Uygulama ile etkileşim olmadığında iOS Ana Ekran Göstergesini otomatik olarak gizler.";
+"HIDE_INDICATORS" = "Göstergeleri Gizle";
+"HIDE_INDICATORS_DESC" = "Tüm göstergeleri gizler. (örneğin: Aşağı kaydırma, Yukarı Kaydırma, Kaydırma Durumu)";
+"FIX_CASTING" = "Dökümü Düzelt";
+"FIX_CASTING_DESC" = "Dökümü düzeltmek için belirli A/B bayraklarını değiştirir.";
+
+"DEFAULT" = "Varsayılan";
+"CUSTOM_COLOR" = "Özel Renk";
+"RESTART_REQUIRED" = "Uygulama yeniden başlatılması gereklidir.";
