@@ -151,6 +151,12 @@
 "COPY_SETTINGS_DESC" = "現在のすべての設定をクリップボードにコピーします";
 "PASTE_SETTINGS" = "設定を貼り付け";
 "PASTE_SETTINGS_DESC" = "クリップボードから設定を貼り付けて適用します";
+"EXPORT_SETTINGS" = "Export Settings";
+"EXPORT_SETTINGS_DESC" = "Exports all current settings into a .txt file";
+"IMPORT_SETTINGS" = "Import Settings";
+"IMPORT_SETTINGS_DESC" = "Press to import settings (.txt)";
+"REPLACE_COPY_AND_PASTE_BUTTONS" = "Replace 'Copy Settings' & 'Paste Settings' Buttons";
+"REPLACE_COPY_AND_PASTE_BUTTONS_DESC" = "Replaces the Buttons to 'Export Settings' and 'Import Settings'";
 
 "UYOUENHANCED_ESSENTIAL_MENU" = "uYouEnhanced エクストラメニュー";
 "CHANGE_APP_ICON" = "アプリアイコンを変更";
