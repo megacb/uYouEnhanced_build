@@ -212,6 +212,7 @@ extern NSBundle *uYouPlusBundle();
                 }
             } else {
                 // Copy Settings functionality (default behavior)
+                NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
                 NSMutableString *settingsString = [NSMutableString string];
                 NSArray *copyKeys = @[
         /* MAIN    Player Keys */ @"portraitFullscreen_enabled", @"slideToSeek_enabled", @"YTTapToSeek_enabled", @"doubleTapToSeek_disabled", @"snapToChapter_enabled", @"pinchToZoom_enabled", @"ytMiniPlayer_enabled", @"stockVolumeHUD_enabled", @"disablePullToFull_enabled", @"disableChapterSkip_enabled", @"alwaysShowRemainingTime_enabled", @"disableRemainingTime_enabled",
