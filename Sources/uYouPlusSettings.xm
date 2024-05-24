@@ -246,38 +246,48 @@ extern NSBundle *uYouPlusBundle();
         selectBlock:^BOOL (YTSettingsCell *cell, NSUInteger arg1) {
             if (IS_ENABLED(@"replaceCopyandPasteButtons_enabled")) {
                 // Import Settings functionality
-                NSString *fileName = @"%@.txt";
-                NSString *filePath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0] stringByAppendingPathComponent:fileName];
-                NSString *settingsString = [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:nil];
-                if (settingsString.length > 0) {
-                    NSArray *lines = [settingsString componentsSeparatedByString:@"\n"];
-                    for (NSString *line in lines) {
-                        NSArray *components = [line componentsSeparatedByString:@": "];
-                        if (components.count == 2) {
-                            NSString *key = components[0];
-                            NSString *value = components[1];
-                            [[NSUserDefaults standardUserDefaults] setObject:value forKey:key];
+                UIAlertController *confirmImportAlert = [UIAlertController alertControllerWithTitle:LOC(@"CONFIRM_IMPORT_TITLE") message:LOC(@"CONFIRM_IMPORT_MESSAGE") preferredStyle:UIAlertControllerStyleAlert];
+                [confirmImportAlert addAction:[UIAlertAction actionWithTitle:LOC(@"CANCEL") style:UIAlertActionStyleCancel handler:nil]];
+                [confirmImportAlert addAction:[UIAlertAction actionWithTitle:LOC(@"CONFIRM") style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                    NSString *fileName = @"uyouenhanced_settings.txt";
+                    NSString *filePath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0] stringByAppendingPathComponent:fileName];
+                    NSString *settingsString = [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:nil];
+                    if (settingsString.length > 0) {
+                        NSArray *lines = [settingsString componentsSeparatedByString:@"\n"];
+                        for (NSString *line in lines) {
+                            NSArray *components = [line componentsSeparatedByString:@": "];
+                            if (components.count == 2) {
+                                NSString *key = components[0];
+                                NSString *value = components[1];
+                                [[NSUserDefaults standardUserDefaults] setObject:value forKey:key];
+                            }
                         }
+                        [settingsViewController reloadData];
+                        SHOW_RELAUNCH_YT_SNACKBAR;
                     }
-                    [settingsViewController reloadData];
-                    SHOW_RELAUNCH_YT_SNACKBAR;
-                }
+                }];
+                [settingsViewController presentViewController:confirmImportAlert animated:YES completion:nil];
             } else {
                 // Paste Settings functionality (default behavior)
-                NSString *settingsString = [[UIPasteboard generalPasteboard] string];
-                if (settingsString.length > 0) {
-                    NSArray *lines = [settingsString componentsSeparatedByString:@"\n"];
-                    for (NSString *line in lines) {
-                        NSArray *components = [line componentsSeparatedByString:@": "];
-                        if (components.count == 2) {
-                            NSString *key = components[0];
-                            NSString *value = components[1];
-                            [[NSUserDefaults standardUserDefaults] setObject:value forKey:key];
+                UIAlertController *confirmPasteAlert = [UIAlertController alertControllerWithTitle:LOC(@"CONFIRM_PASTE_TITLE") message:LOC(@"CONFIRM_PASTE_MESSAGE") preferredStyle:UIAlertControllerStyleAlert];
+                [confirmPasteAlert addAction:[UIAlertAction actionWithTitle:LOC(@"CANCEL") style:UIAlertActionStyleCancel handler:nil]];
+                [confirmPasteAlert addAction:[UIAlertAction actionWithTitle:LOC(@"CONFIRM") style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                    NSString *settingsString = [[UIPasteboard generalPasteboard] string];
+                    if (settingsString.length > 0) {
+                        NSArray *lines = [settingsString componentsSeparatedByString:@"\n"];
+                        for (NSString *line in lines) {
+                            NSArray *components = [line componentsSeparatedByString:@": "];
+                            if (components.count == 2) {
+                                NSString *key = components[0];
+                                NSString *value = components[1];
+                                [[NSUserDefaults standardUserDefaults] setObject:value forKey:key];
+                            }
                         }
+                        [settingsViewController reloadData];
+                        SHOW_RELAUNCH_YT_SNACKBAR;
                     }
-                    [settingsViewController reloadData];
-                    SHOW_RELAUNCH_YT_SNACKBAR;
-                }
+                }];
+                [settingsViewController presentViewController:confirmPasteAlert animated:YES completion:nil];
             }
             return YES;
         }
