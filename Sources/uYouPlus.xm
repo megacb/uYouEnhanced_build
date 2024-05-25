@@ -504,6 +504,16 @@ BOOL isAdString(NSString *description) {
 %end
 %end
 
+// Disable animated YouTube Logo - @bhackel
+%hook YTHeaderLogoController
+- (void)configureYoodleNitrateController {
+    if (IS_ENABLED(@"disableAnimatedYouTubeLogo_enabled")) {
+        return;
+    }
+    %orig;
+}
+%end
+
 // Shorts Quality Picker - @arichornlover
 %group gShortsQualityPicker
 %hook YTHotConfig
