@@ -1796,9 +1796,13 @@ static BOOL findCell(ASNodeController *nodeController, NSArray <NSString *> *ide
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"noSuggestedVideoAtEnd"]; 
     }
     // Broken uYou 3.0.2 setting: Playback Speed Controls
-    // Set default to disabled
-    if (![allKeys containsObject:@"showPlaybackRate"]) { 
-        [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"showPlaybackRate"]; 
+    // Set default to disabled on iPads
+    if (![allKeys containsObject:@"showPlaybackRate"]) {
+        if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
+            [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"showPlaybackRate"]; 
+        } else {
+            [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"showPlaybackRate"]; 
+        }
     }
     // Set video casting fix default to enabled
     if (![allKeys containsObject:@"fixCasting_enabled"]) { 
