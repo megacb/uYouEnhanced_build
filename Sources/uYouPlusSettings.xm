@@ -1297,6 +1297,7 @@ extern NSBundle *uYouPlusBundle();
     SWITCH_ITEM2(LOC(@"AUTO_HIDE_HOME_INDICATOR"), LOC(@"AUTO_HIDE_HOME_INDICATOR_DESC"), @"autoHideHomeBar_enabled");
     SWITCH_ITEM2(LOC(@"HIDE_INDICATORS"), LOC(@"HIDE_INDICATORS_DESC"), @"hideSubscriptionsNotificationBadge_enabled");
     SWITCH_ITEM2(LOC(@"FIX_CASTING"), LOC(@"FIX_CASTING_DESC"), @"fixCasting_enabled");
+    SWITCH_ITEM2(LOC(@"NEW_SETTINGS_UI"), LOC(@"NEW_SETTINGS_UI_DESC"), @"newSettingsUI_enabled");
     SWITCH_ITEM(LOC(@"ENABLE_FLEX"), LOC(@"ENABLE_FLEX_DESC"), @"flex_enabled");
 
     if ([settingsViewController respondsToSelector:@selector(setSectionItems:forCategory:title:icon:titleDescription:headerHidden:)])

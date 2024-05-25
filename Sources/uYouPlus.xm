@@ -310,6 +310,7 @@ BOOL isAdString(NSString *description) {
 - (BOOL)respectDeviceCaptionSetting { return NO; } // YouRememberCaption: https://poomsmart.github.io/repo/depictions/youremembercaption.html
 - (BOOL)isLandscapeEngagementPanelSwipeRightToDismissEnabled { return YES; } // Swipe right to dismiss the right panel in fullscreen mode
 - (BOOL)enableModularPlayerBarController { return NO; } // fixes some of the iSponorBlock problems
+- (BOOL)mainAppCoreClientEnableCairoSettings { return IS_ENABLED(@"newSettingsUI_enabled"); } // New grouped settings UI
 %end
 
 // Fix Casting: https://github.com/arichornlover/uYouEnhanced/issues/606#issuecomment-2098289942
@@ -1802,5 +1803,9 @@ static BOOL findCell(ASNodeController *nodeController, NSArray <NSString *> *ide
     // Set video casting fix default to enabled
     if (![allKeys containsObject:@"fixCasting_enabled"]) { 
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"fixCasting_enabled"]; 
+    }
+    // Set new grouped settings UI to default enabled
+    if (![allKeys containsObject:@"newSettingsUI_enabled"]) { 
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"newSettingsUI_enabled"]; 
     }
 }
