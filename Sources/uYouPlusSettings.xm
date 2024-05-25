@@ -1271,6 +1271,8 @@ extern NSBundle *uYouPlusBundle();
                 [alert addAction:okAction];
                 [settingsViewController presentViewController:alert animated:YES completion:nil];
             }
+            // Enable the "Disable Animated YouTube Logo" setting
+            [[NSUserDefaults standardUserDefaults] setBool:enable forKey:@"disableAnimatedYouTubeLogo_enabled"];
             // Refresh data and show the relaunch popup
             [[NSUserDefaults standardUserDefaults] setBool:enable forKey:@"youTabFakePremium_enabled"];
             [settingsViewController reloadData];
@@ -1278,6 +1280,7 @@ extern NSBundle *uYouPlusBundle();
             return YES;
         });
     );
+    SWITCH_ITEM(LOC(@"DISABLE_ANIMATED_YOUTUBE_LOGO"), nil, @"disableAnimatedYouTubeLogo_enabled");
 //  SWITCH_ITEM(LOC(@"CENTER_YOUTUBE_LOGO"), LOC(@"CENTER_YOUTUBE_LOGO_DESC"), @"centerYouTubeLogo_enabled");
     SWITCH_ITEM(LOC(@"HIDE_YOUTUBE_LOGO"), LOC(@"HIDE_YOUTUBE_LOGO_DESC"), @"hideYouTubeLogo_enabled");
     SWITCH_ITEM2(LOC(@"ENABLE_YT_STARTUP_ANIMATION"), LOC(@"ENABLE_YT_STARTUP_ANIMATION_DESC"), @"ytStartupAnimation_enabled");

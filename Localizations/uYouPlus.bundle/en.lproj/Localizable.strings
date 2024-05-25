@@ -273,10 +273,11 @@
 "ADBLOCK_WORKAROUND" = "AdBlock Workaround";
 "ADBLOCK_WORKAROUND_DESC" = "Uses stronger adblocking code.";
 "FAKE_PREMIUM" = "Fake Premium";
-"FAKE_PREMIUM_DESC" = "Uses Premium logo and creates fake buttons in the You tab.";
+"FAKE_PREMIUM_DESC" = "Uses Premium logo and creates fake buttons in the You tab. Will disable animated YouTube logo.";
 "FAKE_PREMIUM_WARNING" = "The *You* Tab doesn't exist in v%@, fake buttons will not be created.\nBut the *Fake Premium Logo* will still work.";
 "FAKE_YOUR_PREMIUM_BENEFITS" = "Your Premium benefits";
 "FAKE_DOWNLOADS" = "Downloads";
+"DISABLE_ANIMATED_YOUTUBE_LOGO" = "Disable Animated YouTube Logo";
 "CENTER_YOUTUBE_LOGO" = "Center YouTube Logo";
 "CENTER_YOUTUBE_LOGO_DESC" = "Toggle this to reposition the official YouTube Logo to the Center. App restart is required.";
 "HIDE_YOUTUBE_LOGO" = "Hide YouTube Logo";
