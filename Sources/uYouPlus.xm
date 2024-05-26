@@ -1223,6 +1223,7 @@ NSData *cellDividerData;
 %hook YTIElementRenderer
 - (NSData *)elementData {
     NSString *description = [self description];
+/*
     if ([NSUserDefaults.standardUserDefaults boolForKey:@"removeShortsCell"]) { // uYou (Hide Shorts Cells)
         if ([description containsString:@"shorts_shelf.eml"] || [description containsString:@"#shorts"] || [description containsString:@"shorts_video_cell.eml"] || [description containsString:@"6Shorts"]) {
             if (![description containsString:@"history*"]) {
@@ -1231,6 +1232,7 @@ NSData *cellDividerData;
             }
         }
     }
+*/
 // Hide Community Posts @michael-winay & @arichornlover
     if (IS_ENABLED(@"hideCommunityPosts_enabled")) {
         if ([description containsString:@"post_base_wrapper.eml"]) {
@@ -1238,12 +1240,14 @@ NSData *cellDividerData;
             return cellDividerData;
         }
     }
+*/
 // etc. - @Dayanch96
     BOOL hasShorts = ([description containsString:@"shorts_shelf.eml"] || [description containsString:@"shorts_video_cell.eml"] || [description containsString:@"6Shorts"]) && ![description containsString:@"history*"];
     BOOL hasShortsInHistory = [description containsString:@"compact_video.eml"] && [description containsString:@"youtube_shorts_"];
 
     if (hasShorts || hasShortsInHistory) return cellDividerData;
     return %orig;
+*/
 }
 %end
 
@@ -1270,16 +1274,12 @@ NSData *cellDividerData;
 }
 %end
 
-// Hide the (Connect / Thanks / Save / Report) Buttons under the Video Player - 17.33.2 and up - @arichornlover (inspired by @PoomSmart's version) DEPRECATED METHOD ⚠️
+// Hide the (Connect / Thanks / Save / Report) Buttons under the Video Player - 17.33.2 and up - @arichornlover (inspired by @PoomSmart's version) LEGACY METHOD ⚠️
 %hook _ASDisplayView
 - (void)layoutSubviews {
     %orig;
     BOOL hideConnectButton = IS_ENABLED(@"hideConnectButton_enabled");
-//  BOOL hideShareButton = IS_ENABLED(@"hideShareButton_enabled"); // OLD
-//  BOOL hideRemixButton = IS_ENABLED(@"hideRemixButton_enabled"); // OLD
     BOOL hideThanksButton = IS_ENABLED(@"hideThanksButton_enabled");
-//  BOOL hideAddToOfflineButton = IS_ENABLED(@"hideAddToOfflineButton_enabled"); // OLD
-//  BOOL hideClipButton = IS_ENABLED(@"hideClipButton_enabled"); // OLD
     BOOL hideSaveToPlaylistButton = IS_ENABLED(@"hideSaveToPlaylistButton_enabled");
     BOOL hideReportButton = IS_ENABLED(@"hideReportButton_enabled");
 
@@ -1297,7 +1297,7 @@ NSData *cellDividerData;
 }
 %end
 
-// Hide the (Connect / Share / Remix / Thanks / Download / Clip / Save / Report) Buttons under the Video Player - 17.33.2 and up - @PoomSmart (inspired by @arichornlover) - NEW METHOD
+// Hide the (Connect / Share / Remix / Thanks / Download / Clip / Save / Report) Buttons under the Video Player - 17.33.2 and up - @PoomSmart (inspired by @arichornlover) - METHOD BROKE Server-Side on May 14th 2024
 static BOOL findCell(ASNodeController *nodeController, NSArray <NSString *> *identifiers) {
     for (id child in [nodeController children]) {
         if ([child isKindOfClass:%c(ELMNodeController)]) {
@@ -1535,12 +1535,17 @@ static BOOL findCell(ASNodeController *nodeController, NSArray <NSString *> *ide
 }
 %end
 
-// Hide the Videos under the Video Player - @Dayanch96
+// Hide the Videos under the Video Player - @Dayanch96 & @arichornlover
 %group gNoRelatedWatchNexts
 %hook YTWatchNextResultsViewController
 - (void)setVisibleSections:(NSInteger)arg1 {
-    arg1 = 1;
-    %orig(arg1);
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad && UIInterfaceOrientationIsLandscape([UIApplication sharedApplication].statusBarOrientation)) {
+        // doesn't hide Videos under the Video Player if iPad is in Landscape mode to prevent conflicts
+        return;
+    } else {
+        arg1 = 1;
+        %orig(arg1);
+    }
 }
 %end
 %end
