@@ -15,12 +15,12 @@
 "APP_THEME" = "🎨 Wygląd aplikacji";
 "THEME_OPTIONS" = "Ustawienia motywu";
 
-"DARK_THEME" = "Ciemny";
+"DARK_THEME" = "Motyw";
 
 "DEFAULT_THEME" = "Domyślny";
 "DEFAULT_THEME_DESC" = "";
 
-"OLD_DARK_THEME" = "Jasnoszary;
+"OLD_DARK_THEME" = "Jasnoszary";
 "OLD_DARK_THEME_DESC" = "Klasyczny, ciemny motyw YouTube";
 
 "OLED_DARK_THEME" = "Tryb ciemny OLED (Eksperymentalny)";
@@ -65,9 +65,6 @@
 
 "HIDE_AUTOPLAY_SWITCH" = "Ukryj przycisk Autoodtwarzanie";
 "HIDE_AUTOPLAY_SWITCH_DESC" = "Ukrywa przycisk Autoodtwarzanie w okładce odtwarzacza filmów.";
-
-"HIDE_YTMUSIC_BUTTON" = "Ukryj przycisk Youtube Music";
-"HIDE_YTMUSIC_BUTTON_DESC" = "Ukrywa przycisk YouTube Music, który pojawia się z kontem premium";
 
 "HIDE_SUBTITLES_BUTTON" = "Ukryj przycisk Napisy";
 "HIDE_SUBTITLES_BUTTON_DESC" = "Ukrywa przycisk Napisy w okładce odtwarzacza filmów.";
@@ -133,7 +130,7 @@
 "HIDE_PLAY_NEXT_IN_QUEUE" = "Ukryj \"Otwórz jako następny w kolejce\"";
 "HIDE_PLAY_NEXT_IN_QUEUE_DESC" = "";
 
-"IPHONE_LAYOUT" = "Wymuś motyw iPhone";
+"IPHONE_LAYOUT" = "Wymuś wygląd iPhone";
 "IPHONE_LAYOUT_DESC" = "";
 
 "NEW_MINIPLAYER_STYLE" = "Nowy styl miniodtwarzacza (BigYTMiniPlayer)";
@@ -148,6 +145,158 @@
 "FIX_GOOGLE_SIGNIN" = "Napraw logowanie się z Google (tylko dla użytkowników TrollStore)";
 "FIX_GOOGLE_SIGNIN_DESC" = "Włącz tą opcję tylko wtedy, kiedy nie możesz zalogować się swoim kontem Google, a aplikacja została zainstalowana przez TrollStore. Jeżeli da się zalogować normalnie, zostaw to wyłączone. Restart aplikacji jest wymagany.";
 
+// uYouEnhanced Localization ➕
+"SUPPORT_THE_DEVELOPERS" = "Support the Developers";
+"COPY_SETTINGS" = "Copy Settings";
+"COPY_SETTINGS_DESC" = "Copy all current settings to the clipboard";
+"PASTE_SETTINGS" = "Paste Settings";
+"PASTE_SETTINGS_DESC" = "Paste settings from clipboard and apply";
+"EXPORT_SETTINGS" = "Export Settings";
+"EXPORT_SETTINGS_DESC" = "Exports all current settings into a .txt file";
+"IMPORT_SETTINGS" = "Import Settings";
+"IMPORT_SETTINGS_DESC" = "Press to import settings (.txt)";
+"REPLACE_COPY_AND_PASTE_BUTTONS" = "Replace 'Copy Settings' & 'Paste Settings' Buttons";
+"REPLACE_COPY_AND_PASTE_BUTTONS_DESC" = "Replaces the Buttons to 'Export Settings' and 'Import Settings'";
+
+"UYOUENHANCED_ESSENTIAL_MENU" = "uYouEnhanced Essential Menu";
+"CHANGE_APP_ICON" = "Change App Icon";
+"CLEAR_NOTIFICATIONS" = "Clear Notifications";
+"CLEAR_NOTIFICATIONS_DESC" = "Force clear all app notifications (Recommended when Sideloaded)";
+
+"CUSTOM_DARK_THEME" = "Custom Dark Theme";
+
+"ENABLE_PORTRAIT_FULLSCREEN" = "Enable Portrait Fullscreen";
+"ENABLE_PORTRAIT_FULLSCREEN_DESC" = "Enables Portrait Fullscreen on the YouTube App. App restart is required.";
+"ENABLE_TAP_TO_SEEK" = "Enable Tap To Seek";
+"ENABLE_TAP_TO_SEEK_DESC" = "Jump to anywhere in a video by single-tapping the seek bar";
+"DISABLE_PULL_TO_FULLSCREEN_GESTURE" = "Disable pull-to-fullscreen gesture";
+"DISABLE_PULL_TO_FULLSCREEN_GESTURE_DESC" = "Disable the drag gesture to enter vertical fullscreen. Only applies to landscape videos.";
+"DISABLE_DOUBLE_TAP_TO_SKIP_CHAPTER" = "Disable Double tap to skip chapter";
+"DISABLE_DOUBLE_TAP_TO_SKIP_CHAPTER_DESC" = "Disable the 2-finger double tap gesture that skips forward/backward by a chapter.";
+"ALWAYS_USE_REMAINING_TIME" = "Always use remaining time";
+"ALWAYS_USE_REMAINING_TIME_DESC" = "Change the default to show time remaining in the player bar.";
+"DISABLE_TOGGLE_TIME_REMAINING" = "Disable toggle time remaining";
+"DISABLE_TOGGLE_TIME_REMAINING_DESC" = "Disables changing time elapsed to time remaining. Use with other setting to always show remaining time.";
+
+"ENABLE_SHARE_BUTTON" = "Enable Share Button";
+"ENABLE_SHARE_BUTTON_DESC" = "Enable the Share Button in video controls overlay.";
+"ENABLE_SAVE_TO_PLAYLIST_BUTTON" = "Enable Save To Playlist Button";
+"ENABLE_SAVE_TO_PLAYLIST_BUTTON_DESC" = "Enable the Save To Playlist Button in video controls overlay.";
+"HIDE_YTMUSIC_BUTTON" = "Hide Youtube Music button";
+"HIDE_YTMUSIC_BUTTON_DESC" = "Hides Youtube Music button that appears with Premium";
+"HIDE_VIDEO_TITLE_IN_FULLSCREEN" = "Hide Video Title in Fullscreen";
+"HIDE_VIDEO_TITLE_IN_FULLSCREEN_DESC" = "Hides the Video Title along with the functionality in the Top Left of the Fullscreen Video Player.";
+"HIDE_COLLAPSE_BUTTON" = "Hide Collapse Button";
+"HIDE_COLLAPSE_BUTTON_DESC" = "Hides the Arrow Collapse Button that was shown in the Top Left of the Video Player.";
+"HIDE_FULLSCREEN_BUTTON" = "Hide Fullscreen Button";
+"HIDE_FULLSCREEN_BUTTON_DESC" = "Hides the Fullscreen Button that was shown at the Bottom Right of the Video Player.";
+"HIDE_SHADOW_OVERLAY_BUTTONS" = "Hide Shadow Overlay Buttons";
+"HIDE_SHADOW_OVERLAY_BUTTONS_DESC" = "Hide the Shadow Overlay on the Play/Pause, Previous, Next, Forward & Rewind Buttons.";
+"HIDE_FULLSCREEN_ACTION_BUTTONS" = "Hide Fullscreen Action Buttons";
+"HIDE_FULLSCREEN_ACTION_BUTTONS_DESC" = "Hides the buttons at the bottom of the screen when in landscape.";
+"HIDE_SUGGESTED_VIDEO" = "Hide Suggested Video";
+"HIDE_SUGGESTED_VIDEO_DESC" = "Remove the suggested video popup when finishing a video. Note that this will prevent autoplay from working.";
+"HIDE_HEATWAVES_BAR" = "Hide Heatwaves Bar";
+"HIDE_HEATWAVES_BAR_DESC" = "Hides the Heatwaves Bar that is originally shown in the Progress Bar by Default in the video player. App restart is required.";
+"HIDE_DOUBLE_TAP_TO_SEEK_OVERLAY" = "Hide Double Tap to Seek Overlay";
+"HIDE_DOUBLE_TAP_TO_SEEK_OVERLAY_DESC" = "This hides the animated double tap to seek overlay in the video player. App restart is required.";
+"HIDE_DARK_OVERLAY_BACKGROUND" = "Hide Dark Overlay Background";
+"HIDE_DARK_OVERLAY_BACKGROUND_DESC" = "Hide the Dark Overlay Background in the video player. App restart is required.";
+"HIDE_AMBIENT_MODE_IN_FULLSCREEN" = "Hide Ambient Mode in Fullscreen";
+"HIDE_AMBIENT_MODE_IN_FULLSCREEN_DESC" = "Hides and Prevents Ambient Mode from being used in the Video Player when in Fullscreen. App restart is required.";
+"HIDE_SUGGESTED_VIDEOS_IN_FULLSCREEN" = "Hide Suggested Videos in Fullscreen";
+"HIDE_SUGGESTED_VIDEOS_IN_FULLSCREEN_DESC" = "Hide the suggested videos whenever in the Fullscreen Video Player. App restart is required.";
+"HIDE_ALL_VIDEOS_UNDER_PLAYER" = "Hide all videos under player";
+"HIDE_ALL_VIDEOS_UNDER_PLAYER_DESC" = "Remove all videos under the video player. Depends on which Device Orientation.";
+
+"SHORTS_QUALITY_PICKER" = "Shorts Quality Picker";
+"SHORTS_QUALITY_PICKER_DESC" = "Enables the YouTube Shorts Quality Picker";
+
+"VIDEO_PLAYER_BUTTON_OPTIONS" = "Video Player Button Options";
+
+"RED_SUBSCRIBE_BUTTON" = "Red Subscribe Button";
+"RED_SUBSCRIBE_BUTTON_DESC" = "Restores the Subscribe Button Color to be Red.";
+"HIDE_BUTTON_CONTAINERS_UNDER_PLAYER" = "Hide Button Containers under player";
+"HIDE_BUTTON_CONTAINERS_UNDER_PLAYER_DESC" = "Hides the Button Containers under the video player.";
+"HIDE_CONNECT_BUTTON" = "Hide the Connect Button under player";
+"HIDE_CONNECT_BUTTON_DESC" = "Hides the Connect Button under the video player.";
+"HIDE_SHARE_BUTTON" = "Hide the Share Button under player";
+"HIDE_SHARE_BUTTON_DESC" = "Hides the Share Button under the video player.";
+"HIDE_THANKS_BUTTON" = "Hide the Thanks Button under player";
+"HIDE_THANKS_BUTTON_DESC" = "Hides the Thanks Button under the video player.";
+"HIDE_SAVE_BUTTON" = "Hide the Save Button under player";
+"HIDE_SAVE_BUTTON_DESC" = "Hides the Save Button under the video player.";
+"HIDE_REPORT_BUTTON" = "Hide the Report Button under player";
+"HIDE_REPORT_BUTTON_DESC" = "Hides the Report Button under the video player.";
+"HIDE_COMMENT_PREVIEWS_UNDER_PLAYER" = "Hide Comment previews under player";
+"HIDE_COMMENT_PREVIEWS_UNDER_PLAYER_DESC" = "Hides the comment previews under the video player.";
+"HIDE_COMMENT_SECTION_BUTTON" = "Hide the comment section under player";
+"HIDE_COMMENT_SECTION_BUTTON_DESC" = "Hides the Comment Section under the video player.";
+
+"APP_SETTINGS_OVERLAY_OPTIONS" = "App Settings Overlay Options";
+
+"HIDE_ACCOUNT_SECTION" = "Hide `Account` Section";
+"HIDE_AUTOPLAY_SECTION" = "Hide `Autoplay` Section";
+"HIDE_TRY_NEW_FEATURES_SECTION" = "Hide `Try New Features` Section";
+"HIDE_VIDEO_QUALITY_PREFERENCES_SECTION" = "Hide `Video quality preferences` Section";
+"HIDE_NOTIFICATIONS_SECTION" = "Hide `Notifications` Section";
+"HIDE_MANAGE_ALL_HISTORY_SECTION" = "Hide `Manage all history` Section";
+"HIDE_YOUR_DATA_IN_YOUTUBE_SECTION" = "Hide `Your data in YouTube` Section";
+"HIDE_PRIVACY_SECTION" = "Hide `Privacy` Section";
+"HIDE_LIVE_CHAT_SECTION" = "Hide `Live Chat` Section";
+"HIDE_GET_YOUTUBE_PREMIUM_SECTION" = "Hide `Get Youtube Premium` Section";
+
+"UI_INTERFACE_OPTIONS" = "UI Interface Options";
+
+"HIDE_HOME_TAB" = "Hide Home Tab";
+"LOW_CONTRAST_MODE" = "Low Contrast Mode";
+"LOW_CONTRAST_MODE_DESC" = "This will lower the color contrast on texts and buttons, similar to YouTube's pre-2020 App Interface.";
+"LOW_CONTRAST_MODE_SELECTOR" = "Low Contrast Mode Selector";
+"LOW_CONTRAST_MODE_ERROR_1" = "You are using v%@ which is a discontinued version of YouTube that no longer works. Please use v17.33.2-17.38.10 in order to use LowContrastMode.";
+"LOW_CONTRAST_MODE_ERROR_2" = "LowContrastMode is only available for app versions v17.33.2-v17.38.10. \nYou are currently using v%@. \nWorkaround: if you want to use this then I recommend enabling \"Fix LowContrastMode\" Option.";
+"FIX_LOWCONTRASTMODE" = "Fix LowContrastMode";
+"FIX_LOWCONTRASTMODE_DESC" = "This will fix and enable the LowContrastMode functionality by Spoofing to YouTube v17.38.10. App restart is required.";
+"DISABLE_MODERN_BUTTONS" = "Disable Modern Buttons";
+"DISABLE_MODERN_BUTTONS_DESC" = "This will remove the some of the new Modern/Chip Buttons in the YouTube App. App restart is required.";
+"DISABLE_ROUNDED_CORNERS_ON_HINTS" = "Disable Rounded Corners on Hints";
+"DISABLE_ROUNDED_CORNERS_ON_HINTS_DESC" = "This will make the Hints in the App to not include Rounded Corners. App restart is required.";
+"DISABLE_MODERN_FLAGS" = "Disable Modern A/B Flags";
+"DISABLE_MODERN_FLAGS_DESC" = "This will turn off any Modern Flag that was enabled by default. App restart is required.";
+"YTNOMODERNUI" = "Enable Specific UI Related Options (YTNoModernUI)";
+"YTNOMODERNUI_DESC" = "This will specifically enable other options to make the app look and feel less-modern. App restart is required.";
+"ENABLE_APP_VERSION_SPOOFER" = "Enable App Version Spoofer";
+"ENABLE_APP_VERSION_SPOOFER_DESC" = "Enable this to use the Version Spoofer and select your perferred version below. App restart is required.";
+"VERSION_SPOOFER_SELECTOR" = "Version spoofer selector";
+
+"ADBLOCK_WORKAROUND_LITE" = "AdBlock Workaround (Lite)";
+"ADBLOCK_WORKAROUND_LITE_DESC" = "Uses weaker adblocking code, this will disable uYou's Adblocking Option.";
+"ADBLOCK_WORKAROUND" = "AdBlock Workaround";
+"ADBLOCK_WORKAROUND_DESC" = "Uses stronger adblocking code.";
+"FAKE_PREMIUM" = "Fake Premium";
+"FAKE_PREMIUM_DESC" = "Uses Premium logo and creates fake buttons in the You tab. Will disable animated YouTube logo.";
+"FAKE_PREMIUM_WARNING" = "The *You* Tab doesn't exist in v%@, fake buttons will not be created.\nBut the *Fake Premium Logo* will still work.";
 "FAKE_YOUR_PREMIUM_BENEFITS" = "Twoje korzyści z YouTube Premium";
 "FAKE_DOWNLOADS" = "Pobrane";
 "DISABLE_ANIMATED_YOUTUBE_LOGO" = "Wyłącz animowane logo YouTube";
+"CENTER_YOUTUBE_LOGO" = "Center YouTube Logo";
+"CENTER_YOUTUBE_LOGO_DESC" = "Toggle this to reposition the official YouTube Logo to the Center. App restart is required.";
+"HIDE_YOUTUBE_LOGO" = "Hide YouTube Logo";
+"HIDE_YOUTUBE_LOGO_DESC" = "Toggle this to hide the YouTube Logo in the YouTube App.";
+"STICK_NAVIGATION_BAR" = "Stick Navigation Bar";
+"STICK_NAVIGATION_BAR_DESC" = "This will make the Navigation Bar stay when scrolling throughout the App.";
+"HIDE_COMMUNITY_POSTS" = "Hide Community Posts";
+"HIDE_COMMUNITY_POSTS_DESC" = "Hides the Community Posts. App restart is required.";
+"HIDE_HEADER_LINKS_UNDER_PROFILE" = "Hide Header Links under channel profile";
+"HIDE_HEADER_LINKS_UNDER_PROFILE_DESC" = "Hides the Header Links under any channel profile.";
+"AUTO_HIDE_HOME_INDICATOR" = "Auto-Hide Home Indicator";
+"AUTO_HIDE_HOME_INDICATOR_DESC" = "Automatically Hides the iOS Home Indicator when not interacting with the App.";
+"HIDE_INDICATORS" = "Hide Indicators";
+"HIDE_INDICATORS_DESC" = "Hides all Indicators that are currently in the App.";
+"FIX_CASTING" = "Fix Casting";
+"FIX_CASTING_DESC" = "Changes certain A/B flags to fix casting.";
+"NEW_SETTINGS_UI" = "Use New Settings UI";
+"NEW_SETTINGS_UI_DESC" = "Enables the new Settings UI with tweak categories.";
+
+"DEFAULT" = "Default";
+"CUSTOM_COLOR" = "Custom Color";
+"RESTART_REQUIRED" = "App restart is required.";
