@@ -1247,8 +1247,8 @@ NSData *cellDividerData;
 
     if (hasShorts || hasShortsInHistory) return cellDividerData;
     return %orig;
-*/
 }
+*/
 %end
 
 // Red Subscribe Button - 17.33.2 and up - @arichornlover
