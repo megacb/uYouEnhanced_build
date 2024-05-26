@@ -1219,11 +1219,11 @@ NSData *cellDividerData;
 }
 %end
 
+/*
 // Hide Shorts Cells - @PoomSmart, @iCrazeiOS & @Dayanch96
 %hook YTIElementRenderer
 - (NSData *)elementData {
     NSString *description = [self description];
-/*
     if ([NSUserDefaults.standardUserDefaults boolForKey:@"removeShortsCell"]) { // uYou (Hide Shorts Cells)
         if ([description containsString:@"shorts_shelf.eml"] || [description containsString:@"#shorts"] || [description containsString:@"shorts_video_cell.eml"] || [description containsString:@"6Shorts"]) {
             if (![description containsString:@"history*"]) {
@@ -1232,7 +1232,6 @@ NSData *cellDividerData;
             }
         }
     }
-*/
 // Hide Community Posts @michael-winay & @arichornlover
     if (IS_ENABLED(@"hideCommunityPosts_enabled")) {
         if ([description containsString:@"post_base_wrapper.eml"]) {
@@ -1240,7 +1239,6 @@ NSData *cellDividerData;
             return cellDividerData;
         }
     }
-/*
 // etc. - @Dayanch96
     BOOL hasShorts = ([description containsString:@"shorts_shelf.eml"] || [description containsString:@"shorts_video_cell.eml"] || [description containsString:@"6Shorts"]) && ![description containsString:@"history*"];
     BOOL hasShortsInHistory = [description containsString:@"compact_video.eml"] && [description containsString:@"youtube_shorts_"];
@@ -1248,8 +1246,8 @@ NSData *cellDividerData;
     if (hasShorts || hasShortsInHistory) return cellDividerData;
     return %orig;
 }
-*/
 %end
+*/
 
 // Red Subscribe Button - 17.33.2 and up - @arichornlover
 %hook ELMContainerNode
