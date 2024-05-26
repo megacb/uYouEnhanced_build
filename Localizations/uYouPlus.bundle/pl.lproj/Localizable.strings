@@ -15,12 +15,12 @@
 "APP_THEME" = "🎨 Wygląd aplikacji";
 "THEME_OPTIONS" = "Ustawienia motywu";
 
-"DARK_THEME" = "Ciemny";
+"DARK_THEME" = "Motyw";
 
 "DEFAULT_THEME" = "Domyślny";
 "DEFAULT_THEME_DESC" = "";
 
-"OLD_DARK_THEME" = "Jasnoszary;
+"OLD_DARK_THEME" = "Jasnoszary";
 "OLD_DARK_THEME_DESC" = "Klasyczny, ciemny motyw YouTube";
 
 "OLED_DARK_THEME" = "Tryb ciemny OLED (Eksperymentalny)";
