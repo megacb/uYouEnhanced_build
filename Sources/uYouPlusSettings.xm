@@ -181,7 +181,7 @@ extern NSBundle *uYouPlusBundle();
 
     YTSettingsSectionItem *copySettings = [%c(YTSettingsSectionItem)
         itemWithTitle:IS_ENABLED(@"replaceCopyandPasteButtons_enabled") ? LOC(@"EXPORT_SETTINGS") : LOC(@"COPY_SETTINGS")
-        titleDescription:LOC(@"COPY_SETTINGS_DESC")
+        titleDescription:IS_ENABLED(@"replaceCopyandPasteButtons_enabled") ? LOC(@"EXPORT_SETTINGS_DESC") : LOC(@"COPY_SETTINGS_DESC") 
         accessibilityIdentifier:nil
         detailTextBlock:nil
         selectBlock:^BOOL (YTSettingsCell *cell, NSUInteger arg1) {
@@ -246,32 +246,15 @@ extern NSBundle *uYouPlusBundle();
         selectBlock:^BOOL (YTSettingsCell *cell, NSUInteger arg1) {
             if (IS_ENABLED(@"replaceCopyandPasteButtons_enabled")) {
                 // Import Settings functionality
-                UIAlertController *confirmImportAlert = [UIAlertController alertControllerWithTitle:LOC(@"CONFIRM_IMPORT_TITLE") message:LOC(@"CONFIRM_IMPORT_MESSAGE") preferredStyle:UIAlertControllerStyleAlert];
-                [confirmImportAlert addAction:[UIAlertAction actionWithTitle:LOC(@"CANCEL") style:UIAlertActionStyleCancel handler:nil]];
-                [confirmImportAlert addAction:[UIAlertAction actionWithTitle:LOC(@"CONFIRM") style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-                    NSString *fileName = @"uyouenhanced_settings.txt";
-                    NSString *filePath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0] stringByAppendingPathComponent:fileName];
-                    NSString *settingsString = [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:nil];
-                    if (settingsString.length > 0) {
-                        NSArray *lines = [settingsString componentsSeparatedByString:@"\n"];
-                        for (NSString *line in lines) {
-                            NSArray *components = [line componentsSeparatedByString:@": "];
-                            if (components.count == 2) {
-                                NSString *key = components[0];
-                                NSString *value = components[1];
-                                [[NSUserDefaults standardUserDefaults] setObject:value forKey:key];
-                            }
-                        }
-                        [settingsViewController reloadData];
-                        SHOW_RELAUNCH_YT_SNACKBAR;
-                    }
-                }]];
-                [settingsViewController presentViewController:confirmImportAlert animated:YES completion:nil];
+                UIDocumentPickerViewController *documentPicker = [[UIDocumentPickerViewController alloc] initWithDocumentTypes:@[@"public.text"] inMode:UIDocumentPickerModeImport];
+                documentPicker.delegate = (id<UIDocumentPickerDelegate>)self;
+                documentPicker.allowsMultipleSelection = NO;
+                [settingsViewController presentViewController:documentPicker animated:YES completion:nil];
             } else {
                 // Paste Settings functionality (default behavior)
-                UIAlertController *confirmPasteAlert = [UIAlertController alertControllerWithTitle:LOC(@"CONFIRM_PASTE_TITLE") message:LOC(@"CONFIRM_PASTE_MESSAGE") preferredStyle:UIAlertControllerStyleAlert];
-                [confirmPasteAlert addAction:[UIAlertAction actionWithTitle:LOC(@"CANCEL") style:UIAlertActionStyleCancel handler:nil]];
-                [confirmPasteAlert addAction:[UIAlertAction actionWithTitle:LOC(@"CONFIRM") style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                UIAlertController *confirmPasteAlert = [UIAlertController alertControllerWithTitle:LOC(@"Are you sure you want to paste the settings?") message:nil preferredStyle:UIAlertControllerStyleAlert];
+                [confirmPasteAlert addAction:[UIAlertAction actionWithTitle:LOC(@"Cancel") style:UIAlertActionStyleCancel handler:nil]];
+                [confirmPasteAlert addAction:[UIAlertAction actionWithTitle:LOC(@"Confirm") style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
                     NSString *settingsString = [[UIPasteboard generalPasteboard] string];
                     if (settingsString.length > 0) {
                         NSArray *lines = [settingsString componentsSeparatedByString:@"\n"];
@@ -294,7 +277,7 @@ extern NSBundle *uYouPlusBundle();
     ];
     [sectionItems addObject:pasteSettings];
 
-    SWITCH_ITEM(LOC(@"REPLACE_COPY_AND_PASTE_BUTTONS"), LOC(@"REPLACE_COPY_AND_PASTE_BUTTONS"), @"replaceCopyandPasteButtons_enabled");
+//  SWITCH_ITEM(LOC(@"REPLACE_COPY_AND_PASTE_BUTTONS"), LOC(@"REPLACE_COPY_AND_PASTE_BUTTONS"), @"replaceCopyandPasteButtons_enabled");
 
     YTSettingsSectionItem *exitYT = [%c(YTSettingsSectionItem)
         itemWithTitle:LOC(@"QUIT_YOUTUBE")
@@ -613,7 +596,7 @@ extern NSBundle *uYouPlusBundle();
         });
     );
     YTSettingsSectionItem *lowContrastModeButton = [%c(YTSettingsSectionItem)
-        itemWithTitle:@"LOW_CONTRAST_MODE_SELECTOR"
+        itemWithTitle:LOC(@"LOW_CONTRAST_MODE_SELECTOR")
         accessibilityIdentifier:nil
         detailTextBlock:^NSString *() {
             switch (contrastMode()) {
