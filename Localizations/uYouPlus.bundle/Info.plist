@@ -45,6 +45,13 @@
                     <string>YTLitePlus</string>
                 </array>
             </dict>
+            <key>Blue</key>
+            <dict>
+                <key>CFBundleIconFiles</key>
+                <array>
+                    <string>Blue</string>
+                </array>
+            </dict>
             <key>Outline</key>
             <dict>
                 <key>CFBundleIconFiles</key>
@@ -94,11 +101,11 @@
                     <string>uYou</string>
                 </array>
             </dict>
-            <key>2012_blue</key>
+            <key>2012_Cyan</key>
             <dict>
                 <key>CFBundleIconFiles</key>
                 <array>
-                    <string>2012_blue</string>
+                    <string>2012_Cyan</string>
                 </array>
             </dict>
             <key>uYouPlus</key>
